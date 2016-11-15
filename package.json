@@ -1,5 +1,5 @@
 {
-      "name"                            : "aplication"
+      "name"                            : "frontend"
     , "description"                     : "infect fronend"
     , "version"                         : "0.1.0"
     , "homepage"                        : "https://github.com/infect/application"
