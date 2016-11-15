@@ -10,7 +10,7 @@ var infektSettings = {
 	, apiKeyName 	: "apikey"
 	, environment 	: env
 	, apiUrls: {
-		base		: ( env == "dev" ) ? "http://infekt.local:12001" : "http://api.infekt.in:80"
+		base		: ( env == "dev" ) ? "http://sdfsdf.127.0.0.1.xip.io:9000" : "http://api.infekt.in:80"
 		, antibiotics 	: "antibiotic"
 		, bacteria 		: "bacteria"
 		, resistances 	: "resistance"

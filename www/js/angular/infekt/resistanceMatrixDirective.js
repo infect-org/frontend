@@ -72,7 +72,7 @@ infekt.directive( "resistanceMatrix", function( $compile, FilterFactory ) {
 
 
 					// Fallback
-					else if (resistance.type === 'resistanceUser') {
+					else if (resistance.type === 'resistanceUser' || resistance.type === 'resistanceDefault') {
 						
 						switch( resistance.value ) {
 							case 1:

@@ -56,6 +56,9 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 
 		var res = [];
 
+
+		var types = {};
+
 		// Loop data
 		for( var i = 0; i < data.length; i++ ) {
 
@@ -88,6 +91,13 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 			// Value missing: set to null
 			if( !resistance ) {
 				resistance = null;
+			}
+
+			if (!types[resistanceType]) {
+				types[resistanceType] = 1;
+			}
+			else {
+				types[resistanceType]++;
 			}
 
 			//console.error( "connect %o to %o with resistance %o (type %o)", bact.latinName, ab.name, resistance, resistanceType );
@@ -125,6 +135,8 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 			}*/
 
 		}
+
+		console.log('Types: %o', types);
 
 		return res;
 
