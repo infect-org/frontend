@@ -1,12 +1,8 @@
-/**
-* Main controller (ng-controller), from angular 1.2
-*/
-infekt.controller( 'InfektController', [ '$scope', 'AntibioticsFactory', 'BacteriaFactory', 'ResistanceFactory', 'SearchTableFactory', 'FilterFactory', function( $scope, AntibioticsFactory, BacteriaFactory, ResistanceFactory, SearchTableFactory, FilterFactory ) {
+infekt.controller( 'InfektController', [ '$scope', 'AntibioticsFactory', 'BacteriaFactory', 'ResistanceFactory', 'DiagnosisFactory', 'SearchTableFactory', 'FilterFactory', function( $scope, AntibioticsFactory, BacteriaFactory, ResistanceFactory, DiagnosisFactory, SearchTableFactory, FilterFactory ) {
 
 	$scope.antibiotics = [];
 	$scope.bacteria = [];
 	$scope.resistances = [];
-	$scope.filters = [];
 
 
 
@@ -20,11 +16,11 @@ infekt.controller( 'InfektController', [ '$scope', 'AntibioticsFactory', 'Bacter
 		} );
 
 
-	/*console.log( DiagnosisFactory );
+	console.log( DiagnosisFactory );
 	DiagnosisFactory
 		.fetchDiagnosis()
 		.then( function( data ) {
-		} );*/
+		} );
 
 
 	// Get bacteria
@@ -131,9 +127,7 @@ infekt.controller( 'InfektController', [ '$scope', 'AntibioticsFactory', 'Bacter
 
 	// Handler that is called when an typeahead proposition is selected
 	$scope.selectHandlerCallback = function( item ) {
-		$scope.$apply(function() {
-			$scope.addFilter( item );
-		});
+		$scope.addFilter( item );
 	};
 
 
@@ -144,20 +138,9 @@ infekt.controller( 'InfektController', [ '$scope', 'AntibioticsFactory', 'Bacter
 	};
 
 
-	// Needed to watch filteres in resistanceMatrixComponent
-	$scope.filters = FilterFactory.filters;
-
 	$scope.getFilters = function( name ) {
 		return FilterFactory.getFilters( name );
 	};
-
-	// We must – somehow – manually set the filters in order that the
-	// filter change is seen in resistanceMatrixComponent
-	$scope.$watch('getFilters()', function(newFilter) {
-		console.log('infektController: Filters changed to %o', newFilter);
-		$scope.filters = JSON.parse(JSON.stringify(newFilter));
-	}, true);
-
 	
 	$scope.getFilterCount = function( name ) {
 		return FilterFactory.getFilterCount( name );

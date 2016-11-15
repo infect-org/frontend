@@ -3,10 +3,9 @@
 	, "version"				: "0.0.1"
 	, "main"				: ""
 	, "dependencies"		: {
-		"angular"					: "1.5.x"
-		, "d3"						: "4.3.x"
+		"angular"					: "1.x"
 		, "zepto"					: "1.1.x"
-		, "angular-translate"		: "2.12.x"
+		, "angular-translate"		: "2.x"
 		, "fxstr-angular-typeahead"	: "1.0.x"
 	}
 	, "ignore"				: [

@@ -66,7 +66,7 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 				, ab 				= AntibioticsFactory.getById( abId )
 				, resistance		= data.resistanceImport
 				, resistanceType
-				, resistanceOrder 	= [ 'resistanceImport', 'resistanceUser', 'classResistanceUser', 'classResistanceDefault', 'resistanceDefault' ]; // classResistanceDefault and resistanceDefault: Don't display number
+				, resistanceOrder 	= [ 'resistanceImport', 'resistanceUser', 'resistanceDefault']; //'classResistanceUser', 'classResistanceDefault', 'resistanceDefault' ]; // classResistanceDefault and resistanceDefault: Don't display number
 
 			/*if( bact.id === 33 ) {
 				console.error( data[ i ] );
@@ -92,14 +92,27 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 
 			//console.error( "connect %o to %o with resistance %o (type %o)", bact.latinName, ab.name, resistance, resistanceType );
 
-			res.push( {
+			var entry ={
 				bacterium		: bact
 				, antibiotic 	: ab
-				// value		: resistance 
-				// Todo: replace with line above
-				, value 		: Math.random()
-				, type 			: resistanceType
-			} );
+				, value			: resistance
+				, type			: resistanceType
+			};
+
+			// TODO: REMOVE!
+			/*if (Math.random() < 0.3) {
+				var rand = Math.random();
+				entry.type = 'resistanceUser';
+				entry.value = rand < 0.3 ? 1 : rand < 0.6 ? 2 : 3;
+			}
+
+			else {
+				entry.type = 'resistanceImport';
+				entry.value = Math.random() * 100;
+			}*/
+
+
+			res.push(entry);
 
 			// Debug
 			/*if( bact.id === 33 ) {

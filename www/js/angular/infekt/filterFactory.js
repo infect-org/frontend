@@ -1,60 +1,56 @@
 // I'm responsible for the filters the user applies to the matrix and the recommendation 
 // table
-
-/* global angular */
-
-angular
-.module('infekt')
-.factory('FilterFactory', function() {
-
+infekt.factory( 'FilterFactory', function() {
 
 	// I hold the filters that the user applied
 	// Each object (bacterium etc.) has a KEY that corresponds to the bacterium's property that is filtered
 	// and a VALUE that contains an array of searchTableFactory objects (value, name, humanValue, humanName, containers)
-	var factory = {};
-	factory.filters = {
+	var filters = {
 		diagnosis 		: {}
 		, bacterium 	: {}
 		, antibiotic 	: {}
 	};
 
 
+	var factory = {};
+
+
 
 	// Returns the property of filters that corresponds to the
 	// type of obj
-	factory.getFiltersByType = function( obj ) {
+	function getFiltersByType( obj ) {
 
 		// Missing type
 		if( !obj.type ) {
 			return false;
 		}
 
-		if( obj.type === "antibiotic" ) {
-			return this.filters.antibiotic;
+		if( obj.type == "antibiotic" ) {
+			return filters.antibiotic;
 		}
-		else if( obj.type === "diagnosis" ) {
-			return this.filters.diagnosis;
+		else if( obj.type == "diagnosis" ) {
+			return filters.diagnosis;
 		}
-		else if( obj.type === "bacterium" ) {
-			return this.filters.bacterium;
+		else if( obj.type == "bacterium" ) {
+			return filters.bacterium;
 		}
 
 		return false;
 
-	};
+	}
 
 
 
 
 	factory.getFilterCount = function( name ) {
 
-		if( !this.filters[ name ] ) {
-			console.error( "infektController: getFilterCount called with name that doesn't exist in filters: %o vs %o", name, this.filters );
+		if( !filters[ name ] ) {
+			console.error( "infektController: getFilterCount called with name that doesn't exist in filters: %o vs %o", name, filters );
 			return 0;
 		}
 
 		var len = 0;
-		for( var i in this.filters[ name ] ) {
+		for( var i in filters[ name ] ) {
 			len++;
 		}
 
@@ -72,21 +68,21 @@ angular
 
 		if( name ) {
 
-			if( !this.filters[ name ] ) {
-				console.error( "infektController: getFilters called with name that doesn't exist in filters: %o vs %o", name, this.filters );
+			if( !filters[ name ] ) {
+				console.error( "infektController: getFilters called with name that doesn't exist in filters: %o vs %o", name, filters );
 				return [];
 			}
 
 			else {
 				//console.log( "infektControler: getFilters returns %o for name %s", filters[ name ], name );
-				return this.filters[ name ];
+				return filters[ name ];
 			}
 
 
 		}
 
 		//console.log( "infektController: getFilters returns all filters %o", filters );
-		return this.filters;
+		return filters;
 
 	};
 
@@ -102,10 +98,9 @@ angular
 	* @param {searchTableFactoryObject} obj		Filter to be added
 	* @returns 	null
 	*/ 
-	factory.addFilter = function(obj) {
+	factory.addFilter = function( obj ) {
 
-		var filter = this.getFiltersByType(obj.containers[0]);
-		console.log('FilterFactory: Add filter %o', filter);
+		var filter = getFiltersByType( obj.containers[ 0 ] );
 
 		if( !filter ) {
 			console.error( "Unknown type for adding filter: %o", obj );
@@ -118,12 +113,9 @@ angular
 			filter[ obj.name ] = [];
 		}
 
-		console.log( "FilterFactory: add property %o to filter %o. Filters is %o", obj, filter, this.filters );
-
 		filter[ obj.name ].push( obj );
 
-		// Data must be immutable in order to fire $onChanges in reistanceMatrixComponent
-		//this.filters = JSON.parse(JSON.stringify(this.filters));
+		console.log( "FilterFactory: add property %o to filter %o. Filters is %o", obj, filter, filters );
 
 	};
 
@@ -136,7 +128,7 @@ angular
 	*/
 	factory.removeFilter = function( obj ) {
 
-		var filter = this.getFiltersByType( obj.containers[ 0 ] );
+		var filter = getFiltersByType( obj.containers[ 0 ] );
 
 		// Filters not found for type of obj (bact/ab)
 		if( !filter ) {
@@ -152,13 +144,12 @@ angular
 
 		// Loop all filters of this type, splice obj when found
 		for( var i = 0;  i < filter[ obj.name ].length; i++ ) {
-			if( filter[ obj.name ][ i ] === obj ) {
+			if( filter[ obj.name ][ i ] == obj ) {
 				filter[ obj.name ].splice( i, 1 );
 
 				// If filter for this type doesn't contain any objects any more: 
 				// Remove whole filter type
 				if( filter[ obj.name ].length === 0 ) {
-					console.log('Filter removed');
 					delete filter[ obj.name ];
 				}
 
@@ -169,7 +160,6 @@ angular
 		// obj not found in filters of this type
 		console.error( "Filter %o could not be removed from filters %o, because it was not found", obj, filter );
 
-		//this.filters = JSON.parse(JSON.stringify(this.filters));
 
 	};
 
