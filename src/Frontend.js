@@ -37,6 +37,13 @@
         express(app) {
             super.express(app);
 
+            app.use((req, res, next) => {
+                res.header('Access-Control-Allow-Origin', '*');
+                res.header('Access-Control-Allow-Headers', '*');
+                res.header('Access-Control-Allow-Methods', '*');
+                next();
+            });
+
             // register static files
             app.use(express.static(path.join(__dirname, '../www'), {fallthrough: true}));
         }
