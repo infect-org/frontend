@@ -48,7 +48,7 @@ infekt.directive( "resistanceMatrix", function( $compile, FilterFactory ) {
 				table.push( "<tr data-bacterium-id='" + data[ i ].bacterium.id + "'>" );
 
 				// Row title
-				table.push( "<th scope='row'>" + data[ i ].bacterium.genus + " " + data[ i ].bacterium.species + "</th>" );
+				table.push( "<th scope='row'>" + /*data[ i ].bacterium.genus + " " +*/ data[ i ].bacterium.species + "</th>" );
 				
 				// Cells with resistances
 				for( var j = 0; j < data[ i ].resistances.length; j++ ) {
