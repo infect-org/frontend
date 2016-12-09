@@ -29,9 +29,22 @@
 				height: 100%;
 				width: 90%;
 				max-width: 1600px;
+				font-family: futura_ltcondensed, Arial, sans-serif;
 			}
+
+			svg .matrix-cell,
+			svg .matrix-row,
+			svg .matrix-column-head {
+				transition: opacity 0.4s, transform 0.9s;
+			}
+
 			resistance-matrix {
 				display: block;
+			}
+
+			svg .mouse-over-cell {
+				transition: transform 0.1s, opacity 0.1s;
+				font-size: 25px;
 			}
 
 			#content {

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="hsl-to-rgb.es2015.js"></script>
+	<script src="resistance-matrix.es2015.js"></script>
+</head>
+<body>
+
+	<h1>Test</h1>
+	<p>Press «c» (removes col) or «r» (removes row)</p>
+	<div class="matrix"></div>
+
+	<style>
+		svg {
+			display: block;
+			height: 100%;
+			width: 1000px;
+			border: 1px solid gray;
+		}
+
+		svg text {
+			font-family: Helvetica;
+			font-size:10px;
+		}
+
+		svg .active .column-label,
+		svg .active .row-label {
+			fill: tomato;
+			font-weight: bold;
+		}
+
+		.cell-label {
+			font-size: 0.5em;
+		}
+
+		svg .matrix-cell,
+		svg .matrix-row,
+		svg .matrix-column-head {
+			transition: opacity 0.4s, transform 0.9s;
+		}
+
+		svg .mouse-over-cell {
+			cursor: pointer;
+			transition: /*transform 0.1s,*/ opacity 0.1s;
+		}
+
+		svg .mouse-over-cell text {
+			font-size: 20px;
+		}
+
+	</style>
+
+	<script>
+
+		/* global document, infect */
+
+		var resistanceMatrix;
+
+		function generateData() {
+
+			// Antibiotics
+			const antibiotics = Array.from(new Array(40));
+			antibiotics.forEach((item, index) => {
+				antibiotics[index] = { 
+					name: 'ab-' + index 
+					, id: index
+				};
+			});
+
+			// Bacteria
+			const bacteria = Array.from(new Array(80));
+			bacteria.forEach((item, index) => {
+				bacteria[index] = { 
+					latinName: 'bact-' + index 
+					, id: index
+				};
+			});
+
+			//console.error('Antibiotics: %o, bacteria %o', antibiotics, bacteria);
+
+			// Create map
+			const data = [];
+			bacteria.forEach((bacterium) => {
+
+				// Create rows
+				const row = [];
+				antibiotics.forEach((ab) => {
+					let value = Math.random();
+					if (Math.random() < 0.3) value = null;
+					row.push( {
+						antibiotic		: ab
+						, colorValue	: value	
+						, labelValue	: value
+					});
+				});
+
+				data.push({
+					bacterium			: bacterium
+					, antibiotics		: row
+				});
+
+			});
+
+			return data;
+
+		}
+
+
+
+		const data = generateData();
+
+		resistanceMatrix = new infect.ResistanceMatrix(document.querySelector('.matrix'), data, {
+			columnHeaderTransformer				: (data) => data[0].antibiotics.map((item) => item)
+			, columnLabelValue					: (item) => item.antibiotic.name
+			, columnIdentifier					: (item) => 'ab-' + item.antibiotic.id
+			, rowDataTransformer				: (item) => item.antibiotics
+			, rowIdentifier						: (item) => 'bact-' + item.bacterium.id
+			, cellColorValue					: (item) => {
+
+				const color = item.colorValue;
+				const invertedColorValue = 1 + (color * -1);
+
+				const saturation = invertedColorValue * 0.5 + 0.4;
+				// Lightness: 60–100% – this is very important
+				const lightness = (1 - invertedColorValue) * 0.6 + 0.4;
+				// Hue 0-100
+				const hue = invertedColorValue * 100;
+				const rgb = infect.hslToRgb(hue / 255, saturation, lightness);
+				return `rgb(${ Math.round(rgb[0]) }, ${ Math.round(rgb[1]) }, ${ Math.round(rgb[2]) })`;
+
+			}
+			, cellLabelValue					: (item) => item.labelValue === null ? undefined : item.labelValue.toFixed(1)
+			, rowLabelValue						: (item) => item.bacterium.latinName
+			, rowHidden							: (item) => item.bacterium.hidden
+			, columnHidden						: (item) => item.antibiotic.hidden
+		});
+
+
+
+		document.body.addEventListener('keydown', (ev) => {
+
+			if (ev.code === 'KeyC') {
+				let cols = Array.from(new Array(Math.floor(Math.random() * 10 )));
+				cols = cols.map(() => Math.floor(Math.random() * data[0].antibiotics.length));
+				console.log('Remove cols %o', cols);
+				data.forEach((row) => {
+					row.antibiotics.forEach((ab) => ab.antibiotic.hidden = false);
+					cols.forEach((col) => {
+						row.antibiotics[col].antibiotic.hidden = true;
+					});
+				});
+				resistanceMatrix.updateData(data, true);
+			}
+
+			if (ev.code === 'KeyR') {
+				const rm = [];
+				data.forEach((datum, index) => {
+					datum.bacterium.hidden = (Math.random() < 0.3) ? true : false;
+					if (datum.bacterium.hidden) rm.push(index);
+				});
+				console.error('removed col %o, data is now %o', rm, data);
+				resistanceMatrix.updateData(data, true);
+			}
+
+		});
+
+
+	</script>
+</body>
+</html>
+
