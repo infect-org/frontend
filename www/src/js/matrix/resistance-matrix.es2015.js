@@ -89,6 +89,8 @@
 
 
 
+
+
 		/**
 		* Updates the matrix' data
 		* @param {Array} data				Array (rows) of Arrays (cols) which hold the values (Object)
@@ -143,6 +145,8 @@
 
 
 
+
+
 		/**
 		* Updates the row's position and visibility to match filters
 		*/
@@ -171,6 +175,8 @@
 			console.timeEnd('updateRowPos');
 
 		}
+
+
 
 
 
@@ -209,6 +215,9 @@
 			console.timeEnd('updateColPos');
 
 		}
+
+
+
 
 
 
@@ -302,7 +311,12 @@
 			// Transform column heads (height of them must be known before we can transform them)
 			console.time('transformColHeads');
 			console.time('transformColHeadsGetHeight');
-			let maxLabelHeight 			= document.querySelector('.column-heads').getBoundingClientRect().height;
+			const colHeads = document.querySelectorAll('.column-head');
+			let maxLabelHeight = 0;
+			Array.from(colHeads).forEach((head) => {
+				maxLabelHeight = Math.max(maxLabelHeight, head.getBoundingClientRect().width);
+			});
+			console.log('ResistanceMatrix: Max col head width is %o', maxLabelHeight);
 			console.timeEnd('transformColHeadsGetHeight');
 
 			console.time('transformColHeadsSetPos');
@@ -320,7 +334,8 @@
 
 			// Set height of svg
 			console.time('svgHeight');
-			this._elements.svg.style.height = maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix + this._rowScale.step() * this._data.length;
+			const height  = maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix + this._rowScale.step() * this._data.length;
+			this._elements.svg.style.height = height + 'px';
 			console.timeEnd('svgHeight');
 
 
@@ -340,7 +355,7 @@
 			});
 
 			// Cols: Use all cells and column heads
-			const cells = this._elements.svg.querySelectorAll('.matrix-cell, .matrix-column-head');
+			const cells = this._elements.svg.querySelectorAll('.matrix-cell, .column-head');
 			Array.from(cells).forEach((cell) => {
 				const identifier = cell.getAttribute('data-column-identifier');
 				if (!this._elements.columns[identifier]) {
@@ -360,17 +375,14 @@
 
 			// Hovering
 			const body = this._elements.svg.querySelector('.matrix-body');
-			this._hoveredMatrixCell = undefined;
+			this._elements.hoveredMatrixCell = undefined;
 			this._elements.mouseOver = this._createEmptyMouseOverCell(this._colScale.bandwidth());
 			body.appendChild(this._elements.mouseOver);
 
 			// Event handler (mouseover). Don't attach an mouseenter listener to every single cell, 
 			// but use a global listener to improve performance
 			body.addEventListener('mouseover', (ev) => this._mouseOverHandler(ev));
-			body.addEventListener('mouseleave', () => {
-				this._elements.mouseOver.style.opacity = 0;
-				this._hoveredMatrixCell = undefined;
-			});
+			body.addEventListener('mouseleave', (ev) => this._mouseOutHandler(ev));
 
 
 		}
@@ -379,23 +391,85 @@
 
 
 
+		/**
+		* Handler for mouseleave
+		*/
+		_mouseOutHandler() {
+
+			this._elements.mouseOver.style.opacity = 0;
+			this._elements.hoveredMatrixCell = undefined;
+
+			this._degradeHighlightedHeaders();
+
+		}
+
+
+
+		/**
+		* Removes the .active class from the currently hovered colum and row
+		*/
+		_degradeHighlightedHeaders() {
+
+			const rowHead = this._elements.hoveredRowHead;
+			const colHead = this._elements.hoveredColumnHead;
+
+			window.requestAnimationFrame(() => {
+				if (rowHead) rowHead.classList.remove('active');
+				if (colHead) colHead.classList.remove('active');
+			});
+
+		}
+
+
+		/**
+		* Handler for mouse over cell
+		*/
 		_mouseOverHandler(ev) {
 
 			// Get hovered cell (class .matrix-cell)
 			let target = ev.target;
-			while (!target.classList.contains('matrix-cell') && target.parentNode) {
+
+			while (target !== document && !target.classList.contains('matrix-cell')) {
 				target = target.parentNode;
 			}
 
+			// Undefined (target was document)
+			if (!target || target === document) return;
+
 			// Hovered cell did not change
-			if (this._hoveredMatrixCell === target) return;
+			if (this._elements.hoveredMatrixCell === target) return;
 
 			// Update _hoveredMatrixCell
-			this._hoveredMatrixCell = target;
+			this._elements.hoveredMatrixCell = target;
 
 			this._updateMouseOverCell(target);
 
+			this._degradeHighlightedHeaders();
+			this._highlightHeaders(target);
+
 		}
+
+
+
+		/**
+		* Highlights headers of currently hovered row/col
+		*/
+		_highlightHeaders(hoveredCell) {
+
+			const rowHead = hoveredCell.parentNode.querySelector('.row-label');
+			this._elements.hoveredRowHead = rowHead;
+
+			const colId = hoveredCell.getAttribute('data-column-identifier');
+			const colHead = this._elements.svg.querySelector(`.column-head[data-column-identifier=${ colId }]`);
+			this._elements.hoveredColumnHead = colHead;
+
+			window.requestAnimationFrame(() => {
+				rowHead.classList.add('active');
+				colHead.classList.add('active');
+			});
+
+		}
+
 
 
 
@@ -410,8 +484,6 @@
 			mouseOver.style.opacity = 1;
 			mouseOver.querySelector('text').textContent = hoveredCell.querySelector('text').textContent;
 			mouseOver.querySelector('circle').setAttribute('fill', hoveredCell.querySelector('use').getAttribute('fill'));
-
-
 
 		}
 
@@ -434,8 +506,8 @@
 
 			// dy = -1em aligns text at top; -1.5 centers top
 			g.innerHTML = `
-				<circle r='${ radius }'></circle>
-				<text text-anchor='middle' alignment-baseline='center' x='0'></text>
+				<circle style='cursor:pointer' r='${ radius }'></circle>
+				<text  style='cursor:pointer' text-anchor='middle' alignment-baseline='central' x='0' y='0'></text>
 			`;
 
 			return g;
@@ -571,7 +643,7 @@
 				cells.push(`
 					<g class='matrix-cell' style='transform:translate(${ scale.getPosition(columnIdentifierFunction(cellDatum)) }px,0)' data-column-identifier='${ columnIdentifierFunction(cellDatum) }' data-row-identifier='${ rowIdentifier }'>
 						<use xlink:href='#cell-circle-def' fill='${ colorValue(cellDatum) }'></use>
-						<text text-anchor='middle' x='0' y='0.1em' style='alignment-baseline:middle'>${ labelValue(cellDatum) }</text>
+						<text text-anchor='middle' x='0' y='0' alignment-baseline='central'>${ labelValue(cellDatum) }</text>
 					</g>
 				`);
 			});
@@ -601,7 +673,7 @@
 		*/
 		_createColHead(value, identifier, left) {
 			return `
-				<g class='matrix-column-head' data-column-identifier='${ identifier }' style='transform: translate(${ left }px, 0)'>
+				<g class='column-head' data-column-identifier='${ identifier }' style='transform: translate(${ left }px, 0)'>
 					<text style='transform:rotate(-45deg)'>${ value }</text>
 				</g>
 			`;

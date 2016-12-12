@@ -395,7 +395,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				g.style.cursor = 'pointer';
 
 				// dy = -1em aligns text at top; -1.5 centers top
-				g.innerHTML = '\n\t\t\t\t<circle r=\'' + radius + '\'></circle>\n\t\t\t\t<text text-anchor=\'middle\' alignment-baseline=\'center\' x=\'0\'></text>\n\t\t\t';
+				g.innerHTML = '\n\t\t\t\t<circle style=\'cursor:pointer\' r=\'' + radius + '\'></circle>\n\t\t\t\t<text  style=\'cursor:pointer\' text-anchor=\'middle\' alignment-baseline=\'central\' x=\'0\' y=\'0\'></text>\n\t\t\t';
 
 				return g;
 			}
@@ -536,7 +536,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 					// y position: Go down by half of the circle's size, then up by half the font's size – should be 
 					// vertically aligned in the middle
-					cells.push('\n\t\t\t\t\t<g class=\'matrix-cell\' style=\'transform:translate(' + scale.getPosition(columnIdentifierFunction(cellDatum)) + 'px,0)\' data-column-identifier=\'' + columnIdentifierFunction(cellDatum) + '\' data-row-identifier=\'' + rowIdentifier + '\'>\n\t\t\t\t\t\t<use xlink:href=\'#cell-circle-def\' fill=\'' + colorValue(cellDatum) + '\'></use>\n\t\t\t\t\t\t<text text-anchor=\'middle\' x=\'0\' y=\'0.1em\' style=\'alignment-baseline:middle\'>' + labelValue(cellDatum) + '</text>\n\t\t\t\t\t</g>\n\t\t\t\t');
+					cells.push('\n\t\t\t\t\t<g class=\'matrix-cell\' style=\'transform:translate(' + scale.getPosition(columnIdentifierFunction(cellDatum)) + 'px,0)\' data-column-identifier=\'' + columnIdentifierFunction(cellDatum) + '\' data-row-identifier=\'' + rowIdentifier + '\'>\n\t\t\t\t\t\t<use xlink:href=\'#cell-circle-def\' fill=\'' + colorValue(cellDatum) + '\'></use>\n\t\t\t\t\t\t<text text-anchor=\'middle\' x=\'0\' y=\'0\' alignment-baseline=\'central\'>' + labelValue(cellDatum) + '</text>\n\t\t\t\t\t</g>\n\t\t\t\t');
 				});
 				return cells.join('');
 			}
