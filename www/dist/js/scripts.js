@@ -44823,63 +44823,38 @@ return 'pascalprecht.translate';
 
 // Avoid `console` errors in browsers that lack a console.
 (function() {
-    var method;
-    var noop = function () {};
-    var methods = [
-        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-        'timeStamp', 'trace', 'warn'
-    ];
-    var length = methods.length;
-    var console = (window.console = window.console || {});
+		var method;
+		var noop = function () {};
+		var methods = [
+				'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+				'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+				'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+				'timeStamp', 'trace', 'warn'
+		];
+		var length = methods.length;
+		var console = (window.console = window.console || {});
 
-    while (length--) {
-        method = methods[length];
+		while (length--) {
+				method = methods[length];
 
-        // Only stub undefined methods.
-        if (!console[method]) {
-            console[method] = noop;
-        }
-    }
+				// Only stub undefined methods.
+				if (!console[method]) {
+						console[method] = noop;
+				}
+		}
 }());
 
 
 
 
-// Rotate table cell content
-  /*
-  Version 1.0
-  7/2011
-  Written by David Votrubec (davidjs.com) and
-  Michal Tehnik (@Mictech) for ST-Software.com
-  */
-/*(function ($) {
-  $.fn.rotateTableCellContent = function (options) {
+// IE 11 does not know classList on svg elements – shim it.
+// See https://github.com/angular/angular/issues/6327
+if (!('classList' in document.createElementNS('http://www.w3.org/2000/svg','g'))){
+	var descr = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'classList');
+	Object.defineProperty(SVGElement.prototype, 'classList', descr);
+}
 
-		var cssClass = ((options) ? options.className : false) || "vertical";
 
-		var cellsToRotate = $('.' + cssClass, this);
-
-		var betterCells = [];
-		cellsToRotate.each(function () {
-			var cell = $(this)
-		  , newText = cell.text()
-		  , height = cell.height()
-		  , width = cell.width()
-		  , newDiv = $('<div>', { height: width, width: height })
-		  , newInnerDiv = $('<div>', { text: newText, 'class': 'rotated' });
-
-			newDiv.append(newInnerDiv);
-
-			betterCells.push(newDiv);
-		});
-
-		cellsToRotate.each(function (i) {
-			$(this).html(betterCells[i]);
-		});
-	};
-})(Zepto);*/
 "use strict";
 
 // See http://axonflux.com/handy-rgb-to-hsl-and-rgb-to-hsv-color-model-c
@@ -44938,7 +44913,136 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (function () {
 
-	/* global window, document */
+	/* global window, document, DOMParser, Node */
+
+	/**
+ * IE11 has huge problems with today's SVG standards: 
+ * - does not know CSS transforms
+ * - does not know innerHTML
+ *
+ * This class provides basic fallbacks without being too fancy or imperformant.
+ */
+	var SVGHelper = function () {
+		function SVGHelper() {
+			_classCallCheck(this, SVGHelper);
+
+			this._supportsCSSTransforms = this._browserSupportsCSSTransforms();
+		}
+
+		/**
+  * Set element.transform to values provided (IE11) resp. use the CSS transform propertiy (all 
+  * current browsers). We don't want to use the transform attribute as it is not transitionable
+  * (cannot be transitioned through CSS)
+  * 
+  * @param {HTMLElement|undefined} element		Element to perform transformation on; if none is passed in, 
+  *												(e.g. if value needs to be set on a String, not an element), 
+  *												object is returned with properties 'style' and 'attribute' and
+  *												corresponding values, for good browsers e.g.:
+  *												{attribute: '', style: 'translate(0px, 20px)'}
+  * @param {Object} translation					Properties supported: x and y (undefined is turned into 0)
+  * @param {Number} rotation						Rotation (in deg)
+  */
+
+
+		_createClass(SVGHelper, [{
+			key: 'setTransformation',
+			value: function setTransformation(element, translation, rotation) {
+
+				var values = this._getTransformationValues(translation, rotation);
+
+				// element is HTMLElement
+				if (element) {
+					if (this._supportsCSSTransforms) {
+						element.style.transform = values;
+					} else {
+						element.setAttribute('transform', values);
+					}
+				}
+
+				// Return object with attribute and style properties (see @param element above)
+				else {
+						return {
+							attribute: this._supportsCSSTransforms ? '' : values,
+							style: this._supportsCSSTransforms ? 'transform:' + values : ''
+						};
+					}
+			}
+
+			/**
+   * Returns the values for a transformation
+   */
+
+		}, {
+			key: '_getTransformationValues',
+			value: function _getTransformationValues(translation, rotation) {
+
+				var values = [];
+				if (this._supportsCSSTransforms) {
+					if (translation) values.push('translate(' + (translation.x || 0) + 'px, ' + (translation.y || 0) + 'px)');
+					if (rotation !== undefined) values.push('rotate(' + rotation + 'deg)');
+				} else {
+					if (translation) values.push('translate(' + (translation.x || 0) + ' ' + (translation.y || 0) + ')');
+					if (rotation !== undefined) values.push('rotate(' + rotation + ')');
+				}
+
+				return values.join(' ');
+			}
+
+			/**
+   * Returns true if browser supports CSS transforms on SVG elements, else false.
+   */
+
+		}, {
+			key: '_browserSupportsCSSTransforms',
+			value: function _browserSupportsCSSTransforms() {
+				var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+				return 'transform' in svg;
+			}
+
+			/**
+   * IE11 does not support innerHTML on SVG elements, needs a work around. 
+   * @param {HTMLElement} element			Element that content should be set on (element.innerHTML = content)
+   * @param {String} content				Content to add to element
+   */
+
+		}, {
+			key: 'setSVGContent',
+			value: function setSVGContent(element, content) {
+
+				// Normal browsers
+				if (this._browserSupportsSvgInnerHTML()) {
+					element.innerHTML = content;
+				}
+
+				// Stupid browsers (AKA IE11) 
+				// See http://stackoverflow.com/questions/9723422/is-there-some-innerhtml-replacement-in-svg-xml
+				else {
+						var xmlString = '<svg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\'>' + content + '</svg>';
+						var doc = new DOMParser().parseFromString(xmlString, 'application/xml');
+						var imported = element.ownerDocument.importNode(doc.documentElement, true);
+						Array.from(imported.childNodes).forEach(function (child) {
+							if (child.nodeType !== Node.ELEMENT_NODE) return;
+							element.appendChild(child);
+						});
+					}
+			}
+
+			/**
+   * IE11 does not support innerHTML on SVGs. Check browser support.
+   */
+
+		}, {
+			key: '_browserSupportsSvgInnerHTML',
+			value: function _browserSupportsSvgInnerHTML() {
+
+				var svg = document.createElementNS(this._svgNS, 'svg');
+				svg.innerHTML = '<g></g>';
+				return svg.querySelectorAll('g').length === 1;
+			}
+		}]);
+
+		return SVGHelper;
+	}();
 
 	/**
  * Draws a matrix with resistencies. 
@@ -44967,6 +45071,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * ]
  *
  */
+
+
 	var ResistanceMatrix = function () {
 
 		/**
@@ -45000,6 +45106,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			this._container = container;
 			this._data = data;
 			this._svgNS = 'http://www.w3.org/2000/svg';
+
+			this._svgHelper = new SVGHelper();
 
 			this._configuration = {
 				spaceBetweenLabelsAndMatrix: config.spaceBetweenLabelsAndMatrix || 20,
@@ -45086,6 +45194,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			}
 
 			/**
+   * Sets visibility class on element and updates its position (through transform)
+   */
+
+		}, {
+			key: '_updatePositionAndVisibility',
+			value: function _updatePositionAndVisibility(element, xPos, yPos, visible) {
+
+				var classes = ['visible', 'hidden'],
+				    classIndex = visible ? 0 : 1;
+
+				element.classList.remove(classes[Math.abs(classIndex - 1)]);
+				element.classList.add(classes[classIndex]);
+
+				this._svgHelper.setTransformation(element, { x: xPos, y: yPos });
+			}
+
+			/**
    * Updates the row's position and visibility to match filters
    */
 
@@ -45102,14 +45227,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 					var pos = scale.getPosition(rowId),
 					    row = _this2._elements.rows[rowId];
 
-					if (pos === undefined) {
-						row.style.opacity = 0;
-						row.style.display = 'none';
-					} else {
-						row.style.opacity = 1;
-						row.style.display = 'block';
-						row.style.transform = 'translate(0, ' + pos + 'px)';
-					}
+					_this2._updatePositionAndVisibility(row, 0, pos, pos !== undefined);
 				});
 
 				console.timeEnd('updateRowPos');
@@ -45132,19 +45250,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 					var pos = scale.getPosition(colId);
 
-					// Not visible any more
-					if (pos === undefined) {
-						_this3._elements.columns[colId].forEach(function (element) {
-							element.style.opacity = 0;
-							element.style.display = 'none';
-						});
-					} else {
-						_this3._elements.columns[colId].forEach(function (el) {
-							el.style.opacity = 1;
-							el.style.display = 'block';
-							el.style.transform = 'translate(' + pos + 'px, 0)';
-						});
-					}
+					_this3._elements.columns[colId].forEach(function (element) {
+						_this3._updatePositionAndVisibility(element, pos, 0, pos !== undefined);
+					});
 				});
 
 				console.timeEnd('updateColPos');
@@ -45162,7 +45270,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				// Create new SVG
 				if (!this._elements.svg) {
 					this._elements.svg = this._createSVG();
-					this._container.append(this._elements.svg);
+					this._container.appendChild(this._elements.svg);
 				}
 				// Empty existing SVG
 				else {
@@ -45208,28 +45316,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				console.timeEnd('createRows');
 
 				console.time('addToSVG');
-				this._elements.svg.innerHTML = content.join('');
+				this._svgHelper.setSVGContent(this._elements.svg, content.join(''));
 				console.timeEnd('addToSVG');
 
 				// Transform column heads (height of them must be known before we can transform them)
 				console.time('transformColHeads');
 				console.time('transformColHeadsGetHeight');
-				var maxLabelHeight = document.querySelector('.column-heads').getBoundingClientRect().height;
+				var colHeads = document.querySelectorAll('.column-head');
+				var maxLabelHeight = 0;
+				Array.from(colHeads).forEach(function (head) {
+					maxLabelHeight = Math.max(maxLabelHeight, head.getBoundingClientRect().width);
+				});
+				console.log('ResistanceMatrix: Max col head width is %o', maxLabelHeight);
 				console.timeEnd('transformColHeadsGetHeight');
 
 				console.time('transformColHeadsSetPos');
-				this._elements.svg.querySelector('.column-heads').style.transform = 'translate(0, ' + maxLabelHeight + 'px)';
+
+				// Stupid f...(ill in the blanks) IE11 does not know CSS transforms – needs attribute instead, see
+				// http://stackoverflow.com/questions/23047098/css-translate-not-working-in-ie11-on-svg-g
+				this._svgHelper.setTransformation(this._elements.svg.querySelector('.column-heads'), { x: 0, y: Math.ceil(maxLabelHeight) });
 				console.timeEnd('transformColHeadsSetPos');
 				console.timeEnd('transformColHeads');
 
 				// Transform matrix body (move down by height of col labels)
 				console.time('transformBody');
-				this._elements.svg.querySelector('.matrix-body').style.transform = 'translate(0, ' + (maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix) + 'px)';
+				this._svgHelper.setTransformation(this._elements.svg.querySelector('.matrix-body'), { x: 0, y: Math.ceil(maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix) });
 				console.timeEnd('transformBody');
 
 				// Set height of svg
 				console.time('svgHeight');
-				this._elements.svg.style.height = maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix + this._rowScale.step() * this._data.length;
+				var height = maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix + this._rowScale.step() * this._data.length;
+				this._elements.svg.style.height = height + 'px';
 				console.timeEnd('svgHeight');
 
 				// Cache cols and rows for faster animations (only read from DOM once)
@@ -45246,7 +45363,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				});
 
 				// Cols: Use all cells and column heads
-				var cells = this._elements.svg.querySelectorAll('.matrix-cell, .matrix-column-head');
+				var cells = this._elements.svg.querySelectorAll('.matrix-cell, .column-head');
 				Array.from(cells).forEach(function (cell) {
 					var identifier = cell.getAttribute('data-column-identifier');
 					if (!_this4._elements.columns[identifier]) {
@@ -45261,7 +45378,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 				// Hovering
 				var body = this._elements.svg.querySelector('.matrix-body');
-				this._hoveredMatrixCell = undefined;
+				this._elements.hoveredMatrixCell = undefined;
 				this._elements.mouseOver = this._createEmptyMouseOverCell(this._colScale.bandwidth());
 				body.appendChild(this._elements.mouseOver);
 
@@ -45270,28 +45387,97 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				body.addEventListener('mouseover', function (ev) {
 					return _this4._mouseOverHandler(ev);
 				});
-				body.addEventListener('mouseleave', function () {
-					_this4._elements.mouseOver.style.opacity = 0;
-					_this4._hoveredMatrixCell = undefined;
+				body.addEventListener('mouseleave', function (ev) {
+					return _this4._mouseOutHandler(ev);
 				});
 			}
+
+			/**
+   * Handler for mouseleave
+   */
+
+		}, {
+			key: '_mouseOutHandler',
+			value: function _mouseOutHandler() {
+
+				this._elements.mouseOver.style.opacity = 0;
+				this._elements.hoveredMatrixCell = undefined;
+
+				this._degradeHighlightedHeaders();
+			}
+
+			/**
+   * Removes the .active class from the currently hovered colum and row
+   */
+
+		}, {
+			key: '_degradeHighlightedHeaders',
+			value: function _degradeHighlightedHeaders() {
+
+				var rowHead = this._elements.hoveredRowHead;
+				var colHead = this._elements.hoveredColumnHead;
+
+				window.requestAnimationFrame(function () {
+					if (rowHead) rowHead.classList.remove('active');
+					if (colHead) colHead.classList.remove('active');
+				});
+			}
+
+			/**
+   * Handler for mouse over cell
+   */
+
 		}, {
 			key: '_mouseOverHandler',
 			value: function _mouseOverHandler(ev) {
 
 				// Get hovered cell (class .matrix-cell)
 				var target = ev.target;
-				while (!target.classList.contains('matrix-cell') && target.parentNode) {
+
+				while (target.parentNode) {
+					// Prevent errors by continuing on missing classList (IE11)
+					if (!target.classList) continue;
+					// This is what we want: Get .matrix-cell
+					if (target.classList.contains('matrix-cell')) break;
+					// Go up
 					target = target.parentNode;
 				}
 
+				// Undefined (target was document)
+				if (!target || target === document) return;
+
 				// Hovered cell did not change
-				if (this._hoveredMatrixCell === target) return;
+				if (this._elements.hoveredMatrixCell === target) return;
 
 				// Update _hoveredMatrixCell
-				this._hoveredMatrixCell = target;
+				this._elements.hoveredMatrixCell = target;
 
+				console.error(target);
 				this._updateMouseOverCell(target);
+
+				this._degradeHighlightedHeaders();
+				this._highlightHeaders(target);
+			}
+
+			/**
+   * Highlights headers of currently hovered row/col
+   */
+
+		}, {
+			key: '_highlightHeaders',
+			value: function _highlightHeaders(hoveredCell) {
+
+				var rowHead = hoveredCell.parentNode.querySelector('.row-label');
+				this._elements.hoveredRowHead = rowHead;
+
+				var colId = hoveredCell.getAttribute('data-column-identifier');
+				var colHead = this._elements.svg.querySelector('.column-head[data-column-identifier=' + colId + ']');
+				this._elements.hoveredColumnHead = colHead;
+
+				window.requestAnimationFrame(function () {
+					rowHead.classList.add('active');
+					colHead.classList.add('active');
+				});
 			}
 		}, {
 			key: '_updateMouseOverCell',
@@ -45301,7 +45487,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				var colIdentifier = hoveredCell.getAttribute('data-column-identifier');
 				//console.log('ResistanceMatrix: Create mouse over cell for %o, col %o row %o', hoveredCell, colIdentifier, rowIdentifier);
 				var mouseOver = this._elements.mouseOver;
-				mouseOver.style.transform = 'translate(' + this._colScale.getPosition(colIdentifier) + 'px, ' + this._rowScale.getPosition(rowIdentifier) + 'px)';
+				this._svgHelper.setTransformation(mouseOver, { x: this._colScale.getPosition(colIdentifier), y: this._rowScale.getPosition(rowIdentifier) });
 				mouseOver.style.opacity = 1;
 				mouseOver.querySelector('text').textContent = hoveredCell.querySelector('text').textContent;
 				mouseOver.querySelector('circle').setAttribute('fill', hoveredCell.querySelector('use').getAttribute('fill'));
@@ -45327,8 +45513,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				g.style.cursor = 'pointer';
 
 				// dy = -1em aligns text at top; -1.5 centers top
-				g.innerHTML = '\n\t\t\t\t<circle style=\'cursor:pointer\' r=\'' + radius + '\'></circle>\n\t\t\t\t<text  style=\'cursor:pointer\' text-anchor=\'middle\' alignment-baseline=\'central\' x=\'0\' y=\'0\'></text>\n\t\t\t';
+				var content = '\n\t\t\t\t<circle style=\'cursor:pointer\' r=\'' + radius + '\'></circle>\n\t\t\t\t<text  style=\'cursor:pointer\' text-anchor=\'middle\' alignment-baseline=\'central\' x=\'0\' y=\'0\'></text>\n\t\t\t';
 
+				this._svgHelper.setSVGContent(g, content);
 				return g;
 			}
 
@@ -45355,7 +45542,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 				// Append labels to <g>, then to SVG
 				var g = document.createElementNS(this._svgNS, 'g');
-				g.innerHTML = rows.join('');
+				this._svgHelper.setSVGContent(g, rows.join(''));
 				this._elements.svg.appendChild(g);
 
 				// Go through labels
@@ -45428,7 +45615,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			key: '_createRow',
 			value: function _createRow(content, identifier, rowScale) {
 
-				return ('\n\t\t\t\t<g class=\'matrix-row\' data-identifier=\'' + identifier + '\' style=\'transform:translate(0, ' + rowScale.getPosition(identifier) + 'px)\'>\n\t\t\t\t\t' + content + '\n\t\t\t\t</g>').replace(/[\n\r]/g, '');
+				var transformation = this._svgHelper.setTransformation(null, { x: 0, y: rowScale.getPosition(identifier) });
+
+				return ('\n\t\t\t\t<g class=\'matrix-row visible\' data-identifier=\'' + identifier + '\' transform=\'' + transformation.attribute + '\' style=\'' + transformation.style + '\'>\n\t\t\t\t\t' + content + '\n\t\t\t\t</g>').replace(/[\n\r]/g, '');
 			}
 
 			/**
@@ -45458,6 +45647,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}, {
 			key: '_createCellsForRow',
 			value: function _createCellsForRow(data, columnIdentifierFunction, rowIdentifier, colorValue, labelValue, scale) {
+				var _this7 = this;
+
 				var cells = [];
 				data.forEach(function (cellDatum) {
 
@@ -45466,9 +45657,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 						return;
 					}
 
+					var transformation = _this7._svgHelper.setTransformation(null, { x: scale.getPosition(columnIdentifierFunction(cellDatum)), y: 0 });
+
 					// y position: Go down by half of the circle's size, then up by half the font's size – should be 
 					// vertically aligned in the middle
-					cells.push('\n\t\t\t\t\t<g class=\'matrix-cell\' style=\'transform:translate(' + scale.getPosition(columnIdentifierFunction(cellDatum)) + 'px,0)\' data-column-identifier=\'' + columnIdentifierFunction(cellDatum) + '\' data-row-identifier=\'' + rowIdentifier + '\'>\n\t\t\t\t\t\t<use xlink:href=\'#cell-circle-def\' fill=\'' + colorValue(cellDatum) + '\'></use>\n\t\t\t\t\t\t<text text-anchor=\'middle\' x=\'0\' y=\'0\' alignment-baseline=\'central\'>' + labelValue(cellDatum) + '</text>\n\t\t\t\t\t</g>\n\t\t\t\t');
+					cells.push('\n\t\t\t\t\t<g class=\'matrix-cell\' transform=\'' + transformation.attribute + '\' data-column-identifier=\'' + columnIdentifierFunction(cellDatum) + '\' data-row-identifier=\'' + rowIdentifier + '\' style=\'' + transformation.style + '\'>\n\t\t\t\t\t\t<use xlink:href=\'#cell-circle-def\' fill=\'' + colorValue(cellDatum) + '\'></use>\n\t\t\t\t\t\t<text text-anchor=\'middle\' x=\'0\' y=\'0\' alignment-baseline=\'central\'>' + labelValue(cellDatum) + '</text>\n\t\t\t\t\t</g>\n\t\t\t\t');
 				});
 				return cells.join('');
 			}
@@ -45480,13 +45673,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}, {
 			key: '_createColHeads',
 			value: function _createColHeads(data, textFunction, identifierFunction, scale) {
-				var _this7 = this;
+				var _this8 = this;
 
 				console.log('ResistanceMatrix: Create col heads with data %o, text %o, identifier %o, space %o', data, textFunction, identifierFunction, scale);
 				var heads = [];
 				heads.push('<g class=\'column-heads\'>');
 				data.forEach(function (head) {
-					heads.push(_this7._createColHead(textFunction(head), identifierFunction(head), scale.getPosition(identifierFunction(head))));
+					heads.push(_this8._createColHead(textFunction(head), identifierFunction(head), scale.getPosition(identifierFunction(head))));
 				});
 				heads.push('</g>');
 				return heads.join('');
@@ -45499,7 +45692,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}, {
 			key: '_createColHead',
 			value: function _createColHead(value, identifier, left) {
-				return '\n\t\t\t\t<g class=\'matrix-column-head\' data-column-identifier=\'' + identifier + '\' style=\'transform: translate(' + left + 'px, 0)\'>\n\t\t\t\t\t<text style=\'transform:rotate(-45deg)\'>' + value + '</text>\n\t\t\t\t</g>\n\t\t\t';
+
+				var transformation = this._svgHelper.setTransformation(null, { x: left, y: 0 }),
+				    rotation = this._svgHelper.setTransformation(null, null, -45);
+
+				return '\n\t\t\t\t<g class=\'column-head\' data-column-identifier=\'' + identifier + '\' transform=\'' + transformation.attribute + '\' style=\'' + transformation.style + '\'>\n\t\t\t\t\t<text transform=\'' + rotation.attribute + '\' style=\'' + rotation.style + '\'>' + value + '</text>\n\t\t\t\t</g>\n\t\t\t';
 			}
 
 			/**
@@ -45524,18 +45721,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			key: '_getSvgWidth',
 			value: function _getSvgWidth() {
 				return this._elements.svg.getBoundingClientRect().width;
-			}
-
-			/**
-   * Creates and returns a single row label. Needed to first measure and then
-   * draw it at the right place
-   */
-
-		}, {
-			key: '_createSingleRowLabel',
-			value: function _createSingleRowLabel(element) {
-
-				return element.append('text').attr('class', 'row-label').attr('text-anchor', 'end').text(this._configuration.rowLabelValue);
 			}
 
 			/**

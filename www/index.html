@@ -9,6 +9,9 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width" />
 
+        <!-- IE 11 to display SVG -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
         <link rel="stylesheet" href="styles/css/styles.css" />
 
 	    <script src="dist/js/scripts.js"></script>
@@ -32,11 +35,28 @@
 				font-family: futura_ltcondensed, Arial, sans-serif;
 			}
 
-			svg .matrix-cell,
-			svg .matrix-row,
-			svg .matrix-column-head {
+			/*svg .matrix-column-head {
 				transition: opacity 0.4s, transform 0.4s;
+			}*/
+
+			svg .column-head.hidden,
+			svg .matrix-cell.hidden, 
+			svg .matrix-row.hidden {
+				/* fade out, then transform */
+				transition: opacity 0.2s, transform 0.4s linear 0.2s;
+				opacity: 0;
+				pointer-events: none;
 			}
+
+			svg .column-head.visible,
+			svg .matrix-cell.visible, 
+			svg .matrix-row.visible {
+				/* transform, then fade in */
+				transition: opacity 0.2s linear 0.4s, transform 0.4s;
+				opacity: 1;
+				pointer-events: auto;
+			}
+
 
 			resistance-matrix {
 				display: block;

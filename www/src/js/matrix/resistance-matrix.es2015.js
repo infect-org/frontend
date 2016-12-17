@@ -1,6 +1,140 @@
 (() => {
 
-	/* global window, document */
+	/* global window, document, DOMParser, Node */
+
+
+
+	/**
+	* IE11 has huge problems with today's SVG standards: 
+	* - does not know CSS transforms
+	* - does not know innerHTML
+	*
+	* This class provides basic fallbacks without being too fancy or imperformant.
+	*/
+	class SVGHelper {
+
+		constructor() {
+
+			this._supportsCSSTransforms = this._browserSupportsCSSTransforms();
+
+		}
+
+
+		/**
+		* Set element.transform to values provided (IE11) resp. use the CSS transform propertiy (all 
+		* current browsers). We don't want to use the transform attribute as it is not transitionable
+		* (cannot be transitioned through CSS)
+		* 
+		* @param {HTMLElement|undefined} element		Element to perform transformation on; if none is passed in, 
+		*												(e.g. if value needs to be set on a String, not an element), 
+		*												object is returned with properties 'style' and 'attribute' and
+		*												corresponding values, for good browsers e.g.:
+		*												{attribute: '', style: 'translate(0px, 20px)'}
+		* @param {Object} translation					Properties supported: x and y (undefined is turned into 0)
+		* @param {Number} rotation						Rotation (in deg)
+		*/
+		setTransformation(element, translation, rotation) {
+			
+			let values = this._getTransformationValues(translation, rotation);
+
+			// element is HTMLElement
+			if (element) {
+				if (this._supportsCSSTransforms) {
+					element.style.transform = values;
+				}
+				else {
+					element.setAttribute('transform', values);
+				}
+			}
+
+			// Return object with attribute and style properties (see @param element above)
+			else {
+				return {
+					attribute		: this._supportsCSSTransforms ? '' : values
+					, style			: this._supportsCSSTransforms ? ('transform:' + values) : ''
+				};
+			}
+
+		}
+
+
+
+		/**
+		* Returns the values for a transformation
+		*/
+		_getTransformationValues(translation, rotation) {
+	
+			let values = [];
+			if (this._supportsCSSTransforms) {
+				if (translation) values.push(`translate(${ translation.x || 0 }px, ${ translation.y || 0 }px)`);
+				if (rotation !== undefined) values.push(`rotate(${ rotation }deg)`);
+			}
+			else {
+				if (translation) values.push(`translate(${ translation.x || 0 } ${ translation.y || 0 })`);
+				if (rotation !== undefined) values.push(`rotate(${ rotation })`);
+			}
+
+			return values.join(' ');
+
+		}
+
+
+
+		/**
+		* Returns true if browser supports CSS transforms on SVG elements, else false.
+		*/
+		_browserSupportsCSSTransforms() {
+			const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+			return 'transform' in svg;
+		}
+
+
+
+		/**
+		* IE11 does not support innerHTML on SVG elements, needs a work around. 
+		* @param {HTMLElement} element			Element that content should be set on (element.innerHTML = content)
+		* @param {String} content				Content to add to element
+		*/
+		setSVGContent(element, content) {
+
+			// Normal browsers
+			if (this._browserSupportsSvgInnerHTML()) {
+				element.innerHTML = content;
+			}
+
+			// Stupid browsers (AKA IE11) 
+			// See http://stackoverflow.com/questions/9723422/is-there-some-innerhtml-replacement-in-svg-xml
+			else {
+				const xmlString = '<svg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\'>' + content + '</svg>';
+				const doc = new DOMParser().parseFromString(xmlString, 'application/xml');
+				const imported = element.ownerDocument.importNode(doc.documentElement, true);
+				Array.from(imported.childNodes).forEach((child) => {
+					if (child.nodeType !== Node.ELEMENT_NODE) return;
+					element.appendChild(child);
+				});
+			}
+
+		}
+
+
+
+		/**
+		* IE11 does not support innerHTML on SVGs. Check browser support.
+		*/
+		_browserSupportsSvgInnerHTML() {
+
+			const svg = document.createElementNS(this._svgNS, 'svg');
+			svg.innerHTML = '<g></g>';
+			return svg.querySelectorAll('g').length === 1;
+
+		}
+
+
+	}
+
+
+
+
 
 	/**
 	* Draws a matrix with resistencies. 
@@ -31,6 +165,8 @@
 	*/
 	class ResistanceMatrix {
 
+
+
 		/**
 		* @param {HTMLElement} container
 		* @param {Array} data				Data to be displayed must be a 2-d array where the values of the 2nd dimension array
@@ -60,6 +196,7 @@
 			this._data 			= data;
 			this._svgNS			= 'http://www.w3.org/2000/svg';
 
+			this._svgHelper		= new SVGHelper();
 
 			this._configuration	= {
 				spaceBetweenLabelsAndMatrix		: config.spaceBetweenLabelsAndMatrix || 20
@@ -144,6 +281,21 @@
 
 
 
+		/**
+		* Sets visibility class on element and updates its position (through transform)
+		*/
+		_updatePositionAndVisibility(element, xPos, yPos, visible) {
+
+			const classes = ['visible', 'hidden']
+				, classIndex = visible ? 0 : 1;
+
+			element.classList.remove(classes[Math.abs(classIndex - 1)]);
+			element.classList.add(classes[classIndex]);
+
+			this._svgHelper.setTransformation(element, {x: xPos, y: yPos});
+
+		}
+
 
 
 
@@ -160,15 +312,7 @@
 				const pos = scale.getPosition(rowId)
 					, row = this._elements.rows[rowId];
 
-				if (pos === undefined) {
-					row.style.opacity = 0;
-					row.style.display = 'none';
-				}
-				else {
-					row.style.opacity = 1;
-					row.style.display = 'block';
-					row.style.transform = `translate(0, ${ pos }px)`;
-				}
+				this._updatePositionAndVisibility(row, 0, pos, pos !== undefined);
 
 			});
 
@@ -194,21 +338,10 @@
 
 				const pos = scale.getPosition(colId);
 
-				// Not visible any more
-				if (pos === undefined) {
-					this._elements.columns[colId].forEach((element) => {
-						element.style.opacity = 0;
-						element.style.display = 'none';
-					});
-				}
+				this._elements.columns[colId].forEach((element) => {
+					this._updatePositionAndVisibility(element, pos, 0, pos !== undefined);
+				});
 
-				else {
-					this._elements.columns[colId].forEach((el) => {
-						el.style.opacity = 1;
-						el.style.display = 'block';
-						el.style.transform = `translate(${ pos }px, 0)`;
-					});
-				}
 
 			});
 
@@ -230,7 +363,7 @@
 			// Create new SVG
 			if (!this._elements.svg) {
 				this._elements.svg = this._createSVG();
-				this._container.append(this._elements.svg);
+				this._container.appendChild(this._elements.svg);
 			}
 			// Empty existing SVG
 			else {
@@ -301,8 +434,11 @@
 			content.push('</g>');
 			console.timeEnd('createRows');
 
+	
+
+
 			console.time('addToSVG');
-			this._elements.svg.innerHTML = content.join('');
+			this._svgHelper.setSVGContent(this._elements.svg, content.join(''));
 			console.timeEnd('addToSVG');
 
 
@@ -320,13 +456,16 @@
 			console.timeEnd('transformColHeadsGetHeight');
 
 			console.time('transformColHeadsSetPos');
-			this._elements.svg.querySelector('.column-heads').style.transform = `translate(0, ${ maxLabelHeight }px)`;
+
+			// Stupid f...(ill in the blanks) IE11 does not know CSS transforms – needs attribute instead, see
+			// http://stackoverflow.com/questions/23047098/css-translate-not-working-in-ie11-on-svg-g
+			this._svgHelper.setTransformation(this._elements.svg.querySelector('.column-heads'), { x: 0, y: Math.ceil(maxLabelHeight) });
 			console.timeEnd('transformColHeadsSetPos');
 			console.timeEnd('transformColHeads');
 
 			// Transform matrix body (move down by height of col labels)
 			console.time('transformBody');
-			this._elements.svg.querySelector('.matrix-body').style.transform = `translate(0, ${ maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix }px)`;
+			this._svgHelper.setTransformation(this._elements.svg.querySelector('.matrix-body'), { x: 0, y: Math.ceil(maxLabelHeight + this._configuration.spaceBetweenLabelsAndMatrix) });
 			console.timeEnd('transformBody');
 
 
@@ -384,10 +523,7 @@
 			body.addEventListener('mouseover', (ev) => this._mouseOverHandler(ev));
 			body.addEventListener('mouseleave', (ev) => this._mouseOutHandler(ev));
 
-
 		}
-
-
 
 
 
@@ -429,7 +565,12 @@
 			// Get hovered cell (class .matrix-cell)
 			let target = ev.target;
 
-			while (target !== document && !target.classList.contains('matrix-cell')) {
+			while (target.parentNode) {
+				// Prevent errors by continuing on missing classList (IE11)
+				if (!target.classList) continue;
+				// This is what we want: Get .matrix-cell
+				if (target.classList.contains('matrix-cell')) break;
+				// Go up
 				target = target.parentNode;
 			}
 
@@ -442,6 +583,7 @@
 			// Update _hoveredMatrixCell
 			this._elements.hoveredMatrixCell = target;
 
+			console.error(target);
 			this._updateMouseOverCell(target);
 
 			this._degradeHighlightedHeaders();
@@ -480,7 +622,7 @@
 			const colIdentifier = hoveredCell.getAttribute('data-column-identifier');
 			//console.log('ResistanceMatrix: Create mouse over cell for %o, col %o row %o', hoveredCell, colIdentifier, rowIdentifier);
 			const mouseOver = this._elements.mouseOver;
-			mouseOver.style.transform = `translate(${ this._colScale.getPosition(colIdentifier) }px, ${ this._rowScale.getPosition(rowIdentifier) }px)`;
+			this._svgHelper.setTransformation(mouseOver, { x: this._colScale.getPosition(colIdentifier), y: this._rowScale.getPosition(rowIdentifier) });
 			mouseOver.style.opacity = 1;
 			mouseOver.querySelector('text').textContent = hoveredCell.querySelector('text').textContent;
 			mouseOver.querySelector('circle').setAttribute('fill', hoveredCell.querySelector('use').getAttribute('fill'));
@@ -505,11 +647,12 @@
 			g.style.cursor = 'pointer';
 
 			// dy = -1em aligns text at top; -1.5 centers top
-			g.innerHTML = `
+			const content = `
 				<circle style='cursor:pointer' r='${ radius }'></circle>
 				<text  style='cursor:pointer' text-anchor='middle' alignment-baseline='central' x='0' y='0'></text>
 			`;
 
+			this._svgHelper.setSVGContent(g, content);
 			return g;
 
 		}
@@ -534,7 +677,7 @@
 
 			// Append labels to <g>, then to SVG
 			const g = document.createElementNS(this._svgNS, 'g');
-			g.innerHTML = rows.join('');
+			this._svgHelper.setSVGContent(g, rows.join(''));
 			this._elements.svg.appendChild(g);
 
 			// Go through labels
@@ -598,8 +741,10 @@
 		*/
 		_createRow(content, identifier, rowScale) {
 
+			const transformation = this._svgHelper.setTransformation(null, { x: 0, y: rowScale.getPosition(identifier) });
+
 			return `
-				<g class='matrix-row' data-identifier='${ identifier }' style='transform:translate(0, ${ rowScale.getPosition(identifier) }px)'>
+				<g class='matrix-row visible' data-identifier='${ identifier }' transform='${ transformation.attribute }' style='${ transformation.style }'>
 					${ content }
 				</g>`.replace(/[\n\r]/g, '');
 
@@ -638,10 +783,12 @@
 					return;
 				}
 
+				const transformation = this._svgHelper.setTransformation(null, {x: scale.getPosition(columnIdentifierFunction(cellDatum)), y: 0});
+
 				// y position: Go down by half of the circle's size, then up by half the font's size – should be 
 				// vertically aligned in the middle
 				cells.push(`
-					<g class='matrix-cell' style='transform:translate(${ scale.getPosition(columnIdentifierFunction(cellDatum)) }px,0)' data-column-identifier='${ columnIdentifierFunction(cellDatum) }' data-row-identifier='${ rowIdentifier }'>
+					<g class='matrix-cell' transform='${ transformation.attribute }' data-column-identifier='${ columnIdentifierFunction(cellDatum) }' data-row-identifier='${ rowIdentifier }' style='${transformation.style}'>
 						<use xlink:href='#cell-circle-def' fill='${ colorValue(cellDatum) }'></use>
 						<text text-anchor='middle' x='0' y='0' alignment-baseline='central'>${ labelValue(cellDatum) }</text>
 					</g>
@@ -672,9 +819,13 @@
 		* Creates a single column head
 		*/
 		_createColHead(value, identifier, left) {
+
+			const transformation = this._svgHelper.setTransformation(null, { x: left, y: 0 })
+				, rotation = this._svgHelper.setTransformation(null, null, -45);
+
 			return `
-				<g class='column-head' data-column-identifier='${ identifier }' style='transform: translate(${ left }px, 0)'>
-					<text style='transform:rotate(-45deg)'>${ value }</text>
+				<g class='column-head' data-column-identifier='${ identifier }' transform='${ transformation.attribute }' style='${ transformation.style }'>
+					<text transform='${ rotation.attribute }' style='${ rotation.style }'>${ value }</text>
 				</g>
 			`;
 		}
@@ -706,21 +857,6 @@
 			return this._elements.svg.getBoundingClientRect().width;
 		}
 
-
-
-		/**
-		* Creates and returns a single row label. Needed to first measure and then
-		* draw it at the right place
-		*/
-		_createSingleRowLabel(element) {
-
-			return element
-				.append('text')
-				.attr('class', 'row-label')
-				.attr('text-anchor', 'end')
-				.text(this._configuration.rowLabelValue);
-
-		}
 
 
 		/**
