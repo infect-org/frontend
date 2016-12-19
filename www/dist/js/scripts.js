@@ -44916,6 +44916,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 	/* global window, document, DOMParser, Node */
 
 	/**
+ * @TODO: 
+ * - Outsource MouseOverCircle
+ * - Split base up into generator (returns text) and instance (filters)
+ * - Use multiple files
+ * - Only watch changed files
+ */
+
+	/**
  * IE11 has huge problems with today's SVG standards: 
  * - does not know CSS transforms
  * - does not know innerHTML
