@@ -589,7 +589,7 @@
 			// Update _hoveredMatrixCell
 			this._elements.hoveredMatrixCell = target;
 
-			console.error(target);
+			//console.error(target);
 			this._updateMouseOverCell(target);
 
 			this._degradeHighlightedHeaders();
@@ -799,6 +799,10 @@
 						<text text-anchor='middle' x='0' y='0' alignment-baseline='central'>${ labelValue(cellDatum) }</text>
 					</g>
 				`);
+
+						// Used for new product draft (sample size n defines radius)
+						//<circle r='${ 8 + Math.round(Math.random()) * 5 }' fill='${ colorValue(cellDatum) }'></circle>
+
 			});
 			return cells.join('');
 		}

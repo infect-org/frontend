@@ -200,7 +200,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 							var saturation = invertedColorValue * 0.5 + 0.4;
 							// Lightness: 60–100% – this is very important
-							var lightness = (1 - invertedColorValue) * 0.6 + 0.4;
+							var lightness = (1 - invertedColorValue) * 0.5 + 0.4;
 							// Hue 0-100
 							var hue = invertedColorValue * 100;
 							var rgb = infect.hslToRgb(hue / 255, saturation, lightness);
@@ -288,16 +288,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 					if (resistance.type === 'resistanceDefault') {
 
 						switch (resistance.value) {
+							// Low
 							case 1:
-								antibiotic.colorValue = 0;
+								antibiotic.colorValue = 0.2;
 								antibiotic.labelValue = 'L';
 								break;
+							// Intermediate
 							case 2:
-								antibiotic.colorValue = 0.3;
+								antibiotic.colorValue = 0.6;
 								antibiotic.labelValue = 'I';
 								break;
+							// High
 							case 3:
-								antibiotic.colorValue = 0.7;
+								antibiotic.colorValue = 1;
 								antibiotic.labelValue = 'H';
 								break;
 							default:

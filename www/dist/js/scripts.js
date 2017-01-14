@@ -45460,7 +45460,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				// Update _hoveredMatrixCell
 				this._elements.hoveredMatrixCell = target;
 
-				console.error(target);
+				//console.error(target);
 				this._updateMouseOverCell(target);
 
 				this._degradeHighlightedHeaders();
@@ -45670,6 +45670,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 					// y position: Go down by half of the circle's size, then up by half the font's size – should be 
 					// vertically aligned in the middle
 					cells.push('\n\t\t\t\t\t<g class=\'matrix-cell\' transform=\'' + transformation.attribute + '\' data-column-identifier=\'' + columnIdentifierFunction(cellDatum) + '\' data-row-identifier=\'' + rowIdentifier + '\' style=\'' + transformation.style + '\'>\n\t\t\t\t\t\t<use xlink:href=\'#cell-circle-def\' fill=\'' + colorValue(cellDatum) + '\'></use>\n\t\t\t\t\t\t<text text-anchor=\'middle\' x=\'0\' y=\'0\' alignment-baseline=\'central\'>' + labelValue(cellDatum) + '</text>\n\t\t\t\t\t</g>\n\t\t\t\t');
+
+					// Used for new product draft (sample size n defines radius)
+					//<circle r='${ 8 + Math.round(Math.random()) * 5 }' fill='${ colorValue(cellDatum) }'></circle>
 				});
 				return cells.join('');
 			}
@@ -47772,7 +47775,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 							var saturation = invertedColorValue * 0.5 + 0.4;
 							// Lightness: 60–100% – this is very important
-							var lightness = (1 - invertedColorValue) * 0.6 + 0.4;
+							var lightness = (1 - invertedColorValue) * 0.5 + 0.4;
 							// Hue 0-100
 							var hue = invertedColorValue * 100;
 							var rgb = infect.hslToRgb(hue / 255, saturation, lightness);
@@ -47860,16 +47863,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 					if (resistance.type === 'resistanceDefault') {
 
 						switch (resistance.value) {
+							// Low
 							case 1:
-								antibiotic.colorValue = 0;
+								antibiotic.colorValue = 0.2;
 								antibiotic.labelValue = 'L';
 								break;
+							// Intermediate
 							case 2:
-								antibiotic.colorValue = 0.3;
+								antibiotic.colorValue = 0.6;
 								antibiotic.labelValue = 'I';
 								break;
+							// High
 							case 3:
-								antibiotic.colorValue = 0.7;
+								antibiotic.colorValue = 1;
 								antibiotic.labelValue = 'H';
 								break;
 							default:
