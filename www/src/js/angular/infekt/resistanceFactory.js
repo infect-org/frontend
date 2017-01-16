@@ -55,8 +55,6 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 		window.resistances = data;
 
 		var res = [];
-
-
 		var types = {};
 
 		// Loop data
@@ -71,26 +69,27 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 				, resistanceType
 				, resistanceOrder 	= [ 'resistanceImport', 'resistanceUser', 'resistanceDefault']; //'classResistanceUser', 'classResistanceDefault', 'resistanceDefault' ]; // classResistanceDefault and resistanceDefault: Don't display number
 
-			/*if( bact.id === 33 ) {
-				console.error( data[ i ] );
-			}*/
 
-
-			// Get resistance (by checking, if data.orderName is given)
+			// Get resistance (by checking if data.orderName is given)
 			for( var n = 0; n < resistanceOrder.length; n++ ) {
 
 				// Result found
-				if( data[ i ][ resistanceOrder[ n ] ] ) {
+				if (data[i].hasOwnProperty(resistanceOrder[n])) {
 					resistance = data[ i ][ resistanceOrder[ n ] ];
 					resistanceType = resistanceOrder[ n ];
 					break;
 				}
 
+				if (n === resistanceOrder.length - 1) {
+					console.error('ResistanceFactory: Resistance not found in %o', data[i]);
+				}
+
 			}
 
-			// Value missing: set to null
-			if( !resistance ) {
-				resistance = null;
+			// Value missing: set to null – 0 is a valid value!
+			if(!resistance && resistance !== 0) {
+				console.error('ResistanceFactory: Unknown resistance %o, %o', resistance, data[i]);
+				resistance = null	;
 			}
 
 			// Just for logging purposes
@@ -111,30 +110,7 @@ infekt.factory( 'ResistanceFactory', function( AntibioticsFactory, BacteriaFacto
 				, type			: resistanceType
 			};
 
-			// TODO: REMOVE!
-			/*if (Math.random() < 0.3) {
-				var rand = Math.random();
-				entry.type = 'resistanceUser';
-				entry.value = rand < 0.3 ? 1 : rand < 0.6 ? 2 : 3;
-			}
-
-			else {
-				entry.type = 'resistanceImport';
-				entry.value = Math.random() * 100;
-			}*/
-
-
 			res.push(entry);
-
-			// Debug
-			/*if( bact.id === 33 ) {
-				console.error( res[ res.length - 1 ] );
-			}*/
-
-			/*if( bact.latinName.indexOf( 'Neisseria' ) > -1 ) {
-				console.error( 'ness %o, %o, %o', ab, resistance, resistanceType );
-				console.error( bact );
-			}*/
 
 		}
 

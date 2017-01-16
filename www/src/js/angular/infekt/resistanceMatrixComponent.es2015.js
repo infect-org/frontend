@@ -279,8 +279,9 @@
 							break;
 						default: 
 							console.error('Unknown resistance %o', resistance);
-							antibiotic.colorValue = null;
-							antibiotic.labelValue = null;
+							// Don't display in matrix
+							break;
+
 					}
 				}
 

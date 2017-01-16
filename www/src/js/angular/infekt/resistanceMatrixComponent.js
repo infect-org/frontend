@@ -305,8 +305,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 								break;
 							default:
 								console.error('Unknown resistance %o', resistance);
-								antibiotic.colorValue = null;
-								antibiotic.labelValue = null;
+								// Don't display in matrix
+								break;
+
 						}
 					} else {
 						antibiotic.colorValue = resistance.value === null ? null : resistance.value / 100;

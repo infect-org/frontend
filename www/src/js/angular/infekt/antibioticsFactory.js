@@ -202,6 +202,9 @@ infekt.factory( 'AntibioticsFactory', function( $http, $q ) {
 					factory.antibiotics = parseAntibiotics( response.data );
 				}
 
+				// For debugging only
+				window.antibiotics = factory.antibiotics;
+				
 				deferred.resolve( factory.antibiotics );
 
 			}, function() {
