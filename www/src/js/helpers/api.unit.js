@@ -1,11 +1,11 @@
 import test from 'tape';
 import fetchMock from 'fetch-mock';
-import apiFetch from './apiFetch';
+import {fetchApi} from './api';
 
 
 test('throws on invalid states', (t) => {
 	fetchMock.mock('/api', 404);
-	apiFetch('/api')
+	fetchApi('/api')
 		.then(() => {}, (err) => {
 			t.equal(err.name, 'HTTPStatusError');
 			t.equal(err.message.indexOf('invalid HTTP status 404') > -1, true);
@@ -22,7 +22,7 @@ test('returns data on success', (t) => {
 		status: 200
 		, body
 	});
-	apiFetch('/api')
+	fetchApi('/api')
 		.then((response) => {
 			t.equal(response.status, 200);
 			t.deepEqual(response.data, body);
@@ -39,7 +39,7 @@ test('throws on invalid JSON', (t) => {
 		status: 200
 		, body
 	});
-	apiFetch('/api')
+	fetchApi('/api')
 		.then(() => {}, (err) => {
 			t.equal(err instanceof SyntaxError, true);
 			fetchMock.restore();
@@ -58,7 +58,7 @@ test('passes options to fetch', (t) => {
 		status: 200
 		, body
 	});
-	apiFetch('/api', { headers })
+	fetchApi('/api', { headers })
 		.then(() => {
 			t.equal(fetchMock.called('/api'), true);
 			t.deepEqual(fetchMock.lastOptions('/api'), { headers });
@@ -75,7 +75,7 @@ test('succeeds on passed status codes', (t) => {
 		status: 409
 		, body
 	});
-	apiFetch('/api', {}, [409])
+	fetchApi('/api', {}, [409])
 		.then((response) => {
 			t.equal(response.status, 409);
 			fetchMock.restore();

@@ -2,16 +2,16 @@ import React from 'react';
 
 class Resistance extends React.Component {
 
-	_getPosition() {
-		
+	componentWillReceiveProps(next) {
+		console.error(next);
 	}
 
 	render() {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
-			<circle r="20">
-				<text>{this.props.resistance.resistance}</text>
+			<circle r={this.props.matrix.radius} fill="tomato" cx="100" cy="100">
+				<text>{this.props.resistance.value}</text>
 			</circle>
 		);
 	}

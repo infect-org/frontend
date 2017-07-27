@@ -11,9 +11,9 @@
 *											  left and right) *or* undefined if substanceClass is not visible
 *											  because parent substance class is contracted.
 */
-import getArrayDiff from './getArrayDiff';
+import getArrayDiff from '../../helpers/getArrayDiff';
 
-export default function calculateXPositions(sortedAntibiotics, radius, space, classSpace) {
+export default function calculateXPositions(sortedAntibiotics, radius, space) {
 
 	// Get all visible antibiotics
 	const visibleAB = sortedAntibiotics.filter((ab) => ab.visible);

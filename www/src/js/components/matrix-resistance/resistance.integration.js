@@ -7,7 +7,7 @@ import SubstanceClass from '../../models/antibiotics/substanceClass';
 
 
 function setupData() {
-	const substanceClass
+	//const substanceClass
 
 
 	const antibiotics = {

@@ -76,7 +76,7 @@ test('calculates x positions correctly (not contracted)', (t) => {
 });
 
 
-test('calculates x positions correctly (for contracted contracted substance classes)', (t) => {
+test('calculates x positions correctly (for contracted substance classes)', (t) => {
 
 	const data = setupData();
 	const ab = data.antibiotics.slice(6,8).concat(data.antibiotics.slice(0,6));

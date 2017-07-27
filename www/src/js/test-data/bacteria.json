@@ -1,0 +1,1715 @@
+[
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Chlamydophila",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 1,
+        "id_grouping": null,
+        "id_shape": null,
+        "id_species": 27,
+        "localeNames": [],
+        "name": "Chlamydophila sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "",
+        "shapeLocales": [],
+        "species": "Chlamydophila sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Actinomyces",
+        "gram": true,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 2,
+        "id_grouping": null,
+        "id_shape": null,
+        "id_species": 28,
+        "localeNames": [],
+        "name": "Actinomyces sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "",
+        "shapeLocales": [],
+        "species": "Actinomyces sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Mycoplasma",
+        "gram": true,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 3,
+        "id_grouping": null,
+        "id_shape": null,
+        "id_species": 21,
+        "localeNames": [],
+        "name": "Mycoplasma pneumoniae",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "",
+        "shapeLocales": [],
+        "species": "Mycoplasma pneumoniae"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Burkholderia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 4,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 17,
+        "localeNames": [],
+        "name": "Burkholderia sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Burkholderia sp."
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Clostridium",
+        "gram": true,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 5,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 54,
+        "localeNames": [],
+        "name": "Clostridium sp. non-difficile",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Clostridium sp. non-difficile"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Klebsiella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 6,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 6,
+        "localeNames": [],
+        "name": "Klebsiella sp. (KPC)",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Klebsiella sp. (KPC)"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Klebsiella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 7,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 11,
+        "localeNames": [],
+        "name": "Klebsiella sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Klebsiella sp."
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Clostridium",
+        "gram": true,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 9,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 57,
+        "localeNames": [],
+        "name": "Clostridium difficile",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Clostridium difficile"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Acinetobacter",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 8,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 39,
+        "localeNames": [],
+        "name": "Acinetobacter sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Acinetobacter sp."
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": true,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Yersinia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 10,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 48,
+        "localeNames": [],
+        "name": "Yersinia pseudotuberculosis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Yersinia pseudotuberculosis"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Bacteroides",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 11,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 51,
+        "localeNames": [],
+        "name": "Bacteroides fragilis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Bacteroides fragilis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Listeria",
+        "gram": true,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 12,
+        "id_grouping": 8,
+        "id_shape": 2,
+        "id_species": 14,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Listerien"
+            }
+        ],
+        "name": "Listeria monocytogenes",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Listeria monocytogenes"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Haemophilus",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 13,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 52,
+        "localeNames": [],
+        "name": "Haemophilus influenzae",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Haemophilus influenzae"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Corynebacterium",
+        "gram": true,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 14,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 40,
+        "localeNames": [],
+        "name": "Corynebacterium jeikeium",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Corynebacterium jeikeium"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Escherichia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 15,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 5,
+        "localeNames": [],
+        "name": "Escherichia coli (KPC)",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Escherichia coli (KPC)"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Escherichia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 16,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 19,
+        "localeNames": [],
+        "name": "Escherichia coli (ESBL)",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Escherichia coli (ESBL)"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Legionella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 17,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 15,
+        "localeNames": [],
+        "name": "Legionella sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Legionella sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Salmonella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 18,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 41,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Salmonellen"
+            }
+        ],
+        "name": "Salmonella sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Salmonella sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Rickettsia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 19,
+        "id_grouping": null,
+        "id_shape": 3,
+        "id_species": 43,
+        "localeNames": [],
+        "name": "Rickettsia sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Coccobacillus",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Coccobacillus"
+            }
+        ],
+        "species": "Rickettsia sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Proteus",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 20,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 45,
+        "localeNames": [],
+        "name": "Proteus mirabilis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Proteus mirabilis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Citrobacter",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 21,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 4,
+        "localeNames": [],
+        "name": "Citrobacter sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Citrobacter sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Yersinia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 22,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 56,
+        "localeNames": [],
+        "name": "Yersinia enterocolitica",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Yersinia enterocolitica"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Enterobacter",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 23,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 20,
+        "localeNames": [],
+        "name": "Enterobacter sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Enterobacter sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Aeromonas",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 24,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 3,
+        "localeNames": [],
+        "name": "Aeromonas sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Aeromonas sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Proteus",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 25,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 53,
+        "localeNames": [],
+        "name": "Proteus vulgaris",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Proteus vulgaris"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Francisella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 26,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 9,
+        "localeNames": [],
+        "name": "Francisella tularensis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Francisella tularensis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Pseudomonas",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 27,
+        "id_grouping": null,
+        "id_shape": 3,
+        "id_species": 32,
+        "localeNames": [],
+        "name": "Pseudomonas aeruginosa",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Coccobacillus",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Coccobacillus"
+            }
+        ],
+        "species": "Pseudomonas aeruginosa"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Shigella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 28,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 24,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Shigellen"
+            }
+        ],
+        "name": "Shigella sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Shigella sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Escherichia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 29,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 25,
+        "localeNames": [],
+        "name": "Escherichia coli",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Escherichia coli"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Klebsiella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 30,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 10,
+        "localeNames": [],
+        "name": "Klebsiella sp. (ESBL)",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Klebsiella sp. (ESBL)"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Mycobacterium",
+        "gram": true,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 31,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 26,
+        "localeNames": [],
+        "name": "Mycobacterium avium",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Mycobacterium avium"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Neisseria",
+        "gram": false,
+        "grouping": "Diplokokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Diplokokken"
+            }
+        ],
+        "id": 32,
+        "id_grouping": 6,
+        "id_shape": 1,
+        "id_species": 50,
+        "localeNames": [],
+        "name": "Neisseria meningitidis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Neisseria meningitidis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Enterococcus",
+        "gram": true,
+        "grouping": "Kokken in kurzen Ketten",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken in kurzen Ketten"
+            }
+        ],
+        "id": 33,
+        "id_grouping": 9,
+        "id_shape": 1,
+        "id_species": 12,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Enterokokken"
+            }
+        ],
+        "name": "Enterococcus faecalis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Enterococcus faecalis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Staphylococcus",
+        "gram": true,
+        "grouping": "Haufenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Haufenkokken"
+            }
+        ],
+        "id": 34,
+        "id_grouping": 3,
+        "id_shape": 1,
+        "id_species": 29,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "SKN"
+            }
+        ],
+        "name": "Staphylococcus epidermidis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Staphylococcus epidermidis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Moraxella",
+        "gram": false,
+        "grouping": "Diplokokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Diplokokken"
+            }
+        ],
+        "id": 35,
+        "id_grouping": 6,
+        "id_shape": 1,
+        "id_species": 8,
+        "localeNames": [],
+        "name": "Moraxella catarrhalis",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Moraxella catarrhalis"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Streptococcus",
+        "gram": true,
+        "grouping": "Kettenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kettenkokken"
+            }
+        ],
+        "id": 36,
+        "id_grouping": 1,
+        "id_shape": 1,
+        "id_species": 60,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Gruppe-B-Streptokokken"
+            }
+        ],
+        "name": "Streptococcus agalactiae",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Streptococcus agalactiae"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Prevotella",
+        "gram": false,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 37,
+        "id_grouping": 8,
+        "id_shape": 2,
+        "id_species": 37,
+        "localeNames": [],
+        "name": "Prevotella melaninogenica",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Prevotella melaninogenica"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Streptococcus",
+        "gram": true,
+        "grouping": "Kettenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kettenkokken"
+            }
+        ],
+        "id": 38,
+        "id_grouping": 1,
+        "id_shape": 1,
+        "id_species": 47,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Gruppe-A-Streptokokken"
+            }
+        ],
+        "name": "Streptococcus pyogenes",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Streptococcus pyogenes"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": true,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Vibrio",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 39,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 59,
+        "localeNames": [],
+        "name": "Vibrio vulnificus",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Vibrio vulnificus"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Morganella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 40,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 7,
+        "localeNames": [],
+        "name": "Morganella sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Morganella sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Stenotrophomonas",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 41,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 31,
+        "localeNames": [],
+        "name": "Stenotrophomonas maltophilia",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Stenotrophomonas maltophilia"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Serratia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 42,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 42,
+        "localeNames": [],
+        "name": "Serratia sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Serratia sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Pasteurella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 43,
+        "id_grouping": null,
+        "id_shape": 3,
+        "id_species": 34,
+        "localeNames": [],
+        "name": "Pasteurella multocida",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Coccobacillus",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Coccobacillus"
+            }
+        ],
+        "species": "Pasteurella multocida"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Brucella",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 44,
+        "id_grouping": null,
+        "id_shape": 3,
+        "id_species": 13,
+        "localeNames": [],
+        "name": "Brucella sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Coccobacillus",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Coccobacillus"
+            }
+        ],
+        "species": "Brucella sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Streptococcus",
+        "gram": true,
+        "grouping": "Kettenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kettenkokken"
+            }
+        ],
+        "id": 45,
+        "id_grouping": 1,
+        "id_shape": 1,
+        "id_species": 38,
+        "localeNames": [],
+        "name": "Streptococcus milleri",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Streptococcus milleri"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Streptococcus",
+        "gram": true,
+        "grouping": "Kettenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kettenkokken"
+            }
+        ],
+        "id": 46,
+        "id_grouping": 1,
+        "id_shape": 1,
+        "id_species": 16,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "vergrünende Streptokokken"
+            }
+        ],
+        "name": "Streptococcus viridans",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Streptococcus viridans"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Staphylococcus",
+        "gram": true,
+        "grouping": "Haufenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Haufenkokken"
+            }
+        ],
+        "id": 47,
+        "id_grouping": 3,
+        "id_shape": 1,
+        "id_species": 33,
+        "localeNames": [],
+        "name": "Staphylococcus saprophyticus",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Staphylococcus saprophyticus"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Neisseria",
+        "gram": false,
+        "grouping": "Diplokokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Diplokokken"
+            }
+        ],
+        "id": 48,
+        "id_grouping": 6,
+        "id_shape": 1,
+        "id_species": 23,
+        "localeNames": [],
+        "name": "Neisseria gonorrhoeae",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Neisseria gonorrhoeae"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": true,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Streptococcus",
+        "gram": true,
+        "grouping": "Diplokokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Diplokokken"
+            }
+        ],
+        "id": 49,
+        "id_grouping": 6,
+        "id_shape": 1,
+        "id_species": 1,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Pneumokokken"
+            }
+        ],
+        "name": "Streptococcus pneumoniae",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Streptococcus pneumoniae"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": true,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Campylobacter",
+        "gram": false,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 50,
+        "id_grouping": 8,
+        "id_shape": 2,
+        "id_species": 55,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Campylobacter"
+            }
+        ],
+        "name": "Campylobacter sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Campylobacter sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Staphylococcus",
+        "gram": true,
+        "grouping": "Haufenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Haufenkokken"
+            }
+        ],
+        "id": 51,
+        "id_grouping": 3,
+        "id_shape": 1,
+        "id_species": 18,
+        "localeNames": [],
+        "name": "Staphylococcus aureus",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Staphylococcus aureus"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Haemophilus",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 52,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 49,
+        "localeNames": [],
+        "name": "Haemophilus ducreyi",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Haemophilus ducreyi"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Staphylococcus",
+        "gram": true,
+        "grouping": "Haufenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Haufenkokken"
+            }
+        ],
+        "id": 53,
+        "id_grouping": 3,
+        "id_shape": 1,
+        "id_species": 2,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "MRSA"
+            }
+        ],
+        "name": "Staphylococcus aureus (MRSA)",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Staphylococcus aureus (MRSA)"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Peptostreptococcus",
+        "gram": true,
+        "grouping": "Kokken in kurzen Ketten",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken in kurzen Ketten"
+            }
+        ],
+        "id": 54,
+        "id_grouping": 9,
+        "id_shape": 1,
+        "id_species": 35,
+        "localeNames": [],
+        "name": "Peptostreptococcus sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Peptostreptococcus sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "Enterococcus",
+        "gram": true,
+        "grouping": "Diplokokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Diplokokken"
+            }
+        ],
+        "id": 55,
+        "id_grouping": 6,
+        "id_shape": 1,
+        "id_species": 22,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Enterokokken"
+            }
+        ],
+        "name": "Enterococcus faecium",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Kokken",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Enterococcus faecium"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Providencia",
+        "gram": false,
+        "grouping": "",
+        "groupingLocales": [],
+        "id": 56,
+        "id_grouping": null,
+        "id_shape": 2,
+        "id_species": 36,
+        "localeNames": [],
+        "name": "Providencia sp.",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Providencia sp."
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Bacillus",
+        "gram": true,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 57,
+        "id_grouping": 8,
+        "id_shape": 2,
+        "id_species": 58,
+        "localeNames": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Bacillus cereus"
+            }
+        ],
+        "name": "Bacillus cereus",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "Bacillus cereus"
+    }
+]

@@ -12,18 +12,20 @@ class Anitibiotic {
 	}
 
 
+
 	/**
 	* Returns visiblity. Antibiotic is visible if
 	* - none of the parent substance classes are contracted
-	* - antibiotic matches filter
-	* - all parent substance classes match te filter
+	* - antibiotic matches filters
+	* - all parent substance classes match filters
 	*/
 	@computed get visible() {
 		// One of the parent substanceClasses is contracted
-		if (this.getSubstanceClasses.find((sClass) => !sClass.expanded)) return false;
+		if (this.getSubstanceClasses().find((sClass) => !sClass.expanded)) return false;
 		// Filters on ab/sc (tbd)
 		return true;
 	}
+
 
 
 	/**
@@ -34,11 +36,9 @@ class Anitibiotic {
 	getSubstanceClasses() {
 		// Get all parent substanceClasses and push their name 
 		// into classes, bottom up
-		let sc = this.substanceClass;
-		const classes = [];
-		while(sc) {
-			classes.push(sc);
-			sc = sc.parent;
+		const classes = [this.substanceClass];
+		while(classes.slice(-1)[0].parent) {
+			classes.push(classes.slice(-1)[0].parent);
 		}
 		return classes;
 	}

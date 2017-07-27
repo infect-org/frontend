@@ -1,0 +1,938 @@
+[
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Ceftazidim",
+        "substances": [
+            "Ceftazidim"
+        ],
+        "substanceClasses": [
+            {
+                "id": 18,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "3. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 6
+    },
+    {
+        "po": false,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Cefotaxim",
+        "substances": [
+            "Cefotaxim"
+        ],
+        "substanceClasses": [
+            {
+                "id": 18,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "3. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 8
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Ertapenem",
+        "substances": [
+            "Ertapenem"
+        ],
+        "substanceClasses": [
+            {
+                "id": 12,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Carbapeneme"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 16
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Clarithromycin",
+        "substances": [
+            "Clarithromycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 6,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Makrolide"
+            }
+        ],
+        "id": 21
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Tobramycin",
+        "substances": [
+            "Tobramycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 7,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Aminoglykoside"
+            }
+        ],
+        "id": 22
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Levofloxacin",
+        "substances": [
+            "Levofloxacin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 2,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Fluorchinolone"
+            },
+            {
+                "id": 1,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Chinolone"
+            }
+        ],
+        "id": 23
+    },
+    {
+        "po": false,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Aztreonam",
+        "substances": [
+            "Aztreonam"
+        ],
+        "substanceClasses": [
+            {
+                "id": 10,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Monobactame"
+            },
+            {
+                "id": 10,
+                "id_locale": 10,
+                "languagae": "en",
+                "name": "Monobactam"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 24
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Rifampicin",
+        "substances": [
+            "Rifampicin"
+        ],
+        "substanceClasses": [],
+        "id": 25
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Clindamycin",
+        "substances": [
+            "Clindamycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 19,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Lincosamide"
+            }
+        ],
+        "id": 26
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Cefuroxim",
+        "substances": [
+            "Cefuroxim"
+        ],
+        "substanceClasses": [
+            {
+                "id": 11,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "2. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 5
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Teicoplanin",
+        "substances": [
+            "Teicoplanin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 16,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Glycopeptide"
+            }
+        ],
+        "id": 15
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Cotrimoxazol",
+        "substances": [
+            "Cotrimoxazol"
+        ],
+        "substanceClasses": [],
+        "id": 14
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Meropenem",
+        "substances": [
+            "Meropenem"
+        ],
+        "substanceClasses": [
+            {
+                "id": 12,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Carbapeneme"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 9
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Flucloxacillin",
+        "substances": [
+            "Flucloxacillin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 17
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Fosfomycin",
+        "substances": [
+            "Fosfomycin"
+        ],
+        "substanceClasses": [],
+        "id": 11
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Cefepim",
+        "substances": [
+            "Cefepim"
+        ],
+        "substanceClasses": [
+            {
+                "id": 14,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "4. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 3
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Vancomycin",
+        "substances": [
+            "Vancomycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 16,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Glycopeptide"
+            }
+        ],
+        "id": 18
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Penicillin G",
+        "substances": [
+            "Penicillin G"
+        ],
+        "substanceClasses": [
+            {
+                "id": 3,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Penicilline"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 20
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Moxifloxacin",
+        "substances": [
+            "Moxifloxacin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 2,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Fluorchinolone"
+            },
+            {
+                "id": 1,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Chinolone"
+            }
+        ],
+        "id": 19
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Imipenem",
+        "substances": [
+            "Imipenem"
+        ],
+        "substanceClasses": [
+            {
+                "id": 12,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Carbapeneme"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 13
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Ceftriaxon",
+        "substances": [
+            "Ceftriaxon"
+        ],
+        "substanceClasses": [
+            {
+                "id": 18,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "3. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 4
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Cefazolin",
+        "substances": [
+            "Cefazolin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 15,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "1. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 10
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Norfloxacin",
+        "substances": [
+            "Norfloxacin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 2,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Fluorchinolone"
+            },
+            {
+                "id": 1,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Chinolone"
+            }
+        ],
+        "id": 31
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Fusidinsäure",
+        "substances": [
+            "Fusidinsäure"
+        ],
+        "substanceClasses": [],
+        "id": 28
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Ciprofloxacin",
+        "substances": [
+            "Ciprofloxacin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 2,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Fluorchinolone"
+            },
+            {
+                "id": 1,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Chinolone"
+            }
+        ],
+        "id": 29
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Gentamicin",
+        "substances": [
+            "Gentamicin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 7,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Aminoglykoside"
+            }
+        ],
+        "id": 32
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Daptomycin",
+        "substances": [
+            "Daptomycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 13,
+                "id_locale": 10,
+                "languagae": "en",
+                "name": "Lipopeptide"
+            },
+            {
+                "id": 13,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Lipopeptide"
+            }
+        ],
+        "id": 33
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Metronidazol",
+        "substances": [
+            "Metronidazol"
+        ],
+        "substanceClasses": [],
+        "id": 30
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Doxycyclin",
+        "substances": [
+            "Doxycyclin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 17,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Tetracycline"
+            }
+        ],
+        "id": 34
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Erithromycin",
+        "substances": [
+            "Erithromycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 6,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Makrolide"
+            }
+        ],
+        "id": 35
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Azithromycin",
+        "substances": [
+            "Azithromycin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 6,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Makrolide"
+            }
+        ],
+        "id": 36
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Penicillin V",
+        "substances": [
+            "Penicillin V"
+        ],
+        "substanceClasses": [
+            {
+                "id": 3,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Penicilline"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 37
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Colistin",
+        "substances": [
+            "Colistin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 8,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Polymyxine"
+            }
+        ],
+        "id": 38
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Linezolid",
+        "substances": [
+            "Linezolid"
+        ],
+        "substanceClasses": [],
+        "id": 39
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Ofloxacin",
+        "substances": [
+            "Ofloxacin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 2,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Fluorchinolone"
+            },
+            {
+                "id": 1,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Chinolone"
+            }
+        ],
+        "id": 40
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Tigecyclin",
+        "substances": [
+            "Tigecyclin"
+        ],
+        "substanceClasses": [],
+        "id": 41
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Nitrofurantoin",
+        "substances": [
+            "Nitrofurantoin"
+        ],
+        "substanceClasses": [],
+        "id": 42
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Minocyclin",
+        "substances": [
+            "Minocyclin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 17,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Tetracycline"
+            }
+        ],
+        "id": 27
+    },
+    {
+        "po": true,
+        "iv": false,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Cefuroxim axetil",
+        "substances": [
+            "Cefuroxim axetil"
+        ],
+        "substanceClasses": [
+            {
+                "id": 11,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "2. Gen. Cephalosporine"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            },
+            {
+                "id": 9,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Cephalosporine"
+            }
+        ],
+        "id": 12
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Amoxicillin",
+        "substances": [
+            "Amoxicillin"
+        ],
+        "substanceClasses": [
+            {
+                "id": 3,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Penicilline"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 1
+    },
+    {
+        "po": true,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Amoxicillin / Clavulanat",
+        "substances": [
+            "Amoxicillin",
+            "Clavulanat"
+        ],
+        "substanceClasses": [
+            {
+                "id": 5,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Beta-Lactamase-Hemmer"
+            },
+            {
+                "id": 3,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Penicilline"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 2
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
+        "name": "Piperacillin / Tazobactam",
+        "substances": [
+            "Piperacillin",
+            "Tazobactam"
+        ],
+        "substanceClasses": [
+            {
+                "id": 5,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Beta-Lactamase-Hemmer"
+            },
+            {
+                "id": 4,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "Betalactame"
+            }
+        ],
+        "id": 7
+    }
+]

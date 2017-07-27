@@ -16,8 +16,7 @@ var gulp			= require('gulp')
 var paths		= {
 	jsSrc		: 'www/src/js' 		// For file watcher
 	, jsFiles	: [
-		  'experiments/mobx/app.js'
-		  //, 'main.js'
+		  'main.js'
 		  //, 'experiments/canvas/canvas.js'
 		  //, 'experiments/canvas/native.js'
 		  /*'experiments/matrix/matrix.js'
@@ -42,10 +41,7 @@ var paths		= {
 function browserifyFile(file) {
 	return new Promise((resolve, reject) => {
 		browserify({entries: [file], debug: true, basedir: paths.jsSrc, extensions: ['.js', '.jsx'] })
-			.transform('babelify', { 
-				presets: ['es2015', 'react', 'stage-0'] 
-				, plugins: ['transform-decorators-legacy']
-			})
+			.transform('babelify')
 			.bundle()
 			.pipe(source(file))
 			.pipe(gulp.dest(paths.jsDest))

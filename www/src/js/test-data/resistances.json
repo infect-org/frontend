@@ -1,0 +1,4618 @@
+[
+    {
+        "id_bacteria": 25,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 2,
+        "resistanceDefault": 1,
+        "resistanceImport": 13.9
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 11,
+        "resistanceImport": 14
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 42,
+        "resistanceImport": 99.5
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 14,
+        "resistanceImport": 13.2
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 7,
+        "resistanceImport": 2.6
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 3,
+        "resistanceImport": 1.2
+    },
+    {
+        "id_bacteria": 25,
+        "id_compound": 41,
+        "resistanceImport": 72.5
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 24,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 12,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceImport": 5.7,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 2,
+        "resistanceDefault": 1,
+        "resistanceImport": 12.9
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 41,
+        "resistanceImport": 14.1
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 42,
+        "resistanceImport": 56.4
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 14,
+        "resistanceImport": 12.7
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 7,
+        "resistanceImport": 11.5
+    },
+    {
+        "id_bacteria": 7,
+        "id_compound": 11,
+        "resistanceImport": 28.2
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 31,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 23,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 29,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 19,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 40,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 53,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 30,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 52,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 52,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 52,
+        "id_compound": 35,
+        "resistanceImport": 1.2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 40,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 36,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 29,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 19,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 23,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 35,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 21,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 31,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 34,
+        "resistanceImport": 60
+    },
+    {
+        "id_bacteria": 48,
+        "id_compound": 12,
+        "resistanceImport": 0.2
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 22,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 40,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 23,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 31,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 29,
+        "classResistanceDefault": 2,
+        "resistanceImport": 17.1,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 19,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 7,
+        "resistanceImport": 14.5
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 3,
+        "resistanceImport": 10.6
+    },
+    {
+        "id_bacteria": 27,
+        "id_compound": 6,
+        "resistanceImport": 11.5
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceImport": 1.7,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 2,
+        "resistanceDefault": 3,
+        "resistanceImport": 45.8
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 42,
+        "resistanceImport": 24.5
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 14,
+        "resistanceImport": 3.6
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 11,
+        "resistanceImport": 1.6
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 7,
+        "resistanceImport": 12
+    },
+    {
+        "id_bacteria": 21,
+        "id_compound": 41,
+        "resistanceImport": 3.4
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 2,
+        "resistanceDefault": 1,
+        "resistanceImport": 9.1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceImport": 0.9,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 14,
+        "resistanceImport": 34.4
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 11,
+        "resistanceImport": 15.3
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 7,
+        "resistanceImport": 1.5
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 42,
+        "resistanceImport": 99.6
+    },
+    {
+        "id_bacteria": 20,
+        "id_compound": 41,
+        "resistanceImport": 98.5
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 16,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 39,
+        "resistanceImport": 0.1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 18,
+        "resistanceImport": 0.1
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 25,
+        "resistanceImport": 0.8
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 26,
+        "resistanceImport": 10.4
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 14,
+        "resistanceImport": 2.4
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 28,
+        "resistanceImport": 4.9
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 34,
+        "resistanceImport": 5
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 15,
+        "resistanceImport": 0.2
+    },
+    {
+        "id_bacteria": 51,
+        "id_compound": 41,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 36,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 24,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 37,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 2,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 35,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 7,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 21,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 20,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 17,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 1,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 36,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 31,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 20,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 24,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 35,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 36,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 1,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 37,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 17,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 2,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 21,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 38,
+        "id_compound": 7,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 5,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 5,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 5,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 5,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 32,
+        "id_compound": 25,
+        "resistanceImport": 1.5
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 31,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 29,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 19,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 23,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 9,
+        "id_compound": 40,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 56,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 7,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 17,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 37,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 2,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 20,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 1,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 54,
+        "id_compound": 24,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 35,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 3,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 43,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 43,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 43,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 43,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 43,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 43,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 31,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 19,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 40,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 29,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 23,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 41,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 39,
+        "resistanceImport": 0.3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 18,
+        "resistanceImport": 1.4
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 34,
+        "resistanceImport": 25.3
+    },
+    {
+        "id_bacteria": 55,
+        "id_compound": 11,
+        "resistanceImport": 45
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 1,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 14,
+        "resistanceDefault": 1,
+        "resistanceImport": 26.7
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 2,
+        "resistanceDefault": 1,
+        "resistanceImport": 19.1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceImport": 6.3,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 11,
+        "resistanceImport": 1.8
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 42,
+        "resistanceImport": 2.6
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 7,
+        "resistanceImport": 7.8
+    },
+    {
+        "id_bacteria": 29,
+        "id_compound": 41,
+        "resistanceImport": 0.6
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 6,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 17,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 1,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 24,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 7,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 2,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 20,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceImport": 2.3,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 37,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 26,
+        "resistanceImport": 13
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 14,
+        "resistanceImport": 14.7
+    },
+    {
+        "id_bacteria": 49,
+        "id_compound": 34,
+        "resistanceImport": 15.6
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceImport": 1.9,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 2,
+        "resistanceDefault": 2,
+        "resistanceImport": 99.7
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 42,
+        "resistanceImport": 97.3
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 7,
+        "resistanceImport": 7.4
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 14,
+        "resistanceImport": 16.7
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 11,
+        "resistanceImport": 98.7
+    },
+    {
+        "id_bacteria": 40,
+        "id_compound": 41,
+        "resistanceImport": 67.1
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 19,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 40,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 23,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 29,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 31,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 14,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 15,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 37,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 37,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 37,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 37,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 37,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 2,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 1,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 46,
+        "id_compound": 20,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 1,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 5,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 12,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 6,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 3,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 4,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 10,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 8,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 14,
+        "resistanceImport": 35.5
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 28,
+        "resistanceImport": 48.1
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 34,
+        "resistanceImport": 29.4
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 41,
+        "resistanceImport": 0.3
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 25,
+        "resistanceImport": 5.9
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 18,
+        "resistanceImport": 0.1
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 26,
+        "resistanceImport": 37.8
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 15,
+        "resistanceImport": 12.4
+    },
+    {
+        "id_bacteria": 34,
+        "id_compound": 39,
+        "resistanceImport": 0.2
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 2,
+        "resistanceDefault": 3,
+        "resistanceImport": 99.2
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 14,
+        "resistanceImport": 5.5
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 42,
+        "resistanceImport": 66.8
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 3,
+        "resistanceImport": 6.7
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 7,
+        "resistanceImport": 23
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 11,
+        "resistanceImport": 42
+    },
+    {
+        "id_bacteria": 23,
+        "id_compound": 41,
+        "resistanceImport": 9.9
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 18,
+        "id_compound": 14,
+        "resistanceImport": 8.4
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 2,
+        "resistanceDefault": 1,
+        "resistanceImport": 11.3
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 1,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 36,
+        "resistanceImport": 47.2
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 14,
+        "resistanceImport": 23.6
+    },
+    {
+        "id_bacteria": 13,
+        "id_compound": 21,
+        "resistanceImport": 73.9
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 31,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 2,
+        "resistanceDefault": 3,
+        "resistanceImport": 72.7
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 23,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 29,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 40,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 19,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 3,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 14,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 42,
+        "resistanceImport": 60
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 7,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 4,
+        "id_compound": 11,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 8,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 37,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 21,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 35,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 6,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 17,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 1,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 12,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 4,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 2,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 7,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 10,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 5,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 36,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 20,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 3,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 45,
+        "id_compound": 24,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 11,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 9,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 41,
+        "resistanceImport": 0.1
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 34,
+        "resistanceImport": 74
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 18,
+        "resistanceImport": 0.1
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 39,
+        "resistanceImport": 0.6
+    },
+    {
+        "id_bacteria": 33,
+        "id_compound": 11,
+        "resistanceImport": 60.9
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 28,
+        "id_compound": 14,
+        "resistanceImport": 83.4
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 10,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 6,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 37,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 17,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 3,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 5,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 8,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 13,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 20,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 24,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 16,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 1,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 9,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 2,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 4,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 12,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 7,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 17,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 9,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 29,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 23,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 19,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 16,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 31,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 40,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 13,
+        "classResistanceDefault": 2,
+        "resistanceDefault": 2
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 1,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 7,
+        "resistanceImport": 26.5
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 3,
+        "resistanceImport": 17.8
+    },
+    {
+        "id_bacteria": 8,
+        "id_compound": 14,
+        "resistanceImport": 15.7
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 13,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 29,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 2,
+        "resistanceDefault": 3,
+        "resistanceImport": 99
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 23,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 16,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 31,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 9,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 19,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 40,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 7,
+        "resistanceImport": 4.8
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 14,
+        "resistanceImport": 2.1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 3,
+        "resistanceImport": 1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 11,
+        "resistanceImport": 32
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 42,
+        "resistanceImport": 98.1
+    },
+    {
+        "id_bacteria": 42,
+        "id_compound": 41,
+        "resistanceImport": 22.9
+    },
+    {
+        "id_bacteria": 2,
+        "id_compound": 36,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 2,
+        "id_compound": 21,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 2,
+        "id_compound": 2,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 2,
+        "id_compound": 35,
+        "classResistanceDefault": 1,
+        "resistanceDefault": 1
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 2,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 21,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 35,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 36,
+        "classResistanceDefault": 3,
+        "resistanceDefault": 3
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 14,
+        "resistanceImport": 5.8
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 23,
+        "resistanceImport": 18.5
+    },
+    {
+        "id_bacteria": 41,
+        "id_compound": 27,
+        "resistanceImport": 2.1
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 14,
+        "resistanceImport": 1.8
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 15,
+        "resistanceImport": 1.6
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 39,
+        "resistanceImport": 0.8
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 28,
+        "resistanceImport": 79.7
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 18,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 25,
+        "resistanceImport": 0.3
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 34,
+        "resistanceImport": 9.5
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 26,
+        "resistanceImport": 10.5
+    },
+    {
+        "id_bacteria": 47,
+        "id_compound": 41,
+        "resistanceImport": 0
+    },
+    {
+        "id_bacteria": 50,
+        "id_compound": 35,
+        "resistanceImport": 15.1
+    }
+]

@@ -9,7 +9,7 @@ import 'babel-polyfill';
 * @param {Array} validStates	If states outside of [200–299] are valid, you can pass them in;
 *								they will be handled regularily.
 */
-export default async function apiFetch(url, options, validStates = []) {
+async function fetchApi(url, options, validStates = []) {
 
 	const response = await fetch(url, options);
 	if ((response.status < 200 || response.status >= 300) && validStates.indexOf(response.status) === -1) {
@@ -25,3 +25,5 @@ export default async function apiFetch(url, options, validStates = []) {
 	};
 
 }
+
+export { fetchApi };

@@ -1,12 +1,14 @@
 import {observable} from 'mobx';
 
-class Resistance {
+export default class Resistance {
 
-	constructor(resistance, sampleSize) {
-		this.resistance = resistance;
+	// #todo: Value, type, ab/bact
+	constructor(value, type, sampleSize, antibiotic, bacterium) {
+		this.resistance = value;
+		this.antibiotic = antibiotic;
+		this.bacterium = bacterium;
 		this.sampleSize = sampleSize;
+		this.type = type;
 	}
 
 }
-
-export default Resistance;
