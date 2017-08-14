@@ -1,6 +1,7 @@
 import React from 'react';
-import {observer} from 'mobx';
+import {observer} from 'mobx-react';
 
+@observer
 export default class AntibioticLabel extends React.Component {
 
 	/**

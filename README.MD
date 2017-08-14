@@ -53,6 +53,12 @@ Then run the tests:
 browserify -x react/addons -x react/lib/ExecutionEnvironment -x react/lib/ReactContext apiFetch.unit.js | tape-run | tap-spec
 ```
 
+or with Webpack:
+
+```
+webpack --config webpack.test.config.js ./models/matrix/matrixView.integration.js
+```
+
 The exclusions (`-x`) are required for all enzyme tests ([source](https://github.com/monounity/karma-typescript/issues/54)). The browserify config in package.json is only required for this purpose. Also see [tape-run](https://github.com/juliangruber/tape-run).
 
 Or run all at once:
@@ -61,4 +67,10 @@ Or run all at once:
 www/src/js/runTests.sh
 ```
 
+
+# Serve
+
+```
+webpack-dev-server --content-base www/ --inline
+```
 
