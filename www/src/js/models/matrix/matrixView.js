@@ -25,12 +25,23 @@ class MatrixView {
 	*/
 	@observable bacteriumLabelColumnWidth = undefined;
 
+	/**
+	* Highest/widest antibiotic label. As label is rotated by 45°, height equals width
+	*/
 	@observable antibioticLabelRowHeight = undefined;
 
 	/**
 	* Space between resistances and between (resistances and antibiotic group dividers)
 	*/
 	@observable space = 10;
+
+	/**
+	* Largest and smallest sample size. Needed to calculate size of resistance circles.
+	*/
+	@observable sampleSizeExtremes = {
+		min: 0
+		, max: 0
+	};
 
 	constructor() {
 		// #todo: Why do decorators not work for Maps? Maybe it's a cross-compiling issue?
@@ -142,7 +153,7 @@ class MatrixView {
 	* @returns {Map}		Key: AntibioticMatrixView or SubstanceClassMatrixView; value: Object with left and right
 	*/
 	@computed get xPositions() {
-		const xPositions = calculateXPositions(this.sortedAntibiotics.map((item) => item.antibiotic), this.defaultRadius, this.space);
+		const xPositions = calculateXPositions(this.sortedAntibiotics.map((item) => item.antibiotic), this.defaultRadius * 2, this.space);
 		// Map raw ab/scs to corresponding martrixViews
 		const result = new Map();
 		xPositions.forEach((value, key) => {
@@ -161,13 +172,24 @@ class MatrixView {
 
 
 	addResistance(resistance) {
-		this._resistances.set(`${ resistance.antibiotic.id }/${ resistance.bacterium.id }`, new ResistanceMatrixView(resistance));
+		const id = `${ resistance.antibiotic.id }/${ resistance.bacterium.id }`;
+		if (this._resistances.has(id)) throw new Error(`Trying to overwrite resistance; not yet implemented. 
+			sampleSizeExtremes must be recalculated.`);
+		this._resistances.set(id, new ResistanceMatrixView(resistance));
+		this._updateSampleSizeExtremes(resistance);
 	}
 
 	get resistances() {
 		return Array.from(this._resistances.values());
 	}
 
+	@action _updateSampleSizeExtremes(resistance) {
+		const mostPrecise = resistance.getValuesByPrecision()[0];
+		if (this.sampleSizeExtremes.min === 0 || mostPrecise.sampleSize < this.sampleSizeExtremes.min) {
+			this.sampleSizeExtremes.min = mostPrecise.sampleSize;
+		}
+		if (mostPrecise.sampleSize > this.sampleSizeExtremes.max) this.sampleSizeExtremes.max = mostPrecise.sampleSize;
+	}
 
 
 
@@ -213,7 +235,7 @@ class MatrixView {
 		const availableSpace = this._dimensions.width - this.space - this.bacteriumLabelColumnWidth - this.antibioticLabelRowHeight;
 		const whitespace = (numberOfAntibiotics + numberOfSubstanceClassChanges) * this.space;
 		// Radius: Space 
-		this.defaultRadius = Math.floor((availableSpace - whitespace) / numberOfAntibiotics);
+		this.defaultRadius = Math.floor((availableSpace - whitespace) / numberOfAntibiotics / 2);
 		log('Available space: %d. Whitespace: %d. Default radius %d.', availableSpace, whitespace, this.defaultRadius);
 	}
 
@@ -260,7 +282,7 @@ class MatrixView {
 		const yPositions = new Map();
 		this.sortedBacteria.forEach((bacterium, index) => {
 			yPositions.set(bacterium, {
-				top: index * (this.defaultRadius + this.space)
+				top: index * (this.defaultRadius * 2 + this.space)
 			});
 		});
 		return yPositions;

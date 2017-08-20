@@ -16,7 +16,7 @@ export default class Matrix extends React.Component {
 		if (!this.props.matrix.defaultRadius) return 1;
 		// Height: All bact labels + ab label + space between ab label and matrix (matrix.space + matrix.radius), 
 		// see bacteriumLabel
-		return (this.props.matrix.defaultRadius + this.props.matrix.space) * this.props.matrix.sortedBacteria.length +
+		return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedBacteria.length +
 			this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius + this.props.matrix.space;
 	}
 
@@ -54,21 +54,21 @@ export default class Matrix extends React.Component {
 
 	render() {
 		return(
-			<svg ref={(el) => this._setSVG(el)} height={this._getHeight()}>
+			<svg ref={(el) => this._setSVG(el)} style={{height: this._getHeight()}} className="resistanceMatrix">
 
-				<g style={{transform: this._getAntibioticLabelsTransformation()}}>
+				<g style={{transform: this._getAntibioticLabelsTransformation()}} className="resistanceMatrix__antibioticsLabels">
 					{this.props.matrix.sortedAntibiotics.map((ab) => 
 						<AntibioticLabel key={ab.antibiotic.id} antibiotic={ab} matrix={this.props.matrix}/>
 					)}
 				</g>
 
-				<g style={{transform: this._getBacteriaLabelsTransformation()}}>
+				<g style={{transform: this._getBacteriaLabelsTransformation()}} className="resistanceMatrix__bacteriaLabels">
 					{this.props.matrix.sortedBacteria.map((bact) => 
 						<BacteriumLabel key={bact.bacterium.id} bacterium={bact} matrix={this.props.matrix}/>
 					)}
 				</g>
 
-				<g style={{transform: this._getMainMatrixTransformation()}}>
+				<g style={{transform: this._getMainMatrixTransformation()}} className="resistanceMatrix__resistances">
 					{this.props.matrix.defaultRadius && this.props.matrix.resistances.map((res) =>
 						<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} matrix={this.props.matrix} resistance={res}/>
 					)}

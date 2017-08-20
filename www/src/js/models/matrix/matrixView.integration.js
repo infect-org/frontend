@@ -20,7 +20,7 @@ function createBacterium(name = 'testBact', id = Math.random()) {
 }
 
 function createResistance(ab, bact, resistances) {
-	if (!resistances) resistances = [
+	resistances = resistances || [
 		{type: 'class', value: 0.3, sampleSize: 50}
 		, {type: 'import', value: 0.4, sampleSize: 100}
 	];
@@ -38,7 +38,7 @@ function createValidSet() {
 	const bact2 = createBacterium('a');
 	const res1 = createResistance(ab1, bact1);
 	const res2 = createResistance(ab1, bact2);
-	const res3 = createResistance(ab2, bact2);
+	const res3 = createResistance(ab2, bact2, [{type: 'default', value: 1, sampleSize: 59}]);
 	const matrix = new MatrixView();
 	return {
 		matrix: matrix
@@ -176,7 +176,7 @@ test('calculates radius', (t) => {
 	matrix.setAntibioticLabelDimensions(set.antibiotics[0], 20, 50);
 	matrix.setAntibioticLabelDimensions(set.antibiotics[1], 0, 30);
 	matrix.setAntibioticLabelDimensions(set.antibiotics[2], 30, 20);
-	t.equal(matrix.defaultRadius, 50);
+	t.equal(matrix.defaultRadius, 25);
 
 	t.end();
 });
@@ -202,6 +202,19 @@ test('antibiotic functions', (t) => {
 	t.end();
 
 });
+
+
+
+test('updates sample size extremes', (t) => {
+	const set = createValidSet();
+	const {matrix, bacteria, antibiotics, resistances} = set;
+	matrix.addData(antibiotics, bacteria, resistances);
+	t.deepEqual(matrix.sampleSizeExtremes, { min: 59, max: 100 });
+	t.end();
+});
+
+
+
 
 
 
