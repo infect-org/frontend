@@ -44,7 +44,7 @@ Frontent for the INFECT application
 To run the tests provided, install the dependencies:
 
 ```
-npm i -g browserify tape-run tap-spec
+npm i -g faucet
 ```
 
 Then run the tests: 
@@ -53,10 +53,10 @@ Then run the tests:
 browserify -x react/addons -x react/lib/ExecutionEnvironment -x react/lib/ReactContext apiFetch.unit.js | tape-run | tap-spec
 ```
 
-or with Webpack:
+or with webpack (which is watching the changed files):
 
 ```
-webpack --config webpack.test.config.js ./models/matrix/matrixView.integration.js
+webpack --config webpack.test.config.js
 ```
 
 The exclusions (`-x`) are required for all enzyme tests ([source](https://github.com/monounity/karma-typescript/issues/54)). The browserify config in package.json is only required for this purpose. Also see [tape-run](https://github.com/juliangruber/tape-run).
@@ -71,6 +71,6 @@ www/src/js/runTests.sh
 # Serve
 
 ```
-webpack-dev-server --content-base www/ --inline
+webpack-dev-server --content-base www/ --inline --hot
 ```
 

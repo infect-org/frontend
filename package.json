@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.25.0",
-    "debug": "^2.6.8",
+    "debug": "3.x",
     "distributed-prototype": "2.x",
     "ee-types": "2.x",
     "fabric": "^1.7.14",
@@ -40,6 +40,7 @@
     "beepbeep": "1.x",
     "browserify": "14.x",
     "enzyme": "^2.9.1",
+    "faucet": "0.0.1",
     "fetch-mock": "^5.12.0",
     "gulp": "3.9.x",
     "gulp-concat": "2.6.x",
@@ -57,6 +58,7 @@
     "tape": "^4.7.0",
     "testdouble": "^3.2.2",
     "vinyl-source-stream": "1.x",
+    "walk-sync": "^0.3.2",
     "webpack": "^3.4.1",
     "webpack-beep-plugin": "^1.0.0",
     "webpack-dev-server": "^2.6.1"

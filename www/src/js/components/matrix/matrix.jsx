@@ -8,19 +8,71 @@ import {observer} from 'mobx-react';
 @observer
 export default class Matrix extends React.Component {
 
+	componentDidMount() {
+		this._setupResizeListener();
+	}
+
+	_getHeight() {
+		if (!this.props.matrix.defaultRadius) return 1;
+		// Height: All bact labels + ab label + space between ab label and matrix (matrix.space + matrix.radius), 
+		// see bacteriumLabel
+		return (this.props.matrix.defaultRadius + this.props.matrix.space) * this.props.matrix.sortedBacteria.length +
+			this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius + this.props.matrix.space;
+	}
+
+	_setSVG(element) {
+		this._svg = element;
+		this._setDimensions();
+	}
+
+	_setDimensions() {
+		if (!this._svg) return;
+		this.props.matrix.setDimensions(this._svg.getBoundingClientRect());
+	}
+
+	_setupResizeListener() {
+		window.addEventListener('resize', () => this._setDimensions());
+	}
+
+	_getAntibioticLabelsTransformation() {
+		return `translate(${ this.props.matrix.space + this.props.matrix.bacteriumLabelColumnWidth }px, 0)`;
+	}
+
+	_getBacteriaLabelsTransformation() {
+		const top = this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius +
+			this.props.matrix.space;
+		return `translate(0, ${ top }px)`;
+	}
+
+	_getMainMatrixTransformation() {
+		const left = this.props.matrix.space + this.props.matrix.bacteriumLabelColumnWidth;
+		const top = this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius +
+			this.props.matrix.space;
+		return `translate(${ left }px, ${ top }px)`;
+
+	}
+
 	render() {
 		return(
-			<svg ref={(el) => this.props.matrix.setDimensions(el && el.getBoundingClientRect())}>
+			<svg ref={(el) => this._setSVG(el)} height={this._getHeight()}>
 
-				{this.props.matrix.sortedAntibiotics.map((ab) => 
-					<AntibioticLabel key={ab.antibiotic.id} antibiotic={ab} />
-				)}
+				<g style={{transform: this._getAntibioticLabelsTransformation()}}>
+					{this.props.matrix.sortedAntibiotics.map((ab) => 
+						<AntibioticLabel key={ab.antibiotic.id} antibiotic={ab} matrix={this.props.matrix}/>
+					)}
+				</g>
 
-				{this.props.matrix.sortedBacteria.map((bact) => 
-					<BacteriumLabel key={bact.bacterium.id} bacterium={bact} />
-				)}
+				<g style={{transform: this._getBacteriaLabelsTransformation()}}>
+					{this.props.matrix.sortedBacteria.map((bact) => 
+						<BacteriumLabel key={bact.bacterium.id} bacterium={bact} matrix={this.props.matrix}/>
+					)}
+				</g>
 
-				{this.props.matrix.radius !== 0 && <Resistance matrix={this.props.matrix} resistance={{value: 30}}/>}
+				<g style={{transform: this._getMainMatrixTransformation()}}>
+					{this.props.matrix.defaultRadius && this.props.matrix.resistances.map((res) =>
+						<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} matrix={this.props.matrix} resistance={res}/>
+					)}
+				</g>
 
 			</svg>
 		);
