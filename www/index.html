@@ -12,11 +12,197 @@
                 width: 90%;
             }
         </style>
+
+        <link rel="stylesheet" type="text/css" href="dist/css/main.min.css" />
     <body>
-
-    	<script async src="dist/js/main.js"></script>
-
-        <Matrix/>
-
+        <div class="container">
+            <div class="container__side-navigation side-navigation">
+                <div class="side-navigation__header header">
+                    <div class="header__logo logo">
+                        <img src="img/logo.png" alt="Infect" />
+                    </div>
+                    <div class="header__search">
+                        <div class="group group--lead">
+                            <h3>Filter durchsuchen</h3>
+                            <input type="text" placeholder="Eigenschaft" class="group__input input search__input" id="search__input" onkeyup="javascript:showSearchOverlay()" />
+                        </div>
+                        <script type="text/javascript">
+                            function showSearchOverlay() {
+                                var div = document.getElementById('search');
+                                var input = document.getElementById('search__input');
+                                if (input && input.value) {
+                                    div.style.left = '0';
+                                } else {
+                                    div.style.left = '-210px';
+                                }
+                            }
+                        </script>
+                        <div class="group group--black-font search" id="search">
+                            <ul class="group__list group__list--vertical search__results">
+                                <li class="group__list-item list-item result">
+                                    <div class="label">
+                                        <p class="label--small label--gray label--nomargin">Bakterium - Färbung</p>
+                                        <p class="label--bold label--larger label--nomargin">Gram +</p>
+                                    </div>
+                                </li>
+                                <li class="group__list-item result result--active">
+                                    <div class="result__checkmark"></div>
+                                    <div class="label">
+                                        <p class="label--small label--gray label--nomargin">Bakterium - Färbung</p>
+                                        <p class="label--bold label--larger label--nomargin">Gram -</p>
+                                    </div>
+                                </li>
+                                <li class="group__list-item result result">
+                                    <div class="label">
+                                        <p class="label--small label--gray label--nomargin">Antibiotikum - Wirkstoff</p>
+                                        <p class="label--bold label--larger label--nomargin">Gramophomin</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="group group--vertical group--space-between">
+                            <button class="button button--icon icon1"></button>
+                            <button class="button button--icon icon2"></button>
+                            <button class="button button--icon icon3"></button>
+                            <button class="button button--icon icon4"></button>
+                        </div>
+                        <hr class="divider divider--lead"/>
+                    </div>  
+                </div>
+                <div class="side-navigation__filters">
+                <div class="filter">
+                    <div class="group">
+                        <h1>Meistgebrauchte Filter</h1>
+                        <ul class="group__list group__list--vertical">
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="gram+" />
+                                <label for="gram+" class="side-label">Gram+</label>
+                            </li>
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="regiongenf" />
+                                <label for="regiongenf" class="side-label">Region Genf</label>
+                            </li>
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="betalactame" />
+                                <label for="betalactame" class="side-label">Betalactame</label>
+                            </li>
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="pneumonie" />
+                                <label for="pneumonie" class="side-label">Pneumonie (commun....)</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class="divider"/>
+                    <div class="group">
+                        <h1>Filter für Bakterien</h1>
+                        <h3 class="gray margin-top">Färbung (Gram)</h3>
+                        <ul class="group__list group__list--vertical">
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="gram++" />
+                                <label for="gram++" class="side-label">Gram+</label>
+                            </li>
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="gram-" />
+                                <label for="gram-" class="side-label">Gram-</label>
+                            </li>
+                        </ul>
+                        <h3 class="gray margin-top">Form</h3>
+                        <ul class="group__list group__list--vertical">
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="stabchen" />
+                                <label for="stabchen" class="side-label">Stäbchen</label>
+                            </li>
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="kokken" />
+                                <label for="kokken" class="side-label">Kokken</label>
+                            </li>
+                        </ul>
+                        <h3 class="gray margin-top">Name</h3>
+                        <ul class="group__list group__list--vertical">
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="aureus" />
+                                <label for="aureus" class="side-label">S. aureus</label>
+                            </li>
+                            <li class="group__list-item list-item--checkbox">
+                                <input type="checkbox" id="pneumoniae" />
+                                <label for="pneumoniae" class="side-label">S. pneumoniae</label>
+                            </li>
+                        </ul>
+                        <select class="select">
+                            <option class="select__option">Weitere...</option>
+                            <option class="select__option">abc</option>
+                            <option class="select__option">def</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="container__main main">
+            <div class="main__header">
+                <div class="top-navigation">
+                    <div class="top-navigation__active-filters groups">
+                        <div class="group group--black-font">
+                            <h2>Bakterien</h2>
+                            <ul class="group__list">
+                                <li class="group__list-item list-item">
+                                    <div class="label label--rounded">
+                                        <p class="label--smaller label--nomargin">Färbung</p>
+                                        <p class="label--bold label--nomargin">Gram +</p>
+                                    </div>
+                                    <button class="button button--red">&times;</button>
+                                    <!--<div class="list-item__button"><a href="#">&times;</a></div>-->
+                                </li>
+                                <li class="group__list-item list-item">
+                                    <div class="label label--rounded">
+                                        <p class="label--smaller label--nomargin">Form</p>
+                                        <p class="label--bold label--nomargin">Stäbchen</p>
+                                    </div>
+                                    <button class="button button--red">&times;</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="group group--black-font">
+                            <h2>Antibiotika</h2>
+                            <ul class="group__list">
+                                <li class="group__list-item list-item">
+                                    <div class="label label--rounded">
+                                        <p class="label--smaller label--nomargin">Substanzklasse</p>
+                                        <p class="label--bold label--nomargin">Penizilline</p>
+                                    </div>
+                                    <button class="button button--red">&times;</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="group group--black-font">
+                            <h2>Diagnose</h2>
+                            <ul class="group__list">
+                                <li class="group__list-item list-item">
+                                    <div class="label label--rounded">
+                                        <p class="label--smaller label--nomargin">Organ</p>
+                                        <p class="label--bold label--nomargin">Respirationstrakt</p>
+                                    </div>
+                                    <button class="button button--red">&times;</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="top-navigation__slider slider">
+                        <p class="slider__label">Nur Resistenzen anzeigen kleiner als</p>
+                        <div class="slider__container">
+                            <div class="slider__container__before">100%</div>
+                            <div class="slider__container__range">
+                                <input type="range" class="slider__range">
+                            </div>
+                            <div class="slider__container__after">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main__matrix">
+                <div class="matrix">
+                    <!-- SVG here -->
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -1,0 +1,150 @@
+.groups {
+	@include flexbox();
+	@include flex-wrap(wrap);
+	align-items: center;
+}
+
+.group {
+	@include flexbox();
+	@include flex-direction(column);
+	@include justify-content(center);
+	padding: 0 20px;
+	color: #fff;
+	
+	@include group-header-fonts(15px);
+
+	&__title {
+		
+	}
+
+	&__list {
+		@include flexbox();
+		@include flex-direction(row);
+		@include justify-content(space-evenly);
+		margin: 0;
+		padding: 0;
+
+		list-style-type: none;
+
+		&--vertical {
+			@include flex-direction(column);
+		}
+	}
+	&__list-item {
+		@include flex-grow(0);
+		margin-right: 5px;
+	}
+
+	//Modifiers
+	&--vertical {
+		@include flex-direction(row);
+	}
+
+	&--space-between {
+		@include justify-content(space-between);
+	}
+
+	&--lead {
+		padding-top: 20px;
+		height: $search-box--height;
+	}
+
+	&--black-font {
+		color: #000;
+	}
+}
+
+.list-item {
+	@include flexbox();
+	@include flex-direction(row);
+
+	&__label {
+		
+	}
+
+	&--button {
+		
+	}
+
+	&--checkbox {
+		font-size: 12px;
+	}
+
+//TODO: DESKTOP ONLY
+	&:hover {
+		.label--rounded {
+			@include border-radius-edges(5px, 0, 0, 5px);
+		}
+
+		.button {
+			//display: block;
+			right: 0;
+			@include transition(right, $transition-duration);
+			//display: block;
+		}
+	}
+}
+
+.label {
+	line-height: 1.3;
+	font-size: $navigation-button--label-size;
+	margin: 0;
+	
+	&--rounded {
+		padding: 3px 5px;
+		background-color: #d7d5c4;
+		@include border-radius(5px);
+		z-index: 2;
+	}
+
+	&--small {
+		font-size: ($navigation-button--label-size - 2);
+	}
+
+	&--smaller {
+		font-size: ($navigation-button--label-size - 4);
+	}
+
+	&--large {
+		font-size: $navigation-button--label-size + 2;
+	}
+
+	&--larger {
+		font-size: $navigation-button--label-size + 4;
+	}
+
+	&--bold {
+		font-weight: bold;
+	}
+
+	&--thin {
+		font-weight: 300;
+	}
+
+	&--nomargin {
+		margin: 0;
+	}
+
+	&--gray {
+		color: #787677;
+	}
+
+}
+
+.button {
+	border: none;
+	color: #ffffff;
+    
+	&--red {
+		position: relative;
+		background-color: #ff623f;
+		padding: 0 10px;
+		right: 35px;
+		@include border-radius-edges(0, 5px, 5px, 0)
+		//display: none;
+	}
+}
+
+.input {
+	margin: 5px 0 10px 0;
+}
