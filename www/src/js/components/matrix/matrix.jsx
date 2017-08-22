@@ -39,8 +39,7 @@ export default class Matrix extends React.Component {
 	}
 
 	_getBacteriaLabelsTransformation() {
-		const top = this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius +
-			this.props.matrix.space;
+		const top = this.props.matrix.antibioticLabelRowHeight + this.props.matrix.space;
 		return `translate(0, ${ top }px)`;
 	}
 

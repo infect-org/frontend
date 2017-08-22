@@ -1,3 +1,6 @@
+import debug from 'debug';
+//import {memoize} from 'decko';
+import {computed, observable, action} from 'mobx';
 import calculateXPositions from './calculateXPositions';
 import sortAntibiotics from './sortAntibiotics';
 import AntibioticMatrixView from '../antibiotics/antibioticMatrixView';
@@ -5,8 +8,6 @@ import ResistanceMatrixView from '../resistances/resistanceMatrixView';
 import SubstanceClassMatrixView from '../antibiotics/substanceClassMatrixView';
 import SubstanceClass from '../antibiotics/substanceClass';
 import BacteriumMatrixView from '../bacteria/bacteriumMatrixView';
-import {computed, observable, action} from 'mobx';
-import debug from 'debug';
 import getArrayDiff from '../../helpers/getArrayDiff';
 
 const log = debug('infect:matrixView');
@@ -33,7 +34,7 @@ class MatrixView {
 	/**
 	* Space between resistances and between (resistances and antibiotic group dividers)
 	*/
-	@observable space = 10;
+	@observable space = 2;
 
 	/**
 	* Largest and smallest sample size. Needed to calculate size of resistance circles.
@@ -89,6 +90,7 @@ class MatrixView {
 		// Add antibiotics
 		if (this._antibiotics.has(antibiotic.id)) throw new Error(`MatrixView: Trying to add antibiotic with duplicate key ${ antibiotic.id }.`);
 		this._antibiotics.set(antibiotic.id, new AntibioticMatrixView(antibiotic, this));
+		log('Added antibiotic %o, number is %d', antibiotic, this._antibiotics.size);
 		//console.log('MatrixView: added ab, size is', antibiotic, this._antibiotics.size);
 		// Add substanceClasses
 		const scs = antibiotic.getSubstanceClasses();
@@ -234,8 +236,8 @@ class MatrixView {
 		// Available space: Width - widest label - first space (right of label) - space taken up by right-most antibiotic
 		const availableSpace = this._dimensions.width - this.space - this.bacteriumLabelColumnWidth - this.antibioticLabelRowHeight;
 		const whitespace = (numberOfAntibiotics + numberOfSubstanceClassChanges) * this.space;
-		// Radius: Space 
-		this.defaultRadius = Math.floor((availableSpace - whitespace) / numberOfAntibiotics / 2);
+		// Radius: Don't go below 0, always be an int.
+		this.defaultRadius = Math.max(Math.floor((availableSpace - whitespace) / numberOfAntibiotics / 2), 1);
 		log('Available space: %d. Whitespace: %d. Default radius %d.', availableSpace, whitespace, this.defaultRadius);
 	}
 

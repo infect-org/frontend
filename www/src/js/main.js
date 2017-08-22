@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import Matrix from './components/matrix/matrix';
 import {autorun, whyRun, useStrict} from 'mobx';
+import debug from 'debug';
+const log = debug('infect:Main');
 
 useStrict(true);
 
@@ -31,5 +33,5 @@ const app = new InfectApp(config);
 
 
 // React
-console.log('views:', app.views);
+log('views:', app.views);
 ReactDOM.render(<Matrix matrix={app.views.matrix}/>, document.querySelector('Matrix'));

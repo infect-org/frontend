@@ -2,9 +2,14 @@ import {observable, computed} from 'mobx';
 
 class Anitibiotic {
 
+	/**
+	* @param {Number|String} id
+	* @param {String} name
+	* @param {SubstanceClass|undefined} substanceClass
+	*/
 	constructor(id, name, substanceClass) {
 
-		if (!id || !name || !substanceClass) throw new Error('Antibiotic: Arguments missing');
+		if (!id || !name) throw new Error('Antibiotic: Arguments missing');
 
 		this.id = id;
 		this.name = name;
@@ -36,6 +41,7 @@ class Anitibiotic {
 	getSubstanceClasses() {
 		// Get all parent substanceClasses and push their name 
 		// into classes, bottom up
+		if (!this.substanceClass) return [];
 		const classes = [this.substanceClass];
 		while(classes.slice(-1)[0].parent) {
 			classes.push(classes.slice(-1)[0].parent);

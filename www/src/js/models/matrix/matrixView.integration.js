@@ -162,6 +162,7 @@ test('calculates bacterium label column width', (t) => {
 	t.end();
 });
 
+
 test('calculates radius', (t) => {
 
 	const set = createValidSet();
@@ -177,6 +178,10 @@ test('calculates radius', (t) => {
 	matrix.setAntibioticLabelDimensions(set.antibiotics[1], 0, 30);
 	matrix.setAntibioticLabelDimensions(set.antibiotics[2], 30, 20);
 	t.equal(matrix.defaultRadius, 25);
+
+	// Don't go negative
+	matrix.setDimensions({width: 100, height: 100});
+	t.equal(matrix.defaultRadius, 1);
 
 	t.end();
 });

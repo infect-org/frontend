@@ -81,20 +81,25 @@ export default class InfectApp {
 	_createAntibiotics(antibiotics) {
 
 		// Create substance classes
-		// #todo: Hierarchical substance classes
 		antibiotics.forEach((ab) => {
-			ab.substanceClasses.forEach((sc) => {
+			ab.substanceClasses.reduce((prev, sc) => {
 				if (!this.substanceClasses.getById(sc.id)) {
-					this.substanceClasses.add(new SubstanceClass(sc.id, sc.name));
+					// Use previous substance class as parent
+					console.error(prev, ab);
+					const newSC = new SubstanceClass(sc.id, sc.name, prev);
+					this.substanceClasses.add(newSC);
+					return newSC;
 				}
-			});
+			}, undefined);
 		});
 
 		antibiotics.map((ab) => {
 			// #todo: Hierarchical substance classes
 			// #todo: Remove this check; all ab should have scs (?)
-			if (!ab.substanceClasses.length) return;
-			this.antibiotics.add(new Antibiotic(ab.id, ab.name, this.substanceClasses.getById(ab.substanceClasses[0].id)));
+			if (!ab.substanceClasses.length) console.warn('InfectApp: AB %o has no SCs', ab);
+			const sc = ab.substanceClasses && ab.substanceClasses.length ? 
+				this.substanceClasses.getById(ab.substanceClasses[0].id) : undefined;
+			this.antibiotics.add(new Antibiotic(ab.id, ab.name, sc));
 		});
 
 	}
