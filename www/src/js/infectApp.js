@@ -13,6 +13,8 @@ import Resistance from './models/resistances/resistance';
 import ResistancesStore from './models/resistances/resistancesStore';
 import MatrixView from './models/matrix/matrixView';
 import {observable} from 'mobx';
+import debug from 'debug';
+const log = debug('infect:App');
 
 export default class InfectApp {
 
@@ -63,6 +65,7 @@ export default class InfectApp {
 			this._createBacteria(results.bacteria.data);
 			// Must be at the end, ab and bact must be created first.
 			this._createResistances(results.resistances.data);
+			log('Got data; ab are %o, bacteria %o, resistances %o', this.antibiotics, this.bacteria, this.resistances);
 			this.views.matrix.addData(this.antibiotics.getAsArray(), this.bacteria.getAsArray(), this.resistances.getAsArray());
 		}, (err) => {
 			throw new Error(`InfectApp: Could not get data. ${ err.name }: ${ err.message }.`);
@@ -108,13 +111,40 @@ export default class InfectApp {
 		resistances.map((res) => {
 			const bacterium = this.bacteria.getById(res.id_bacteria);
 			const antibiotic = this.antibiotics.getById(res.id_compound);
-			// #todo: Remove
+			// #todo: Remove – only needed for old/bad data
 			if (!bacterium || !antibiotic) {
 				console.warn('Missing data for', res);
 				return;
 			}
-			this.resistances.add(new Resistance(undefined, undefined, undefined, antibiotic, bacterium));
+			const resistanceValues = [];
+			if (res.resistanceDefault) resistanceValues.push({
+				type: 'default'
+				, value: this._getCharacter(res.resistanceDefault)
+				, sampleSize: this._getRandomSampleSize()
+			});
+			if (res.classResistanceDefault) resistanceValues.push({
+				type: 'class'
+				, value: this._getCharacter(res.classResistanceDefault)
+				, sampleSize: this._getRandomSampleSize()
+			});
+			if (res.resistanceImport) resistanceValues.push({
+				type: 'import'
+				, value: res.resistanceImport / 100
+				, sampleSize: this._getRandomSampleSize()
+			});
+			if (!resistanceValues.length) return;
+			//console.error(resistanceValues);
+			this.resistances.add(new Resistance(resistanceValues, antibiotic, bacterium));
 		});
+	}
+
+	// #todo: remove when data's ready
+	_getRandomSampleSize() {
+		return Math.round(Math.random() * 5000 * 100);
+	}
+	// #todo: remove
+	_getCharacter(value) {
+ 		return value === 3 ? 0.9 : (value === 2 ? 0.6 : 0.3);
 	}
 
 

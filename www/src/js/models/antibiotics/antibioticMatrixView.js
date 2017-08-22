@@ -7,13 +7,8 @@ class AntibioticMatrixView {
 		this._matrixView = matrixView;
 	}
 
-
-	@computed get xPosition() {
-		return this._matrixView.xPositions.get(this);
-	}
-
-	setHeight(height) {
-		this._matrixView.setAntibioticLabelHeight(this, height);
+	setDimensions(width, height) {
+		this._matrixView.setAntibioticLabelDimensions(this, width, height);
 	}
 
 }

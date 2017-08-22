@@ -41,7 +41,7 @@ test('throws on invalid JSON', (t) => {
 	});
 	fetchApi('/api')
 		.then(() => {}, (err) => {
-			t.equal(err instanceof SyntaxError, true);
+			t.equal(err instanceof Error, true);
 			fetchMock.restore();
 			t.end();
 		});

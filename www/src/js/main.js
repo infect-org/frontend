@@ -6,8 +6,9 @@ import InfectApp from './infectApp';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import Matrix from './components/matrix/matrix';
-import {autorun, whyRun} from 'mobx';
+import {autorun, whyRun, useStrict} from 'mobx';
 
+useStrict(true);
 
 const config 			= {
 	endpoints			: {
@@ -23,10 +24,10 @@ const config 			= {
 // Setup models
 const app = new InfectApp(config);
 
-autorun(() => {
+/*autorun(() => {
 	console.log('CHANGE', app.views.matrix.antibiotics);
 	whyRun();
-});
+});*/
 
 
 // React

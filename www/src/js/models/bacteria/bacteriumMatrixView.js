@@ -7,13 +7,9 @@ export default class BacteriumMatrixView {
 		this._matrix = matrix;
 	}
 	
-	@computed get yPosition() {
-		return this._matrix.yPositions[this];
-	}
-
-	setDimensions(dimensions) {
-		if (!dimensions) return;
-		this._matrix.setBacteriumLabelWidth(this, dimensions.width);
+	setWidth(width) {
+		if (!width) return;
+		this._matrix.setBacteriumLabelWidth(this, width);
 	}
 
 }
