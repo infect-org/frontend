@@ -1,0 +1,54 @@
+.side-navigation {
+	@include flexbox();
+	@include flex-direction(column);
+	background-color: $sidenavigation-background;
+
+	&__header {
+		//height: 250px;
+		z-index: 2;
+		background-color: $sidenavigation-background;
+	}
+
+	&__filters {
+		height: 100vh;
+		overflow-y: auto;
+	}
+}
+
+.header {
+
+	&__logo {
+		height: $navigation-height;
+	}
+
+	&__search {
+
+	}
+}
+
+.filter {
+
+}
+
+
+.logo {
+	@include flexbox();
+	@include justify-content(center);
+	align-items: center;
+	background-color: $navigation-background--lighter;
+
+	img {
+		//height: 30px;
+	}
+}
+
+.divider {
+	margin: 20px 0;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #575757; 
+
+	&--lead {
+		margin-top: 0;
+	}
+}

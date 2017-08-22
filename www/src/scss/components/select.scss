@@ -1,0 +1,30 @@
+.select {
+	-webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+	background: url(/dist/img/arrow_dropdown.png) no-repeat 95% center;
+	@include transition(background, $transition-duration);
+	margin: 3px 0;
+	padding: 2px 9px;
+	border: 1px solid #fff;
+	@include transition(border, $transition-duration);
+	border-radius: 3px;
+	color: #fff;
+	@include transition(color, $transition-duration);
+	font-size: 13px;
+
+
+	&__option {
+		color: #000;
+	}
+}
+
+.select:hover {
+	border: 1px solid $hover-color;
+	color: $hover-color;
+	background: url(/dist/img/arrow_dropdown_green.png) no-repeat 95% center;
+}	
+
+.select::-ms-expand { 
+    display: none; /* hide the default arrow in ie10 and ie11 */
+}

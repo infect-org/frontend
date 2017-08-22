@@ -1,9 +1,9 @@
 {
   "name": "frontend",
   "description": "infect fronend",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/infect/application",
-  "author": "Michael van der Weg <michael@joinbox.com> (http://infect.info/)",
+  "author": "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info/)",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/infect/related.git",
@@ -41,7 +41,9 @@
     "beepbeep": "1.x",
     "browserify": "14.x",
     "decko": "^1.2.0",
+    "css-loader": "^0.28.4",
     "enzyme": "^2.9.1",
+    "extract-text-webpack-plugin": "^3.0.0",
     "faucet": "0.0.1",
     "fetch-mock": "^5.12.0",
     "gulp": "3.9.x",
@@ -53,9 +55,12 @@
     "gulp-uglify": "1.5.x",
     "gulp-util": "3.0.x",
     "mobx-react-devtools": "^4.2.15",
+    "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "tap-webpack-plugin": "^2.0.0",
     "tape": "^4.7.0",
     "testdouble": "^3.2.2",
@@ -63,13 +68,17 @@
     "walk-sync": "^0.3.2",
     "webpack": "^3.4.1",
     "webpack-beep-plugin": "^1.0.0",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^2.7.1"
   },
   "optionalDependencies": {},
   "keywords": [
     "infect"
   ],
-  "scripts": {},
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  },
   "browserify": {
     "external": {
       "react/addon": true,

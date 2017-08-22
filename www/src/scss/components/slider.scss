@@ -1,0 +1,35 @@
+.slider {
+	font-size: 12px;
+	text-align: center;
+
+	&__range {
+		padding: 0;
+	}
+
+	&__label {
+		margin: 0;
+		padding-top: 15px;
+	}
+
+	&__container {
+		@include flexbox();
+		@include flex-direction(row);
+		@include justify-content(center);
+		align-items: center;
+
+		&__before {
+			margin-right: 5px;
+		}
+
+		&__range{
+			@include flex-grow(1);
+		}
+
+		&__after {
+			margin-left: 5px;
+
+		}
+	}
+}
+
+	

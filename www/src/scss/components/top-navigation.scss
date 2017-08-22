@@ -1,0 +1,17 @@
+.top-navigation {
+	@include flexbox();
+	min-height: $navigation-height;
+	border-bottom: solid 1px #d3d2cd;
+
+	&__active-filters {
+		@include flex-grow(1);
+	}
+
+	&__slider {
+		@include flex-grow(0);
+		width: 250px;
+		min-height: inherit;
+		padding-right: 20px;
+	}
+
+}

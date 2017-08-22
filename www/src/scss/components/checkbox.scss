@@ -1,0 +1,53 @@
+input[type="checkbox"] {
+  display: none;
+}
+
+.side-label {
+//  display: block;
+  position: relative;
+//  margin: 10px 0;
+  padding-left: 20px;
+  cursor: pointer;
+  color: #fff;
+  @include transition(color, $transition-duration);
+}
+
+.side-label::before, .side-label::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+//unchecked
+.side-label::before {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
+  border-color: #fff;
+  @include transition(border-color, $transition-duration);  
+}
+
+//checked
+.side-label::after {
+  //display: none;
+  width: 6px;
+  height: 6px;
+  margin: 3px;
+  background-color: none;
+  @include transition(background-color, $transition-duration);
+}
+
+input:checked + .side-label::after {
+  //display: block;
+  background-color: $active__checkbox-color;
+}
+
+input:hover + .side-label
+,input:hover + .side-label::before
+,input:checked + .side-label
+,input:checked + .side-label::before {
+  color: $active__checkbox-color;
+  border-color: $active__checkbox-color;
+}
