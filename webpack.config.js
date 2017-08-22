@@ -7,10 +7,10 @@ module.exports = [
 
 	// Main app
 	{
-		context: path.resolve(__dirname, 'www')
+		context: path.resolve(__dirname, 'www/src/')
 		, entry:  {
-			home: ['./src/js/main.js']
-			,styles: ['./styles/scss/main.scss']
+			home: ['./js/main.js']
+			,styles: ['./scss/main.scss']
 		}
 		, output: {
 			path: path.resolve(__dirname, 'www/dist/')
