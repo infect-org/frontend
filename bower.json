@@ -1,23 +1,24 @@
 {
-	"name"					: "infect-frontend"
-	, "main"				: ""
-	, "dependencies"		: {
-	}
-	, "ignore"				: [
-	]
-	, "license"				: "MIT"
-	, "authors"				: [
-		{ 
-			"name"			: "Felix Steiner"
-			, "email"		: "felix@joinbox.com"
-			, "homepage"	: "http://joinbox.com" 
-		}, {
-			"name"			: "Fabian Jordi"
-			, "email"		: "fabian@joinbox.com"
-		}
-	]
-	, "repository"			: {
-		"type"				: "git"
-		, "url"				: "git://github.com/joinbox/infect.git"
-	}
+  "name": "infect-frontend",
+  "main": "",
+  "dependencies": {
+    "sass-flex-mixin": "^1.0.3"
+  },
+  "ignore": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Felix Steiner",
+      "email": "felix@joinbox.com",
+      "homepage": "http://joinbox.com"
+    },
+    {
+      "name": "Fabian Jordi",
+      "email": "fabian@joinbox.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joinbox/infect.git"
+  }
 }

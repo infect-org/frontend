@@ -1,0 +1,13 @@
+.resistanceMatrix {
+
+    max-width:2000px; /* or circles are too large */
+    min-width: 1200px; /* or circles are smaller than the font */
+    width: 100%;
+    font-family: futura_ltcondensed;
+
+    &__bacteriaLabels text {
+        text-anchor: end;
+    }
+
+}
+

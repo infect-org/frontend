@@ -39,10 +39,9 @@ export default class BacteriumLabel extends React.Component {
 
 	render() {
 		return (
-			<g style={{transform: this._getTransformation(), opacity: this._getOpacity(), height: this.props.matrix.defaultRadius * 2}}>
-				// rect is only used to give the g a height so that text can be aligned middle
-				<rect height={this.props.matrix.defaultRadius * 2} width="0"></rect>
-				// We have to place label to the right (x) in order for text-anchor to work.
+			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}}>
+				/* rect is only used to give the g a height so that text can be aligned middle */
+				/* We have to place label to the right (x) in order for text-anchor to work. */
 				<text ref={(el) => this._setTextElement(el)} x={this.props.matrix.bacteriumLabelColumnWidth}>
 					{this.props.bacterium.bacterium.name}
 				</text>

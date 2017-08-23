@@ -57,23 +57,23 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/js";
+/******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 705);
+/******/ 	return __webpack_require__(__webpack_require__.s = 711);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 705:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(706);
+module.exports = __webpack_require__(712);
 
 
 /***/ }),
 
-/***/ 706:
+/***/ 712:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

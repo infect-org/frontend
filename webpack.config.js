@@ -9,12 +9,12 @@ module.exports = [
 	{
 		context: path.resolve(__dirname, 'www/src/')
 		, entry:  {
-			home: ['./js/main.js']
+			main: ['./js/main.js']
 			,styles: ['./scss/main.scss']
 		}
 		, output: {
 			path: path.resolve(__dirname, 'www/dist/')
-			, publicPath: '/dist/js'
+			, publicPath: '/dist'
 			, filename: 'js/[name].js'
 		}
 		, devtool: 'source-map'
