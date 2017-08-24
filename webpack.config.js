@@ -3,6 +3,11 @@ const path = require('path');
 const BeepPlugin = require('webpack-beep-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+// Don't use ExtractTextPlugin in dev mode as it does not support hot-reloading, 
+// see https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30#issuecomment-125757853
+const debug = process.env.NODE_ENV === 'production' ? false : true;
+const styles = 'css-loader!sass-loader';
+
 module.exports = [
 
 	// Main app
@@ -10,7 +15,7 @@ module.exports = [
 		context: path.resolve(__dirname, 'www/src/')
 		, entry:  {
 			main: ['./js/main.js']
-			,styles: ['./scss/main.scss']
+			, styles: ['./scss/main.scss']
 		}
 		, output: {
 			path: path.resolve(__dirname, 'www/dist/')
@@ -36,17 +41,18 @@ module.exports = [
 				}, 
 				{
 			  		test: /\.scss$/,
-			  		loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+			  		//loader: debug ? `style-loader!${ styles }` : ExtractTextPlugin.extract(styles)
+			  		loader: ExtractTextPlugin.extract(styles)
 				}
 			]
 		}
 		, resolve: {
 			extensions: ['.js', '.jsx']
 		}
-		, plugins: [new ExtractTextPlugin(
-						{filename: '/css/main.min.css',
-      					allChunks: false
-    				})
+		, plugins: [new ExtractTextPlugin({
+						filename: '/css/main.min.css',
+  						allChunks: false
+					})
 					, new BeepPlugin()]
 	}
 ];

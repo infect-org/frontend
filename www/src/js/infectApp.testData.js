@@ -130,4 +130,11 @@ export default {
             "resistanceDefault": 0.1
         }
     ]
+
+    , substanceClasses: [
+        { name: 'test', id: 18, parent: null }
+        , { name: 'test', id: 4, parent: 18 }
+        , { name: 'test', id: 9, parent: 4 }
+    ]
+
 };

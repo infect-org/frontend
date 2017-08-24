@@ -29,8 +29,14 @@ export default class AntibioticLabel extends React.Component {
 	}
 
 	_getTransformation() {
-		const left = this.props.matrix.xPositions.get(this.props.antibiotic).left;
-		return `translate(${ left }px, ${ this.props.matrix.antibioticLabelRowHeight || 0 }px) rotate(-45deg)`;
+		if (!this._textElement) return 'translate(0, 0)';
+		// We must add some of the height (60°/90°) as we rotated the label which positions it more to the left
+		const left = this.props.matrix.xPositions.get(this.props.antibiotic).left + this._textElement.getBBox().height * 7.5/9;
+		const substanceClassModifier = (this.props.matrix.maxAmountOfSubstanceClassHierarchies -
+		 this.props.antibiotic.antibiotic.getSubstanceClasses().length);
+		const top = (this.props.matrix.antibioticLabelRowHeight || 0) + 
+			substanceClassModifier * (this.props.matrix.greatestSubstanceClassLabelHeight || 0);
+		return `translate(${ left }px, ${ top }px) rotate(-75deg)`;
 	}
 
 	_getOpacity() {
@@ -43,8 +49,10 @@ export default class AntibioticLabel extends React.Component {
 
 	render() {
 		return (
-			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}}> // If missing, render will try to return an object literal (see next line)
-				<text ref={(el) => this._setTextElement(el)}>{this.props.antibiotic.antibiotic.name}</text>
+			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}} className="resistanceMatrix__antibioticLabel">
+				<text ref={(el) => this._setTextElement(el)} className="resistanceMatrix__antibioticLabelText">
+					{this.props.antibiotic.antibiotic.name}
+				</text>
 			</g>
 		);
 	}

@@ -2,11 +2,18 @@ import React from 'react';
 import AntibioticLabel from '../matrix-antibiotic/antibioticLabel';
 import BacteriumLabel from '../matrix-bacterium/bacteriumLabel';
 import Resistance from '../matrix-resistance/resistance';
+import SubstanceClass from '../matrix-substance-class/substanceClass';
 import {observer} from 'mobx-react';
 //import DevTools from 'mobx-react-devtools';
 
 @observer
 export default class Matrix extends React.Component {
+
+	constructor() {
+		super();
+		// Space between label groups and matrix
+		this._spaceBetweenGroups = 20;
+	}
 
 	componentDidMount() {
 		this._setupResizeListener();
@@ -35,20 +42,27 @@ export default class Matrix extends React.Component {
 	}
 
 	_getAntibioticLabelsTransformation() {
-		return `translate(${ this.props.matrix.space + this.props.matrix.bacteriumLabelColumnWidth }px, 0)`;
+		const left = this._spaceBetweenGroups + this.props.matrix.bacteriumLabelColumnWidth;
+		return `translate(${ left }px, 0)`;
 	}
 
 	_getBacteriaLabelsTransformation() {
-		const top = this.props.matrix.antibioticLabelRowHeight + this.props.matrix.space;
+		const top = this._getEffectiveHeaderHeight();
 		return `translate(0, ${ top }px)`;
 	}
 
 	_getMainMatrixTransformation() {
-		const left = this.props.matrix.space + this.props.matrix.bacteriumLabelColumnWidth;
-		const top = this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius +
-			this.props.matrix.space;
+		const left = this.props.matrix.bacteriumLabelColumnWidth + this._spaceBetweenGroups;
+		const top = this._getEffectiveHeaderHeight();
 		return `translate(${ left }px, ${ top }px)`;
+	}
 
+	/**
+	* Returns height of the whole matrix header, i.e. antibiotics, substance classes and all spacing
+	*/
+	_getEffectiveHeaderHeight() {
+		return this.props.matrix.antibioticLabelRowHeight + this._spaceBetweenGroups +
+			this.props.matrix.maxAmountOfSubstanceClassHierarchies * (this.props.matrix.greatestSubstanceClassLabelHeight || 0);
 	}
 
 	render() {
@@ -56,6 +70,9 @@ export default class Matrix extends React.Component {
 			<svg ref={(el) => this._setSVG(el)} style={{height: this._getHeight()}} className="resistanceMatrix">
 
 				<g style={{transform: this._getAntibioticLabelsTransformation()}} className="resistanceMatrix__antibioticsLabels">
+					{this.props.matrix.substanceClasses.map((sc) => 
+						<SubstanceClass key={sc.substanceClass.id} substanceClass={sc} matrix={this.props.matrix}/>
+					)}
 					{this.props.matrix.sortedAntibiotics.map((ab) => 
 						<AntibioticLabel key={ab.antibiotic.id} antibiotic={ab} matrix={this.props.matrix}/>
 					)}

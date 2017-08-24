@@ -10,7 +10,7 @@ import SubstanceClass from '../antibiotics/substanceClass';
 import BacteriumMatrixView from '../bacteria/bacteriumMatrixView';
 import getArrayDiff from '../../helpers/getArrayDiff';
 
-const log = debug('infect:matrixView');
+const log = debug('infect:MatrixView');
 
 class MatrixView {
 
@@ -34,7 +34,7 @@ class MatrixView {
 	/**
 	* Space between resistances and between (resistances and antibiotic group dividers)
 	*/
-	@observable space = 2;
+	@observable space = 6;
 
 	/**
 	* Largest and smallest sample size. Needed to calculate size of resistance circles.
@@ -43,6 +43,11 @@ class MatrixView {
 		min: 0
 		, max: 0
 	};
+
+	/**
+	* Height of highest substance class label
+	*/
+	@observable greatestSubstanceClassLabelHeight = undefined;
 
 	constructor() {
 		// #todo: Why do decorators not work for Maps? Maybe it's a cross-compiling issue?
@@ -61,6 +66,7 @@ class MatrixView {
 		// Key: antibiotic, value: height in px
 		this._antibioticLabelDimensions = new Map();
 		this._bacteriaLabelWidths = new Map();
+		this._substanceClassLabelHeights = new Map();
 
 	}
 
@@ -92,7 +98,7 @@ class MatrixView {
 		this._antibiotics.set(antibiotic.id, new AntibioticMatrixView(antibiotic, this));
 		log('Added antibiotic %o, number is %d', antibiotic, this._antibiotics.size);
 		//console.log('MatrixView: added ab, size is', antibiotic, this._antibiotics.size);
-		// Add substanceClasses
+		// Add *all* substanceClasses of matrix (the whole hierarchy)
 		const scs = antibiotic.getSubstanceClasses();
 		scs.forEach((item) => {
 			if (this._substanceClasses.has(item.id)) return;
@@ -132,12 +138,14 @@ class MatrixView {
 	* 45° angle.
 	*/
 	@action setAntibioticLabelDimensions(antibiotic, width, height) {
-		log('Set dimensions of antibiotic label for %o to %d/%d', antibiotic, width, height);
+		//log('Set dimensions of antibiotic label for %o to %d/%d', antibiotic, width, height);
 		if (width % 1 !== 0 || height % 1 !== 0) throw new Error(`MatrixView: Width and height for antibiotic labels must be integers.`);
 		const existing = this._antibioticLabelDimensions.get(antibiotic);
 		if (existing && existing.height === height && existing.width === width) return;
 		this._antibioticLabelDimensions.set(antibiotic, { width: width, height: height });
 		this._calculateAntibioticLabelRowHeight();
+		// Default radius depends on antibiotic label as it they are slightly rotated and take up 
+		// some space on the very right
 		this._calculateDefaultRadius();
 	}
 
@@ -146,6 +154,7 @@ class MatrixView {
 		this.antibioticLabelRowHeight = Array.from(this._antibioticLabelDimensions.values()).reduce((previous, item) => {
 			return Math.max(previous, item.height);
 		}, 0);
+		log('antibioticLabelRowHeight is %d', this.antibioticLabelRowHeight);
 	}
 
 	/**
@@ -167,6 +176,37 @@ class MatrixView {
 
 
 
+
+
+
+
+
+
+
+	@computed get maxAmountOfSubstanceClassHierarchies() {
+		return this.antibiotics.reduce((prev, item) => {
+			return Math.max(prev, item.antibiotic.getSubstanceClasses().length);
+		}, 0);
+	}
+
+	/**
+	* Called from SubstanceClassLabel. Set label height's, get greatest height after
+	* all labels were measured.
+	*/
+	@action setSubstanceClassHeight(substanceClass, value) {
+		this._substanceClassLabelHeights.set(substanceClass, value);
+		if (this._substanceClassLabelHeights.size === this.substanceClasses.length) {
+			this._calculateGreatestSubstanceClassLabelHeight();
+		}
+	}
+
+	_calculateGreatestSubstanceClassLabelHeight() {
+		const heights = Array.from(this._substanceClassLabelHeights.values());
+		this.greatestSubstanceClassLabelHeight = Math.ceil(heights.reduce((prev, item) => {
+			return Math.max(item, prev);
+		}), 0);
+		log('greatestSubstanceClassLabelHeight is %d', this.greatestSubstanceClassLabelHeight);
+	}
 
 
 
@@ -223,6 +263,7 @@ class MatrixView {
 		if (!this._bacteria.size || this._bacteriaLabelWidths.size !== this._bacteria.size) return;
 		if (!this._dimensions) return;
 		if (this.antibioticLabelRowHeight === undefined) return;
+		log('Calculate default radius');
 		const numberOfAntibiotics = this._antibiotics.size;
 		// Every time at least one substance class changes (from antibiotic to antibiotic), we have to add an additional space. 
 		// Calculate how many times this happens.
@@ -265,7 +306,9 @@ class MatrixView {
 
 	@action setBacteriumLabelWidth(bacterium, width) {
 		//log('Set width of bacteriumLabel %o to %d', bacterium, width);
+		if (this._bacteriaLabelWidths.has(bacterium) && this._bacteriaLabelWidths.get(bacterium) === width) return;
 		this._bacteriaLabelWidths.set(bacterium, width);
+		log('Set width of %o to %o', bacterium, width);
 		this._calculateBacteriumLabelColumnWidth();
 		this._calculateDefaultRadius();
 	}
@@ -273,6 +316,7 @@ class MatrixView {
 	@action _calculateBacteriumLabelColumnWidth() {
 		if (this._bacteriaLabelWidths.size !== this.sortedBacteria.length) return;
 		this.bacteriumLabelColumnWidth = Math.ceil(Array.from(this._bacteriaLabelWidths.values()).reduce((prev, item) => Math.max(prev, item), 0));
+		log('bacteriumLabelColumnWidth is %d', this.bacteriumLabelColumnWidth);
 	}
 
 	/**
@@ -281,6 +325,7 @@ class MatrixView {
 	* @ returns {Map}		Key: bacterium, value: Object with top
 	*/
 	@computed get yPositions() {
+		log('calculate yPositions');
 		const yPositions = new Map();
 		this.sortedBacteria.forEach((bacterium, index) => {
 			yPositions.set(bacterium, {

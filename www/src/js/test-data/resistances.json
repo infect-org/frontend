@@ -24,6 +24,11 @@
         "resistanceDefault": 1
     },
     {
+        "id_bacteria": 8,
+        "id_compound": 32,
+        "classResistanceDefault": 0.99
+    },
+    {
         "id_bacteria": 25,
         "id_compound": 31,
         "classResistanceDefault": 1,

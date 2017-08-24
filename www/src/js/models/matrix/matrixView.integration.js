@@ -138,6 +138,8 @@ test('calculates y positions', (t) => {
 	matrix.addData(set.antibiotics, set.bacteria);
 	matrix.space = 20;
 	matrix.setDimensions({width: 350, height: 100});
+	// Width of label must be set so that defaultRadius can be calculated
+	// which is needed for yPositions
 	matrix.setBacteriumLabelWidth(set.bacteria[0], 20);
 	matrix.setBacteriumLabelWidth(set.bacteria[1], 100);
 	matrix.setAntibioticLabelDimensions(set.antibiotics[0], 0, 0);
@@ -155,9 +157,6 @@ test('calculates bacterium label column width', (t) => {
 	matrix.setDimensions({width: 351.5, height: 200});
 	matrix.setBacteriumLabelWidth(set.bacteria[0], 20);
 	matrix.setBacteriumLabelWidth(set.bacteria[1], 5);
-	matrix.setAntibioticLabelDimensions(set.antibiotics[0], 0, 0);
-	matrix.setAntibioticLabelDimensions(set.antibiotics[1], 0, 0);
-	matrix.setAntibioticLabelDimensions(set.antibiotics[2], 0, 0);
 	t.equal(matrix.bacteriumLabelColumnWidth, 20);
 	t.end();
 });
@@ -206,6 +205,29 @@ test('antibiotic functions', (t) => {
 
 	t.end();
 
+});
+
+
+
+
+
+test('max amount of substance class hierarchies', (t) => {
+	const set = createValidSet();
+	set.matrix.addData(set.antibiotics, set.bacteria);
+	t.equal(set.matrix.maxAmountOfSubstanceClassHierarchies, 2);
+	t.end();
+});
+
+test('substance class label height', (t) => {
+	const set = createValidSet();
+	const { matrix, substanceClasses } = set;
+	matrix.addData(set.antibiotics, set.bacteria);
+	t.equal(matrix.greatestSubstanceClassLabelHeight, undefined);
+	matrix.setSubstanceClassHeight(substanceClasses[0], 5);
+	matrix.setSubstanceClassHeight(substanceClasses[1], 9);
+	matrix.setSubstanceClassHeight(substanceClasses[2], 2);
+	t.equal(matrix.greatestSubstanceClassLabelHeight, 9);
+	t.end();
 });
 
 

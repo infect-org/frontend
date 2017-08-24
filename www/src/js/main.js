@@ -12,12 +12,13 @@ const log = debug('infect:Main');
 
 useStrict(true);
 
-const config 			= {
-	endpoints			: {
-		apiPrefix		: '/src/js/test-data/'
-		, bacteria		: 'bacteria.json'
-		, antibiotics	: 'antibiotics.json'
-		, resistances	: 'resistances.json'
+const config 				= {
+	endpoints				: {
+		apiPrefix			: '/src/js/test-data/'
+		, bacteria			: 'bacteria.json'
+		, antibiotics		: 'antibiotics.json'
+		, resistances		: 'resistances.json'
+		, substanceClasses	: 'substanceClasses.json'
 	}
 };
 

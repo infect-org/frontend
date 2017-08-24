@@ -10,6 +10,7 @@ class Anitibiotic {
 	constructor(id, name, substanceClass) {
 
 		if (!id || !name) throw new Error('Antibiotic: Arguments missing');
+		if (!substanceClass) throw new Error(`Antibiotic: Substance class must be provided`);
 
 		this.id = id;
 		this.name = name;
@@ -34,19 +35,15 @@ class Anitibiotic {
 
 
 	/**
-	* Returns substance class hierarchy of this antibiotic as an array: 
+	* Returns substance class hierarchy of this antibiotic as an array – traverse substanceClass.parent
+	* until parent is undefined.
 	* @returns {Array} Substance classes			[child, parent, grandparent] where every entry is
 	*												an instance of SubstanceClass
 	*/
 	getSubstanceClasses() {
 		// Get all parent substanceClasses and push their name 
 		// into classes, bottom up
-		if (!this.substanceClass) return [];
-		const classes = [this.substanceClass];
-		while(classes.slice(-1)[0].parent) {
-			classes.push(classes.slice(-1)[0].parent);
-		}
-		return classes;
+		return [this.substanceClass].concat(this.substanceClass.getParentSubstanceClasses());
 	}
 
 }

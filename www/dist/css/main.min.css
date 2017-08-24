@@ -717,9 +717,15 @@ input:hover + .side-label
   min-width: 1200px;
   /* or circles are smaller than the font */
   width: 100%;
-  font-family: futura_ltcondensed; }
-  .resistanceMatrix__bacteriaLabels text {
+  font-family: futura_ltcondensed;
+  font-size: 11pt; }
+  .resistanceMatrix__bacteriumLabelText {
     text-anchor: end; }
+  .resistanceMatrix__resistanceText {
+    fill: black;
+    opacity: 0.4; }
+  .resistanceMatrix__substanceClassLine {
+    fill: #ccc; }
 
 .search {
   position: absolute;

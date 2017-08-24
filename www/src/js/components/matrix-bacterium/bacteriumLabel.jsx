@@ -12,8 +12,7 @@ export default class BacteriumLabel extends React.Component {
 		// We can only position elements correctly when we know defaultRadius. Until then, 
 		// hide the labels
 		if (!this.props.matrix.defaultRadius) return `translate(0, 0)`;
-		// Top: top of bacterium plus ab label plus space between ab label the matrix that
-		// corresponds to (space + radius).
+		// Top: top of bacterium plus radius (baseline corresponds to the center of the circles)
 		const top = this.props.matrix.yPositions.get(this.props.bacterium).top;
 		return `translate(0, ${ top }px)`;
 	}
@@ -39,10 +38,12 @@ export default class BacteriumLabel extends React.Component {
 
 	render() {
 		return (
-			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}}>
+			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}} className="resistanceMatrix__antibioticLabel">
 				/* rect is only used to give the g a height so that text can be aligned middle */
 				/* We have to place label to the right (x) in order for text-anchor to work. */
-				<text ref={(el) => this._setTextElement(el)} x={this.props.matrix.bacteriumLabelColumnWidth}>
+				<text x={this.props.matrix.defaultRadius} y={this.props.matrix.defaultRadius} 
+					ref={(el) => this._setTextElement(el)} x={this.props.matrix.bacteriumLabelColumnWidth} 
+					className="resistanceMatrix__bacteriumLabelText" dominantBaseline="middle" y={this.props.matrix.defaultRadius}>
 					{this.props.bacterium.bacterium.name}
 				</text>
 			</g>

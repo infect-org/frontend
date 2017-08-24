@@ -54,14 +54,26 @@ export default class InfectApp {
 	*/
 	async _getData() {
 		const results = {};
-		const calls = ['bacteria', 'antibiotics', 'resistances'].map((entity) => {
+		const calls = ['bacteria', 'antibiotics', 'resistances', 'substanceClasses'].map((entity) => {
 			return this._fetchData(this._config.endpoints.apiPrefix + this._config.endpoints[entity])
 				.then((result) => {
 					results[entity] = result;
 				});
 		});
 		return Promise.all(calls).then(() => {
-			this._createAntibiotics(results.antibiotics.data);
+
+			// ab.substanceClasses may have duplicates (for en/de) – remove them
+			const antibiotics = results.antibiotics.data;
+			antibiotics.forEach((item) => {
+				const newData = item.substanceClasses.reduce((prev, item) => {
+					prev.set(item.id, item);
+					return prev;
+				}, new Map());
+				item.substanceClasses = Array.from(newData.values());
+			});
+
+
+			this._createAntibiotics(antibiotics, results.substanceClasses.data);
 			this._createBacteria(results.bacteria.data);
 			// Must be at the end, ab and bact must be created first.
 			this._createResistances(results.resistances.data);
@@ -78,25 +90,50 @@ export default class InfectApp {
 	}
 
 
-	_createAntibiotics(antibiotics) {
+	_createAntibiotics(antibiotics, substanceClasses) {
 
+		// Lowest class (grandchild) will be added to antibiotic
+		let lowestSubstanceClass;
 		// Create substance classes
 		antibiotics.forEach((ab) => {
-			ab.substanceClasses.reduce((prev, sc) => {
-				if (!this.substanceClasses.getById(sc.id)) {
-					// Use previous substance class as parent
-					console.error(prev, ab);
-					const newSC = new SubstanceClass(sc.id, sc.name, prev);
-					this.substanceClasses.add(newSC);
-					return newSC;
-				}
-			}, undefined);
+
+			// Get sc by hierarchy, parent-most (grand-grand-parent) first as it needs to be 
+			// created first (subsequent children need the parent on sc's constructor)
+			// First ist top-most
+			const sorted = [];
+			let parentId = null;
+			let counter = 0;
+			while (sorted.length < ab.substanceClasses.length && counter < 15) {
+				counter++;
+				// Hierarchies are not correct *OR* an ab might have multiple scs that are not hierarchical.
+				if(counter > 13) console.error('BAD DATA for scs:', counter, ab, substanceClasses, parentId);
+				ab.substanceClasses.some((sc) => {
+					const originalSc = substanceClasses.find((item) => item.id === sc.id);
+					if (originalSc.parent === parentId) {
+						sc.parent = parentId;
+						sorted.push(sc);
+						parentId = sc.id;
+						return true;
+					}
+				});
+			}
+			log('Sorted sc for ab %o are %o', ab, sorted);
+
+			sorted.forEach((sc, index) => {
+				if (this.substanceClasses.getById(sc.id)) return;
+				const parent = !sc.parent ? undefined : this.substanceClasses.getById(sc.parent);
+				this.substanceClasses.add(new SubstanceClass(sc.id, sc.name, parent));
+			});
+
 		});
 
 		antibiotics.map((ab) => {
 			// #todo: Hierarchical substance classes
 			// #todo: Remove this check; all ab should have scs (?)
-			if (!ab.substanceClasses.length) console.warn('InfectApp: AB %o has no SCs', ab);
+			if (!ab.substanceClasses.length) {
+				console.warn('InfectApp: AB %o has no SCs', ab);
+				return;
+			}
 			const sc = ab.substanceClasses && ab.substanceClasses.length ? 
 				this.substanceClasses.getById(ab.substanceClasses[0].id) : undefined;
 			this.antibiotics.add(new Antibiotic(ab.id, ab.name, sc));

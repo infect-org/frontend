@@ -3,6 +3,7 @@ import resistanceTypes from '../../models/resistances/resistanceTypes';
 import debug from 'debug';
 import color from 'tinycolor2';
 import getRelativeValue from '../../helpers/getRelativeValue';
+
 const log = debug('infect:ResistanceComponent');
 
 class Resistance extends React.Component {
@@ -18,8 +19,8 @@ class Resistance extends React.Component {
 
 	_getRadius() {
 		const {min, max} = this.props.matrix.sampleSizeExtremes;
-		return getRelativeValue(this._getMostPreciseValue().sampleSize, min, max, 0.4) * 
-			this.props.matrix.defaultRadius;
+		return Math.round(getRelativeValue(this._getMostPreciseValue().sampleSize, min, max, 0.4) * 
+			this.props.matrix.defaultRadius);
 	}
 
 	_getRelativeColorValue(value, min = 0, max = 1) {
@@ -62,9 +63,17 @@ class Resistance extends React.Component {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
-			<g style={{transform: this._getTransformation()}}>
-				<circle r={this._getRadius()} fill={this._getColor()}></circle>
-				<text textAnchor="middle" alignmentBaseline="central">{this._getValue()}</text>
+			<g style={{transform: this._getTransformation()}} className="resistanceMatrix__resistance" 
+				data-antibiotic={this.props.resistance.resistance.antibiotic.name}
+				data-bacterium={this.props.resistance.resistance.bacterium.name}>
+				{/* circle: center is at 0/0, therefore move by radius/radius */}
+				<circle r={this._getRadius()} fill={this._getColor()} className="resistanceMatrix__resistanceCircle"
+					cx={this.props.matrix.defaultRadius} cy={this.props.matrix.defaultRadius}>
+				</circle>
+				<text x={this.props.matrix.defaultRadius} y={this.props.matrix.defaultRadius} textAnchor="middle" 
+					dominantBaseline="central" className="resistanceMatrix__resistanceText">
+					{this._getValue()}
+				</text>
 			</g>
 		);
 	}
