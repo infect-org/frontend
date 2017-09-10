@@ -147,7 +147,9 @@ export default class InfectApp {
 			sorted.forEach((sc, index) => {
 				if (this.substanceClasses.getById(sc.id)) return;
 				const parent = !sc.parent ? undefined : this.substanceClasses.getById(sc.parent);
-				this.substanceClasses.add(new SubstanceClass(sc.id, sc.name, parent));
+				const substanceClass = new SubstanceClass(sc.id, sc.name, parent);
+				this.filterValues.addEntity('substanceClass', substanceClass);
+				this.substanceClasses.add(substanceClass);
 			});
 
 		});

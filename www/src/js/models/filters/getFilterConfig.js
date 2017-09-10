@@ -6,6 +6,24 @@ export default function() {
 				translation: 'Name'
 				, valueTranslations: (name) => name
 			}
+			, iv: {
+				translation: 'Intravenous'
+				, valueTranslations: [{
+					value: true
+					, niceValue: 'Yes'
+				}, {
+					value: false
+					, niceValue: 'No'
+				}]
+			}
+		}
+	}, {
+		entityType: 'substanceClass'
+		, config: {
+			name: {
+				translation: 'Name'
+				, valueTranslations: (name) => name
+			}
 		}
 	}];
 };
