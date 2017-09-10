@@ -6,6 +6,7 @@ import SubstanceClassMatrixView from '../antibiotics/substanceClassMatrixView';
 import SubstanceClass from '../antibiotics/substanceClass';
 import Bacterium from '../bacteria/bacterium';
 import Resistance from '../resistances/resistance';
+import SelectedFilters from '../filters/selectedFilters';
 
 function createSubstanceClass(parent, name = 'testSC', id = Math.random()) {
 	return new SubstanceClass(id, name, parent);
@@ -40,6 +41,7 @@ function createValidSet() {
 	const res2 = createResistance(ab1, bact2);
 	const res3 = createResistance(ab2, bact2, [{type: 'default', value: 1, sampleSize: 59}]);
 	const matrix = new MatrixView();
+	matrix.setSelectedFilters(new SelectedFilters());
 	return {
 		matrix: matrix
 		, antibiotics: [ab1, ab2, ab3]
@@ -78,23 +80,23 @@ test('fails if duplicate antibiotics are added', (t) => {
 
 test('sets and returns antibiotics and substanceClasses', (t) => {
 
-	const set = createValidSet();
-	const {matrix, antibiotics, substanceClasses} = set;
+	const { matrix, antibiotics, substanceClasses } = createValidSet();
 	matrix.addAntibiotic(antibiotics[0]);
 	matrix.addAntibiotic(antibiotics[1]);
 	matrix.addAntibiotic(antibiotics[2]);	
 
 	// Antibiotics
-	t.equal(Array.isArray(matrix.antibiotics), true);
-	t.equal(matrix.antibiotics.length, 3);
-	t.equal(matrix.antibiotics[0].antibiotic, antibiotics[0]);
-	t.equal(matrix.getAntibioticView(antibiotics[0]).antibiotic, antibiotics[0]);
+	t.equals(Array.isArray(matrix.antibiotics), true);
+	t.equals(matrix.antibiotics.length, 3);
+	t.equals(matrix.antibiotics[0] instanceof AntibioticMatrixView, true);
+	t.equals(matrix.antibiotics[0].antibiotic, antibiotics[0]);
+	t.equals(matrix.getAntibioticView(antibiotics[0]).antibiotic, antibiotics[0]);
 
 	// SubstanceClasses
-	t.equal(Array.isArray(matrix.substanceClasses), true);
-	t.equal(matrix.substanceClasses.length, 3);
+	t.equals(Array.isArray(matrix.substanceClasses), true);
+	t.equals(matrix.substanceClasses.length, 3);
 	// Classes are sorted bottom-up, see Antibiotic
-	t.equal(matrix.substanceClasses[0].substanceClass, substanceClasses[1]);
+	t.equals(matrix.substanceClasses[0].substanceClass, substanceClasses[1]);
 
 	t.end();
 
@@ -186,6 +188,8 @@ test('calculates radius', (t) => {
 });
 
 
+
+
 test('antibiotic functions', (t) => {
 
 	const set = createValidSet();
@@ -197,11 +201,13 @@ test('antibiotic functions', (t) => {
 		t.equal(item instanceof AntibioticMatrixView, true);
 	});
 
+	const xPos = set.matrix.xPositions;
+	// Don't test for real values (x/y positions), just if all entities are there
 	// xPos: 1 entry for every ab/sc
-	t.equal(set.matrix.xPositions.size, 6);
-	// Two entries for antibiotic, one for substanceClass
-	t.equal(Array.from(set.matrix.xPositions.keys()).filter((item) => item instanceof AntibioticMatrixView).length, 3);
-	t.equal(Array.from(set.matrix.xPositions.keys()).filter((item) => item instanceof SubstanceClassMatrixView).length, 3);
+	t.equal(xPos.size, 6);
+	// 3 entries for antibiotic, 3 for substanceClass
+	t.equal(Array.from(xPos.keys()).filter((item) => item instanceof AntibioticMatrixView).length, 3);
+	t.equal(Array.from(xPos.keys()).filter((item) => item instanceof SubstanceClassMatrixView).length, 3);
 
 	t.end();
 

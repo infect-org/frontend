@@ -1,9 +1,9 @@
 /**
 * Gets coordinates for all elements (antibiotics, substance classes) on x axes. Depends on view
-* information (radius etc. that depends on matrix size).
+* information (diameter etc. that depends on matrix size).
 *
 * @param {Array} sortedAntibiotics			Array as returned by AntibioticStore.sortedAntibiotics
-* @param {Number} radius					Radius of a single resistance
+* @param {Number} diameter					diameter of a single resistance
 * @param {Number} space						Space between resistances (of an antibiotic)
 * @returns {Map} x positions				Map with
 *											- keys for every antibiotic and substance class
@@ -13,7 +13,7 @@
 */
 import getArrayDiff from '../../helpers/getArrayDiff';
 
-export default function calculateXPositions(sortedAntibiotics, radius, space) {
+export default function calculateXPositions(sortedAntibiotics, diameter, space) {
 
 	// Get all visible antibiotics
 	const visibleAB = sortedAntibiotics.filter((ab) => ab.visible);
@@ -27,7 +27,7 @@ export default function calculateXPositions(sortedAntibiotics, radius, space) {
 	visibleAB.reduce((prev, current, index) => {
 
 
-		const substanceClasses = current.getSubstanceClasses();
+		const substanceClasses = current.antibiotic.getSubstanceClasses();
 
 
 		// CONTRACTED
@@ -42,8 +42,8 @@ export default function calculateXPositions(sortedAntibiotics, radius, space) {
 
 
 		// Get changes in substance classes
-		const diff = getArrayDiff(prev.previousSubstanceClasses, current.getSubstanceClasses());
-		prev.previousSubstanceClasses = current.getSubstanceClasses();
+		const diff = getArrayDiff(prev.previousSubstanceClasses, current.antibiotic.getSubstanceClasses());
+		prev.previousSubstanceClasses = current.antibiotic.getSubstanceClasses();
 
 
 		// Substance class removed: Add right property
@@ -67,22 +67,23 @@ export default function calculateXPositions(sortedAntibiotics, radius, space) {
 		prev.x += space;
 		xMap.set(current, {
 			left: prev.x
-			, right: prev.x + radius
+			, right: prev.x + diameter
 		});
 
 
+
 		// Last round: Add right property to all currently open substanceClasses
-		if (index === visibleAB.length - 1) substanceClasses.forEach((sClass) => xMap.get(sClass).right = prev.x + radius);
+		if (index === visibleAB.length - 1) substanceClasses.forEach((sClass) => xMap.get(sClass).right = prev.x + diameter);
 
 
-		prev.x += radius;
+		prev.x += diameter;
 		return prev;
 
 
 	}, {
 		// Used to detect changes in classes
 		previousSubstanceClasses: []
-		// Used to only add 1 radius if classes are contracted. If contracted
+		// Used to only add 1 diameter if classes are contracted. If contracted
 		// class changes, we need to add another one. Always take highest ranking
 		// contracted substance class (grand parent over parent)
 		, contractedSubstanceClass: undefined

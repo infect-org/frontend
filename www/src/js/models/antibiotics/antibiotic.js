@@ -1,6 +1,6 @@
 import {observable, computed} from 'mobx';
 
-class Anitibiotic {
+export default class Antibiotic {
 
 	/**
 	* @param {Number|String} id
@@ -25,12 +25,12 @@ class Anitibiotic {
 	* - antibiotic matches filters
 	* - all parent substance classes match filters
 	*/
-	@computed get visible() {
+	/*@computed get visible() {
 		// One of the parent substanceClasses is contracted
 		if (this.getSubstanceClasses().find((sClass) => !sClass.expanded)) return false;
 		// Filters on ab/sc (tbd)
 		return true;
-	}
+	}*/
 
 
 
@@ -47,5 +47,3 @@ class Anitibiotic {
 	}
 
 }
-
-export default Anitibiotic;

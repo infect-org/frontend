@@ -1,8 +1,8 @@
 import React from 'react';
-import AntibioticLabel from '../matrix-antibiotic/antibioticLabel';
-import BacteriumLabel from '../matrix-bacterium/bacteriumLabel';
-import Resistance from '../matrix-resistance/resistance';
-import SubstanceClass from '../matrix-substance-class/substanceClass';
+import AntibioticLabel from '../matrixAntibiotic/antibioticLabel';
+import BacteriumLabel from '../matrixBacterium/bacteriumLabel';
+import Resistance from '../matrixResistance/resistance';
+import SubstanceClass from '../matrixSubstanceClass/substanceClass';
 import {observer} from 'mobx-react';
 //import DevTools from 'mobx-react-devtools';
 

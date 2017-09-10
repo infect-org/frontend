@@ -47,7 +47,7 @@ test('handles data correctly', (t) => {
 
 	const app = new InfectApp(getConfig());
 	app.getDataPromise.then(() => {
-		console.log(app.resistances);
+		//console.log(app.resistances);
 		t.equal(app.bacteria.getAsArray().length, 2);
 		t.equal(app.resistances.getAsArray().length, 2);
 		t.equal(app.antibiotics.getAsArray().length, 2);

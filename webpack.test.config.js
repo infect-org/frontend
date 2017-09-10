@@ -36,7 +36,7 @@ module.exports = [
 			extensions: ['.js', '.jsx']
 		}
     	, plugins: [
-    		new TapWebpackPlugin({ reporter: 'faucet' })
+    		new TapWebpackPlugin({ reporter: 'tap-spec' })
     	]
 
 	}

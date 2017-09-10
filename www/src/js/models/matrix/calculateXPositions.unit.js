@@ -10,17 +10,20 @@ function createSubstanceClass(parent, expanded = true, id = Math.random(), ) {
 	return obj;
 }
 
+// Create fake instances of AntibioticMatrixView
 function createAntibiotic(substanceClass, visible = true, id = Math.random()) {
 	const obj = {
 		id: id
 		, visible: visible
-		, substanceClass: substanceClass
-		, getSubstanceClasses: function() {
-			const classes = [this.substanceClass];
-			while (classes.slice(-1)[0].parent) {
-				classes.push(classes.slice(-1)[0].parent);
+		, antibiotic: {
+			substanceClass: substanceClass
+			, getSubstanceClasses: function() {
+				const classes = [substanceClass];
+				while (classes.slice(-1)[0].parent) {
+					classes.push(classes.slice(-1)[0].parent);
+				}
+				return classes;
 			}
-			return classes;
 		}
 	};
 	return obj;

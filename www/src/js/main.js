@@ -6,6 +6,8 @@ import InfectApp from './infectApp';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import Matrix from './components/matrix/matrix';
+import FilterList from './components/filterList/filterList';
+import SelectedFiltersList from './components/selectedFilters/selectedFiltersList';
 import {autorun, whyRun, useStrict} from 'mobx';
 import debug from 'debug';
 const log = debug('infect:Main');
@@ -36,3 +38,5 @@ const app = new InfectApp(config);
 // React
 log('views:', app.views);
 ReactDOM.render(<Matrix matrix={app.views.matrix}/>, document.querySelector('Matrix'));
+ReactDOM.render(<FilterList filterValues={app.filterValues} selectedFilters={app.selectedFilters}/>, document.querySelector('FilterList'));
+ReactDOM.render(<SelectedFiltersList selectedFilters={app.selectedFilters}/>, document.querySelector('SelectedFiltersList'));

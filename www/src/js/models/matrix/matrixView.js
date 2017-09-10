@@ -50,6 +50,7 @@ class MatrixView {
 	@observable greatestSubstanceClassLabelHeight = undefined;
 
 	constructor() {
+
 		// #todo: Why do decorators not work for Maps? Maybe it's a cross-compiling issue?
 		/* Key: Antibiotic ID (for inverse resolution of matrixView – mobx only allows numbers & shit), 
 		   value: AntibioticMatrixView */
@@ -84,7 +85,13 @@ class MatrixView {
 
 
 
+	setSelectedFilters(selectedFilters) {
+		this._selectedFilters = selectedFilters;
+	}
 
+	get selectedFilters() {
+		return this._selectedFilters;
+	}
 
 
 
@@ -164,11 +171,11 @@ class MatrixView {
 	* @returns {Map}		Key: AntibioticMatrixView or SubstanceClassMatrixView; value: Object with left and right
 	*/
 	@computed get xPositions() {
-		const xPositions = calculateXPositions(this.sortedAntibiotics.map((item) => item.antibiotic), this.defaultRadius * 2, this.space);
+		const xPositions = calculateXPositions(this.sortedAntibiotics, this.defaultRadius * 2, this.space);
 		// Map raw ab/scs to corresponding martrixViews
 		const result = new Map();
 		xPositions.forEach((value, key) => {
-			const newKey = key instanceof SubstanceClass ? this._substanceClasses.get(key.id) : this._antibiotics.get(key.id);
+			const newKey = key instanceof SubstanceClass ? this._substanceClasses.get(key.id) : key;
 			result.set(newKey, value);
 		});
 		return result;

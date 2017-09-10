@@ -12,7 +12,10 @@ import BacteriaStore from './models/bacteria/bacteriaStore';
 import Resistance from './models/resistances/resistance';
 import ResistancesStore from './models/resistances/resistancesStore';
 import MatrixView from './models/matrix/matrixView';
-import {observable} from 'mobx';
+import getFilterConfig from './models/filters/getFilterConfig.js';
+import PropertyMap from './models/propertyMap/propertyMap';
+import {observable, autorun, reaction} from 'mobx';
+import SelectedFilters from './models/filters/selectedFilters';
 import debug from 'debug';
 const log = debug('infect:App');
 
@@ -41,12 +44,34 @@ export default class InfectApp {
 		this.substanceClasses = new SubstanceClassesStore();
 		this.resistances = new ResistancesStore([], (item) => item.bacterium.id + '/' + item.antibiotic.id);
 
+		this.filterValues = new PropertyMap();
+		this._setupFilterValues();
+
+		this.selectedFilters = new SelectedFilters();
+
 		// Make promise public so that anything outside can check if data is ready.
 		// Don't directly return the promise as a constructor should return the class
 		// instance.
 		this.getDataPromise = this._getData();
 
+		this.views.matrix.setSelectedFilters(this.selectedFilters);
+
 	}
+
+
+
+
+	/**
+	* Confgiures filterValues for antibiotics, bacteria etc.
+	*/
+	_setupFilterValues() {
+		const filterConfig = getFilterConfig();
+		filterConfig.forEach((config) => {
+			this.filterValues.addConfiguration(config.entityType, config.config);
+			log('FilterConfig set for %s', config.entityType);
+		});
+	}
+
 
 
 	/**
@@ -136,7 +161,9 @@ export default class InfectApp {
 			}
 			const sc = ab.substanceClasses && ab.substanceClasses.length ? 
 				this.substanceClasses.getById(ab.substanceClasses[0].id) : undefined;
-			this.antibiotics.add(new Antibiotic(ab.id, ab.name, sc));
+			const antibiotic = new Antibiotic(ab.id, ab.name, sc);
+			this.filterValues.addEntity('antibiotic', antibiotic);
+			this.antibiotics.add(antibiotic);
 		});
 
 	}

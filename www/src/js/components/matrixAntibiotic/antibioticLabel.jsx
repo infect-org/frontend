@@ -31,7 +31,8 @@ export default class AntibioticLabel extends React.Component {
 	_getTransformation() {
 		if (!this._textElement) return 'translate(0, 0)';
 		// We must add some of the height (60°/90°) as we rotated the label which positions it more to the left
-		const left = this.props.matrix.xPositions.get(this.props.antibiotic).left + this._textElement.getBBox().height * 7.5/9;
+		const pos = this.props.matrix.xPositions.get(this.props.antibiotic);
+		const left = (pos ? pos.left : 0) + this._textElement.getBBox().height * 1.2;
 		const substanceClassModifier = (this.props.matrix.maxAmountOfSubstanceClassHierarchies -
 		 this.props.antibiotic.antibiotic.getSubstanceClasses().length);
 		const top = (this.props.matrix.antibioticLabelRowHeight || 0) + 
@@ -40,7 +41,9 @@ export default class AntibioticLabel extends React.Component {
 	}
 
 	_getOpacity() {
-		return this.props.matrix.defaultRadius ? 1 : 0;
+		if (!this.props.matrix.defaultRadius) return 0;
+		if (!this.props.antibiotic.visible) return 0;
+		return 1;
 	}
 
 	_setupResizeListener() {

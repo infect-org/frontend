@@ -714,7 +714,7 @@ input:hover + .side-label
 .resistanceMatrix {
   max-width: 2000px;
   /* or circles are too large */
-  min-width: 1200px;
+  min-width: 1400px;
   /* or circles are smaller than the font */
   width: 100%;
   font-family: futura_ltcondensed;
@@ -722,10 +722,8 @@ input:hover + .side-label
   .resistanceMatrix__bacteriumLabelText {
     text-anchor: end; }
   .resistanceMatrix__resistanceText {
-    fill: black;
-    opacity: 0.4; }
-  .resistanceMatrix__substanceClassLine {
-    fill: #ccc; }
+    /*fill: black;
+        opacity: 0.4;*/ }
 
 .search {
   position: absolute;

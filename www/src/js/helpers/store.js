@@ -1,3 +1,5 @@
+import {observable} from 'mobx';
+
 /**
 * Simple store for antibiotics, bacteria etc.
 */
@@ -12,7 +14,7 @@ export default class Store {
 	*/
 	constructor(values = [], idGeneratorFunction) {
 		// Key: id, value: content. Use map to speed up lookups.
-		this._items = new Map();
+		this._items = observable.map();
 		this._idGeneratorFunction = idGeneratorFunction;
 
 		// If values are passed, add them
