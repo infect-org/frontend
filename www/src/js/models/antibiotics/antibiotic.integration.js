@@ -15,3 +15,9 @@ test('returns corret parent substanceClasses', (t) => {
 	t.deepEqual(ab.getSubstanceClasses(), [child, parent, grandParent]);
 	t.end();
 });
+
+test('adds properties', (t) => {
+	const ab = new Antibiotic('test', 1, new SubstanceClass(2, 'new'), {iv: true});
+	t.equals(ab.iv, true);
+	t.end();
+});

@@ -57,6 +57,15 @@ class AntibioticFilterList extends React.Component {
 					})};
 				</select>
 
+                <h3 className="gray margin-top">Intravenous</h3>
+				<ul className="group__list group__list--vertical">
+					{this.props.filterValues.getValuesForProperty('antibiotic', 'iv').map((item) => {
+						return <FilterListCheckbox key={item.value} name={item.niceValue} 
+							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
+							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
+					})}
+				</ul>
+
                 <h3 className="gray margin-top">Substance Class</h3>
 				<ul className="group__list group__list--vertical">
 					{this.props.filterValues.getValuesForProperty('substanceClass', 'name').sort(this._sortByProperty('niceValue')).map((item) => {

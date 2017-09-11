@@ -163,7 +163,9 @@ export default class InfectApp {
 			}
 			const sc = ab.substanceClasses && ab.substanceClasses.length ? 
 				this.substanceClasses.getById(ab.substanceClasses[0].id) : undefined;
-			const antibiotic = new Antibiotic(ab.id, ab.name, sc);
+			const antibiotic = new Antibiotic(ab.id, ab.name, sc, {
+				iv: ab.iv
+			});
 			this.filterValues.addEntity('antibiotic', antibiotic);
 			this.antibiotics.add(antibiotic);
 		});

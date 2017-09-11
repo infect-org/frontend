@@ -7,7 +7,7 @@ export default class Antibiotic {
 	* @param {String} name
 	* @param {SubstanceClass|undefined} substanceClass
 	*/
-	constructor(id, name, substanceClass) {
+	constructor(id, name, substanceClass, properties = {}) {
 
 		if (!id || !name) throw new Error('Antibiotic: Arguments missing');
 		if (!substanceClass) throw new Error(`Antibiotic: Substance class must be provided`);
@@ -15,6 +15,12 @@ export default class Antibiotic {
 		this.id = id;
 		this.name = name;
 		this.substanceClass = substanceClass;
+
+		// Add properties
+		Object.keys(properties).forEach((key) => {
+			this[key] = properties[key];
+		});
+
 	}
 
 

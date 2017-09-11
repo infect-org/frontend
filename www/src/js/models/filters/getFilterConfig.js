@@ -10,10 +10,10 @@ export default function() {
 				translation: 'Intravenous'
 				, valueTranslations: [{
 					value: true
-					, niceValue: 'Yes'
+					, translation: 'Yes'
 				}, {
 					value: false
-					, niceValue: 'No'
+					, translation: 'No'
 				}]
 			}
 		}

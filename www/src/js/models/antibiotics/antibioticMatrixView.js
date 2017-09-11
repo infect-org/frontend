@@ -18,8 +18,13 @@ class AntibioticMatrixView {
 
 	@computed get visible() {
 		const abFilters = this._matrixView.selectedFilters.getFiltersByType('antibiotic');
-		const visible = doFiltersMatch(this.antibiotic, abFilters);
-		return visible;
+		const abVisible = doFiltersMatch(this.antibiotic, abFilters);
+		if (!abVisible) return false;
+		// If any one of the substanceClasses is visible, display antibiotic
+		const scs = this.antibiotic.getSubstanceClasses();
+		const scFilters = this._matrixView.selectedFilters.getFiltersByType('substanceClass');
+		const scVisible = scs.some((sc) => doFiltersMatch(sc, scFilters));
+		return scVisible;
 	}
 
 }
