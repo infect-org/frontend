@@ -31,7 +31,7 @@ class Resistance extends React.Component {
 
 	_getRadius() {
 		const {min, max} = this.props.matrix.sampleSizeExtremes;
-		return Math.round(getRelativeValue(this._getMostPreciseValue().sampleSize, min, max, 0.4) * 
+		return Math.round(getRelativeValue(this._getMostPreciseValue().sampleSize, min, max, 0.2) * 
 			this.props.matrix.defaultRadius);
 	}
 

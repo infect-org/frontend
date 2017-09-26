@@ -181,16 +181,48 @@ export default class InfectApp {
 
 
 	_createResistances(resistances) {
-		resistances.map((res) => {
-			const bacterium = this.bacteria.getById(res.id_bacteria);
-			const antibiotic = this.antibiotics.getById(res.id_compound);
+
+		const bacteria = this.bacteria.get().values();
+		const antibiotics = this.antibiotics.get().values();
+
+		//const maxSampleSize = resistances.reduce((prev, current) => Math.max(current, prev), 0);
+		resistances.forEach((res, index) => {
+
+			// !!! CAREFUL !!! In the JSON file, bacteria and antibiotics were interchanged!
+			// bacteria -> antibiotic, compound -> bacteria!
+			const compoundName = res.compoundName.substr(0, res.compoundName.indexOf('/') - 1).toLowerCase();
+			const bacterium = bacteria.find((item) => {
+				//console.log(item.name.toLowerCase(), compoundName);
+				return item.name.toLowerCase() === compoundName;
+			});
+			const abName = res.bacteriaName.toLowerCase();
+			const abSingularName = abName.replace(/e\b/g, '');
+			const abNameVariants = [
+				abName
+				// Some antibiotic's names are in plural form
+				, abSingularName
+				, abName.replace(/\//g, ' / ')
+				, abSingularName.replace(/\//g, ' / ')
+			];
+			const antibiotic = antibiotics.find((item) => {
+				if (abNameVariants.indexOf(item.name.toLowerCase()) > -1) return true;
+			});
+			if (!bacterium) {
+				console.error('InfectApp: Bacterium %o not found for resistance %o', res.compoundName, res);
+				return;
+			}
+			if (!antibiotic) {
+				console.error('InfectApp: Antibiotic %o not found for resistance %o, names are %o', res.bacteriaName, res, abNameVariants);
+				return;
+			}
+
 			// #todo: Remove – only needed for old/bad data
 			if (!bacterium || !antibiotic) {
 				console.warn('Missing data for', res);
 				return;
 			}
 			const resistanceValues = [];
-			if (res.resistanceDefault) resistanceValues.push({
+			/*if (res.resistanceDefault) resistanceValues.push({
 				type: 'default'
 				, value: this._getCharacter(res.resistanceDefault)
 				, sampleSize: this._getRandomSampleSize()
@@ -199,26 +231,27 @@ export default class InfectApp {
 				type: 'class'
 				, value: this._getCharacter(res.classResistanceDefault)
 				, sampleSize: this._getRandomSampleSize()
-			});
+			});*/
 			if (res.resistanceImport) resistanceValues.push({
 				type: 'import'
 				, value: res.resistanceImport / 100
-				, sampleSize: this._getRandomSampleSize()
+				, sampleSize: res.sampleCount || 0
 			});
 			if (!resistanceValues.length) return;
 			//console.error(resistanceValues);
 			this.resistances.add(new Resistance(resistanceValues, antibiotic, bacterium));
+		
 		});
 	}
 
 	// #todo: remove when data's ready
-	_getRandomSampleSize() {
+	/*_getRandomSampleSize() {
 		return Math.round(Math.random() * 5000 * 100);
-	}
+	}*/
 	// #todo: remove
-	_getCharacter(value) {
+	/*_getCharacter(value) {
  		return value === 3 ? 0.9 : (value === 2 ? 0.6 : 0.3);
-	}
+	}*/
 
 
 }
