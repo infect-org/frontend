@@ -718,12 +718,24 @@ input:hover + .side-label
   /* or circles are smaller than the font */
   width: 100%;
   font-family: futura_ltcondensed;
-  font-size: 11pt; }
+  font-size: 11pt;
+  /**
+    * Resistance Detail (Hover)
+    */ }
   .resistanceMatrix__bacteriumLabelText {
     text-anchor: end; }
-  .resistanceMatrix__resistanceText {
-    /*fill: black;
-        opacity: 0.4;*/ }
+  .resistanceMatrix__resistance {
+    cursor: none; }
+  .resistanceMatrix__resistanceDetail {
+    transition: transform 0.1s;
+    pointer-events: none; }
+  .resistanceMatrix__resistanceDetailValueText {
+    font-size: 15pt; }
+  .resistanceMatrix__resistanceDetailValuePercentSign {
+    font-size: 11pt; }
+  .resistanceMatrix__resistanceDetailCircleShadow {
+    fill: #000;
+    opacity: 0.4; }
 
 .search {
   position: absolute;

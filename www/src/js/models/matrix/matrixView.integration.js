@@ -266,6 +266,15 @@ test('updates sample size extremes', (t) => {
 
 
 
+test('active resistance', (t) => {
+	const set = createValidSet();
+	const {matrix, resistances} = set;
+	matrix.setActiveResistance(resistances[0]);
+	t.equals(matrix.activeResistance, resistances[0]);
+	matrix.setActiveResistance();
+	t.equals(matrix.activeResistance, undefined);
+	t.end();
+});
 
 
 

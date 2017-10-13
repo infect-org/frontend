@@ -10,9 +10,8 @@
         text-anchor: end;
     }
 
-    &__resistanceText {
-        /*fill: black;
-        opacity: 0.4;*/
+    &__resistance {
+        cursor: none;
     }
 
     &__substanceClassLine {
@@ -21,5 +20,31 @@
 
         }
     }
+
+    /**
+    * Resistance Detail (Hover)
+    */
+    &__resistanceDetail {
+        transition: transform 0.1s;
+        // Don't let the <g> cause mouseLeaves on the underlying resistance
+        pointer-events: none;
+    }
+
+    &__resistanceDetailValueText {
+        font-size: 15pt;
+    }
+
+    &__resistanceDetailValuePercentSign {
+        font-size: 11pt;
+    }
+
+    &__resistanceDetailCircle {
+    }
+
+    &__resistanceDetailCircleShadow {
+        fill: #000;
+        opacity: 0.4;
+    }
+
 
 }

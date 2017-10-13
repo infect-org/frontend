@@ -3,6 +3,7 @@ import AntibioticLabel from '../matrixAntibiotic/antibioticLabel';
 import BacteriumLabel from '../matrixBacterium/bacteriumLabel';
 import Resistance from '../matrixResistance/resistance';
 import SubstanceClass from '../matrixSubstanceClass/substanceClass';
+import ResistanceDetail from '../matrixResistance/resistanceDetail';
 import {observer} from 'mobx-react';
 //import DevTools from 'mobx-react-devtools';
 
@@ -94,11 +95,19 @@ export default class Matrix extends React.Component {
 					)}
 				</g>
 
+				{ /* Only render when radius is ready and after labels were drawn or we will have multiple re-renders */ }
+				{ this.props.matrix.defaultRadius && this.props.matrix.antibioticLabelRowHeight && 
 				<g style={{transform: this._getMainMatrixTransformation()}} className="resistanceMatrix__resistances">
-					{this.props.matrix.defaultRadius && this.props.matrix.resistances.map((res) =>
+					{ /* Resistances */ }
+					{this.props.matrix.resistances.map((res) =>
 						<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} matrix={this.props.matrix} resistance={res}/>
 					)}
+					{ /* Resistance detail (hover) */ }
+					{ this.props.matrix.activeResistance &&
+						<ResistanceDetail resistance={this.props.matrix.activeResistance} defaultRadius={ this.props.matrix.defaultRadius }/>
+					}
 				</g>
+				}
 
 			</svg>
 		);

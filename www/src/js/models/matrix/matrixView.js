@@ -37,6 +37,11 @@ class MatrixView {
 	@observable space = 3;
 
 	/**
+	* Resistance that was hovered by the user
+	*/
+	@observable activeResistance = undefined;
+
+	/**
 	* Largest and smallest sample size. Needed to calculate size of resistance circles.
 	*/
 	@observable sampleSizeExtremes = {
@@ -225,7 +230,7 @@ class MatrixView {
 		const id = `${ resistance.antibiotic.id }/${ resistance.bacterium.id }`;
 		if (this._resistances.has(id)) throw new Error(`Trying to overwrite resistance; not yet implemented. 
 			sampleSizeExtremes must be recalculated.`);
-		this._resistances.set(id, new ResistanceMatrixView(resistance));
+		this._resistances.set(id, new ResistanceMatrixView(resistance, this));
 		this._updateSampleSizeExtremes(resistance);
 	}
 
@@ -241,6 +246,13 @@ class MatrixView {
 		if (mostPrecise.sampleSize > this.sampleSizeExtremes.max) this.sampleSizeExtremes.max = mostPrecise.sampleSize;
 	}
 
+	/**
+	* Sets or removes the active resistance (that is hovered by the user's input device). 
+	* @param {ResistanceMatrixView || undefined} resistance			Active resistance or undefined to reset it.
+	*/
+	@action setActiveResistance(resistance) {
+		this.activeResistance = resistance;
+	}
 
 
 
