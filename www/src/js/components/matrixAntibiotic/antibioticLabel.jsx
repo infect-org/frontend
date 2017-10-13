@@ -51,10 +51,16 @@ export default class AntibioticLabel extends React.Component {
 		window.addEventListener('resize', () => this._setDimensions());
 	}
 
+	_getHighlightClass() {
+		const activeResistance = this.props.matrix.activeResistance;
+		if (!activeResistance) return '';
+		return this.props.antibiotic.antibiotic === activeResistance.resistance.antibiotic ? 'highlight' : '';
+	}
+
 	render() {
 		return (
 			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}} className="resistanceMatrix__antibioticLabel">
-				<text ref={(el) => this._setTextElement(el)} className="resistanceMatrix__antibioticLabelText">
+				<text ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this._getHighlightClass() }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>
 			</g>

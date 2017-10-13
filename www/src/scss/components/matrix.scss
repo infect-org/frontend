@@ -21,6 +21,15 @@
         }
     }
 
+    &__antibioticLabelText,
+    &__bacteriumLabelText {
+
+        &.highlight {
+            fill: #ff623f;
+        }
+
+    }
+
     /**
     * Resistance Detail (Hover)
     */

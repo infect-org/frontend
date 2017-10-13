@@ -31292,7 +31292,6 @@ var ResistanceMatrixView = (_class = function () {
 	}, {
 		key: 'xPosition',
 		get: function get() {
-			console.error(this);
 			var abView = this._matrixView.getAntibioticView(this.resistance.antibiotic);
 			return this._matrixView.xPositions.get(abView);
 		}
@@ -44791,6 +44790,13 @@ var AntibioticLabel = (0, _mobxReact.observer)(_class = function (_React$Compone
 			});
 		}
 	}, {
+		key: '_getHighlightClass',
+		value: function _getHighlightClass() {
+			var activeResistance = this.props.matrix.activeResistance;
+			if (!activeResistance) return '';
+			return this.props.antibiotic.antibiotic === activeResistance.resistance.antibiotic ? 'highlight' : '';
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this3 = this;
@@ -44802,7 +44808,7 @@ var AntibioticLabel = (0, _mobxReact.observer)(_class = function (_React$Compone
 					'text',
 					{ ref: function ref(el) {
 							return _this3._setTextElement(el);
-						}, className: 'resistanceMatrix__antibioticLabelText' },
+						}, className: 'resistanceMatrix__antibioticLabelText ' + this._getHighlightClass() },
 					this.props.antibiotic.antibiotic.name
 				)
 			);
@@ -45218,6 +45224,13 @@ var BacteriumLabel = (0, _mobxReact.observer)(_class = function (_React$Componen
 			});
 		}
 	}, {
+		key: '_getHighlightClass',
+		value: function _getHighlightClass() {
+			var activeResistance = this.props.matrix.activeResistance;
+			if (!activeResistance) return '';
+			return this.props.bacterium.bacterium === activeResistance.resistance.bacterium ? 'highlight' : '';
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this3 = this,
@@ -45225,14 +45238,14 @@ var BacteriumLabel = (0, _mobxReact.observer)(_class = function (_React$Componen
 
 			return _react2.default.createElement(
 				'g',
-				{ style: { transform: this._getTransformation(), opacity: this._getOpacity() }, className: 'resistanceMatrix__antibioticLabel' },
+				{ style: { transform: this._getTransformation(), opacity: this._getOpacity() }, className: 'resistanceMatrix__bacteriumLabel' },
 				'/* rect is only used to give the g a height so that text can be aligned middle */ /* We have to place label to the right (x) in order for text-anchor to work. */',
 				_react2.default.createElement(
 					'text',
 					(_React$createElement = { x: this.props.matrix.defaultRadius, y: this.props.matrix.defaultRadius,
 						ref: function ref(el) {
 							return _this3._setTextElement(el);
-						} }, (0, _defineProperty3.default)(_React$createElement, 'x', this.props.matrix.bacteriumLabelColumnWidth), (0, _defineProperty3.default)(_React$createElement, 'className', 'resistanceMatrix__bacteriumLabelText'), (0, _defineProperty3.default)(_React$createElement, 'dominantBaseline', 'middle'), (0, _defineProperty3.default)(_React$createElement, 'y', this.props.matrix.defaultRadius), _React$createElement),
+						} }, (0, _defineProperty3.default)(_React$createElement, 'x', this.props.matrix.bacteriumLabelColumnWidth), (0, _defineProperty3.default)(_React$createElement, 'className', 'resistanceMatrix__bacteriumLabelText ' + this._getHighlightClass()), (0, _defineProperty3.default)(_React$createElement, 'dominantBaseline', 'middle'), (0, _defineProperty3.default)(_React$createElement, 'y', this.props.matrix.defaultRadius), _React$createElement),
 					this.props.bacterium.bacterium.name
 				)
 			);

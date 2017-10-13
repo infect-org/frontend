@@ -726,6 +726,8 @@ input:hover + .side-label
     text-anchor: end; }
   .resistanceMatrix__resistance {
     cursor: none; }
+  .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
+    fill: #ff623f; }
   .resistanceMatrix__resistanceDetail {
     transition: transform 0.1s;
     pointer-events: none; }

@@ -30,16 +30,19 @@ class ResistanceDetail extends React.Component {
 					cx={ this._radius - this.props.defaultRadius } cy={ this._radius - this.props.defaultRadius }
 					className="resistanceMatrix__resistanceDetailCircleShadow">
 				</circle>
+				{ /* Background cirlce */ }
 				<circle r={ this._radius } fill={ this.props.resistance.backgroundColor } 
 					cx={ this._radius - this.props.defaultRadius } cy={ this._radius - this.props.defaultRadius }
 					className="resistanceMatrix__resistanceDetailCircle">
 				</circle>
+				{ /* Value */ }
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="alphabetical"  textAnchor="middle"
 					x={ this._radius - this.props.defaultRadius } y={ this._radius - this.props.defaultRadius } 
 					className="resistanceMatrix__resistanceDetailValueText">
 					{Math.round(this.props.resistance.mostPreciseValue.value * 100)}
 					<tspan className="resistanceMatrix__resistanceDetailValuePercentSign">%</tspan>
 				</text>
+				{ /* Sample Size */ }
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="hanging"  textAnchor="middle" 
 					x={ this._radius - this.props.defaultRadius } y={ this._radius - this.props.defaultRadius + 5 } 
 					className="resistanceMatrix__resistanceDetailSampleSizeText">

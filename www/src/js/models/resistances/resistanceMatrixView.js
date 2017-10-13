@@ -44,7 +44,6 @@ export default class ResistanceMatrixView {
 	}
 
 	@computed get xPosition() {
-		console.error(this);
 		const abView = this._matrixView.getAntibioticView(this.resistance.antibiotic);
 		return this._matrixView.xPositions.get(abView);
 	}
