@@ -4,10 +4,10 @@ import { observer } from 'mobx-react';
 import FilterListCheckbox from '../filterListCheckbox/filterListCheckbox';
 import generateFilterList from './generateFilterList';
 import debug from 'debug';
-const log = debug('infect:AntibioticFilterList');
+const log = debug('infect:AntibioticsFilterList');
 
 @observer
-class AntibioticFilterList extends React.Component {
+class AntibioticsFilterList extends React.Component {
 
 	_sortByProperty(property) {
 		return (a, b) => a[property] < b[property] ? -1 : 1;
@@ -20,17 +20,31 @@ class AntibioticFilterList extends React.Component {
 		else this.props.selectedFilters.removeFilter(item);
 	}
 
-	_handleDropdownFilterChange(index) {
+
+	/**
+	* Called whenever the value of the name dropdown changes.
+	*/
+	_handleNameDropdownFilterChange(index) {
 		const selected = this._getNamesBySelection()[index];
 		this._handleFilterChange(selected);
 	}
 
+
+	/**
+	* Returns true if the item passed is selected.
+	* @param {Object} item		Any filter item that's selection state should be checked
+	* @returns {Boolean}
+	*/
 	_isChecked(item) {
 		return createTransformer((item) => {
 			return this.props.selectedFilters.filters.indexOf(item) > -1;
 		})(item);
 	}
 
+	/**
+	* Returns all names that are either selected or not.
+	* @param {Boolean} selected		True if selected names should be returned, else false
+	*/
 	_getNamesBySelection(selected) {
 		const names = this.props.filterValues.getValuesForProperty('antibiotic', 'name').sort(this._sortByProperty('niceValue'));
 		return names.filter((name) => {
@@ -50,21 +64,12 @@ class AntibioticFilterList extends React.Component {
 							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
 					})}
 				</ul>
-				<select className="select" onChange={(ev) => this._handleDropdownFilterChange(ev.target.value)}>
+				<select className="select" onChange={(ev) => this._handleNameDropdownFilterChange(ev.target.value)}>
 					<option>Please chose …</option>
 					{this._getNamesBySelection().map((item, index) => {
 						return <option key={item.value} value={index}>{item.niceValue}</option>;
 					})};
 				</select>
-
-                <h3 className="gray margin-top">Intravenous</h3>
-				<ul className="group__list group__list--vertical">
-					{this.props.filterValues.getValuesForProperty('antibiotic', 'iv').map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
-				</ul>
 
                 <h3 className="gray margin-top">Substance Class</h3>
 				<ul className="group__list group__list--vertical">
@@ -75,10 +80,29 @@ class AntibioticFilterList extends React.Component {
 					})}
 				</ul>
 
+                <h3 className="gray margin-top">Intravenous</h3>
+				<ul className="group__list group__list--vertical">
+					{this.props.filterValues.getValuesForProperty('antibiotic', 'iv').map((item) => {
+						return <FilterListCheckbox key={item.value} name={item.niceValue} 
+							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
+							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
+					})}
+				</ul>
+
+                <h3 className="gray margin-top">Per Oss</h3>
+				<ul className="group__list group__list--vertical">
+					{this.props.filterValues.getValuesForProperty('antibiotic', 'po').map((item) => {
+						return <FilterListCheckbox key={item.value} name={item.niceValue} 
+							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
+							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
+					})}
+				</ul>
+
+
 			</div>
 		);
 	}
 
 }
 
-export default generateFilterList(AntibioticFilterList);
+export default generateFilterList(AntibioticsFilterList);

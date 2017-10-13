@@ -112,6 +112,24 @@ test('sorts bacteria', (t) => {
 	t.end();
 });
 
+
+/*test('only returns visible bacteria for sortedVisibleBacteria', (t) => {
+	const set = createValidSet();
+	const {matrix} = set;
+	matrix.selectedFilters.addFilter({
+		value: 'a'
+		, niceValue: 'a'
+		, property: {
+			entityType: 'bacterium'
+			, name: 'name'
+			, niceName: 'Name'
+		}
+	});
+	t.equal(matrix.sortedVisibleBacteria.length, 1);
+	t.end();
+});*/
+
+
 test('returns bacteria', (t) => {
 	const set = createValidSet();
 	const {matrix, bacteria} = set;

@@ -31,7 +31,7 @@ class Resistance extends React.Component {
 
 	_getRadius() {
 		const {min, max} = this.props.matrix.sampleSizeExtremes;
-		return Math.round(getRelativeValue(this._getMostPreciseValue().sampleSize, min, max, 0.2) * 
+		return Math.round(getRelativeValue(this._getMostPreciseValue().sampleSize, min, max, 0.4) * 
 			this.props.matrix.defaultRadius);
 	}
 
@@ -96,7 +96,7 @@ class Resistance extends React.Component {
 				<text x={this.props.matrix.defaultRadius} y={this.props.matrix.defaultRadius} textAnchor="middle" 
 					fill={this._getFontColor()}
 					dominantBaseline="central" className="resistanceMatrix__resistanceText">
-					{this._getValue()}
+					{Math.round(this._getValue() * 100)}
 				</text>
 			</g>
 		);

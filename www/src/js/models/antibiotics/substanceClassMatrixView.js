@@ -5,10 +5,6 @@ class SubstanceClassMatrixView {
 		this._matrixView = matrixView;
 	}
 
-	getXPosition() {
-
-	}
-
 }
 
 export default SubstanceClassMatrixView;

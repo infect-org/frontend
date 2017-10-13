@@ -59,8 +59,12 @@ export default class SubstanceClass extends React.Component {
 	}
 
 	_getHeaderLineHeight() {
-		//return (parents + 1) * this.props.matrix.greatestSubstanceClassLabelHeight;
 		return this.props.matrix.greatestSubstanceClassLabelHeight;
+	}
+
+	_getBodyLineHeight() {
+		// bodyHeight is injected by matrix; return 0 while it's not defined
+		return this.props.bodyHeight || 0;
 	}
 
 	_getBodyLineTop() {
@@ -70,15 +74,12 @@ export default class SubstanceClass extends React.Component {
 
 	_getLineColor() {
 		const parents = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
-		//const rank = this.props.matrix.maxAmountOfSubstanceClassHierarchies - parents;
 		const rank = parents;
 		const colorValue = color.fromRatio({
 			h: 0
 			, s: 0
 			, l: rank / this.props.matrix.maxAmountOfSubstanceClassHierarchies * 0.6 + 0.4
 		});
-		//console.error(colorValue.toHex());
-		//return '#' + colorValue.toHex();
 		return colorValue;
 	}
 
@@ -95,12 +96,14 @@ export default class SubstanceClass extends React.Component {
 						d={`M ${ this.props.matrix.space } ${ this.props.matrix.space } L ${ this._getMaxWidth() } ${ this.props.matrix.space }`}>
 					</path>
 				</defs>
+				{/* Line above substanceClass */}
 				<rect width={ this._getMaxWidth() } height={ this._lineWeight } fill={ this._getLineColor() } 
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--top"></rect>
+				{/* Line left of substanceClass (head) */}
 				<rect width={ this._lineWeight } height={ this._getHeaderLineHeight()} fill={ this._getLineColor() }
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-header"></rect>
-				 	{/*y={ this.props.matrix.space } x={ this.props.matrix.space } */}
-				 <rect width={ this._lineWeight } height="2000" y={ this._getBodyLineTop() } fill={ this._getLineColor() }
+				{/* Line left of substanceClass (body) */}
+				<rect width={ this._lineWeight } height={ this._getBodyLineHeight() } y={ this._getBodyLineTop() } fill={ this._getLineColor() }
 				 	className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body"></rect>
 				<text className="resistanceMatrix__substanceClassLabelText" dominantBaseline="hanging" 
 					style={{ transform: 'translateY(2px)' }} ref={(el) => this._setTextElement(el)}>

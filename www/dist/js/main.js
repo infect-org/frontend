@@ -21698,6 +21698,8 @@ var InfectApp = (_class = function () {
 		value: function _createResistances(resistances) {
 			var _this5 = this;
 
+			var missingAntibiotics = [];
+
 			var bacteria = this.bacteria.get().values();
 			var antibiotics = this.antibiotics.get().values();
 
@@ -21724,6 +21726,7 @@ var InfectApp = (_class = function () {
 					return;
 				}
 				if (!antibiotic) {
+					missingAntibiotics.push(abName);
 					console.error('InfectApp: Antibiotic %o not found for resistance %o, names are %o', res.bacteriaName, res, abNameVariants);
 					return;
 				}
@@ -21753,6 +21756,11 @@ var InfectApp = (_class = function () {
 				//console.error(resistanceValues);
 				_this5.resistances.add(new _resistance2.default(resistanceValues, antibiotic, bacterium));
 			});
+
+			var singularMissingAntibiotics = missingAntibiotics.filter(function (item, index) {
+				return missingAntibiotics.lastIndexOf(item) === index;
+			});
+			console.error('InfectApp: Missing antibiotics: %s', singularMissingAntibiotics.join(', '));
 		}
 
 		// #todo: remove when data's ready
@@ -45022,7 +45030,7 @@ var Resistance = (0, _mobxReact.observer)(_class = (_class2 = function (_React$C
 			    min = _props$matrix$sampleS.min,
 			    max = _props$matrix$sampleS.max;
 
-			return Math.round((0, _getRelativeValue2.default)(this._getMostPreciseValue().sampleSize, min, max, 0.2) * this.props.matrix.defaultRadius);
+			return Math.round((0, _getRelativeValue2.default)(this._getMostPreciseValue().sampleSize, min, max, 0.4) * this.props.matrix.defaultRadius);
 		}
 	}, {
 		key: '_getRelativeColorValue',
@@ -45099,7 +45107,7 @@ var Resistance = (0, _mobxReact.observer)(_class = (_class2 = function (_React$C
 						{ x: this.props.matrix.defaultRadius, y: this.props.matrix.defaultRadius, textAnchor: 'middle',
 							fill: this._getFontColor(),
 							dominantBaseline: 'central', className: 'resistanceMatrix__resistanceText' },
-						this._getValue()
+						Math.round(this._getValue() * 100)
 					)
 				)
 			);

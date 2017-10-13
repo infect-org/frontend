@@ -16,6 +16,16 @@ export default function() {
 					, translation: 'No'
 				}]
 			}
+			, po: {
+				translation: 'Per Oss'
+				, valueTranslations: [{
+					value: true
+					, translation: 'Yes'
+				}, {
+					value: false
+					, translation: 'No'
+				}]
+			}
 		}
 	}, {
 		entityType: 'substanceClass'
@@ -23,6 +33,48 @@ export default function() {
 			name: {
 				translation: 'Name'
 				, valueTranslations: (name) => name
+			}
+		}
+	}, {
+		entityType: 'bacterium'
+		, config: {
+			name: {
+				translation: 'Name'
+				, valueTranslations: (name) => name
+			}
+			, gram: {
+				translation: 'Gram'
+				, valueTranslations: [{
+					value: true
+					, translation: 'Gram+'
+				}, {
+					value: false
+					, translation: 'Gram-'
+				}]
+			}
+			, aerobic: {
+				translation: 'Aerobic'
+				, valueTranslations: [{
+					value: true
+					, translation: 'Yes'
+				}, {
+					value: false
+					, translation: 'No'
+				}]
+			}
+			, anaerobic: {
+				translation: 'Anaerobic'
+				, valueTranslations: [{
+					value: true
+					, translation: 'Yes'
+				}, {
+					value: false
+					, translation: 'No'
+				}]
+			}
+			, shape: {
+				translation: 'Shape'
+				, valueTranslations: (shape) => shape ? shape : '(Not set)'
 			}
 		}
 	}];

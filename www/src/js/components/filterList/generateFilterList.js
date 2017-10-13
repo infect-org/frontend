@@ -10,7 +10,7 @@ export default function generateFilterList(Component) {
 		render() {
 			return (
                 <div className="group">
-                    <h1>Filter für {this.props.title}</h1>
+                    <h1>Filters for {this.props.title}</h1>
 					<Component {...this.props}/>
 				</div>
 			);

@@ -1,4 +1,5 @@
 import {computed} from 'mobx';
+import doFiltersMatch from '../filters/doFiltersMatch';
 
 export default class BacteriumMatrixView {
 
@@ -10,6 +11,12 @@ export default class BacteriumMatrixView {
 	setWidth(width) {
 		if (!width) return;
 		this._matrix.setBacteriumLabelWidth(this, width);
+	}
+
+	@computed get visible() {
+		const bacteriaFilters = this._matrix.selectedFilters.getFiltersByType('bacterium');
+		const visible = doFiltersMatch(this.bacterium, bacteriaFilters);
+		return visible;
 	}
 
 }

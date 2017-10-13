@@ -19,12 +19,14 @@ export default class Matrix extends React.Component {
 		this._setupResizeListener();
 	}
 
+	/**
+	* Returns height of the whole matrix
+	*/
 	_getHeight() {
-		if (!this.props.matrix.defaultRadius) return 1;
+		if (!this.props.matrix.defaultRadius) return 0;
 		// Height: All bact labels + ab label + space between ab label and matrix (matrix.space + matrix.radius), 
 		// see bacteriumLabel
-		return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedBacteria.length +
-			this.props.matrix.antibioticLabelRowHeight + this.props.matrix.defaultRadius + this.props.matrix.space;
+		return this._getBodyHeight() + this._getEffectiveHeaderHeight();
 	}
 
 	_setSVG(element) {
@@ -61,8 +63,16 @@ export default class Matrix extends React.Component {
 	* Returns height of the whole matrix header, i.e. antibiotics, substance classes and all spacing
 	*/
 	_getEffectiveHeaderHeight() {
-		return this.props.matrix.antibioticLabelRowHeight + this._spaceBetweenGroups +
+		// this._spaceBetweenGroups / 2: Just add a small space between header and body
+		return this.props.matrix.antibioticLabelRowHeight + this._spaceBetweenGroups / 2 +
 			this.props.matrix.maxAmountOfSubstanceClassHierarchies * (this.props.matrix.greatestSubstanceClassLabelHeight || 0);
+	}
+
+	/**
+	* Returns height of the matrix' body (circles). 
+	*/
+	_getBodyHeight() {
+		return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedVisibleBacteria.length;
 	}
 
 	render() {
@@ -71,7 +81,7 @@ export default class Matrix extends React.Component {
 
 				<g style={{transform: this._getAntibioticLabelsTransformation()}} className="resistanceMatrix__antibioticsLabels">
 					{this.props.matrix.substanceClasses.map((sc) => 
-						<SubstanceClass key={sc.substanceClass.id} substanceClass={sc} matrix={this.props.matrix}/>
+						<SubstanceClass key={sc.substanceClass.id} substanceClass={sc} matrix={this.props.matrix} bodyHeight={this._getBodyHeight()}/>
 					)}
 					{this.props.matrix.sortedAntibiotics.map((ab) => 
 						<AntibioticLabel key={ab.antibiotic.id} antibiotic={ab} matrix={this.props.matrix}/>

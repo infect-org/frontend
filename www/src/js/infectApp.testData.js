@@ -121,13 +121,17 @@ export default {
             "id_bacteria": 1,
             "id_compound": 6,
             "classResistanceDefault": 0.5,
-            "resistanceDefault": 0.2
+            "resistanceImport": 0.2,
+            "bacteriaName": "Ceftazidim",
+            "compoundName": "Chlamydophila sp. / test"
         },
         {
             "id_bacteria": 2,
             "id_compound": 8,
             "classResistanceDefault": 0.3,
-            "resistanceDefault": 0.1
+            "resistanceImport": 0.1,
+            "bacteriaName": "Ceftazidim",
+            "compoundName": "Actinomyces sp. / test"
         }
     ]
 

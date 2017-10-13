@@ -13,13 +13,19 @@ export default class BacteriumLabel extends React.Component {
 		// hide the labels
 		if (!this.props.matrix.defaultRadius) return `translate(0, 0)`;
 		// Top: top of bacterium plus radius (baseline corresponds to the center of the circles)
-		const top = this.props.matrix.yPositions.get(this.props.bacterium).top;
+		const pos = this.props.matrix.yPositions.get(this.props.bacterium);
+		// If pos is not available (because bacterium is hidden) return previous top – we don't want to move
+		// labels if not necessary (as they're invisible; performance)
+		const top = pos ? pos.top : this._previousTop;
+		this._previousTop = top;
 		return `translate(0, ${ top }px)`;
 	}
 
 	_getOpacity() {
 		// Labels should be transparent as long as radius has not been calculated
-		return this.props.matrix.defaultRadius ? 1 : 0;
+		if (!this.props.matrix.defaultRadius) return 0;
+		if (!this.props.bacterium.visible) return 0;
+		return 1;
 	}
 
 	_setTextElement(element) {

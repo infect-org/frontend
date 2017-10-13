@@ -13,6 +13,7 @@ export default class SelectedFiltersList extends React.Component {
 		return (
             <div className="top-navigation__active-filters groups">
             	<SelectedFiltersForType type="antibiotics" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('antibiotic')} />
+            	<SelectedFiltersForType type="substanceClasses" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('substanceClass')} />
             	<SelectedFiltersForType type="bacteria" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('bacterium')} />
             </div>
 		);

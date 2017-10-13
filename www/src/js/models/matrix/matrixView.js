@@ -34,7 +34,7 @@ class MatrixView {
 	/**
 	* Space between resistances and between (resistances and antibiotic group dividers)
 	*/
-	@observable space = 6;
+	@observable space = 3;
 
 	/**
 	* Largest and smallest sample size. Needed to calculate size of resistance circles.
@@ -148,6 +148,7 @@ class MatrixView {
 		//log('Set dimensions of antibiotic label for %o to %d/%d', antibiotic, width, height);
 		if (width % 1 !== 0 || height % 1 !== 0) throw new Error(`MatrixView: Width and height for antibiotic labels must be integers.`);
 		const existing = this._antibioticLabelDimensions.get(antibiotic);
+		// No changes to previous value: Return to prevent unnecessary re-renderings
 		if (existing && existing.height === height && existing.width === width) return;
 		this._antibioticLabelDimensions.set(antibiotic, { width: width, height: height });
 		this._calculateAntibioticLabelRowHeight();
@@ -307,6 +308,12 @@ class MatrixView {
 		return Array.from(this._bacteria.values()).sort((a, b) => a.bacterium.name < b.bacterium.name ? -1 : 1);
 	}
 
+	@computed get sortedVisibleBacteria() {
+		return this.sortedBacteria.filter((item) => item.visible);
+	}
+
+
+
 	getBacteriumView(bacterium) {
 		return this._bacteria.get(bacterium.id);
 	}
@@ -334,7 +341,7 @@ class MatrixView {
 	@computed get yPositions() {
 		log('calculate yPositions');
 		const yPositions = new Map();
-		this.sortedBacteria.forEach((bacterium, index) => {
+		this.sortedBacteria.filter((item) => item.visible).forEach((bacterium, index) => {
 			yPositions.set(bacterium, {
 				top: index * (this.defaultRadius * 2 + this.space)
 			});

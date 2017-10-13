@@ -165,6 +165,7 @@ export default class InfectApp {
 				this.substanceClasses.getById(ab.substanceClasses[0].id) : undefined;
 			const antibiotic = new Antibiotic(ab.id, ab.name, sc, {
 				iv: ab.iv
+				, po: ab.po
 			});
 			this.filterValues.addEntity('antibiotic', antibiotic);
 			this.antibiotics.add(antibiotic);
@@ -175,12 +176,21 @@ export default class InfectApp {
 
 	_createBacteria(bacteria) {
 		bacteria.map((bact) => {
-			this.bacteria.add(new Bacterium(bact.id, bact.name));
+			const bacterium = new Bacterium(bact.id, bact.name, {
+				aerobic: bact.aerobic
+				, anaerobic: bact.anaerobic
+				, gram: bact.gram
+				, shape: bact.shape
+			});
+			this.filterValues.addEntity('bacterium', bacterium);
+			this.bacteria.add(bacterium);
 		});
 	}
 
 
 	_createResistances(resistances) {
+
+		const missingAntibiotics = [];
 
 		const bacteria = this.bacteria.get().values();
 		const antibiotics = this.antibiotics.get().values();
@@ -212,6 +222,7 @@ export default class InfectApp {
 				return;
 			}
 			if (!antibiotic) {
+				missingAntibiotics.push(abName);
 				console.error('InfectApp: Antibiotic %o not found for resistance %o, names are %o', res.bacteriaName, res, abNameVariants);
 				return;
 			}
@@ -237,12 +248,21 @@ export default class InfectApp {
 				, value: res.resistanceImport / 100
 				, sampleSize: res.sampleCount || 0
 			});
-			if (!resistanceValues.length) return;
+			if (!resistanceValues.length) {
+				console.error('InfectApp: ResistanceValue not set for %o', res);
+				return;
+			}
 			//console.error(resistanceValues);
 			this.resistances.add(new Resistance(resistanceValues, antibiotic, bacterium));
 		
 		});
+
+		const singularMissingAntibiotics = missingAntibiotics.filter((item, index) => missingAntibiotics.lastIndexOf(item) === index);
+		console.error('InfectApp: Missing antibiotics: %s', singularMissingAntibiotics.join(', '));
+
 	}
+
+
 
 	// #todo: remove when data's ready
 	/*_getRandomSampleSize() {

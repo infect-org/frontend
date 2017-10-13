@@ -23,8 +23,9 @@ export default class AntibioticLabel extends React.Component {
 		const bounds = this._textElement.getBBox();
 		// Element has a rotation of -45deg. Those are not respected in getBBox.
 		// When rotated by 45°, take    sin(45°) * width   plus   the triangle below the baseline
-		// that's a isosceles triangle
-		const height = Math.ceil(bounds.width * Math.sin(Math.PI / 4) + Math.sqrt(Math.pow(bounds.height, 2)/2));
+		// that's a isosceles triangle. 
+		// Angle is more than 45°, use PI/3.
+		const height = Math.ceil(bounds.width * Math.sin(Math.PI / 3) + Math.sqrt(Math.pow(bounds.height, 2)/2));
 		this.props.antibiotic.setDimensions(height, height);
 	}
 
