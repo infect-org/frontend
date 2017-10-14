@@ -12,7 +12,7 @@ import { observable, action } from 'mobx';
 @observer
 export default class Matrix extends React.Component {
 
-	@observable yScrollPosition;
+	@observable yScrollPosition = 0;
 
 	constructor() {
 		super();
@@ -28,7 +28,13 @@ export default class Matrix extends React.Component {
 	_setupScrollListener() {
 		const el = document.querySelector('.main__matrix');
 		el.addEventListener('scroll', (ev) => {
-			this._setYScrollPosition(el.scrollTop);
+			this._currentYScrollPosition = el.scrollTop;
+			if (!this._requestedAnimationFrame) {
+				window.requestAnimationFrame(() => {
+					this._setYScrollPosition(this._currentYScrollPosition);
+					this._requestedAnimationFrame = undefined;
+				});
+			}
 		});
 	}
 

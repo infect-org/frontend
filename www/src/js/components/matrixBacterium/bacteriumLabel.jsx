@@ -1,5 +1,6 @@
 import React from 'react';
-import {observer} from 'mobx-react';
+import { observer } from 'mobx-react';
+import { computed } from 'mobx';
 
 @observer
 export default class BacteriumLabel extends React.Component {
@@ -42,7 +43,7 @@ export default class BacteriumLabel extends React.Component {
 		window.addEventListener('resize', () => this._setWidth());
 	}
 
-	_getHighlightClass() {
+	@computed get highlightClass() {
 		const activeResistance = this.props.matrix.activeResistance;
 		if (!activeResistance) return '';
 		return this.props.bacterium.bacterium === activeResistance.resistance.bacterium ? 'highlight' : '';
@@ -55,7 +56,7 @@ export default class BacteriumLabel extends React.Component {
 				/* We have to place label to the right (x) in order for text-anchor to work. */
 				<text x={this.props.matrix.defaultRadius} y={this.props.matrix.defaultRadius} 
 					ref={(el) => this._setTextElement(el)} x={this.props.matrix.bacteriumLabelColumnWidth} 
-					className={ 'resistanceMatrix__bacteriumLabelText ' + this._getHighlightClass() } dominantBaseline="middle" 
+					className={ 'resistanceMatrix__bacteriumLabelText ' + this.highlightClass } dominantBaseline="middle" 
 					y={this.props.matrix.defaultRadius}>
 					{this.props.bacterium.bacterium.name}
 				</text>

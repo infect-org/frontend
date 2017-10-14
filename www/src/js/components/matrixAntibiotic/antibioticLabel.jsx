@@ -1,5 +1,6 @@
 import React from 'react';
-import {observer} from 'mobx-react';
+import { observer } from 'mobx-react';
+import { computed } from 'mobx';
 
 @observer
 export default class AntibioticLabel extends React.Component {
@@ -51,7 +52,7 @@ export default class AntibioticLabel extends React.Component {
 		window.addEventListener('resize', () => this._setDimensions());
 	}
 
-	_getHighlightClass() {
+	@computed get highlightClass() {
 		const activeResistance = this.props.matrix.activeResistance;
 		if (!activeResistance) return '';
 		return this.props.antibiotic.antibiotic === activeResistance.resistance.antibiotic ? 'highlight' : '';
@@ -60,7 +61,7 @@ export default class AntibioticLabel extends React.Component {
 	render() {
 		return (
 			<g transform={ this._getTransformation() } style={ { opacity: this._getOpacity() } } className="resistanceMatrix__antibioticLabel">
-				<text ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this._getHighlightClass() }>
+				<text ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>
 			</g>

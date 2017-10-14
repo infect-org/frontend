@@ -44473,9 +44473,9 @@ var Matrix = (0, _mobxReact.observer)(_class = (_class2 = function (_React$Compo
 		}
 	}, {
 		key: '_setYScrollPosition',
-		value: function _setYScrollPosition(position) {
-			this.yScrollPosition = position;
-		}
+		value: function _setYScrollPosition(position) {}
+		//this.yScrollPosition = position;
+
 
 		/**
   * Returns height of the whole matrix
@@ -44589,7 +44589,8 @@ var Matrix = (0, _mobxReact.observer)(_class = (_class2 = function (_React$Compo
 					),
 					_react2.default.createElement(
 						'g',
-						{ className: 'resistanceMatrix__antibioticsLabels', transform: 'translate(0, ' + (this.yScrollPosition || 0) + ')' },
+						{ className: 'resistanceMatrix__antibioticsLabels', transform: 'translate(0, ' + (this.yScrollPosition || 0) + ')',
+							style: 'position:fixed;' },
 						_react2.default.createElement('rect', { x: '0', y: '0', height: this._getEffectiveHeaderHeight() || 0, width: '100%', fill: 'rgb(255, 255, 255)' }),
 						_react2.default.createElement(
 							'g',
@@ -45774,10 +45775,20 @@ var SubstanceClassLine = (0, _mobxReact.observer)(_class = function (_React$Comp
 	}
 
 	(0, _createClass3.default)(SubstanceClassLine, [{
+		key: '_getLeftPosition',
+		value: function _getLeftPosition() {
+			return this.props.substanceClass.xPosition ? this.props.substanceClass.xPosition.left || 0 : 0;
+		}
+	}, {
+		key: '_getOpacity',
+		value: function _getOpacity() {
+			return this.props.substanceClass.xPosition ? 1 : 0;
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement('rect', { width: this._lineWeight, height: this.props.bodyHeight || 0, y: '0',
-				fill: this.props.substanceClass.lineColor, x: this.props.substanceClass.xPosition.left || 0,
+			return _react2.default.createElement('rect', { width: this._lineWeight, height: this.props.bodyHeight || 0, y: '0', style: { opacity: this._getOpacity() },
+				fill: this.props.substanceClass.lineColor, x: this._getLeftPosition(),
 				className: 'resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body' });
 		}
 	}]);
