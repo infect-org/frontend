@@ -4,20 +4,36 @@ import BacteriumLabel from '../matrixBacterium/bacteriumLabel';
 import Resistance from '../matrixResistance/resistance';
 import SubstanceClass from '../matrixSubstanceClass/substanceClass';
 import ResistanceDetail from '../matrixResistance/resistanceDetail';
-import {observer} from 'mobx-react';
+import SubstanceClassLine from '../matrixSubstanceClass/substanceClassLine';
+import { observer } from 'mobx-react';
+import { observable, action } from 'mobx';
 //import DevTools from 'mobx-react-devtools';
 
 @observer
 export default class Matrix extends React.Component {
 
+	@observable yScrollPosition;
+
 	constructor() {
 		super();
 		// Space between label groups and matrix
 		this._spaceBetweenGroups = 20;
+		this._setupScrollListener();
 	}
 
 	componentDidMount() {
 		this._setupResizeListener();
+	}
+
+	_setupScrollListener() {
+		const el = document.querySelector('.main__matrix');
+		el.addEventListener('scroll', (ev) => {
+			this._setYScrollPosition(el.scrollTop);
+		});
+	}
+
+	@action _setYScrollPosition(position) {
+		this.yScrollPosition = position;
 	}
 
 	/**
@@ -80,38 +96,60 @@ export default class Matrix extends React.Component {
 
 	render() {
 		return(
-			<svg ref={(el) => this._setSVG(el)} style={{height: this._getHeight()}} className="resistanceMatrix">
+			<div>
+				<svg ref={ (el) => this._setSVG(el) } style={ { height: this._getHeight() } } className="resistanceMatrix">
 
-				<g transform={ this._getAntibioticLabelsTransformation() } className="resistanceMatrix__antibioticsLabels">
-					{this.props.matrix.substanceClasses.map((sc) => 
-						<SubstanceClass key={sc.substanceClass.id} substanceClass={sc} matrix={this.props.matrix} bodyHeight={this._getBodyHeight()}/>
-					)}
-					{this.props.matrix.sortedAntibiotics.map((ab) => 
-						<AntibioticLabel key={ab.antibiotic.id} antibiotic={ab} matrix={this.props.matrix}/>
-					)}
-				</g>
+					{ /* Lines for substance classes in body */ }
+					<g transform={ this._getMainMatrixTransformation() }>
+						{ this.props.matrix.substanceClasses.map((sc) => 
+							<SubstanceClassLine key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix } bodyHeight={ this._getBodyHeight() }/>
+						) }
+					</g>
 
-				<g transform={ this._getBacteriaLabelsTransformation() } className="resistanceMatrix__bacteriaLabels">
-					{this.props.matrix.sortedBacteria.map((bact) => 
-						<BacteriumLabel key={bact.bacterium.id} bacterium={bact} matrix={this.props.matrix}/>
-					)}
-				</g>
+					{ /* Bacteria labels */ }
+					<g transform={ this._getBacteriaLabelsTransformation() } className="resistanceMatrix__bacteriaLabels">
+						{ this.props.matrix.sortedBacteria.map((bact) => 
+							<BacteriumLabel key={ bact.bacterium.id } bacterium={ bact } matrix={ this.props.matrix }/>
+						) }
+					</g>
 
-				{ /* Only render when radius is ready and after labels were drawn or we will have multiple re-renders */ }
-				{ this.props.matrix.defaultRadius && this.props.matrix.antibioticLabelRowHeight && 
-				<g transform={ this._getMainMatrixTransformation() } className="resistanceMatrix__resistances">
 					{ /* Resistances */ }
-					{this.props.matrix.resistances.map((res) =>
-						<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} matrix={this.props.matrix} resistance={res}/>
-					)}
-					{ /* Resistance detail (hover) */ }
-					{ this.props.matrix.activeResistance &&
-						<ResistanceDetail resistance={this.props.matrix.activeResistance} defaultRadius={ this.props.matrix.defaultRadius }/>
+					{ /* Only render when radius is ready and after labels were drawn or we will have multiple re-renders */ }
+					{ this.props.matrix.defaultRadius && this.props.matrix.antibioticLabelRowHeight && 
+					<g transform={ this._getMainMatrixTransformation() } className="resistanceMatrix__resistances">
+						{ /* Resistances */ }
+						{ this.props.matrix.resistances.map((res) =>
+							<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} matrix={this.props.matrix} resistance={res}/>
+						) }
+						{ /* Resistance detail (hover) */ }
+						{ this.props.matrix.activeResistance &&
+							<ResistanceDetail resistance={ this.props.matrix.activeResistance } defaultRadius={ this.props.matrix.defaultRadius }/>
+						}
+					</g>
 					}
-				</g>
-				}
 
-			</svg>
+					{ /* Matrix header */ }
+					{ /* Must be at the bottom as its z-index must be highest (fixed when scrolling) */ }
+					{ /* Must cover the whole width of the svg to hide everything behind it */ }
+					<g className="resistanceMatrix__antibioticsLabels" transform={ `translate(0, ${ this.yScrollPosition || 0 })` }>
+						{ /* White background (to hide things when header is sticky) */ }
+						<rect x="0" y="0" height={ this._getEffectiveHeaderHeight() || 0 } width="100%" fill="rgb(255, 255, 255)"></rect>
+						{ /* Header with labels */ }
+						<g transform={ this._getAntibioticLabelsTransformation() }>
+							{ /* Substance class labels */ }
+							{this.props.matrix.substanceClasses.map((sc) => 
+								<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }/>
+							)}
+							{ /* Antibiotic labels */ }
+							{this.props.matrix.sortedAntibiotics.map((ab) => 
+								<AntibioticLabel key={ ab.antibiotic.id } antibiotic={ ab } matrix={ this.props.matrix }/>
+							)}
+						</g>
+					</g>
+
+				</svg>
+				{ /* <DevTools/> */ }
+			</div>
 		);
 	}
 

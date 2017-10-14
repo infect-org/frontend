@@ -20,12 +20,8 @@ export default class SubstanceClass extends React.Component {
 		window.addEventListener('resize', () => this._measureHeight());
 	}
 
-	@computed get xPosition() {
-		return this.props.matrix.xPositions.get(this.props.substanceClass);
-	}
-
 	_getTransformation() {
-		const left = (this.xPosition ? this.xPosition.left : 0);
+		const left = (this.props.substanceClass.xPosition ? this.props.substanceClass.xPosition.left : 0);
 		if (isNaN(left)) return 'translate(0,0)';
 		const parentCount = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
 		const top = this.props.matrix.antibioticLabelRowHeight + 
@@ -56,7 +52,7 @@ export default class SubstanceClass extends React.Component {
 	}
 
 	_getMaxWidth() {
-		const xPos = this.xPosition;
+		const xPos = this.props.substanceClass.xPosition;
 		if (!xPos || isNaN(xPos.right) || isNaN(xPos.left)) return 0;
 		return xPos.right - xPos.left;
 	}
@@ -65,29 +61,8 @@ export default class SubstanceClass extends React.Component {
 		return this.props.matrix.greatestSubstanceClassLabelHeight;
 	}
 
-	_getBodyLineHeight() {
-		// bodyHeight is injected by matrix; return 0 while it's not defined
-		return this.props.bodyHeight || 0;
-	}
-
-	_getBodyLineTop() {
-		const parents = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
-		return (parents + 1) * (this.props.matrix.greatestSubstanceClassLabelHeight || 0);
-	}
-
-	_getLineColor() {
-		const parents = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
-		const rank = parents;
-		const colorValue = color.fromRatio({
-			h: 0
-			, s: 0
-			, l: rank / this.props.matrix.maxAmountOfSubstanceClassHierarchies * 0.6 + 0.4
-		});
-		return colorValue;
-	}
-
 	_getOpacity() {
-		return this.xPosition ? 1 : 0;
+		return this.props.substanceClass.xPosition ? 1 : 0;
 	}
 
 	_getFillColor() {
@@ -102,29 +77,26 @@ export default class SubstanceClass extends React.Component {
 
 	render() {
 		return (
-			<g transform={ this._getTransformation() } className="resistanceMatrix__substanceClassLabel" opacity={this._getOpacity()}>
+			<g transform={ this._getTransformation() } className="resistanceMatrix__substanceClassLabel" opacity={ this._getOpacity() }>
 				{ /* use textPath to truncate text of substanceClass */ }
 				<defs>
-					<path id={'substance-class-' + this.props.substanceClass.substanceClass.id + '-path'} 
-						d={`M ${ this.props.matrix.space } ${ this.props.matrix.space } L ${ this._getMaxWidth() } ${ this.props.matrix.space }`}>
+					<path id={ 'substance-class-' + this.props.substanceClass.substanceClass.id + '-path' } 
+						d={ `M ${ this.props.matrix.space } ${ this.props.matrix.space } L ${ this._getMaxWidth() } ${ this.props.matrix.space }` }>
 					</path>
 				</defs>
 				{ /* Background */}
-				<rect width={ this._getMaxWidth() } height={ this._getHeaderLineHeight() } fill={ this._getFillColor() }></rect>
+				<rect width={ this._getMaxWidth() } height={ this._getHeaderLineHeight() || 0 } fill={ this._getFillColor() }></rect>
 				{ /* Line above substanceClass */ }
-				<rect width={ this._getMaxWidth() } height={ this._lineWeight } fill={ this._getLineColor() } 
+				<rect width={ this._getMaxWidth() } height={ this._lineWeight } fill={ this.props.substanceClass.lineColor } 
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--top"></rect>
 				{ /* Line left of substanceClass (head) */ }
-				<rect width={ this._lineWeight } height={ this._getHeaderLineHeight()} fill={ this._getLineColor() }
+				<rect width={ this._lineWeight } height={ this._getHeaderLineHeight() || 0 } fill={ this.props.substanceClass.lineColor }
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-header"></rect>
-				{ /* Line left of substanceClass (body) */ }
-				<rect width={ this._lineWeight } height={ this._getBodyLineHeight() } y={ this._getBodyLineTop() } fill={ this._getLineColor() }
-				 	className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body"></rect>
 				<text className="resistanceMatrix__substanceClassLabelText" dominantBaseline="hanging" 
 					dy={ supportsDominantBaseline(0, '0.8em') }
-					transform="translate(0, 2)" ref={(el) => this._setTextElement(el)}>
-					<textPath xlinkHref={'#substance-class-' + this.props.substanceClass.substanceClass.id + '-path'}>
-						{this.props.substanceClass.substanceClass.name}
+					transform="translate(0, 2)" ref={ (el) => this._setTextElement(el) }>
+					<textPath xlinkHref={ '#substance-class-' + this.props.substanceClass.substanceClass.id + '-path' }>
+						{ this.props.substanceClass.substanceClass.name }
 					</textPath>
 				</text>
 			</g>

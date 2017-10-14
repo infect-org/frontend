@@ -114,7 +114,7 @@ class MatrixView {
 		const scs = antibiotic.getSubstanceClasses();
 		scs.forEach((item) => {
 			if (this._substanceClasses.has(item.id)) return;
-			this._substanceClasses.set(item.id, new SubstanceClassMatrixView(item), this);
+			this._substanceClasses.set(item.id, new SubstanceClassMatrixView(item, this));
 		});
 	}
 
