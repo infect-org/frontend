@@ -24,6 +24,8 @@
     &__antibioticLabelText,
     &__bacteriumLabelText {
 
+        transition: fill 0.2s;
+
         &.highlight {
             fill: #ff623f;
         }
@@ -34,7 +36,7 @@
     * Resistance Detail (Hover)
     */
     &__resistanceDetail {
-        transition: transform 0.1s;
+        transition: transform 0.2s;
         // Don't let the <g> cause mouseLeaves on the underlying resistance
         pointer-events: none;
     }

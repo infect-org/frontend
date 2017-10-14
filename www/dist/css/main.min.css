@@ -726,10 +726,12 @@ input:hover + .side-label
     text-anchor: end; }
   .resistanceMatrix__resistance {
     cursor: none; }
-  .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
-    fill: #ff623f; }
+  .resistanceMatrix__antibioticLabelText, .resistanceMatrix__bacteriumLabelText {
+    transition: fill 0.2s; }
+    .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
+      fill: #ff623f; }
   .resistanceMatrix__resistanceDetail {
-    transition: transform 0.1s;
+    transition: transform 0.2s;
     pointer-events: none; }
   .resistanceMatrix__resistanceDetailValueText {
     font-size: 15pt; }

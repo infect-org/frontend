@@ -1,8 +1,8 @@
 [
 	{"name": "lipopeptide", "id": 13, "parent": null}
-	, {"name": "betalactame", "id": 4, "parent": null}
-	, {"name": "monobactam", "id": 10, "parent": 4}
-	, {"name": "penicilline", "id": 3, "parent": 4, "color": "113/92/140"}
+	, {"name": "betalactame", "id": 4, "parent": null, "order": 1}
+	, {"name": "monobactam", "id": 10, "parent": 4, "order": 2}
+	, {"name": "penicilline", "id": 3, "parent": 4, "color": "113/92/140", "order": 1}
 	, {"name": "cephalosporine", "id": 9, "parent": 4, "color": "196 / 172 / 138"}
 	, {"name": "1. gen. cephalosporine", "id": 15, "parent": 9, "color": "196 / 172 / 138"}
 	, {"name": "2. gen. cephalosporine", "id": 11, "parent": 9, "color": "196 / 172 / 138"}
@@ -15,7 +15,7 @@
 	, {"name": "aminoglykoside", "id": 7, "parent": null}
 	, {"name": "glycopeptide", "id": 16, "parent": null}
 	, {"name": "lincosamide", "id": 19, "parent": null}
-	, {"name": "polymyxine", "id": 8, "parent": null}
-	, {"name": "tetracycline", "id": 17, "parent": null}
+	, {"name": "polymyxine", "id": 8, "parent": null, "color": "124 / 155 / 95"}
+	, {"name": "tetracycline", "id": 17, "parent": null, "order": 10, "color": "183 / 68 / 68"}
 	, {"name": "beta-lactamase-hemmer", "id": 5, "parent": null}
 ]
