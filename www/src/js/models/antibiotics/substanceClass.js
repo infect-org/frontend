@@ -2,7 +2,8 @@ import {observable} from 'mobx';
 
 class SubstanceClass {
 
-	constructor(id, name, parent) {
+	constructor(id, name, parent, properties = {}) {
+
 		if (!id || !name) throw new Error('SubstanceClass: Arguments missing');
 		if (parent && !(parent instanceof SubstanceClass)) throw new Error('SubstanceClass: parent must be an instance of SubstanceClass');
 		this.id = id;
@@ -11,6 +12,12 @@ class SubstanceClass {
 		if (parent) this.parent = parent;
 		// Expanded is true by default
 		this.expanded = true;
+
+		// Store properties
+		Object.keys(properties).forEach((key) => {
+			this[key] = properties[key];
+		});
+
 	}
 
 	/**

@@ -4,6 +4,7 @@ import debug from 'debug';
 import getRelativeValue from '../../helpers/getRelativeValue';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
+import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 
 const log = debug('infect:ResistanceComponent');
 
@@ -17,7 +18,8 @@ class Resistance extends React.Component {
 		const left = xPos.left;
 		const top = yPos.top;
 		log('Resistance %o is placed at %d/%d', this, left, top);
-		return `translate(${ left }px, ${ top }px)`;
+		// IE11 does not know style: transform – use the transform attribute
+		return `translate(${ left }, ${ top })`;
 	}
 
 
@@ -57,7 +59,7 @@ class Resistance extends React.Component {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
-			<g style={{transform: this._getTransformation()}} className="resistanceMatrix__resistance" opacity={this._getOpacity()} 
+			<g transform={ this._getTransformation() } className="resistanceMatrix__resistance" opacity={this._getOpacity()} 
 				data-antibiotic={this.props.resistance.resistance.antibiotic.name}
 				data-bacterium={this.props.resistance.resistance.bacterium.name}
 				onMouseEnter={this._handleMouseEnter} onMouseLeave={this._handleMouseLeave}
@@ -68,7 +70,8 @@ class Resistance extends React.Component {
 				</circle>
 				<text x={this.props.matrix.defaultRadius} y={this.props.matrix.defaultRadius} textAnchor="middle" 
 					fill={this.props.resistance.fontColor}
-					dominantBaseline="central" className="resistanceMatrix__resistanceText">
+					dominantBaseline="central" className="resistanceMatrix__resistanceText"
+					dy={ supportsDominantBaseline(0, '0.5em') }>
 					{Math.round(this._getValue() * 100)}
 				</text>
 			</g>

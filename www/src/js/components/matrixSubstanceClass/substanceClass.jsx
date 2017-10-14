@@ -3,6 +3,7 @@ import debug from 'debug';
 import color from 'tinycolor2';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
+import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 
 const log = debug('infect:SubstanceClassComponent');
 
@@ -25,13 +26,15 @@ export default class SubstanceClass extends React.Component {
 
 	_getTransformation() {
 		const left = (this.xPosition ? this.xPosition.left : 0);
+		if (isNaN(left)) return 'translate(0,0)';
 		const parentCount = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
 		const top = this.props.matrix.antibioticLabelRowHeight + 
 			(this.props.matrix.maxAmountOfSubstanceClassHierarchies - parentCount - 1) * 
 			(this.props.matrix.greatestSubstanceClassLabelHeight || 0) +
 			this.props.matrix.space;
+		if (isNaN(top)) return 'translate(0,0)';
 		log('Position for %o is %d/%d', this.props.substanceClass, left, top);
-		return `translate(${ left }px, ${ top }px)`;
+		return `translate(${ left }, ${ top })`;
 	}
 
 	_setTextElement(el) {
@@ -87,26 +90,39 @@ export default class SubstanceClass extends React.Component {
 		return this.xPosition ? 1 : 0;
 	}
 
+	_getFillColor() {
+		const scColor = this.props.substanceClass.substanceClass.color;
+		if (!scColor) return 'rgb(255, 255, 255)';
+		const split = scColor.split(/\s*\/\s*/);
+		if (split.length !== 3) throw new Error(`SubstanceClassComponent: RGB color must consist of three parts, ${ scColor } is not valid.`);
+		const tinyColor = color({ r: split[0], g: split[1], b: split[2] });
+		tinyColor.setAlpha(0.3);
+		return tinyColor;
+	}
+
 	render() {
 		return (
-			<g style={{ transform: this._getTransformation() }} className="resistanceMatrix__substanceClassLabel" opacity={this._getOpacity()}>
-				{/* use textPath to truncate text of substanceClass */}
+			<g transform={ this._getTransformation() } className="resistanceMatrix__substanceClassLabel" opacity={this._getOpacity()}>
+				{ /* use textPath to truncate text of substanceClass */ }
 				<defs>
 					<path id={'substance-class-' + this.props.substanceClass.substanceClass.id + '-path'} 
 						d={`M ${ this.props.matrix.space } ${ this.props.matrix.space } L ${ this._getMaxWidth() } ${ this.props.matrix.space }`}>
 					</path>
 				</defs>
-				{/* Line above substanceClass */}
+				{ /* Background */}
+				<rect width={ this._getMaxWidth() } height={ this._getHeaderLineHeight() } fill={ this._getFillColor() }></rect>
+				{ /* Line above substanceClass */ }
 				<rect width={ this._getMaxWidth() } height={ this._lineWeight } fill={ this._getLineColor() } 
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--top"></rect>
-				{/* Line left of substanceClass (head) */}
+				{ /* Line left of substanceClass (head) */ }
 				<rect width={ this._lineWeight } height={ this._getHeaderLineHeight()} fill={ this._getLineColor() }
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-header"></rect>
-				{/* Line left of substanceClass (body) */}
+				{ /* Line left of substanceClass (body) */ }
 				<rect width={ this._lineWeight } height={ this._getBodyLineHeight() } y={ this._getBodyLineTop() } fill={ this._getLineColor() }
 				 	className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body"></rect>
 				<text className="resistanceMatrix__substanceClassLabelText" dominantBaseline="hanging" 
-					style={{ transform: 'translateY(2px)' }} ref={(el) => this._setTextElement(el)}>
+					dy={ supportsDominantBaseline(0, '0.8em') }
+					transform="translate(0, 2)" ref={(el) => this._setTextElement(el)}>
 					<textPath xlinkHref={'#substance-class-' + this.props.substanceClass.substanceClass.id + '-path'}>
 						{this.props.substanceClass.substanceClass.name}
 					</textPath>

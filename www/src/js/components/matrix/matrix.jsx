@@ -46,18 +46,20 @@ export default class Matrix extends React.Component {
 
 	_getAntibioticLabelsTransformation() {
 		const left = this._spaceBetweenGroups + this.props.matrix.bacteriumLabelColumnWidth;
-		return `translate(${ left }px, 0)`;
+		if (isNaN(left)) return 'translate(0,0)';
+		return `translate(${ left }, 0)`;
 	}
 
 	_getBacteriaLabelsTransformation() {
 		const top = this._getEffectiveHeaderHeight();
-		return `translate(0, ${ top }px)`;
+		if (isNaN(top)) return 'translate(0,0)';
+		return `translate(0, ${ top })`;
 	}
 
 	_getMainMatrixTransformation() {
 		const left = this.props.matrix.bacteriumLabelColumnWidth + this._spaceBetweenGroups;
 		const top = this._getEffectiveHeaderHeight();
-		return `translate(${ left }px, ${ top }px)`;
+		return `translate(${ left }, ${ top })`;
 	}
 
 	/**
@@ -80,7 +82,7 @@ export default class Matrix extends React.Component {
 		return(
 			<svg ref={(el) => this._setSVG(el)} style={{height: this._getHeight()}} className="resistanceMatrix">
 
-				<g style={{transform: this._getAntibioticLabelsTransformation()}} className="resistanceMatrix__antibioticsLabels">
+				<g transform={ this._getAntibioticLabelsTransformation() } className="resistanceMatrix__antibioticsLabels">
 					{this.props.matrix.substanceClasses.map((sc) => 
 						<SubstanceClass key={sc.substanceClass.id} substanceClass={sc} matrix={this.props.matrix} bodyHeight={this._getBodyHeight()}/>
 					)}
@@ -89,7 +91,7 @@ export default class Matrix extends React.Component {
 					)}
 				</g>
 
-				<g style={{transform: this._getBacteriaLabelsTransformation()}} className="resistanceMatrix__bacteriaLabels">
+				<g transform={ this._getBacteriaLabelsTransformation() } className="resistanceMatrix__bacteriaLabels">
 					{this.props.matrix.sortedBacteria.map((bact) => 
 						<BacteriumLabel key={bact.bacterium.id} bacterium={bact} matrix={this.props.matrix}/>
 					)}
@@ -97,7 +99,7 @@ export default class Matrix extends React.Component {
 
 				{ /* Only render when radius is ready and after labels were drawn or we will have multiple re-renders */ }
 				{ this.props.matrix.defaultRadius && this.props.matrix.antibioticLabelRowHeight && 
-				<g style={{transform: this._getMainMatrixTransformation()}} className="resistanceMatrix__resistances">
+				<g transform={ this._getMainMatrixTransformation() } className="resistanceMatrix__resistances">
 					{ /* Resistances */ }
 					{this.props.matrix.resistances.map((res) =>
 						<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} matrix={this.props.matrix} resistance={res}/>

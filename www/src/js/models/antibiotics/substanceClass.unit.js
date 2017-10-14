@@ -21,3 +21,10 @@ test('does not set parent if it\'s not provided', (t) => {
 	t.equal(new SubstanceClass(1, 'name').hasOwnProperty('parent'), false);
 	t.end();
 });
+
+test('stores additional properties', (t) => {
+	const sc = new SubstanceClass(1, 'name', undefined, { color: 'red', 'order': 3 });
+	t.equals(sc.color, 'red');
+	t.equals(sc.order, 3);
+	t.end();
+});

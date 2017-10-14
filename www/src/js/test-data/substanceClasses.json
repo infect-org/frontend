@@ -2,16 +2,16 @@
 	{"name": "lipopeptide", "id": 13, "parent": null}
 	, {"name": "betalactame", "id": 4, "parent": null}
 	, {"name": "monobactam", "id": 10, "parent": 4}
-	, {"name": "penicilline", "id": 3, "parent": 4}
-	, {"name": "cephalosporine", "id": 9, "parent": 4}
-	, {"name": "1. gen. cephalosporine", "id": 15, "parent": 9}
-	, {"name": "2. gen. cephalosporine", "id": 11, "parent": 9}
-	, {"name": "3. gen. cephalosporine", "id": 18, "parent": 9}
-	, {"name": "4. gen. cephalosporine", "id": 14, "parent": 9}
-	, {"name": "carbapeneme", "id": 12, "parent": 4}
+	, {"name": "penicilline", "id": 3, "parent": 4, "color": "113/92/140"}
+	, {"name": "cephalosporine", "id": 9, "parent": 4, "color": "196 / 172 / 138"}
+	, {"name": "1. gen. cephalosporine", "id": 15, "parent": 9, "color": "196 / 172 / 138"}
+	, {"name": "2. gen. cephalosporine", "id": 11, "parent": 9, "color": "196 / 172 / 138"}
+	, {"name": "3. gen. cephalosporine", "id": 18, "parent": 9, "color": "196 / 172 / 138"}
+	, {"name": "4. gen. cephalosporine", "id": 14, "parent": 9, "color": "196 / 172 / 138"}
+	, {"name": "carbapeneme", "id": 12, "parent": 4, "color": " 133 / 99 / 81"}
 	, {"name": "chinolone", "id": 1, "parent": null}
 	, {"name": "fluorchinolone", "id": 2, "parent": 1}
-	, {"name": "makrolide", "id": 6, "parent": null}
+	, {"name": "makrolide", "id": 6, "parent": null, "color": "153 / 95 / 143"}
 	, {"name": "aminoglykoside", "id": 7, "parent": null}
 	, {"name": "glycopeptide", "id": 16, "parent": null}
 	, {"name": "lincosamide", "id": 19, "parent": null}

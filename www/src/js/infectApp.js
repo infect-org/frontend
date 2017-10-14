@@ -2,6 +2,7 @@
 * The main application that brings everything together
 */
 
+import 'whatwg-fetch';
 import {fetchApi} from './helpers/api';
 import Antibiotic from './models/antibiotics/antibiotic';
 import AntibioticsStore from './models/antibiotics/antibioticsStore';
@@ -147,7 +148,17 @@ export default class InfectApp {
 			sorted.forEach((sc, index) => {
 				if (this.substanceClasses.getById(sc.id)) return;
 				const parent = !sc.parent ? undefined : this.substanceClasses.getById(sc.parent);
-				const substanceClass = new SubstanceClass(sc.id, sc.name, parent);
+
+				// Color and order is on substanceClasses.json while other props are on antibiotics.json
+				// -> Merge them
+				const originalSc = substanceClasses.find((item) => item.id === sc.id);
+				sc.color = originalSc.color;
+				sc.order = originalSc.order;
+
+				const substanceClass = new SubstanceClass(sc.id, sc.name, parent, {
+					color: sc.color
+					, order: sc.order
+				});
 				this.filterValues.addEntity('substanceClass', substanceClass);
 				this.substanceClasses.add(substanceClass);
 			});

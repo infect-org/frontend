@@ -38,7 +38,7 @@ export default class AntibioticLabel extends React.Component {
 		 this.props.antibiotic.antibiotic.getSubstanceClasses().length);
 		const top = (this.props.matrix.antibioticLabelRowHeight || 0) + 
 			substanceClassModifier * (this.props.matrix.greatestSubstanceClassLabelHeight || 0);
-		return `translate(${ left }px, ${ top }px) rotate(-75deg)`;
+		return `translate(${ left }, ${ top }) rotate(-75)`;
 	}
 
 	_getOpacity() {
@@ -59,7 +59,7 @@ export default class AntibioticLabel extends React.Component {
 
 	render() {
 		return (
-			<g style={{transform: this._getTransformation(), opacity: this._getOpacity()}} className="resistanceMatrix__antibioticLabel">
+			<g transform={ this._getTransformation() } style={ { opacity: this._getOpacity() } } className="resistanceMatrix__antibioticLabel">
 				<text ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this._getHighlightClass() }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>
