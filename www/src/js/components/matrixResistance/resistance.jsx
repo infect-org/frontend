@@ -33,7 +33,7 @@ class Resistance extends React.Component {
 	* Return value that will be displayed in the resistance's circle. 
 	* If import precision is given, use number, else use H/L/I.
 	*/
-	_getValue() {
+	@computed get value() {
 		const bestValue = this.props.resistance.mostPreciseValue;
 		if (bestValue.type.identifier === resistanceTypes.class.identifier || 
 			bestValue.type.identifier === resistanceTypes.default.identifier) {
@@ -43,9 +43,6 @@ class Resistance extends React.Component {
 		return bestValue.value === 1 ? 1 : (bestValue.value.toFixed(2) + '').substr(1);
 	}
 
-	_getOpacity() {
-		return this.props.resistance.xPosition && this.props.resistance.yPosition ? 1 : 0;
-	}
 
 	_handleMouseEnter = (ev) => {
 		this.props.matrix.setActiveResistance(this.props.resistance);
@@ -59,7 +56,8 @@ class Resistance extends React.Component {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
-			<g transform={ this._getTransformation() } className="resistanceMatrix__resistance" opacity={this._getOpacity()} 
+			<g transform={ this._getTransformation() } className="resistanceMatrix__resistance" 
+				style={ { visibility: this.props.resistance.visible ? 'visible' : 'hidden' } }
 				data-antibiotic={this.props.resistance.resistance.antibiotic.name}
 				data-bacterium={this.props.resistance.resistance.bacterium.name}
 				onMouseEnter={this._handleMouseEnter} onMouseLeave={this._handleMouseLeave}
@@ -72,7 +70,7 @@ class Resistance extends React.Component {
 					fill={this.props.resistance.fontColor}
 					dominantBaseline="central" className="resistanceMatrix__resistanceText"
 					dy={ supportsDominantBaseline(0, '0.5em') }>
-					{Math.round(this._getValue() * 100)}
+					{Math.round(this.value * 100)}
 				</text>
 			</g>
 		);

@@ -12,6 +12,9 @@
 
     &__resistance {
         cursor: none;
+        // Use visiblity: hidden to hide resistances (for speed reasons)
+        // and ignore pointer-events on them
+        pointer-events: visible;
     }
 
     &__substanceClassLine {

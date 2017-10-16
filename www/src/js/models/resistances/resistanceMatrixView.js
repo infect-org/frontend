@@ -20,6 +20,10 @@ export default class ResistanceMatrixView {
 		return min + (max - min) * value;
 	}
 
+	@computed get visible() {
+		return this.xPosition && this.yPosition;
+	}
+
 	@computed get mostPreciseValue() {
 		return this.resistance.getValuesByPrecision()[0];
 	}

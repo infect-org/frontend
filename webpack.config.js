@@ -1,16 +1,35 @@
 const webpack = require('webpack');
 const path = require('path');
 const BeepPlugin = require('webpack-beep-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Don't use ExtractTextPlugin in dev mode as it does not support hot-reloading, 
 // see https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30#issuecomment-125757853
 const debug = process.env.NODE_ENV === 'production' ? false : true;
-const styles = 'css-loader!sass-loader';
+console.log('Debug Mode?', debug);
+const styles = [
+	 {
+		loader: 'css-loader',
+		options: {
+			sourceMap:true
+		}
+	},
+	{
+		loader: 'sass-loader',
+		options: {
+			sourceMap: true
+		}
+	 }];
+
+// style-loader ensures style live reloading – but only works if we're not using ExtractTextPlugin. 
+if (debug) {
+	styles.unshift({
+		loader: 'style-loader'
+	});
+}
+
 
 module.exports = [
-
-	// Main app
 	{
 		context: path.resolve(__dirname, 'www/src/')
 		, entry:  {
@@ -32,7 +51,7 @@ module.exports = [
 			loaders: [
 				{
 					test: /\.jsx?$/
-					, loader: 'babel-loader'
+					, use: 'babel-loader'
 					, include: [
 						  path.resolve(__dirname, 'www/src/js')
 						, path.resolve(__dirname, 'node_modules/mobx')
@@ -40,9 +59,10 @@ module.exports = [
 					/* query is taken from .babelrc */
 				}, 
 				{
-			  		test: /\.scss$/,
-			  		//loader: debug ? `style-loader!${ styles }` : ExtractTextPlugin.extract(styles)
-			  		loader: ExtractTextPlugin.extract(styles)
+					test: /\.scss$/,
+					use: debug ? styles : ExtractTextPlugin({
+						use: styles
+					})
 				}
 			]
 		}
@@ -50,9 +70,8 @@ module.exports = [
 			extensions: ['.js', '.jsx']
 		}
 		, plugins: [new ExtractTextPlugin({
-						filename: '/css/main.min.css',
-  						allChunks: false
-					})
-					, new BeepPlugin()]
+						filename: '/css/[name].min.css'
+					}),
+					new BeepPlugin()]
 	}
 ];

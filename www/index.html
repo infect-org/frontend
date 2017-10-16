@@ -22,10 +22,25 @@
 
         </style>
 
-        <link rel="stylesheet" type="text/css" href="dist/css/main.min.css" />
+        <script>
+            // On live environment, inject the <link> tag that loads the regular CSS file
+            if (window.location.hostname !== 'localhost') {
+                var link = document.createElement('link');
+                link.setAttribute('rel', 'stylesheet');
+                link.setAttribute('type', 'text/css');
+                link.setAttribute('href', 'dist/css/main.min.css');
+                document.head.appendChild(link);
+            }
+            // On test environment, use CSS injected through webpack/JS
+            else {
+                var script = document.createElement('script');
+                script.setAttribute('async', '');
+                script.setAttribute('src', 'dist/js/styles.js');
+                document.head.appendChild(script);
+            }
+        </script>
     <body>
         <script async src="dist/js/main.js"></script>
-        <script async src="dist/js/styles.js"></script>
     
         <div class="container">
             <div class="container__side-navigation side-navigation">
