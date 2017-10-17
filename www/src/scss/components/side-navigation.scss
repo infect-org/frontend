@@ -33,12 +33,16 @@
 
 .logo {
 	@include flexbox();
-	@include justify-content(center);
+	@include justify-content(left);
+	padding-left: 20px;
 	align-items: center;
 	background-color: $navigation-background--lighter;
 
-	img {
-		//height: 30px;
+	a {
+		height: $navigation-height - 20px;
+		img {
+			height: 100%;
+		}
 	}
 }
 
