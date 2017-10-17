@@ -41,7 +41,7 @@
 @mixin group-header-fonts($base) {
 	h1 {
 		font-size: $base;
-		margin: 5px 0;
+		margin: 0;
 	}
 	h2 {
 		font-size: $base - 2;
@@ -52,4 +52,10 @@
 		font-size: $base - 4;
 		margin: 0;
 	}
+}
+
+@mixin hover-interaction($hover) {
+  @include mq($hover-interaction: $hover) {
+    @content;
+  }
 }

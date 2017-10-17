@@ -3,12 +3,12 @@
 @import 'utils/variables'
 		,'utils/mixins'
 		,'utils/inputrange'
-		,'../../src/bower_components/sass-flex-mixin/flex';
+		,'../../src/bower_components/sass-flex-mixin/flex'
+		,'../../src/bower_components/sass-mediaqueries/media-queries';
 
 @import 'base/base'
 		,'base/structure'
-		,'base/modifiers'
-		,'base/fonts.css';
+		,'base/modifiers';
 
 @import 'components/top-navigation'
 		,'components/side-navigation'

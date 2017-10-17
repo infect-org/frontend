@@ -67,7 +67,7 @@
 	}
 
 	&--checkbox {
-		font-size: 12px;
+		font-size: 11pt;
 	}
 
 //TODO: DESKTOP ONLY
@@ -93,7 +93,7 @@
 	&--rounded {
 		padding: 3px 5px;
 		background-color: #d7d5c4;
-		@include border-radius(5px);
+		@include border-radius(5px 0 0 5px);
 		z-index: 2;
 	}
 
@@ -135,13 +135,29 @@
 	border: none;
 	color: #ffffff;
     
-	&--red {
+	&--close {
 		position: relative;
-		background-color: #ff623f;
-		padding: 0 10px;
-		right: 35px;
+		background-color: #59291c;
+		padding: 0 20px;
 		@include border-radius-edges(0, 5px, 5px, 0)
-		//display: none;
+		
+		&:hover {
+			background-color: #a52604;
+		}
+
+		$hover-hover: hover;
+		@include hover-interaction($hover-hover) {
+            padding: 0 10px !important;
+       	}
+	}
+
+	&--clearall {
+		background-color: #59291c;
+		@include border-radius-edges(5px, 5px, 5px, 5px);
+
+		&:hover {
+			background-color: #a52604;
+		}
 	}
 }
 

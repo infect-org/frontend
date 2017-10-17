@@ -5,6 +5,7 @@
 
 	&__active-filters {
 		@include flex-grow(1);
+		@include flex-wrap(wrap);
 	}
 
 	&__slider {
