@@ -15,7 +15,7 @@ input[type="checkbox"] {
 .side-label::before, .side-label::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: 6px;
   left: 0;
 }
 
