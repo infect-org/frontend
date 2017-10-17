@@ -27,6 +27,7 @@
 
 	&__matrix {
 		@include flex-grow(1);
+		width: 100vw;
 		overflow: auto;
 	}
 }
