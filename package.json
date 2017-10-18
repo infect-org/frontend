@@ -57,7 +57,6 @@
     "vinyl-source-stream": "1.x",
     "walk-sync": "^0.3.2",
     "webpack": "^3.7.1",
-    "webpack-beep-plugin": "^1.0.0",
     "webpack-dev-server": "^2.9.1"
   },
   "optionalDependencies": {},
@@ -66,7 +65,7 @@
   ],
   "scripts": {
     "watch": "webpack --watch",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --open",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --open --env.dev",
     "build": "webpack"
   },
   "browserify": {

@@ -10,22 +10,22 @@
 
         <!-- Load Fonts -->
         <script src="https://use.typekit.net/uac3uao.js"></script>
-        <script>try{Typekit.load({ async: false });}catch(e){}</script>
+        <script>/* global Typekit */ try{Typekit.load({ async: false });}catch(e){}</script>
 
         <script>
+            // On test environment, use CSS injected through webpack/JS
+            if (window.location.hostname === 'localhost') {
+                var script = document.createElement('script');
+                script.setAttribute('src', 'dist/js/styles.js');
+                document.head.appendChild(script);
+            }
             // On live environment, inject the <link> tag that loads the regular CSS file
-            if (window.location.hostname !== 'localhost') {
+            else {
                 var link = document.createElement('link');
                 link.setAttribute('rel', 'stylesheet');
                 link.setAttribute('type', 'text/css');
                 link.setAttribute('href', 'dist/css/main.min.css');
                 document.head.appendChild(link);
-            }
-            // On test environment, use CSS injected through webpack/JS
-            else {
-                var script = document.createElement('script');
-                script.setAttribute('src', 'dist/js/styles.js');
-                document.head.appendChild(script);
             }
         </script>
     <body>

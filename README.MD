@@ -44,7 +44,7 @@ Frontent for the INFECT application
 To run the tests provided, install the dependencies (TAP output formatter):
 
 ```
-npm i -g faucet
+npm i -g tap-spec
 ```
 
 Then run the tests (watcher included): 
@@ -56,6 +56,7 @@ webpack --config webpack.test.config.js
 # Serve
 
 ```
-webpack-dev-server --inline --hot
+webpack-dev-server --inline --hot --env.dev
 ```
 
+`-env.dev` writes CSS files to JS and allows for hot reloading. Not using this flag writes CSS files to the file system.

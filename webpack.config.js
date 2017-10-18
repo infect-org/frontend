@@ -1,36 +1,40 @@
 const webpack = require('webpack');
 const path = require('path');
-const BeepPlugin = require('webpack-beep-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// Don't use ExtractTextPlugin in dev mode as it does not support hot-reloading, 
-// see https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30#issuecomment-125757853
-const debug = process.env.NODE_ENV === 'production' ? false : true;
-console.log('Debug Mode?', debug);
-const styles = [
-	 {
-		loader: 'css-loader',
-		options: {
-			sourceMap:true
-		}
-	},
-	{
-		loader: 'sass-loader',
-		options: {
-			sourceMap: true
-		}
-	 }];
-
-// style-loader ensures style live reloading – but only works if we're not using ExtractTextPlugin. 
-if (debug) {
-	styles.unshift({
-		loader: 'style-loader'
-	});
-}
 
 
-module.exports = [
-	{
+// Pass in env as --env.dev or --env.production
+module.exports = function(env) {
+
+	// Don't use ExtractTextPlugin in dev mode as it does not support hot-reloading, 
+	// see https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30#issuecomment-125757853
+	const debug = env && env.dev === true;
+	console.log('Debug Mode?', debug);
+	const styles = [
+		 {
+			loader: 'css-loader',
+			options: {
+				sourceMap:true
+			}
+		},
+		{
+			loader: 'sass-loader',
+			options: {
+				sourceMap: true
+			}
+		 }];
+
+	// style-loader ensures style live reloading – but only works if we're not using ExtractTextPlugin. 
+	if (debug) {
+		styles.unshift({
+			loader: 'style-loader'
+		});
+	}
+	console.log('Styles:', styles);
+
+
+	return {
 		context: path.resolve(__dirname, 'www/src/')
 		, entry:  {
 			main: ['./js/main.js']
@@ -60,7 +64,7 @@ module.exports = [
 				}, 
 				{
 					test: /\.scss$/,
-					use: debug ? styles : ExtractTextPlugin({
+					use: debug ? styles : ExtractTextPlugin.extract({
 						use: styles
 					})
 				}
@@ -70,8 +74,8 @@ module.exports = [
 			extensions: ['.js', '.jsx']
 		}
 		, plugins: [new ExtractTextPlugin({
-						filename: '/css/[name].min.css'
-					}),
-					new BeepPlugin()]
-	}
-];
+			filename: '/css/main.min.css'
+		})]
+	};
+
+};
