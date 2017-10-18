@@ -2,7 +2,8 @@
   "name": "infect-frontend",
   "main": "",
   "dependencies": {
-    "sass-flex-mixin": "^1.0.3"
+    "sass-flex-mixin": "^1.0.3",
+    "sass-mediaqueries": "^1.6.1"
   },
   "ignore": [],
   "license": "MIT",
