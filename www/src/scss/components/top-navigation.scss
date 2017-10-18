@@ -3,7 +3,8 @@
 	min-height: $navigation-height;
 	border-bottom: solid 1px #d3d2cd;
 
-	&__active-filters {
+	&__active-filters, 
+	selectedfiltersList {
 		@include flex-grow(1);
 		@include flex-wrap(wrap);
 	}
@@ -12,7 +13,23 @@
 		@include flex-grow(0);
 		width: 250px;
 		min-height: inherit;
-		padding-right: 20px;
 	}
 
+	&__info {
+		@include flex-grow(0);
+		z-index: 4;
+		width: 50px;
+		padding-right: 20px;
+		
+		strong {
+			font-size: 13px;
+			color: black;
+		}
+	}
+
+	.info {
+		@include flexbox();
+		@include flex-direction(column);
+		@include justify-content(center);
+	}
 }

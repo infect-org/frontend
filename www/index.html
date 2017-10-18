@@ -24,7 +24,6 @@
             // On test environment, use CSS injected through webpack/JS
             else {
                 var script = document.createElement('script');
-                script.setAttribute('async', '');
                 script.setAttribute('src', 'dist/js/styles.js');
                 document.head.appendChild(script);
             }
@@ -163,65 +162,111 @@
         <div class="container__main main">
             <div class="main__header">
                 <div class="top-navigation">
-                        <SelectedFiltersList />
+                    <SelectedFiltersList></SelectedFiltersList>
 
-                        <!--<div class="group group--black-font">
-                            <h2>Bakterien</h2>
-                            <ul class="group__list">
-                                <li class="group__list-item list-item">
-                                    <div class="label label--rounded">
-                                        <p class="label--smaller label--nomargin">Färbung</p>
-                                        <p class="label--bold label--nomargin">Gram +</p>
-                                    </div>
-                                    <button class="button button--red">&times;</button>
-                                </li>
-                                <li class="group__list-item list-item">
-                                    <div class="label label--rounded">
-                                        <p class="label--smaller label--nomargin">Form</p>
-                                        <p class="label--bold label--nomargin">Stäbchen</p>
-                                    </div>
-                                    <button class="button button--red">&times;</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="group group--black-font">
-                            <h2>Antibiotika</h2>
-                            <ul class="group__list">
-                                <li class="group__list-item list-item">
-                                    <div class="label label--rounded">
-                                        <p class="label--smaller label--nomargin">Substanzklasse</p>
-                                        <p class="label--bold label--nomargin">Penizilline</p>
-                                    </div>
-                                    <button class="button button--red">&times;</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="group group--black-font">
-                            <h2>Diagnose</h2>
-                            <ul class="group__list">
-                                <li class="group__list-item list-item">
-                                    <div class="label label--rounded">
-                                        <p class="label--smaller label--nomargin">Organ</p>
-                                        <p class="label--bold label--nomargin">Respirationstrakt</p>
-                                    </div>
-                                    <button class="button button--red">&times;</button>
-                                </li>
-                            </ul>
-                        </div>-->
-                    <!--<div class="top-navigation__slider slider">
-                        <p class="slider__label">Nur Resistenzen anzeigen kleiner als</p>
-                        <div class="slider__container">
-                            <div class="slider__container__before">100%</div>
-                            <div class="slider__container__range">
-                                <input type="range" class="slider__range">
-                            </div>
-                            <div class="slider__container__after">0%</div>
-                        </div>
+                    <div class="top-navigation__info info">
+                        <button class="button button--info" onclick="document.querySelector('.overlay').classList.toggle('overlay--open'); document.querySelector('.button--info').classList.toggle('button--info-active');">i</button>
+                    </div>
+                    
+                    <!--<div class="group group--black-font">
+                        <h2>Bakterien</h2>
+                        <ul class="group__list">
+                            <li class="group__list-item list-item">
+                                <div class="label label--rounded">
+                                    <p class="label--smaller label--nomargin">Färbung</p>
+                                    <p class="label--bold label--nomargin">Gram +</p>
+                                </div>
+                                <button class="button button--red">&times;</button>
+                            </li>
+                            <li class="group__list-item list-item">
+                                <div class="label label--rounded">
+                                    <p class="label--smaller label--nomargin">Form</p>
+                                    <p class="label--bold label--nomargin">Stäbchen</p>
+                                </div>
+                                <button class="button button--red">&times;</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="group group--black-font">
+                        <h2>Antibiotika</h2>
+                        <ul class="group__list">
+                            <li class="group__list-item list-item">
+                                <div class="label label--rounded">
+                                    <p class="label--smaller label--nomargin">Substanzklasse</p>
+                                    <p class="label--bold label--nomargin">Penizilline</p>
+                                </div>
+                                <button class="button button--red">&times;</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="group group--black-font">
+                        <h2>Diagnose</h2>
+                        <ul class="group__list">
+                            <li class="group__list-item list-item">
+                                <div class="label label--rounded">
+                                    <p class="label--smaller label--nomargin">Organ</p>
+                                    <p class="label--bold label--nomargin">Respirationstrakt</p>
+                                </div>
+                                <button class="button button--red">&times;</button>
+                            </li>
+                        </ul>
                     </div>-->
-                </div>
+                <!--<div class="top-navigation__slider slider">
+                    <p class="slider__label">Nur Resistenzen anzeigen kleiner als</p>
+                    <div class="slider__container">
+                        <div class="slider__container__before">100%</div>
+                        <div class="slider__container__range">
+                            <input type="range" class="slider__range">
+                        </div>
+                        <div class="slider__container__after">0%</div>
+                    </div>
+                </div>-->
             </div>
             <div class="main__matrix">
                 <Matrix/>
+            </div>
+        </div>
+        <div class="overlay">
+            <div class="overlay__container">
+                <h1>About INFECT</h1>
+                <p>The University of Bern, represented by the Institute for Infectious Diseases, maintains this website to enhance public access to information about antibiotic resistance, antibiotic consumption and its control. Our goal is to keep this information timely and accurate and to minimize disruption caused by technical errors. However some data or information on our site may have been created or structured in files or formats that are not error-free and we cannot guarantee that our service will not be interrupted or otherwise affected by such problems. If errors are brought to our attention, we will try to correct them.</p>
+                <p>University of Bern accepts no responsibility or liability with regard to such problems incurred as a result of using this site or any linked external sites.</p>
+                <p>This information is:
+                <ul>
+                    <li>of a general nature only and is not intended to address the specific circumstances of any particular individual or entity;</li>
+                    <li>not necessarily comprehensive, complete, accurate or up to date;</li>
+                    <li>sometimes linked to external sites over which University of Bern has no control and for which University of Bern assumes neither responsibility nor liability;</li>
+                    <li>not professional or legal advice (if you need specific advice, you should always consult a suitably qualified professional).</li>
+                </ul>
+                <p>Please note that it cannot be guaranteed that a document available on-line exactly reproduces an officially adopted text.</p>
+                <h1>Kontakt</h1>
+                <h2>Address</h2>
+                <div class="adresses">
+                    <address>
+                        <strong>General Issues</strong><br>
+                        Joinbox GmbH<br>
+                        <a href="mailto:infect@joinbox.ch">infect@joinbox.ch</a>.<br> 
+                        <a href="tel:0315281025">031 528 10 25</a><br>
+                        Brückfeldstrasse 16<br>
+                        3012 Bern<br>
+                    </address>
+                    <address>
+                        <strong>Medial Issues</strong><br>
+                        Joinbox GmbH<br>
+                        <a href="mailto:infect@joinbox.ch">infect@joinbox.ch</a>.<br> 
+                        <a href="tel:0315281025">031 528 10 25</a><br>
+                        Brückfeldstrasse 16<br>
+                        3012 Bern<br>
+                    </address>
+                    <address>
+                        <strong>Technical Issues</strong><br>
+                        Joinbox GmbH<br>
+                        <a href="mailto:infect@joinbox.ch">infect@joinbox.ch</a>.<br> 
+                        <a href="tel:0315281025">031 528 10 25</a><br>
+                        Brückfeldstrasse 16<br>
+                        3012 Bern<br>
+                    </address>
+                </div>
             </div>
         </div>
     </body>

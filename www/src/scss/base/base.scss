@@ -56,12 +56,12 @@ button {
 }
 
 // Links
-/*a {
-	//color: $link-color;
-	//text-decoration: underline;
+a {
+	color: $link-color;
+	text-decoration: none;
 
 	&:hover {
-		color: inherit;
+		color: $link-color--hover;
 		text-decoration: none;
 		outline: none;
 	}
@@ -72,7 +72,7 @@ button {
 		text-decoration: none;
 		outline: none;
 	}
-}*/
+}
 
 // Images
 /*img {

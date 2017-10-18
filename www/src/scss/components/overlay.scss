@@ -1,0 +1,39 @@
+.overlay {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	overflow: auto;
+
+	background-color: $navigation-background--lighter;
+	@include transition(opacity, $transition-duration);
+	opacity: 0;
+
+	&--open {
+		z-index: 2;
+		opacity: 1;
+	}
+
+	&__container {
+		position: relative;
+		width: 40%;
+		max-width: 600px;
+		padding: $navigation-height 0;
+		margin: auto;
+		color: white;
+	}
+
+	.adresses {
+		@include flexbox();
+		@include flex-direction(row);
+		@include flex-wrap(wrap);
+		@include justify-content(space-between);
+
+		address {
+			@include flex-basis(40%);
+			margin-bottom: 10%;
+		}
+	}
+}

@@ -4,8 +4,6 @@
 	background-color: $sidenavigation-background;
 
 	&__header {
-		//height: 250px;
-		z-index: 2;
 		background-color: $sidenavigation-background;
 	}
 
@@ -40,6 +38,7 @@
 	background-color: $navigation-background--lighter;
 
 	a {
+		z-index: 5;
 		height: $navigation-height - 20px;
 		img {
 			height: 100%;
