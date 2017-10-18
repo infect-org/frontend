@@ -10,7 +10,8 @@
 	}
 
 	&__filters {
-		height: 100vh;
+		//view height - logo - search header
+		max-height: calc(100vh - 185px);
 		overflow-y: auto;
 	}
 }
@@ -22,7 +23,7 @@
 	}
 
 	&__search {
-
+		height: $header-search-height;
 	}
 }
 
