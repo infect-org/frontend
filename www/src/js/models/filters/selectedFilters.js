@@ -47,6 +47,11 @@ export default class SelectedFilters {
 		return this._selectedFilters.peek();
 	}
 
+	@action removeAllFilters() {
+		log('Remove all filters');
+		this._selectedFilters.splice(0, this._selectedFilters.length);
+	}
+
 	/**
 	* Returns all filters for a certain entityType
 	*/
