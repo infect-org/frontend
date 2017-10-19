@@ -17,7 +17,7 @@ export default function() {
 				}]
 			}
 			, po: {
-				translation: 'Per Oss'
+				translation: 'Per Os'
 				, valueTranslations: [{
 					value: true
 					, translation: 'Yes'
@@ -74,7 +74,7 @@ export default function() {
 			}
 			, shape: {
 				translation: 'Shape'
-				, valueTranslations: (shape) => shape ? shape : '(Not set)'
+				, valueTranslations: (shape) => shape
 			}
 		}
 	}];

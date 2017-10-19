@@ -53,6 +53,20 @@ class AntibioticsFilterList extends React.Component {
 		});
 	}
 
+	_isApplicationChecked() {
+		return true;
+	}
+
+	_handleApplicationFilterChange(type) {
+		const shortType = type === 'perOs' ? 'po' : 'iv';
+		const filter = this.props.filterValues.getValuesForProperty('antibiotic', shortType)
+			.find((item) => item.value === true);
+		const isFilterSelected = this.props.selectedFilters.isSelected(filter);
+		log('Filter for %s is %o, selected %o', shortType, filter, isFilterSelected);
+		if (isFilterSelected) this.props.selectedFilters.removeFilter(filter);
+		else this.props.selectedFilters.addFilter(filter);
+	}
+
 	render() {
 		return (
 			<div>
@@ -80,24 +94,13 @@ class AntibioticsFilterList extends React.Component {
 					})}
 				</ul>
 
-                <h3 className="gray margin-top">Intravenous</h3>
+                <h3 className="gray margin-top">Application</h3>
 				<ul className="group__list group__list--vertical">
-					{this.props.filterValues.getValuesForProperty('antibiotic', 'iv').map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
+					<FilterListCheckbox name="Per Os" value="perOs" checked={ this._isApplicationChecked('perOs') } 
+						onChangeHandler={(ev) => this._handleApplicationFilterChange('perOs')} />
+					<FilterListCheckbox name="Intravenous" value="intravenous" checked={ this._isApplicationChecked('intravenous') } 
+						onChangeHandler={(ev) => this._handleApplicationFilterChange('intravenous')} />
 				</ul>
-
-                <h3 className="gray margin-top">Per Oss</h3>
-				<ul className="group__list group__list--vertical">
-					{this.props.filterValues.getValuesForProperty('antibiotic', 'po').map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
-				</ul>
-
 
 			</div>
 		);

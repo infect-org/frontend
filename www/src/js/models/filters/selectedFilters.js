@@ -36,11 +36,9 @@ export default class SelectedFilters {
 	}
 
 	isSelected(filter) {
-		return createTransformer((filter) => {
-			const selected = this._selectedFilters.indexOf(filter) > -1;
-			log('Is filter %o selected? %o', filter, selected);
-			return selected;
-		})(filter);
+		const selected = this._selectedFilters.indexOf(filter) > -1;
+		log('Is filter %o selected? %o', filter, selected);
+		return selected;
 	}
 
 	@computed get filters() {
@@ -60,3 +58,4 @@ export default class SelectedFilters {
 	}
 
 }
+

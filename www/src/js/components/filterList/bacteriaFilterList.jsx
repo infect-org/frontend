@@ -83,6 +83,7 @@ class BacteriaFilterList extends React.Component {
                 <h3 className="gray margin-top">Shape</h3>
 				<ul className="group__list group__list--vertical">
 					{this.props.filterValues.getValuesForProperty('bacterium', 'shape').map((item) => {
+						if (!item.value) return;
 						return <FilterListCheckbox key={item.value} name={item.niceValue} 
 							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
 							onChangeHandler={(ev) => this._handleFilterChange(item)} />;

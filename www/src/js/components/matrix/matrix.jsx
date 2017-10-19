@@ -93,6 +93,10 @@ export default class Matrix extends React.Component {
 			this.props.matrix.maxAmountOfSubstanceClassHierarchies * (this.props.matrix.greatestSubstanceClassLabelHeight || 0);
 	}
 
+	_substanceClassSortFunction(a, b) {
+		return a.xPosition && b.xPosition ? b.xPosition.left - a.xPosition.left : 0;
+	}
+
 	/**
 	* Returns height of the matrix' body (circles). 
 	*/
@@ -139,18 +143,27 @@ export default class Matrix extends React.Component {
 					{ /* Must be at the bottom as its z-index must be highest (fixed when scrolling) */ }
 					{ /* Must cover the whole width of the svg to hide everything behind it */ }
 					<g className="resistanceMatrix__antibioticsLabels" transform={ `translate(0, ${ this.yScrollPosition || 0 })` }>
+
 						{ /* White background (to hide things when header is sticky) */ }
 						<rect x="0" y="0" height={ this._getEffectiveHeaderHeight() || 0 } width="100%" fill="rgb(255, 255, 255)"></rect>
+
 						{ /* Header with labels */ }
 						<g transform={ this._getAntibioticLabelsTransformation() }>
-							{ /* Substance class labels */ }
-							{this.props.matrix.substanceClasses.map((sc) => 
-								<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }/>
-							)}
+
 							{ /* Antibiotic labels */ }
 							{this.props.matrix.sortedAntibiotics.map((ab) => 
 								<AntibioticLabel key={ ab.antibiotic.id } antibiotic={ ab } matrix={ this.props.matrix }/>
 							)}
+
+							{ /* Substance class labels */ }
+							{ /* - Placed below antibiotics as z-index must be higher (if user hovers a shortened label)
+								 - Sorted by xPosition (reverse): If user hovers a substanceClass left of the next, it must lie
+							       above the right-next substance class */ }
+							{this.props.matrix.substanceClasses.sort(this._substanceClassSortFunction).map((sc) => 
+								<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }
+									filters={ this.props.filters } selectedFilters={ this.props.selectedFilters }/>
+							)}
+
 						</g>
 					</g>
 
