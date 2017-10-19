@@ -93,7 +93,7 @@ export default class SubstanceClass extends React.Component {
 				<rect width={ this._lineWeight } height={ this._getHeaderLineHeight() || 0 } fill={ this.props.substanceClass.lineColor }
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-header"></rect>
 				<text className="resistanceMatrix__substanceClassLabelText" dominantBaseline="hanging" 
-					dy={ supportsDominantBaseline(0, '0.8em') }
+					dy={ supportsDominantBaseline('-2', '0.8em') }
 					transform="translate(0, 2)" ref={ (el) => this._setTextElement(el) }>
 					<textPath xlinkHref={ '#substance-class-' + this.props.substanceClass.substanceClass.id + '-path' }>
 						{ this.props.substanceClass.substanceClass.name }

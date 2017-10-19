@@ -105,11 +105,13 @@ export default class Matrix extends React.Component {
 				<svg ref={ (el) => this._setSVG(el) } style={ { height: this._getHeight() } } className="resistanceMatrix">
 
 					{ /* Lines for substance classes in body */ }
-					<g transform={ this._getMainMatrixTransformation() }>
-						{ this.props.matrix.substanceClasses.map((sc) => 
-							<SubstanceClassLine key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix } bodyHeight={ this._getBodyHeight() }/>
-						) }
-					</g>
+					{ this.props.matrix.antibioticLabelRowHeight && 
+						<g transform={ this._getMainMatrixTransformation() }>
+							{ this.props.matrix.substanceClasses.map((sc) => 
+								<SubstanceClassLine key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix } bodyHeight={ this._getBodyHeight() }/>
+							) }
+						</g>
+					}
 
 					{ /* Bacteria labels */ }
 					<g transform={ this._getBacteriaLabelsTransformation() } className="resistanceMatrix__bacteriaLabels">

@@ -39,24 +39,32 @@ Frontent for the INFECT application
 - Bacterium
 - SubstanceClass (parent)
 
-# Testing
+# Build
 
-To run the tests provided, install the dependencies (TAP output formatter):
+## Testing
 
-```
-npm i -g tap-spec
-```
-
-Then run the tests (watcher included): 
+To run the tests provided, call
 
 ```
-webpack --config webpack.test.config.js
+npm test
 ```
 
-# Serve
+## Serve
+
+To run the dev server, call
 
 ```
-webpack-dev-server --inline --hot --env.dev
+npm start
 ```
 
 `-env.dev` writes CSS files to JS and allows for hot reloading. Not using this flag writes CSS files to the file system.
+
+## Build
+
+To build the CSS and JS files needed for the production system, call
+
+```
+npm build
+```
+
+

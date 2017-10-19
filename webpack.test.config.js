@@ -36,7 +36,7 @@ module.exports = [
 			extensions: ['.js', '.jsx']
 		}
     	, plugins: [
-    		new TapWebpackPlugin({ reporter: 'tap-spec' })
+    		new TapWebpackPlugin({ reporter: 'node ./node_modules/tap-spec/bin/cmd' })
     	]
 
 	}

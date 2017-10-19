@@ -61,7 +61,7 @@ export default class AntibioticLabel extends React.Component {
 	render() {
 		return (
 			<g transform={ this._getTransformation() } style={ { opacity: this._getOpacity() } } className="resistanceMatrix__antibioticLabel">
-				<text ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
+				<text dy="-5" ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>
 			</g>

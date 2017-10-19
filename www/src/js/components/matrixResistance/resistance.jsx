@@ -1,7 +1,6 @@
 import React from 'react';
 import resistanceTypes from '../../models/resistances/resistanceTypes';
 import debug from 'debug';
-import getRelativeValue from '../../helpers/getRelativeValue';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
@@ -11,23 +10,19 @@ const log = debug('infect:ResistanceComponent');
 @observer
 class Resistance extends React.Component {
 
-	_getTransformation() {
+	@computed get transformation() {
 		const xPos = this.props.resistance.xPosition;
 		const yPos = this.props.resistance.yPosition;
 		if (!xPos || !yPos) return `translate(0,0)`;
-		const left = xPos.left;
-		const top = yPos.top;
+		// Center is always the middle of a regular (defaultRadius) circle
+		const left = xPos.left + this.props.matrix.defaultRadius;
+		const top = yPos.top + this.props.matrix.defaultRadius;
 		log('Resistance %o is placed at %d/%d', this, left, top);
 		// IE11 does not know style: transform – use the transform attribute
 		return `translate(${ left }, ${ top })`;
 	}
 
 
-	_getRadius() {
-		const {min, max} = this.props.matrix.sampleSizeExtremes;
-		return Math.round(getRelativeValue(this.props.resistance.mostPreciseValue.sampleSize, min, max, 0.4) * 
-			this.props.matrix.defaultRadius);
-	}
 
 	/**
 	* Return value that will be displayed in the resistance's circle. 
@@ -56,21 +51,20 @@ class Resistance extends React.Component {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
-			<g transform={ this._getTransformation() } className="resistanceMatrix__resistance" 
+			<g transform={ this.transformation } className="resistanceMatrix__resistance" 
 				style={ { visibility: this.props.resistance.visible ? 'visible' : 'hidden' } }
-				data-antibiotic={this.props.resistance.resistance.antibiotic.name}
-				data-bacterium={this.props.resistance.resistance.bacterium.name}
-				onMouseEnter={this._handleMouseEnter} onMouseLeave={this._handleMouseLeave}
+				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
+				data-bacterium={ this.props.resistance.resistance.bacterium.name }
+				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }
 				>
 				{/* circle: center is at 0/0, therefore move by radius/radius */}
-				<circle r={this._getRadius()} fill={this.props.resistance.backgroundColor} className="resistanceMatrix__resistanceCircle"
-					cx={this.props.matrix.defaultRadius} cy={this.props.matrix.defaultRadius}>
+				<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } className="resistanceMatrix__resistanceCircle">
 				</circle>
-				<text x={this.props.matrix.defaultRadius} y={this.props.matrix.defaultRadius} textAnchor="middle" 
-					fill={this.props.resistance.fontColor}
+				{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
+				<text textAnchor="middle" fill={ this.props.resistance.fontColor }
 					dominantBaseline="central" className="resistanceMatrix__resistanceText"
-					dy={ supportsDominantBaseline(0, '0.5em') }>
-					{Math.round(this.value * 100)}
+					dy={ supportsDominantBaseline('-2', '0.5em') }>
+					{ Math.round(this.value * 100) }
 				</text>
 			</g>
 		);

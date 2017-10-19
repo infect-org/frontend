@@ -2,9 +2,9 @@ import test from 'tape';
 import ResistanceMatrixView from './resistanceMatrixView';
 import Resistance from './resistance';
 
-function setupData(sampleSize = 1000, value = 1) {
+function setupData(sampleSize = 1000, value = 1, matrix = {}) {
 	const resistance = new Resistance([{ type: 'import', sampleSize: sampleSize, value: value }]);
-	const resistanceMatrixView = new ResistanceMatrixView(resistance);
+	const resistanceMatrixView = new ResistanceMatrixView(resistance, matrix);
 	return {
 		resistance
 		, resistanceMatrixView
@@ -25,5 +25,19 @@ test('calculates colors', (t) => {
 	t.deepEquals(resistanceMatrixView1.fontColor.toRgb(), { r: 153, g: 66, b: 51, a: 1 });
 	t.deepEquals(resistanceMatrixView2.backgroundColor.toRgb(), { r: 224, g: 211, b: 108, a: 1 });
 	t.deepEquals(resistanceMatrixView2.fontColor.toRgb(), { r: 71, g: 64, b: 6, a: 1 });
+	t.end();
+});
+
+test('calculates radius', (t) => {
+	const matrix = {
+		sampleSizeExtremes: { min: 100, max: 1000 }
+		, defaultRadius: 20
+	};
+	const resistanceMatrixView1 = setupData(100, undefined, matrix).resistanceMatrixView;
+	const resistanceMatrixView2 = setupData(500, undefined, matrix).resistanceMatrixView;
+	const resistanceMatrixView3 = setupData(1000, undefined, matrix).resistanceMatrixView;
+	t.equals(resistanceMatrixView1.radius, 12);
+	t.equals(resistanceMatrixView2.radius, 16);
+	t.equals(resistanceMatrixView3.radius, 20);
 	t.end();
 });

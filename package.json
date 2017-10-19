@@ -51,6 +51,7 @@
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "tap-spec": "^4.1.1",
     "tap-webpack-plugin": "^2.0.0",
     "tape": "^4.7.0",
     "testdouble": "^3.2.2",
@@ -64,9 +65,9 @@
     "infect"
   ],
   "scripts": {
-    "watch": "webpack --watch",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --open --env.dev",
-    "build": "webpack"
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --hot --inline --open --env.dev",
+    "build": "webpack --config webpack.config.js",
+    "test": "webpack --config webpack.test.config.js"
   },
   "browserify": {
     "external": {

@@ -1,6 +1,7 @@
 import color from 'tinycolor2';
 import { computed } from 'mobx';
 import debug from 'debug';
+import getRelativeValue from '../../helpers/getRelativeValue';
 
 const log = debug('infect:ResistanceMatrixView');
 
@@ -27,6 +28,13 @@ export default class ResistanceMatrixView {
 	@computed get mostPreciseValue() {
 		return this.resistance.getValuesByPrecision()[0];
 	}
+
+	@computed get radius() {
+		const {min, max} = this._matrixView.sampleSizeExtremes;
+		return Math.round(getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4) * 
+			this._matrixView.defaultRadius);
+	}
+
 
 	@computed get backgroundColor() {
 		const bestValue = this.mostPreciseValue.value;
