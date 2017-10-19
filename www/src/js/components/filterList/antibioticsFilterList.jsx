@@ -53,18 +53,31 @@ class AntibioticsFilterList extends React.Component {
 		});
 	}
 
-	_isApplicationChecked() {
-		return true;
+	_isApplicationChecked(type) {
+		const { isFilterSelected } = this._getFilterForApplication(type);
+		return isFilterSelected;
 	}
 
-	_handleApplicationFilterChange(type) {
+	/**
+	* Gets positive (true) filter for perOs or iv, returns it and its selected state.
+	* @param {String} type		'intravenous' or 'perOs'
+	* @returns {Object}
+	*/
+	_getFilterForApplication(type) {
 		const shortType = type === 'perOs' ? 'po' : 'iv';
 		const filter = this.props.filterValues.getValuesForProperty('antibiotic', shortType)
 			.find((item) => item.value === true);
 		const isFilterSelected = this.props.selectedFilters.isSelected(filter);
-		log('Filter for %s is %o, selected %o', shortType, filter, isFilterSelected);
-		if (isFilterSelected) this.props.selectedFilters.removeFilter(filter);
-		else this.props.selectedFilters.addFilter(filter);
+		return {
+			isFilterSelected
+			, filter
+		};
+	}
+
+	_handleApplicationFilterChange(type) {
+		const { filter, isFilterSelected } = this._getFilterForApplication(type);
+		log('Filter for %s is %o, selected %o', type, filter, isFilterSelected);
+		this.props.selectedFilters.toggleFilter(filter);
 	}
 
 	render() {
@@ -94,6 +107,7 @@ class AntibioticsFilterList extends React.Component {
 					})}
 				</ul>
 
+				{ /* Application combines iv and po properties and therefore needs special handling */ }
                 <h3 className="gray margin-top">Application</h3>
 				<ul className="group__list group__list--vertical">
 					<FilterListCheckbox name="Per Os" value="perOs" checked={ this._isApplicationChecked('perOs') } 

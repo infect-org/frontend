@@ -35,6 +35,11 @@ export default class SelectedFilters {
 		this._selectedFilters.splice(index, 1);
 	}
 
+	@action toggleFilter(filter) {
+		log('Toggle filter %o', filter);
+		this.isSelected(filter) ? this.removeFilter(filter) : this.addFilter(filter);
+	}
+
 	isSelected(filter) {
 		const selected = this._selectedFilters.indexOf(filter) > -1;
 		log('Is filter %o selected? %o', filter, selected);

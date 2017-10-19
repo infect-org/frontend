@@ -53,6 +53,35 @@ class BacteriaFilterList extends React.Component {
 		});
 	}
 
+
+	_isMetabolismChecked(type) {
+		const { isFilterSelected } = this._getFilterForMetabolism(type);
+		return isFilterSelected;
+	}
+
+	/**
+	* Gets positive (true) filter for perOs or iv, returns it and its selected state.
+	* @param {String} type		'intravenous' or 'perOs'
+	* @returns {Object}
+	*/
+	_getFilterForMetabolism(type) {
+		const filter = this.props.filterValues.getValuesForProperty('bacterium', type)
+			.find((item) => item.value === true);
+		const isFilterSelected = this.props.selectedFilters.isSelected(filter);
+		return {
+			isFilterSelected
+			, filter
+		};
+	}
+
+	_handleMetabolismChange(type) {
+		const { filter, isFilterSelected } = this._getFilterForMetabolism(type);
+		log('Filter for %s is %o, selected %o', type, filter, isFilterSelected);
+		this.props.selectedFilters.toggleFilter(filter);
+	}
+
+
+
 	render() {
 		return (
 			<div>
@@ -90,22 +119,15 @@ class BacteriaFilterList extends React.Component {
 					})}
 				</ul>
 
-                <h3 className="gray margin-top">Aerobic</h3>
+				{ /* Metabolism combines aerobic and anaerobic properties and therefore needs special handling */ }
+                <h3 className="gray margin-top">Metabolism</h3>
 				<ul className="group__list group__list--vertical">
-					{this.props.filterValues.getValuesForProperty('bacterium', 'aerobic').map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
-				</ul>
-
-                <h3 className="gray margin-top">Anaerobic</h3>
-				<ul className="group__list group__list--vertical">
-					{this.props.filterValues.getValuesForProperty('bacterium', 'anaerobic').map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
+					<FilterListCheckbox name="Aerobic" value="aerobic" 
+						checked={ this._isMetabolismChecked('aerobic') } 
+						onChangeHandler={(ev) => this._handleMetabolismChange('aerobic')} />
+					<FilterListCheckbox name="Anaerobic" value="anaerobic" 
+						checked={ this._isMetabolismChecked('anaerobic') } 
+						onChangeHandler={(ev) => this._handleMetabolismChange('anaerobic')} />
 				</ul>
 
 			</div>

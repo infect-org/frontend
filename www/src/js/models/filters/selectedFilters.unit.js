@@ -67,3 +67,16 @@ test('removes all filters', (t) => {
 	t.end();
 });
 
+test('toggles filters', (t) => {
+	const { filter, values } = setupFilters();
+	filter.toggleFilter(values[0]);
+	t.deepEquals(filter.filters, [values[1]]);
+	filter.toggleFilter(values[0]);
+	t.deepEquals(filter.filters, [values[1], values[0]]);
+	filter.toggleFilter(values[0]);
+	filter.toggleFilter(values[1]);
+	t.equals(filter.filters.length, 0);
+	t.end();
+});
+
+
