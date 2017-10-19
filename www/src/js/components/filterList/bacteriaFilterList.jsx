@@ -15,9 +15,7 @@ class BacteriaFilterList extends React.Component {
 
 	_handleFilterChange = (item) => {
 		log('Handle filter change for item %o', item);
-		const existing = this.props.selectedFilters.filters.indexOf(item) > -1;
-		if (!existing) this.props.selectedFilters.addFilter(item);
-		else this.props.selectedFilters.removeFilter(item);
+		this.props.selectedFilters.toggleFilter(item);
 	}
 
 
@@ -84,7 +82,7 @@ class BacteriaFilterList extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div id="bacteria-filters">
                 <h3 className="gray margin-top">Name</h3>
 				<ul className="group__list group__list--vertical">
 					{this._getNamesBySelection(true).map((item) => {

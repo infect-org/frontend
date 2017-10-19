@@ -12,6 +12,10 @@ $padding-lr: 30px;
 	height: 100vw;
 	background-color: $sidenavigation-background;
 
+	&--visible {
+		left: 0;
+	}
+
 	&__input {
 		
 	}

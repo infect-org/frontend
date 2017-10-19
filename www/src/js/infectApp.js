@@ -57,6 +57,8 @@ export default class InfectApp {
 
 		this.views.matrix.setSelectedFilters(this.selectedFilters);
 
+		this._createRegions();
+
 	}
 
 
@@ -180,6 +182,20 @@ export default class InfectApp {
 			});
 			this.filterValues.addEntity('antibiotic', antibiotic);
 			this.antibiotics.add(antibiotic);
+		});
+
+	}
+
+
+	_createRegions() {
+
+		const regionNames = ['Basel', 'Genf', 'Mittelland', 'Bern', 'Ticion'];
+		const regions = regionNames.map((item) => ({
+			name: item
+			, identifier: item.toLowerCase().replace(/\s*/g, '-')
+		}));
+		regions.forEach((region) => {
+			this.filterValues.addEntity('region', region);
 		});
 
 	}

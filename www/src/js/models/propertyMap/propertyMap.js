@@ -1,6 +1,7 @@
 import SearchableMap from './searchableMap';
 import {computed, createTransformer} from 'mobx';
 import debug from 'debug';
+import searchString from '../../helpers/searchString';
 const log = debug ('infect:PropertyMap');
 
 /**
@@ -17,7 +18,7 @@ export default class PropertyMap {
 	constructor() {
 		// Objects with properties: name, niceName and entityType
 		this._properties = new SearchableMap();
-		// Objects with properties: value, niceValue and property (link to a property in 
+		// Objects with property values: value, niceValue and property (link to a property in 
 		// this._properties)
 		this._propertyValues = new SearchableMap();
 		this._configurations = {};
@@ -116,6 +117,13 @@ export default class PropertyMap {
 
 		});
 
+	}
+
+
+	search(searchTerm) {
+		const results = this._propertyValues.values.filter((item) => searchString(item.niceValue, searchTerm));
+		log('Searched propertyMap for %s, results are %o', searchTerm, results);
+		return results;
 	}
 
 

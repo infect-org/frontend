@@ -48,49 +48,11 @@
                         <a href="/"><img src="img/logo.svg" alt="Infect" /></a>
                     </div>
                     <div class="header__search">
-                        <div class="group group--lead">
-                            <h3>Filter durchsuchen</h3>
-                            <input type="text" placeholder="Eigenschaft" class="group__input input search__input" id="search__input" onkeyup="javascript:showSearchOverlay()" />
+                        <div>
+                            <FilterSearch/>
                         </div>
-                        <script type="text/javascript">
-                            function showSearchOverlay() {
-                                var div = document.getElementById('search');
-                                var input = document.getElementById('search__input');
-                                if (input && input.value) {
-                                    div.style.left = '0';
-                                } else {
-                                    div.style.left = '-210px';
-                                }
-                            }
-                        </script>
-                        <div class="group group--black-font search" id="search">
-                            <ul class="group__list group__list--vertical search__results">
-                                <li class="group__list-item list-item result">
-                                    <div class="label">
-                                        <p class="label--small label--gray label--nomargin">Bakterium - Färbung</p>
-                                        <p class="label--bold label--larger label--nomargin">Gram +</p>
-                                    </div>
-                                </li>
-                                <li class="group__list-item result result--active">
-                                    <div class="result__checkmark"></div>
-                                    <div class="label">
-                                        <p class="label--small label--gray label--nomargin">Bakterium - Färbung</p>
-                                        <p class="label--bold label--larger label--nomargin">Gram -</p>
-                                    </div>
-                                </li>
-                                <li class="group__list-item result result">
-                                    <div class="label">
-                                        <p class="label--small label--gray label--nomargin">Antibiotikum - Wirkstoff</p>
-                                        <p class="label--bold label--larger label--nomargin">Gramophomin</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="group group--vertical group--space-between">
-                            <button class="button button--icon icon1"></button>
-                            <button class="button button--icon icon2"></button>
-                            <button class="button button--icon icon3"></button>
-                            <button class="button button--icon icon4"></button>
+                        <div>
+                            <FilterListMenu/>
                         </div>
                         <hr class="divider divider--lead"/>
                     </div>  

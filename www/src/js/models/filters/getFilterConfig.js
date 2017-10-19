@@ -28,6 +28,14 @@ export default function() {
 			}
 		}
 	}, {
+		entityType: 'region'
+		, config: {
+			name: {
+				translation: 'Name'
+				, valueTranslations: (name) => name
+			}
+		}
+	}, {
 		entityType: 'substanceClass'
 		, config: {
 			name: {

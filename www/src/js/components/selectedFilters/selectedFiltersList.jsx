@@ -15,6 +15,7 @@ export default class SelectedFiltersList extends React.Component {
             	<SelectedFiltersForType type="antibiotics" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('antibiotic')} />
             	<SelectedFiltersForType type="substanceClasses" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('substanceClass')} />
             	<SelectedFiltersForType type="bacteria" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('bacterium')} />
+                <SelectedFiltersForType type="region" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType('region')} />
                 { this.props.selectedFilters.filters.length > 1 &&
                 	<div className="group group--black-font">
                         <h2><strong>Clear all filters</strong></h2>

@@ -82,7 +82,7 @@ class AntibioticsFilterList extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div id="antibiotics-filters">
                 <h3 className="gray margin-top">Name</h3>
 				<ul className="group__list group__list--vertical">
 					{this._getNamesBySelection(true).map((item) => {
