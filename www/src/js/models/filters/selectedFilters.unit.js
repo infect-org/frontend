@@ -59,3 +59,11 @@ test('filters for a certain type', (t) => {
 	t.end();
 });
 
+test('removes all filters', (t) => {
+	const { filter, values } = setupFilters();
+	t.equals(filter.filters.length, 2);
+	filter.removeAllFilters();
+	t.equals(filter.filters.length, 0);
+	t.end();
+});
+
