@@ -1,7 +1,7 @@
 import SearchableMap from './searchableMap';
-import {computed, createTransformer} from 'mobx';
+import { computed, createTransformer } from 'mobx';
 import debug from 'debug';
-import searchString from '../../helpers/searchString';
+import Fuse from 'fuse.js';
 const log = debug ('infect:PropertyMap');
 
 /**
@@ -16,12 +16,26 @@ export default class PropertyMap {
 	* easily found.
 	*/
 	constructor() {
+
+		const latestSearchIndex = 0;
 		// Objects with properties: name, niceName and entityType
 		this._properties = new SearchableMap();
 		// Objects with property values: value, niceValue and property (link to a property in 
 		// this._properties)
 		this._propertyValues = new SearchableMap();
 		this._configurations = {};
+
+		this._fuseOptions = {
+			shouldSort: true
+			, threshold: 0.3
+			, tokenize: true
+		  	, minMatchCharLength: 1
+		  	, keys: [
+				{ name: 'niceValue', weight: 0.7 }
+				, { name: 'property.niceName', weight: 0.3 }
+			]
+		};
+
 	}
 
 
@@ -31,11 +45,11 @@ export default class PropertyMap {
 	* @return {Array}
 	*/
 	getValuesForProperty(entityType, propertyName) {
-		return createTransformer((filter) => {
-			const property = this._properties.getBy({ entityType: filter.entityType, name: filter.propertyName });
+		//return createTransformer((filter) => {
+			const property = this._properties.getBy({ entityType: entityType, name: propertyName });
 			if (!property.length) return [];
 			return this._propertyValues.getBy({ property: property[0] });			
-		})({ entityType: entityType, propertyName: propertyName });
+		//})({ entityType: entityType, propertyName: propertyName });
 	}
 
 
@@ -47,9 +61,9 @@ export default class PropertyMap {
 		// https://github.com/mobxjs/mobx/issues/291
 		//console.error('props', this._properties.getBy({ entityType: entityType }), this._properties.values);
 		//console.error('props');
-		return createTransformer((entityType) => {
+		//return createTransformer((entityType) => {
 			return this._properties.getBy({ entityType: entityType });
-		})(entityType);
+		//})(entityType);
 	}
 
 
@@ -112,17 +126,21 @@ export default class PropertyMap {
 				throw(`PropertyMap: Unknown type of valueTranslations; needs to be an Array or a Function, is ${ valueTranslations }.`);
 			}
 
-			log('Added value "%s" to property %o, entity was %o', value, existingProperties[0], entity);
-			this._propertyValues.add({ property: existingProperties[0], value: value, niceValue: niceValueName });
+			log('Added %o, entity was %o', newEntity, entity);
+			const newEntity = { property: existingProperties[0], value: value, niceValue: niceValueName };
+			this._propertyValues.add(newEntity);
 
 		});
 
 	}
 
 
+	/**
+	* Performs a fulltext search with Fuse.js
+	*/
 	search(searchTerm) {
-		const results = this._propertyValues.values.filter((item) => searchString(item.niceValue, searchTerm));
-		log('Searched propertyMap for %s, results are %o', searchTerm, results);
+		const fuse = new Fuse(this._propertyValues.values, this._fuseOptions);
+		const results = fuse.search(searchTerm);
 		return results;
 	}
 
@@ -140,7 +158,6 @@ export default class PropertyMap {
 		}
 		if (typeof translation === 'string') return translation;
 		if (typeof translation === 'function') return translation(value);
-		//throw(`PropertyMap: Unknown type for a translation, ${ typeof translation }.`);
 	}
 
 }

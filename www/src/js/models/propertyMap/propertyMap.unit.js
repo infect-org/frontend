@@ -45,7 +45,7 @@ function createMap() {
 }
 
 test('throws if config is missing', (t) => {
-	const {map, objects} = createMap();
+	const { map, objects } = createMap();
 	t.throws(() => map.addEntity('test', objects[0]), /provide a configuration/);
 	t.end();
 });
@@ -54,7 +54,7 @@ test('throws if config is missing', (t) => {
 // Test properties 
 
 test('adds entity if config is present', (t) => {
-	const {map, configs, objects} = createMap();
+	const { map, configs, objects } = createMap();
 	map.addConfiguration('testEntity', configs[0]);
 	map.addEntity('testEntity', objects[0]);
 	t.deepEqual(map.getPropertiesForEntityType('testEntity'), [{ entityType: 'testEntity', name: 'property1', niceName: 'Property 1' }]);
@@ -62,7 +62,7 @@ test('adds entity if config is present', (t) => {
 });
 
 test('only adds values available', (t) => {
-	const {map, configs, objects} = createMap();
+	const { map, configs, objects } = createMap();
 	map.addConfiguration('testEntity', configs[0]);
 	map.addEntity('testEntity', objects[1]);
 	t.deepEqual(map.getPropertiesForEntityType('testEntity'), [{ entityType: 'testEntity', name: 'property1', niceName: 'Property 1' }]);
@@ -71,7 +71,7 @@ test('only adds values available', (t) => {
 });
 
 test('accepts functions as property translations', (t) => {
-	const {map, configs, objects} = createMap();
+	const { map, configs, objects } = createMap();
 	map.addConfiguration('testEntity', configs[1]);
 	map.addEntity('testEntity', objects[3]);
 	t.deepEqual(map.getPropertiesForEntityType('testEntity'), [{ entityType: 'testEntity', name: 'property1', niceName: 'property1_translated' }]);
@@ -79,9 +79,20 @@ test('accepts functions as property translations', (t) => {
 });
 
 
+test('search', (t) => {
+	const { map, configs, objects } = createMap();
+	map.addConfiguration('testEntity', configs[0]);
+	map.addEntity('testEntity', objects[0]);
+	map.addEntity('testEntity', objects[1]);
+	const expectation = map.getValuesForProperty('testEntity', 'property1')[0];
+	t.deepEquals(map.search('truth'), [expectation]);
+	t.end();
+});
+
+
 // Test values
 test('translates values correctly', (t) => {
-	const {map, configs, objects} = createMap();
+	const { map, configs, objects } = createMap();
 	map.addConfiguration('entity0', configs[0]);
 	map.addConfiguration('entity1', configs[1]);
 	map.addEntity('entity0', objects[0]);

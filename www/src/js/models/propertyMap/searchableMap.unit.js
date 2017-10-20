@@ -1,6 +1,7 @@
 import test from 'tape';
 import SearchableMap from './searchableMap';
 import {reaction} from 'mobx';
+import { observable } from 'mobx';
 
 function createMap() {
 	const map = new SearchableMap();
@@ -61,3 +62,11 @@ test('works with observables', (t) => {
 	t.equals(matchesLength, 3);
 	t.end();
 });
+
+
+test('returns original values', (t) => {
+	const {map, objects} = createMap();
+	t.deepEqual(map.originalValues.slice(0), objects);
+	t.end();
+});
+

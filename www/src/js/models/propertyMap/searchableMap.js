@@ -18,6 +18,10 @@ export default class SearchableMap {
 		return this._values.slice(0);
 	}
 
+	@computed get originalValues() {
+		return this._values;
+	}
+
 	set values(item) {
 		throw new Error(`SearchableMap: Use add method to add items.`);
 	}

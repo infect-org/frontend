@@ -17,6 +17,7 @@ export default class SelectedFilters {
 
 	@action addFilter(filter) {
 		log('Add filter %o, filters are %o', filter, this._selectedFilters.peek());
+		// Prevent users from adding similar filters
 		const duplicate = this._selectedFilters.find((item) => deepEqual(item, filter));
 		if (duplicate) {
 			log('Tried to add duplicate entry %o', filter);
@@ -27,7 +28,7 @@ export default class SelectedFilters {
 
 	@action removeFilter(filter) {
 		log('Remove filter %o, filters are %o', filter, this._selectedFilters.peek());
-		const index = this._selectedFilters.indexOf(filter);
+		const index = this._selectedFilters.indexOf(this.findFilter(filter));
 		if (index === -1) {
 			log('Filter %o not found in selectedFilters %o', filter, this._selectedFilters);
 			return;
@@ -40,10 +41,21 @@ export default class SelectedFilters {
 		this.isSelected(filter) ? this.removeFilter(filter) : this.addFilter(filter);
 	}
 
+	/**
+	* Returns a filter that deep-equals the filter passed or null
+	*/
+	findFilter(filter) {
+		const match = this._selectedFilters.find((item) => item === filter);
+		return match;
+	}
+
+	/**
+	* Returns true if a filter that deep-equals filter is selected
+	*/
 	isSelected(filter) {
-		const selected = this._selectedFilters.indexOf(filter) > -1;
-		log('Is filter %o selected? %o', filter, selected);
-		return selected;
+		const duplicate = this.findFilter(filter);
+		log('Is filter %o selected? %o', filter, !!duplicate);
+		return !!duplicate;
 	}
 
 	@computed get filters() {

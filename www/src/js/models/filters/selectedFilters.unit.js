@@ -33,10 +33,28 @@ test('remove filters', (t) => {
 	t.end();
 });
 
+/*test('remove similar filters', (t) => {
+	const { filter, values } = setupFilters();
+	filter.removeFilter(Object.assign({}, values[0]));
+	t.deepEquals(filter.filters, [values[1]]);
+	t.end();
+});*/
+
 test('is selected', (t) => {
 	const { filter, values } = setupFilters();
 	t.equals(filter.isSelected(values[0]), true);
+	// Deep-equal
+	//t.equals(filter.isSelected(Object.assign({}, values[1])), true);
+	t.equals(filter.isSelected({ values: 3 }), false);
 	t.equals(filter.isSelected({ values: 1 }), false);
+	t.end();
+});
+
+test('finds filter', (t) => {
+	const { filter, values } = setupFilters();
+	// Deep-equal
+	//t.equals(filter.findFilter(Object.assign({}, values[0])), values[0]);
+	t.equals(filter.findFilter(values[0]), values[0]);
 	t.end();
 });
 
