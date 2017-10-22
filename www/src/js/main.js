@@ -6,6 +6,7 @@ import InfectApp from './infectApp';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import Matrix from './components/matrix/matrix';
+import MatrixHeader from './components/matrix/matrixHeader';
 import FilterList from './components/filterList/filterList';
 import SelectedFiltersList from './components/selectedFilters/selectedFiltersList';
 import FilterListMenu from './components/filterListMenu/filterListMenu';
@@ -40,6 +41,7 @@ const app = new InfectApp(config);
 // React
 log('views:', app.views);
 ReactDOM.render(<Matrix matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('Matrix'));
+ReactDOM.render(<MatrixHeader matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('MatrixHeader'));
 ReactDOM.render(<FilterList filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterList'));
 ReactDOM.render(<SelectedFiltersList selectedFilters={ app.selectedFilters }/>, document.querySelector('SelectedFiltersList'));
 ReactDOM.render(<FilterListMenu/>, document.querySelector('FilterListMenu'));

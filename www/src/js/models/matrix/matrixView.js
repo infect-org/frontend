@@ -68,6 +68,9 @@ class MatrixView {
 		/* Key: antibioticId/bacteriumId, value: Resistance */
 		this._resistances = observable.map();
 
+		// Space between labels (bact/ab) and body
+		this.spaceBetweenGroups = 20;
+
 		// Needed to calculate space that's available for the matrices content
 		// Key: antibiotic, value: height in px
 		this._antibioticLabelDimensions = new Map();
@@ -220,6 +223,15 @@ class MatrixView {
 		}), 0);
 		log('greatestSubstanceClassLabelHeight is %d', this.greatestSubstanceClassLabelHeight);
 	}
+
+	@computed get headerHeight() {
+		//if (this._substanceClassLabelHeights.size < this._substanceClasses.size) return 0;
+		//if (this._antibioticLabelDimensions.size < this._antibiotics.size) return 0;
+		if (!this.antibioticLabelRowHeight) return 0;
+		return this.antibioticLabelRowHeight + this.spaceBetweenGroups / 2 +
+			this.maxAmountOfSubstanceClassHierarchies * (this.greatestSubstanceClassLabelHeight || 0);
+	}
+
 
 
 

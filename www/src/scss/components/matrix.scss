@@ -1,4 +1,6 @@
-.matrix {
+.resistanceMatrix {
+
+
     &__overlay {
         position: absolute;
         width: 100%;
@@ -20,21 +22,33 @@
 
         &--active {
             opacity: 0.6;
-            z-index: 2;
+            z-index: 200;
         }
     }
-}
 
-.resistanceMatrix {
 
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
 
-    max-width:2000px; /* or circles are too large */
-    min-width: 1400px; /* or circles are smaller than the font */
-    width: 100%;
-    font-size: 11pt;
-    font-family: "acumin-pro-condensed";
+    &__body,
+    &__header {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+
+        max-width:2000px; /* or circles are too large */
+        min-width: 1400px; /* or circles are smaller than the font */
+        width: 100%;
+        font-size: 11pt;
+        font-family: "acumin-pro-condensed";
+    }
+
+    &__body {
+        position: relative;
+    }
+
+    &__header {
+        z-index: 100;
+        position: fixed;
+    }
+
 
     &__bacteriumLabelText {
         text-anchor: end;
@@ -64,6 +78,23 @@
             fill: #ff623f;
         }
 
+    }
+
+    &__substanceClassLabels:hover {
+
+    }
+
+    &__substanceClassLabel {
+        cursor: pointer;
+        text {
+        }
+        &:hover text {
+            fill: #fff;
+        }
+        &:hover rect {
+            //fill: #{$link-color};
+            fill: #{$sidenavigation-background};
+        }
     }
 
     /**
