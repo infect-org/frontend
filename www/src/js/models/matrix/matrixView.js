@@ -1,6 +1,5 @@
 import debug from 'debug';
-//import {memoize} from 'decko';
-import {computed, observable, action} from 'mobx';
+import { computed, observable, action, observe } from 'mobx';
 import calculateXPositions from './calculateXPositions';
 import sortAntibiotics from './sortAntibiotics';
 import AntibioticMatrixView from '../antibiotics/antibioticMatrixView';
@@ -84,10 +83,26 @@ class MatrixView {
 	* Adds data for multiple properties at once. Is nice as all data becomes available at the
 	* same time. 
 	*/
-	@action addData(antibiotics = [], bacteria = [], resistances = []) {
+	@action addData(antibiotics = [], bacteria = [], resistances) {
 		antibiotics.forEach((ab) => this.addAntibiotic(ab));
 		bacteria.forEach((bact) => this.addBacterium(bact));
-		resistances.forEach((resistance) => this.addResistance(resistance));
+
+		// Resistances will change whenever a population filter is changed. 
+		// Make sure we're watching them.
+		// Resistances are not required to simplify testing
+		if (resistances) {
+			observe(resistances, 'status', (status) => {
+				if (status.newValue !== 'ready') return;
+				this._clearResistances();
+				resistances.getAsArray().forEach((resistance) => {
+					this.addResistance(resistance);
+				});
+			});			
+		}
+	}
+
+	@action _clearResistances() {
+		this._resistances.clear();
 	}
 
 
@@ -238,7 +253,7 @@ class MatrixView {
 
 
 
-	addResistance(resistance) {
+	@action addResistance(resistance) {
 		const id = `${ resistance.antibiotic.id }/${ resistance.bacterium.id }`;
 		if (this._resistances.has(id)) throw new Error(`Trying to overwrite resistance; not yet implemented. 
 			sampleSizeExtremes must be recalculated.`);
@@ -246,7 +261,7 @@ class MatrixView {
 		this._updateSampleSizeExtremes(resistance);
 	}
 
-	get resistances() {
+	@computed get resistances() {
 		return Array.from(this._resistances.values());
 	}
 

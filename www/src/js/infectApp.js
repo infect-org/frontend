@@ -3,20 +3,20 @@
 */
 
 import 'whatwg-fetch';
-import {fetchApi} from './helpers/api';
+import { fetchApi } from './helpers/api';
 import Antibiotic from './models/antibiotics/antibiotic';
 import AntibioticsStore from './models/antibiotics/antibioticsStore';
 import SubstanceClass from './models/antibiotics/substanceClass';
 import SubstanceClassesStore from './models/antibiotics/substanceClassesStore';
 import Bacterium from './models/bacteria/bacterium';
 import BacteriaStore from './models/bacteria/bacteriaStore';
-import Resistance from './models/resistances/resistance';
 import ResistancesStore from './models/resistances/resistancesStore';
 import MatrixView from './models/matrix/matrixView';
 import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
-import {observable, autorun, reaction} from 'mobx';
+import { observable, autorun, reaction } from 'mobx';
 import SelectedFilters from './models/filters/selectedFilters';
+import ResistancesFetcher from './models/resistances/resistancesFetcher';
 import debug from 'debug';
 const log = debug('infect:App');
 
@@ -44,16 +44,26 @@ export default class InfectApp {
 		this.antibiotics = new AntibioticsStore();
 		this.substanceClasses = new SubstanceClassesStore();
 		this.resistances = new ResistancesStore([], (item) => item.bacterium.id + '/' + item.antibiotic.id);
-
+		
 		this.filterValues = new PropertyMap();
 		this._setupFilterValues();
-
 		this.selectedFilters = new SelectedFilters();
 
 		// Make promise public so that anything outside can check if data is ready.
 		// Don't directly return the promise as a constructor should return the class
 		// instance.
-		this.getDataPromise = this._getData();
+		this._getDataPromise = this._getData();
+
+		const resistanceFetcher = new ResistancesFetcher(
+			this._config.endpoints.apiPrefix + this._config.endpoints.resistances
+			, {
+				antibiotics: this.antibiotics
+				, bacteria: this.bacteria
+			}
+			, this.resistances
+			, this.selectedFilters
+		);
+		resistanceFetcher.getData();
 
 		this.views.matrix.setSelectedFilters(this.selectedFilters);
 
@@ -82,12 +92,17 @@ export default class InfectApp {
 	*/
 	async _getData() {
 		const results = {};
-		const calls = ['bacteria', 'antibiotics', 'resistances', 'substanceClasses'].map((entity) => {
-			return this._fetchData(this._config.endpoints.apiPrefix + this._config.endpoints[entity])
+		const calls = ['bacteria', 'antibiotics', 'substanceClasses'].map((entity) => {
+			const promise = this._fetchData(this._config.endpoints.apiPrefix + this._config.endpoints[entity]);
+			this[entity].setFetchPromise(promise);
+			return promise
 				.then((result) => {
 					results[entity] = result;
 				});
 		});
+
+
+
 		return Promise.all(calls).then(() => {
 
 			// ab.substanceClasses may have duplicates (for en/de) – remove them
@@ -104,9 +119,9 @@ export default class InfectApp {
 			this._createAntibiotics(antibiotics, results.substanceClasses.data);
 			this._createBacteria(results.bacteria.data);
 			// Must be at the end, ab and bact must be created first.
-			this._createResistances(results.resistances.data);
-			log('Got data; ab are %o, bacteria %o, resistances %o', this.antibiotics, this.bacteria, this.resistances);
-			this.views.matrix.addData(this.antibiotics.getAsArray(), this.bacteria.getAsArray(), this.resistances.getAsArray());
+			//this._createResistances(results.resistances.data);
+			log('Got data; ab are %o, bacteria %o, resistances %o', this.antibiotics, this.bacteria);
+			this.views.matrix.addData(this.antibiotics.getAsArray(), this.bacteria.getAsArray(), this.resistances);
 		}, (err) => {
 			throw new Error(`InfectApp: Could not get data. ${ err.name }: ${ err.message }.`);
 		});
@@ -215,7 +230,7 @@ export default class InfectApp {
 	}
 
 
-	_createResistances(resistances) {
+	/*_createResistances(resistances) {
 
 		const missingAntibiotics = [];
 
@@ -260,16 +275,6 @@ export default class InfectApp {
 				return;
 			}
 			const resistanceValues = [];
-			/*if (res.resistanceDefault) resistanceValues.push({
-				type: 'default'
-				, value: this._getCharacter(res.resistanceDefault)
-				, sampleSize: this._getRandomSampleSize()
-			});
-			if (res.classResistanceDefault) resistanceValues.push({
-				type: 'class'
-				, value: this._getCharacter(res.classResistanceDefault)
-				, sampleSize: this._getRandomSampleSize()
-			});*/
 			if (res.resistanceImport) resistanceValues.push({
 				type: 'import'
 				, value: res.resistanceImport / 100
@@ -287,19 +292,7 @@ export default class InfectApp {
 		const singularMissingAntibiotics = missingAntibiotics.filter((item, index) => missingAntibiotics.lastIndexOf(item) === index);
 		console.error('InfectApp: Missing antibiotics: %s', singularMissingAntibiotics.join(', '));
 
-	}
-
-
-
-	// #todo: remove when data's ready
-	/*_getRandomSampleSize() {
-		return Math.round(Math.random() * 5000 * 100);
 	}*/
-	// #todo: remove
-	/*_getCharacter(value) {
- 		return value === 3 ? 0.9 : (value === 2 ? 0.6 : 0.3);
-	}*/
-
 
 }
 

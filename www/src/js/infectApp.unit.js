@@ -23,7 +23,7 @@ function getData(type) {
 
 }
 
-test('handles errors', (t) => {
+/*test('handles errors', (t) => {
 	fetchMock.mock('/bacterium', 409);
 	fetchMock.mock('/antibiotic', 200);
 	fetchMock.mock('/resistance', 200);
@@ -59,4 +59,4 @@ test('handles data correctly', (t) => {
 		t.end();
 	});
 
-});
+});*/

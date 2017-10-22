@@ -1,9 +1,11 @@
-import {observable} from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 /**
 * Simple store for antibiotics, bacteria etc.
 */
 export default class Store {
+
+	@observable _status = 'loading';
 
 	/**
 	* @param {Array} values					this.add is called for every value on initialization, therefore
@@ -38,6 +40,28 @@ export default class Store {
 
 	getById(id) {
 		return this._items.get(id);
+	}
+
+	/**
+	* Add promise that fetches the store's data. Needed for resistances to observe status
+	* of antibiotics/bacteria and resolve when (and not before) they are ready.
+	*/
+	@action setFetchPromise(promise) {
+		if (!(promise instanceof Promise)) throw new Error(`Store: Argument passed to setFetchPromise must be a Promise.`);
+		this.fetchPromise = promise;
+		this._updateStatus('loading');
+		this.fetchPromise.then(() => this._updateStatus('ready'));
+	}
+
+	@action _updateStatus(status) {
+		this._status = status;
+	}
+
+	/**
+	* Status is either 'loading' or 'ready', depending on fetchPromise.
+	*/
+	@computed get status() {
+		return this._status;
 	}
 
 }

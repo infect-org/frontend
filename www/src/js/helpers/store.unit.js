@@ -46,3 +46,33 @@ test('uses idGeneratorFunction if provided', (t) => {
 	t.equal(store.getAsArray().length, 2);
 	t.end();
 });
+
+test('status', (t) => {
+
+	test('returns default status', (t1) => {
+		const store = new Store();
+		t1.equals(store.status, 'loading');
+		t1.end();
+	});
+
+	test('prevents setting of invalid states', (t1) => {
+		const store = new Store();
+		t1.throws(() => store.setFetchPromise(null), /Promise/);
+		t1.end();
+	});
+
+	test('setting fetchPromise updates status and promise', (t1) => {
+		const store = new Store();
+		store.setFetchPromise(new Promise((resolve) => {
+			setTimeout(resolve, 50);
+		}));
+		t1.equals(store.status, 'loading');
+		store.fetchPromise.then(() => {
+			t1.equals(store.status, 'ready');
+			t1.end();
+		});
+	});
+
+	t.end();
+
+});

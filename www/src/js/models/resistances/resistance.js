@@ -16,7 +16,6 @@ export default class Resistance {
 	* @param {Bacterium} bacterium		Bacterium
 	*/
 	constructor(values, antibiotic, bacterium) {
-		this.values = [];
 		if (!Array.isArray(values)) throw new Error(`Resistance: First argument must be an Array of resistance values`);
 		values.forEach((value) => {
 			this.values.push(new ResistanceValue(value.type, value.value, value.sampleSize));
