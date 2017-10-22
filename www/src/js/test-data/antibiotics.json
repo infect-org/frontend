@@ -4,25 +4,6 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "xxxxxxxxxxxxxxxxxxxxx",
-        "substances": [
-            "xxxxxxxxxxxxxxxxxxxxx"
-        ],
-        "substanceClasses": [
-            {
-                "id": 18,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "xxxxxxxxxxxxxxxxxxxxx"
-            }
-        ],
-        "id": 6
-    },
-    {
-        "po": false,
-        "iv": true,
-        "languagae": "de",
-        "id_language": 1,
         "name": "Ceftazidim",
         "substances": [
             "Ceftazidim"
