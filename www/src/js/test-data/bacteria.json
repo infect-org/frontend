@@ -24,6 +24,72 @@
         "aerobic": true,
         "aerobicOptional": false,
         "anaerobic": false,
+        "anaerobicOptional": false,
+        "genus": "Helicobacter",
+        "gram": false,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 1000,
+        "id_grouping": 8,
+        "id_shape": 2,
+        "id_species": 1000,
+        "localeNames": [],
+        "name": "Helicobacter pylori",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "helicobacter pylori"
+    },
+    {
+        "aerobic": false,
+        "aerobicOptional": true,
+        "anaerobic": true,
+        "anaerobicOptional": false,
+        "genus": "propionibacterium",
+        "gram": true,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 1001,
+        "id_grouping": 8,
+        "id_shape": 2,
+        "id_species": 1001,
+        "localeNames": [],
+        "name": "Propionibacterium acnes",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Stäbchen",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Stäbchen"
+            }
+        ],
+        "species": "propionibacterium acnes"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
         "anaerobicOptional": true,
         "genus": "Actinomyces",
         "gram": true,

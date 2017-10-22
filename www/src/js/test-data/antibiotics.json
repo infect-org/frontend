@@ -4,6 +4,25 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
+        "name": "xxxxxxxxxxxxxxxxxxxxx",
+        "substances": [
+            "xxxxxxxxxxxxxxxxxxxxx"
+        ],
+        "substanceClasses": [
+            {
+                "id": 18,
+                "id_locale": 1,
+                "languagae": "de",
+                "name": "xxxxxxxxxxxxxxxxxxxxx"
+            }
+        ],
+        "id": 6
+    },
+    {
+        "po": false,
+        "iv": true,
+        "languagae": "de",
+        "id_language": 1,
         "name": "Ceftazidim",
         "substances": [
             "Ceftazidim"
@@ -14,18 +33,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "3. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 6
@@ -45,18 +52,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "3. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 8
@@ -76,12 +71,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Carbapeneme"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
             }
         ],
         "id": 16
@@ -139,12 +128,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Fluorchinolone"
-            },
-            {
-                "id": 1,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Chinolone"
             }
         ],
         "id": 23
@@ -170,18 +153,6 @@
                 "id_locale": 10,
                 "languagae": "en",
                 "name": "Monobactam"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
             }
         ],
         "id": 24
@@ -195,7 +166,12 @@
         "substances": [
             "Rifampicin"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1009,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "Rifamycin"
+        }],
         "id": 25
     },
     {
@@ -232,18 +208,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "2. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 5
@@ -276,7 +240,12 @@
         "substances": [
             "Cotrimoxazol"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1003,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "folate pathway inhibitor"
+        }],
         "id": 14
     },
     {
@@ -294,12 +263,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Carbapeneme"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
             }
         ],
         "id": 9
@@ -315,10 +278,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 4,
+                "id": 1002,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Betalactame"
+                "name": "penicillinase-stable penicillin"
             }
         ],
         "id": 17
@@ -332,7 +295,12 @@
         "substances": [
             "Fosfomycin"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1004,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "epoxid antibacterial"
+        }],
         "id": 11
     },
     {
@@ -350,18 +318,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "4. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 3
@@ -396,16 +352,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 3,
+                "id": 1000,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Penicilline"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
+                "name": "penicillinase-sensitive penicillin"
             }
         ],
         "id": 20
@@ -425,12 +375,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Fluorchinolone"
-            },
-            {
-                "id": 1,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Chinolone"
             }
         ],
         "id": 19
@@ -450,12 +394,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Carbapeneme"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
             }
         ],
         "id": 13
@@ -475,18 +413,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "3. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 4
@@ -506,18 +432,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "1. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 10
@@ -537,12 +451,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Fluorchinolone"
-            },
-            {
-                "id": 1,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Chinolone"
             }
         ],
         "id": 31
@@ -556,7 +464,12 @@
         "substances": [
             "Fusidinsäure"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1005,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "steroid antibacterial"
+        }],
         "id": 28
     },
     {
@@ -574,12 +487,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Fluorchinolone"
-            },
-            {
-                "id": 1,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Chinolone"
             }
         ],
         "id": 29
@@ -637,7 +544,12 @@
         "substances": [
             "Metronidazol"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1007,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "nitroimidazole"
+        }],
         "id": 30
     },
     {
@@ -708,16 +620,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 3,
+                "id": 1000,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Penicilline"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
+                "name": "penicillinase-sensitive penicillin"
             }
         ],
         "id": 37
@@ -750,7 +656,12 @@
         "substances": [
             "Linezolid"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1006,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "oxazolidinone"
+        }],
         "id": 39
     },
     {
@@ -768,12 +679,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Fluorchinolone"
-            },
-            {
-                "id": 1,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Chinolone"
             }
         ],
         "id": 40
@@ -787,7 +692,12 @@
         "substances": [
             "Tigecyclin"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 17,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "Tetracycline"
+        }],
         "id": 41
     },
     {
@@ -799,7 +709,12 @@
         "substances": [
             "Nitrofurantoin"
         ],
-        "substanceClasses": [],
+        "substanceClasses": [{
+            "id": 1008,
+            "id_locale": 1,
+            "languagae": "de",
+            "name": "nitrofuran"
+        }],
         "id": 42
     },
     {
@@ -836,18 +751,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "2. Gen. Cephalosporine"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
-            },
-            {
-                "id": 9,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Cephalosporine"
             }
         ],
         "id": 12
@@ -867,12 +770,6 @@
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Penicilline"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
             }
         ],
         "id": 1
@@ -889,22 +786,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 5,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Beta-Lactamase-Hemmer"
-            },
-            {
                 "id": 3,
                 "id_locale": 1,
                 "languagae": "de",
                 "name": "Penicilline"
-            },
-            {
-                "id": 4,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Betalactame"
             }
         ],
         "id": 2
@@ -920,12 +805,6 @@
             "Tazobactam"
         ],
         "substanceClasses": [
-            {
-                "id": 5,
-                "id_locale": 1,
-                "languagae": "de",
-                "name": "Beta-Lactamase-Hemmer"
-            },
             {
                 "id": 4,
                 "id_locale": 1,
