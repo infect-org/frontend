@@ -19,7 +19,7 @@ module.exports = [
 		/* pass in entry manually */
 		, entry: entries
 		, output: {
-			path: path.resolve(__dirname, basePath)
+			path: path.resolve(__dirname, 'www/dist/')
 			, filename: 'test.js'
 		}
 		, watch: true
