@@ -31,8 +31,14 @@ export default class ResistanceMatrixView {
 
 	@computed get radius() {
 		const {min, max} = this._matrixView.sampleSizeExtremes;
-		return Math.round(getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4) * 
+		console.log(min, max);
+		const radius = Math.round(getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4) * 
 			this._matrixView.defaultRadius);
+		if (isNaN(radius)) {
+			console.error(min, max);
+			console.error(radius, this.resistance, this.mostPreciseValue.sampleSize, this._matrixView.defaultRadius, getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4));
+		}
+		return radius;
 	}
 
 

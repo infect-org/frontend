@@ -1,177 +1,181 @@
 [
     {
-        "id": 13,
-        "name": "lipopeptide",
-        "parent": null,
-        "order": 22,
-        "color": ""
-    }, {
         "id": 4,
-        "name": "betalactame",
-        "parent": null,
-        "order": 2,
-        "color": ""
-    }, {
-        "id": 10,
-        "name": "monobactam",
-        "parent": 4,
-        "order": 14,
-        "color": ""
-    }, {
+        "name": "Betalactame",
+        "order": 1
+    },
+    {
         "id": 3,
-        "name": "penicilline",
+        "name": "Penicillin",
+        "order": 2,
         "parent": 4,
-        "order": 3,
-        "color": "113/92/140"
-    }, {
-        "id": 9,
-        "name": "cephalosporine",
-        "parent": 4,
-        "order": 8,
-        "color": "196 / 172 / 138"
-    }, {
-        "id": 15,
-        "name": "1. gen. cephalosporine",
-        "parent": 9,
-        "order": 9,
-        "color": "196 / 172 / 138"
-    }, {
-        "id": 11,
-        "name": "2. gen. cephalosporine",
-        "parent": 9,
-        "order": 10,
-        "color": "196 / 172 / 138"
-    }, {
-        "id": 18,
-        "name": "3. gen. cephalosporine",
-        "parent": 9,
-        "order": 11,
-        "color": "196 / 172 / 138"
-    }, {
-        "id": 14,
-        "name": "4. gen. cephalosporine",
-        "parent": 9,
-        "order": 12,
-        "color": "196 / 172 / 138"
-    }, {
-        "id": 12,
-        "name": "carbapeneme",
-        "parent": 4,
-        "order": 13,
-        "color": "133 / 99 / 81"
-    }, {
-        "id": 1,
-        "name": "chinolone",
-        "parent": null,
-        "order": 15,
-        "color": ""
-    }, {
-        "id": 2,
-        "name": "fluorchinolone",
-        "parent": 1,
-        "order": 16,
-        "color": ""
-    }, {
-        "id": 6,
-        "name": "makrolide",
-        "parent": null,
-        "order": 17,
-        "color": "153 / 95 / 143"
-    }, {
-        "id": 7,
-        "name": "aminoglykoside",
-        "parent": null,
-        "order": 18,
-        "color": ""
-    }, {
-        "id": 16,
-        "name": "glycopeptide",
-        "parent": null,
-        "order": 30,
-        "color": ""
-    }, {
-        "id": 19,
-        "name": "lincosamide",
-        "parent": null,
-        "order": 19,
-        "color": ""
-    }, {
-        "id": 8,
-        "name": "polymyxine",
-        "parent": null,
-        "order": 20,
-        "color": "124 / 155 / 95"
-    }, {
-        "id": 17,
-        "name": "tetracycline",
-        "parent": null,
-        "order": 23,
-        "color": "183 / 68 / 68"
-    }, {
-        "id": 5,
-        "name": "beta-lactamase-hemmer",
-        "parent": null,
-        "order": 31,
-        "color": ""
-    }, {
+        "color": "113 / 92 / 140"
+    },
+    {
         "id": 1000,
-        "name": "penicillinase-sensitive penicillin",
+        "name": "Penicillinase-sensitive penicillin",
+        "order": 3,
         "parent": 3,
-        "order": 4,
-        "color": ""
-    }, {
+        "color": "113 / 92 / 140"
+    },
+    {
         "id": 1001,
-        "name": "aminopenicillin",
+        "name": "Aminopenicillin",
+        "order": 4,
         "parent": 3,
-        "order": 5,
-        "color": ""
-    }, {
+        "color": "113 / 92 / 140"
+    },
+    {
         "id": 1002,
-        "name": "penicillinase-stable penicillin",
+        "name": "Penicillinase-stable penicillin",
+        "order": 6,
         "parent": 3,
+        "color": "113 / 92 / 140"
+    },
+    {
+        "id": 9,
+        "name": "Cephalosporine",
         "order": 7,
-        "color": ""
-    }, {
+        "parent": 4,
+        "color": "196 / 172 / 138"
+    },
+    {
+        "id": 15,
+        "name": "1G Cephalosporin",
+        "order": 8,
+        "parent": 9,
+        "color": "196 / 172 / 138"
+    },
+    {
+        "id": 11,
+        "name": "2G Cephalosporin",
+        "order": 9,
+        "parent": 9,
+        "color": "196 / 172 / 138"
+    },
+    {
+        "id": 18,
+        "name": "3G Cephalosporin",
+        "order": 10,
+        "parent": 9,
+        "color": "197 / 172 / 138"
+    },
+    {
+        "id": 14,
+        "name": "4G Cephalosporin",
+        "order": 11,
+        "parent": 9,
+        "color": "198 / 172 / 138"
+    },
+    {
+        "id": 12,
+        "name": "Carbapeneme",
+        "order": 12,
+        "parent": 4,
+        "color": "133 / 99 / 81"
+    },
+    {
+        "id": 10,
+        "name": "Monobactam",
+        "order": 13,
+        "parent": 4,
+        "color": "198 / 172 / 138"
+    },
+    {
+        "id": 1,
+        "name": "Chinolone",
+        "order": 14
+    },
+    {
+        "id": 2,
+        "name": "Fluorchinolone",
+        "order": 15,
+        "parent": 1,
+        "color": "85 / 93 / 156"
+    },
+    {
+        "id": 6,
+        "name": "Makrolide",
+        "order": 16,
+        "color": "153 / 95 / 143"
+    },
+    {
+        "id": 7,
+        "name": "Aminoglykoside",
+        "order": 17,
+        "color": "173 / 207 / 217"
+    },
+    {
+        "id": 19,
+        "name": "Lincosamide",
+        "order": 18,
+        "color": "220 / 170 / 146"
+    },
+    {
+        "id": 8,
+        "name": "Polymyxine",
+        "order": 19,
+        "color": "124 / 155 / 95"
+    },
+    {
         "id": 1003,
-        "name": "folate pathway inhibitor",
-        "parent": null,
-        "order": 21,
-        "color": ""
-    }, {
+        "name": "Folate pathway inhibitor",
+        "order": 20
+    },
+    {
+        "id": 13,
+        "name": "Lipopeptide",
+        "order": 21
+    },
+    {
+        "id": 17,
+        "name": "Tetracycline",
+        "order": 22,
+        "color": "183 / 68 / 68"
+    },
+    {
         "id": 1004,
-        "name": "epoxid antibacterial",
-        "parent": null,
-        "order": 24,
-        "color": ""
-    }, {
+        "name": "Epoxid antibacterial",
+        "order": 23,
+        "color": "78 / 160 / 168"
+    },
+    {
         "id": 1005,
-        "name": "steroid antibacterial",
-        "parent": null,
-        "order": 25,
-        "color": ""
-    }, {
+        "name": "Steroid antibacterial",
+        "order": 24,
+        "color": "243 / 228 / 151"
+    },
+    {
         "id": 1006,
-        "name": "oxazolidinone",
-        "parent": null,
-        "order": 26,
-        "color": ""
-    }, {
+        "name": "Oxazolidinone",
+        "order": 25,
+        "color": "90 / 88 / 84"
+    },
+    {
         "id": 1007,
-        "name": "nitroimidazole",
-        "parent": null,
-        "order": 27,
-        "color": ""
-    }, {
+        "name": "Nitroimidazole",
+        "order": 26
+    },
+    {
         "id": 1008,
-        "name": "nitrofuran",
-        "parent": null,
-        "order": 28,
-        "color": ""
-    }, {
+        "name": "Nitrofuran",
+        "order": 27,
+        "color": "159 / 158 / 156"
+    },
+    {
         "id": 1009,
-        "name": "rifamycin",
-        "parent": null,
+        "name": "Rifamycin",
+        "order": 28
+    },
+    {
+        "id": 16,
+        "name": "Glycopeptide",
         "order": 29,
-        "color": ""
+        "color": "121 / 168 / 206"
+    },
+    {
+        "id": 5,
+        "name": "Beta-lactamase-hemmer",
+        "order": 30
     }
 ]

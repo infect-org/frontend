@@ -1,0 +1,153 @@
+[
+    {
+        "id": 13,
+        "name": "lipopeptide"
+    }, {
+        "id": 4,
+        "name": "betalactame"
+    }, {
+        "id": 10,
+        "name": "monobactam"
+    }, {
+        "id": 3,
+        "name": "penicilline"
+    }, {
+        "id": 9,
+        "name": "cephalosporine"
+    }, {
+        "id": 15,
+        "name": "1. gen. cephalosporine"
+    }, {
+        "id": 11,
+        "name": "2. gen. cephalosporine"
+    }, {
+        "id": 18,
+        "name": "3. gen. cephalosporine"
+    }, {
+        "id": 14,
+        "name": "4. gen. cephalosporine",
+        "parent": 9,
+        "order": 12,
+        "color": "196 / 172 / 138"
+    }, {
+        "id": 12,
+        "name": "carbapeneme",
+        "parent": 4,
+        "order": 13,
+        "color": "133 / 99 / 81"
+    }, {
+        "id": 1,
+        "name": "chinolone",
+        "parent": null,
+        "order": 15,
+        "color": ""
+    }, {
+        "id": 2,
+        "name": "fluorchinolone",
+        "parent": 1,
+        "order": 16,
+        "color": ""
+    }, {
+        "id": 6,
+        "name": "makrolide",
+        "parent": null,
+        "order": 17,
+        "color": "153 / 95 / 143"
+    }, {
+        "id": 7,
+        "name": "aminoglykoside",
+        "parent": null,
+        "order": 18,
+        "color": ""
+    }, {
+        "id": 16,
+        "name": "glycopeptide",
+        "parent": null,
+        "order": 30,
+        "color": ""
+    }, {
+        "id": 19,
+        "name": "lincosamide",
+        "parent": null,
+        "order": 19,
+        "color": ""
+    }, {
+        "id": 8,
+        "name": "polymyxine",
+        "parent": null,
+        "order": 20,
+        "color": "124 / 155 / 95"
+    }, {
+        "id": 17,
+        "name": "tetracycline",
+        "parent": null,
+        "order": 23,
+        "color": "183 / 68 / 68"
+    }, {
+        "id": 5,
+        "name": "beta-lactamase-hemmer",
+        "parent": null,
+        "order": 31,
+        "color": ""
+    }, {
+        "id": 1000,
+        "name": "penicillinase-sensitive penicillin",
+        "parent": 3,
+        "order": 4,
+        "color": ""
+    }, {
+        "id": 1001,
+        "name": "aminopenicillin",
+        "parent": 3,
+        "order": 5,
+        "color": ""
+    }, {
+        "id": 1002,
+        "name": "penicillinase-stable penicillin",
+        "parent": 3,
+        "order": 7,
+        "color": ""
+    }, {
+        "id": 1003,
+        "name": "folate pathway inhibitor",
+        "parent": null,
+        "order": 21,
+        "color": ""
+    }, {
+        "id": 1004,
+        "name": "epoxid antibacterial",
+        "parent": null,
+        "order": 24,
+        "color": ""
+    }, {
+        "id": 1005,
+        "name": "steroid antibacterial",
+        "parent": null,
+        "order": 25,
+        "color": ""
+    }, {
+        "id": 1006,
+        "name": "oxazolidinone",
+        "parent": null,
+        "order": 26,
+        "color": ""
+    }, {
+        "id": 1007,
+        "name": "nitroimidazole",
+        "parent": null,
+        "order": 27,
+        "color": ""
+    }, {
+        "id": 1008,
+        "name": "nitrofuran",
+        "parent": null,
+        "order": 28,
+        "color": ""
+    }, {
+        "id": 1009,
+        "name": "rifamycin",
+        "parent": null,
+        "order": 29,
+        "color": ""
+    }
+]

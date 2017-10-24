@@ -57,7 +57,6 @@ export default class ResistancesFetcher extends Fetcher {
 			}];
 			const resistanceObject = new Resistance(resistanceValues, antibiotic, bacterium);
 			this._store.add(resistanceObject);
-			console.error('%d res added', this._store.get().size);
 		});
 	}
 

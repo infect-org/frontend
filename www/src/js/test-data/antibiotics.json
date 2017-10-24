@@ -4,9 +4,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Ceftazidim",
+        "name": "Ceftazidime",
         "substances": [
-            "Ceftazidim"
+            "Ceftazidime"
         ],
         "substanceClasses": [
             {
@@ -23,9 +23,9 @@
         "iv": false,
         "languagae": "de",
         "id_language": 1,
-        "name": "Cefotaxim",
+        "name": "Cefotaxime",
         "substances": [
-            "Cefotaxim"
+            "Cefotaxime"
         ],
         "substanceClasses": [
             {
@@ -179,9 +179,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Cefuroxim",
+        "name": "Cefuroxime",
         "substances": [
-            "Cefuroxim"
+            "Cefuroxime"
         ],
         "substanceClasses": [
             {
@@ -217,9 +217,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Cotrimoxazol",
+        "name": "Cotrimoxazole",
         "substances": [
-            "Cotrimoxazol"
+            "Cotrimoxazole"
         ],
         "substanceClasses": [{
             "id": 1003,
@@ -289,9 +289,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Cefepim",
+        "name": "Cefepime",
         "substances": [
-            "Cefepim"
+            "Cefepime"
         ],
         "substanceClasses": [
             {
@@ -384,9 +384,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Ceftriaxon",
+        "name": "Ceftriaxone",
         "substances": [
-            "Ceftriaxon"
+            "Ceftriaxone"
         ],
         "substanceClasses": [
             {
@@ -441,9 +441,9 @@
         "iv": false,
         "languagae": "de",
         "id_language": 1,
-        "name": "Fusidinsäure",
+        "name": "Fusidic Acid",
         "substances": [
-            "Fusidinsäure"
+            "Fusidic Acid"
         ],
         "substanceClasses": [{
             "id": 1005,
@@ -521,9 +521,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Metronidazol",
+        "name": "Metronidazole",
         "substances": [
-            "Metronidazol"
+            "Metronidazole"
         ],
         "substanceClasses": [{
             "id": 1007,
@@ -538,9 +538,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Doxycyclin",
+        "name": "Doxycycline",
         "substances": [
-            "Doxycyclin"
+            "Doxycycline"
         ],
         "substanceClasses": [
             {
@@ -669,9 +669,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Tigecyclin",
+        "name": "Tigecycline",
         "substances": [
-            "Tigecyclin"
+            "Tigecycline"
         ],
         "substanceClasses": [{
             "id": 17,
@@ -703,9 +703,9 @@
         "iv": false,
         "languagae": "de",
         "id_language": 1,
-        "name": "Minocyclin",
+        "name": "Minocycline",
         "substances": [
-            "Minocyclin"
+            "Minocycline"
         ],
         "substanceClasses": [
             {
@@ -722,9 +722,9 @@
         "iv": false,
         "languagae": "de",
         "id_language": 1,
-        "name": "Cefuroxim axetil",
+        "name": "Cefuroxime axetil",
         "substances": [
-            "Cefuroxim axetil"
+            "Cefuroxime axetil"
         ],
         "substanceClasses": [
             {
@@ -760,7 +760,7 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Amoxicillin / Clavulanat",
+        "name": "Amoxicillin/Clavulanate",
         "substances": [
             "Amoxicillin",
             "Clavulanat"
@@ -780,7 +780,7 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Piperacillin / Tazobactam",
+        "name": "Piperacillin/Tazobactam",
         "substances": [
             "Piperacillin",
             "Tazobactam"

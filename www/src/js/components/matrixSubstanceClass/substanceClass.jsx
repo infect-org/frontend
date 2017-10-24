@@ -106,7 +106,7 @@ export default class SubstanceClass extends React.Component {
 		if (!scColor) return 'rgb(255, 255, 255)';
 		const tinyColor = color({ r: scColor.r, g: scColor.g, b: scColor.b });
 		// Don't use opacity as bg serves as an overlay when user hovers the label
-		tinyColor.brighten(40).desaturate(40);
+		tinyColor.brighten(40).desaturate(60);
 		return tinyColor;
 	}
 

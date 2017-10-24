@@ -43,12 +43,12 @@
         "name": "Helicobacter pylori",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "helicobacter pylori"
@@ -76,12 +76,12 @@
         "name": "Propionibacterium acnes",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "propionibacterium acnes"
@@ -145,12 +145,12 @@
         "name": "Burkholderia sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Burkholderia sp."
@@ -172,12 +172,12 @@
         "name": "Clostridium sp. non-difficile",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Clostridium sp. non-difficile"
@@ -199,12 +199,12 @@
         "name": "Klebsiella sp. (KPC)",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Klebsiella sp. (KPC)"
@@ -226,12 +226,12 @@
         "name": "Klebsiella sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Klebsiella sp."
@@ -253,12 +253,12 @@
         "name": "Clostridium difficile",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Clostridium difficile"
@@ -280,12 +280,12 @@
         "name": "Acinetobacter sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Acinetobacter sp."
@@ -307,12 +307,12 @@
         "name": "Yersinia pseudotuberculosis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Yersinia pseudotuberculosis"
@@ -334,12 +334,12 @@
         "name": "Bacteroides fragilis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Bacteroides fragilis"
@@ -373,12 +373,12 @@
         "name": "Listeria monocytogenes",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Listeria monocytogenes"
@@ -400,12 +400,12 @@
         "name": "Haemophilus influenzae",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Haemophilus influenzae"
@@ -427,12 +427,12 @@
         "name": "Corynebacterium jeikeium",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Corynebacterium jeikeium"
@@ -454,12 +454,12 @@
         "name": "Escherichia coli (KPC)",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Escherichia coli (KPC)"
@@ -481,12 +481,12 @@
         "name": "Escherichia coli (ESBL)",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Escherichia coli (ESBL)"
@@ -508,12 +508,12 @@
         "name": "Legionella sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Legionella sp."
@@ -541,12 +541,12 @@
         "name": "Salmonella sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Salmonella sp."
@@ -595,12 +595,12 @@
         "name": "Proteus mirabilis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Proteus mirabilis"
@@ -622,12 +622,12 @@
         "name": "Citrobacter sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Citrobacter sp."
@@ -649,12 +649,12 @@
         "name": "Yersinia enterocolitica",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Yersinia enterocolitica"
@@ -676,12 +676,12 @@
         "name": "Enterobacter sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Enterobacter sp."
@@ -703,12 +703,12 @@
         "name": "Aeromonas sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Aeromonas sp."
@@ -730,12 +730,12 @@
         "name": "Proteus vulgaris",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Proteus vulgaris"
@@ -757,12 +757,12 @@
         "name": "Francisella tularensis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Francisella tularensis"
@@ -817,12 +817,12 @@
         "name": "Shigella sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Shigella sp."
@@ -844,12 +844,12 @@
         "name": "Escherichia coli",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Escherichia coli"
@@ -871,12 +871,12 @@
         "name": "Klebsiella sp. (ESBL)",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Klebsiella sp. (ESBL)"
@@ -898,12 +898,12 @@
         "name": "Mycobacterium avium",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Mycobacterium avium"
@@ -931,7 +931,7 @@
         "name": "Neisseria meningitidis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -970,7 +970,7 @@
         "name": "Enterococcus faecalis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1009,7 +1009,7 @@
         "name": "Staphylococcus epidermidis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1042,7 +1042,7 @@
         "name": "Moraxella catarrhalis",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1081,7 +1081,7 @@
         "name": "Streptococcus agalactiae",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1114,12 +1114,12 @@
         "name": "Prevotella melaninogenica",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Prevotella melaninogenica"
@@ -1153,7 +1153,7 @@
         "name": "Streptococcus pyogenes",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1180,12 +1180,12 @@
         "name": "Vibrio vulnificus",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Vibrio vulnificus"
@@ -1207,12 +1207,12 @@
         "name": "Morganella sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Morganella sp."
@@ -1234,12 +1234,12 @@
         "name": "Stenotrophomonas maltophilia",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Stenotrophomonas maltophilia"
@@ -1261,12 +1261,12 @@
         "name": "Serratia sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Serratia sp."
@@ -1348,7 +1348,7 @@
         "name": "Streptococcus milleri",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1387,7 +1387,7 @@
         "name": "Streptococcus viridans",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1420,7 +1420,7 @@
         "name": "Staphylococcus saprophyticus",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1453,7 +1453,7 @@
         "name": "Neisseria gonorrhoeae",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1492,7 +1492,7 @@
         "name": "Streptococcus pneumoniae",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1531,12 +1531,12 @@
         "name": "Campylobacter sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Campylobacter sp."
@@ -1564,7 +1564,7 @@
         "name": "Staphylococcus aureus",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1591,12 +1591,12 @@
         "name": "Haemophilus ducreyi",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Haemophilus ducreyi"
@@ -1630,7 +1630,7 @@
         "name": "Staphylococcus aureus (MRSA)",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1663,7 +1663,7 @@
         "name": "Peptostreptococcus sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1702,7 +1702,7 @@
         "name": "Enterococcus faecium",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Kokken",
+        "shape": "Coccus",
         "shapeLocales": [
             {
                 "id_language": 1,
@@ -1729,12 +1729,12 @@
         "name": "Providencia sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Providencia sp."
@@ -1768,12 +1768,12 @@
         "name": "Bacillus cereus",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Stäbchen",
+        "shape": "Rod",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Stäbchen"
+                "name": "Rod"
             }
         ],
         "species": "Bacillus cereus"
