@@ -23,8 +23,26 @@ test('does not set parent if it\'s not provided', (t) => {
 });
 
 test('stores additional properties', (t) => {
-	const sc = new SubstanceClass(1, 'name', undefined, { color: 'red', 'order': 3 });
-	t.equals(sc.color, 'red');
-	t.equals(sc.order, 3);
+	const sc = new SubstanceClass(1, 'name', undefined, { prop1: 'red', prop2: 3 });
+	t.equals(sc.prop1, 'red');
+	t.equals(sc.prop2, 3);
+	t.end();
+});
+
+test('throws on invalid colors', (t) => {
+	t.throws(() => new SubstanceClass(1, 'name', undefined, { color: 12 }), /be a string/);
+	t.throws(() => new SubstanceClass(1, 'name', undefined, { color: '2/1' }), /three parts/);
+	t.throws(() => new SubstanceClass(1, 'name', undefined, { color: 'test/2/3' }), /not a number/);
+	t.throws(() => new SubstanceClass(1, 'name', undefined, { color: '-1/366/51' }), /between 0 and 255/);
+	t.end();
+});
+
+test('recognizes and re-formats colors', (t) => {
+	const sc = new SubstanceClass(1, 'name', undefined, { color: '100/150/200' });
+	t.deepEquals(sc.color, {
+		r: 100
+		, g: 150
+		, b: 200
+	});
 	t.end();
 });

@@ -1,14 +1,11 @@
 import test from 'tape';
 import fetchMock from 'fetch-mock';
 import ResistancesFetcher from './resistancesFetcher';
+import Store from '../../helpers/store';
 
 function setupFetcher(url = '/test') {
-	let abResolver, bactResolver;
 	const antibiotics = {
-		fetchPromise: new Promise((resolve) => abResolver = resolve)
-		, resolve: abResolver
-		, status: 'loading'
-		, get: function() {
+		get: function() {
 			return { 
 				values: function() {
 					return [{
@@ -19,10 +16,7 @@ function setupFetcher(url = '/test') {
 		}
 	};
 	const bacteria = {
-		fetchPromise: new Promise((resolve) => bactResolver = resolve)
-		, resolve: bactResolver
-		, status: 'loading'
-		, get: function() {
+		get: function() {
 			return { 
 				values: function() {
 					return [{
@@ -32,77 +26,11 @@ function setupFetcher(url = '/test') {
 			};
 		}
 	};
-	const store = {
-		status: 'loading'
-		, items: []
-		, setFetchPromise: function(promise) {
-			this.fetchPromise = promise;
-			promise.then(() => this.status = 'ready');
-		}
-		, add: function(item) {
-			this.items.push(item);
-		}
-		, get: function() {
-			return this.items;
-		}
-	};
-	const filters = {
-
-	};
-	const fetcher = new ResistancesFetcher(url, { antibiotics, bacteria }, store, filters);
 	return {
 		bacteria
 		, antibiotics
-		, store
-		, filters
-		, fetcher
 	};
 }
-
-test('throws on setup if params are missing', (t) => {
-	t.throws(() => new ResistancesFetcher(), /missing/);
-	t.throws(() => new ResistancesFetcher('test'), /missing/);
-	t.throws(() => new ResistancesFetcher('test', 'test'), /missing/);
-	t.throws(() => new ResistancesFetcher('test', {}), /missing/);
-	t.throws(() => new ResistancesFetcher('test', {}, {}), /missing/);
-	t.doesNotThrow(() => new ResistancesFetcher('test', {}, {}, {}), /missing/);
-	t.end();
-});
-
-test('sets fetchPromise on resistancesStore', (t) => {
-	fetchMock.mock('/test', { status: 200, body: [] });
-	const { antibiotics, bacteria, store, filters, fetcher } = setupFetcher();
-	fetcher.getData();
-	// 'loading' while loading
-	t.equals(store.status, 'loading');
-	store.fetchPromise.then(() => {
-		// Updates to 'ready' when data is fetched
-		t.equals(store.status, 'ready');
-	});
-	antibiotics.resolve();
-	bacteria.resolve();
-	fetchMock.restore();
-	t.end();
-});
-
-test('waits for antibiotics/bacteria', (t) => {
-	fetchMock.mock('/test', { status: 200, body: [] });
-	const { antibiotics, bacteria, store, filters, fetcher } = setupFetcher();
-	fetcher.getData();
-	bacteria.resolve();
-	setTimeout(() => {
-		// Not ready until bact/ab are ready
-		t.equals(store.status, 'loading');
-		antibiotics.resolve();
-		// Ready when bact/ab are ready
-		setTimeout(() => {
-			t.equals(store.status, 'ready');
-			fetchMock.restore();
-			t.end();	
-		}, 0);
-	}, 10);
-});
-
 
 test('handles data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
@@ -111,12 +39,21 @@ test('handles data correctly', (t) => {
         "sampleCount":100,
         "resistanceImport":100
     }] });
-	const { antibiotics, bacteria, store, filters, fetcher } = setupFetcher();
+	const { antibiotics, bacteria } = setupFetcher();
+	const store = new Store([], () => 2);
+	const stores = {
+		antibiotics
+		, bacteria
+	};
+	const fetcher = new ResistancesFetcher('/test', store, [], stores);
 	fetcher.getData();
-	bacteria.resolve();
-	antibiotics.resolve();
 	setTimeout(() => {
-		t.equals(store.get().length, 1);
+		t.equals(store.get().size, 1);
+		const result = store.getById(2);
+		t.equals(result.antibiotic.name, 'amoxicillin');
+		t.equals(result.bacterium.name, 'acinetobacter sp.');
+		t.equals(result.values.length, 1);
+		t.equals(result.values[0].sampleSize, 100);
 		fetchMock.restore();
 		t.end();	
 	});

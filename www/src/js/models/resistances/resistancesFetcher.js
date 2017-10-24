@@ -1,66 +1,52 @@
 import { fetchApi } from '../../helpers/api';
-import { observable } from 'mobx';
+import Fetcher from '../../helpers/standardFetcher';
 import Resistance from './resistance';
 
-export default class ResistancesFetcher {
-
-	@observable fetching = true;
+export default class ResistancesFetcher extends Fetcher {
 
 	/**
 	* Fetches resistances from server, then updates ResistancesStore passed as an argument.
 	* 
-	* @param {String} endpoint					URL to the resistances
-	* @param {Object} stores					Object with keys: antibiotics and bacteria with corresponding
-	*											stores.
-	* @param {ResistanceStore} store			Store in which resistances are stored once fetched
+	* @param [0-2] 								See Fetcher
+	* @param {ResistanceStore} stores			Stores for antibiotics and bacteria
 	* @param {SelectedFilters} selectedFilters	Selected filters – needed to determine which resistance
 	*											data (e.g. region) to fetch.
 	*/
-	constructor(endpoint, stores, store, selectedFilters) {
-		if (!endpoint || !stores || !(typeof store === 'object') || !store || !selectedFilters) {
-			throw new Error(`ResistancesFetcher: Parameters missing`);
-		}
-		this._endpoint = endpoint;
-		this._stores = stores;
-		this._resistancesStore = store;
-		this._selectedFilters = selectedFilters;
+	constructor(...args) {
+		super(...args.slice(0, 3));
+		this._stores = args[3];
+		this._selectedFilters = args[4];
 	}
-
-	async getData() {
-
-		// Create new promise which is only resolved when data is parsed and added to store
-		let dataReadyPromiseResolver;
-		const dataReadyPromise = new Promise((resolve) => dataReadyPromiseResolver = resolve);
-		this._resistancesStore.setFetchPromise(dataReadyPromise);
-
-		const response = await this._fetchData();
-		// Only continue when antibiotics and bacteria are ready
-		if (this._stores.antibiotics.status !== 'ready') await this._stores.antibiotics.fetchPromise;
-		if (this._stores.bacteria.status !== 'ready') await this._stores.bacteria.fetchPromise;
-
-		this._handleData(response.data);
-		dataReadyPromiseResolver();
-
-	}
-	
 
 	/**
 	* Sets up ResistancesStore with data fetched from server.
 	* @param {Array} data		Data as gotten from server
 	*/
 	_handleData(data) {
+
+		this._store.clear();
+
 		const bacteria = this._stores.bacteria.get().values();
 		const antibiotics = this._stores.antibiotics.get().values();
 
 		data.forEach((resistance) => {
 			// !!! CAREFUL !!! In the JSON file, bacteria and antibiotics were interchanged!
-			const compoundName = resistance.compoundName.substr(0, resistance.compoundName.indexOf('/') - 1).toLowerCase();
-			const bacterium = bacteria.find((item) => item.name.toLowerCase() === compoundName);
+			const bacteriumName = resistance.compoundName.substr(0, resistance.compoundName.indexOf('/') - 1).toLowerCase();
+			const bacterium = bacteria.find((item) => item.name.toLowerCase() === bacteriumName);
 			const antibioticName = resistance.bacteriaName.toLowerCase();
-			const antibiotic = antibiotics.find((item) => item.name.toLowerCase() === antibioticName);
+			const antibiotic = antibiotics.find((item) => {
+				return item.name.toLowerCase() === antibioticName;
+			});
 
-			if (!bacterium || !antibiotic) {
-				console.error('ResistancesFetcher: Antibiotic %o or bacterium %o missing for %o', antibiotic, bacterium, resistance);
+			if (!antibiotic) {
+				console.error('ResistancesFetcher: Antibiotic %o missing in %o for name %o and resistance %o', 
+					antibiotic, antibiotics, antibioticName, resistance);
+				return;
+			}
+
+			if (!bacterium) {
+				console.error('ResistancesFetcher: Bacterium %o missing in %o for name %o and resistance %o', 
+					bacterium, bacteria, bacteriumName, resistance);
 				return;
 			}
 
@@ -70,23 +56,9 @@ export default class ResistancesFetcher {
 				, sampleSize: resistance.sampleCount || 0				
 			}];
 			const resistanceObject = new Resistance(resistanceValues, antibiotic, bacterium);
-			this._resistancesStore.add(resistanceObject);
+			this._store.add(resistanceObject);
+			console.error('%d res added', this._store.get().size);
 		});
-	}
-
-
-	/**
-	* Fetches data from server
-	*/
-	async _fetchData() {
-		return fetchApi(this._getUrl());
-	}
-
-	/**
-	* Returns URL for resistances that includes the filters selected
-	*/
-	_getUrl() {
-		return this._endpoint;
 	}
 
 }

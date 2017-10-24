@@ -83,22 +83,33 @@ class MatrixView {
 	* Adds data for multiple properties at once. Is nice as all data becomes available at the
 	* same time. 
 	*/
-	@action addData(antibiotics = [], bacteria = [], resistances) {
-		antibiotics.forEach((ab) => this.addAntibiotic(ab));
-		bacteria.forEach((bact) => this.addBacterium(bact));
+	@action setupDataWatchers(antibiotics = [], bacteria = [], resistances) {
+
+		observe(antibiotics.status, (change) => {
+			if (change.newValue === 'ready') {
+				antibiotics.getAsArray().forEach((antibiotic) => {
+					this.addAntibiotic(antibiotic);
+				});
+			}
+		});
+
+		observe(bacteria.status, (change) => {
+			if (change.newValue === 'ready') {
+				bacteria.getAsArray().forEach((bacterium) => {
+					this.addBacterium(bacterium);
+				});
+			}
+		});
 
 		// Resistances will change whenever a population filter is changed. 
 		// Make sure we're watching them.
-		// Resistances are not required to simplify testing
-		if (resistances) {
-			observe(resistances, 'status', (status) => {
-				if (status.newValue !== 'ready') return;
-				this._clearResistances();
-				resistances.getAsArray().forEach((resistance) => {
-					this.addResistance(resistance);
-				});
-			});			
-		}
+		observe(resistances.status, (change) => {
+			if (change.newValue !== 'ready') return;
+			this._clearResistances();
+			resistances.getAsArray().forEach((resistance) => {
+				this.addResistance(resistance);
+			});
+		});			
 	}
 
 	@action _clearResistances() {

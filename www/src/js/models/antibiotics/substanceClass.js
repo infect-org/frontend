@@ -13,6 +13,23 @@ class SubstanceClass {
 		// Expanded is true by default
 		this.expanded = true;
 
+		// Is the color property valid?
+		if (properties.hasOwnProperty('color')) {
+			const color = properties.color;
+			if (typeof color !== 'string') throw new Error(`SubstanceClassComponent: Color must be a string, is ${ typeof color }.`);
+			const split = color.split(/\s*\/\s*/);
+			if (split.length !== 3) throw new Error(`SubstanceClassComponent: RGB color must consist of three parts, ${ color } is not valid.`);
+			const formattedColor = {}, colorTypes = ['r', 'g', 'b'];
+			split.forEach((part, index) => {
+				const parsed = parseInt(part, 10);
+				if (isNaN(parsed)) throw new Error(`SubstanceClassComponent: RGB value ${ part } is not a number`);
+				if (parsed < 0 || parsed > 255) throw new Error(`SubstanceClassComponent: RGB value must be between 0 and 255, is ${ parsed }.`);
+				formattedColor[colorTypes[index]] = parsed;
+			});
+			properties.color = formattedColor;
+		}
+
+
 		// Store properties
 		Object.keys(properties).forEach((key) => {
 			this[key] = properties[key];

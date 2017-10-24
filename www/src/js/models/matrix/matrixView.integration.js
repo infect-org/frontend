@@ -8,6 +8,7 @@ import SubstanceClass from '../antibiotics/substanceClass';
 import Bacterium from '../bacteria/bacterium';
 import Resistance from '../resistances/resistance';
 import SelectedFilters from '../filters/selectedFilters';
+import Store from '../../helpers/store';
 
 function createSubstanceClass(parent, name = 'testSC', id = Math.random()) {
 	return new SubstanceClass(id, name, parent);
@@ -42,25 +43,37 @@ function createValidSet() {
 	const res2 = createResistance(ab1, bact2);
 	const res3 = createResistance(ab2, bact2, [{type: 'default', value: 1, sampleSize: 59}]);
 	const matrix = new MatrixView();
-	matrix.setSelectedFilters(new SelectedFilters());
-	class ResistanceStore {
-		@observable status = 'loading';
-		getAsArray() {
-			return [res1, res2, res3];
-		}
-		@action updateStatus(status) {
-			this.status = status;
-		}
-	}
-	const resStore = new ResistanceStore();
 
+	const abStore = new Store();
+	abStore.add(ab1);
+	abStore.add(ab2);
+	abStore.add(ab3);
+	const bactStore = new Store();
+	bactStore.add(bact1);
+	bactStore.add(bact2);
+	const resStore = new Store([], (item) => Math.random());
+	resStore.add(res1);
+	resStore.add(res2);
+	resStore.add(res3);
+
+	matrix.setSelectedFilters(new SelectedFilters());
+	
 	return {
 		matrix: matrix
 		, antibiotics: [ab1, ab2, ab3]
 		, bacteria: [bact1, bact2]
 		, substanceClasses: [sc1, sc2, sc3]
 		, resistances: [res1, res2, res3]
-		, resistanceStore: resStore
+		, stores: {
+			antibiotics: abStore
+			, bacteria: bactStore
+			, resistances: resStore
+		}
+		, resolveAllPromises: function() {
+			['antibiotics', 'bacteria', 'resistances'].forEach((item) => {
+				this.stores[item].setFetchPromise(new Promise((resolve) => resolve()));
+			});			
+		}
 	};
 }
 
@@ -69,23 +82,37 @@ function createValidSet() {
 
 
 
-test('addData adds all data passed', (t) => {
+test('setupDataWatchers watches data and adds it when ready', (t) => {
 	const set = createValidSet();
-	set.matrix.addData(set.antibiotics, set.bacteria, set.resistanceStore);
-	t.equal(set.matrix.antibiotics.length, 3);
-	t.equal(set.matrix.sortedBacteria.length, 2);
-	//t.equal(set.matrix.resistances.length, 3);
-	t.equal(set.matrix.substanceClasses.length, 3);
-	t.end();
+	set.matrix.setupDataWatchers(set.stores.antibiotics, set.stores.bacteria, set.stores.resistances);
+	// Entities are not set before they are available
+	t.equals(set.matrix.antibiotics.length, 0);
+	t.equals(set.matrix.sortedBacteria.length, 0);
+	t.equals(set.matrix.resistances.length, 0);
+	set.resolveAllPromises();
+	// Data is set when promises are resolved
+	setTimeout(() => {
+		t.equals(set.matrix.antibiotics.length, 3);
+		t.equals(set.matrix.sortedBacteria.length, 2);
+		t.equals(set.matrix.resistances.length, 3);
+		t.end();
+	}, 20);
 });
 
-test.skip('addData watches resistances', (t) => {
+
+test('clears resistances before new ones are added', (t) => {
 	const set = createValidSet();
-	set.matrix.addData(set.antibiotics, set.bacteria, set.resistanceStore);
-	t.equal(set.matrix.resistances.length, 0);
-	set.resistanceStore.updateStatus('ready');
-	t.equal(set.matrix.resistances.length, 3);
-	t.end();
+	set.matrix.setupDataWatchers(set.stores.antibiotics, set.stores.bacteria, set.stores.resistances);
+	set.resolveAllPromises();
+	set.stores.resistances.clear();
+	set.stores.resistances.add(set.resistances[0]);
+	let resolver;
+	set.stores.resistances.setFetchPromise(new Promise((resolve) => resolver = resolve));
+	setTimeout(() => {
+		resolver();
+		t.equals(set.matrix.resistances.length, 1);
+		t.end();
+	}, 5);
 });
 
 
@@ -129,7 +156,7 @@ test('sets and returns antibiotics and substanceClasses', (t) => {
 test('sorts bacteria', (t) => {
 	const set = createValidSet();
 	const { matrix } = set;
-	matrix.addData(set.antibiotics, [set.bacteria[1], set.bacteria[0]]);
+	set.bacteria.forEach((bact) => matrix.addBacterium(bact));
 	t.equal(matrix.sortedBacteria[0].bacterium.name, 'a');
 	t.end();
 });
@@ -165,7 +192,8 @@ test('returns bacteria', (t) => {
 test('calculates antibiotic label row height when all antibiotic dimensions are set', (t) => {
 	const set = createValidSet();
 	const {matrix} = set;
-	matrix.addData(set.antibiotics, set.bacteria);
+	set.bacteria.forEach((bact) => matrix.addBacterium(bact));
+	set.antibiotics.forEach((ab) => matrix.addAntibiotic(ab));
 	matrix.setAntibioticLabelDimensions(set.antibiotics[0], 50, 20);
 	matrix.setAntibioticLabelDimensions(set.antibiotics[1], 50, 60);
 	matrix.setAntibioticLabelDimensions(set.antibiotics[2], 50, 40);
@@ -177,7 +205,8 @@ test('calculates antibiotic label row height when all antibiotic dimensions are 
 test('calculates y positions', (t) => {
 	const set = createValidSet();
 	const {matrix} = set;
-	matrix.addData(set.antibiotics, set.bacteria);
+	set.bacteria.forEach((bact) => matrix.addBacterium(bact));
+	set.antibiotics.forEach((ab) => matrix.addAntibiotic(ab));
 	matrix.space = 20;
 	matrix.setDimensions({width: 350, height: 100});
 	// Width of label must be set so that defaultRadius can be calculated
@@ -195,7 +224,8 @@ test('calculates y positions', (t) => {
 test('calculates bacterium label column width', (t) => {
 	const set = createValidSet();
 	const {matrix} = set;
-	matrix.addData(set.antibiotics, set.bacteria);
+	set.bacteria.forEach((bact) => matrix.addBacterium(bact));
+	set.antibiotics.forEach((ab) => matrix.addAntibiotic(ab));
 	matrix.setDimensions({width: 351.5, height: 200});
 	matrix.setBacteriumLabelWidth(set.bacteria[0], 20);
 	matrix.setBacteriumLabelWidth(set.bacteria[1], 5);
@@ -210,7 +240,8 @@ test('calculates radius', (t) => {
 	const {matrix} = set;
 
 	t.equal(matrix.defaultRadius, undefined);
-	matrix.addData(set.antibiotics, set.bacteria);
+	set.bacteria.forEach((bact) => matrix.addBacterium(bact));
+	set.antibiotics.forEach((ab) => matrix.addAntibiotic(ab));
 	matrix.setDimensions({width: 401.5, height: 200});
 	matrix.space = 20;
 	matrix.setBacteriumLabelWidth(set.bacteria[0], 50);
@@ -233,7 +264,7 @@ test('calculates radius', (t) => {
 test('antibiotic functions', (t) => {
 
 	const set = createValidSet();
-	set.matrix.addData(set.antibiotics, set.bacteria);
+	set.antibiotics.forEach((ab) => set.matrix.addAntibiotic(ab));
 
 	// sorted
 	t.equal(set.matrix.sortedAntibiotics.length, 3);
@@ -259,7 +290,7 @@ test('antibiotic functions', (t) => {
 
 test('max amount of substance class hierarchies', (t) => {
 	const set = createValidSet();
-	set.matrix.addData(set.antibiotics, set.bacteria);
+	set.antibiotics.forEach((ab) => set.matrix.addAntibiotic(ab));
 	t.equal(set.matrix.maxAmountOfSubstanceClassHierarchies, 2);
 	t.end();
 });
@@ -267,7 +298,8 @@ test('max amount of substance class hierarchies', (t) => {
 test('substance class label height', (t) => {
 	const set = createValidSet();
 	const { matrix, substanceClasses } = set;
-	matrix.addData(set.antibiotics, set.bacteria);
+	set.bacteria.forEach((bact) => matrix.addBacterium(bact));
+	set.antibiotics.forEach((ab) => matrix.addAntibiotic(ab));
 	t.equal(matrix.greatestSubstanceClassLabelHeight, undefined);
 	matrix.setSubstanceClassHeight(substanceClasses[0], 5);
 	matrix.setSubstanceClassHeight(substanceClasses[1], 9);
@@ -281,10 +313,12 @@ test('substance class label height', (t) => {
 test('updates sample size extremes', (t) => {
 	const set = createValidSet();
 	const {matrix, bacteria, antibiotics, resistanceStore} = set;
-	matrix.addData(antibiotics, bacteria, resistanceStore);
-	resistanceStore.updateStatus('ready');
-	t.deepEqual(matrix.sampleSizeExtremes, { min: 59, max: 100 });
-	t.end();
+	set.matrix.setupDataWatchers(set.stores.antibiotics, set.stores.bacteria, set.stores.resistances);
+	set.resolveAllPromises();
+	setTimeout(() => {
+		t.deepEqual(matrix.sampleSizeExtremes, { min: 59, max: 100 });
+		t.end();
+	});
 });
 
 

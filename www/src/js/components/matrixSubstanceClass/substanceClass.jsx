@@ -104,9 +104,7 @@ export default class SubstanceClass extends React.Component {
 	_getFillColor() {
 		const scColor = this.props.substanceClass.substanceClass.color;
 		if (!scColor) return 'rgb(255, 255, 255)';
-		const split = scColor.split(/\s*\/\s*/);
-		if (split.length !== 3) throw new Error(`SubstanceClassComponent: RGB color must consist of three parts, ${ scColor } is not valid.`);
-		const tinyColor = color({ r: split[0], g: split[1], b: split[2] });
+		const tinyColor = color({ r: scColor.r, g: scColor.g, b: scColor.b });
 		// Don't use opacity as bg serves as an overlay when user hovers the label
 		tinyColor.brighten(40).desaturate(40);
 		return tinyColor;

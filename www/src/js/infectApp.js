@@ -1,22 +1,20 @@
 /**
-* The main application that brings everything together
+* The main application that sets everything up and brings it together
 */
-
 import 'whatwg-fetch';
-import { fetchApi } from './helpers/api';
-import Antibiotic from './models/antibiotics/antibiotic';
 import AntibioticsStore from './models/antibiotics/antibioticsStore';
-import SubstanceClass from './models/antibiotics/substanceClass';
+import AntibioticsFetcher from './models/antibiotics/antibioticsFetcher';
 import SubstanceClassesStore from './models/antibiotics/substanceClassesStore';
-import Bacterium from './models/bacteria/bacterium';
+import SubstanceClassesFetcher from './models/antibiotics/substanceClassesFetcher';
 import BacteriaStore from './models/bacteria/bacteriaStore';
+import BacteriaFetcher from './models/bacteria/bacteriaFetcher';
 import ResistancesStore from './models/resistances/resistancesStore';
+import ResistancesFetcher from './models/resistances/resistancesFetcher';
 import MatrixView from './models/matrix/matrixView';
 import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
-import { observable, autorun, reaction } from 'mobx';
+import { observe, observable } from 'mobx';
 import SelectedFilters from './models/filters/selectedFilters';
-import ResistancesFetcher from './models/resistances/resistancesFetcher';
 import debug from 'debug';
 const log = debug('infect:App');
 
@@ -49,23 +47,10 @@ export default class InfectApp {
 		this._setupFilterValues();
 		this.selectedFilters = new SelectedFilters();
 
-		// Make promise public so that anything outside can check if data is ready.
-		// Don't directly return the promise as a constructor should return the class
-		// instance.
-		this._getDataPromise = this._getData();
-
-		const resistanceFetcher = new ResistancesFetcher(
-			this._config.endpoints.apiPrefix + this._config.endpoints.resistances
-			, {
-				antibiotics: this.antibiotics
-				, bacteria: this.bacteria
-			}
-			, this.resistances
-			, this.selectedFilters
-		);
-		resistanceFetcher.getData();
+		this._setupFetchers();
 
 		this.views.matrix.setSelectedFilters(this.selectedFilters);
+		this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
 
 		this._createRegions();
 
@@ -73,9 +58,55 @@ export default class InfectApp {
 
 
 
+	/**
+	* Fetches data from the server, sets up data in the correct order and puts them into the
+	* corresponding stores.
+	*/
+	_setupFetchers() {
+
+		// Substance classes (must be loaded first)
+		const substanceClassesFetcher = new SubstanceClassesFetcher(
+			this._config.endpoints.apiPrefix + this._config.endpoints.substanceClasses
+			, this.substanceClasses
+		);
+		substanceClassesFetcher.getData();
+
+		// Antibiotics (wait for substance classes)
+		const antibioticsFetcher = new AntibioticsFetcher(
+			this._config.endpoints.apiPrefix + this._config.endpoints.antibiotics
+			, this.antibiotics
+			, [this.substanceClasses]
+			, this.substanceClasses
+		);
+		antibioticsFetcher.getData();
+
+		// Bacteria
+		const bacteriaFetcher = new BacteriaFetcher(
+			this._config.endpoints.apiPrefix + this._config.endpoints.bacteria
+			, this.bacteria
+		);
+		bacteriaFetcher.getData();
+
+		// Resistances (wait for antibiotics and bacteria)
+		const resistanceFetcher = new ResistancesFetcher(
+			this._config.endpoints.apiPrefix + this._config.endpoints.resistances
+			, this.resistances
+			, [ this.antibiotics, this.bacteria ]
+			, {
+				antibiotics: this.antibiotics
+				, bacteria: this.bacteria
+			}
+			, this.selectedFilters
+		);
+		resistanceFetcher.getData();
+
+	}
+
+
 
 	/**
-	* Confgiures filterValues for antibiotics, bacteria etc.
+	* Confgiures filterValues for antibiotics, bacteria etc., then adds data for all entities
+	* as soon as it becomes available (after data is fetched from server).
 	*/
 	_setupFilterValues() {
 		const filterConfig = getFilterConfig();
@@ -83,125 +114,34 @@ export default class InfectApp {
 			this.filterValues.addConfiguration(config.entityType, config.config);
 			log('FilterConfig set for %s', config.entityType);
 		});
+
+		const entities = [{
+			singular: 'substanceClass'
+			, plural: 'substanceClasses'
+		}, {
+			singular: 'antibiotic'
+			, plural: 'antibiotics'
+		}, {
+			singular: 'bacterium'
+			, plural: 'bacteria'
+		}];
+		
+		entities.forEach((entityConfig) => {
+			observe(this[entityConfig.plural].get(), (change) => {
+				if (change.type === 'add') {
+					this.filterValues.addEntity(entityConfig.singular, change.newValue);
+				}
+			});
+		});
+
 	}
 
 
 
 	/**
-	* Gets data from server, transforms it and creates entities (AB, resistances, BACT out of it).
+	* Creates filters for regions. 
+	* Replace as soon as real data is available.
 	*/
-	async _getData() {
-		const results = {};
-		const calls = ['bacteria', 'antibiotics', 'substanceClasses'].map((entity) => {
-			const promise = this._fetchData(this._config.endpoints.apiPrefix + this._config.endpoints[entity]);
-			this[entity].setFetchPromise(promise);
-			return promise
-				.then((result) => {
-					results[entity] = result;
-				});
-		});
-
-
-
-		return Promise.all(calls).then(() => {
-
-			// ab.substanceClasses may have duplicates (for en/de) – remove them
-			const antibiotics = results.antibiotics.data;
-			antibiotics.forEach((item) => {
-				const newData = item.substanceClasses.reduce((prev, item) => {
-					prev.set(item.id, item);
-					return prev;
-				}, new Map());
-				item.substanceClasses = Array.from(newData.values());
-			});
-
-
-			this._createAntibiotics(antibiotics, results.substanceClasses.data);
-			this._createBacteria(results.bacteria.data);
-			// Must be at the end, ab and bact must be created first.
-			//this._createResistances(results.resistances.data);
-			log('Got data; ab are %o, bacteria %o, resistances %o', this.antibiotics, this.bacteria);
-			this.views.matrix.addData(this.antibiotics.getAsArray(), this.bacteria.getAsArray(), this.resistances);
-		}, (err) => {
-			throw new Error(`InfectApp: Could not get data. ${ err.name }: ${ err.message }.`);
-		});
-	}
-
-
-	async _fetchData(url) {
-		return fetchApi(url);
-	}
-
-
-	_createAntibiotics(antibiotics, substanceClasses) {
-
-		// Lowest class (grandchild) will be added to antibiotic
-		let lowestSubstanceClass;
-		// Create substance classes
-		antibiotics.forEach((ab) => {
-
-			// Get sc by hierarchy, parent-most (grand-grand-parent) first as it needs to be 
-			// created first (subsequent children need the parent on sc's constructor)
-			// First ist top-most
-			const sorted = [];
-			let parentId = null;
-			let counter = 0;
-			while (sorted.length < ab.substanceClasses.length && counter < 15) {
-				counter++;
-				// Hierarchies are not correct *OR* an ab might have multiple scs that are not hierarchical.
-				if(counter > 13) console.error('BAD DATA for scs:', counter, ab, substanceClasses, parentId);
-				ab.substanceClasses.some((sc) => {
-					const originalSc = substanceClasses.find((item) => item.id === sc.id);
-					if (originalSc.parent === parentId) {
-						sc.parent = parentId;
-						sorted.push(sc);
-						parentId = sc.id;
-						return true;
-					}
-				});
-			}
-			log('Sorted sc for ab %o are %o', ab, sorted);
-
-			sorted.forEach((sc, index) => {
-				if (this.substanceClasses.getById(sc.id)) return;
-				const parent = !sc.parent ? undefined : this.substanceClasses.getById(sc.parent);
-
-				// Color and order is on substanceClasses.json while other props are on antibiotics.json
-				// -> Merge them
-				const originalSc = substanceClasses.find((item) => item.id === sc.id);
-				sc.color = originalSc.color;
-				sc.order = originalSc.order;
-
-				const substanceClass = new SubstanceClass(sc.id, sc.name, parent, {
-					color: sc.color
-					, order: sc.order
-				});
-				this.filterValues.addEntity('substanceClass', substanceClass);
-				this.substanceClasses.add(substanceClass);
-			});
-
-		});
-
-		antibiotics.map((ab) => {
-			// #todo: Hierarchical substance classes
-			// #todo: Remove this check; all ab should have scs (?)
-			if (!ab.substanceClasses.length) {
-				console.warn('InfectApp: AB %o has no SCs', ab);
-				return;
-			}
-			const sc = ab.substanceClasses && ab.substanceClasses.length ? 
-				this.substanceClasses.getById(ab.substanceClasses[0].id) : undefined;
-			const antibiotic = new Antibiotic(ab.id, ab.name, sc, {
-				iv: ab.iv
-				, po: ab.po
-			});
-			this.filterValues.addEntity('antibiotic', antibiotic);
-			this.antibiotics.add(antibiotic);
-		});
-
-	}
-
-
 	_createRegions() {
 
 		const regionNames = ['Basel', 'Genf', 'Mittelland', 'Bern', 'Ticion'];
@@ -215,84 +155,6 @@ export default class InfectApp {
 
 	}
 
-
-	_createBacteria(bacteria) {
-		bacteria.map((bact) => {
-			const bacterium = new Bacterium(bact.id, bact.name, {
-				aerobic: bact.aerobic
-				, anaerobic: bact.anaerobic
-				, gram: bact.gram
-				, shape: bact.shape
-			});
-			this.filterValues.addEntity('bacterium', bacterium);
-			this.bacteria.add(bacterium);
-		});
-	}
-
-
-	/*_createResistances(resistances) {
-
-		const missingAntibiotics = [];
-
-		const bacteria = this.bacteria.get().values();
-		const antibiotics = this.antibiotics.get().values();
-
-		//const maxSampleSize = resistances.reduce((prev, current) => Math.max(current, prev), 0);
-		resistances.forEach((res, index) => {
-
-			// !!! CAREFUL !!! In the JSON file, bacteria and antibiotics were interchanged!
-			// bacteria -> antibiotic, compound -> bacteria!
-			const compoundName = res.compoundName.substr(0, res.compoundName.indexOf('/') - 1).toLowerCase();
-			const bacterium = bacteria.find((item) => {
-				//console.log(item.name.toLowerCase(), compoundName);
-				return item.name.toLowerCase() === compoundName;
-			});
-			const abName = res.bacteriaName.toLowerCase();
-			const abSingularName = abName.replace(/e\b/g, '');
-			const abNameVariants = [
-				abName
-				// Some antibiotic's names are in plural form
-				, abSingularName
-				, abName.replace(/\//g, ' / ')
-				, abSingularName.replace(/\//g, ' / ')
-			];
-			const antibiotic = antibiotics.find((item) => {
-				if (abNameVariants.indexOf(item.name.toLowerCase()) > -1) return true;
-			});
-			if (!bacterium) {
-				console.error('InfectApp: Bacterium %o not found for resistance %o', res.compoundName, res);
-				return;
-			}
-			if (!antibiotic) {
-				missingAntibiotics.push(abName);
-				console.error('InfectApp: Antibiotic %o not found for resistance %o, names are %o', res.bacteriaName, res, abNameVariants);
-				return;
-			}
-
-			// #todo: Remove – only needed for old/bad data
-			if (!bacterium || !antibiotic) {
-				console.warn('Missing data for', res);
-				return;
-			}
-			const resistanceValues = [];
-			if (res.resistanceImport) resistanceValues.push({
-				type: 'import'
-				, value: res.resistanceImport / 100
-				, sampleSize: res.sampleCount || 0
-			});
-			if (!resistanceValues.length) {
-				console.error('InfectApp: ResistanceValue not set for %o', res);
-				return;
-			}
-			//console.error(resistanceValues);
-			this.resistances.add(new Resistance(resistanceValues, antibiotic, bacterium));
-		
-		});
-
-		const singularMissingAntibiotics = missingAntibiotics.filter((item, index) => missingAntibiotics.lastIndexOf(item) === index);
-		console.error('InfectApp: Missing antibiotics: %s', singularMissingAntibiotics.join(', '));
-
-	}*/
 
 }
 

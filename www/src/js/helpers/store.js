@@ -5,7 +5,11 @@ import { observable, action, computed } from 'mobx';
 */
 export default class Store {
 
-	@observable _status = 'loading';
+	// Use object so that we can add properties, e.g. an errorReason
+	@observable _status = {
+		// Default must be ready – as there is no fetchPromise that could resolve a loading status
+		identifier: 'ready'
+	};
 
 	/**
 	* @param {Array} values					this.add is called for every value on initialization, therefore
@@ -31,6 +35,13 @@ export default class Store {
 		return this._items;
 	}
 
+	/**
+	* Needed for resistances that need to be cleared when new data is loaded.
+	*/
+	clear() {
+		this._items.clear();
+	}
+
 	add(item, overwrite) {
 		const id = this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
 		if (!id) throw new Error(`Store: Field id is missing on item ${ JSON.stringify(item) }.`);
@@ -48,13 +59,13 @@ export default class Store {
 	*/
 	@action setFetchPromise(promise) {
 		if (!(promise instanceof Promise)) throw new Error(`Store: Argument passed to setFetchPromise must be a Promise.`);
-		this.fetchPromise = promise;
-		this._updateStatus('loading');
-		this.fetchPromise.then(() => this._updateStatus('ready'));
-	}
-
-	@action _updateStatus(status) {
-		this._status = status;
+		this._status.identifier = 'loading';
+		promise.then(() => {
+			this._status.identifier = 'ready';
+		}, (err) => {
+			this._status.identifier = 'error';
+			this._status.errorMessage = err;
+		});
 	}
 
 	/**
