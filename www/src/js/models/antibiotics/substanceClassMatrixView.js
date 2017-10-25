@@ -1,5 +1,6 @@
 import color from 'tinycolor2';
 import { computed } from 'mobx';
+import doFiltersMatch from '../filters/doFiltersMatch';
 
 class SubstanceClassMatrixView {
 
@@ -22,6 +23,15 @@ class SubstanceClassMatrixView {
 	@computed get xPosition() {
 		return this._matrixView.xPositions.get(this);
 	}
+
+	/*@computed get visible() {
+		// Substance class itself is filtered out
+		const substanceClassFilters = this._matrix.selectedFilters.getFiltersByType('substanceClass');
+		if (!doFiltersMatch(this.substanceClass, substanceClassFilters)) return false;
+		const antibiotics = this._matrix.antibiotics.filter((antibiotic) => {
+			const parentIds = antibiotic.antibiotic.
+		});
+	}*/
 
 }
 

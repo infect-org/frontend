@@ -2,7 +2,7 @@ import React from 'react';
 import debug from 'debug';
 import color from 'tinycolor2';
 import { observer } from 'mobx-react';
-import { computed, observable, action } from 'mobx';
+import { computed, observable, action, runInAction, when } from 'mobx';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier';
 
@@ -13,6 +13,7 @@ export default class SubstanceClass extends React.Component {
 
 	@observable _isHovered = false;
 	@observable _afterHovered = false;
+	@observable _firstFilterSelected = false;
 
 	constructor() {
 		super();
@@ -20,25 +21,31 @@ export default class SubstanceClass extends React.Component {
 		this._wasVisible = true;
 	}
 
+	componentWillReceiveProps(nextProps) {
+		// Only add classes with animations when user filters for the first time. 
+		// We dont want them while the app is setting up. 
+		when(() => nextProps.selectedFilters.originalFilters.length > 0, () => {
+			action(() => this._firstFilterSelected = true)();
+		});
+	}
+
 	componentDidMount() {
 		this._measureHeight();
 		window.addEventListener('resize', () => this._measureHeight());
 	}
 
-
-	_getPreviousTranslation() {
+	_getPreviousTransformation() {
 		return `translate(${ (this._previousPosition && this._previousPosition.left) || 0 },
 			${ this._previousPosition && this._previousPosition.top || 0 })`;
 	}
 
 	@computed get transformation() {
-		if (!this.visible) return this._getPreviousTranslation();
+		if (!this.visible) return this._getPreviousTransformation();
 		const parentCount = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
 		const top = this.props.matrix.antibioticLabelRowHeight + 
 			(this.props.matrix.maxAmountOfSubstanceClassHierarchies - parentCount - 1) * 
 			(this.props.matrix.greatestSubstanceClassLabelHeight || 0) +
 			this.props.matrix.space;
-		if (isNaN(top)) return this._getPreviousTranslation();
 		const left = this.props.substanceClass.xPosition.left;
 		this._previousPosition = { left, top };
 		log('Position for %o is %d/%d', this.props.substanceClass, left, top);
@@ -82,7 +89,7 @@ export default class SubstanceClass extends React.Component {
 		return width;
 	}
 
-	_getHeaderLineHeight() {
+	@computed get headerLineHeight() {
 		return this.props.matrix.greatestSubstanceClassLabelHeight;
 	}
 
@@ -92,6 +99,8 @@ export default class SubstanceClass extends React.Component {
 	}
 
 	@computed get classModifier() {
+		// No animations before we are ready
+		if (!this._firstFilterSelected) return '';
 		// We must also be watching transitions: If not, we only watch visible – which stays the
 		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
 		// and therefore won't call an update.
@@ -158,12 +167,12 @@ export default class SubstanceClass extends React.Component {
 					</path>
 				</defs>
 				{ /* Background */}
-				<rect width={ this._labelWidth } height={ this._getHeaderLineHeight() || 0 } fill={ this._getFillColor() }></rect>
+				<rect width={ this._labelWidth } height={ this.headerLineHeight || 0 } fill={ this._getFillColor() }></rect>
 				{ /* Line above substanceClass */ }
 				<rect width={ this._labelWidth } height={ this._lineWeight } fill={ this.props.substanceClass.lineColor } 
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--top"></rect>
 				{ /* Line left of substanceClass (head) */ }
-				<rect width={ this._lineWeight } height={ this._getHeaderLineHeight() || 0 } fill={ this.props.substanceClass.lineColor }
+				<rect width={ this._lineWeight } height={ this.headerLineHeight || 0 } fill={ this.props.substanceClass.lineColor }
 					className="resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-header"></rect>
 				<text className="resistanceMatrix__substanceClassLabelText" dominantBaseline="hanging" 
 					dy={ supportsDominantBaseline('-2', '0.8em') }

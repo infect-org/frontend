@@ -61,6 +61,10 @@ export default class SelectedFilters {
 		return this._selectedFilters.peek();
 	}
 
+	@computed get originalFilters() {
+		return this._selectedFilters;
+	}
+
 	@action removeAllFilters() {
 		log('Remove all filters');
 		this._selectedFilters.splice(0, this._selectedFilters.length);

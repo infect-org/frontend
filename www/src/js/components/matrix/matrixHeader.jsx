@@ -27,15 +27,17 @@ export default class MatrixHeader extends React.Component {
 		return `translate(${ this.props.matrix.bacteriumLabelColumnWidth + this.props.matrix.spaceBetweenGroups }, 0)`;
 	}
 
-	_substanceClassSortFunction(a, b) {
+	@computed get headerScrollTransformation() {
+		return `translate(${ this._leftScrollPosition * -1 }px, 0)`;
+	}
+
+	@computed get sortedSubstanceClasses() {
 		// We have to use a function that depends on non-changing properties *or* 
 		// DOM will be updated (which we don't want or need) and wich destroys our nice
 		// animations
-		return a.substanceClass.order > b.substanceClass.order ? -1 : 1;
-	}
-
-	@computed get headerScrollTransformation() {
-		return `translate(${ this._leftScrollPosition * -1 }px, 0)`;
+		return this.props.matrix.substanceClasses.slice(0).sort((a, b) => {
+			return a.substanceClass.order > b.substanceClass.order ? -1 : 1;
+		});
 	}
 
 	render() {
@@ -57,6 +59,8 @@ export default class MatrixHeader extends React.Component {
 							)}
 						</g>
 
+						{ /* Only display substance classes when defaultRadius is known and position can be calculated 
+						     to prevent unnecessary updates */}
 						{ this.props.matrix.defaultRadius !== undefined &&
 							<g transform={ this.headerTransformation }>
 								{ /* Substance class labels */ }
@@ -64,7 +68,7 @@ export default class MatrixHeader extends React.Component {
 									 - Sorted by xPosition (reverse): If user hovers a substanceClass left of the next, it must lie
 								       above the right-next substance class */ }
 								<g className="resistanceMatrix__substanceClassLabes">
-									{this.props.matrix.substanceClasses.sort(this._substanceClassSortFunction).map((sc) => 
+									{this.sortedSubstanceClasses.map((sc) => 
 										<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }
 											className="resistanceMatrix__substanceClassLabel"
 											filters={ this.props.filters } selectedFilters={ this.props.selectedFilters }/>

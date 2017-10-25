@@ -1,10 +1,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { computed } from 'mobx';
+import { computed, observable, action, when } from 'mobx';
 import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier';
 
 @observer
 export default class AntibioticLabel extends React.Component {
+
+	@observable _firstFilterSelected = false;
 
 	constructor() {
 		super();
@@ -15,7 +17,14 @@ export default class AntibioticLabel extends React.Component {
 		this._setupResizeListener();
 	}
 
-	_setTextElement(el) {
+	componentWillReceiveProps(nextProps) {
+		when(() => nextProps.matrix.selectedFilters.originalFilters.length > 0, () => {
+			action(() => this._firstFilterSelected = true)();
+		});
+	}
+
+	_setTextElement = (el) => {
+		if (!el) return;
 		this._textElement = el;
 		this._setDimensions();
 	}
@@ -57,6 +66,7 @@ export default class AntibioticLabel extends React.Component {
 	}
 
 	@computed get classModifier() {
+		if (!this._firstFilterSelected) return '';
 		// We must also be watching transitions: If not, we only watch visible – which stays the
 		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
 		// and therefore won't call an update.
@@ -79,7 +89,7 @@ export default class AntibioticLabel extends React.Component {
 	render() {
 		return (
 			<g transform={ this.transformation } className={ 'resistanceMatrix__antibioticLabel ' + this.classModifier }>
-				<text dy="-5" ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
+				<text dy="-9" ref={ this._setTextElement } className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>
 			</g>
