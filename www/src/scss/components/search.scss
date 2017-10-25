@@ -5,7 +5,7 @@ $padding-lr: 30px;
 	display: block;
 	left: -$navigation-width;
 	@include transition(left, $transition-duration);
-	top: $navigation-height + $search-box--height + 20px;
+	top: $navigation-height + $search-box--height;
 	z-index: 99;
 	padding: 0;
 	width: $navigation-width;
@@ -17,7 +17,7 @@ $padding-lr: 30px;
 	}
 
 	&__input {
-		height: 25px;
+		line-height: 20px;
 		margin-bottom: 30px;
 	}
 
