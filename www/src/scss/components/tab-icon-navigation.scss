@@ -5,6 +5,7 @@
 	height: 26px;
 	background-repeat: no-repeat;
 	background-position: center;
+	margin-right: 15px;
 }
 
 /*.triangle {
@@ -32,7 +33,7 @@
 
 $path: '/dist/img/';
 
-.icon1 {
+.button--antibiotica {
 	background-image: url(#{$path}icon1.svg);
 	@include transition(background-image, $transition-duration);
 	&:hover {
@@ -40,9 +41,8 @@ $path: '/dist/img/';
 	}
 }
 
-.icon2 {
+.button--bacteria {
 	width: 30px;
-	height: 30px;
 	background-image: url(#{$path}icon2.svg);
 	@include transition(background-image, $transition-duration);
 	&:hover {
@@ -50,15 +50,8 @@ $path: '/dist/img/';
 	}
 }
 
-.icon3 {
-	background-image: url(#{$path}icon3.svg);
-	@include transition(background-image, $transition-duration);
-	&:hover {
-		background-image: url(#{$path}icon3_green.svg);
-	}
-}
-
-.icon4 {
+.button--population {
+	width: 23px;
 	background-image: url(#{$path}icon4.svg);
 	@include transition(background-image, $transition-duration);
 	&:hover {

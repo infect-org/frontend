@@ -48,17 +48,16 @@
                         <a href="/"><img src="img/logo.svg" alt="Infect" /></a>
                     </div>
                     <div class="header__search">
-                        <div>
+                        <div class="filters__search">
                             <FilterSearch/>
                         </div>
-                        <div>
+                        <div class="filters__menu">
                             <FilterListMenu/>
                         </div>
                         <hr class="divider divider--lead"/>
                     </div>  
                 </div>
                 <div class="side-navigation__filters">
-
                     <div>
                         <FilterList/>
                     </div>
@@ -72,16 +71,15 @@
                         <div class="top-navigation__info info">
                             <button class="button button--info" onclick="document.querySelector('.overlay').classList.toggle('overlay--open'); document.querySelector('.button--info').classList.toggle('button--info-active');">i</button>
                         </div>
-                    
                     </div>
-                    <div class="main__matrix">
-                        <!-- We cannot have the body and header in one single SVG as fixing the header would require a transformation
-                            which is very imperformant -->
-                        <MatrixHeader></MatrixHeader>
-                        <Matrix></Matrix>
-                        <div class="resistanceMatrix__overlay">
-                            <img src="img/logo_spinner.svg">
-                        </div>
+                </div>
+                <div class="main__matrix">
+                    <!-- We cannot have the body and header in one single SVG as fixing the header would require a transformation
+                        which is very imperformant -->
+                    <MatrixHeader></MatrixHeader>
+                    <Matrix></Matrix>
+                    <div class="resistanceMatrix__overlay">
+                        <img src="img/logo_spinner.svg">
                     </div>
                 </div>
             </div>
