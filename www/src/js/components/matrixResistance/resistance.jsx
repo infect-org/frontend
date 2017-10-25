@@ -2,13 +2,19 @@ import React from 'react';
 import resistanceTypes from '../../models/resistances/resistanceTypes';
 import debug from 'debug';
 import { observer } from 'mobx-react';
-import { computed } from 'mobx';
+import { computed, observable } from 'mobx';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 
 const log = debug('infect:ResistanceComponent');
 
 @observer
 class Resistance extends React.Component {
+
+	constructor() {
+		super();
+		// On init, resistances are always visible
+		this._wasVisible = true;
+	}
 
 	@computed get transformation() {
 		const xPos = this.props.resistance.xPosition;
@@ -42,6 +48,25 @@ class Resistance extends React.Component {
 	}
 
 
+	/**
+	* Returns modifier for visibility class which determines the transitions.
+	*/
+	@computed get classModifier() {
+		const visible = this.props.resistance.visible;
+		// We must also be watching transitions: If not, we only watch visible – which stays the
+		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
+		// and therefore won't call an update.
+		this.transformation;
+		let modifier;
+		if (visible && !this._wasVisible) modifier = '-was-hidden-is-visible';
+		if (visible && this._wasVisible) modifier = '-was-visible-is-visible';
+		if (!visible && this._wasVisible) modifier = '-was-visible-is-hidden';
+		if (!visible && !this._wasVisible) modifier = '-was-hidden-is-hidden';
+		this._wasVisible = visible;
+		return modifier;
+	}
+
+
 	_handleMouseEnter = (ev) => {
 		this.props.matrix.setActiveResistance(this.props.resistance);
 	}
@@ -54,8 +79,8 @@ class Resistance extends React.Component {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
-			<g transform={ this.transformation } className="resistanceMatrix__resistance" 
-				style={ { opacity: this.props.resistance.visible ? 1 : 0, pointerEvents: this.props.resistance.visible ? 'auto' : 'none' } }
+			<g transform={ this.transformation } 
+				className={ 'resistanceMatrix__resistance ' + this.classModifier }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
 				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }

@@ -1,5 +1,28 @@
 .resistanceMatrix {
 
+    /**
+    * General modifers used for antibiotics, bacteria, substanceClasses and resistances
+    * (animations/transition)
+    */
+    .-was-visible-is-visible {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .-was-hidden-is-visible {
+        transition: opacity 0.2s ease-in-out 0.3s;
+    }
+
+    .-was-visible-is-hidden {
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .-was-hidden-is-hidden,
+    .-was-visible-is-hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
 
     &__overlay {
         position: absolute;
@@ -58,8 +81,7 @@
         cursor: none;
         // Use visiblity: hidden to hide resistances (for speed reasons)
         // and ignore pointer-events on them
-        pointer-events: visible;
-        transition: transform 0.5s ease-in-out 0.3s, opacity 0.3s ease-in-out;
+        //pointer-events: visible;
     }
 
     &__substanceClassLine {
@@ -80,21 +102,21 @@
 
     }
 
-    &__substanceClassLabels:hover {
-
-    }
-
     &__substanceClassLabel {
         cursor: pointer;
-        text {
+
+        &:hover {
+            text {
+                fill: #fff;
+            }
+            rect {
+                //fill: #{$link-color};
+                fill: #{$sidenavigation-background};
+            }
         }
-        &:hover text {
-            fill: #fff;
-        }
-        &:hover rect {
-            //fill: #{$link-color};
-            fill: #{$sidenavigation-background};
-        }
+
+        transition: transform 1s;
+
     }
 
     /**

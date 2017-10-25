@@ -22,7 +22,7 @@ export default class ResistanceMatrixView {
 	}
 
 	@computed get visible() {
-		return this.xPosition && this.yPosition;
+		return !!(this.xPosition && this.yPosition);
 	}
 
 	@computed get mostPreciseValue() {
@@ -33,10 +33,6 @@ export default class ResistanceMatrixView {
 		const {min, max} = this._matrixView.sampleSizeExtremes;
 		const radius = Math.round(getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4) * 
 			this._matrixView.defaultRadius);
-		if (isNaN(radius)) {
-			console.error(min, max);
-			console.error(radius, this.resistance, this.mostPreciseValue.sampleSize, this._matrixView.defaultRadius, getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4));
-		}
 		return radius;
 	}
 

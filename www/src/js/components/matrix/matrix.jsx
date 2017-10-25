@@ -66,7 +66,7 @@ export default class Matrix extends React.Component {
 	render() {
 		return(
 			<div>
-					{ /*<DevTools /> */ }
+				{ /*<DevTools /> */ }
 				<svg ref={ this._setSVG } 
 					style={ { height: this._getHeight(), top: this.props.matrix.headerHeight } } 
 					className="resistanceMatrix__body">
