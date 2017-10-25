@@ -3,7 +3,11 @@ $group__title-h1:	18px;
 $group__title-h2:	12px;
 $group__title-h3:	14px;
 
-$hover-color:		#cbe264;
+
+//COLORS
+$color--light-green: #cbe264;
+
+$hover-color:		$color--light-green;
 
 $transition-duration: 100ms;
 
@@ -28,7 +32,7 @@ $search-box--height:				70px;
 $header-search-height:				125px;
 
 	//checkbox
-$active__checkbox-color:			#cbe264;
+$active__checkbox-color:			$color--light-green;
 
 
 //BASE
