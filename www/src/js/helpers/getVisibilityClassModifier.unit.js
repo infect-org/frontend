@@ -9,9 +9,9 @@ test('throws on invalid arguments', (t) => {
 });
 
 test('returns correct modifier', (t) => {
-	t.equals(getVisibilityClassModifier(false, true), '-is-hidden-was-visible');
-	t.equals(getVisibilityClassModifier(false, false), '-is-hidden-was-hidden');
-	t.equals(getVisibilityClassModifier(true, true), '-is-visible-was-visible');
-	t.equals(getVisibilityClassModifier(true, false), '-is-visible-was-hidden');
+	t.equals(getVisibilityClassModifier(false, true), '-was-visible-is-hidden');
+	t.equals(getVisibilityClassModifier(false, false), '-was-hidden-is-hidden');
+	t.equals(getVisibilityClassModifier(true, true), '-was-visible-is-visible');
+	t.equals(getVisibilityClassModifier(true, false), '-was-hidden-is-visible');
 	t.end();
 });

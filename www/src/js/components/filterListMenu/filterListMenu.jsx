@@ -11,9 +11,9 @@ export default class FilterListMenu extends React.Component {
 	render() {
 		return (
             <div className="group group--vertical group--left-aligned">
-	            <a href="#antibiotics-filters" className="button button--icon button--antibiotica"></a>
-	            <a href="#bacteria-filters" className="button button--icon button--bacteria"></a>
-	            <a href="#population-filters" className="button button--icon button--population"></a>
+	            <button className="button button--icon button--antibiotica"></button>
+	            <button className="button button--icon button--bacteria"></button>
+	            <button className="button button--icon button--population"></button>
 	        </div>
 		);
 	}
