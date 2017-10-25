@@ -25,6 +25,23 @@ $padding-lr: 30px;
 
 	}
 
+	&-wrapper {
+		position: relative;
+	}
+
+	&__clear {
+		display: none;
+
+		&--active {
+			display: block;
+			cursor: pointer;
+			position: absolute;
+			right: 20px;
+			top: 13px;
+		}
+	}
+
+
 }
 
 .result {

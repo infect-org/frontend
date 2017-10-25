@@ -32,8 +32,9 @@ export default class FilterSearch extends React.Component {
     render() {
         return (
             <div>
-                <div className="group group--lead">
+                <div className="group group--lead search-wrapper">
                     <h3>Search filters</h3>
+                    <a onClick={ (ev) => this._resetSearchTerm() } class="search__clear"><h3>clear</h3></a>
                     <input type="text" placeholder="Property" className="group__input input search__input" 
                         onChange={ (ev) => this._handleSearchInputChange(ev.target.value) } value={ this.searchTerm }
                         ref={ (el) => this._setInputElement(el) } />
