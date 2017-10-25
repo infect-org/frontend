@@ -13,7 +13,7 @@ export default class FilterListCheckbox extends React.Component {
 
 	render() {
 		return (
-            <li className="group__list-item list-item--checkbox">
+            <li className={ 'list-item--' + (this.props.inputType === 'radio' ? 'radio' : 'checkbox') + ' group__list-item' }>
                 <input type={ this.props.inputType === 'radio' ? 'radio' : 'checkbox' } id={ this.state.id } value={ this.props.value } 
                 	onChange={ this.props.onChangeHandler } checked={ this.props.checked } name={ this.props.inputName }/>
                 <label htmlFor={ this.state.id } className="side-label">{ this.props.name }</label>
