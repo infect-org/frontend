@@ -3,7 +3,7 @@ import SubstanceClassesFetcher from './substanceClassesFetcher';
 import SubstanceClassesStore from './substanceClassesStore';
 import fetchMock from 'fetch-mock';
 
-test('handles data correctly', (t) => {
+test('handles substanceClass data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
 			id: 1
 			, name: 'test1'

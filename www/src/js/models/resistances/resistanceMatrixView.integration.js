@@ -1,9 +1,16 @@
 import test from 'tape';
 import ResistanceMatrixView from './resistanceMatrixView';
 import Resistance from './resistance';
+import SubstanceClass from '../antibiotics/substanceClass';
+import Antibiotic from '../antibiotics/antibiotic';
+import Bacterium from '../bacteria/bacterium';
 
 function setupData(sampleSize = 1000, value = 1, matrix = {}) {
-	const resistance = new Resistance([{ type: 'import', sampleSize: sampleSize, value: value }]);
+	const resistance = new Resistance(
+		[{ type: 'import', sampleSize: sampleSize, value: value }]
+		, new Antibiotic(5, 'testAB', new SubstanceClass(1, 'testSC'))
+		, new Bacterium(4, 'testBact')
+	);
 	const resistanceMatrixView = new ResistanceMatrixView(resistance, matrix);
 	return {
 		resistance

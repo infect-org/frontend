@@ -3,7 +3,7 @@ import BacteriaFetcher from './bacteriaFetcher';
 import BacteriaStore from './bacteriaStore';
 import fetchMock from 'fetch-mock';
 
-test('handles data correctly', (t) => {
+test('handles bacteria data correctly', (t) => {
 	fetchMock.mock('/bact', [{
 		id: 5
 		, name: 'testBact'

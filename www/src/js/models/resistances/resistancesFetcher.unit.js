@@ -2,6 +2,7 @@ import test from 'tape';
 import fetchMock from 'fetch-mock';
 import ResistancesFetcher from './resistancesFetcher';
 import Store from '../../helpers/store';
+import Bacterium from '../bacteria/bacterium';
 
 function setupFetcher(url = '/test') {
 	const antibiotics = {
@@ -19,9 +20,7 @@ function setupFetcher(url = '/test') {
 		get: function() {
 			return { 
 				values: function() {
-					return [{
-						name: 'acinetobacter sp.'
-					}];
+					return [new Bacterium(5, 'acinetobacter sp.')];
 				} 
 			};
 		}
@@ -32,7 +31,7 @@ function setupFetcher(url = '/test') {
 	};
 }
 
-test('handles data correctly', (t) => {
+test('handles resistance data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
         "compoundName":"acinetobacter sp. / acinetobacter",
         "bacteriaName":"amoxicillin",

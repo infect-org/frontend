@@ -56,7 +56,7 @@ test('waits for dependent stores', (t) => {
 	}, 20);
 });
 
-test('handles data correctly', (t) => {
+test('handles default data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{ number: 1, id: 1}, {number: 2, id: 2}] });
 	const store = new Store();
 	const fetcher = new Fetcher('/test', store);

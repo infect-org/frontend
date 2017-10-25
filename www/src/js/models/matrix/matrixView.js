@@ -391,11 +391,13 @@ class MatrixView {
 	@computed get yPositions() {
 		log('calculate yPositions');
 		const yPositions = new Map();
-		this.sortedBacteria.filter((item) => item.visible).forEach((bacterium, index) => {
-			yPositions.set(bacterium, {
-				top: index * (this.defaultRadius * 2 + this.space)
+		this.sortedBacteria
+			.filter((item) => item.visible)
+			.forEach((bacterium, index) => {
+				yPositions.set(bacterium, {
+					top: index * (this.defaultRadius * 2 + this.space)
+				});
 			});
-		});
 		return yPositions;
 	}
 

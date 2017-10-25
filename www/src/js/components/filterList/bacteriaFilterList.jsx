@@ -44,7 +44,8 @@ class BacteriaFilterList extends React.Component {
 	* @param {Boolean} selected		True if selected names should be returned, else false
 	*/
 	_getNamesBySelection(selected) {
-		const names = this.props.filterValues.getValuesForProperty('bacterium', 'name').sort(this._sortByProperty('niceValue'));
+		const names = this.props.filterValues.getValuesForProperty('bacterium', 'name')
+			.sort(this._sortByProperty('niceValue'));
 		return names.filter((name) => {
 			const filterIsSelected = this.props.selectedFilters.isSelected(name);
 			return (selected) ? filterIsSelected : !filterIsSelected;

@@ -13,3 +13,4 @@ test('additional properties', (t) => {
 	t.equals(bact.gram, 'gram+');
 	t.end();
 });
+

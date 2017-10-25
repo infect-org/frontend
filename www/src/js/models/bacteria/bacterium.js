@@ -1,6 +1,12 @@
-import {observable} from 'mobx';
+import { computed, action, observable } from 'mobx';
 
 class Bacterium {
+
+	/**
+	* Some bacteria don't have any data for resistances – they are empty lines. Whenever a resistance
+	* is initialized, it calls setHasDataForResistance. We'll filter the matrix by this property.
+	*/
+	@observable _hasDataForResistances = false;
 
 	constructor(id, name, properties = {}) {
 

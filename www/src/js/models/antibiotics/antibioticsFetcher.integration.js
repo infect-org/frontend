@@ -5,7 +5,7 @@ import SubstanceClassesStore from './substanceClassesStore';
 import AntibioticsFetcher from './antibioticsFetcher';
 import fetchMock from 'fetch-mock';
 
-test('handles data correctly', (t) => {
+test('handles antibacteria data correctly', (t) => {
 	fetchMock.mock('/test', [{
 			id: 1
 			, substanceClasses: [{
