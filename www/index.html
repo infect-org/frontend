@@ -24,7 +24,8 @@
 
         <script>
             // On test environment, use CSS injected through webpack/JS
-            if (window.location.hostname === 'localhost') {
+            if (window.location.hostname === 'localhost' && window.location.hash !== '#no-dev') {
+                console.log('Local dev environment');
                 var script = document.createElement('script');
                 script.setAttribute('src', 'dist/js/styles.js');
                 document.head.appendChild(script);

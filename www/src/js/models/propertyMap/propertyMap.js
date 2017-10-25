@@ -39,17 +39,19 @@ export default class PropertyMap {
 	}
 
 
+	@computed get propertyValues() {
+		return this._propertyValues;
+	}
+
 	/**
 	* Returns all values for a certain entityType and propertyName. Needed to display
 	* filter lists.
 	* @return {Array}
 	*/
 	getValuesForProperty(entityType, propertyName) {
-		//return createTransformer((filter) => {
-			const property = this._properties.getBy({ entityType: entityType, name: propertyName });
-			if (!property.length) return [];
-			return this._propertyValues.getBy({ property: property[0] });			
-		//})({ entityType: entityType, propertyName: propertyName });
+		const property = this._properties.getBy({ entityType: entityType, name: propertyName });
+		if (!property.length) return [];
+		return this._propertyValues.getBy({ property: property[0] });			
 	}
 
 
@@ -58,12 +60,7 @@ export default class PropertyMap {
 	* @return {Array}
 	*/
 	getPropertiesForEntityType(entityType) {
-		// https://github.com/mobxjs/mobx/issues/291
-		//console.error('props', this._properties.getBy({ entityType: entityType }), this._properties.values);
-		//console.error('props');
-		//return createTransformer((entityType) => {
-			return this._properties.getBy({ entityType: entityType });
-		//})(entityType);
+		return this._properties.getBy({ entityType: entityType });
 	}
 
 
@@ -126,8 +123,8 @@ export default class PropertyMap {
 				throw(`PropertyMap: Unknown type of valueTranslations; needs to be an Array or a Function, is ${ valueTranslations }.`);
 			}
 
-			log('Added %o, entity was %o', newEntity, entity);
 			const newEntity = { property: existingProperties[0], value: value, niceValue: niceValueName };
+			log('Added %o, entity was %o', newEntity, entity);
 			this._propertyValues.add(newEntity);
 
 		});

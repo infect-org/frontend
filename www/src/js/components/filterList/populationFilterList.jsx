@@ -20,7 +20,7 @@ class PopulationFilterList extends React.Component {
 		if (item) this.props.selectedFilters.addFilter(item);
 	}
 
-	@computed get noRegionSelected() {
+	@computed get isNoRegionSelected() {
 		return this.props.selectedFilters.getFiltersByType('region').length === 0;
 	}
 
@@ -31,7 +31,7 @@ class PopulationFilterList extends React.Component {
 				<ul className="group__list group__list--vertical">
 					<FilterListCheckbox inputType='radio' inputName="region-name" name="All regions"
 							value="" onChangeHandler={(ev) => this._handleFilterChange()} 
-							checked={ this.noRegionSelected }/>
+							checked={ this.isNoRegionSelected }/>
 					{ this.props.filterValues.getValuesForProperty('region', 'name').map((item) => {
 						return <FilterListCheckbox inputType='radio' key={item.value} name={item.niceValue}
 							inputName="region-name" value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}

@@ -64,9 +64,9 @@ test('works with observables', (t) => {
 });
 
 
-test('returns original values', (t) => {
+/*test('returns original values', (t) => {
 	const {map, objects} = createMap();
 	t.deepEqual(map.originalValues.slice(0), objects);
 	t.end();
-});
+});*/
 

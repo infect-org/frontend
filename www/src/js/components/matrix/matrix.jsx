@@ -5,10 +5,14 @@ import ResistanceDetail from '../matrixResistance/resistanceDetail';
 import SubstanceClassLine from '../matrixSubstanceClass/substanceClassLine';
 import { observer } from 'mobx-react';
 import { observable, action } from 'mobx';
+import debug from 'debug';
+const log = debug('infect:MatrixComponent');
 //import DevTools from 'mobx-react-devtools';
 
 @observer
 export default class Matrix extends React.Component {
+
+	@observable svg;
 
 	constructor() {
 		super();
@@ -28,14 +32,19 @@ export default class Matrix extends React.Component {
 		return this._getBodyHeight();
 	}
 
-	_setSVG(element) {
+	// Use a bound method for ref: 
+	// https://github.com/facebook/react/issues/4533#issuecomment-276783714
+	_setSVG = (element) => {
+		log('SVG set to %o', element);
 		this._svg = element;
 		this._setDimensions();
 	}
 
 	_setDimensions() {
 		if (!this._svg) return;
-		this.props.matrix.setDimensions(this._svg.getBoundingClientRect());
+		const dimensions = this._svg.getBoundingClientRect();
+		log('Set dimensions to %o', dimensions);
+		this.props.matrix.setDimensions(dimensions);
 	}
 
 	_setupResizeListener() {
@@ -56,7 +65,9 @@ export default class Matrix extends React.Component {
 
 	render() {
 		return(
-				<svg ref={ (el) => this._setSVG(el) } 
+			<div>
+					{ /*<DevTools /> */ }
+				<svg ref={ this._setSVG } 
 					style={ { height: this._getHeight(), top: this.props.matrix.headerHeight } } 
 					className="resistanceMatrix__body">
 
@@ -95,6 +106,7 @@ export default class Matrix extends React.Component {
 					}
 
 				</svg>
+			</div>
 		);
 	}
 

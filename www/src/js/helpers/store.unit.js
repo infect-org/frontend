@@ -59,7 +59,7 @@ test('clears items', (t) => {
 
 test('returns default status', (t) => {
 	const store = new Store();
-	t.equals(store.status.identifier, 'ready');
+	t.equals(store.status.identifier, 'initialized');
 	t.end();
 });
 
@@ -71,7 +71,7 @@ test('prevents setting of invalid states', (t) => {
 
 test('setting fetchPromise updates status and promise', (t) => {
 	const store = new Store();
-	t.equals(store.status.identifier, 'ready');
+	t.equals(store.status.identifier, 'initialized');
 	store.setFetchPromise(new Promise((resolve) => {
 		setTimeout(resolve, 50);
 	}));

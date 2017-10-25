@@ -1,10 +1,16 @@
-import {observable, action, computed, createTransformer} from 'mobx';
+import { observable, action, computed, reaction } from 'mobx';
 
 /**
 * Enhances an array: Holds values (in an array) that can be easily retrieved by
 * the getBy(config) function which returns all values that match the config.
 */
 export default class SearchableMap {
+
+	/*constructor() {
+		reaction(() => this._values.length, (length) => {
+			console.error(length);
+		});
+	}*/
 
 	/**
 	* Only use shallow observation as the relevant values (Array items) won't change. 
@@ -15,11 +21,7 @@ export default class SearchableMap {
 
 	@computed get values() {
 		// See https://mobx.js.org/refguide/array.html
-		return this._values.slice(0);
-	}
-
-	@computed get originalValues() {
-		return this._values;
+		return this._values.peek();
 	}
 
 	set values(item) {
@@ -48,11 +50,12 @@ export default class SearchableMap {
 	*								}
 	*/
 	getBy(config) {
-		return createTransformer((config) => this._values.filter((item) => {
+		const result = this._values.filter((item) => {
 			return Object.keys(config).every((key) => {
 				return item.hasOwnProperty(key) && item[key] === config[key];
 			});
-		}))(config);
+		});
+		return result;
 	}
 
 }

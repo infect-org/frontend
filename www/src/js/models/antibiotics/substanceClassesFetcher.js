@@ -1,12 +1,17 @@
 import Fetcher from '../../helpers/standardFetcher';
 import SubstanceClass from './substanceClass';
+import debug from 'debug';
+const log = debug('infect:SubstanceClassesFetcher');
 
 export default class SubstanceClassesFetcher extends Fetcher {
 
 	_handleData(originalData) {
 
+		log('Handle data %o', originalData);
+
 		// Clone array to not modify arguments
 		const data = originalData.slice(0);
+		let addedCount = 0;
 
 		// First create all substanceClasses without parents, then all children, 
 		// then all grand-children.
@@ -26,10 +31,13 @@ export default class SubstanceClassesFetcher extends Fetcher {
 				const parent = item.parent ? this._store.getById(item.parent) : undefined;
 				const substanceClass = new SubstanceClass(item.id, item.name, parent, additionalProperties);
 				this._store.add(substanceClass);
+				addedCount++;
 
 				data.splice(i, 1);
 			}
 		}
+
+		log('%d substance classes added to store', addedCount);
 
 	}
 

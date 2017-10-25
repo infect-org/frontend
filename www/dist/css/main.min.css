@@ -220,7 +220,7 @@ a {
     -moz-flex-grow: 0;
     -ms-flex-positive: 0;
     flex-grow: 0;
-    z-index: 4;
+    z-index: 400;
     width: 50px;
     padding-right: 20px; }
     .top-navigation__info strong {
@@ -457,9 +457,9 @@ a {
     -moz-border-radius-bottomleft: 5px; }
   .list-item:hover .button {
     right: 0;
-    transition: right 200ms linear;
-    -webkit-transition: right 200ms linear;
-    -moz-transition: right 200ms linear; }
+    transition: right 100ms linear;
+    -webkit-transition: right 100ms linear;
+    -moz-transition: right 100ms linear; }
 
 .label {
   line-height: 1.3;
@@ -522,9 +522,9 @@ a {
     .button--clearall:hover {
       background-color: #a52604; }
   .button--info {
-    transition: background-color color 200ms linear;
-    -webkit-transition: background-color color 200ms linear;
-    -moz-transition: background-color color 200ms linear;
+    transition: background-color color 100ms linear;
+    -webkit-transition: background-color color 100ms linear;
+    -moz-transition: background-color color 100ms linear;
     background-color: #07238d;
     width: 35px;
     border-radius: 20px;
@@ -549,9 +549,9 @@ input[type="checkbox"] {
   padding-left: 20px;
   cursor: pointer;
   color: #fff;
-  transition: color 200ms linear;
-  -webkit-transition: color 200ms linear;
-  -moz-transition: color 200ms linear; }
+  transition: color 100ms linear;
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear; }
 
 .side-label::before, .side-label::after {
   content: '';
@@ -565,18 +565,18 @@ input[type="checkbox"] {
   height: 10px;
   border: 1px solid;
   border-color: #fff;
-  transition: border-color 200ms linear;
-  -webkit-transition: border-color 200ms linear;
-  -moz-transition: border-color 200ms linear; }
+  transition: border-color 100ms linear;
+  -webkit-transition: border-color 100ms linear;
+  -moz-transition: border-color 100ms linear; }
 
 .side-label::after {
   width: 6px;
   height: 6px;
   margin: 3px;
   background-color: none;
-  transition: background-color 200ms linear;
-  -webkit-transition: background-color 200ms linear;
-  -moz-transition: background-color 200ms linear; }
+  transition: background-color 100ms linear;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear; }
 
 input:checked + .side-label::after {
   background-color: #cbe264; }
@@ -618,9 +618,9 @@ input:hover + .side-label
 }*/
 .icon1 {
   background-image: url(/dist/img/icon1.svg);
-  transition: background-image 200ms linear;
-  -webkit-transition: background-image 200ms linear;
-  -moz-transition: background-image 200ms linear; }
+  transition: background-image 100ms linear;
+  -webkit-transition: background-image 100ms linear;
+  -moz-transition: background-image 100ms linear; }
   .icon1:hover {
     background-image: url(/dist/img/icon1_green.svg); }
 
@@ -628,25 +628,25 @@ input:hover + .side-label
   width: 30px;
   height: 30px;
   background-image: url(/dist/img/icon2.svg);
-  transition: background-image 200ms linear;
-  -webkit-transition: background-image 200ms linear;
-  -moz-transition: background-image 200ms linear; }
+  transition: background-image 100ms linear;
+  -webkit-transition: background-image 100ms linear;
+  -moz-transition: background-image 100ms linear; }
   .icon2:hover {
     background-image: url(/dist/img/icon2_green.svg); }
 
 .icon3 {
   background-image: url(/dist/img/icon3.svg);
-  transition: background-image 200ms linear;
-  -webkit-transition: background-image 200ms linear;
-  -moz-transition: background-image 200ms linear; }
+  transition: background-image 100ms linear;
+  -webkit-transition: background-image 100ms linear;
+  -moz-transition: background-image 100ms linear; }
   .icon3:hover {
     background-image: url(/dist/img/icon3_green.svg); }
 
 .icon4 {
   background-image: url(/dist/img/icon4.svg);
-  transition: background-image 200ms linear;
-  -webkit-transition: background-image 200ms linear;
-  -moz-transition: background-image 200ms linear; }
+  transition: background-image 100ms linear;
+  -webkit-transition: background-image 100ms linear;
+  -moz-transition: background-image 100ms linear; }
   .icon4:hover {
     background-image: url(/dist/img/icon4_green.svg); }
 
@@ -656,20 +656,20 @@ input:hover + .side-label
   -moz-appearance: none;
   appearance: none;
   background: url(/dist/img/arrow_dropdown.png) no-repeat 95% center;
-  transition: background 200ms linear;
-  -webkit-transition: background 200ms linear;
-  -moz-transition: background 200ms linear;
+  transition: background 100ms linear;
+  -webkit-transition: background 100ms linear;
+  -moz-transition: background 100ms linear;
   margin: 3px 0;
   padding: 2px 9px;
   border: 1px solid #fff;
-  transition: border 200ms linear;
-  -webkit-transition: border 200ms linear;
-  -moz-transition: border 200ms linear;
+  transition: border 100ms linear;
+  -webkit-transition: border 100ms linear;
+  -moz-transition: border 100ms linear;
   border-radius: 3px;
   color: #fff;
-  transition: color 200ms linear;
-  -webkit-transition: color 200ms linear;
-  -moz-transition: color 200ms linear;
+  transition: color 100ms linear;
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
   font-size: 13px; }
   .select__option {
     color: #000; }
@@ -683,60 +683,74 @@ input:hover + .side-label
   display: none;
   /* hide the default arrow in ie10 and ie11 */ }
 
-.matrix__overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 65px;
-  background-color: #616161;
-  transition: opacity 200ms linear;
-  -webkit-transition: opacity 200ms linear;
-  -moz-transition: opacity 200ms linear;
-  opacity: 0;
-  z-index: -1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  justify-content: center; }
-  .matrix__overlay img {
-    margin: 0 calc(50% - 150px);
-    width: 150px; }
-  .matrix__overlay--active {
-    opacity: 0.6;
-    z-index: 2; }
-
 .resistanceMatrix {
-  max-width: 2000px;
-  /* or circles are too large */
-  min-width: 1400px;
-  /* or circles are smaller than the font */
-  width: 100%;
-  font-size: 11pt;
-  font-family: "acumin-pro-condensed";
   /**
     * Resistance Detail (Hover)
     */ }
+  .resistanceMatrix__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 65px;
+    background-color: #616161;
+    transition: opacity 100ms linear;
+    -webkit-transition: opacity 100ms linear;
+    -moz-transition: opacity 100ms linear;
+    opacity: 0;
+    z-index: -1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center; }
+    .resistanceMatrix__overlay img {
+      margin: 0 calc(50% - 150px);
+      width: 150px; }
+    .resistanceMatrix__overlay--active {
+      opacity: 0.6;
+      z-index: 200; }
+  .resistanceMatrix__body, .resistanceMatrix__header {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    max-width: 2000px;
+    /* or circles are too large */
+    min-width: 1400px;
+    /* or circles are smaller than the font */
+    width: 100%;
+    font-size: 11pt;
+    font-family: "acumin-pro-condensed"; }
+  .resistanceMatrix__body {
+    position: relative; }
+  .resistanceMatrix__header {
+    z-index: 100;
+    position: fixed; }
   .resistanceMatrix__bacteriumLabelText {
     text-anchor: end; }
   .resistanceMatrix__resistance {
     cursor: none;
-    pointer-events: visible; }
+    pointer-events: visible;
+    transition: transform 0.5s, opacity 0.5s; }
   .resistanceMatrix__antibioticLabelText, .resistanceMatrix__bacteriumLabelText {
     transition: fill 0.2s; }
     .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
       fill: #ff623f; }
+  .resistanceMatrix__substanceClassLabel {
+    cursor: pointer; }
+    .resistanceMatrix__substanceClassLabel:hover text {
+      fill: #fff; }
+    .resistanceMatrix__substanceClassLabel:hover rect {
+      fill: #363636; }
   .resistanceMatrix__resistanceDetail {
     transition: transform 0.2s;
     pointer-events: none; }
@@ -757,12 +771,12 @@ input:hover + .side-label
   z-index: -1;
   overflow: auto;
   background-color: #616161;
-  transition: opacity 200ms linear;
-  -webkit-transition: opacity 200ms linear;
-  -moz-transition: opacity 200ms linear;
+  transition: opacity 100ms linear;
+  -webkit-transition: opacity 100ms linear;
+  -moz-transition: opacity 100ms linear;
   opacity: 0; }
   .overlay--open {
-    z-index: 2;
+    z-index: 300;
     opacity: 1; }
   .overlay__container {
     position: relative;
@@ -803,15 +817,17 @@ input:hover + .side-label
   position: absolute;
   display: block;
   left: -210px;
-  transition: left 200ms linear;
-  -webkit-transition: left 200ms linear;
-  -moz-transition: left 200ms linear;
+  transition: left 100ms linear;
+  -webkit-transition: left 100ms linear;
+  -moz-transition: left 100ms linear;
   top: 155px;
   z-index: 99;
   padding: 0;
   width: 210px;
   height: 100vw;
   background-color: #363636; }
+  .search--visible {
+    left: 0; }
 
 .result {
   padding: 10px 30px;

@@ -9,6 +9,7 @@ const log = debug('infect:AntibioticsFilterList');
 @observer
 class AntibioticsFilterList extends React.Component {
 
+
 	_sortByProperty(property) {
 		return (a, b) => a[property] < b[property] ? -1 : 1;
 	}
@@ -80,40 +81,51 @@ class AntibioticsFilterList extends React.Component {
 		this.props.selectedFilters.toggleFilter(filter);
 	}
 
+	// http://jeremenichelli.io/2016/10/better-control-and-speed-react-render/
+	_renderSubstanceClassFilters = (item) => {
+		return <FilterListCheckbox key={ item.value } name={ item.niceValue } 
+			value={ item.niceValue } checked={ this.props.selectedFilters.isSelected(item) }
+			onChangeHandler={ (ev) => this._handleFilterChange(item) } />;
+	}
+
+	@computed get _sortedSubstanceClassFilters() {
+		const res = this.props.filterValues.getValuesForProperty('substanceClass', 'name')
+			.sort(this._sortByProperty('niceValue'));
+		return res;
+	}
+
 	render() {
+		log('Render.');
 		return (
 			<div id="antibiotics-filters">
                 <h3 className="gray margin-top">Name</h3>
 				<ul className="group__list group__list--vertical">
-					{this._getNamesBySelection(true).map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
+					{ this._getNamesBySelection(true).map((item) => {
+						return <FilterListCheckbox key={ item.value } name={ item.niceValue } 
+							value={ item.niceValue } checked={ this.props.selectedFilters.isSelected(item) }
+							onChangeHandler={ (ev) => this._handleFilterChange(item) } />;
+					}) }
 				</ul>
-				<select className="select" onChange={(ev) => this._handleNameDropdownFilterChange(ev.target.value)}>
+				<select className="select" onChange={ (ev) => this._handleNameDropdownFilterChange(ev.target.value) }>
 					<option>Please chose …</option>
-					{this._getNamesBySelection().map((item, index) => {
-						return <option key={item.value} value={index}>{item.niceValue}</option>;
-					})};
+					{ this._getNamesBySelection().map((item, index) => {
+						return <option key={ item.value } value={ index }>{ item.niceValue }</option>;
+					}) };
 				</select>
 
                 <h3 className="gray margin-top">Substance Class</h3>
 				<ul className="group__list group__list--vertical">
-					{this.props.filterValues.getValuesForProperty('substanceClass', 'name').sort(this._sortByProperty('niceValue')).map((item) => {
-						return <FilterListCheckbox key={item.value} name={item.niceValue} 
-							value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
-							onChangeHandler={(ev) => this._handleFilterChange(item)} />;
-					})}
+					{ this._sortedSubstanceClassFilters
+						.map(this._renderSubstanceClassFilters) }
 				</ul>
 
 				{ /* Application combines iv and po properties and therefore needs special handling */ }
                 <h3 className="gray margin-top">Application</h3>
 				<ul className="group__list group__list--vertical">
 					<FilterListCheckbox name="Per Os" value="perOs" checked={ this._isApplicationChecked('perOs') } 
-						onChangeHandler={(ev) => this._handleApplicationFilterChange('perOs')} />
+						onChangeHandler={ (ev) => this._handleApplicationFilterChange('perOs') } />
 					<FilterListCheckbox name="Intravenous" value="intravenous" checked={ this._isApplicationChecked('intravenous') } 
-						onChangeHandler={(ev) => this._handleApplicationFilterChange('intravenous')} />
+						onChangeHandler={ (ev) => this._handleApplicationFilterChange('intravenous') } />
 				</ul>
 
 			</div>

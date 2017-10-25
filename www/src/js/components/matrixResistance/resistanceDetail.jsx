@@ -3,6 +3,8 @@ import { observer } from 'mobx-react';
 import { numberWithThousandsSeparators } from '../../helpers/formatters';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 import { computed } from 'mobx';
+import debug from 'debug';
+const log = debug('infect:ResistanceDetailComponent');
 
 @observer
 class ResistanceDetail extends React.Component {
@@ -13,6 +15,7 @@ class ResistanceDetail extends React.Component {
 	}
 
 	@computed get transformation() {
+		log('Get transformation for resistanceDetail');
 		return `translate(${ this.props.resistance.xPosition.left + this.props.defaultRadius }, 
 			${ this.props.resistance.yPosition.top + this.props.defaultRadius })`;
 	}

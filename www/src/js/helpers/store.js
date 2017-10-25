@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, runInAction } from 'mobx';
 
 /**
 * Simple store for antibiotics, bacteria etc.
@@ -8,7 +8,7 @@ export default class Store {
 	// Use object so that we can add properties, e.g. an errorReason
 	@observable _status = {
 		// Default must be ready – as there is no fetchPromise that could resolve a loading status
-		identifier: 'ready'
+		identifier: 'initialized'
 	};
 
 	/**
@@ -61,10 +61,12 @@ export default class Store {
 		if (!(promise instanceof Promise)) throw new Error(`Store: Argument passed to setFetchPromise must be a Promise.`);
 		this._status.identifier = 'loading';
 		promise.then(() => {
-			this._status.identifier = 'ready';
+			runInAction(() => this._status.identifier = 'ready');
 		}, (err) => {
-			this._status.identifier = 'error';
-			this._status.errorMessage = err;
+			runInAction(() => {
+				this._status.identifier = 'error';
+				this._status.errorMessage = err;
+			});
 		});
 	}
 

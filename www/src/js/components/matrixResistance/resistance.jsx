@@ -13,10 +13,13 @@ class Resistance extends React.Component {
 	@computed get transformation() {
 		const xPos = this.props.resistance.xPosition;
 		const yPos = this.props.resistance.yPosition;
-		if (!xPos || !yPos) return `translate(0,0)`;
+		if (!xPos || !yPos) return `translate(${ this._previousPosition.left || 0}, ${ this._previousPosition.top || 0})`;
 		// Center is always the middle of a regular (defaultRadius) circle
 		const left = xPos.left + this.props.matrix.defaultRadius;
 		const top = yPos.top + this.props.matrix.defaultRadius;
+		// Store previous position: If resistance is hidden, it should just stay where
+		// it is to not do unnecessary translations.
+		this._previousPosition = { left: left, top: top };
 		log('Resistance %o is placed at %d/%d', this, left, top);
 		// IE11 does not know style: transform – use the transform attribute
 		return `translate(${ left }, ${ top })`;
@@ -52,7 +55,7 @@ class Resistance extends React.Component {
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
 			<g transform={ this.transformation } className="resistanceMatrix__resistance" 
-				style={ { visibility: this.props.resistance.visible ? 'visible' : 'hidden' } }
+				style={ { opacity: this.props.resistance.visible ? 1 : 0, pointerEvents: this.props.resistance.visible ? 'auto' : 'none' } }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
 				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }

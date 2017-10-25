@@ -50,6 +50,22 @@ test('throws if config is missing', (t) => {
 	t.end();
 });
 
+test('returns propertyMap', (t) => {
+	const { map, objects, configs } = createMap();
+	map.addConfiguration('testEntity', configs[0]);
+	map.addEntity('testEntity', objects[0]);
+	t.deepEquals(map.propertyValues.values, [ { 
+		property: { 
+			entityType: 'testEntity', 
+			name: 'property1', 
+			niceName: 'Property 1' 
+		}
+		, value: true
+		, niceValue: 'truthy' 
+	}]);
+	t.end();
+});
+
 
 // Test properties 
 

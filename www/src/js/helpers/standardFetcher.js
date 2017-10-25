@@ -1,5 +1,7 @@
 import { fetchApi } from './api';
 import { observe } from 'mobx';
+import debug from 'debug';
+const log = debug('infect:StandardFetcher');
 
 export default class StandardFetcher {
 
@@ -52,6 +54,7 @@ export default class StandardFetcher {
 		this._handleData(result.data);
 
 		// Resolve promise in store
+		log('Resolve fetch promise, added %d items to store', this._store.get().size);
 		resolver();
 	}
 

@@ -59,7 +59,7 @@
         // Use visiblity: hidden to hide resistances (for speed reasons)
         // and ignore pointer-events on them
         pointer-events: visible;
-        transition: transform 0.5s, opacity 0.5s;
+        transition: transform 0.5s ease-in-out 0.3s, opacity 0.3s ease-in-out;
     }
 
     &__substanceClassLine {

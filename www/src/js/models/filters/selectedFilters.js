@@ -20,7 +20,7 @@ export default class SelectedFilters {
 		// Prevent users from adding similar filters
 		const duplicate = this._selectedFilters.find((item) => deepEqual(item, filter));
 		if (duplicate) {
-			log('Tried to add duplicate entry %o', filter);
+			console.warn('Tried to add duplicate entry %o', filter);
 			return;
 		}
 		this._selectedFilters.push(filter);
@@ -42,20 +42,19 @@ export default class SelectedFilters {
 	}
 
 	/**
-	* Returns a filter that deep-equals the filter passed or null
+	* Returns a filter that equals the filter passed or null
 	*/
 	findFilter(filter) {
-		const match = this._selectedFilters.find((item) => item === filter);
-		return match;
+		return this._selectedFilters.find((item) => item === filter);
 	}
 
 	/**
-	* Returns true if a filter that deep-equals filter is selected
+	* Returns true if a filter that equals filter is selected
 	*/
 	isSelected(filter) {
-		const duplicate = this.findFilter(filter);
-		log('Is filter %o selected? %o', filter, !!duplicate);
-		return !!duplicate;
+		const selected = this.findFilter(filter);
+		log('Is filter %o selected? %o', filter, !!selected);
+		return !!selected;
 	}
 
 	@computed get filters() {
@@ -71,7 +70,9 @@ export default class SelectedFilters {
 	* Returns all filters for a certain entityType
 	*/
 	getFiltersByType(entityType) {
-		return this._selectedFilters.filter((item) => item.property.entityType === entityType);
+		return this._selectedFilters.filter((item) => {
+			return item.property.entityType === entityType;
+		});
 	}
 
 }

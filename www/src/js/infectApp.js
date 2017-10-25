@@ -13,7 +13,7 @@ import ResistancesFetcher from './models/resistances/resistancesFetcher';
 import MatrixView from './models/matrix/matrixView';
 import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
-import { observe, observable } from 'mobx';
+import { action, when, observable } from 'mobx';
 import SelectedFilters from './models/filters/selectedFilters';
 import debug from 'debug';
 const log = debug('infect:App');
@@ -70,6 +70,7 @@ export default class InfectApp {
 			, this.substanceClasses
 		);
 		substanceClassesFetcher.getData();
+		log('Fetching data for substanceClasses.');
 
 		// Antibiotics (wait for substance classes)
 		const antibioticsFetcher = new AntibioticsFetcher(
@@ -79,6 +80,7 @@ export default class InfectApp {
 			, this.substanceClasses
 		);
 		antibioticsFetcher.getData();
+		log('Fetching data for antibiotics.');
 
 		// Bacteria
 		const bacteriaFetcher = new BacteriaFetcher(
@@ -86,6 +88,7 @@ export default class InfectApp {
 			, this.bacteria
 		);
 		bacteriaFetcher.getData();
+		log('Fetching data for bacteria.');
 
 		// Resistances (wait for antibiotics and bacteria)
 		const resistanceFetcher = new ResistancesFetcher(
@@ -99,6 +102,9 @@ export default class InfectApp {
 			, this.selectedFilters
 		);
 		resistanceFetcher.getData();
+		log('Fetching data for resistances.');
+
+		log('Fetchers setup done.');
 
 	}
 
@@ -112,7 +118,7 @@ export default class InfectApp {
 		const filterConfig = getFilterConfig();
 		filterConfig.forEach((config) => {
 			this.filterValues.addConfiguration(config.entityType, config.config);
-			log('FilterConfig set for %s', config.entityType);
+			log('FilterConfig %o set for %s', config.config, config.entityType);
 		});
 
 		const entities = [{
@@ -126,14 +132,35 @@ export default class InfectApp {
 			, plural: 'bacteria'
 		}];
 		
+
+		let entitiesReady = 0;
 		entities.forEach((entityConfig) => {
-			observe(this[entityConfig.plural].get(), (change) => {
-				if (change.type === 'add') {
-					this.filterValues.addEntity(entityConfig.singular, change.newValue);
-				}
+			// Only add entities to filterValues when **all** entity types are ready to prevent unndecessary
+			// re-renderings when filterValues change.
+			when(() => this[entityConfig.plural].status.identifier === 'ready', () => {
+				entitiesReady++;
+				if (entitiesReady === entities.length ) this._addAllEntitiesToFilters(entities);
+				log('%d of %d entities ready.', entitiesReady, entities.length);
 			});
 		});
 
+	}
+
+
+
+	/**
+	* Adds all entities (subsClasses, ab, bact) to filterValues once they are ready. 
+	* @param {Array} entityConfig 			Object with singular and plural form for all entity types
+	*/
+	_addAllEntitiesToFilters(entityConfigs) {
+		let counter = 0;
+		entityConfigs.forEach((entityConfig) => {
+			this[entityConfig.plural].getAsArray().forEach((item) => {
+				counter++;
+				this.filterValues.addEntity(entityConfig.singular, item);
+			});
+		});
+		log('All relevant entities ready, added %d entities to filters.', counter);
 	}
 
 
@@ -151,6 +178,7 @@ export default class InfectApp {
 		}));
 		regions.forEach((region) => {
 			this.filterValues.addEntity('region', region);
+			log('Added filter %o for region', region);
 		});
 
 	}
