@@ -36,9 +36,10 @@ export default class AntibioticLabel extends React.Component {
 		this.props.antibiotic.setDimensions(height, height);
 	}
 
-	_getTransformation() {
+	@computed get transformation() {
 		const rotation = 'rotate(-75)';
-		if (!this._textElement) return 'translate(0, 0) ' + rotation;
+		// Before textElement is ready, hight of antibiotics (and therefore the transformation) cannot be known.
+		if (!this.props.matrix.greatestSubstanceClassLabelHeight) return 'translate(0, 0) ' + rotation;
 		if (!this.visible) return `translate(${ this._previousPosition.left || 0}, ${ this._previousPosition.top || 0 }) ${ rotation }`;
 		// We must add some of the height (60°/90°) as we rotated the label which positions it more to the left
 		const pos = this.props.matrix.xPositions.get(this.props.antibiotic);
@@ -77,7 +78,7 @@ export default class AntibioticLabel extends React.Component {
 
 	render() {
 		return (
-			<g transform={ this._getTransformation() } className={ 'resistanceMatrix__antibioticLabel ' + this.classModifier }>
+			<g transform={ this.transformation } className={ 'resistanceMatrix__antibioticLabel ' + this.classModifier }>
 				<text dy="-5" ref={(el) => this._setTextElement(el)} className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>

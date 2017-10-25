@@ -28,7 +28,10 @@ export default class MatrixHeader extends React.Component {
 	}
 
 	_substanceClassSortFunction(a, b) {
-		return a.xPosition && b.xPosition ? b.xPosition.left - a.xPosition.left : 0;
+		// We have to use a function that depends on non-changing properties *or* 
+		// DOM will be updated (which we don't want or need) and wich destroys our nice
+		// animations
+		return a.substanceClass.order > b.substanceClass.order ? -1 : 1;
 	}
 
 	@computed get headerScrollTransformation() {
@@ -36,41 +39,40 @@ export default class MatrixHeader extends React.Component {
 	}
 
 	render() {
+		// Only display (unhide) when radius is calculated (which needs the labels to be rendered first).
 		return (
-
-			<svg className="resistanceMatrix__header" style={ { height: this.props.matrix.headerHeight, transform: this.headerScrollTransformation } }>
+			<svg className="resistanceMatrix__header" 
+				style={ { height: this.props.matrix.headerHeight, transform: this.headerScrollTransformation, 
+				opacity: (this.props.matrix.defaultRadius === undefined ? 0 : 1) } }>
 
 				{ /* White background (to hide things when header is sticky) */ }
 				<rect x="0" y="0" height="100%" width="100%" fill="rgb(255, 255, 255)"></rect>
-
-				{ this.props.matrix.bacteriumLabelColumnWidth && 
+				{ /* Render ab labels early to measure them which is needed to calculate defaultRadius */ }
+				{ this.props.matrix.bacteriumLabelColumnWidth !== undefined && 
 					<g>
 						<g className="resistanceMatrix__antibioticsLabels" transform={ this.headerTransformation }>
-		
-							{ /* Matrix header */ }
-							{ /* Must be at the bottom as its z-index must be highest (fixed when scrolling) */ }
-							{ /* Must cover the whole width of the svg to hide everything behind it */ }
-
 							{ /* Antibiotic labels */ }
 							{this.props.matrix.sortedAntibiotics.map((ab) => 
 								<AntibioticLabel key={ ab.antibiotic.id } antibiotic={ ab } matrix={ this.props.matrix }/>
 							)}
 						</g>
 
-						<g transform={ this.headerTransformation }>
-							{ /* Substance class labels */ }
-							{ /* - Placed below antibiotics as z-index must be higher (if user hovers a shortened label)
-								 - Sorted by xPosition (reverse): If user hovers a substanceClass left of the next, it must lie
-							       above the right-next substance class */ }
-							<g className="resistanceMatrix__substanceClassLabes">
-								{this.props.matrix.substanceClasses.sort(this._substanceClassSortFunction).map((sc) => 
-									<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }
-										className="resistanceMatrix__substanceClassLabel"
-										filters={ this.props.filters } selectedFilters={ this.props.selectedFilters }/>
-								)}
-							</g>
+						{ this.props.matrix.defaultRadius !== undefined &&
+							<g transform={ this.headerTransformation }>
+								{ /* Substance class labels */ }
+								{ /* - Placed below antibiotics as z-index must be higher (if user hovers a shortened label)
+									 - Sorted by xPosition (reverse): If user hovers a substanceClass left of the next, it must lie
+								       above the right-next substance class */ }
+								<g className="resistanceMatrix__substanceClassLabes">
+									{this.props.matrix.substanceClasses.sort(this._substanceClassSortFunction).map((sc) => 
+										<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }
+											className="resistanceMatrix__substanceClassLabel"
+											filters={ this.props.filters } selectedFilters={ this.props.selectedFilters }/>
+									)}
+								</g>
 
-						</g>
+							</g>
+						}
 					</g>
 				}
 			</svg>

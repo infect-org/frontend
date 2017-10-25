@@ -40,6 +40,7 @@ export default class SubstanceClass extends React.Component {
 			this.props.matrix.space;
 		if (isNaN(top)) return this._getPreviousTranslation();
 		const left = this.props.substanceClass.xPosition.left;
+		this._previousPosition = { left, top };
 		log('Position for %o is %d/%d', this.props.substanceClass, left, top);
 		return `translate(${ left }, ${ top })`;
 	}
@@ -70,11 +71,14 @@ export default class SubstanceClass extends React.Component {
 	*/
 	@computed get _labelWidth() {
 		const xPos = this.props.substanceClass.xPosition;
-		if (!xPos || isNaN(xPos.right) || isNaN(xPos.left)) return 0;
+		// If label is invisible, don't change its width (and just return the previous value) 
+		// to not mess with our animations.
+		if (!xPos || isNaN(xPos.right) || isNaN(xPos.left)) return this._previousLabelWidth || 0;
 		const minWidth = xPos.right - xPos.left;
 		const width = this._afterHovered
 			? Math.max(minWidth, this._getApproximateTextWidth()) + 2 * this.props.matrix.space 
 			: minWidth;
+		this._previousLabelWidth = width;
 		return width;
 	}
 

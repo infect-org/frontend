@@ -1,19 +1,21 @@
 .resistanceMatrix {
 
+    $slowdown-factor: 1;
+
     /**
     * General modifers used for antibiotics, bacteria, substanceClasses and resistances
     * (animations/transition)
     */
     .-was-visible-is-visible {
-        transition: transform 0.3s ease-in-out;
+        transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out;
     }
 
     .-was-hidden-is-visible {
-        transition: opacity 0.2s ease-in-out 0.3s;
+        transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out calc(#{$slowdown-factor} * 0.3s);
     }
 
     .-was-visible-is-hidden {
-        transition: opacity 0.2s ease-in-out;
+        transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out;
     }
 
     .-was-hidden-is-hidden,
