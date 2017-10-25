@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { computed } from 'mobx';
+import { computed, observable, action } from 'mobx';
 import SubstanceClass from '../matrixSubstanceClass/substanceClass';
 import AntibioticLabel from '../matrixAntibiotic/antibioticLabel';
 
@@ -10,6 +10,19 @@ import AntibioticLabel from '../matrixAntibiotic/antibioticLabel';
 @observer
 export default class MatrixHeader extends React.Component {
 
+	@observable _leftScrollPosition = 0;
+
+	componentDidMount() {
+		const parentScrollElement = document.querySelector('.resistanceMatrix');
+		parentScrollElement.addEventListener('scroll', () => {
+			this._updateScrollLeftPosition(parentScrollElement.scrollLeft);
+		});
+	}
+
+	@action _updateScrollLeftPosition(amount) {
+		this._leftScrollPosition = amount;
+	}
+
 	@computed get headerTransformation() {
 		return `translate(${ this.props.matrix.bacteriumLabelColumnWidth + this.props.matrix.spaceBetweenGroups }, 0)`;
 	}
@@ -18,10 +31,14 @@ export default class MatrixHeader extends React.Component {
 		return a.xPosition && b.xPosition ? b.xPosition.left - a.xPosition.left : 0;
 	}
 
+	@computed get headerScrollTransformation() {
+		return `translate(${ this._leftScrollPosition * -1 }px, 0)`;
+	}
+
 	render() {
 		return (
 
-			<svg className="resistanceMatrix__header" style={ { height: this.props.matrix.headerHeight } } viewport-fill="white">
+			<svg className="resistanceMatrix__header" style={ { height: this.props.matrix.headerHeight, transform: this.headerScrollTransformation } }>
 
 				{ /* White background (to hide things when header is sticky) */ }
 				<rect x="0" y="0" height="100%" width="100%" fill="rgb(255, 255, 255)"></rect>

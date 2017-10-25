@@ -4,6 +4,7 @@ import debug from 'debug';
 import { observer } from 'mobx-react';
 import { computed, observable } from 'mobx';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
+import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier';
 
 const log = debug('infect:ResistanceComponent');
 
@@ -57,11 +58,7 @@ class Resistance extends React.Component {
 		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
 		// and therefore won't call an update.
 		this.transformation;
-		let modifier;
-		if (visible && !this._wasVisible) modifier = '-was-hidden-is-visible';
-		if (visible && this._wasVisible) modifier = '-was-visible-is-visible';
-		if (!visible && this._wasVisible) modifier = '-was-visible-is-hidden';
-		if (!visible && !this._wasVisible) modifier = '-was-hidden-is-hidden';
+		const modifier = getVisibilityClassModifier(visible, this._wasVisible);
 		this._wasVisible = visible;
 		return modifier;
 	}

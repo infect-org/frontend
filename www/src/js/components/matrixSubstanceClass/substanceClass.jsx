@@ -4,6 +4,7 @@ import color from 'tinycolor2';
 import { observer } from 'mobx-react';
 import { computed, observable, action } from 'mobx';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
+import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier';
 
 const log = debug('infect:SubstanceClassComponent');
 
@@ -16,6 +17,7 @@ export default class SubstanceClass extends React.Component {
 	constructor() {
 		super();
 		this._lineWeight = 1;
+		this._wasVisible = true;
 	}
 
 	componentDidMount() {
@@ -23,15 +25,21 @@ export default class SubstanceClass extends React.Component {
 		window.addEventListener('resize', () => this._measureHeight());
 	}
 
-	_getTransformation() {
-		const left = (this.props.substanceClass.xPosition ? this.props.substanceClass.xPosition.left : 0);
-		if (isNaN(left)) return 'translate(0,0)';
+
+	_getPreviousTranslation() {
+		return `translate(${ (this._previousPosition && this._previousPosition.left) || 0 },
+			${ this._previousPosition && this._previousPosition.top || 0 })`;
+	}
+
+	@computed get transformation() {
+		if (!this.visible) return this._getPreviousTranslation();
 		const parentCount = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
 		const top = this.props.matrix.antibioticLabelRowHeight + 
 			(this.props.matrix.maxAmountOfSubstanceClassHierarchies - parentCount - 1) * 
 			(this.props.matrix.greatestSubstanceClassLabelHeight || 0) +
 			this.props.matrix.space;
-		if (isNaN(top)) return 'translate(0,0)';
+		if (isNaN(top)) return this._getPreviousTranslation();
+		const left = this.props.substanceClass.xPosition.left;
 		log('Position for %o is %d/%d', this.props.substanceClass, left, top);
 		return `translate(${ left }, ${ top })`;
 	}
@@ -74,8 +82,19 @@ export default class SubstanceClass extends React.Component {
 		return this.props.matrix.greatestSubstanceClassLabelHeight;
 	}
 
-	_getOpacity() {
-		return this.props.substanceClass.xPosition ? 1 : 0;
+	@computed get visible() {
+		const left = this.props.substanceClass.xPosition && this.props.substanceClass.xPosition.left;
+		return !isNaN(left) && left !== undefined;
+	}
+
+	@computed get classModifier() {
+		// We must also be watching transitions: If not, we only watch visible – which stays the
+		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
+		// and therefore won't call an update.
+		this.transformation;
+		const modifier = getVisibilityClassModifier(this.visible, this._wasVisible);
+		this._wasVisible = this.visible;
+		return modifier;
 	}
 
 	_getApproximateTextWidth() {
@@ -125,7 +144,7 @@ export default class SubstanceClass extends React.Component {
 
 	render() {
 		return (
-			<g transform={ this._getTransformation() } className="resistanceMatrix__substanceClassLabel" opacity={ this._getOpacity() }
+			<g transform={ this.transformation } className={ 'resistanceMatrix__substanceClassLabel ' + this.classModifier }
 				onMouseEnter={ (ev) => this._updateHoveredState(true) } onMouseLeave={ (ev) => this._updateHoveredState(false) }
 				onClick={ (ev) => this._handleSubstanceClassClick() } >
 				{ /* use textPath to truncate text of substanceClass */ }

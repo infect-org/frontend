@@ -1,4 +1,7 @@
 .side-navigation {
+
+	z-index: 400;
+	
 	@include flexbox();
 	@include flex-direction(column);
 	background-color: $sidenavigation-background;
