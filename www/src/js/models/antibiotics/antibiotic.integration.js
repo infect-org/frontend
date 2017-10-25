@@ -21,3 +21,14 @@ test('adds properties', (t) => {
 	t.equals(ab.iv, true);
 	t.end();
 });
+
+test('sets used on parent substance classes', (t) => {
+	const parent = new SubstanceClass(2, 'parent');
+	const child = new SubstanceClass(3, 'child', parent);
+	t.equals(child.used, false);
+	t.equals(parent.used, false);
+	const ab = new Antibiotic(1, 'ab', child);
+	t.equals(child.used, true);
+	t.equals(parent.used, true);
+	t.end();
+});

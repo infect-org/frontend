@@ -46,3 +46,11 @@ test('recognizes and re-formats colors', (t) => {
 	});
 	t.end();
 });
+
+test('sets and reads used', (t) => {
+	const sc = new SubstanceClass(1, 'name');
+	t.equals(sc.used, false);
+	sc.setUsed(true);
+	t.equals(sc.used, true);
+	t.end();
+});

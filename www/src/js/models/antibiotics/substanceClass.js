@@ -1,6 +1,8 @@
-import {observable} from 'mobx';
+import { computed, observable, action } from 'mobx';
 
 class SubstanceClass {
+
+	@observable _used = false;
 
 	constructor(id, name, parent, properties = {}) {
 
@@ -47,6 +49,14 @@ class SubstanceClass {
 			classes.push(classes.slice(-1)[0].parent);
 		}
 		return classes.slice(1);
+	}
+
+	@action setUsed(used) {
+		this._used = used;
+	}
+
+	@computed get used() {
+		return this._used;
 	}
 
 

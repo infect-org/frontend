@@ -1,5 +1,6 @@
 import test from 'tape';
 import AntibioticsStore from './antibioticsStore';
+import SubstanceClass from './substanceClass';
 import SubstanceClassesStore from './substanceClassesStore';
 import AntibioticsFetcher from './antibioticsFetcher';
 import fetchMock from 'fetch-mock';
@@ -16,10 +17,7 @@ test('handles data correctly', (t) => {
 		}]);
 	const abStore = new AntibioticsStore();
 	const scStore = new SubstanceClassesStore();
-	scStore.add({
-		id: 5
-		, name: 'testSC'
-	});
+	scStore.add(new SubstanceClass(5, 'testSC'));
 	const fetcher = new AntibioticsFetcher('/test', abStore, [], scStore);
 	fetcher.getData();
 	setTimeout(() => {

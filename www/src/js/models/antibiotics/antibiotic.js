@@ -21,6 +21,12 @@ export default class Antibiotic {
 			this[key] = properties[key];
 		});
 
+		// There are substanceClasses in our database that are not used by antibiotics. 
+		// Mark the ones that are used as «used» – the others will not be added to the filters.
+		this.getSubstanceClasses().forEach((substanceClass) => {
+			substanceClass.setUsed(true);
+		});
+
 	}
 
 

@@ -156,6 +156,10 @@ export default class InfectApp {
 		let counter = 0;
 		entityConfigs.forEach((entityConfig) => {
 			this[entityConfig.plural].getAsArray().forEach((item) => {
+
+				// Don't add substanceClasses that are not linked to antibiotics
+				if (entityConfig.singular === 'substanceClass' && !item.used) return;
+
 				counter++;
 				this.filterValues.addEntity(entityConfig.singular, item);
 			});
