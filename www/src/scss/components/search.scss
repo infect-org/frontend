@@ -81,6 +81,14 @@ $padding-lr: 30px;
 	
 	background-color: #d7d5c4;
 
+	&__item {
+		white-space: wrap;
+    	text-overflow: ellipsis;
+    	width: 150px;
+    	display: block;
+    	overflow: hidden
+	}
+
 	&__checkmark {
 		display: block;
 		position: absolute;

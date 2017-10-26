@@ -62,11 +62,11 @@ export default class FilterSearchSuggestions extends React.Component {
                                 key={ item.property.entityType + '-' + item.property.name + '-' + item.value }>
 	                            <div style={ { opacity: this.props.isItemSelected(item) ? 1 : 0 } } className="result__checkmark"></div>
                                 <div className="label">
-                                    <p className="label--small label--gray label--nomargin">
+                                    <p className="result__item label--small label--gray label--nomargin">
                                         { item.property.entityType[0].toUpperCase() + item.property.entityType.substr(1) } 
                                         - { item.property.niceName }
                                     </p>
-                                    <p className="label--bold label--larger label--nomargin">{ item.niceValue }</p>
+                                    <p className="result__item label--bold label--larger label--nomargin">{ item.niceValue }</p>
                                 </div>
                             </li>;
                         })
@@ -74,10 +74,10 @@ export default class FilterSearchSuggestions extends React.Component {
                     { this.props.matches.length === 0 &&
                         <li className="group__list-item list-item result">
                             <div className="label">
-                                <p className="label--small label--gray label--nomargin">
+                                <p className="result__item label--small label--gray label--nomargin">
                                     Term: { this.props.searchTerm }
                                 </p>
-                                <p className="label--bold label--larger label--nomargin">
+                                <p className="result__item label--bold label--larger label--nomargin">
                                     No results found
                                 </p>
                             </div>
