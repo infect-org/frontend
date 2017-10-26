@@ -76,6 +76,7 @@ $padding-lr: 30px;
 }
 
 .result {
+	position: relative;
 	padding: 10px $padding-lr;
 	margin: 0;
 	
@@ -95,8 +96,10 @@ $padding-lr: 30px;
 		left: 10px;
 		width: 15px;
 		height: 40px;
-		//height: 100%;
-		background: url(/dist/img/checkmark.svg) no-repeat center center;
+		top: calc(50% - 20px);
+		background: url(/dist/img/checkmark--grey.svg) no-repeat center center;
+
+
 	}
 
 	&--active {
@@ -110,5 +113,9 @@ $padding-lr: 30px;
 	&:hover {
 		background-color: #fff;
 		cursor: pointer;
+
+		.result__checkmark {
+			background: url(/dist/img/checkmark.svg) no-repeat center center;
+		}
 	}
 }
