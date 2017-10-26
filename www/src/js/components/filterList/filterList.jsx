@@ -25,11 +25,14 @@ class FilterList extends React.Component {
 				{/* Only display filters when they are ready – but wait for bacteria (async), don't display when regions (sync/hard coded) are ready */ }
 				{ this.bacteriaFilters.length > 0 && 
 					<div>
-						<AntibioticsFilterList title="Antibiotics" filterValues={this.props.filterValues} selectedFilters={this.props.selectedFilters} />
+						<AntibioticsFilterList title="Antibiotics" identifier="antibiotics" 
+							filterValues={this.props.filterValues} selectedFilters={this.props.selectedFilters} />
 						<hr className="divider" />
-						<BacteriaFilterList title="Bacteria" filterValues={this.props.filterValues} selectedFilters={this.props.selectedFilters} />
+						<BacteriaFilterList title="Bacteria" identifier="bacteria"  
+							filterValues={this.props.filterValues} selectedFilters={this.props.selectedFilters} />
 						<hr className="divider" />
-						<PopulationFilterList title="Population" filterValues={this.props.filterValues} selectedFilters={this.props.selectedFilters} />
+						<PopulationFilterList title="Population" identifier="population" 
+							filterValues={this.props.filterValues} selectedFilters={this.props.selectedFilters} />
 					</div>
 				}
 			</div>

@@ -7,6 +7,7 @@
 	}
 }
 
+
 .filter:last-child {
 	//set via js or static
 	padding-bottom: calc(100vh - 196px - 65px - 120px);
@@ -158,6 +159,9 @@
 		position: relative;
 		background-color: #59291c;
 		padding: 0 20px;
+		@media (pointer: fine) {
+			padding: 0 8px;
+		}
 		@include border-radius-edges(0, 5px, 5px, 0)
 		
 		&:hover {

@@ -25,7 +25,7 @@
 
 $path: '/dist/img/';
 
-.button--antibiotica {
+.button--antibiotics {
 	background-image: url(#{$path}icon1.svg);
 	@include transition(background-image, $transition-duration);
 	&:hover {

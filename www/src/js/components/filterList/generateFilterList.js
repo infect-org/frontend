@@ -9,7 +9,7 @@ export default function generateFilterList(Component) {
 
 		render() {
 			return (
-                <div className="group">
+                <div className="group" id={'js-filter-list-' + this.props.identifier }>
                     <h1>Filters for { this.props.title }</h1>
 					<Component {...this.props}/>
 				</div>
