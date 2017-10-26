@@ -107,7 +107,7 @@ class AntibioticsFilterList extends React.Component {
 					}) }
 				</ul>
 				<select className="select" onChange={ (ev) => this._handleNameDropdownFilterChange(ev.target.value) }>
-					<option>Please chose …</option>
+					<option>Please choose …</option>
 					{ this._getNamesBySelection().map((item, index) => {
 						return <option key={ item.value } value={ index }>{ item.niceValue }</option>;
 					}) };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { action, observable, computed } from 'mobx';
+import FilterSearchSuggestions from './filterSearchSuggestions';
 import debug from 'debug';
 const log = debug('infect:FilterSearch');
 
@@ -9,8 +10,13 @@ export default class FilterSearch extends React.Component {
     
     @observable searchTerm = '';
 
+    constructor() {
+        super();
+        this._searchInputHandlers = [];
+    }
+
     @computed get matches() {
-        const matches = this.props.filterValues.search(this.searchTerm);
+        const matches = this.props.filterValues.search(this.searchTerm).slice(0, 10);
         log('Matches are %o', matches);
         return matches;
     }
@@ -20,18 +26,39 @@ export default class FilterSearch extends React.Component {
         this.searchTerm = value;
     }
 
-    _filterClickedHandler(item) {
-        this.props.selectedFilters.toggleFilter(item);
-        this._resetSearchTerm();
-    }
-
     @action _resetSearchTerm() {
         this.searchTerm = '';
         this._inputElement.focus();
     }
 
+    /**
+    * Store input element so that we can focus it after user selected an item.
+    */
     _setInputElement(el) {
+        log('Input element set to %o', el);
         this._inputElement = el;
+    }
+
+    selectItemHandler(selected) {
+        log('Toggle filter %o', selected);
+        this.props.selectedFilters.toggleFilter(selected);
+        this._resetSearchTerm();
+
+    }
+
+    _handleSearchInputKeyDown = (ev) => {
+        // Escape
+        if (ev.keyCode === 27) this._resetSearchTerm();
+        // Call handler on suggestions component
+        this._searchInputHandlers.forEach((handler) => handler(ev));
+    }
+
+    addSearchInputHandler(handler) {
+        this._searchInputHandlers.push(handler);
+    }
+
+    isItemSelected(item) {
+        return this.props.selectedFilters.isSelected(item);
     }
 
     render() {
@@ -42,38 +69,12 @@ export default class FilterSearch extends React.Component {
                     <a onClick={ (ev) => this._resetSearchTerm() } className="search__clear"><h3>clear</h3></a>
                     <input type="text" placeholder="Property" className="group__input input search__input" 
                         onChange={ (ev) => this._handleSearchInputChange(ev.target.value) } value={ this.searchTerm }
-                        ref={ (el) => this._setInputElement(el) } />
+                        ref={ (el) => this._setInputElement(el) } onKeyDown={ this._handleSearchInputKeyDown } />
                 </div>
-                <div className={ 'group group--black-font search ' + (this.searchTerm === '' ? '' : 'search--visible') }>
-                    <ul className="group__list group__list--vertical search__results" >
-                        { this.matches.length > 0 && 
-                            this.matches.slice(0, 10).map((item) => {
-                                return <li className="group__list-item list-item result" onClick={ (ev) => this._filterClickedHandler(item) }
-                                    key={ item.property.entityType + '-' + item.property.name + '-' + item.value }>
-                                    <div className="label">
-                                        <p className="label--small label--gray label--nomargin">
-                                            { item.property.entityType[0].toUpperCase() + item.property.entityType.substr(1) } 
-                                            - { item.property.niceName }
-                                        </p>
-                                        <p className="label--bold label--larger label--nomargin">{ item.niceValue }</p>
-                                    </div>
-                                </li>;
-                            })
-                        }
-                        { this.matches.length === 0 &&
-                            <li className="group__list-item list-item result">
-                                <div className="label">
-                                    <p className="label--small label--gray label--nomargin">
-                                        Term: { this.searchTerm }
-                                    </p>
-                                    <p className="label--bold label--larger label--nomargin">
-                                        No results found
-                                    </p>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-               </div>
+                <FilterSearchSuggestions searchTerm={ this.searchTerm } matches={ this.matches } 
+                    addSearchInputHandler={ this.addSearchInputHandler.bind(this) } 
+                    isItemSelected={ this.isItemSelected.bind(this) }
+                    selectItemHandler={ this.selectItemHandler.bind(this) } />
             </div>
         );
     }
