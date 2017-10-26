@@ -1,11 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { computed } from 'mobx';
+import { computed, observable, when, action } from 'mobx';
 import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier';
 
 
 @observer
 export default class BacteriumLabel extends React.Component {
+
+	@observable _firstFilterSelected = false;
 
 	constructor() {
 		super();
@@ -16,6 +18,13 @@ export default class BacteriumLabel extends React.Component {
 		this._setupResizeWatcher();
 	}
 
+	componentWillReceiveProps(nextProps) {
+		// Only add classes with animations when user filters for the first time. 
+		// We dont want them while the app is setting up. 
+		when(() => nextProps.selectedFilters.originalFilters.length > 0, () => {
+			action(() => this._firstFilterSelected = true)();
+		});
+	}
 
 	@computed get visible() {
 		// Don't display bacterium when we are still measuring its width 
@@ -23,6 +32,7 @@ export default class BacteriumLabel extends React.Component {
 	}
 
 	@computed get classModifier() {
+		if (!this._firstFilterSelected) return '';
 		// We must also be watching transitions: If not, we only watch visible – which stays the
 		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
 		// and therefore won't call an update.

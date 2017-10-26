@@ -39,13 +39,18 @@ export default class SubstanceClass extends React.Component {
 			${ this._previousPosition && this._previousPosition.top || 0 })`;
 	}
 
-	@computed get transformation() {
-		if (!this.visible) return this._getPreviousTransformation();
+	@computed get topTransformation() {
 		const parentCount = this.props.substanceClass.substanceClass.getParentSubstanceClasses().length;
 		const top = this.props.matrix.antibioticLabelRowHeight + 
 			(this.props.matrix.maxAmountOfSubstanceClassHierarchies - parentCount - 1) * 
 			(this.props.matrix.greatestSubstanceClassLabelHeight || 0) +
 			this.props.matrix.space;
+		return top;
+	}
+
+	@computed get transformation() {
+		if (!this.visible) return this._getPreviousTransformation();
+		const top = this.topTransformation;
 		const left = this.props.substanceClass.xPosition.left;
 		this._previousPosition = { left, top };
 		log('Position for %o is %d/%d', this.props.substanceClass, left, top);
@@ -93,6 +98,10 @@ export default class SubstanceClass extends React.Component {
 		return this.props.matrix.greatestSubstanceClassLabelHeight;
 	}
 
+	/**
+	* Model does not have a visible property. But: All invisible substance classes won't have a left
+	* position (on matrixView). Use it to determine if substanceClass is visible or not.
+	*/
 	@computed get visible() {
 		const left = this.props.substanceClass.xPosition && this.props.substanceClass.xPosition.left;
 		return !isNaN(left) && left !== undefined;
@@ -107,6 +116,7 @@ export default class SubstanceClass extends React.Component {
 		this.transformation;
 		const modifier = getVisibilityClassModifier(this.visible, this._wasVisible);
 		this._wasVisible = this.visible;
+		console.error(modifier);
 		return modifier;
 	}
 

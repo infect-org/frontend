@@ -242,7 +242,7 @@ class MatrixView {
 		}
 	}
 
-	_calculateGreatestSubstanceClassLabelHeight() {
+	@action _calculateGreatestSubstanceClassLabelHeight() {
 		const heights = Array.from(this._substanceClassLabelHeights.values());
 		this.greatestSubstanceClassLabelHeight = Math.ceil(heights.reduce((prev, item) => {
 			return Math.max(item, prev);

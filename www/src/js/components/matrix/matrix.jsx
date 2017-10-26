@@ -86,7 +86,8 @@ export default class Matrix extends React.Component {
 						{ this.props.matrix.sortedBacteria.map((bact) => 
 							// Don't render bacteria that have no resistanceData
 							//bact.bacterium.hasDataForResistances &&
-								<BacteriumLabel key={ bact.bacterium.id } bacterium={ bact } matrix={ this.props.matrix }/>
+								<BacteriumLabel key={ bact.bacterium.id } bacterium={ bact } matrix={ this.props.matrix } 
+									selectedFilters={ this.props.selectedFilters }/>
 						) }
 					</g>
 
