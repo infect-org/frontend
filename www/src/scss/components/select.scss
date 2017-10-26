@@ -15,8 +15,12 @@
 	font-size: 13px;
 
 
-	&__option {
-		color: #000;
+	option {
+		color: #fff !important;
+		background-color: $sidenavigation-background;
+		&:hover {
+			color: $hover-color;
+		}
 	}
 }
 
