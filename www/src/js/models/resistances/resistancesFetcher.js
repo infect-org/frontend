@@ -21,11 +21,24 @@ export default class ResistancesFetcher extends Fetcher {
 		this._baseUrl = url.replace(/\..*$/, '');
 		this._stores = stores;
 		this._selectedFilters = selectedFilters;
+
+		// Only update data if region changed
+		this._previousRegions = [];
+
+		// Watch regions – when they change, update data
 		reaction(() => this._selectedFilters.getFiltersByType('region'), () => {
 			const regions = this._selectedFilters.getFiltersByType('region');
+			// No change since last update
+			if (
+				regions.length === this._previousRegions.length 
+				// There's only 1 region that can be set. Check if names match, order is not important
+				&& regions.every((region, index) => this._previousRegions[index].name === region.name)
+			) return;
+			// Get URL
 			if (!regions.length) this._url = `${ this._baseUrl }.json`;
 			else this._url = `${ this._baseUrl }_${ regions[0].value }.json`;
 			log('Url for regions %o is %s, fetch data.', regions, this._url);
+			this._previousRegions = regions.slice(0);
 			this.getData();
 		});
 	}

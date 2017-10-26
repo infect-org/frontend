@@ -17,10 +17,15 @@ class Resistance extends React.Component {
 		this._wasVisible = true;
 	}
 
+	_getPreviousPosition() {
+		return `translate(${ (this._previousPosition && this._previousPosition.left) || 0}, 
+			${ (this._previousPosition && this._previousPosition.top) || 0})`;
+	}
+
 	@computed get transformation() {
 		const xPos = this.props.resistance.xPosition;
 		const yPos = this.props.resistance.yPosition;
-		if (!xPos || !yPos) return `translate(${ this._previousPosition.left || 0}, ${ this._previousPosition.top || 0})`;
+		if (!xPos || !yPos) return this._getPreviousPosition();
 		// Center is always the middle of a regular (defaultRadius) circle
 		const left = xPos.left + this.props.matrix.defaultRadius;
 		const top = yPos.top + this.props.matrix.defaultRadius;
