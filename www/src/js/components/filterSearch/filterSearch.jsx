@@ -75,8 +75,8 @@ export default class FilterSearch extends React.Component {
         return (
             <div>
                 <div className="group group--lead search-wrapper">
-                    <h3>Search filters</h3>
-                    <input type="search" placeholder="Property" className="group__input input search__input" 
+                    <h3>Search Filters</h3>
+                    <input type="search" placeholder="Search filters" className="group__input input search__input" 
                         onChange={ (ev) => this._handleSearchInputChange(ev.target.value) } value={ this.searchTerm }
                         ref={ (el) => this._setInputElement(el) } onKeyDown={ this._handleSearchInputKeyDown } />
                 </div>

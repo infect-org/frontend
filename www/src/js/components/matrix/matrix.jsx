@@ -4,7 +4,7 @@ import Resistance from '../matrixResistance/resistance';
 import ResistanceDetail from '../matrixResistance/resistanceDetail';
 import SubstanceClassLine from '../matrixSubstanceClass/substanceClassLine';
 import { observer } from 'mobx-react';
-import { observable, action } from 'mobx';
+import { observable, computed, action } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:MatrixComponent');
 //import DevTools from 'mobx-react-devtools';
@@ -25,11 +25,11 @@ export default class Matrix extends React.Component {
 	/**
 	* Returns height of the whole matrix
 	*/
-	_getHeight() {
+	@computed get height() {
 		if (!this.props.matrix.defaultRadius) return 0;
 		// Height: All bact labels + ab label + space between ab label and matrix (matrix.space + matrix.radius), 
 		// see bacteriumLabel
-		return this._getBodyHeight();
+		return this.bodyHeight;
 	}
 
 	// Use a bound method for ref: 
@@ -51,7 +51,7 @@ export default class Matrix extends React.Component {
 		window.addEventListener('resize', () => this._setDimensions());
 	}
 
-	_getMainMatrixTransformation() {
+	@computed get mainMatrixTransformation() {
 		const left = this.props.matrix.bacteriumLabelColumnWidth + this.props.matrix.spaceBetweenGroups;
 		return `translate(${ left }, 0)`;
 	}
@@ -59,7 +59,13 @@ export default class Matrix extends React.Component {
 	/**
 	* Returns height of the matrix' body (circles). 
 	*/
-	_getBodyHeight() {
+	@computed get bodyHeight() {
+		// Always display matrix in full height (also for invisible bacteria) or animations will be cut off at the bottom
+		// (height of matrix changes before the bacteria animate)
+		return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedBacteria.length;
+	}
+
+	@computed get visibleBacteriaHeight() {
 		return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedVisibleBacteria.length;
 	}
 
@@ -70,15 +76,15 @@ export default class Matrix extends React.Component {
 				{ /* -with-transitions: only show transitions when a filter changes – before (when
 					 setting up the matrix) we don't want imperformant transitions */ }
 				<svg ref={ this._setSVG } 
-					style={ { height: this._getHeight(), top: this.props.matrix.headerHeight } } 
+					style={ { height: this.height, top: this.props.matrix.headerHeight } } 
 					className={'resistanceMatrix__body ' + (this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions') }>
 
 					{ /* Lines for substance classes in body */ }
 					{ this.props.matrix.defaultRadius && 
-						<g transform={ this._getMainMatrixTransformation() }>
+						<g transform={ this.mainMatrixTransformation }>
 							{ this.props.matrix.substanceClasses.map((sc) => 
 								<SubstanceClassLine key={ sc.substanceClass.id } substanceClass={ sc } 
-									matrix={ this.props.matrix } bodyHeight={ this._getBodyHeight() }/>
+									matrix={ this.props.matrix } bodyHeight={ this.visibleBacteriaHeight }/>
 							) }
 						</g>
 					}
@@ -96,7 +102,7 @@ export default class Matrix extends React.Component {
 					{ /* Resistances */ }
 					{ /* Only render when radius is ready and after labels were drawn or we will have multiple re-renders */ }
 					{ this.props.matrix.defaultRadius && 
-						<g transform={ this._getMainMatrixTransformation() } className="resistanceMatrix__resistances">
+						<g transform={ this.mainMatrixTransformation } className="resistanceMatrix__resistances">
 							{ /* Resistances */ }
 							{ this.props.matrix.resistances.map((res) =>
 								<Resistance key={res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id} 

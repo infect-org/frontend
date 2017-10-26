@@ -17,17 +17,7 @@ export default class StandardFetcher {
 		this._url = url;
 		this._store = store;
 		this._dependentStores = dependentStores;
-		//reaction(() => this.url, () => this.getData());
 	}
-
-
-	/**
-	* Overwrite in child classes whenever you want new data fetched; this.url is 
-	* watched and triggers a getData call.
-	*/
-	/*@computed get url() {
-		return this._url;
-	}*/
 
 
 	/**

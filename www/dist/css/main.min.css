@@ -523,6 +523,9 @@ a {
     -moz-border-radius-topright: 5px;
     -moz-border-radius-bottomright: 5px;
     -moz-border-radius-bottomleft: 0; }
+    @media (pointer: fine) {
+      .button--close {
+        padding: 0 8px; } }
     .button--close:hover {
       background-color: #a52604; }
     @media only screen and (hover-interaction: hover) {
@@ -643,7 +646,7 @@ a {
   color: #cbe264;
   border-color: #cbe264; }
 
-.button--antibiotica--active:after, .button--bacteria--active:after, .button--population--active:after {
+.button--antibiotics--active:after, .button--bacteria--active:after, .button--population--active:after {
   content: "";
   position: absolute;
   width: 0;
@@ -661,16 +664,16 @@ a {
   background-position: center;
   margin-right: 15px; }
 
-.button--antibiotica {
+.button--antibiotics {
   background-image: url(/dist/img/icon1.svg);
   transition: background-image 100ms linear;
   -webkit-transition: background-image 100ms linear;
   -moz-transition: background-image 100ms linear; }
-  .button--antibiotica:hover {
+  .button--antibiotics:hover {
     background-image: url(/dist/img/icon1_green.svg); }
-  .button--antibiotica--active {
+  .button--antibiotics--active {
     background-image: url(/dist/img/icon1_green.svg); }
-    .button--antibiotica--active:after {
+    .button--antibiotics--active:after {
       left: 7px; }
 
 .button--bacteria {

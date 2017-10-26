@@ -31,7 +31,13 @@ const config 				= {
 
 
 // Setup models
-const app = new InfectApp(config);
+let app;
+try {
+	app = new InfectApp(config);
+}
+catch(err) {
+	alert(err.message);
+}
 
 /*autorun(() => {
 	console.log('CHANGE', app.views.matrix.antibiotics);
