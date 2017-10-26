@@ -10,6 +10,7 @@ import MatrixHeader from './components/matrix/matrixHeader';
 import FilterList from './components/filterList/filterList';
 import SelectedFiltersList from './components/selectedFilters/selectedFiltersList';
 import FilterListMenu from './components/filterListMenu/filterListMenu';
+import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadingOverlay';
 import FilterSearch from './components/filterSearch/filterSearch';
 import {autorun, whyRun, useStrict} from 'mobx';
 import debug from 'debug';
@@ -46,3 +47,4 @@ ReactDOM.render(<FilterList filterValues={ app.filterValues } selectedFilters={ 
 ReactDOM.render(<SelectedFiltersList selectedFilters={ app.selectedFilters }/>, document.querySelector('SelectedFiltersList'));
 ReactDOM.render(<FilterListMenu/>, document.querySelector('FilterListMenu'));
 ReactDOM.render(<FilterSearch filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterSearch'));
+ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));

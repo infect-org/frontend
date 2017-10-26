@@ -175,10 +175,9 @@ export default class InfectApp {
 	*/
 	_createRegions() {
 
-		const regionNames = ['Basel', 'Genf', 'Mittelland', 'Bern', 'Ticion'];
+		const regionNames = ['west', 'east', 'south', 'geneva', 'central-west', 'central-east', 'north-east', 'north-west'];
 		const regions = regionNames.map((item) => ({
-			name: item
-			, identifier: item.toLowerCase().replace(/\s*/g, '-')
+			identifier: item
 		}));
 		regions.forEach((region) => {
 			this.filterValues.addEntity('region', region);

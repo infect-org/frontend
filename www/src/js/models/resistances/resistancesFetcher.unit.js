@@ -3,6 +3,7 @@ import fetchMock from 'fetch-mock';
 import ResistancesFetcher from './resistancesFetcher';
 import Store from '../../helpers/store';
 import Bacterium from '../bacteria/bacterium';
+import { observable } from 'mobx';
 
 function setupFetcher(url = '/test') {
 	const antibiotics = {
@@ -33,8 +34,8 @@ function setupFetcher(url = '/test') {
 
 test('handles resistance data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
-        "compoundName":"acinetobacter sp. / acinetobacter",
-        "bacteriaName":"amoxicillin",
+        "bacteriaName":"acinetobacter sp. / acinetobacter",
+        "compoundName":"amoxicillin",
         "sampleCount":100,
         "resistanceImport":100
     }] });
@@ -44,7 +45,9 @@ test('handles resistance data correctly', (t) => {
 		antibiotics
 		, bacteria
 	};
-	const fetcher = new ResistancesFetcher('/test', store, [], stores);
+	const fetcher = new ResistancesFetcher('/test', store, [], stores, {
+		getFiltersByType: () => {}
+	});
 	fetcher.getData();
 	setTimeout(() => {
 		t.equals(store.get().size, 1);
@@ -58,6 +61,54 @@ test('handles resistance data correctly', (t) => {
 	});
 });
 
+
+test('handles updates', (t) => {
+	fetchMock
+		.mock('/test.json', { status: 200, body: [{
+	        "bacteriaName":"acinetobacter sp. / acinetobacter",
+	        "compoundName":"amoxicillin",
+	        "sampleCount":100,
+	        "resistanceImport":100
+	    }] })
+		.mock('/test_west.json', { status: 200, body: [{
+	        "bacteriaName":"acinetobacter sp. / acinetobacter",
+	        "compoundName":"amoxicillin",
+	        "sampleCount":50,
+	        "resistanceImport":90
+	    }] });
+	const { antibiotics, bacteria } = setupFetcher();
+	const store = new Store([], () => 2);
+	const stores = {
+		antibiotics
+		, bacteria
+	};
+	class SelectedFilters {
+		@observable selectedFilters = [];
+		getFiltersByType(type) {
+			return this.selectedFilters.filter((item) => item.type === type);
+		}
+		addFilter(filter) {
+			this.selectedFilters.push(filter);
+		}
+	}
+	const selectedFilters = new SelectedFilters();
+	const fetcher = new ResistancesFetcher('/test.json', store, [], stores, selectedFilters);
+	fetcher.getData();
+	setTimeout(() => {
+		const result = store.getById(2);
+		t.equals(result.values[0].sampleSize, 100);
+		selectedFilters.addFilter({ type: 'unknown', value: 'bad' });
+		t.equals(result.values[0].sampleSize, 100);
+		selectedFilters.addFilter({ type: 'region', value: 'west'});
+		t.equals(store.status.identifier, 'loading');
+		setTimeout(() => {
+			t.equals(store.getById(2).values[0].sampleSize, 50);
+			t.equals(store.getById(2).values[0].value, .9);
+			fetchMock.restore();
+			t.end();	
+		});
+	});
+});
 
 
 

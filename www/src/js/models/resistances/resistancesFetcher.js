@@ -1,6 +1,9 @@
 import { fetchApi } from '../../helpers/api';
 import Fetcher from '../../helpers/standardFetcher';
 import Resistance from './resistance';
+import { computed, reaction } from 'mobx';
+import debug from 'debug';
+const log = debug('infect:ResistancesFetcher');
 
 export default class ResistancesFetcher extends Fetcher {
 
@@ -12,10 +15,19 @@ export default class ResistancesFetcher extends Fetcher {
 	* @param {SelectedFilters} selectedFilters	Selected filters – needed to determine which resistance
 	*											data (e.g. region) to fetch.
 	*/
-	constructor(...args) {
-		super(...args.slice(0, 3));
-		this._stores = args[3];
-		this._selectedFilters = args[4];
+	constructor(url, store, dependentStores, stores, selectedFilters) {
+		super(url, store, dependentStores);
+		// Remove json from URL
+		this._baseUrl = url.replace(/\..*$/, '');
+		this._stores = stores;
+		this._selectedFilters = selectedFilters;
+		reaction(() => this._selectedFilters.getFiltersByType('region'), () => {
+			const regions = this._selectedFilters.getFiltersByType('region');
+			if (!regions.length) this._url = `${ this._baseUrl }.json`;
+			else this._url = `${ this._baseUrl }_${ regions[0].value }.json`;
+			log('Url for regions %o is %s, fetch data.', regions, this._url);
+			this.getData();
+		});
 	}
 
 	/**
@@ -30,10 +42,9 @@ export default class ResistancesFetcher extends Fetcher {
 		const antibiotics = this._stores.antibiotics.get().values();
 
 		data.forEach((resistance) => {
-			// !!! CAREFUL !!! In the JSON file, bacteria and antibiotics were interchanged!
-			const bacteriumName = resistance.compoundName.substr(0, resistance.compoundName.indexOf('/') - 1).toLowerCase();
+			const bacteriumName = resistance.bacteriaName.substr(0, resistance.bacteriaName.indexOf('/') - 1).toLowerCase();
 			const bacterium = bacteria.find((item) => item.name.toLowerCase() === bacteriumName);
-			const antibioticName = resistance.bacteriaName.toLowerCase();
+			const antibioticName = resistance.compoundName.toLowerCase();
 			const antibiotic = antibiotics.find((item) => {
 				return item.name.toLowerCase() === antibioticName;
 			});

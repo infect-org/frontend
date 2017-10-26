@@ -23,7 +23,7 @@ export default class SelectedFilters {
 	@observable filterChanges = 0;
 
 	@action addFilter(filter) {
-		log('Add filter %o, filters are %o', filter, this._selectedFilters.peek());
+		log('Add filter %o, filters were %o', filter, this._selectedFilters.peek());
 		// Prevent users from adding similar filters
 		const duplicate = this._selectedFilters.find((item) => deepEqual(item, filter));
 		if (duplicate) {
@@ -32,6 +32,7 @@ export default class SelectedFilters {
 		}
 		this.filterChanges++;
 		this._selectedFilters.push(filter);
+		log('Added filters, are now %o', this._selectedFilters);
 	}
 
 	@action removeFilter(filter) {

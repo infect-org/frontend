@@ -32,7 +32,7 @@ class PopulationFilterList extends React.Component {
 					<FilterListCheckbox inputType='radio' inputName="region-name" name="All regions"
 							value="" onChangeHandler={(ev) => this._handleFilterChange()} 
 							checked={ this.isNoRegionSelected }/>
-					{ this.props.filterValues.getValuesForProperty('region', 'name').map((item) => {
+					{ this.props.filterValues.getValuesForProperty('region', 'identifier').map((item) => {
 						return <FilterListCheckbox inputType='radio' key={item.value} name={item.niceValue}
 							inputName="region-name" value={item.niceValue} checked={this.props.selectedFilters.isSelected(item)}
 							onChangeHandler={(ev) => this._handleFilterChange(item)} />;

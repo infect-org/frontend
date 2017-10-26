@@ -1,5 +1,5 @@
 import { fetchApi } from './api';
-import { observe } from 'mobx';
+import { computed, observe, reaction } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:StandardFetcher');
 
@@ -17,13 +17,24 @@ export default class StandardFetcher {
 		this._url = url;
 		this._store = store;
 		this._dependentStores = dependentStores;
+		//reaction(() => this.url, () => this.getData());
 	}
+
+
+	/**
+	* Overwrite in child classes whenever you want new data fetched; this.url is 
+	* watched and triggers a getData call.
+	*/
+	/*@computed get url() {
+		return this._url;
+	}*/
 
 
 	/**
 	* Main method: Fetches the data, stores in in the store.
 	*/
 	async getData() {
+		log('Get data for %s', this._url);
 		// Create a new promise to pass to the store – it must only be resolved **after**
 		// data was handled and rejected if status !== 200.
 		let resolver, rejector;
@@ -50,7 +61,7 @@ export default class StandardFetcher {
 		}
 
 		// Wait until all fetchPromises of dependentStores are resolved
-		await this._awaitLoadingStores();
+		await this._awaitDependentStores();
 		this._handleData(result.data);
 
 		// Resolve promise in store
@@ -62,7 +73,7 @@ export default class StandardFetcher {
 	/**
 	* Waits until all dependent stores are 'ready'.
 	*/
-	async _awaitLoadingStores() {
+	async _awaitDependentStores() {
 
 		const loadingStores = this._dependentStores.filter((store) => store.status.identifier === 'loading');
 		if (!loadingStores.length) return Promise.resolve();

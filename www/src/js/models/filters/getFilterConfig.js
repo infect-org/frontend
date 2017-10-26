@@ -30,9 +30,13 @@ export default function() {
 	}, {
 		entityType: 'region'
 		, config: {
-			name: {
+			identifier: {
 				translation: 'Name'
-				, valueTranslations: (name) => name
+				, valueTranslations: (name) => {
+					return name.replace(/-/g, ' ').replace(/\b\w/g, (result) => {
+						return result.toUpperCase();
+					});
+				}
 			}
 		}
 	}, {
