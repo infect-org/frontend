@@ -32,11 +32,9 @@
             }
             // On live environment, inject the <link> tag that loads the regular CSS file
             else {
-                var link = document.createElement('link');
-                link.setAttribute('rel', 'stylesheet');
-                link.setAttribute('type', 'text/css');
-                link.setAttribute('href', 'dist/css/main.min.css');
-                document.head.appendChild(link);
+                // CSS must be added synchronously or it may load too late; matrix won't have a width
+                // when it's measured.
+                document.write('<link rel="stylesheet" type="text/css" href="dist/css/main.min.css">');
             }
         </script>
     <body>
