@@ -20,6 +20,16 @@ $padding-lr: 30px;
 		line-height: 20px;
 		margin-bottom: 30px;
 		font-size: 11pt;
+
+		-webkit-appearance: none;
+        -moz-appearance:    none;
+        appearance:         none;
+        decoration: none;
+        border: 0;
+
+		/*&:not(:valid) + .search__clear {
+			display: none;
+		}*/
 	}
 
 	&__result {
@@ -30,17 +40,37 @@ $padding-lr: 30px;
 		position: relative;
 	}
 
-	&__clear {
-		display: none;
+	/*&__clear {
+		position: absolute;
+		right: 0;
+		border:1px solid transparent;
+		background-color: transparent;
+		display: inline-block;
+		vertical-align: middle;
+		outline: 0;
+		cursor: pointer;
 
-		&--active {
+		&:after {
+			content: "X";
 			display: block;
-			cursor: pointer;
+			width: 15px;
+			height: 15px;
 			position: absolute;
-			right: 20px;
-			top: 13px;
+			background-color: $navigation-background--lighter;
+			z-index:1;
+			right: 25px;
+			top: -5px;
+			bottom: 0;
+			margin: auto;
+			padding: 2px;
+			border-radius: 50%;
+			text-align: center;
+			color: white;
+			font-weight: normal;
+			font-size: 10px;
+			cursor: pointer;
 		}
-	}
+	}*/
 
 
 }
