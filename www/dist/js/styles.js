@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 593);
+/******/ 	return __webpack_require__(__webpack_require__.s = 595);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 593:
+/***/ 595:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(594);
+module.exports = __webpack_require__(596);
 
 
 /***/ }),
 
-/***/ 594:
+/***/ 596:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

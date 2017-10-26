@@ -194,7 +194,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   min-height: 65px;
-  border-bottom: solid 1px #d3d2cd; }
+  border-bottom: solid 1px #d3d2cd;
+  padding-bottom: 5px; }
   .top-navigation__active-filters,
   .top-navigation selectedfiltersList {
     -webkit-box-flex: 1;
@@ -265,7 +266,8 @@ a {
     overflow-y: auto; }
 
 .header__logo {
-  height: 65px; }
+  height: 65px;
+  padding-bottom: 5px; }
 
 .logo {
   display: -webkit-box;
@@ -718,8 +720,11 @@ a {
   -webkit-transition: color 100ms linear;
   -moz-transition: color 100ms linear;
   font-size: 13px; }
-  .select__option {
-    color: #000; }
+  .select option {
+    color: #fff !important;
+    background-color: #363636; }
+    .select option:hover {
+      color: #cbe264; }
 
 .select:hover {
   border: 1px solid #cbe264;
@@ -731,23 +736,28 @@ a {
   /* hide the default arrow in ie10 and ie11 */ }
 
 .resistanceMatrix {
-  /**
-    * General modifers used for antibiotics, bacteria, substanceClasses and resistances
-    * (animations/transition)
+  /* 
+    * Only display transitions and custom visibility style when and after the first
+    * filter is set 
     */
   /**
     * Resistance Detail (Hover)
     */ }
-  .resistanceMatrix .-was-visible-is-visible {
-    transition: transform calc(1 * 0.3s) ease-in-out 0.2s; }
-  .resistanceMatrix .-was-hidden-is-visible {
-    transition: opacity calc(1 * 0.2s) ease-in-out calc(1 * 0.3s); }
-  .resistanceMatrix .-was-visible-is-hidden {
-    transition: opacity calc(1 * 0.2s) ease-in-out; }
-  .resistanceMatrix .-was-hidden-is-hidden,
-  .resistanceMatrix .-was-visible-is-hidden {
-    opacity: 0;
-    pointer-events: none; }
+  .resistanceMatrix .-with-transitions {
+    /**
+        * General modifers used for antibiotics, bacteria, substanceClasses and resistances
+        * (animations/transition)
+        */ }
+    .resistanceMatrix .-with-transitions .-was-visible-is-visible {
+      transition: transform calc(1 * 0.3s) ease-in-out 0.2s; }
+    .resistanceMatrix .-with-transitions .-was-hidden-is-visible {
+      transition: opacity calc(1 * 0.2s) ease-in-out calc(1 * 0.3s); }
+    .resistanceMatrix .-with-transitions .-was-visible-is-hidden {
+      transition: opacity calc(1 * 0.2s) ease-in-out; }
+    .resistanceMatrix .-with-transitions .-was-hidden-is-hidden,
+    .resistanceMatrix .-with-transitions .-was-visible-is-hidden {
+      opacity: 0;
+      pointer-events: none; }
   .resistanceMatrix__overlay {
     position: absolute;
     width: 100%;
@@ -779,7 +789,7 @@ a {
       margin: 0 calc(50% - 150px);
       width: 150px; }
     .resistanceMatrix__overlay--active {
-      opacity: 0.6;
+      opacity: 0.8;
       z-index: 200; }
   .resistanceMatrix__body, .resistanceMatrix__header {
     text-rendering: optimizeLegibility;
@@ -805,8 +815,7 @@ a {
     .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
       fill: #ff623f; }
   .resistanceMatrix__substanceClassLabel {
-    cursor: pointer;
-    transition: transform 1s; }
+    cursor: pointer; }
     .resistanceMatrix__substanceClassLabel:hover text {
       fill: #fff; }
     .resistanceMatrix__substanceClassLabel:hover rect {
@@ -885,38 +894,160 @@ a {
   padding: 0;
   width: 210px;
   height: 100vw;
-  background-color: #363636; }
+  background-color: #363636;
+  /*&__clear {
+		position: absolute;
+		right: 0;
+		border:1px solid transparent;
+		background-color: transparent;
+		display: inline-block;
+		vertical-align: middle;
+		outline: 0;
+		cursor: pointer;
+
+		&:after {
+			content: "X";
+			display: block;
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			background-color: $navigation-background--lighter;
+			z-index:1;
+			right: 25px;
+			top: -5px;
+			bottom: 0;
+			margin: auto;
+			padding: 2px;
+			border-radius: 50%;
+			text-align: center;
+			color: white;
+			font-weight: normal;
+			font-size: 10px;
+			cursor: pointer;
+		}
+	}*/ }
   .search--visible {
     left: 0; }
   .search__input {
     line-height: 20px;
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    font-size: 11pt;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    decoration: none;
+    border: 0;
+    /*&:not(:valid) + .search__clear {
+			display: none;
+		}*/ }
   .search-wrapper {
     position: relative; }
-  .search__clear {
-    display: none; }
-    .search__clear--active {
-      display: block;
-      cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 13px; }
 
 .result {
+  position: relative;
   padding: 10px 30px;
   margin: 0;
   background-color: #d7d5c4; }
+  .result__item {
+    white-space: wrap;
+    text-overflow: ellipsis;
+    width: 150px;
+    display: block;
+    overflow: hidden; }
   .result__checkmark {
     display: block;
     position: absolute;
     left: 10px;
     width: 15px;
     height: 40px;
-    background: url(/dist/img/checkmark.svg) no-repeat center center; }
+    top: calc(50% - 20px);
+    background: url(/dist/img/checkmark--grey.svg) no-repeat center center; }
   .result--active {
     background-color: #fff; }
   .result:hover {
     background-color: #fff;
     cursor: pointer; }
+    .result:hover .result__checkmark {
+      background: url(/dist/img/checkmark.svg) no-repeat center center; }
+
+.notification-container {
+  position: fixed;
+  top: calc(50vh + 65px - 150px);
+  right: -350px;
+  width: 350px;
+  opacity: 0;
+  transition: all 200ms linear;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .notification-container--active {
+    opacity: 1;
+    right: 0;
+    transition: all 200ms linear;
+    -webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear; }
+  .notification-container .notification__error-icon {
+    width: 15%;
+    background-color: #ff4827;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 9px;
+    -webkit-border-top-left-radius: 9px;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -webkit-border-bottom-left-radius: 9px;
+    -moz-border-radius-topleft: 9px;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0;
+    -moz-border-radius-bottomleft: 9px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center; }
+  .notification-container .notification__message {
+    height: 100%;
+    width: 100%;
+    background-color: lightgrey; }
+  .notification-container .notification__link {
+    cursor: pointer;
+    text-align: center; }
+    .notification-container .notification__link img {
+      width: 70%; }
+  .notification-container .message {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 10px 30px; }
+    .notification-container .message h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #a52604; }
+    .notification-container .message p {
+      font-size: 16px; }
 
 /*# sourceMappingURL=main.min.css.map*/
