@@ -1,0 +1,63 @@
+$notification-width: 350px; 
+
+.notification-container {
+	position: fixed;
+	top: calc(50vh + #{$navigation-height} - 150px);
+	right: - $notification-width;
+	width: $notification-width;
+	opacity: 0;
+	@include transition(all, $transition-duration--long);
+
+	@include flexbox();
+
+	&--active {
+		opacity: 1;
+		right: 0;
+		@include transition(all, $transition-duration--long);
+	}
+
+	.notification {
+		&__error-icon {
+			width: 15%;
+			background-color: rgb(255, 72, 39);
+
+			@include border-radius-edges(9px, 0, 0, 9px);
+
+			@include flexbox();
+			@include flex-direction(column);
+			@include justify-content(center);
+		}
+
+		&__message {
+			height: 100%;
+			width: 100%;
+			background-color: lightgrey;
+		}
+
+		&__link {
+			cursor: pointer;
+			text-align: center;
+
+			img {
+				width: 70%;
+			}
+		}
+	}
+
+	.message {
+		@include flexbox();
+		@include flex-direction(column);
+
+		padding: 10px 30px;
+		
+		h2 {
+			margin: 0;
+			font-size: 20px;
+			color: #a52604;
+		}
+
+		p {
+			font-size: 16px;
+		}
+	}
+}
