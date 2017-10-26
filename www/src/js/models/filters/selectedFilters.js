@@ -15,6 +15,13 @@ export default class SelectedFilters {
 	*/
 	@observable.shallow _selectedFilters = [];
 
+	/**
+	* Note amount of times the filters changed. Why? Because we want to start the animations
+	* only when filters change (and not while the matrix is setting up). The components will
+	* therefore watch this property and only transition when it's > 0.
+	*/
+	@observable filterChanges = 0;
+
 	@action addFilter(filter) {
 		log('Add filter %o, filters are %o', filter, this._selectedFilters.peek());
 		// Prevent users from adding similar filters
@@ -23,6 +30,7 @@ export default class SelectedFilters {
 			console.warn('Tried to add duplicate entry %o', filter);
 			return;
 		}
+		this.filterChanges++;
 		this._selectedFilters.push(filter);
 	}
 
@@ -33,6 +41,7 @@ export default class SelectedFilters {
 			log('Filter %o not found in selectedFilters %o', filter, this._selectedFilters);
 			return;
 		}
+		this.filterChanges++;
 		this._selectedFilters.splice(index, 1);
 	}
 
@@ -67,6 +76,7 @@ export default class SelectedFilters {
 
 	@action removeAllFilters() {
 		log('Remove all filters');
+		this.filterChanges++;
 		this._selectedFilters.splice(0, this._selectedFilters.length);
 	}
 

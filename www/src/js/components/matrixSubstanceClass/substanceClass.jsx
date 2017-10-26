@@ -13,20 +13,11 @@ export default class SubstanceClass extends React.Component {
 
 	@observable _isHovered = false;
 	@observable _afterHovered = false;
-	@observable _firstFilterSelected = false;
 
 	constructor() {
 		super();
 		this._lineWeight = 1;
 		this._wasVisible = true;
-	}
-
-	componentWillReceiveProps(nextProps) {
-		// Only add classes with animations when user filters for the first time. 
-		// We dont want them while the app is setting up. 
-		when(() => nextProps.selectedFilters.originalFilters.length > 0, () => {
-			action(() => this._firstFilterSelected = true)();
-		});
 	}
 
 	componentDidMount() {
@@ -109,14 +100,12 @@ export default class SubstanceClass extends React.Component {
 
 	@computed get classModifier() {
 		// No animations before we are ready
-		if (!this._firstFilterSelected) return '';
 		// We must also be watching transitions: If not, we only watch visible – which stays the
 		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
 		// and therefore won't call an update.
 		this.transformation;
 		const modifier = getVisibilityClassModifier(this.visible, this._wasVisible);
 		this._wasVisible = this.visible;
-		console.error(modifier);
 		return modifier;
 	}
 

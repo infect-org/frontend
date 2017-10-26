@@ -6,8 +6,6 @@ import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier
 @observer
 export default class AntibioticLabel extends React.Component {
 
-	@observable _firstFilterSelected = false;
-
 	constructor() {
 		super();
 		this._wasVisible = true;
@@ -15,12 +13,6 @@ export default class AntibioticLabel extends React.Component {
 
 	componentDidMount() {
 		this._setupResizeListener();
-	}
-
-	componentWillReceiveProps(nextProps) {
-		when(() => nextProps.matrix.selectedFilters.originalFilters.length > 0, () => {
-			action(() => this._firstFilterSelected = true)();
-		});
 	}
 
 	_setTextElement = (el) => {
@@ -49,7 +41,7 @@ export default class AntibioticLabel extends React.Component {
 		const rotation = 'rotate(-75)';
 		// Before textElement is ready, hight of antibiotics (and therefore the transformation) cannot be known.
 		if (!this.props.matrix.greatestSubstanceClassLabelHeight) return 'translate(0, 0) ' + rotation;
-		if (!this.visible) return `translate(${ this._previousPosition.left || 0}, ${ this._previousPosition.top || 0 }) ${ rotation }`;
+		if (!this.props.antibiotic.visible) return `translate(${ this._previousPosition.left || 0}, ${ this._previousPosition.top || 0 }) ${ rotation }`;
 		// We must add some of the height (60°/90°) as we rotated the label which positions it more to the left
 		const pos = this.props.matrix.xPositions.get(this.props.antibiotic);
 		const left = (pos ? pos.left : 0) + this._textElement.getBBox().height * 1.2;
@@ -61,18 +53,13 @@ export default class AntibioticLabel extends React.Component {
 		return `translate(${ left }, ${ top }) ${ rotation }`;
 	}
 
-	@computed get visible() {
-		return this.props.matrix.defaultRadius !== undefined && this.props.antibiotic.visible;
-	}
-
 	@computed get classModifier() {
-		if (!this._firstFilterSelected) return '';
 		// We must also be watching transitions: If not, we only watch visible – which stays the
 		// same when modifier should change from -was-hidden-is-visible to -was-visible-is-visible
 		// and therefore won't call an update.
 		this.transformation;
-		const modifier = getVisibilityClassModifier(this.visible, this._wasVisible);
-		this._wasVisible = this.visible;
+		const modifier = getVisibilityClassModifier(this.props.antibiotic.visible, this._wasVisible);
+		this._wasVisible = this.props.antibiotic.visible;
 		return modifier;
 	}
 
@@ -88,8 +75,10 @@ export default class AntibioticLabel extends React.Component {
 
 	render() {
 		return (
-			<g transform={ this.transformation } className={ 'resistanceMatrix__antibioticLabel ' + this.classModifier }>
-				<text dy="-9" ref={ this._setTextElement } className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
+			<g transform={ this.transformation } style={ { visibility: this.props.matrix.defaultRadius ? 'visible' : 'hidden' } }
+				className={ 'resistanceMatrix__antibioticLabel ' + this.classModifier }>
+				<text dy="-9" ref={ this._setTextElement } 
+					className={ 'resistanceMatrix__antibioticLabelText ' + this.highlightClass }>
 					{this.props.antibiotic.antibiotic.name}
 				</text>
 			</g>

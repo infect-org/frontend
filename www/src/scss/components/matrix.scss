@@ -2,26 +2,35 @@
 
     $slowdown-factor: 1;
 
-    /**
-    * General modifers used for antibiotics, bacteria, substanceClasses and resistances
-    * (animations/transition)
+
+    /* 
+    * Only display transitions and custom visibility style when and after the first
+    * filter is set 
     */
-    .-was-visible-is-visible {
-        transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
-    }
+    .-with-transitions {
 
-    .-was-hidden-is-visible {
-        transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out calc(#{$slowdown-factor} * 0.3s);
-    }
+        /**
+        * General modifers used for antibiotics, bacteria, substanceClasses and resistances
+        * (animations/transition)
+        */
+        .-was-visible-is-visible {
+            transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
+        }
 
-    .-was-visible-is-hidden {
-        transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out;
-    }
+        .-was-hidden-is-visible {
+            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out calc(#{$slowdown-factor} * 0.3s);
+        }
 
-    .-was-hidden-is-hidden,
-    .-was-visible-is-hidden {
-        opacity: 0;
-        pointer-events: none;
+        .-was-visible-is-hidden {
+            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out;
+        }
+
+        .-was-hidden-is-hidden,
+        .-was-visible-is-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
     }
 
 

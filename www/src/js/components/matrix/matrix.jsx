@@ -67,9 +67,11 @@ export default class Matrix extends React.Component {
 		return(
 			<div>
 				{ /*<DevTools /> */ }
+				{ /* -with-transitions: only show transitions when a filter changes – before (when
+					 setting up the matrix) we don't want imperformant transitions */ }
 				<svg ref={ this._setSVG } 
 					style={ { height: this._getHeight(), top: this.props.matrix.headerHeight } } 
-					className="resistanceMatrix__body">
+					className={'resistanceMatrix__body ' + (this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions') }>
 
 					{ /* Lines for substance classes in body */ }
 					{ this.props.matrix.defaultRadius && 

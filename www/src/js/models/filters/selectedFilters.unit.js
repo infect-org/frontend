@@ -98,3 +98,22 @@ test('toggles filters', (t) => {
 });
 
 
+test('returns originalFilters', (t) => {
+	const { filter, values } = setupFilters();
+	t.deepEquals(filter.originalFilters.peek(), values);
+	t.end();
+});
+
+test('counts filter changes', (t) => {
+	const sf = new SelectedFilters();
+	t.equals(sf.filterChanges, 0);
+	const { filter, values } = setupFilters();
+	t.equals(filter.filterChanges, 2);
+	filter.removeFilter(values[0]);
+	t.equals(filter.filterChanges, 3);
+	filter.removeAllFilters();
+	t.equals(filter.filterChanges, 4);
+	t.end();
+});
+
+

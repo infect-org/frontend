@@ -43,9 +43,9 @@ export default class MatrixHeader extends React.Component {
 	render() {
 		// Only display (unhide) when radius is calculated (which needs the labels to be rendered first).
 		return (
-			<svg className="resistanceMatrix__header" 
+			<svg className={ 'resistanceMatrix__header ' + (this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions') }
 				style={ { height: this.props.matrix.headerHeight, transform: this.headerScrollTransformation, 
-				opacity: (this.props.matrix.defaultRadius === undefined ? 0 : 1) } }>
+				visibility: (this.props.matrix.defaultRadius === undefined ? 'hidden' : 'visible') } }>
 
 				{ /* White background (to hide things when header is sticky) */ }
 				<rect x="0" y="0" height="100%" width="100%" fill="rgb(255, 255, 255)"></rect>
