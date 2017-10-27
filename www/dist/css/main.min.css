@@ -295,7 +295,7 @@ a {
   border: 0;
   border-top: 1px solid #575757; }
   .divider--lead {
-    margin-top: 0; }
+    margin: 0; }
 
 .slider {
   font-size: 12px;
@@ -341,7 +341,7 @@ a {
   position: relative; }
 
 .filter:last-child {
-  padding-bottom: calc(100vh - 196px - 65px - 120px); }
+  padding-bottom: calc(100vh - (65px + 5px + 125px + 260px)); }
 
 .groups {
   display: -webkit-box;
@@ -384,6 +384,8 @@ a {
   .group h3 {
     font-size: 11px;
     margin: 0; }
+  .group:first-child {
+    margin-top: 20px; }
   .group__list {
     display: -webkit-box;
     display: -webkit-flex;
@@ -646,7 +648,7 @@ a {
   color: #cbe264;
   border-color: #cbe264; }
 
-.button--antibiotics--active:after, .button--bacteria--active:after, .button--population--active:after {
+.button--antibiotics--active:after, .button--mostUsed--active:after, .button--bacteria--active:after, .button--population--active:after {
   content: "";
   position: absolute;
   width: 0;
@@ -674,6 +676,18 @@ a {
   .button--antibiotics--active {
     background-image: url(/dist/img/icon1_green.svg); }
     .button--antibiotics--active:after {
+      left: 7px; }
+
+.button--mostUsed {
+  background-image: url(/dist/img/icon5.svg);
+  transition: background-image 100ms linear;
+  -webkit-transition: background-image 100ms linear;
+  -moz-transition: background-image 100ms linear; }
+  .button--mostUsed:hover {
+    background-image: url(/dist/img/icon5_green.svg); }
+  .button--mostUsed--active {
+    background-image: url(/dist/img/icon5_green.svg); }
+    .button--mostUsed--active:after {
       left: 7px; }
 
 .button--bacteria {
@@ -765,7 +779,7 @@ a {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 65px;
+    top: 70px;
     background-color: #616161;
     transition: opacity 100ms linear;
     -webkit-transition: opacity 100ms linear;
@@ -892,7 +906,7 @@ a {
   transition: left 100ms linear;
   -webkit-transition: left 100ms linear;
   -moz-transition: left 100ms linear;
-  top: 135px;
+  top: 90px;
   z-index: 99;
   padding: 0;
   width: 210px;
