@@ -50353,6 +50353,9 @@ var FilterSearch = (0, _mobxReact.observer)(_class = (_class2 = function (_React
         key: 'selectItemHandler',
         value: function selectItemHandler(selected) {
 
+            // This happens if «No results are available» is selected/clicked. 
+            if (!selected) return;
+
             // Special case: Don't allow multiselection of regions as long as we don't have
             // RDA. TODO: Remove when RDA is ready.selectedFilters
             if (selected.property.entityType === 'region') {
