@@ -28,6 +28,12 @@
 	
 	@include group-header-fonts(15px);
 
+	// First child has no .divider in front of it, is therefore missing
+	// some distance.
+	&:first-child {
+		margin-top: 20px;
+	}
+
 	&__title {
 		
 	}

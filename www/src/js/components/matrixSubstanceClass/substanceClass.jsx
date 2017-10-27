@@ -178,7 +178,8 @@ export default class SubstanceClass extends React.Component {
 					transform={ `translate(${ this.props.matrix.space }, ${ this.props.matrix.space})` } ref={ (el) => this._setTextElement(el) }>
 					{ /* Not hovered: Crop text by applying a textPath */ }
 					{ !this._isHovered && 
-						<textPath xlinkHref={ '#substance-class-' + this.props.substanceClass.substanceClass.id + '-path' }>
+						<textPath xlinkHref={ '#substance-class-' + this.props.substanceClass.substanceClass.id + '-path' }
+							 dominantBaseline="hanging">
 							{ this.props.substanceClass.substanceClass.name }
 						</textPath>
 					}

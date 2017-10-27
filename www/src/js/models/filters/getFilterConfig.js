@@ -10,20 +10,20 @@ export default function() {
 				translation: 'Intravenous'
 				, valueTranslations: [{
 					value: true
-					, translation: 'Yes'
+					, translation: 'Intravenous'
 				}, {
 					value: false
-					, translation: 'No'
+					, translation: 'Not intravenous'
 				}]
 			}
 			, po: {
 				translation: 'Per Os'
 				, valueTranslations: [{
 					value: true
-					, translation: 'Yes'
+					, translation: 'Per os'
 				}, {
 					value: false
-					, translation: 'No'
+					, translation: 'Not per os'
 				}]
 			}
 		}
@@ -68,20 +68,20 @@ export default function() {
 				translation: 'Aerobic'
 				, valueTranslations: [{
 					value: true
-					, translation: 'Yes'
+					, translation: 'Aerobic'
 				}, {
 					value: false
-					, translation: 'No'
+					, translation: 'Not aerobic'
 				}]
 			}
 			, anaerobic: {
 				translation: 'Anaerobic'
 				, valueTranslations: [{
 					value: true
-					, translation: 'Yes'
+					, translation: 'Anaerobic'
 				}, {
 					value: false
-					, translation: 'No'
+					, translation: 'Not anaerobic'
 				}]
 			}
 			, shape: {

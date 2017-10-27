@@ -32,12 +32,7 @@ const config 				= {
 
 // Setup models
 let app;
-try {
-	app = new InfectApp(config);
-}
-catch(err) {
-	alert(err.message);
-}
+app = new InfectApp(config);
 
 /*autorun(() => {
 	console.log('CHANGE', app.views.matrix.antibiotics);
@@ -49,8 +44,8 @@ catch(err) {
 log('views:', app.views);
 ReactDOM.render(<Matrix matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('Matrix'));
 ReactDOM.render(<MatrixHeader matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('MatrixHeader'));
-ReactDOM.render(<FilterList filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterList'));
+ReactDOM.render(<FilterList mostUsedFilters={ app.mostUsedFilters } filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterList'));
 ReactDOM.render(<SelectedFiltersList selectedFilters={ app.selectedFilters }/>, document.querySelector('SelectedFiltersList'));
-ReactDOM.render(<FilterListMenu/>, document.querySelector('FilterListMenu'));
+ReactDOM.render(<FilterListMenu mostUsedFilters={ app.mostUsedFilters }/>, document.querySelector('FilterListMenu'));
 ReactDOM.render(<FilterSearch filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterSearch'));
 ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));

@@ -7,10 +7,20 @@ export default function generateFilterList(Component) {
 
 	return class extends React.Component {
 
+		constructor() {
+			super();
+			this.translations = {
+				'bacteria': 'Filters for Bacteria'
+				, 'antibiotics': 'Filters for Antibiotics'
+				, 'population': 'Population Filters'
+				, 'mostUsed': 'Favorites' 
+			};
+		}
+
 		render() {
 			return (
                 <div className="group" id={'js-filter-list-' + this.props.identifier }>
-                    <h1>Filters for { this.props.title }</h1>
+                    <h1>{ this.translations[this.props.identifier] }</h1>
 					<Component {...this.props}/>
 				</div>
 			);

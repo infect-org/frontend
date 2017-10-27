@@ -13,8 +13,9 @@ import ResistancesFetcher from './models/resistances/resistancesFetcher';
 import MatrixView from './models/matrix/matrixView';
 import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
-import { action, when, observable } from 'mobx';
 import SelectedFilters from './models/filters/selectedFilters';
+import MostUsedFilters from './models/filters/mostUsedFilters';
+import { action, when, observable } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:App');
 
@@ -46,6 +47,7 @@ export default class InfectApp {
 		this.filterValues = new PropertyMap();
 		this._setupFilterValues();
 		this.selectedFilters = new SelectedFilters();
+		this.mostUsedFilters = new MostUsedFilters(this.selectedFilters, this.filterValues);
 
 		this._setupFetchers();
 

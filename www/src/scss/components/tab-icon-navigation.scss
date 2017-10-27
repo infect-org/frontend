@@ -40,6 +40,21 @@ $path: '/dist/img/';
 	}
 }
 
+.button--mostUsed {
+	background-image: url(#{$path}icon5.svg);
+	@include transition(background-image, $transition-duration);
+	&:hover {
+		background-image: url(#{$path}icon5_green.svg);
+	}
+	&--active {
+		background-image: url(#{$path}icon5_green.svg);
+		&:after {
+			@extend %triangle;
+			left: 7px;
+		}
+	}
+}
+
 .button--bacteria {
 	width: 30px;
 	background-image: url(#{$path}icon2.svg);
