@@ -9,8 +9,8 @@
 
 
 .filter:last-child {
-	//set via js or static
-	padding-bottom: calc(100vh - 196px - 65px - 120px);
+	//260px = height of last group
+	padding-bottom: calc(100vh - (#{$navigation-height} + #{$navigation-padding--bottom} + #{$header-search-height} + 260px));
 }
 
 .groups {
