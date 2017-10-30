@@ -194,7 +194,7 @@
         "id": 5
     },
     {
-        "po": true,
+        "po": false,
         "iv": true,
         "languagae": "de",
         "id_language": 1,
@@ -304,7 +304,7 @@
         "id": 3
     },
     {
-        "po": false,
+        "po": true,
         "iv": true,
         "languagae": "de",
         "id_language": 1,
