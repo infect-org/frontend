@@ -61,7 +61,7 @@ export default class FilterListMenu extends React.Component {
 
 	_getActiveClass(sectionName) {
 		return sectionName === this.currentlyActiveSection
-			? `button--${ sectionName }--active`
+			? `button--icon--active`
 			: '';
 	}
 
@@ -95,8 +95,9 @@ export default class FilterListMenu extends React.Component {
             <div className="group group--vertical group--left-aligned">
             	{ this.visibleButtons.map((section) => {
 		            return <button key={ section }
-		            		className={ 'button button--icon button--' + section + ' ' + this._getActiveClass(section) }
+		            		className={ 'button button--icon button--icon--' + section + ' ' + this._getActiveClass(section) }
 		            		onClick={ (ev) => this._buttonClickHandler(section) }>
+		            			<svg aria-hidden="true"><use xlinkHref={'#icon_' + section }/></svg>
 		            	</button>;
             	})}
 	        </div>

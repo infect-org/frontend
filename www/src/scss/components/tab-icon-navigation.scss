@@ -16,73 +16,41 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	margin-right: 15px;
-}
+	padding: 0;
 
-.triangle {
-	//display: none;
+	svg {
+		fill: white;
+		height: inherit;
+		width: inherit;
+		@include transition(fill, $transition-duration);
 
-}
-
-$path: '/dist/img/';
-
-.button--antibiotics {
-	background-image: url(#{$path}icon1.svg);
-	@include transition(background-image, $transition-duration);
-	&:hover {
-		background-image: url(#{$path}icon1_green.svg);
+		&:hover {
+			fill: $color--light-green;
+		}
 	}
+
 	&--active {
-		background-image: url(#{$path}icon1_green.svg);
+		svg {
+			fill: $color--light-green;
+		}
 		&:after {
 			@extend %triangle;
 			left: 7px;
 		}
 	}
-}
 
-.button--mostUsed {
-	background-image: url(#{$path}icon5.svg);
-	@include transition(background-image, $transition-duration);
-	&:hover {
-		background-image: url(#{$path}icon5_green.svg);
-	}
-	&--active {
-		background-image: url(#{$path}icon5_green.svg);
+//special cases
+	&--population {
+		width: 22px;
 		&:after {
-			@extend %triangle;
-			left: 7px;
-		}
-	}
-}
-
-.button--bacteria {
-	width: 30px;
-	background-image: url(#{$path}icon2.svg);
-	@include transition(background-image, $transition-duration);
-	&:hover {
-		background-image: url(#{$path}icon2_green.svg);
-	}
-	&--active {
-		background-image: url(#{$path}icon2_green.svg);
-		&:after {
-			@extend %triangle;
-			left: 9px;
-		}
-	}
-}
-
-.button--population {
-	width: 23px;
-	background-image: url(#{$path}icon4.svg);
-	@include transition(background-image, $transition-duration);
-	&:hover {
-		background-image: url(#{$path}icon4_green.svg);
-	}
-	&--active {
-		background-image: url(#{$path}icon4_green.svg);
-		&:after {
-			@extend %triangle;
 			left: 5px;
+		}
+	}
+
+	&--bacteria {
+		width: 30px;
+		&:after {
+			left: 9px;
 		}
 	}
 }
