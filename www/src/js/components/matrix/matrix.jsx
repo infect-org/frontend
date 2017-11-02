@@ -75,7 +75,9 @@ export default class Matrix extends React.Component {
 				{ /*<DevTools /> */ }
 				{ /* -with-transitions: only show transitions when a filter changes – before (when
 					 setting up the matrix) we don't want imperformant transitions */ }
-				<svg ref={ this._setSVG } 
+				{ /* Use width=100% attribute to prevent tiny matrix if css is rendered after JS is executed.
+				     Will be overwritten by CSS */ }
+				<svg ref={ this._setSVG } width="100%"
 					style={ { height: this.height, top: this.props.matrix.headerHeight } } 
 					className={'resistanceMatrix__body ' + (this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions') }>
 

@@ -126,10 +126,24 @@ a {
     text-decoration: none;
     outline: none; }
 
-/*img {
-	vertical-align: middle;
-	@include responsive-image();
-}*/
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+  height: 5px; }
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent; }
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(153, 153, 153, 0.5);
+  border-radius: 10px; }
+
+::-webkit-scrollbar-corner {
+  /* 6 */ }
+
+::-webkit-resizer {
+  /* 7 */ }
+
 .container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -178,7 +192,7 @@ a {
     min-height: 65px; }
   .main__matrix {
     width: calc(100vw - 210px);
-    height: calc(100vh - 65px);
+    height: calc(100vh - 70px);
     overflow: auto; }
 
 .gray {
@@ -290,7 +304,6 @@ a {
       height: 100%; }
 
 .divider {
-  margin: 20px 0;
   height: 1px;
   border: 0;
   border-top: 1px solid #575757; }
@@ -341,7 +354,7 @@ a {
   position: relative; }
 
 .filter:last-child {
-  padding-bottom: calc(100vh - (65px + 5px + 125px + 260px)); }
+  padding-bottom: calc(100vh - (70px + 128px + 288px)); }
 
 .groups {
   display: -webkit-box;
@@ -384,8 +397,6 @@ a {
   .group h3 {
     font-size: 11px;
     margin: 0; }
-  .group:first-child {
-    margin-top: 20px; }
   .group__list {
     display: -webkit-box;
     display: -webkit-flex;
@@ -444,6 +455,9 @@ a {
     height: 70px; }
   .group--black-font {
     color: #000; }
+  .group--padding {
+    padding-top: 20px;
+    padding-bottom: 20px; }
 
 .list-item {
   display: -webkit-box;
@@ -513,6 +527,8 @@ a {
     position: relative;
     background-color: #59291c;
     padding: 0 20px;
+    margin: 0;
+    min-height: 38px;
     border-top-left-radius: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -534,19 +550,22 @@ a {
       .button--close {
         padding: 0 10px !important; } }
   .button--clearall {
+    height: 38px;
     background-color: #59291c;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    width: 35px; }
+    width: 38px; }
     .button--clearall:hover {
       background-color: #a52604; }
   .button--info {
+    position: relative;
     transition: background-color color 100ms linear;
     -webkit-transition: background-color color 100ms linear;
     -moz-transition: background-color color 100ms linear;
     background-color: #363636;
     width: 35px;
+    top: 10px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; }
@@ -648,7 +667,7 @@ a {
   color: #cbe264;
   border-color: #cbe264; }
 
-.button--antibiotics--active:after, .button--mostUsed--active:after, .button--bacteria--active:after, .button--population--active:after {
+.button--icon--active:after {
   content: "";
   position: absolute;
   width: 0;
@@ -664,57 +683,29 @@ a {
   height: 26px;
   background-repeat: no-repeat;
   background-position: center;
-  margin-right: 15px; }
-
-.button--antibiotics {
-  background-image: url(/dist/img/icon1.svg);
-  transition: background-image 100ms linear;
-  -webkit-transition: background-image 100ms linear;
-  -moz-transition: background-image 100ms linear; }
-  .button--antibiotics:hover {
-    background-image: url(/dist/img/icon1_green.svg); }
-  .button--antibiotics--active {
-    background-image: url(/dist/img/icon1_green.svg); }
-    .button--antibiotics--active:after {
-      left: 7px; }
-
-.button--mostUsed {
-  background-image: url(/dist/img/icon5.svg);
-  transition: background-image 100ms linear;
-  -webkit-transition: background-image 100ms linear;
-  -moz-transition: background-image 100ms linear; }
-  .button--mostUsed:hover {
-    background-image: url(/dist/img/icon5_green.svg); }
-  .button--mostUsed--active {
-    background-image: url(/dist/img/icon5_green.svg); }
-    .button--mostUsed--active:after {
-      left: 7px; }
-
-.button--bacteria {
-  width: 30px;
-  background-image: url(/dist/img/icon2.svg);
-  transition: background-image 100ms linear;
-  -webkit-transition: background-image 100ms linear;
-  -moz-transition: background-image 100ms linear; }
-  .button--bacteria:hover {
-    background-image: url(/dist/img/icon2_green.svg); }
-  .button--bacteria--active {
-    background-image: url(/dist/img/icon2_green.svg); }
-    .button--bacteria--active:after {
-      left: 9px; }
-
-.button--population {
-  width: 23px;
-  background-image: url(/dist/img/icon4.svg);
-  transition: background-image 100ms linear;
-  -webkit-transition: background-image 100ms linear;
-  -moz-transition: background-image 100ms linear; }
-  .button--population:hover {
-    background-image: url(/dist/img/icon4_green.svg); }
-  .button--population--active {
-    background-image: url(/dist/img/icon4_green.svg); }
-    .button--population--active:after {
+  margin-right: 15px;
+  padding: 0; }
+  .button--icon svg {
+    fill: white;
+    height: inherit;
+    width: inherit;
+    transition: fill 100ms linear;
+    -webkit-transition: fill 100ms linear;
+    -moz-transition: fill 100ms linear; }
+    .button--icon svg:hover {
+      fill: #cbe264; }
+  .button--icon--active svg {
+    fill: #cbe264; }
+  .button--icon--active:after {
+    left: 7px; }
+  .button--icon--population {
+    width: 22px; }
+    .button--icon--population:after {
       left: 5px; }
+  .button--icon--bacteria {
+    width: 30px; }
+    .button--icon--bacteria:after {
+      left: 9px; }
 
 .select {
   width: 170px;
@@ -751,6 +742,10 @@ a {
 .select::-ms-expand {
   display: none;
   /* hide the default arrow in ie10 and ie11 */ }
+
+matrix,
+matrixheader {
+  display: block; }
 
 .resistanceMatrix {
   /* 

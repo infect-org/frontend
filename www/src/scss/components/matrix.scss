@@ -1,3 +1,12 @@
+// Custom elements are display:inline if not specified otherwise, which 
+// interferes with the svg's with css rule.
+matrix,
+matrixheader {
+    display: block;
+}
+
+
+
 .resistanceMatrix {
 
     $slowdown-factor: 1;

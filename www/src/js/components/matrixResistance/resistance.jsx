@@ -91,11 +91,14 @@ class Resistance extends React.Component {
 				<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } className="resistanceMatrix__resistanceCircle">
 				</circle>
 				{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
-				<text textAnchor="middle" fill={ this.props.resistance.fontColor }
-					dominantBaseline="central" className="resistanceMatrix__resistanceText"
-					dy={ supportsDominantBaseline('-2', '0.5em') }>
-					{ Math.round(this.value * 100) }
-				</text>
+				{ /* Don't display number if N < 20 */ }
+				{ this.props.resistance.mostPreciseValue.sampleSize > 20 &&
+					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
+						dominantBaseline="central" className="resistanceMatrix__resistanceText"
+						dy={ supportsDominantBaseline('-2', '0.5em') }>
+						{ Math.round(this.value * 100) }
+					</text>
+				}
 			</g>
 		);
 	}

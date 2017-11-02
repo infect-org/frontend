@@ -20,6 +20,7 @@ $link-color--hover: #D2E67A;
 $navigation-background--lighter: 	#616161;
 $navigation-height: 				65px;
 $navigation-padding--bottom:		5px;
+$navigation-total-heigth: $navigation-height + $navigation-padding--bottom;
 
 $navigation-button--label-size:		14px;
 $navigation-button--font-size:		26px;
@@ -31,7 +32,7 @@ $navigation-min-width: 				210px;
 $navigation-width:					210px;
 $sidenavigation__group__title-size:	26px;
 $search-box--height:				70px;
-$header-search-height:				125px;
+$header-search-height:				128px;
 
 	//checkbox
 $active__checkbox-color:			$color--light-green;

@@ -9,8 +9,8 @@
 
 
 .filter:last-child {
-	//260px = height of last group
-	padding-bottom: calc(100vh - (#{$navigation-height} + #{$navigation-padding--bottom} + #{$header-search-height} + 260px));
+	//288px height of last group 
+	padding-bottom: calc(100vh - (#{$navigation-total-heigth} + #{$header-search-height} + 288px));
 }
 
 .groups {
@@ -27,12 +27,6 @@
 	color: #fff;
 	
 	@include group-header-fonts(15px);
-
-	// First child has no .divider in front of it, is therefore missing
-	// some distance.
-	&:first-child {
-		margin-top: 20px;
-	}
 
 	&__title {
 		
@@ -76,6 +70,11 @@
 
 	&--black-font {
 		color: #000;
+	}
+
+	&--padding {
+		padding-top: 20px;
+		padding-bottom: 20px;
 	}
 }
 
@@ -157,6 +156,7 @@
 
 }
 
+$button-height: 38px;
 .button {
 	border: none;
 	color: #ffffff;
@@ -165,6 +165,8 @@
 		position: relative;
 		background-color: #59291c;
 		padding: 0 20px;
+		margin: 0;
+		min-height: $button-height;
 		@media (pointer: fine) {
 			padding: 0 8px;
 		}
@@ -181,9 +183,10 @@
 	}
 
 	&--clearall {
+		height: $button-height;
 		background-color: #59291c;
 		@include border-radius(5px);
-		width: 35px;
+		width: $button-height;
 
 		&:hover {
 			background-color: #a52604;
@@ -191,9 +194,11 @@
 	}
 
 	&--info {
+		position: relative;
 		@include transition(background-color color, $transition-duration);
 		background-color: $sidenavigation-background;
 		width: 35px;
+		top:10px;
 		@include border-radius(20px);
 
 		&:hover {

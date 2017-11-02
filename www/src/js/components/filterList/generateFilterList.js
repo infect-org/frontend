@@ -19,7 +19,7 @@ export default function generateFilterList(Component) {
 
 		render() {
 			return (
-                <div className="group" id={'js-filter-list-' + this.props.identifier }>
+                <div className="group group--padding" id={'js-filter-list-' + this.props.identifier }>
                     <h1>{ this.translations[this.props.identifier] }</h1>
 					<Component {...this.props}/>
 				</div>

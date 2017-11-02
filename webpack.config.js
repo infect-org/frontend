@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
 
@@ -10,7 +11,7 @@ module.exports = function(env) {
 	// Don't use ExtractTextPlugin in dev mode as it does not support hot-reloading, 
 	// see https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30#issuecomment-125757853
 	const debug = env && env.dev === true;
-	console.log('Debug Mode?', debug);
+	console.log('Debug Mode?', !!debug);
 	const styles = [
 		 {
 			loader: 'css-loader',
@@ -32,6 +33,20 @@ module.exports = function(env) {
 		});
 	}
 	console.log('Styles:', styles);
+
+
+
+	const plugins = [
+		new ExtractTextPlugin({
+			filename: '/css/main.min.css'
+		})
+	];
+	if (!debug) {
+		plugins.push(new UglifyJSPlugin({
+			sourceMap: true
+		}));
+	}
+	console.log('Plugins', plugins);
 
 
 	return {
@@ -73,9 +88,7 @@ module.exports = function(env) {
 		, resolve: {
 			extensions: ['.js', '.jsx']
 		}
-		, plugins: [new ExtractTextPlugin({
-			filename: '/css/main.min.css'
-		})]
+		, plugins: plugins
 	};
 
 };
