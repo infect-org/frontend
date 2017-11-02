@@ -27,20 +27,26 @@
         "species": "Burkholderia sp."
     },
     {
-        "aerobic": false,
+        "aerobic": true,
         "aerobicOptional": false,
-        "anaerobic": true,
+        "anaerobic": false,
         "anaerobicOptional": false,
-        "genus": "Clostridium",
-        "gram": true,
-        "grouping": "",
-        "groupingLocales": [],
-        "id": 5,
-        "id_grouping": null,
+        "genus": "Helicobacter",
+        "gram": false,
+        "grouping": "Einzeln",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Einzeln"
+            }
+        ],
+        "id": 1000,
+        "id_grouping": 8,
         "id_shape": 2,
-        "id_species": 54,
+        "id_species": 1000,
         "localeNames": [],
-        "name": "Clostridium sp. non-difficile",
+        "name": "Helicobacter pylori",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
         "shape": "Rod",
@@ -51,7 +57,7 @@
                 "name": "Rod"
             }
         ],
-        "species": "Clostridium sp. non-difficile"
+        "species": "helicobacter pylori"
     },
     {
         "aerobic": true,
@@ -79,33 +85,6 @@
             }
         ],
         "species": "Klebsiella sp."
-    },
-    {
-        "aerobic": false,
-        "aerobicOptional": false,
-        "anaerobic": true,
-        "anaerobicOptional": false,
-        "genus": "Clostridium",
-        "gram": true,
-        "grouping": "",
-        "groupingLocales": [],
-        "id": 9,
-        "id_grouping": null,
-        "id_shape": 2,
-        "id_species": 57,
-        "localeNames": [],
-        "name": "Clostridium difficile",
-        "selectedLanguage": "de",
-        "selectedLanguageId": 1,
-        "shape": "Rod",
-        "shapeLocales": [
-            {
-                "id_language": 1,
-                "language": "de",
-                "name": "Rod"
-            }
-        ],
-        "species": "Clostridium difficile"
     },
     {
         "aerobic": true,
