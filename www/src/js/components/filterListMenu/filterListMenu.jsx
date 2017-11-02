@@ -33,14 +33,11 @@ export default class FilterListMenu extends React.Component {
 			this._scrollTimeout = setTimeout(() => {
 				this._scrollTimeout = undefined;
 				const scrollElementRect = this._scrollElement.getBoundingClientRect();
-				// Element becomes active when it scrolls into the top fifth of the scrollElement. 
-				// If we use e.g. half, we got two problems: 
-				// - when user clicks the bacteria button and scrolls to the corresponding section, 
-				//   population filter will be highlighted
-				// - Favorites will never be highlighted (because they may consist of just 1 element)
-				const scrollElementMiddle = scrollElementRect.top + scrollElementRect.height / 8;
+				// Element becomes active when it's at the very top. If we change earlier (e.g.
+				// when it's at the middle of the screen, the favorites will not be active if they
+				// consist of only 1 item).
 				// Create array of objects with { 
-				//	middleDiff: difference between top of element and middle of scrollElement
+				//	topDiff: difference between top of element and the top of the scrollElement
 				//  , section: section (htmlElement)
 				//  , sectionName: name of the section
 				// }
@@ -48,12 +45,12 @@ export default class FilterListMenu extends React.Component {
 				// it is not displayed. Yay.)
 				const tops = this.visibleButtons.map((sectionName) => {
 					const section = this._scrollElement.querySelector('#js-filter-list-' + sectionName);
-					const middleDiff = scrollElementMiddle - section.getBoundingClientRect().top;
-					return { middleDiff, section, sectionName };
+					const topDiff = scrollElementRect.top - section.getBoundingClientRect().top;
+					return { topDiff, section, sectionName };
 				});
 				// Get section closest to scrollElementMiddle
-				const sorted = tops.filter((item) => item.middleDiff > 0);
-				sorted.sort((a, b) => a.middleDiff < b.middleDiff ? -1 : 1);
+				const sorted = tops.filter((item) => item.topDiff > 0);
+				sorted.sort((a, b) => a.topDiff < b.topDiff ? -1 : 1);
 				this.updateCurrentlyActiveSection(sorted[0].sectionName);
 			}, 80);
 		});
