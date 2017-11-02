@@ -30,8 +30,16 @@ export default class ResistanceMatrixView {
 	}
 
 	@computed get radius() {
-		const {min, max} = this._matrixView.sampleSizeExtremes;
-		const radius = Math.round(getRelativeValue(this.mostPreciseValue.sampleSize, min, max, 0.4) * 
+		const min = this._matrixView.sampleSizeExtremes.min;
+		// Assume all sample sizes above 1000 are good enough, see
+		// https://github.com/infect-org/frontend/issues/45
+		const max = 1000;
+		// All sample sizes > 1000 have the same radius
+		const sampleSizeForRadius = Math.min(this.mostPreciseValue.sampleSize, max);
+		// Use log scale; log10(0) is -Infinity, use at least 1; multiply with 333 to
+		// get a number between 0 and 999.
+		const logSampleSize = Math.log10(sampleSizeForRadius + 1) * 333;
+		const radius = Math.round(getRelativeValue(sampleSizeForRadius, min, max, 0.5) * 
 			this._matrixView.defaultRadius);
 		return radius;
 	}

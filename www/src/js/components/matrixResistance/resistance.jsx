@@ -88,7 +88,8 @@ class Resistance extends React.Component {
 				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }
 				>
 				{/* circle: center is at 0/0, therefore move by radius/radius */}
-				<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } className="resistanceMatrix__resistanceCircle">
+				<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } 
+					className="resistanceMatrix__resistanceCircle">
 				</circle>
 				{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
 				{ /* Don't display number if N < 20 */ }
