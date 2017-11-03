@@ -20,3 +20,17 @@ test('stores type and value correctly', (t) => {
 	t.equal(resVal.type, resistanceTypes.class);
 	t.end();
 });
+
+test('confidence interval', (t) => {
+	t.throws(() => new ResistanceValue('class', 0.9, 5, 'bad'), /array/);
+	t.throws(() => new ResistanceValue('class', 0.9, 5, [1,2,3]), /two items/);
+	t.throws(() => new ResistanceValue('class', 0.9, 5, [1,false]), /numbers/);
+	t.throws(() => new ResistanceValue('class', 0.9, 5, [1,1.1]), /between 0 and 1/);
+	t.throws(() => new ResistanceValue('class', 0.9, 5, [-1,0.9]), /between 0 and 1/);
+	t.throws(() => new ResistanceValue('class', 0.9, 5, [0.8,0.5]), /smaller than/);
+	t.throws(() => new ResistanceValue('class', 0.3, 5, [0.4,0.5]), /embrace/);
+	const valid = new ResistanceValue('class', 0.9, 5, [0.1, 0.9]);
+	t.equals(valid.confidenceInterval[0], 0.1);
+	t.equals(valid.confidenceInterval[1], 0.9);
+	t.end();
+});

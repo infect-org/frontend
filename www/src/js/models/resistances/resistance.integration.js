@@ -10,9 +10,9 @@ function setupData() {
 	const bacterium = new Bacterium(4, 'testB');
 	const antibiotic = new Antibiotic(4, 'testA', substanceClass);
 	const resistance = new Resistance([
-		{type: 'class', sampleSize: 50, value: 0.3}
-		, {type: 'import', sampleSize: 40, value: 0.7}
-		, {type: 'default', sampleSize: 20, value: 0.1}
+		{ type: 'class', sampleSize: 50, value: 0.3 }
+		, { type: 'import', sampleSize: 40, value: 0.7 }
+		, { type: 'default', sampleSize: 20, value: 0.1, confidenceInterval: [0.05, 0.4] }
 	], antibiotic, bacterium);
 	return {
 		substanceClass
@@ -27,6 +27,12 @@ test('throws on invalid arguments', (t) => {
 	t.throws(() => new Resistance(), /Array/);
 	t.throws(() => new Resistance([]), /antibiotic/);
 	t.throws(() => new Resistance([], 1), /bacterium/);
+	t.end();
+});
+
+test('passes data to resistance values', (t) => {
+	const { resistance } = setupData();
+	t.equals(resistance.getValuesByPrecision().length, 3);
 	t.end();
 });
 
