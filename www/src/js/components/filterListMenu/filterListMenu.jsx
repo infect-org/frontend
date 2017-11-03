@@ -46,7 +46,7 @@ export default class FilterListMenu extends React.Component {
 				const tops = this.visibleButtons.map((sectionName) => {
 					const section = this._scrollElement.querySelector('#js-filter-list-' + sectionName);
 					const top = scrollElementRect.top;
-					const topDiff = scrollElementRect.top - section.getBoundingClientRect().top;
+					const topDiff = (scrollElementRect.top + 20) - section.getBoundingClientRect().top;
 					return { topDiff, section, sectionName, top };
 				});
 				// Get section closest to scrollElementMiddle

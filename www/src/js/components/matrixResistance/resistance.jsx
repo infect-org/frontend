@@ -92,19 +92,22 @@ class Resistance extends React.Component {
 				className={ 'resistanceMatrix__resistance ' + this.classModifier }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
-				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }
-				style={ { opacity: this.opacity } }>
-				{/* circle: center is at 0/0, therefore move by radius/radius */}
-				<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } 
-					className="resistanceMatrix__resistanceCircle">
-				</circle>
-				{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
-				{ /* Don't display number if N < 20 */ }
-				<text textAnchor="middle" fill={ this.props.resistance.fontColor }
-					dominantBaseline="central" className="resistanceMatrix__resistanceText"
-					dy={ supportsDominantBaseline('-2', '0.5em') }>
-					{ Math.round(this.value * 100) }
-				</text>
+				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }>
+				{ /* use <g> for content to give it an opacity depending on smapleSize. We cannot set
+				     opacity on parent g as this would overwrite the filters (opacity 0 if not visible) */ }
+				<g style={ { opacity: this.opacity } }>
+					{/* circle: center is at 0/0, therefore move by radius/radius */}
+					<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } 
+						className="resistanceMatrix__resistanceCircle">
+					</circle>
+					{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
+					{ /* Don't display number if N < 20 */ }
+					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
+						dominantBaseline="central" className="resistanceMatrix__resistanceText"
+						dy={ supportsDominantBaseline('-2', '0.5em') }>
+						{ Math.round(this.value * 100) }
+					</text>
+				</g>
 			</g>
 		);
 	}

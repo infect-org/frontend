@@ -8,6 +8,8 @@ test('handles bacteria data correctly', (t) => {
 		id: 5
 		, name: 'testBact'
 		, shape: 'round'
+		, aerobicOptional: false
+		, aerobic: true
 	}]);
 	const store = new BacteriaStore();
 	const fetcher = new BacteriaFetcher('/bact', store);
@@ -16,6 +18,7 @@ test('handles bacteria data correctly', (t) => {
 		t.equals(store.get().size, 1);
 		t.equals(store.getById(5).name, 'testBact');
 		t.equals(store.getById(5).shape, 'round');
+		t.equals(store.getById(5).aerobic, true);
 	});
 	t.end();
 });
