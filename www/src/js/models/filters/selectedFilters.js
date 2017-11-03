@@ -30,6 +30,16 @@ export default class SelectedFilters {
 			console.warn('Tried to add duplicate entry %o', filter);
 			return;
 		}
+
+        // Special case: Don't allow multiselection of regions as long as we don't have
+        // RDA. TODO: Remove when RDA is ready.selectedFilters
+        if (filter.property.entityType === 'region') {
+            if (this.getFiltersByType('region').length > 0) {
+                alert(`COMING SOON. \nYou cannot yet select multiple population filters. \nThis feature will be added 2018.\nPlease remove the other region filters first.`);
+                return;
+            }
+        }
+
 		this.filterChanges++;
 		this._selectedFilters.push(filter);
 		log('Added filters, are now %o', this._selectedFilters);
