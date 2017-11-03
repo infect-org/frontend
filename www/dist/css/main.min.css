@@ -836,7 +836,7 @@ matrixheader {
     transition: transform 0.2s;
     pointer-events: none; }
   .resistanceMatrix__resistanceDetailValueText {
-    font-size: 15pt; }
+    font-size: 18pt; }
   .resistanceMatrix__resistanceDetailValuePercentSign {
     font-size: 11pt; }
   .resistanceMatrix__resistanceDetailCircleShadow {
@@ -852,10 +852,10 @@ matrixheader {
   z-index: -1;
   overflow: auto;
   background-color: #616161;
+  opacity: 0;
   transition: opacity 100ms linear;
   -webkit-transition: opacity 100ms linear;
-  -moz-transition: opacity 100ms linear;
-  opacity: 0; }
+  -moz-transition: opacity 100ms linear; }
   .overlay--open {
     z-index: 300;
     opacity: 1; }
