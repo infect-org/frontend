@@ -20,7 +20,7 @@ export default class Resistance {
 		if (!antibiotic) throw new Error(`Resistance: Argument antibiotic is required.`);
 		if (!bacterium) throw new Error(`Resistance: Argument bacterium is required.`);
 		values.forEach((value) => {
-			this.values.push(new ResistanceValue(value.type, value.value, value.sampleSize));
+			this.values.push(new ResistanceValue(value.type, value.value, value.sampleSize, value.confidenceInterval));
 		});
 		this.antibiotic = antibiotic;
 		this.bacterium = bacterium;

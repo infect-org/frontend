@@ -77,7 +77,8 @@ export default class ResistancesFetcher extends Fetcher {
 			const resistanceValues = [{
 				type: 'import'
 				, value: resistance.resistanceImport / 100
-				, sampleSize: resistance.sampleCount || 0				
+				, sampleSize: resistance.sampleCount || 0
+				, confidenceInterval: [resistance.confidenceIntervalLowerBound / 100, resistance.confidenceIntervalHigherBound / 100]
 			}];
 			const resistanceObject = new Resistance(resistanceValues, antibiotic, bacterium);
 			this._store.add(resistanceObject);

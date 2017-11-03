@@ -37,7 +37,9 @@ test('handles resistance data correctly', (t) => {
         "bacteriaName":"acinetobacter sp. / acinetobacter",
         "compoundName":"amoxicillin",
         "sampleCount":100,
-        "resistanceImport":100
+        "resistanceImport":100, 
+		"confidenceIntervalLowerBound": 75,
+		"confidenceIntervalHigherBound": 100
     }] });
 	const { antibiotics, bacteria } = setupFetcher();
 	const store = new Store([], () => 2);
@@ -68,13 +70,17 @@ test('handles updates', (t) => {
 	        "bacteriaName":"acinetobacter sp. / acinetobacter",
 	        "compoundName":"amoxicillin",
 	        "sampleCount":100,
-	        "resistanceImport":100
+	        "resistanceImport":100,
+			"confidenceIntervalLowerBound": 75,
+			"confidenceIntervalHigherBound": 100
 	    }] })
 		.mock('/test_west.json', { status: 200, body: [{
 	        "bacteriaName":"acinetobacter sp. / acinetobacter",
 	        "compoundName":"amoxicillin",
 	        "sampleCount":50,
-	        "resistanceImport":90
+	        "resistanceImport":90,
+			"confidenceIntervalLowerBound": 75,
+			"confidenceIntervalHigherBound": 100
 	    }] });
 	const { antibiotics, bacteria } = setupFetcher();
 	const store = new Store([], () => 2);

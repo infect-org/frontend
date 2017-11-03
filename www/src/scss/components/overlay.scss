@@ -8,8 +8,10 @@
 	overflow: auto;
 
 	background-color: $navigation-background--lighter;
-	@include transition(opacity, $transition-duration);
+	// Must be above transition so that overlay does not fade out
+	// when site is loading.
 	opacity: 0;
+	@include transition(opacity, $transition-duration);
 
 	&--open {
 		z-index: 300;

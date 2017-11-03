@@ -11,7 +11,7 @@ class ResistanceDetail extends React.Component {
 
 	constructor() {
 		super();
-		this._radius = 35;
+		this._radius = 40;
 	}
 
 	@computed get transformation() {
@@ -49,17 +49,25 @@ class ResistanceDetail extends React.Component {
 				{ /* Value */ }
 				{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="alphabetical"  textAnchor="middle"
-					dy={ supportsDominantBaseline('-2', '0em')} dx="2"
+					dy={ supportsDominantBaseline('-0.4em', '-0.4em')} dx="2"
 					className="resistanceMatrix__resistanceDetailValueText">
 					{Math.round(this.props.resistance.mostPreciseValue.value * 100)}
 					<tspan className="resistanceMatrix__resistanceDetailValuePercentSign">%</tspan>
 				</text>
 
+				{ /* Confidence Interval */ }
+				<text fill={ this.props.resistance.fontColor } dominantBaseline="hanging"  textAnchor="middle" 
+					dy={ supportsDominantBaseline('-0.4em', '0.5em')}
+					className="resistanceMatrix__resistanceDetailSampleSizeText">
+					CI { Math.round(this.props.resistance.mostPreciseValue.confidenceInterval[0] * 100) }–
+					{ Math.round(this.props.resistance.mostPreciseValue.confidenceInterval[1] * 100) }%
+				</text>
+
 				{ /* Sample Size */ }
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="hanging"  textAnchor="middle" 
-					dy={ supportsDominantBaseline('0', '1.1em')}
+					dy={ supportsDominantBaseline('0.6em', '1.5em')}
 					className="resistanceMatrix__resistanceDetailSampleSizeText">
-					N={numberWithThousandsSeparators(this.props.resistance.mostPreciseValue.sampleSize)}
+					N={ numberWithThousandsSeparators(this.props.resistance.mostPreciseValue.sampleSize) }
 				</text>
 				
 			</g>
