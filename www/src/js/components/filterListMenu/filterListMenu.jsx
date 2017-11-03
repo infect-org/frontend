@@ -45,12 +45,16 @@ export default class FilterListMenu extends React.Component {
 				// it is not displayed. Yay.)
 				const tops = this.visibleButtons.map((sectionName) => {
 					const section = this._scrollElement.querySelector('#js-filter-list-' + sectionName);
+					const top = scrollElementRect.top;
 					const topDiff = scrollElementRect.top - section.getBoundingClientRect().top;
-					return { topDiff, section, sectionName };
+					return { topDiff, section, sectionName, top };
 				});
 				// Get section closest to scrollElementMiddle
 				const sorted = tops.filter((item) => item.topDiff > 0);
 				sorted.sort((a, b) => a.topDiff < b.topDiff ? -1 : 1);
+				// Sorted may be empty if we have an elasticly scrolling browser – it's the topmost
+				// section that's active.
+				if (!sorted.length) sorted[0] = tops.sort((a, b) => a.top < b.top ? 1 : -1)[0];
 				this.updateCurrentlyActiveSection(sorted[0].sectionName);
 			}, 80);
 		});
