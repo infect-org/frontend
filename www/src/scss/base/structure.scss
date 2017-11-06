@@ -23,6 +23,10 @@
 		min-height: $navigation-height;
 	}
 
+	&__disclaimer {
+		
+	}
+
 	&__matrix {
 		width: calc(100vw - #{$navigation-width});
 		height: calc(100vh - #{$navigation-height});
