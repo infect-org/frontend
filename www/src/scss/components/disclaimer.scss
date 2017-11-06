@@ -6,7 +6,12 @@
 
 	&__button-container {
 		display: inline-block;
-		margin-left: 100px;
+		margin-left: 10px;
+
+		&--close {
+			margin-left: 100px;
+		}
+
 	}
 
 	&__button {
