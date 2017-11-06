@@ -159,7 +159,7 @@
 $button-height: 38px;
 .button {
 	border: none;
-	color: #ffffff;
+	color: #000;
     
     //used to center x
 	span {
@@ -169,7 +169,7 @@ $button-height: 38px;
 
 	&--close {
 		position: relative;
-		background-color: #59291c;
+		background-color: #d7d5c4;
 		padding: 0 20px;
 		margin: 0;
 		min-height: $button-height;
@@ -180,7 +180,8 @@ $button-height: 38px;
 		font-weight: bold;
 		
 		&:hover {
-			background-color: #a52604;
+			background-color: #d60000;
+			color: #fff;
 		}
 
 		$hover-hover: hover;
@@ -191,13 +192,14 @@ $button-height: 38px;
 
 	&--clearall {
 		height: $button-height;
-		background-color: #59291c;
+		background-color: #d7d5c4;
 		@include border-radius(5px);
 		width: $button-height;
 		font-weight: bold;
 
 		&:hover {
-			background-color: #a52604;
+			background-color: #d60000;
+			color: #fff;
 		}
 	}
 
@@ -205,6 +207,7 @@ $button-height: 38px;
 		position: relative;
 		@include transition(background-color color, $transition-duration);
 		background-color: $sidenavigation-background;
+		color: #fff;
 		width: 35px;
 		top:10px;
 		font-weight: bold;
