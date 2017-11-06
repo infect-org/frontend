@@ -10,7 +10,7 @@
 
 .filter:last-child {
 	//288px height of last group 
-	padding-bottom: calc(100vh - (#{$navigation-total-heigth} + #{$header-search-height} + 288px));
+	padding-bottom: calc(100vh - (#{$navigation-height} + #{$header-search-height} + 288px));
 }
 
 .groups {

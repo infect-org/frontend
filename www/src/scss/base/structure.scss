@@ -25,7 +25,7 @@
 
 	&__matrix {
 		width: calc(100vw - #{$navigation-width});
-		height: calc(100vh - #{$navigation-total-heigth});
+		height: calc(100vh - #{$navigation-height});
 		overflow: auto;
 	}
 }
