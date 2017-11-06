@@ -14,6 +14,7 @@ test('handles antibacteria data correctly', (t) => {
 			, name: 'testAB'
 			, iv: true
 			, po: false
+			, identifier: 'testId'
 		}]);
 	const abStore = new AntibioticsStore();
 	const scStore = new SubstanceClassesStore();
@@ -24,6 +25,7 @@ test('handles antibacteria data correctly', (t) => {
 		t.equals(abStore.get().size, 1);
 		t.equals(abStore.getById(1).name, 'testAB');
 		t.equals(abStore.getById(1).iv, true);
+		t.equals(abStore.getById(1).identifier, 'testId');
 		t.equals(abStore.getById(1).substanceClass.id, 5);
 		fetchMock.restore();
 		t.end();

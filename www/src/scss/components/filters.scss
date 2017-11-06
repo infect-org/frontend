@@ -10,7 +10,7 @@
 
 .filter:last-child {
 	//288px height of last group 
-	padding-bottom: calc(100vh - (#{$navigation-total-heigth} + #{$header-search-height} + 288px));
+	padding-bottom: calc(100vh - (#{$navigation-height} + #{$header-search-height} + 288px));
 }
 
 .groups {
@@ -159,11 +159,17 @@
 $button-height: 38px;
 .button {
 	border: none;
-	color: #ffffff;
+	color: #000;
     
+    //used to center x
+	span {
+		position: relative;
+		top: -2px;
+	}
+
 	&--close {
 		position: relative;
-		background-color: #59291c;
+		background-color: #d7d5c4;
 		padding: 0 20px;
 		margin: 0;
 		min-height: $button-height;
@@ -171,9 +177,11 @@ $button-height: 38px;
 			padding: 0 8px;
 		}
 		@include border-radius-edges(0, 5px, 5px, 0)
+		font-weight: bold;
 		
 		&:hover {
-			background-color: #a52604;
+			background-color: #d60000;
+			color: #fff;
 		}
 
 		$hover-hover: hover;
@@ -184,12 +192,14 @@ $button-height: 38px;
 
 	&--clearall {
 		height: $button-height;
-		background-color: #59291c;
+		background-color: #d7d5c4;
 		@include border-radius(5px);
 		width: $button-height;
+		font-weight: bold;
 
 		&:hover {
-			background-color: #a52604;
+			background-color: #d60000;
+			color: #fff;
 		}
 	}
 
@@ -197,8 +207,10 @@ $button-height: 38px;
 		position: relative;
 		@include transition(background-color color, $transition-duration);
 		background-color: $sidenavigation-background;
+		color: #fff;
 		width: 35px;
 		top:10px;
+		font-weight: bold;
 		@include border-radius(20px);
 
 		&:hover {

@@ -2,7 +2,6 @@
 	@include flexbox();
 	min-height: $navigation-height;
 	border-bottom: solid 1px #d3d2cd;
-	padding-bottom: 5px;
 
 	&__active-filters, 
 	selectedfiltersList {

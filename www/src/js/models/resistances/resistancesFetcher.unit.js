@@ -11,7 +11,8 @@ function setupFetcher(url = '/test') {
 			return { 
 				values: function() {
 					return [{
-						name: 'amoxicillin'
+						name: 'amoxicillin name'
+						, identifier: 'amoxicillin'
 					}];
 				} 
 			};
@@ -54,7 +55,7 @@ test('handles resistance data correctly', (t) => {
 	setTimeout(() => {
 		t.equals(store.get().size, 1);
 		const result = store.getById(2);
-		t.equals(result.antibiotic.name, 'amoxicillin');
+		t.equals(result.antibiotic.name, 'amoxicillin name');
 		t.equals(result.bacterium.name, 'acinetobacter sp.');
 		t.equals(result.values.length, 1);
 		t.equals(result.values[0].sampleSize, 100);
@@ -103,6 +104,7 @@ test('handles updates', (t) => {
 	setTimeout(() => {
 		const result = store.getById(2);
 		t.equals(result.values[0].sampleSize, 100);
+		// Non-region filters don't change anything
 		selectedFilters.addFilter({ type: 'unknown', value: 'bad' });
 		t.equals(result.values[0].sampleSize, 100);
 		selectedFilters.addFilter({ type: 'region', value: 'west'});

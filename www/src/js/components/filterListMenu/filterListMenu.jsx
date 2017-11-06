@@ -80,6 +80,11 @@ export default class FilterListMenu extends React.Component {
 		}
 	}
 
+	_getNiceName(name) {
+		return name.replace(/^\[a-z]/, (result) => result.toUpperCase()).replace(/[A-Z]/g, (result) => ' ' + result.toLowerCase())
+	}
+
+
 	/**
 	* Return buttons that should be displayed to the user. MostUsed is only 
 	* visible if filters are available. 
@@ -96,6 +101,7 @@ export default class FilterListMenu extends React.Component {
             <div className="group group--vertical group--left-aligned">
             	{ this.visibleButtons.map((section) => {
 		            return <button key={ section }
+		            		title={ this._getNiceName(section) }
 		            		className={ 'button button--icon button--icon--' + section + ' ' + this._getActiveClass(section) }
 		            		onClick={ (ev) => this._buttonClickHandler(section) }>
 		            			<svg aria-hidden="true"><use xlinkHref={'#icon_' + section }/></svg>

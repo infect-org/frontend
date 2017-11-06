@@ -1,0 +1,22 @@
+.disclaimer {
+	position: relative;
+	background-color: #ffecec;
+	color: #d60000;
+	padding: 10px 50px;
+
+	&__button-container {
+		display: inline-block;
+		margin-left: 100px;
+	}
+
+	&__button {
+		color: black !important;
+		cursor: pointer;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+	}
+
+}

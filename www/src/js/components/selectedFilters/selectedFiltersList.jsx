@@ -19,7 +19,7 @@ export default class SelectedFiltersList extends React.Component {
                 { this.props.selectedFilters.filters.length > 1 &&
                 	<div className="group group--black-font">
                         <h2><strong>Clear all filters</strong></h2>
-                        <button className="button button--clearall" onClick={ (ev) => this.props.selectedFilters.removeAllFilters() }>&times;</button>
+                        <button className="button button--clearall" onClick={ (ev) => this.props.selectedFilters.removeAllFilters() }><span>&times;</span></button>
                     </div>
                 }
             </div>

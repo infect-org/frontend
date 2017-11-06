@@ -70,8 +70,8 @@
   ],
   "scripts": {
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --hot --inline --open --env.dev",
-    "build": "webpack --config webpack.config.js",
-    "test": "webpack --config webpack.test.config.js"
+    "build": "node node_modules/webpack/bin/webpack.js --config webpack.config.js",
+    "test": "node node_modules/webpack/bin/webpack.js --config webpack.test.config.js"
   },
   "browserify": {
     "external": {
