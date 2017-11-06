@@ -59,7 +59,7 @@ export default class ResistancesFetcher extends Fetcher {
 			const bacterium = bacteria.find((item) => item.name.toLowerCase() === bacteriumName);
 			const antibioticName = resistance.compoundName.toLowerCase();
 			const antibiotic = antibiotics.find((item) => {
-				return item.name.toLowerCase() === antibioticName;
+				return item.identifier.toLowerCase() === antibioticName;
 			});
 
 			if (!antibiotic) {

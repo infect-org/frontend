@@ -15,6 +15,7 @@ export default class AntibioticsFetcher extends Fetcher {
 			const antibiotic = new Antibiotic(item.id, item.name, substanceClass, {
 				iv: item.iv
 				, po: item.po
+				, identifier: item.identifier
 			});
 			this._store.add(antibiotic);
 		});
