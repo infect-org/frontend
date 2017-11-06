@@ -161,6 +161,12 @@ $button-height: 38px;
 	border: none;
 	color: #ffffff;
     
+    //used to center x
+	span {
+		position: relative;
+		top: -2px;
+	}
+
 	&--close {
 		position: relative;
 		background-color: #59291c;
@@ -171,6 +177,7 @@ $button-height: 38px;
 			padding: 0 8px;
 		}
 		@include border-radius-edges(0, 5px, 5px, 0)
+		font-weight: bold;
 		
 		&:hover {
 			background-color: #a52604;
@@ -187,6 +194,7 @@ $button-height: 38px;
 		background-color: #59291c;
 		@include border-radius(5px);
 		width: $button-height;
+		font-weight: bold;
 
 		&:hover {
 			background-color: #a52604;
@@ -199,6 +207,7 @@ $button-height: 38px;
 		background-color: $sidenavigation-background;
 		width: 35px;
 		top:10px;
+		font-weight: bold;
 		@include border-radius(20px);
 
 		&:hover {
