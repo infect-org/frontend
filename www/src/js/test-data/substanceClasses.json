@@ -80,11 +80,10 @@
         "name": "Quinolone",
         "order": 14
     }, {
-        "id": 2,
-        "name": "Fluoroquinolone",
+        "id": 2000,
+        "name": "Beta-lactam + inhibitor",
         "order": 15,
-        "parent": 1,
-        "color": "85 \/ 93 \/ 156"
+        "parent": 3
     }, {
         "id": 7,
         "name": "Aminoglycoside",
