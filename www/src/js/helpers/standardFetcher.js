@@ -25,7 +25,7 @@ export default class StandardFetcher {
 	*/
 	async getData() {
 		log('Get data for %s', this._url);
-		// Create a new promise to pass to the store – it must only be resolved **after**
+		// Create a new promise to pass to the store – it must only be resolved **after**
 		// data was handled and rejected if status !== 200.
 		let resolver, rejector;
 		const promise = new Promise((resolve, reject) => {
@@ -36,7 +36,8 @@ export default class StandardFetcher {
 
 		let result;
 		try {
-			result = await fetchApi(this._url);
+			// Add timestamp to prevent caching as file names don't change
+			result = await fetchApi(`${ this._url }?ts=${ new Date().getTime() }`);
 			// Invalid HTTP Status
 			if (result.status !== 200) {
 				const err = new Error(`StandardFetcher: Status ${ result.status } is invalid.`);
