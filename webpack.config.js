@@ -1,8 +1,8 @@
-const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const RemoveWebpackPlugin = require('remove-webpack-plugin');
 
 
 // Pass in env as --env.dev or --env.production
@@ -13,7 +13,7 @@ module.exports = function(env) {
 	const debug = env && env.dev === true;
 	console.log('Debug Mode?', !!debug);
 	const styles = [
-		 {
+		{
 			loader: 'css-loader',
 			options: {
 				sourceMap:true
@@ -24,9 +24,9 @@ module.exports = function(env) {
 			options: {
 				sourceMap: true
 			}
-		 }];
+		}];
 
-	// style-loader ensures style live reloading – but only works if we're not using ExtractTextPlugin. 
+	// style-loader ensures style live reloading – but only works if we're not using ExtractTextPlugin. 
 	if (debug) {
 		styles.unshift({
 			loader: 'style-loader'
@@ -35,10 +35,16 @@ module.exports = function(env) {
 	console.log('Styles:', styles);
 
 
+	// Only add hashes in live mode. webpack-dev-server loads files from
+	// memory, they don't contain hashes
+	const hash = debug ? '' : '.[hash]';
+	console.log('Hash is', hash);
+
 
 	const plugins = [
 		new ExtractTextPlugin({
-			filename: '/css/main.min.css'
+			filename: `css/[name]${ hash }.css`
+			, allChunks: true
 		})
 	];
 	if (!debug) {
@@ -46,19 +52,29 @@ module.exports = function(env) {
 			sourceMap: true
 		}));
 	}
+	plugins.push(new HtmlWebpackPlugin({
+		template: '../index.ejs'
+		, filename: '../index.html'
+		, inject: false
+		, isDebug: debug
+	}));
+	plugins.push(new RemoveWebpackPlugin(['www/dist/js', 'www/dist/css']));
 	console.log('Plugins', plugins);
+
 
 
 	return {
 		context: path.resolve(__dirname, 'www/src/')
 		, entry:  {
-			main: ['./js/main.js']
-			, styles: ['./scss/main.scss']
+			main: [
+				'./js/main.js'
+				, './scss/main.scss'
+			]
 		}
 		, output: {
 			path: path.resolve(__dirname, 'www/dist/')
 			, publicPath: '/dist'
-			, filename: 'js/[name].js'
+			, filename: `js/[name]${ hash }.js`
 		}
 		, devtool: 'source-map'
 		, devServer: {
@@ -72,12 +88,11 @@ module.exports = function(env) {
 					test: /\.jsx?$/
 					, use: 'babel-loader'
 					, include: [
-						  path.resolve(__dirname, 'www/src/js')
+						path.resolve(__dirname, 'www/src/js')
 						, path.resolve(__dirname, 'node_modules/mobx')
 					]
 					/* query is taken from .babelrc */
-				}, 
-				{
+				}, {
 					test: /\.scss$/,
 					use: debug ? styles : ExtractTextPlugin.extract({
 						use: styles

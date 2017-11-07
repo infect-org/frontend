@@ -22,13 +22,13 @@
         <script src="https://use.typekit.net/uac3uao.js"></script>
         <script>/* global Typekit */ try{Typekit.load();}catch(e){}</script>
 
-        
-            <link rel="stylesheet" type="text/css" href="/dist/css/main.a24c4a43bf436f3d4c65.css">
-                        
+        <% if (!htmlWebpackPlugin.options.isDebug) { %>
+            <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.css %>">
+        <% } %>                
 
-        
-            <script async src="/dist/js/main.a24c4a43bf436f3d4c65.js"></script>
-        
+        <% htmlWebpackPlugin.files.js.forEach((file) => { %>
+            <script async src="<%= file %>"></script>
+        <% }); %>
     </head>
 
     <body>

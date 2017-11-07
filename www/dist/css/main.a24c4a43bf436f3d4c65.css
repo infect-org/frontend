@@ -144,6 +144,9 @@ a {
 ::-webkit-resizer {
   /* 7 */ }
 
+address {
+  font-style: normal; }
+
 .container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -189,7 +192,7 @@ a {
     -moz-flex-grow: 0;
     -ms-flex-positive: 0;
     flex-grow: 0;
-    min-height: 65px; }
+    min-height: 70px; }
   .main__matrix {
     width: calc(100vw - 210px);
     height: calc(100vh - 70px);
@@ -207,9 +210,8 @@ a {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  min-height: 65px;
-  border-bottom: solid 1px #d3d2cd;
-  padding-bottom: 5px; }
+  min-height: 70px;
+  border-bottom: solid 1px #d3d2cd; }
   .top-navigation__active-filters,
   .top-navigation selectedfiltersList {
     -webkit-box-flex: 1;
@@ -280,8 +282,7 @@ a {
     overflow-y: auto; }
 
 .header__logo {
-  height: 65px;
-  padding-bottom: 5px; }
+  height: 70px; }
 
 .logo {
   display: -webkit-box;
@@ -299,7 +300,7 @@ a {
   background-color: #616161; }
   .logo a {
     z-index: 5;
-    height: 45px; }
+    height: 50px; }
     .logo a img {
       height: 100%; }
 
@@ -522,10 +523,13 @@ a {
 
 .button {
   border: none;
-  color: #ffffff; }
+  color: #000; }
+  .button span {
+    position: relative;
+    top: -2px; }
   .button--close {
     position: relative;
-    background-color: #59291c;
+    background-color: #d7d5c4;
     padding: 0 20px;
     margin: 0;
     min-height: 38px;
@@ -540,32 +544,38 @@ a {
     -moz-border-radius-topleft: 0;
     -moz-border-radius-topright: 5px;
     -moz-border-radius-bottomright: 5px;
-    -moz-border-radius-bottomleft: 0; }
+    -moz-border-radius-bottomleft: 0;
+    font-weight: bold; }
     @media (pointer: fine) {
       .button--close {
         padding: 0 8px; } }
     .button--close:hover {
-      background-color: #a52604; }
+      background-color: #d60000;
+      color: #fff; }
     @media only screen and (hover-interaction: hover) {
       .button--close {
         padding: 0 10px !important; } }
   .button--clearall {
     height: 38px;
-    background-color: #59291c;
+    background-color: #d7d5c4;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    width: 38px; }
+    width: 38px;
+    font-weight: bold; }
     .button--clearall:hover {
-      background-color: #a52604; }
+      background-color: #d60000;
+      color: #fff; }
   .button--info {
     position: relative;
     transition: background-color color 100ms linear;
     -webkit-transition: background-color color 100ms linear;
     -moz-transition: background-color color 100ms linear;
     background-color: #363636;
+    color: #fff;
     width: 35px;
     top: 10px;
+    font-weight: bold;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px; }
@@ -819,13 +829,14 @@ matrixheader {
     z-index: 100;
     position: fixed; }
   .resistanceMatrix__bacteriumLabelText {
-    text-anchor: end; }
+    text-anchor: end;
+    font-style: italic; }
   .resistanceMatrix__resistance {
     cursor: none; }
   .resistanceMatrix__antibioticLabelText, .resistanceMatrix__bacteriumLabelText {
     transition: fill 0.2s; }
     .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
-      fill: #ff623f; }
+      text-decoration: underline; }
   .resistanceMatrix__substanceClassLabel {
     cursor: pointer; }
     .resistanceMatrix__substanceClassLabel:hover text {
@@ -863,9 +874,11 @@ matrixheader {
     position: relative;
     width: 40%;
     max-width: 600px;
-    padding: 65px 0;
+    padding: 70px 0;
     margin: auto;
     color: white; }
+  .overlay h1 {
+    margin-top: 1.3em; }
   .overlay .adresses {
     display: -webkit-box;
     display: -webkit-flex;
@@ -893,6 +906,8 @@ matrixheader {
       -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
       margin-bottom: 10%; }
+  .overlay .image--fullwidth {
+    width: 100%; }
 
 .search {
   position: absolute;
@@ -982,9 +997,26 @@ matrixheader {
     .result:hover .result__checkmark {
       background: url(/dist/img/checkmark.svg) no-repeat center center; }
 
+.disclaimer {
+  position: relative;
+  background-color: #ffecec;
+  color: #d60000;
+  padding: 10px 50px; }
+  .disclaimer__button-container {
+    display: inline-block;
+    margin-left: 10px; }
+    .disclaimer__button-container--close {
+      margin-left: 100px; }
+  .disclaimer__button {
+    color: black !important;
+    cursor: pointer; }
+  .disclaimer a {
+    color: inherit;
+    text-decoration: underline; }
+
 .notification-container {
   position: fixed;
-  top: calc(50vh + 65px - 150px);
+  top: calc(50vh + 70px - 150px);
   right: -350px;
   width: 350px;
   opacity: 0;
@@ -1062,4 +1094,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.min.css.map*/
+/*# sourceMappingURL=main.a24c4a43bf436f3d4c65.css.map*/
