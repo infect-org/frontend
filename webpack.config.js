@@ -3,6 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const RemoveWebpackPlugin = require('remove-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 
 // Pass in env as --env.dev or --env.production
@@ -37,7 +38,7 @@ module.exports = function(env) {
 
 	// Only add hashes in live mode. webpack-dev-server loads files from
 	// memory, they don't contain hashes
-	const hash = debug ? '' : '.[hash]';
+	const hash = debug ? '' : '.[chunkhash]';
 	console.log('Hash is', hash);
 
 
@@ -57,8 +58,11 @@ module.exports = function(env) {
 		, filename: '../index.html'
 		, inject: false
 		, isDebug: debug
+		, alwaysWriteToDisk: true
+		, outputPath: path.resolve(__dirname, 'www')
 	}));
-	plugins.push(new RemoveWebpackPlugin(['www/dist/js', 'www/dist/css']));
+	plugins.push(new RemoveWebpackPlugin(['www/dist/js', 'www/dist/css', 'www/index.html']));
+	plugins.push(new HtmlWebpackHarddiskPlugin());
 	console.log('Plugins', plugins);
 
 
