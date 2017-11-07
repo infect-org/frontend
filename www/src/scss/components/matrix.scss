@@ -118,7 +118,7 @@ matrixheader {
         transition: fill 0.2s;
 
         &.highlight {
-            fill: #ff623f;
+            text-decoration: underline;
         }
 
     }
@@ -131,7 +131,6 @@ matrixheader {
                 fill: #fff;
             }
             rect {
-                //fill: #{$link-color};
                 fill: #{$sidenavigation-background};
             }
         }
