@@ -105,10 +105,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 2,
+                "id": 1,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Fluorchinolone"
+                "name": "Quinolone"
             }
         ],
         "id": 23,
@@ -357,10 +357,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 2,
+                "id": 1,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Fluorchinolone"
+                "name": "Quinolone"
             }
         ],
         "id": 19,
@@ -433,10 +433,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 2,
+                "id": 1,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Fluorchinolone"
+                "name": "Quinolone"
             }
         ],
         "id": 31,
@@ -471,10 +471,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 2,
+                "id": 1,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Fluorchinolone"
+                "name": "Quinolone"
             }
         ],
         "id": 29,
@@ -666,10 +666,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 2,
+                "id": 1,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Fluorchinolone"
+                "name": "Quinolone"
             }
         ],
         "id": 40,
@@ -781,10 +781,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 1000,
+                "id": 2000,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "Penicillinase-sensitive penicillin"
+                "name": "Beta-lactam + inhibitor"
             }
         ],
         "id": 2,
@@ -801,10 +801,10 @@
         ],
         "substanceClasses": [
             {
-                "id": 1010,
+                "id": 2000,
                 "id_locale": 1,
                 "languagae": "de",
-                "name": "ureidopenicillin"
+                "name": "Beta-lactam + inhibitor"
             }
         ],
         "id": 7,
