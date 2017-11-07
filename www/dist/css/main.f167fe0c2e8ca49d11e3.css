@@ -879,6 +879,8 @@ matrixheader {
     color: white; }
   .overlay h1 {
     margin-top: 1.3em; }
+  .overlay__paragraph--footnote {
+    font-size: 0.8em; }
   .overlay .adresses {
     display: -webkit-box;
     display: -webkit-flex;
@@ -905,7 +907,7 @@ matrixheader {
       -moz-flex-basis: 40%;
       -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
-      margin-bottom: 10%; }
+      margin-bottom: 5%; }
   .overlay .image--fullwidth {
     width: 100%; }
 
@@ -1094,4 +1096,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.08006e927904ec4a31e6.css.map*/
+/*# sourceMappingURL=main.f167fe0c2e8ca49d11e3.css.map*/

@@ -38,7 +38,7 @@ module.exports = function(env) {
 
 	// Only add hashes in live mode. webpack-dev-server loads files from
 	// memory, they don't contain hashes
-	const hash = debug ? '' : '.[chunkhash]';
+	const hash = debug ? '' : '.[hash]';
 	console.log('Hash is', hash);
 
 

@@ -23,11 +23,11 @@
         <script>/* global Typekit */ try{Typekit.load();}catch(e){}</script>
 
         
-            <link rel="stylesheet" type="text/css" href="/dist/css/main.08006e927904ec4a31e6.css">
+            <link rel="stylesheet" type="text/css" href="/dist/css/main.f167fe0c2e8ca49d11e3.css">
                         
 
         
-            <script async src="/dist/js/main.08006e927904ec4a31e6.js"></script>
+            <script async src="/dist/js/main.f167fe0c2e8ca49d11e3.js"></script>
         
     </head>
 
@@ -129,25 +129,39 @@
                 <p>According to the percentage of non-susceptible samples, the colour of the circle changes gradually from green (0 % non-susceptible) to red (100% non-susceptible):</p>
                 <img class="image--fullwidth" src="dist/img/step2.svg" alt="Step 2" />
                 
-                <p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding non-susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while the number in the middle of the circle represents the percentage of non-susceptible samples:</p>
+                <p>When a non-susceptibility circle is hovered by a cursor (“mouse-over”) or tabbed on a touch screen, the data’s details (non-susceptibility, sample size and 95% confidence interval) are displayed:</p>
                 <img class="image--fullwidth" src="dist/img/step3.svg" alt="Step 3" />
+
+                <p class=overlay__paragraph--footnote><strong>95% confidence interval</strong> of the percentage of non-susceptibles: Agresti - Coull confidence intervals with “add two successes and two failures” adjustment.</p>
+                <p class=overlay__paragraph--footnote><strong>Sample Size:</strong> number of all samples in the displayed microorganism-antimicrobial relationship (and in the respective population if filters have been set) on which the percentage and CI are based on.</p>
                 
                 <h3>Regions</h3>
                 <img class="image--fullwidth" src="dist/img/map.svg" alt="Map" />
-                <p>For further information, please consult <a href="http://anresis.ch/index.php/swissmap.html" target="_blank">the interacitve map of anresis</a></p>
+                <p>For further information, please consult <a href="http://anresis.ch/index.php/swissmap.html" target="_blank">the interacitve map of anresis</a>.</p>
+                
                 <h3>Data</h3>
-                <p>INFECT automatically imports an anonymised subset of 
-                    <i>Datenquelle bezeichnen (= Anresis)
-                    Kontakt zu Andreas Kronenberg für Anresis-Datenfragen
-                    erwähnen, dass die letzten 360 Tage verarbeitet werden
-                    nur relevante Resistenzen (nicht alle anresis-daten) werden dargestellt</i>
-                </p>
+                <p>INFECT automatically imports an anonymised subset of the latest 365 days of bacterial resistance data from anresis.ch, the Swiss Center for Antibiotic resistance, including all clinically important pathogens that are available in the database.</p>
+                <p>For any questions regarding anresis.ch data kindly contact:</p>
+
+                <div class="adresses">
+                    <address>
+                        Andreas Kronenberg, MD, PD<br/>
+                        Anresis.ch Project Leader<br/>
+                        <a href="andreas.kronenberg@ifik.unibe.ch">andreas.kronenberg@ifik.unibe.ch</a><br/>
+
+                        Insitute for Infectious Diseases<br/>
+                        Friedbühlstrasse 51<br/>
+                        3010 Bern<br/>
+                        <a href="tel:+41316328657">031 632 86 57</a>
+                    </address>
+                </div>
 
                 
                 <h1>Source Code</h1>
                 <p>INFECT is an open source project developed under MIT license. You may view and clone the source code on <a href="https://github.com/infect-org" target="_blank">GitHub</a>.</p>
+
                 <h1>Team</h1>
-                <p>The INFECT team consists of highly motivated members (alphabetical order):</p>
+                <p>The INFECT team is organized as a non-profit <a href="https://www.admin.ch/opc/en/classified-compilation/19070042/index.html#id-ni2-ni6-ni8" target="_blank">association</a> and consists of highly motivated members (alphabetical order):</p>
                 <p>
                     <strong>Silvio D. Brugger</strong>, MD, PhD, staff physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich<br/>
                     <strong>Pascal M. Frey</strong>, MD, MSc, INFECT project leader, staff physician at the Department of General Internal Medicine, Inselspital Bern<br/>
@@ -161,40 +175,39 @@
                 <p>* <a href="http://www.joinbox.com/" target="_blank">Joinbox GmbH</a> is a web agency from Bern. They work not for but with our customers to build web applications that solve complex problems with simple user interfaces. Like this one.</p>
 
                 <h1>Contact</h1>
+                <p>Questions or feedback regarding the INFECT Project</p>
                 <div class="adresses">
                     <address>
-                        <strong>General Issues</strong><br/>
-                        Dr. med. Pascal Frey<br/>
-                        Klinik für Allgemeine Innere Medizin<br/>
-                        Inselspital<br/>
-                        3010 Bern<br/>
-                        <a href="tel:0316322111">031 632 21 11</a><br/>
-                        <a href="mailto:pascal.frey@insel.ch">pascal.frey@insel.ch</a>
+                        Pascal Frey, MD, MSc<br/>
+                        INFECT Project Leader<br/>
+
+                        <a href="mailto:pascal@infect.info">pascal@infect.info</a><br/>
+                        <a href="tel:+41316322111">031 632 21 11</a><br/>
+                        Department of General Internal Medicine<br/>
+                        Berne University Hospital<br/>
+                        3010 Bern
                     </address>
+                </div>
+
+                <p>INFECT is developed and maintained by Joinbox</p>
+                <div class="adresses">
                     <address>
-                        <strong>Data Issues and Medical Questions</strong><br/>
-                        Dr. med. Pascal Frey<br/>
-                        Klinik für Allgemeine Innere Medizin<br/>
-                        Inselspital<br/>
-                        3010 Bern<br/>
-                        <a href="tel:0316322111">031 632 21 11</a><br/>
-                        <a href="mailto:pascal.frey@insel.ch">pascal.frey@insel.ch</a>
-                    </address>
-                    <address>
-                        <strong>Technical Issues</strong><br/>
                         Joinbox GmbH<br/>
+                        <a href="mailto:infect@joinbox.ch">infect@joinbox.ch</a><br/>
+                        <a href="tel:+41315281025">031 528 10 25</a><br/>
+
                         Brückfeldstrasse 16<br/>
                         3012 Bern<br/>
-                        <a href="tel:0315281025">031 528 10 25</a><br/>
-                        <a href="mailto:infect@joinbox.ch">infect@joinbox.ch</a>
                     </address>
                 </div>
                 
                 <h1>Partners</h1>
-                <p><a href="www.anresis.ch" target="_blank">Swiss Centre for Antibiotic resistance (anresis)</a><br/>
-                    <a href="ifik.unibe.ch" target="_blank">Institut für Infektionskrankheiten, University of Bern</a><br/>
+                <p>
+                    <a href="http://www.anresis.ch" target="_blank">Swiss Centre for Antibiotic resistance (anresis)</a><br/>
+                    <a href="http://ifik.unibe.ch" target="_blank">Institute for Infectious Diseases, University of Bern</a><br/>
                     <a href="https://www.star.admin.ch/star/de/home/star/strategie-star.html" target="_blank">Swiss Antibiotic Resistance Strategy (StAR)</a><br/>
                     <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Federal Office of Public Health</a>
+                </p>
                 
                 <h1>Disclaimer</h1>
                 <p>INFECT maintains this website to enhance public access to information about antibiotic resistance, antibiotic consumption and its control. Our goal is to keep this information timely and accurate and to minimize disruption caused by technical errors. However, some data or information on our site may have been created or structured in files or formats that are not error-free and we cannot guarantee that our service will not be interrupted or otherwise affected by such problems. If errors are brought to our attention, we will try to correct them as soon as possible.</p>

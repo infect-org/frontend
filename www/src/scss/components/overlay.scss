@@ -31,6 +31,12 @@
 		margin-top: 1.3em;
 	}
 
+	&__paragraph {
+		&--footnote {
+			font-size: 0.8em;
+		}
+	}
+
 	.adresses {
 		@include flexbox();
 		@include flex-direction(row);
@@ -39,7 +45,7 @@
 
 		address {
 			@include flex-basis(40%);
-			margin-bottom: 10%;
+			margin-bottom: 5%;
 		}
 	}
 
