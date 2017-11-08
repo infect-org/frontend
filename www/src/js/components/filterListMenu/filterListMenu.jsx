@@ -76,12 +76,13 @@ export default class FilterListMenu extends React.Component {
 				, behavior: 'smooth'
 			});
 		} catch(err) {
-			this._scrollElement.scroll(0, top);
+			// IE11 & friends
+			this._scrollElement.scrollTop = top;
 		}
 	}
 
 	_getNiceName(name) {
-		return name.replace(/^\[a-z]/, (result) => result.toUpperCase()).replace(/[A-Z]/g, (result) => ' ' + result.toLowerCase())
+		return name.replace(/^\[a-z]/, (result) => result.toUpperCase()).replace(/[A-Z]/g, (result) => ' ' + result.toLowerCase());
 	}
 
 
