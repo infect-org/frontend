@@ -188,7 +188,9 @@ address {
   .main__matrix {
     width: calc(100vw - 210px);
     height: 100%;
-    overflow: auto; }
+    overflow: auto;
+    margin-top: 20px;
+    padding-left: 20px; }
 
 .gray {
   color: #a3a3a3 !important; }
@@ -1088,4 +1090,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.bb83f4d8aaabdcc14673.css.map*/
+/*# sourceMappingURL=main.218844ae2e7907749f0b.css.map*/

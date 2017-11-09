@@ -31,5 +31,7 @@
 		width: calc(100vw - #{$navigation-width});
 		height: 100%;
 		overflow: auto;
+		margin-top: 20px;
+		padding-left: 20px;
 	}
 }
