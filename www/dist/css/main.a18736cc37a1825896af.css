@@ -1004,11 +1004,11 @@ matrixheader {
   background-color: #ffecec;
   color: #d60000;
   padding: 10px 50px; }
+  .disclaimer__text {
+    margin-right: 50px; }
   .disclaimer__button-container {
     display: inline-block;
-    margin-left: 10px; }
-    .disclaimer__button-container--close {
-      margin-left: 100px; }
+    margin-right: 10px; }
   .disclaimer__button {
     color: black !important;
     cursor: pointer; }
@@ -1096,4 +1096,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.3641d9b6b0d623efabe7.css.map*/
+/*# sourceMappingURL=main.a18736cc37a1825896af.css.map*/

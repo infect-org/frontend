@@ -37,9 +37,7 @@ export default class Disclaimer extends React.Component {
 				<div className="main__disclaimer disclaimer">
 					
 						<p>
-							INFECT is in a beta stage. It may contain bugs – if you find any, please contact <a href="mailto:felix@joinbox.com">felix@joinbox.com</a>. 
-							The data displayed has not yet been validated. 
-							Please direct any content related questions to <a href="mailto:pascal@infect.info">pascal@infect.info</a>. 
+							<span className="disclaimer__text">INFECT is in a beta stage. It may contain bugs and does contain unvalidated data. If you have any questions or discover any issues, please contact <a href="mailto:info@infect.info">info@infect.info</a>.</span>
 							<span className="disclaimer__button-container disclaimer__button-container--close">
 								<a className="disclaimer__button" onClick={ () => this.close() }>Close</a>
 							</span>

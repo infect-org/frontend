@@ -4,14 +4,13 @@
 	color: #d60000;
 	padding: 10px 50px;
 
+	&__text {
+		margin-right: 50px;
+	}
+
 	&__button-container {
 		display: inline-block;
-		margin-left: 10px;
-
-		&--close {
-			margin-left: 100px;
-		}
-
+		margin-right: 10px;
 	}
 
 	&__button {

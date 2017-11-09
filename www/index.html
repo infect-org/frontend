@@ -2,13 +2,7 @@
     <head>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108372802-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-108372802-1');
-        </script>
+        
 
         <meta charset="utf-8" />
         <title>Infect</title>
@@ -23,11 +17,11 @@
         <script>/* global Typekit */ try{Typekit.load();}catch(e){}</script>
 
         
-            <link rel="stylesheet" type="text/css" href="/dist/css/main.3641d9b6b0d623efabe7.css">
+            <link rel="stylesheet" type="text/css" href="/dist/css/main.a18736cc37a1825896af.css">
                         
 
         
-            <script async src="/dist/js/main.3641d9b6b0d623efabe7.js"></script>
+            <script async src="/dist/js/main.a18736cc37a1825896af.js"></script>
         
     </head>
 
@@ -119,11 +113,11 @@
         <div class="overlay">
             <div class="overlay__container">
                 <h1>Introduction</h1>
-                <p>Supported by the Federal Office of Public Health and the Institute for Infectious Diseases Bern, the project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed. It is aimed at providing a fast and intuitive access to the latest antimicrobial resistance data to assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region.</p>
-                <p>An empirical antibiotic therapy (EAT) is an important clinical concept and a standard procedure for the treatment of many different types of infections in clinical medicine. Its need is based on the lack of knowledge of the causative agent at an early stage of the disease - usually when the patient presents to health professionals. EAT is based on epidemiological data on most frequently isolated pathogens and their antibiotic resistance pattern for certain diseases (e.g., S. pneumoniae, H. influenzae, and M.catarrhalis for otitis media [middle ear infection]). The adequacy of empirical antibiotics is an important determinant of patient outcomes and may play a role in the emergence of bacterial antibiotic resistance. While in Switzerland, the collection of antimicrobial resistance data has been coordinated through anresis.ch for over a decade - with the data being analysed and used to support antimicrobial treatment guidelines - an accessible and easy-to-use platform to visualise this data has yet been lacking.</p>
+                <p>Supported by the <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Federal Office of Public Health</a> and the <a href="http://ifik.unibe.ch" target="_blank">Institute for Infectious Diseases Bern</a>, the project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed. It is aimed at providing a fast and intuitive access to the latest antimicrobial resistance data to assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region.</p>
+                <p>An empirical antibiotic therapy (EAT) is an important clinical concept and a standard procedure for the treatment of many different types of infections in clinical medicine. Its need is based on the lack of knowledge of the causative agent at an early stage of the disease - usually when the patient presents to health professionals. EAT is based on epidemiological data on most frequently isolated pathogens and their antibiotic resistance pattern for certain diseases (e.g., <i>S. pneumoniae</i>, <i>H. influenzae</i>, and <i>M.catarrhalis</i> for otitis media [middle ear infection]). The adequacy of empirical antibiotics is an important determinant of patient outcomes and may play a role in the emergence of bacterial antibiotic resistance. While in Switzerland, the collection of antimicrobial resistance data has been coordinated through anresis.ch for over a decade - with the data being analysed and used to support antimicrobial treatment guidelines - an accessible and easy-to-use platform to visualise this data has yet been lacking.</p>
                 
                 <h1>Using INFECT</h1>
-                <p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding non-susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while the number in the middle of the circle represents the percentage of non-susceptible samples:</p>
+                <p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding non-susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while semi-transparent circles represent low sample sizes (N <= 20). The number in the middle of the circle represents the percentage of non-susceptible samples:</p>
                 <img class="image--fullwidth" src="dist/img/step1.svg" alt="Step 1" />
                 
                 <p>According to the percentage of non-susceptible samples, the colour of the circle changes gradually from green (0 % non-susceptible) to red (100% non-susceptible):</p>
@@ -133,29 +127,15 @@
                 <img class="image--fullwidth" src="dist/img/step3.svg" alt="Step 3" />
 
                 <p class=overlay__paragraph--footnote><strong>95% confidence interval</strong> of the percentage of non-susceptibles: Agresti - Coull confidence intervals with “add two successes and two failures” adjustment.</p>
-                <p class=overlay__paragraph--footnote><strong>Sample Size:</strong> number of all samples in the displayed microorganism-antimicrobial relationship (and in the respective population if filters have been set) on which the percentage and CI are based on.</p>
+                <p class=overlay__paragraph--footnote><strong>Sample Size:</strong> number of isolates for which resistance data to the given antibiotic are available in the database (and in the respective population if filters have been set). CI is based on this number.</p>
                 
                 <h3>Regions</h3>
                 <img class="image--fullwidth" src="dist/img/map.svg" alt="Map" />
-                <p>For further information, please consult <a href="http://anresis.ch/index.php/swissmap.html" target="_blank">the interacitve map of anresis</a>.</p>
+                <p>For further information, please consult <a href="http://www.anresis.ch/index.php/definition-der-auswahlkriterien.html#Regions" target="_blank">the interacitve map of anresis</a>.</p>
                 
                 <h3>Data</h3>
-                <p>INFECT automatically imports an anonymised subset of the latest 365 days of bacterial resistance data from anresis.ch, the Swiss Center for Antibiotic resistance, including all clinically important pathogens that are available in the database.</p>
-                <p>For any questions regarding anresis.ch data kindly contact:</p>
-
-                <div class="adresses">
-                    <address>
-                        Andreas Kronenberg, MD, PD<br/>
-                        Anresis.ch Project Leader<br/>
-                        <a href="andreas.kronenberg@ifik.unibe.ch">andreas.kronenberg@ifik.unibe.ch</a><br/>
-
-                        Insitute for Infectious Diseases<br/>
-                        Friedbühlstrasse 51<br/>
-                        3010 Bern<br/>
-                        <a href="tel:+41316328657">031 632 86 57</a>
-                    </address>
-                </div>
-
+                <p>INFECT imports an anonymised subset of the latest 365 days of bacterial resistance data from <a href="http://www.anresis.ch" target="_blank">the Swiss Center for Antibiotic resistance</a>, including all clinically important pathogens. The import is run monthly.</p>
+                <p>For any questions regarding anresis.ch data kindly contact <a href="mailto:anresis@ifik.unibe.ch">anresis@ifik.unibe.ch</a></p>
                 
                 <h1>Source Code</h1>
                 <p>INFECT is an open source project developed under MIT license. You may view and clone the source code on <a href="https://github.com/infect-org" target="_blank">GitHub</a>.</p>
@@ -180,12 +160,9 @@
                     <address>
                         Pascal Frey, MD, MSc<br/>
                         INFECT Project Leader<br/>
-
-                        <a href="mailto:pascal@infect.info">pascal@infect.info</a><br/>
-                        <a href="tel:+41316322111">031 632 21 11</a><br/>
+                        <a href="mailto:info@infect.info">info@infect.info</a><br/>
                         Department of General Internal Medicine<br/>
-                        Berne University Hospital<br/>
-                        3010 Bern
+                        Berne University Hospital, 3010 Bern<br/>
                     </address>
                 </div>
 
@@ -193,10 +170,7 @@
                 <div class="adresses">
                     <address>
                         Joinbox GmbH<br/>
-                        <a href="mailto:infect@joinbox.ch">infect@joinbox.ch</a><br/>
-                        <a href="tel:+41315281025">031 528 10 25</a><br/>
-
-                        Brückfeldstrasse 16<br/>
+                        <a href="mailto:infect@joinbox.ch">hello@joinbox.ch</a><br/>
                         3012 Bern<br/>
                     </address>
                 </div>
@@ -205,8 +179,7 @@
                 <p>
                     <a href="http://www.anresis.ch" target="_blank">Swiss Centre for Antibiotic resistance (anresis)</a><br/>
                     <a href="http://ifik.unibe.ch" target="_blank">Institute for Infectious Diseases, University of Bern</a><br/>
-                    <a href="https://www.star.admin.ch/star/de/home/star/strategie-star.html" target="_blank">Swiss Antibiotic Resistance Strategy (StAR)</a><br/>
-                    <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Federal Office of Public Health</a>
+                    <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Swiss Federal Office of Public Health</a>
                 </p>
                 
                 <h1>Disclaimer</h1>
