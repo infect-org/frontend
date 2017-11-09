@@ -778,6 +778,7 @@ matrixheader {
     width: 100%;
     height: 100%;
     top: 70px;
+    left: 210px;
     background-color: #616161;
     transition: opacity 100ms linear;
     -webkit-transition: opacity 100ms linear;
@@ -1090,4 +1091,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.218844ae2e7907749f0b.css.map*/
+/*# sourceMappingURL=main.d4bf6e8a7eee21dc7aae.css.map*/

@@ -49,6 +49,7 @@ matrixheader {
         width: 100%;
         height: 100%;
         top: $navigation-height;
+        left: $navigation-width;
         background-color: #616161;
         @include transition(opacity, $transition-duration);
         opacity: 0;
