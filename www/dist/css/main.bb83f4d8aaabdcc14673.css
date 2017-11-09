@@ -168,11 +168,8 @@ address {
     width: 210px;
     min-width: 210px; }
   .container__main {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -moz-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1; }
+    height: 100vh;
+    width: calc(100vw - 210px); }
 
 .main {
   display: -webkit-box;
@@ -187,15 +184,10 @@ address {
   -ms-flex-direction: column;
   flex-direction: column; }
   .main__header {
-    -webkit-box-flex: 0;
-    -webkit-flex-grow: 0;
-    -moz-flex-grow: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-    min-height: 70px; }
+    border-bottom: solid 1px #d3d2cd; }
   .main__matrix {
     width: calc(100vw - 210px);
-    height: calc(100vh - 70px);
+    height: 100%;
     overflow: auto; }
 
 .gray {
@@ -210,8 +202,7 @@ address {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  min-height: 70px;
-  border-bottom: solid 1px #d3d2cd; }
+  min-height: 70px; }
   .top-navigation__active-filters,
   .top-navigation selectedfiltersList {
     -webkit-box-flex: 1;
@@ -1001,6 +992,7 @@ matrixheader {
 
 .disclaimer {
   position: relative;
+  box-sizing: border-box;
   background-color: #ffecec;
   color: #d60000;
   padding: 10px 50px; }
@@ -1096,4 +1088,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.a18736cc37a1825896af.css.map*/
+/*# sourceMappingURL=main.bb83f4d8aaabdcc14673.css.map*/

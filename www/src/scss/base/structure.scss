@@ -9,7 +9,8 @@
 	}
 
 	&__main {
-		@include flex-grow(1);
+		height: 100vh;
+		width: calc(100vw - #{$navigation-width});
 	}
 }
 
@@ -19,8 +20,7 @@
 	@include flex-direction(column);
 
 	&__header {
-		@include flex-grow(0);
-		min-height: $navigation-height;
+		border-bottom: solid 1px #d3d2cd;
 	}
 
 	&__disclaimer {
@@ -29,7 +29,7 @@
 
 	&__matrix {
 		width: calc(100vw - #{$navigation-width});
-		height: calc(100vh - #{$navigation-height});
+		height: 100%;
 		overflow: auto;
 	}
 }
