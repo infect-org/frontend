@@ -4,7 +4,7 @@ import Resistance from '../matrixResistance/resistance';
 import ResistanceDetail from '../matrixResistance/resistanceDetail';
 import SubstanceClassLine from '../matrixSubstanceClass/substanceClassLine';
 import { observer } from 'mobx-react';
-import { observable, computed, action } from 'mobx';
+import { observable, computed } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:MatrixComponent');
 //import DevTools from 'mobx-react-devtools';

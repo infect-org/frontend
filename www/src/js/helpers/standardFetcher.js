@@ -1,5 +1,5 @@
 import { fetchApi } from './api';
-import { computed, observe, reaction } from 'mobx';
+import { observe } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:StandardFetcher');
 
@@ -37,7 +37,9 @@ export default class StandardFetcher {
 		let result;
 		try {
 			// Add timestamp to prevent caching as file names don't change
-			result = await fetchApi(`${ this._url }?ts=${ new Date().getTime() }`);
+			result = await fetchApi(`${ this._url }?cache-bust=${ new Date().getTime() }`, {
+				cache: 'no-store'
+			});
 			// Invalid HTTP Status
 			if (result.status !== 200) {
 				const err = new Error(`StandardFetcher: Status ${ result.status } is invalid.`);

@@ -1,4 +1,4 @@
-import { observable, action, computed, runInAction } from 'mobx';
+import { observable, action, computed, runInAction } from 'mobx';
 
 /**
 * Simple store for antibiotics, bacteria etc.
@@ -7,7 +7,7 @@ export default class Store {
 
 	// Use object so that we can add properties, e.g. an errorReason
 	@observable _status = {
-		// Default must be ready – as there is no fetchPromise that could resolve a loading status
+		// Default must be ready – as there is no fetchPromise that could resolve a loading status
 		identifier: 'initialized'
 	};
 
@@ -38,11 +38,11 @@ export default class Store {
 	/**
 	* Needed for resistances that need to be cleared when new data is loaded.
 	*/
-	clear() {
+	@action clear() {
 		this._items.clear();
 	}
 
-	add(item, overwrite) {
+	@action add(item, overwrite) {
 		const id = this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
 		if (!id) throw new Error(`Store: Field id is missing on item ${ JSON.stringify(item) }.`);
 		if (!overwrite && this._items.has(id)) throw new Error(`Store: Tried to overwrite item with id ${ id } without using the appropriate overwrite argument.`);

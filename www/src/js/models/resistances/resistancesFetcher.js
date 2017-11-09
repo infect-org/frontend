@@ -1,7 +1,6 @@
-import { fetchApi } from '../../helpers/api';
 import Fetcher from '../../helpers/standardFetcher';
 import Resistance from './resistance';
-import { computed, reaction } from 'mobx';
+import { reaction } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:ResistancesFetcher');
 
@@ -25,7 +24,7 @@ export default class ResistancesFetcher extends Fetcher {
 		// Only update data if region changed
 		this._previousRegions = [];
 
-		// Watch regions – when they change, update data
+		// Watch regions – when they change, update data
 		reaction(() => this._selectedFilters.getFiltersByType('region'), () => {
 			const regions = this._selectedFilters.getFiltersByType('region');
 			// No change since last update
@@ -43,11 +42,14 @@ export default class ResistancesFetcher extends Fetcher {
 		});
 	}
 
+
 	/**
 	* Sets up ResistancesStore with data fetched from server.
 	* @param {Array} data		Data as gotten from server
 	*/
 	_handleData(data) {
+
+		log('handle data %o', data);
 
 		this._store.clear();
 
