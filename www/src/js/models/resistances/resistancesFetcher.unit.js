@@ -5,7 +5,7 @@ import Store from '../../helpers/store';
 import Bacterium from '../bacteria/bacterium';
 import { observable } from 'mobx';
 
-function setupFetcher(url = '/test') {
+function setupFetcher() {
 	const antibiotics = {
 		get: function() {
 			return { 
@@ -42,7 +42,7 @@ test('handles resistance data correctly', (t) => {
 		"confidenceIntervalLowerBound": 75,
 		"confidenceIntervalHigherBound": 100
     }] });
-	const { antibiotics, bacteria } = setupFetcher();
+	const { antibiotics, bacteria } = setupFetcher();
 	const store = new Store([], () => 2);
 	const stores = {
 		antibiotics
@@ -68,22 +68,22 @@ test('handles resistance data correctly', (t) => {
 test('handles updates', (t) => {
 	fetchMock
 		.mock('/test.json', { status: 200, body: [{
-	        "bacteriaName":"acinetobacter sp. / acinetobacter",
-	        "compoundName":"amoxicillin",
-	        "sampleCount":100,
-	        "resistanceImport":100,
+			"bacteriaName":"acinetobacter sp. / acinetobacter",
+			"compoundName":"amoxicillin",
+			"sampleCount":100,
+			"resistanceImport":100,
 			"confidenceIntervalLowerBound": 75,
 			"confidenceIntervalHigherBound": 100
-	    }] })
+		}] })
 		.mock('/test_west.json', { status: 200, body: [{
-	        "bacteriaName":"acinetobacter sp. / acinetobacter",
-	        "compoundName":"amoxicillin",
-	        "sampleCount":50,
-	        "resistanceImport":90,
+			"bacteriaName":"acinetobacter sp. / acinetobacter",
+			"compoundName":"amoxicillin",
+			"sampleCount":50,
+			"resistanceImport":90,
 			"confidenceIntervalLowerBound": 75,
 			"confidenceIntervalHigherBound": 100
-	    }] });
-	const { antibiotics, bacteria } = setupFetcher();
+		}] });
+	const { antibiotics, bacteria } = setupFetcher();
 	const store = new Store([], () => 2);
 	const stores = {
 		antibiotics
@@ -91,11 +91,13 @@ test('handles updates', (t) => {
 	};
 	class SelectedFilters {
 		@observable selectedFilters = [];
+		@observable filterChanges = 0;
 		getFiltersByType(type) {
 			return this.selectedFilters.filter((item) => item.type === type);
 		}
 		addFilter(filter) {
 			this.selectedFilters.push(filter);
+			this.filterChanges++;
 		}
 	}
 	const selectedFilters = new SelectedFilters();
@@ -107,8 +109,11 @@ test('handles updates', (t) => {
 		// Non-region filters don't change anything
 		selectedFilters.addFilter({ type: 'unknown', value: 'bad' });
 		t.equals(result.values[0].sampleSize, 100);
+		// Does not fire when values are changed within a very short time (debounces)
+		//selectedFilters.addFilter({ type: 'region', value: 'invalid'});
 		selectedFilters.addFilter({ type: 'region', value: 'west'});
 		t.equals(store.status.identifier, 'loading');
+		// We have a debounce on resistanceFetcher
 		setTimeout(() => {
 			t.equals(store.getById(2).values[0].sampleSize, 50);
 			t.equals(store.getById(2).values[0].value, .9);

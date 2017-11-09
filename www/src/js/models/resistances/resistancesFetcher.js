@@ -24,15 +24,20 @@ export default class ResistancesFetcher extends Fetcher {
 		// Only update data if region changed
 		this._previousRegions = [];
 
-		// Watch regions – when they change, update data
-		reaction(() => this._selectedFilters.getFiltersByType('region'), () => {
+		// Watch regions – when they change, update data. Don't use getFiltersByType
+		// as it delays responses (and leads to race conditions).
+		reaction(() => this._selectedFilters.filterChanges, () => {
 			const regions = this._selectedFilters.getFiltersByType('region');
+			log('Regions changed from %o to %o', this._previousRegions, regions);
 			// No change since last update
 			if (
 				regions.length === this._previousRegions.length 
 				// There's only 1 region that can be set. Check if names match, order is not important
-				&& regions.every((region, index) => this._previousRegions[index].name === region.name)
-			) return;
+				&& regions.every((region, index) => this._previousRegions[index].value === region.value)
+			) {
+				log('Regions did not change, return');
+				return;
+			}
 			// Get URL
 			if (!regions.length) this._url = `${ this._baseUrl }.json`;
 			else this._url = `${ this._baseUrl }_${ regions[0].value }.json`;
@@ -49,7 +54,7 @@ export default class ResistancesFetcher extends Fetcher {
 	*/
 	_handleData(data) {
 
-		log('handle data %o', data);
+		log('Handle data %o', data);
 
 		this._store.clear();
 

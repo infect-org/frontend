@@ -37,10 +37,11 @@ export default class StandardFetcher {
 		let result;
 		try {
 			// Add timestamp to prevent caching as file names don't change
-			result = await fetchApi(`${ this._url }?cache-bust=${ new Date().getTime() }`, {
+			result = await fetchApi(this._url, {
 				cache: 'no-store'
 			});
 			// Invalid HTTP Status
+			log('Got back data %o', result);
 			if (result.status !== 200) {
 				const err = new Error(`StandardFetcher: Status ${ result.status } is invalid.`);
 				rejector(err);

@@ -1,4 +1,4 @@
-import { observable, action, computed, createTransformer } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import deepEqual from 'deep-equal';
 import debug from 'debug';
 const log = debug('infect:SelectedFilters');
@@ -19,6 +19,8 @@ export default class SelectedFilters {
 	* Note amount of times the filters changed. Why? Because we want to start the animations
 	* only when filters change (and not while the matrix is setting up). The components will
 	* therefore watch this property and only transition when it's > 0.
+	* Also used to allow reactions that react to filter changes as _selectedFilters is only
+	* shallowly observed and doesn't fire reactions on change. See ResistancesFetcher.
 	*/
 	@observable filterChanges = 0;
 
