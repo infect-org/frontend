@@ -51,7 +51,7 @@ class ResistanceDetail extends React.Component {
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="alphabetical"  textAnchor="middle"
 					dy={ supportsDominantBaseline('-0.4em', '-0.4em')} dx="2"
 					className="resistanceMatrix__resistanceDetailValueText">
-					{Math.round(this.props.resistance.mostPreciseValue.value * 100)}
+					{Math.round((1 - this.props.resistance.mostPreciseValue.value) * 100)}
 					<tspan className="resistanceMatrix__resistanceDetailValuePercentSign">%</tspan>
 				</text>
 

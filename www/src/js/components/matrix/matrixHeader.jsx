@@ -45,7 +45,7 @@ export default class MatrixHeader extends React.Component {
 		return (
 			<svg className={ 'resistanceMatrix__header ' + (this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions') }
 				style={ { height: this.props.matrix.headerHeight, transform: this.headerScrollTransformation, 
-				visibility: (this.props.matrix.defaultRadius === undefined ? 'hidden' : 'visible') } }
+				visibility: (this.props.matrix.defaultRadius === undefined ? 'hidden' : 'visible') } }
 				width="100%">
 				{ /* Use width=100% attribute to prevent tiny matrix if css is rendered after JS is executed.
 				     Will be overwritten by CSS */ }
@@ -74,7 +74,7 @@ export default class MatrixHeader extends React.Component {
 									{this.sortedSubstanceClasses.map((sc) => 
 										<SubstanceClass key={ sc.substanceClass.id } substanceClass={ sc } matrix={ this.props.matrix }
 											className="resistanceMatrix__substanceClassLabel"
-											filters={ this.props.filters } selectedFilters={ this.props.selectedFilters }/>
+											filters={ this.props.filters } selectedFilters={ this.props.selectedFilters }/>
 									)}
 								</g>
 

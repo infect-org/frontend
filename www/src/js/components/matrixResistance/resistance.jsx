@@ -76,11 +76,11 @@ class Resistance extends React.Component {
 	}
 
 
-	_handleMouseEnter = (ev) => {
+	_handleMouseEnter = () => {
 		this.props.matrix.setActiveResistance(this.props.resistance);
 	}
 
-	_handleMouseLeave = (ev) => {
+	_handleMouseLeave = () => {
 		this.props.matrix.setActiveResistance(undefined);
 	}
 
@@ -105,7 +105,7 @@ class Resistance extends React.Component {
 					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
 						dominantBaseline="central" className="resistanceMatrix__resistanceText"
 						dy={ supportsDominantBaseline('-2', '0.5em') }>
-						{ Math.round(this.value * 100) }
+						{ Math.round((1 - this.value) * 100) }
 					</text>
 				</g>
 			</g>
