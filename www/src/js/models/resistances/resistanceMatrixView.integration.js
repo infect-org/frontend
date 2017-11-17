@@ -43,8 +43,11 @@ test('calculates radius', (t) => {
 	const resistanceMatrixView1 = setupData(100, undefined, matrix).resistanceMatrixView;
 	const resistanceMatrixView2 = setupData(500, undefined, matrix).resistanceMatrixView;
 	const resistanceMatrixView3 = setupData(1000, undefined, matrix).resistanceMatrixView;
+	const resistanceMatrixView4 = setupData(5000, undefined, matrix).resistanceMatrixView;
 	t.equals(resistanceMatrixView1.radius, 10);
-	t.equals(resistanceMatrixView2.radius, 14);
+	t.equals(resistanceMatrixView2.radius, 17);
 	t.equals(resistanceMatrixView3.radius, 20);
+	// Sample sizes larger than 1000 are ignored (radius = 1000-sample-size)
+	t.equals(resistanceMatrixView4.radius, 20);
 	t.end();
 });
