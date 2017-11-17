@@ -30,8 +30,8 @@ test('calculates colors', (t) => {
 	const resistanceMatrixView2 = setupData(1000, 0.5).resistanceMatrixView;
 	t.deepEquals(resistanceMatrixView1.backgroundColor.toRgb(), { r: 237, g: 224, b: 222, a: 1 });
 	t.deepEquals(resistanceMatrixView1.fontColor.toRgb(), { r: 153, g: 66, b: 51, a: 1 });
-	t.deepEquals(resistanceMatrixView2.backgroundColor.toRgb(), { r: 224, g: 211, b: 108, a: 1 });
-	t.deepEquals(resistanceMatrixView2.fontColor.toRgb(), { r: 71, g: 64, b: 6, a: 1 });
+	t.deepEquals(resistanceMatrixView2.backgroundColor.toRgb(), { r: 224, g: 170, b: 108, a: 1 });
+	t.deepEquals(resistanceMatrixView2.fontColor.toRgb(), { r: 71, g: 40, b: 6, a: 1 });
 	t.end();
 });
 

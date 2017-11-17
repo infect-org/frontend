@@ -47,7 +47,11 @@ export default class ResistanceMatrixView {
 
 	@computed get backgroundColor() {
 		const bestValue = this.mostPreciseValue.value;
-		const hue = this._getRelativeColorValue(1 - bestValue, 9, 98) / 360;
+		// Use log scale (values < 70% don't really matter) – differentiate well between
+		// 70 and 100
+		// Use number between 1 and 9 for log – returns number between 0 and 1
+		const logValue = Math.log10(bestValue * 9 + 1);
+		const hue = this._getRelativeColorValue(1 - logValue, 9, 98) / 360;
 		const saturation = this._getRelativeColorValue(1 - bestValue, 0.3, 1);
 		const lightness = this._getRelativeColorValue(bestValue, 0.4, 0.9);
 		return color.fromRatio({
