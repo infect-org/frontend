@@ -41,6 +41,7 @@ export default class ResistanceMatrixView {
 		const logSampleSize = Math.log10(sampleSizeBetween1And10) * (max - min) + min;
 		const radius = Math.round(getRelativeValue(logSampleSize, min, max, 0.5) * 
 			this._matrixView.defaultRadius);
+		log('Radius for resistance %o is %d', this, radius);
 		return radius;
 	}
 
@@ -76,6 +77,13 @@ export default class ResistanceMatrixView {
 	@computed get yPosition() {
 		const bactView = this._matrixView.getBacteriumView(this.resistance.bacterium);
 		return this._matrixView.yPositions.get(bactView);
+	}
+
+	@computed get matchesOffsets() {
+		const offsets = this._matrixView.getOffsetFilters().filters;
+		const resistance = this.mostPreciseValue;
+		return resistance.sampleSize >= offsets.get('sampleSize').min &&
+			resistance.value <= (1 - offsets.get('susceptibility').min);
 	}
 
 

@@ -51,7 +51,7 @@ function createValidSet() {
 	const bactStore = new Store();
 	bactStore.add(bact1);
 	bactStore.add(bact2);
-	const resStore = new Store([], (item) => Math.random());
+	const resStore = new Store([], () => Math.random());
 	resStore.add(res1);
 	resStore.add(res2);
 	resStore.add(res3);
@@ -312,7 +312,7 @@ test('substance class label height', (t) => {
 
 test('updates sample size extremes', (t) => {
 	const set = createValidSet();
-	const {matrix, bacteria, antibiotics, resistanceStore} = set;
+	const {matrix} = set;
 	set.matrix.setupDataWatchers(set.stores.antibiotics, set.stores.bacteria, set.stores.resistances);
 	set.resolveAllPromises();
 	setTimeout(() => {

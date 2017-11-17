@@ -13,9 +13,10 @@ import ResistancesFetcher from './models/resistances/resistancesFetcher';
 import MatrixView from './models/matrix/matrixView';
 import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
+import OffsetFilters from './models/filters/offsetFilters';
 import SelectedFilters from './models/filters/selectedFilters';
 import MostUsedFilters from './models/filters/mostUsedFilters';
-import { action, when, observable } from 'mobx';
+import { when, observable } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:App');
 
@@ -46,12 +47,18 @@ export default class InfectApp {
 		
 		this.filterValues = new PropertyMap();
 		this._setupFilterValues();
+		// Filters for bacteria, antibiotics etc.
 		this.selectedFilters = new SelectedFilters();
+		// Filters for sampleSize and resistance, bound to a range input
+		this.offsetFilters = new OffsetFilters();
+		this._setupOffsetFilters();
+
 		this.mostUsedFilters = new MostUsedFilters(this.selectedFilters, this.filterValues);
 
 		this._setupFetchers();
 
 		this.views.matrix.setSelectedFilters(this.selectedFilters);
+		this.views.matrix.setOffsetFilters(this.offsetFilters);
 		this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
 
 		this._createRegions();
@@ -108,6 +115,13 @@ export default class InfectApp {
 
 		log('Fetchers setup done.');
 
+	}
+
+
+
+	_setupOffsetFilters() {
+		this.offsetFilters.setFilter('sampleSize', 'min', 20);
+		this.offsetFilters.setFilter('susceptibility', 'min', 0);
 	}
 
 

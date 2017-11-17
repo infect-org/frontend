@@ -10,10 +10,11 @@ export default function generateFilterList(Component) {
 		constructor() {
 			super();
 			this.translations = {
-				'bacteria': 'Filters for Bacteria'
-				, 'antibiotics': 'Filters for Antibiotics'
-				, 'population': 'Population Filters'
-				, 'mostUsed': 'Favorites' 
+				bacteria: 'Filters for Bacteria'
+				, antibiotics: 'Filters for Antibiotics'
+				, population: 'Population Filters'
+				, mostUsed: 'Favorites' 
+				, data: 'Data Filters'
 			};
 		}
 
@@ -28,4 +29,4 @@ export default function generateFilterList(Component) {
 
 	};
 
-};
+}

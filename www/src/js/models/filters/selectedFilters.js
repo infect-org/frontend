@@ -34,7 +34,7 @@ export default class SelectedFilters {
 		}
 
         // Special case: Don't allow multiselection of regions as long as we don't have
-        // RDA. TODO: Remove when RDA is ready.selectedFilters
+        // RDA. TODO: Remove when RDA is ready.
         // Test for filter.property as it's not part of the tests
         if (filter.property && filter.property.entityType === 'region') {
             if (this.getFiltersByType('region').length > 0) {

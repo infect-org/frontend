@@ -1,8 +1,8 @@
 import React from 'react';
 import resistanceTypes from '../../models/resistances/resistanceTypes';
 import debug from 'debug';
-import { observer } from 'mobx-react';
-import { computed, observable } from 'mobx';
+import { observer } from 'mobx-react';
+import { computed } from 'mobx';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier';
 
@@ -72,7 +72,7 @@ class Resistance extends React.Component {
 	* Bullets with sampleSize < 20 have opacity 0.5. See 
 	*/
 	@computed get opacity() {
-		return this.props.resistance.mostPreciseValue.sampleSize > 20 ? 1 : 0.5;
+		return this.props.resistance.matchesOffsets ? 1 : 0.2;
 	}
 
 

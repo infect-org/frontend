@@ -7,8 +7,8 @@ const log = debug('infect:FilterListMenuComponent');
 @observer
 export default class FilterListMenu extends React.Component {
 
-	@observable currentlyActiveSection = 'antibiotics';
-	@observable filterSections = ['mostUsed', 'antibiotics', 'bacteria', 'population'];
+	@observable filterSections = ['mostUsed', 'data', 'antibiotics', 'bacteria', 'population'];
+	@observable currentlyActiveSection = this.filterSections[1];
 
 	componentDidMount() {
 		this._scrollElement = document.querySelector('.side-navigation__filters');
@@ -100,15 +100,15 @@ export default class FilterListMenu extends React.Component {
 	render() {
 		return (
             <div className="group group--vertical group--left-aligned">
-            	{ this.visibleButtons.map((section) => {
-		            return <button key={ section }
-		            		title={ this._getNiceName(section) }
-		            		className={ 'button button--icon button--icon--' + section + ' ' + this._getActiveClass(section) }
-		            		onClick={ (ev) => this._buttonClickHandler(section) }>
-		            			<svg aria-hidden="true"><use xlinkHref={'#icon_' + section }/></svg>
-		            	</button>;
-            	})}
-	        </div>
+				{ this.visibleButtons.map((section) => {
+					return <button key={ section }
+							title={ this._getNiceName(section) }
+							className={ 'button button--icon button--icon--' + section + ' ' + this._getActiveClass(section) }
+							onClick={ () => this._buttonClickHandler(section) }>
+						<svg aria-hidden="true"><use xlinkHref={'#icon_' + section }/></svg>
+						</button>;
+				})}
+			</div>
 		);
 	}
 

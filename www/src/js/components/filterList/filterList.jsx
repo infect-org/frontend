@@ -3,6 +3,7 @@ import AntibioticsFilterList from './antibioticsFilterList';
 import BacteriaFilterList from './bacteriaFilterList';
 import PopulationFilterList from './populationFilterList';
 import MostUsedFiltersList from './mostUsedFiltersList';
+import DataFilterList from './dataFilterList';
 import { observer } from 'mobx-react';
 import { computed, reaction } from 'mobx';
 
@@ -31,6 +32,7 @@ class FilterList extends React.Component {
 								mostUsedFilters={ this.props.mostUsedFilters } selectedFilters={ this.props.selectedFilters } key="content" />,
 							<hr className="divider" key="divider" />]
 						}
+						<DataFilterList identifier="data" offsetFilters={ this.props.offsetFilters } />
 						<AntibioticsFilterList identifier="antibiotics" 
 							filterValues={ this.props.filterValues } selectedFilters={ this.props.selectedFilters } />
 						<hr className="divider" />

@@ -118,6 +118,13 @@ class MatrixView {
 
 
 
+	setOffsetFilters(offsetFilters) {
+		this._offsetFilters = offsetFilters;
+	}
+
+	getOffsetFilters() {
+		return this._offsetFilters;
+	}
 
 	setSelectedFilters(selectedFilters) {
 		this._selectedFilters = selectedFilters;

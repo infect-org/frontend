@@ -4,6 +4,7 @@ import Resistance from './resistance';
 import SubstanceClass from '../antibiotics/substanceClass';
 import Antibiotic from '../antibiotics/antibiotic';
 import Bacterium from '../bacteria/bacterium';
+import OffsetFilters from '../filters/offsetFilters';
 
 function setupData(sampleSize = 1000, value = 1, matrix = {}) {
 	const resistance = new Resistance(
@@ -24,6 +25,28 @@ test('returns most precise value', (t) => {
 	t.equals(resistanceMatrixView.mostPreciseValue.type.identifier, 'importResistance');
 	t.end(); 
 });
+
+
+test('respects offset filters', (t) => {
+	const matrix = {
+		offsetFilters: new OffsetFilters()
+		, getOffsetFilters: function() {
+			return this.offsetFilters;
+		}
+	};
+	matrix.offsetFilters.setFilter('sampleSize', 'min', 1000);
+	matrix.offsetFilters.setFilter('susceptibility', 'min', 0);
+
+	const { resistanceMatrixView } = setupData(1000, 0.8, matrix);
+	t.equals(resistanceMatrixView.matchesOffsets, true);
+	matrix.offsetFilters.setFilter('sampleSize', 'min', 1001);
+	t.equals(resistanceMatrixView.matchesOffsets, false);
+	matrix.offsetFilters.setFilter('sampleSize', 'min', 0);
+	matrix.offsetFilters.setFilter('susceptibility', 'min', 0.3);
+	t.equals(resistanceMatrixView.matchesOffsets, false);
+	t.end();
+});
+
 
 test('calculates colors', (t) => {
 	const resistanceMatrixView1 = setupData().resistanceMatrixView;

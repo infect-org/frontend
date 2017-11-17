@@ -43,9 +43,11 @@ app = new InfectApp(config);
 
 // React
 log('views:', app.views);
-ReactDOM.render(<Matrix matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('Matrix'));
+ReactDOM.render(<Matrix matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters } />, 
+	document.querySelector('Matrix'));
 ReactDOM.render(<MatrixHeader matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('MatrixHeader'));
-ReactDOM.render(<FilterList mostUsedFilters={ app.mostUsedFilters } filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterList'));
+ReactDOM.render(<FilterList mostUsedFilters={ app.mostUsedFilters } filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }
+	offsetFilters={ app.offsetFilters }/>, document.querySelector('FilterList'));
 ReactDOM.render(<SelectedFiltersList selectedFilters={ app.selectedFilters }/>, document.querySelector('SelectedFiltersList'));
 ReactDOM.render(<FilterListMenu mostUsedFilters={ app.mostUsedFilters }/>, document.querySelector('FilterListMenu'));
 ReactDOM.render(<FilterSearch filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterSearch'));
