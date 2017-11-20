@@ -30,7 +30,9 @@ class DataFilterList extends React.Component {
 	render() {
 		return (
 			<div id="data-filters">
-				<h3 className="gray margin-top">Sample Size</h3>
+				<h3 className="gray margin-top">Sample Size 
+					<span className="white"> N &ge; { (this.props.offsetFilters.filters.get('sampleSize').min).toFixed(0) }</span>
+				</h3>
 				<div className="slider">
 					<div className="slider__container">
 						<div className="slider__container__before">0</div>
@@ -38,10 +40,10 @@ class DataFilterList extends React.Component {
 							<input value={ this._relativeSampleSizeOffset } className="slider__range" 
 								type="range" onChange={ (ev) => this._updateSampleSizeOffsetFilter(ev.target.value) } />
 						</div>
-						<div className="slider__container__after">>1000</div>
+						<div className="slider__container__after">&ge;1000</div>
 					</div>
 				</div>
-				<h3 className="gray margin-top">Susceptibility</h3>
+				<h3 className="gray margin-top">Susceptibility <span className="white">&ge;{ this._relativeSusceptibilityOffset.toFixed(0) }%</span></h3>
 				<div className="slider">
 					<div className="slider__container">
 						<div className="slider__container__before">0%</div>

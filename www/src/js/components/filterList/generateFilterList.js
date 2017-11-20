@@ -14,7 +14,7 @@ export default function generateFilterList(Component) {
 				, antibiotics: 'Filters for Antibiotics'
 				, population: 'Population Filters'
 				, mostUsed: 'Favorites' 
-				, data: 'Data Filters'
+				, data: 'Offsets'
 			};
 		}
 
