@@ -59,8 +59,8 @@ class ResistanceDetail extends React.Component {
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="hanging"  textAnchor="middle" 
 					dy={ supportsDominantBaseline('-0.4em', '0.5em')}
 					className="resistanceMatrix__resistanceDetailSampleSizeText">
-					CI { Math.round(this.props.resistance.mostPreciseValue.confidenceInterval[0] * 100) }–
-					{ Math.round(this.props.resistance.mostPreciseValue.confidenceInterval[1] * 100) }%
+					CI { Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[1]) * 100) }–
+					{ Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[0]) * 100) }%
 				</text>
 
 				{ /* Sample Size */ }
