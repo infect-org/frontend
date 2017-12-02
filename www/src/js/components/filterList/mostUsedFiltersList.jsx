@@ -22,9 +22,12 @@ class MostUsedFiltersList extends React.Component {
 	}
 
 	componentDidMount() {
-		this._scrollPositionBeforeUpdate = this._scrollElement.scrollTop;
 		this._filterElement = document.querySelector('#js-filter-list-mostUsed');
-		this._updateScrollPosition();
+		setTimeout(() => {
+			log('componentDidMount');
+			//this._setScrollPositionBeforeChange();
+			this._updateScrollPosition();
+		});
 	}
 
 	componentWillUpdate() {
@@ -49,7 +52,7 @@ class MostUsedFiltersList extends React.Component {
 
 	/**
 	* Wow: 
-	* - In Chrome, the browser scrolls by the height difference that adding an element creates – but only
+	* - In Chrome, the browser scrolls by the height difference that adding an element creates – but only
 	*   if it is not the first addition. 
 	* - Safari never scrolls. 
 	* We therefore detect where the scroll position was, before the component changed; after it was changed,
@@ -58,6 +61,7 @@ class MostUsedFiltersList extends React.Component {
 	*/
 	_setScrollPositionBeforeChange() {
 		this._scrollPositionBeforeUpdate = this._scrollElement.scrollTop;
+		log('Set _scrollPositionBeforeUpdate to %d', this._scrollPositionBeforeUpdate);
 	}
 
 	/**
@@ -73,11 +77,13 @@ class MostUsedFiltersList extends React.Component {
 		// See https://github.com/infect-org/frontend/issues/51
 		height += 41;
 		const diff = height - this._previousHeight;
+		log('New height of mostUsed is %d, diff to previous height %d', height, diff);
 		const scrollTop = this._scrollElement.scrollTop;
 		const newScrollTop = diff + scrollTop;
-		// Only scroll if the browser didn't on its own (as Chrome does sometimes)
+		// Only scroll if the browser didn't on its own (as Chrome does – sometimes)
+		log('Current scrollTop is %d, new %d', scrollTop, this._scrollPositionBeforeUpdate);
 		if (scrollTop === this._scrollPositionBeforeUpdate) {
-			this._scrollElement.scrollTo(0, newScrollTop);
+			this._scrollElement.scrollTop = newScrollTop;
 		}
 		this._previousHeight = height;
 	}
@@ -88,7 +94,7 @@ class MostUsedFiltersList extends React.Component {
 				{ this.mostUsedFilters.map((used) => {
 					return <FilterListCheckbox key={ used.filter.value + used.filter.property.name } name={ used.filter.niceValue } 
 						value={ used.filter.niceValue } checked={ this.props.selectedFilters.isSelected(used.filter) }
-						onChangeHandler={ (ev) => this._handleFilterChange(used.filter) } />;
+						onChangeHandler={ () => this._handleFilterChange(used.filter) } />;
 				}) }
 			</ul>
 		);
