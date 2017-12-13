@@ -42,10 +42,11 @@ class Import {
                 bacteriaName: row[0],
                 compoundName: row[1],
                 sampleCount: parseInt(row[2], 10),
-                resistanceImport: parseInt(row[3], 10),
-                confidenceIntervalHigherBound: parseInt(row[5], 10),
-                confidenceIntervalLowerBound: parseInt(row[6], 10),
+                resistanceImport: parseInt(row[4], 10),
+                confidenceIntervalHigherBound: parseInt(row[6], 10),
+                confidenceIntervalLowerBound: parseInt(row[5], 10),
             }));
+
 
             await writeFile(outFile, JSON.stringify(output, null, 4));
         }
