@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const RemoveWebpackPlugin = require('remove-webpack-plugin');
@@ -51,6 +52,11 @@ module.exports = function(env) {
 	if (!debug) {
 		plugins.push(new UglifyJSPlugin({
 			sourceMap: true
+		}));
+		plugins.push(new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('production')
+			}
 		}));
 	}
 	plugins.push(new HtmlWebpackPlugin({
