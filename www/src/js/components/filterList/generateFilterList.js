@@ -12,9 +12,8 @@ export default function generateFilterList(Component) {
 			this.translations = {
 				bacteria: 'Filters for Bacteria'
 				, antibiotics: 'Filters for Antibiotics'
-				, population: 'Population Filters'
+				, population: 'Population and Offsets'
 				, mostUsed: 'Favorites' 
-				, data: 'Offsets'
 			};
 		}
 

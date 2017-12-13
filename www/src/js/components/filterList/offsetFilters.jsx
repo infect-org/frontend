@@ -3,10 +3,10 @@ import { observer } from 'mobx-react';
 import { computed } from 'mobx';
 import generateFilterList from './generateFilterList';
 import debug from 'debug';
-const log = debug('infect:DataFilterList');
+const log = debug('infect:OffsetFilters');
 
 @observer
-class DataFilterList extends React.Component {
+class OffsetFilters extends React.Component {
 
 
 	_updateSampleSizeOffsetFilter(value) {
@@ -29,7 +29,7 @@ class DataFilterList extends React.Component {
 
 	render() {
 		return (
-			<div id="data-filters">
+			<div>
 				<h3 className="gray margin-top">Sample Size 
 					<span className="white"> N &ge; { (this.props.offsetFilters.filters.get('sampleSize').min).toFixed(0) }</span>
 				</h3>
@@ -59,4 +59,4 @@ class DataFilterList extends React.Component {
 	}
 }
 
-export default generateFilterList(DataFilterList);
+export default OffsetFilters;

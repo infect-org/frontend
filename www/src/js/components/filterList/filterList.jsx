@@ -3,9 +3,8 @@ import AntibioticsFilterList from './antibioticsFilterList';
 import BacteriaFilterList from './bacteriaFilterList';
 import PopulationFilterList from './populationFilterList';
 import MostUsedFiltersList from './mostUsedFiltersList';
-import DataFilterList from './dataFilterList';
 import { observer } from 'mobx-react';
-import { computed, reaction } from 'mobx';
+import { computed } from 'mobx';
 
 @observer
 class FilterList extends React.Component {
@@ -14,12 +13,6 @@ class FilterList extends React.Component {
 		const filters = this.props.filterValues.getPropertiesForEntityType('bacterium');
 		return filters;
 	}
-
-	/*componentDidMount() {
-		reaction(() => this.props.filterValues._properties._values.length, (len) => {
-			console.error('l', len);
-		});
-	}*/
 
 	render() {
 		return (
@@ -32,7 +25,6 @@ class FilterList extends React.Component {
 								mostUsedFilters={ this.props.mostUsedFilters } selectedFilters={ this.props.selectedFilters } key="content" />,
 							<hr className="divider" key="divider" />]
 						}
-						<DataFilterList identifier="data" offsetFilters={ this.props.offsetFilters } />
 						<AntibioticsFilterList identifier="antibiotics" 
 							filterValues={ this.props.filterValues } selectedFilters={ this.props.selectedFilters } />
 						<hr className="divider" />
@@ -40,7 +32,8 @@ class FilterList extends React.Component {
 							filterValues={ this.props.filterValues } selectedFilters={ this.props.selectedFilters } />
 						<hr className="divider" />
 						<PopulationFilterList identifier="population" 
-							filterValues={ this.props.filterValues } selectedFilters={ this.props.selectedFilters } />
+							filterValues={ this.props.filterValues } selectedFilters={ this.props.selectedFilters } 
+							offsetFilters={ this.props.offsetFilters }/>
 					</div>
 				}
 			</div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { computed, transaction } from 'mobx';
+import OffsetFilters from './offsetFilters';
 import FilterListCheckbox from '../filterListCheckbox/filterListCheckbox';
 import generateFilterList from './generateFilterList';
 import debug from 'debug';
@@ -41,7 +42,7 @@ class PopulationFilterList extends React.Component {
 							onChangeHandler={() => this._handleFilterChange(item)} />;
 					})}
 				</ul>
-
+				<OffsetFilters identifier="data" offsetFilters={ this.props.offsetFilters } />
 			</div>
 		);
 	}

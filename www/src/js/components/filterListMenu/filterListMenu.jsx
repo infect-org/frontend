@@ -7,7 +7,7 @@ const log = debug('infect:FilterListMenuComponent');
 @observer
 export default class FilterListMenu extends React.Component {
 
-	@observable filterSections = ['mostUsed', 'data', 'antibiotics', 'bacteria', 'population'];
+	@observable filterSections = ['mostUsed', 'antibiotics', 'bacteria', 'population'];
 	@observable currentlyActiveSection = this.filterSections[1];
 
 	componentDidMount() {
