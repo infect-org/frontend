@@ -97,18 +97,18 @@
         "groupingLocales": [],
         "id": 8,
         "id_grouping": null,
-        "id_shape": 2,
+        "id_shape": 3,
         "id_species": 39,
         "localeNames": [],
         "name": "Acinetobacter sp.",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Rod",
+        "shape": "Coccobacillus",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Rod"
+                "name": "Coccobacillus"
             }
         ],
         "species": "Acinetobacter sp."
@@ -178,18 +178,18 @@
         "groupingLocales": [],
         "id": 13,
         "id_grouping": null,
-        "id_shape": 2,
+        "id_shape": 3,
         "id_species": 52,
         "localeNames": [],
         "name": "Haemophilus influenzae",
         "selectedLanguage": "de",
         "selectedLanguageId": 1,
-        "shape": "Rod",
+        "shape": "Coccobacillus",
         "shapeLocales": [
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Rod"
+                "name": "Coccobacillus"
             }
         ],
         "species": "Haemophilus influenzae"
