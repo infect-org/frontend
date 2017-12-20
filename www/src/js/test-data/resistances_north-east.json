@@ -2,10 +2,10 @@
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "amoxicillin",
-        "sampleCount": 15,
+        "sampleCount": 4,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 76
+        "confidenceIntervalLowerBound": 45
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
@@ -34,90 +34,58 @@
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "cefepime",
-        "sampleCount": 46,
-        "resistanceImport": 24,
-        "confidenceIntervalHigherBound": 38,
-        "confidenceIntervalLowerBound": 14
+        "sampleCount": 45,
+        "resistanceImport": 22,
+        "confidenceIntervalHigherBound": 37,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "cefotaxime",
-        "sampleCount": 64,
-        "resistanceImport": 73,
-        "confidenceIntervalHigherBound": 83,
-        "confidenceIntervalLowerBound": 61
+        "sampleCount": 4,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 45
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "ceftazidime",
-        "sampleCount": 64,
-        "resistanceImport": 73,
-        "confidenceIntervalHigherBound": 83,
-        "confidenceIntervalLowerBound": 61
+        "sampleCount": 47,
+        "resistanceImport": 64,
+        "confidenceIntervalHigherBound": 76,
+        "confidenceIntervalLowerBound": 49
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "ceftriaxone",
-        "sampleCount": 64,
-        "resistanceImport": 73,
-        "confidenceIntervalHigherBound": 83,
-        "confidenceIntervalLowerBound": 61
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "cefuroxime",
-        "sampleCount": 19,
+        "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 80
+        "confidenceIntervalLowerBound": 59
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 19,
+        "sampleCount": 5,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 80
+        "confidenceIntervalLowerBound": 51
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 53,
-        "resistanceImport": 15,
+        "sampleCount": 49,
+        "resistanceImport": 14,
         "confidenceIntervalHigherBound": 27,
-        "confidenceIntervalLowerBound": 8
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "clarithromycin",
-        "sampleCount": 4,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 45
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 51,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 33,
-        "confidenceIntervalLowerBound": 11
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "doxycycline",
-        "sampleCount": 4,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 45
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "erithromycin",
-        "sampleCount": 4,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 45
+        "sampleCount": 47,
+        "resistanceImport": 13,
+        "confidenceIntervalHigherBound": 26,
+        "confidenceIntervalLowerBound": 6
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
@@ -138,10 +106,10 @@
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "gentamicin",
-        "sampleCount": 122,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 26,
-        "confidenceIntervalLowerBound": 12
+        "sampleCount": 45,
+        "resistanceImport": 11,
+        "confidenceIntervalHigherBound": 24,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
@@ -169,22 +137,6 @@
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "minocycline",
-        "sampleCount": 4,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 45
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 43,
-        "resistanceImport": 12,
-        "confidenceIntervalHigherBound": 25,
-        "confidenceIntervalLowerBound": 5
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "nitrofurantoin",
         "sampleCount": 5,
         "resistanceImport": 100,
@@ -194,50 +146,42 @@
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "norfloxacin",
-        "sampleCount": 53,
-        "resistanceImport": 15,
-        "confidenceIntervalHigherBound": 27,
-        "confidenceIntervalLowerBound": 8
-    },
-    {
-        "bacteriaName": "acinetobacter sp. / acinetobacter",
-        "compoundName": "ofloxacin",
-        "sampleCount": 53,
-        "resistanceImport": 15,
-        "confidenceIntervalHigherBound": 27,
-        "confidenceIntervalLowerBound": 8
+        "sampleCount": 4,
+        "resistanceImport": 25,
+        "confidenceIntervalHigherBound": 71,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 59,
-        "resistanceImport": 36,
-        "confidenceIntervalHigherBound": 48,
-        "confidenceIntervalLowerBound": 25
+        "sampleCount": 45,
+        "resistanceImport": 29,
+        "confidenceIntervalHigherBound": 44,
+        "confidenceIntervalLowerBound": 18
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "tigecycline",
-        "sampleCount": 4,
+        "sampleCount": 1,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 45
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "acinetobacter sp. / acinetobacter",
         "compoundName": "tobramycin",
-        "sampleCount": 122,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 26,
-        "confidenceIntervalLowerBound": 12
+        "sampleCount": 44,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 30,
+        "confidenceIntervalLowerBound": 8
     },
     {
         "bacteriaName": "bacteroides fragilis / bacteroides",
         "compoundName": "amoxicillin/clavulanate",
-        "sampleCount": 16,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 50,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 5,
+        "resistanceImport": 20,
+        "confidenceIntervalHigherBound": 64,
+        "confidenceIntervalLowerBound": 3
     },
     {
         "bacteriaName": "bacteroides fragilis / bacteroides",
@@ -265,67 +209,19 @@
     },
     {
         "bacteriaName": "campylobacter sp. / campylobacter",
-        "compoundName": "clarithromycin",
-        "sampleCount": 54,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "campylobacter sp. / campylobacter",
         "compoundName": "doxycycline",
-        "sampleCount": 13,
-        "resistanceImport": 77,
-        "confidenceIntervalHigherBound": 92,
-        "confidenceIntervalLowerBound": 49
-    },
-    {
-        "bacteriaName": "campylobacter sp. / campylobacter",
-        "compoundName": "erithromycin",
-        "sampleCount": 54,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "campylobacter sp. / campylobacter",
-        "compoundName": "minocycline",
-        "sampleCount": 13,
-        "resistanceImport": 77,
-        "confidenceIntervalHigherBound": 92,
-        "confidenceIntervalLowerBound": 49
-    },
-    {
-        "bacteriaName": "campylobacter sp. / campylobacter",
-        "compoundName": "norfloxacin",
-        "sampleCount": 54,
-        "resistanceImport": 70,
-        "confidenceIntervalHigherBound": 81,
-        "confidenceIntervalLowerBound": 57
-    },
-    {
-        "bacteriaName": "campylobacter sp. / campylobacter",
-        "compoundName": "ofloxacin",
-        "sampleCount": 54,
-        "resistanceImport": 70,
-        "confidenceIntervalHigherBound": 81,
-        "confidenceIntervalLowerBound": 57
-    },
-    {
-        "bacteriaName": "campylobacter sp. / campylobacter",
-        "compoundName": "tigecycline",
-        "sampleCount": 13,
-        "resistanceImport": 77,
-        "confidenceIntervalHigherBound": 92,
-        "confidenceIntervalLowerBound": 49
+        "sampleCount": 12,
+        "resistanceImport": 75,
+        "confidenceIntervalHigherBound": 91,
+        "confidenceIntervalLowerBound": 46
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "amoxicillin",
-        "sampleCount": 168,
-        "resistanceImport": 99,
+        "sampleCount": 73,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 96
+        "confidenceIntervalLowerBound": 94
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
@@ -346,73 +242,65 @@
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "cefotaxime",
-        "sampleCount": 465,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 16
+        "sampleCount": 47,
+        "resistanceImport": 17,
+        "confidenceIntervalHigherBound": 31,
+        "confidenceIntervalLowerBound": 9
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "ceftazidime",
-        "sampleCount": 465,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 16
+        "sampleCount": 101,
+        "resistanceImport": 11,
+        "confidenceIntervalHigherBound": 19,
+        "confidenceIntervalLowerBound": 6
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "ceftriaxone",
-        "sampleCount": 465,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 16
+        "sampleCount": 169,
+        "resistanceImport": 12,
+        "confidenceIntervalHigherBound": 18,
+        "confidenceIntervalLowerBound": 8
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "cefuroxime",
-        "sampleCount": 228,
-        "resistanceImport": 35,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 29
+        "sampleCount": 87,
+        "resistanceImport": 36,
+        "confidenceIntervalHigherBound": 46,
+        "confidenceIntervalLowerBound": 26
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 228,
-        "resistanceImport": 35,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 29
+        "sampleCount": 78,
+        "resistanceImport": 33,
+        "confidenceIntervalHigherBound": 44,
+        "confidenceIntervalLowerBound": 24
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 397,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 8,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 169,
+        "resistanceImport": 2,
+        "confidenceIntervalHigherBound": 6,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 200,
+        "sampleCount": 169,
         "resistanceImport": 5,
         "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 3
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "doxycycline",
-        "sampleCount": 101,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "citrobacter sp. / citrobacter",
-        "compoundName": "ertapenem",
-        "sampleCount": 150,
-        "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 4,
+        "sampleCount": 20,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 26,
         "confidenceIntervalLowerBound": 0
     },
     {
@@ -426,10 +314,10 @@
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "gentamicin",
-        "sampleCount": 301,
-        "resistanceImport": 3,
+        "sampleCount": 157,
+        "resistanceImport": 2,
         "confidenceIntervalHigherBound": 6,
-        "confidenceIntervalLowerBound": 2
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
@@ -458,23 +346,15 @@
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "minocycline",
-        "sampleCount": 101,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "citrobacter sp. / citrobacter",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 96,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 11,
-        "confidenceIntervalLowerBound": 1
+        "sampleCount": 9,
+        "resistanceImport": 33,
+        "confidenceIntervalHigherBound": 65,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "nitrofurantoin",
-        "sampleCount": 86,
+        "sampleCount": 85,
         "resistanceImport": 16,
         "confidenceIntervalHigherBound": 26,
         "confidenceIntervalLowerBound": 10
@@ -482,50 +362,42 @@
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "norfloxacin",
-        "sampleCount": 397,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 8,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "citrobacter sp. / citrobacter",
-        "compoundName": "ofloxacin",
-        "sampleCount": 397,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 8,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 151,
+        "resistanceImport": 3,
+        "confidenceIntervalHigherBound": 7,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 177,
-        "resistanceImport": 8,
+        "sampleCount": 161,
+        "resistanceImport": 7,
         "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 5
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "tigecycline",
-        "sampleCount": 101,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 11,
+        "resistanceImport": 18,
+        "confidenceIntervalHigherBound": 49,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "citrobacter sp. / citrobacter",
         "compoundName": "tobramycin",
-        "sampleCount": 301,
+        "sampleCount": 68,
         "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 6,
-        "confidenceIntervalLowerBound": 2
+        "confidenceIntervalHigherBound": 11,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "amoxicillin",
-        "sampleCount": 263,
-        "resistanceImport": 99,
+        "sampleCount": 78,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 97
+        "confidenceIntervalLowerBound": 94
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
@@ -546,74 +418,74 @@
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "cefotaxime",
-        "sampleCount": 669,
+        "sampleCount": 55,
         "resistanceImport": 31,
-        "confidenceIntervalHigherBound": 35,
-        "confidenceIntervalLowerBound": 28
+        "confidenceIntervalHigherBound": 44,
+        "confidenceIntervalLowerBound": 20
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "ceftazidime",
-        "sampleCount": 669,
-        "resistanceImport": 31,
-        "confidenceIntervalHigherBound": 35,
-        "confidenceIntervalLowerBound": 28
+        "sampleCount": 152,
+        "resistanceImport": 21,
+        "confidenceIntervalHigherBound": 28,
+        "confidenceIntervalLowerBound": 15
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "ceftriaxone",
-        "sampleCount": 669,
-        "resistanceImport": 31,
-        "confidenceIntervalHigherBound": 35,
-        "confidenceIntervalLowerBound": 28
+        "sampleCount": 263,
+        "resistanceImport": 24,
+        "confidenceIntervalHigherBound": 29,
+        "confidenceIntervalLowerBound": 19
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "cefuroxime",
-        "sampleCount": 376,
-        "resistanceImport": 65,
-        "confidenceIntervalHigherBound": 70,
-        "confidenceIntervalLowerBound": 60
+        "sampleCount": 169,
+        "resistanceImport": 54,
+        "confidenceIntervalHigherBound": 62,
+        "confidenceIntervalLowerBound": 47
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 376,
-        "resistanceImport": 65,
-        "confidenceIntervalHigherBound": 70,
-        "confidenceIntervalLowerBound": 60
+        "sampleCount": 123,
+        "resistanceImport": 77,
+        "confidenceIntervalHigherBound": 84,
+        "confidenceIntervalLowerBound": 69
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 628,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 8
+        "sampleCount": 266,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 10,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 310,
-        "resistanceImport": 12,
-        "confidenceIntervalHigherBound": 16,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 263,
+        "resistanceImport": 9,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 6
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "doxycycline",
-        "sampleCount": 123,
-        "resistanceImport": 19,
-        "confidenceIntervalHigherBound": 27,
-        "confidenceIntervalLowerBound": 13
+        "sampleCount": 11,
+        "resistanceImport": 18,
+        "confidenceIntervalHigherBound": 49,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "ertapenem",
-        "sampleCount": 249,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 13
+        "sampleCount": 118,
+        "resistanceImport": 7,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 3
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
@@ -626,10 +498,10 @@
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "gentamicin",
-        "sampleCount": 549,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 5
+        "sampleCount": 255,
+        "resistanceImport": 4,
+        "confidenceIntervalHigherBound": 7,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
@@ -658,18 +530,10 @@
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "minocycline",
-        "sampleCount": 123,
-        "resistanceImport": 19,
-        "confidenceIntervalHigherBound": 27,
-        "confidenceIntervalLowerBound": 13
-    },
-    {
-        "bacteriaName": "enterobacter sp. / enterobacter",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 150,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 12,
-        "confidenceIntervalLowerBound": 4
+        "sampleCount": 18,
+        "resistanceImport": 39,
+        "confidenceIntervalHigherBound": 61,
+        "confidenceIntervalLowerBound": 20
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
@@ -682,98 +546,90 @@
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "norfloxacin",
-        "sampleCount": 628,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 8
-    },
-    {
-        "bacteriaName": "enterobacter sp. / enterobacter",
-        "compoundName": "ofloxacin",
-        "sampleCount": 628,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 8
+        "sampleCount": 233,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 12,
+        "confidenceIntervalLowerBound": 5
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 280,
-        "resistanceImport": 24,
-        "confidenceIntervalHigherBound": 29,
-        "confidenceIntervalLowerBound": 19
+        "sampleCount": 246,
+        "resistanceImport": 22,
+        "confidenceIntervalHigherBound": 28,
+        "confidenceIntervalLowerBound": 18
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "tigecycline",
-        "sampleCount": 123,
-        "resistanceImport": 19,
-        "confidenceIntervalHigherBound": 27,
-        "confidenceIntervalLowerBound": 13
+        "sampleCount": 19,
+        "resistanceImport": 11,
+        "confidenceIntervalHigherBound": 33,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "enterobacter sp. / enterobacter",
         "compoundName": "tobramycin",
-        "sampleCount": 549,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 5
+        "sampleCount": 115,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 14,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "amoxicillin",
-        "sampleCount": 362,
-        "resistanceImport": 2,
-        "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 1
+        "sampleCount": 126,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 10,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "amoxicillin/clavulanate",
-        "sampleCount": 182,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 7,
-        "confidenceIntervalLowerBound": 1
+        "sampleCount": 71,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 18,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "azithromycin",
-        "sampleCount": 196,
+        "sampleCount": 42,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
+        "confidenceIntervalLowerBound": 90
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "cefuroxime",
-        "sampleCount": 160,
+        "sampleCount": 43,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 97
+        "confidenceIntervalLowerBound": 90
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 160,
+        "sampleCount": 111,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 97
+        "confidenceIntervalLowerBound": 96
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 492,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 5
+        "sampleCount": 252,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 10,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "clarithromycin",
-        "sampleCount": 196,
+        "sampleCount": 42,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
+        "confidenceIntervalLowerBound": 90
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
@@ -793,42 +649,18 @@
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "doxycycline",
-        "sampleCount": 223,
-        "resistanceImport": 39,
-        "confidenceIntervalHigherBound": 46,
-        "confidenceIntervalLowerBound": 33
-    },
-    {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "erithromycin",
-        "sampleCount": 196,
+        "compoundName": "erythromycin",
+        "sampleCount": 112,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
-    },
-    {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "flucloxacillin",
-        "sampleCount": 57,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 92
-    },
-    {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "gentamicin",
-        "sampleCount": 295,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 22,
-        "confidenceIntervalLowerBound": 14
+        "confidenceIntervalLowerBound": 96
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "levofloxacin",
-        "sampleCount": 547,
+        "sampleCount": 367,
         "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalHigherBound": 9,
         "confidenceIntervalLowerBound": 4
     },
     {
@@ -841,18 +673,10 @@
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "minocycline",
-        "sampleCount": 223,
-        "resistanceImport": 39,
-        "confidenceIntervalHigherBound": 46,
-        "confidenceIntervalLowerBound": 33
-    },
-    {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "moxifloxacin",
-        "sampleCount": 547,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 8,
+        "sampleCount": 180,
+        "resistanceImport": 7,
+        "confidenceIntervalHigherBound": 11,
         "confidenceIntervalLowerBound": 4
     },
     {
@@ -866,18 +690,10 @@
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
         "compoundName": "norfloxacin",
-        "sampleCount": 492,
+        "sampleCount": 240,
         "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 5
-    },
-    {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "ofloxacin",
-        "sampleCount": 492,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 5
+        "confidenceIntervalHigherBound": 11,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "enterococcus faecalis / enterococcus",
@@ -888,76 +704,60 @@
         "confidenceIntervalLowerBound": 4
     },
     {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 223,
-        "resistanceImport": 39,
-        "confidenceIntervalHigherBound": 46,
-        "confidenceIntervalLowerBound": 33
-    },
-    {
-        "bacteriaName": "enterococcus faecalis / enterococcus",
-        "compoundName": "tobramycin",
-        "sampleCount": 295,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 22,
-        "confidenceIntervalLowerBound": 14
-    },
-    {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "amoxicillin",
-        "sampleCount": 89,
-        "resistanceImport": 84,
-        "confidenceIntervalHigherBound": 90,
-        "confidenceIntervalLowerBound": 75
+        "sampleCount": 23,
+        "resistanceImport": 57,
+        "confidenceIntervalHigherBound": 74,
+        "confidenceIntervalLowerBound": 37
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "amoxicillin/clavulanate",
-        "sampleCount": 32,
-        "resistanceImport": 59,
-        "confidenceIntervalHigherBound": 74,
-        "confidenceIntervalLowerBound": 42
+        "sampleCount": 25,
+        "resistanceImport": 60,
+        "confidenceIntervalHigherBound": 77,
+        "confidenceIntervalLowerBound": 41
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "azithromycin",
-        "sampleCount": 15,
+        "sampleCount": 4,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 76
+        "confidenceIntervalLowerBound": 45
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "cefuroxime",
-        "sampleCount": 14,
+        "sampleCount": 5,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 74
+        "confidenceIntervalLowerBound": 51
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 14,
+        "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 74
+        "confidenceIntervalLowerBound": 59
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 136,
+        "sampleCount": 68,
         "resistanceImport": 81,
-        "confidenceIntervalHigherBound": 87,
-        "confidenceIntervalLowerBound": 73
+        "confidenceIntervalHigherBound": 89,
+        "confidenceIntervalLowerBound": 70
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "clarithromycin",
-        "sampleCount": 15,
+        "sampleCount": 4,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 76
+        "confidenceIntervalLowerBound": 45
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
@@ -977,27 +777,11 @@
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "doxycycline",
-        "sampleCount": 17,
-        "resistanceImport": 24,
-        "confidenceIntervalHigherBound": 48,
-        "confidenceIntervalLowerBound": 9
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "erithromycin",
-        "sampleCount": 15,
+        "compoundName": "erythromycin",
+        "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 76
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "flucloxacillin",
-        "sampleCount": 10,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 67
+        "confidenceIntervalLowerBound": 59
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
@@ -1010,10 +794,10 @@
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "gentamicin",
-        "sampleCount": 77,
-        "resistanceImport": 45,
-        "confidenceIntervalHigherBound": 57,
-        "confidenceIntervalLowerBound": 35
+        "sampleCount": 1,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
@@ -1026,10 +810,10 @@
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "levofloxacin",
-        "sampleCount": 105,
-        "resistanceImport": 74,
-        "confidenceIntervalHigherBound": 82,
-        "confidenceIntervalLowerBound": 65
+        "sampleCount": 88,
+        "resistanceImport": 76,
+        "confidenceIntervalHigherBound": 84,
+        "confidenceIntervalLowerBound": 66
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
@@ -1049,19 +833,11 @@
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "minocycline",
-        "sampleCount": 17,
-        "resistanceImport": 24,
-        "confidenceIntervalHigherBound": 48,
-        "confidenceIntervalLowerBound": 9
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "moxifloxacin",
-        "sampleCount": 105,
-        "resistanceImport": 74,
-        "confidenceIntervalHigherBound": 82,
-        "confidenceIntervalLowerBound": 65
+        "sampleCount": 17,
+        "resistanceImport": 65,
+        "confidenceIntervalHigherBound": 83,
+        "confidenceIntervalLowerBound": 41
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
@@ -1074,30 +850,14 @@
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "norfloxacin",
-        "sampleCount": 136,
+        "sampleCount": 68,
         "resistanceImport": 81,
-        "confidenceIntervalHigherBound": 87,
-        "confidenceIntervalLowerBound": 73
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "ofloxacin",
-        "sampleCount": 136,
-        "resistanceImport": 81,
-        "confidenceIntervalHigherBound": 87,
-        "confidenceIntervalLowerBound": 73
+        "confidenceIntervalHigherBound": 89,
+        "confidenceIntervalLowerBound": 70
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "penicillin g",
-        "sampleCount": 6,
-        "resistanceImport": 67,
-        "confidenceIntervalHigherBound": 90,
-        "confidenceIntervalLowerBound": 30
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "penicillin v",
         "sampleCount": 6,
         "resistanceImport": 67,
         "confidenceIntervalHigherBound": 90,
@@ -1114,42 +874,26 @@
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "teicoplanin",
-        "sampleCount": 226,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 6,
+        "sampleCount": 79,
+        "resistanceImport": 4,
+        "confidenceIntervalHigherBound": 11,
         "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 17,
-        "resistanceImport": 24,
-        "confidenceIntervalHigherBound": 48,
-        "confidenceIntervalLowerBound": 9
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
-        "compoundName": "tobramycin",
-        "sampleCount": 77,
-        "resistanceImport": 45,
-        "confidenceIntervalHigherBound": 57,
-        "confidenceIntervalLowerBound": 35
-    },
-    {
-        "bacteriaName": "enterococcus faecium / enterococcus",
         "compoundName": "vancomycin",
-        "sampleCount": 226,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 6,
+        "sampleCount": 91,
+        "resistanceImport": 4,
+        "confidenceIntervalHigherBound": 11,
         "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "amoxicillin",
-        "sampleCount": 2792,
-        "resistanceImport": 45,
-        "confidenceIntervalHigherBound": 47,
-        "confidenceIntervalLowerBound": 43
+        "sampleCount": 1586,
+        "resistanceImport": 39,
+        "confidenceIntervalHigherBound": 42,
+        "confidenceIntervalLowerBound": 37
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
@@ -1162,7 +906,7 @@
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "cefepime",
-        "sampleCount": 2542,
+        "sampleCount": 2541,
         "resistanceImport": 7,
         "confidenceIntervalHigherBound": 8,
         "confidenceIntervalLowerBound": 6
@@ -1170,81 +914,73 @@
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "cefotaxime",
-        "sampleCount": 8302,
+        "sampleCount": 1024,
         "resistanceImport": 9,
-        "confidenceIntervalHigherBound": 10,
-        "confidenceIntervalLowerBound": 9
+        "confidenceIntervalHigherBound": 11,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "ceftazidime",
-        "sampleCount": 8302,
-        "resistanceImport": 9,
-        "confidenceIntervalHigherBound": 10,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 2134,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 9,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "ceftriaxone",
-        "sampleCount": 8302,
-        "resistanceImport": 9,
-        "confidenceIntervalHigherBound": 10,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 2789,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 9,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "cefuroxime",
-        "sampleCount": 4031,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 12
+        "sampleCount": 1049,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 19,
+        "confidenceIntervalLowerBound": 14
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 4031,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 12
+        "sampleCount": 1739,
+        "resistanceImport": 11,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 6049,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 22,
-        "confidenceIntervalLowerBound": 20
-    },
-    {
-        "bacteriaName": "escherichia coli / escherichia",
-        "compoundName": "colistin",
-        "sampleCount": 117,
-        "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 5,
-        "confidenceIntervalLowerBound": 0
+        "sampleCount": 2789,
+        "resistanceImport": 18,
+        "confidenceIntervalHigherBound": 19,
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 3287,
-        "resistanceImport": 27,
-        "confidenceIntervalHigherBound": 28,
-        "confidenceIntervalLowerBound": 25
+        "sampleCount": 2790,
+        "resistanceImport": 25,
+        "confidenceIntervalHigherBound": 27,
+        "confidenceIntervalLowerBound": 24
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "doxycycline",
-        "sampleCount": 2143,
-        "resistanceImport": 22,
+        "sampleCount": 525,
+        "resistanceImport": 20,
         "confidenceIntervalHigherBound": 24,
-        "confidenceIntervalLowerBound": 20
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "ertapenem",
-        "sampleCount": 2462,
+        "sampleCount": 1697,
         "resistanceImport": 0,
-        "confidenceIntervalHigherBound": 1,
+        "confidenceIntervalHigherBound": 0,
         "confidenceIntervalLowerBound": 0
     },
     {
@@ -1258,15 +994,15 @@
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "gentamicin",
-        "sampleCount": 4049,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 11,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 2547,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 9,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "levofloxacin",
-        "sampleCount": 1335,
+        "sampleCount": 1333,
         "resistanceImport": 20,
         "confidenceIntervalHigherBound": 22,
         "confidenceIntervalLowerBound": 18
@@ -1282,23 +1018,23 @@
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "minocycline",
-        "sampleCount": 2143,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 24,
-        "confidenceIntervalLowerBound": 20
+        "sampleCount": 112,
+        "resistanceImport": 26,
+        "confidenceIntervalHigherBound": 35,
+        "confidenceIntervalLowerBound": 19
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "moxifloxacin",
-        "sampleCount": 1335,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 22,
-        "confidenceIntervalLowerBound": 18
+        "sampleCount": 2,
+        "resistanceImport": 50,
+        "confidenceIntervalHigherBound": 90,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "nitrofurantoin",
-        "sampleCount": 2536,
+        "sampleCount": 1959,
         "resistanceImport": 1,
         "confidenceIntervalHigherBound": 1,
         "confidenceIntervalLowerBound": 0
@@ -1306,50 +1042,26 @@
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "norfloxacin",
-        "sampleCount": 6049,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 22,
-        "confidenceIntervalLowerBound": 20
-    },
-    {
-        "bacteriaName": "escherichia coli / escherichia",
-        "compoundName": "ofloxacin",
-        "sampleCount": 6049,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 22,
+        "sampleCount": 2489,
+        "resistanceImport": 22,
+        "confidenceIntervalHigherBound": 23,
         "confidenceIntervalLowerBound": 20
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 2900,
-        "resistanceImport": 8,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 7
-    },
-    {
-        "bacteriaName": "escherichia coli / escherichia",
-        "compoundName": "tigecycline",
-        "sampleCount": 2143,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 24,
-        "confidenceIntervalLowerBound": 20
+        "sampleCount": 2641,
+        "resistanceImport": 7,
+        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalLowerBound": 6
     },
     {
         "bacteriaName": "escherichia coli / escherichia",
         "compoundName": "tobramycin",
-        "sampleCount": 4049,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 11,
-        "confidenceIntervalLowerBound": 9
-    },
-    {
-        "bacteriaName": "haemophilus influenzae / haemophilus",
-        "compoundName": "amoxicillin",
-        "sampleCount": 44,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 32,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 654,
+        "resistanceImport": 12,
+        "confidenceIntervalHigherBound": 15,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "helicobacter pylori / helicobacter",
@@ -1361,23 +1073,7 @@
     },
     {
         "bacteriaName": "helicobacter pylori / helicobacter",
-        "compoundName": "azithromycin",
-        "sampleCount": 22,
-        "resistanceImport": 68,
-        "confidenceIntervalHigherBound": 84,
-        "confidenceIntervalLowerBound": 47
-    },
-    {
-        "bacteriaName": "helicobacter pylori / helicobacter",
         "compoundName": "clarithromycin",
-        "sampleCount": 22,
-        "resistanceImport": 68,
-        "confidenceIntervalHigherBound": 84,
-        "confidenceIntervalLowerBound": 47
-    },
-    {
-        "bacteriaName": "helicobacter pylori / helicobacter",
-        "compoundName": "erithromycin",
         "sampleCount": 22,
         "resistanceImport": 68,
         "confidenceIntervalHigherBound": 84,
@@ -1401,14 +1097,6 @@
     },
     {
         "bacteriaName": "helicobacter pylori / helicobacter",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 22,
-        "resistanceImport": 32,
-        "confidenceIntervalHigherBound": 53,
-        "confidenceIntervalLowerBound": 16
-    },
-    {
-        "bacteriaName": "helicobacter pylori / helicobacter",
         "compoundName": "rifampicin",
         "sampleCount": 22,
         "resistanceImport": 18,
@@ -1418,10 +1106,10 @@
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "amoxicillin",
-        "sampleCount": 643,
+        "sampleCount": 240,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 99
+        "confidenceIntervalLowerBound": 98
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
@@ -1442,90 +1130,90 @@
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "cefepime",
-        "sampleCount": 611,
+        "sampleCount": 606,
+        "resistanceImport": 11,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 8
+    },
+    {
+        "bacteriaName": "klebsiella sp. / klebsiella",
+        "compoundName": "cefotaxime",
+        "sampleCount": 177,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 23,
+        "confidenceIntervalLowerBound": 12
+    },
+    {
+        "bacteriaName": "klebsiella sp. / klebsiella",
+        "compoundName": "ceftazidime",
+        "sampleCount": 393,
+        "resistanceImport": 14,
+        "confidenceIntervalHigherBound": 18,
+        "confidenceIntervalLowerBound": 11
+    },
+    {
+        "bacteriaName": "klebsiella sp. / klebsiella",
+        "compoundName": "ceftriaxone",
+        "sampleCount": 642,
         "resistanceImport": 11,
         "confidenceIntervalHigherBound": 14,
         "confidenceIntervalLowerBound": 9
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
-        "compoundName": "cefotaxime",
-        "sampleCount": 1761,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 15,
-        "confidenceIntervalLowerBound": 11
-    },
-    {
-        "bacteriaName": "klebsiella sp. / klebsiella",
-        "compoundName": "ceftazidime",
-        "sampleCount": 1761,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 15,
-        "confidenceIntervalLowerBound": 11
-    },
-    {
-        "bacteriaName": "klebsiella sp. / klebsiella",
-        "compoundName": "ceftriaxone",
-        "sampleCount": 1761,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 15,
-        "confidenceIntervalLowerBound": 11
-    },
-    {
-        "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "cefuroxime",
-        "sampleCount": 893,
-        "resistanceImport": 16,
-        "confidenceIntervalHigherBound": 18,
-        "confidenceIntervalLowerBound": 14
+        "sampleCount": 364,
+        "resistanceImport": 24,
+        "confidenceIntervalHigherBound": 29,
+        "confidenceIntervalLowerBound": 20
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 893,
-        "resistanceImport": 16,
-        "confidenceIntervalHigherBound": 18,
-        "confidenceIntervalLowerBound": 14
+        "sampleCount": 299,
+        "resistanceImport": 10,
+        "confidenceIntervalHigherBound": 14,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 1532,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 19
+        "sampleCount": 642,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 19,
+        "confidenceIntervalLowerBound": 14
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "colistin",
-        "sampleCount": 62,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 16,
-        "confidenceIntervalLowerBound": 2
+        "sampleCount": 5,
+        "resistanceImport": 40,
+        "confidenceIntervalHigherBound": 77,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 792,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 25,
-        "confidenceIntervalLowerBound": 19
+        "sampleCount": 642,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 19,
+        "confidenceIntervalLowerBound": 13
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "doxycycline",
-        "sampleCount": 422,
-        "resistanceImport": 27,
-        "confidenceIntervalHigherBound": 31,
-        "confidenceIntervalLowerBound": 23
+        "sampleCount": 48,
+        "resistanceImport": 10,
+        "confidenceIntervalHigherBound": 23,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "ertapenem",
-        "sampleCount": 597,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 2
+        "sampleCount": 293,
+        "resistanceImport": 0,
+        "confidenceIntervalHigherBound": 2,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
@@ -1546,10 +1234,10 @@
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "gentamicin",
-        "sampleCount": 1143,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 607,
+        "resistanceImport": 7,
+        "confidenceIntervalHigherBound": 10,
+        "confidenceIntervalLowerBound": 5
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
@@ -1578,82 +1266,58 @@
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "minocycline",
-        "sampleCount": 422,
-        "resistanceImport": 27,
-        "confidenceIntervalHigherBound": 31,
-        "confidenceIntervalLowerBound": 23
-    },
-    {
-        "bacteriaName": "klebsiella sp. / klebsiella",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 383,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 26,
-        "confidenceIntervalLowerBound": 18
+        "sampleCount": 57,
+        "resistanceImport": 56,
+        "confidenceIntervalHigherBound": 68,
+        "confidenceIntervalLowerBound": 43
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "nitrofurantoin",
-        "sampleCount": 314,
+        "sampleCount": 313,
         "resistanceImport": 53,
         "confidenceIntervalHigherBound": 58,
-        "confidenceIntervalLowerBound": 47
+        "confidenceIntervalLowerBound": 48
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "norfloxacin",
-        "sampleCount": 1532,
-        "resistanceImport": 21,
+        "sampleCount": 585,
+        "resistanceImport": 19,
         "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 19
-    },
-    {
-        "bacteriaName": "klebsiella sp. / klebsiella",
-        "compoundName": "ofloxacin",
-        "sampleCount": 1532,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 23,
-        "confidenceIntervalLowerBound": 19
+        "confidenceIntervalLowerBound": 16
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 697,
-        "resistanceImport": 17,
-        "confidenceIntervalHigherBound": 20,
-        "confidenceIntervalLowerBound": 14
+        "sampleCount": 603,
+        "resistanceImport": 13,
+        "confidenceIntervalHigherBound": 16,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "tigecycline",
-        "sampleCount": 422,
-        "resistanceImport": 27,
-        "confidenceIntervalHigherBound": 31,
-        "confidenceIntervalLowerBound": 23
+        "sampleCount": 62,
+        "resistanceImport": 32,
+        "confidenceIntervalHigherBound": 45,
+        "confidenceIntervalLowerBound": 22
     },
     {
         "bacteriaName": "klebsiella sp. / klebsiella",
         "compoundName": "tobramycin",
-        "sampleCount": 1143,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 10
-    },
-    {
-        "bacteriaName": "moraxella catarrhalis / moraxella",
-        "compoundName": "amoxicillin",
-        "sampleCount": 10,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 67
+        "sampleCount": 213,
+        "resistanceImport": 15,
+        "confidenceIntervalHigherBound": 21,
+        "confidenceIntervalLowerBound": 11
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "amoxicillin",
-        "sampleCount": 63,
-        "resistanceImport": 98,
+        "sampleCount": 24,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
+        "confidenceIntervalLowerBound": 83
     },
     {
         "bacteriaName": "morganella sp. / morganella",
@@ -1666,74 +1330,66 @@
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "cefotaxime",
-        "sampleCount": 154,
-        "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 21,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 13,
+        "resistanceImport": 15,
+        "confidenceIntervalHigherBound": 44,
+        "confidenceIntervalLowerBound": 3
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "ceftazidime",
-        "sampleCount": 154,
-        "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 21,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 38,
+        "resistanceImport": 13,
+        "confidenceIntervalHigherBound": 28,
+        "confidenceIntervalLowerBound": 5
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "ceftriaxone",
-        "sampleCount": 154,
-        "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 21,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 63,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 16,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "cefuroxime",
-        "sampleCount": 91,
-        "resistanceImport": 91,
-        "confidenceIntervalHigherBound": 96,
-        "confidenceIntervalLowerBound": 83
+        "sampleCount": 34,
+        "resistanceImport": 79,
+        "confidenceIntervalHigherBound": 90,
+        "confidenceIntervalLowerBound": 63
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 91,
-        "resistanceImport": 91,
-        "confidenceIntervalHigherBound": 96,
-        "confidenceIntervalLowerBound": 83
+        "sampleCount": 30,
+        "resistanceImport": 97,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 82
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 139,
-        "resistanceImport": 18,
+        "sampleCount": 63,
+        "resistanceImport": 14,
         "confidenceIntervalHigherBound": 25,
-        "confidenceIntervalLowerBound": 12
-    },
-    {
-        "bacteriaName": "morganella sp. / morganella",
-        "compoundName": "colistin",
-        "sampleCount": 27,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 85
+        "confidenceIntervalLowerBound": 8
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 73,
-        "resistanceImport": 15,
+        "sampleCount": 63,
+        "resistanceImport": 14,
         "confidenceIntervalHigherBound": 25,
-        "confidenceIntervalLowerBound": 9
+        "confidenceIntervalLowerBound": 8
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "doxycycline",
-        "sampleCount": 70,
-        "resistanceImport": 99,
+        "sampleCount": 1,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "morganella sp. / morganella",
@@ -1746,9 +1402,9 @@
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "gentamicin",
-        "sampleCount": 122,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 8,
+        "sampleCount": 57,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 15,
         "confidenceIntervalLowerBound": 1
     },
     {
@@ -1770,86 +1426,46 @@
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "minocycline",
-        "sampleCount": 70,
-        "resistanceImport": 99,
+        "sampleCount": 27,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
-    },
-    {
-        "bacteriaName": "morganella sp. / morganella",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 33,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 35,
-        "confidenceIntervalLowerBound": 8
+        "confidenceIntervalLowerBound": 85
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "nitrofurantoin",
-        "sampleCount": 46,
+        "sampleCount": 28,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
+        "confidenceIntervalLowerBound": 85
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "norfloxacin",
-        "sampleCount": 139,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 25,
-        "confidenceIntervalLowerBound": 12
-    },
-    {
-        "bacteriaName": "morganella sp. / morganella",
-        "compoundName": "ofloxacin",
-        "sampleCount": 139,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 25,
-        "confidenceIntervalLowerBound": 12
+        "sampleCount": 49,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 29,
+        "confidenceIntervalLowerBound": 8
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 65,
+        "sampleCount": 59,
         "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 11,
+        "confidenceIntervalHigherBound": 12,
         "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "morganella sp. / morganella",
         "compoundName": "tigecycline",
-        "sampleCount": 70,
-        "resistanceImport": 99,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
-    },
-    {
-        "bacteriaName": "morganella sp. / morganella",
-        "compoundName": "tobramycin",
-        "sampleCount": 122,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 8,
-        "confidenceIntervalLowerBound": 1
+        "sampleCount": 2,
+        "resistanceImport": 50,
+        "confidenceIntervalHigherBound": 90,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "neisseria gonorrhoeae / neisseria",
         "compoundName": "azithromycin",
-        "sampleCount": 1,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 17
-    },
-    {
-        "bacteriaName": "neisseria gonorrhoeae / neisseria",
-        "compoundName": "clarithromycin",
-        "sampleCount": 1,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 17
-    },
-    {
-        "bacteriaName": "neisseria gonorrhoeae / neisseria",
-        "compoundName": "erithromycin",
         "sampleCount": 1,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
@@ -1864,19 +1480,11 @@
         "confidenceIntervalLowerBound": 29
     },
     {
-        "bacteriaName": "neisseria gonorrhoeae / neisseria",
-        "compoundName": "penicillin v",
-        "sampleCount": 2,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 29
-    },
-    {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "amoxicillin",
-        "sampleCount": 218,
-        "resistanceImport": 26,
-        "confidenceIntervalHigherBound": 32,
+        "sampleCount": 106,
+        "resistanceImport": 29,
+        "confidenceIntervalHigherBound": 39,
         "confidenceIntervalLowerBound": 21
     },
     {
@@ -1897,58 +1505,50 @@
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
-        "compoundName": "cefuroxime",
-        "sampleCount": 319,
-        "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 3,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 319,
+        "sampleCount": 123,
         "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 3,
+        "confidenceIntervalHigherBound": 5,
         "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 476,
-        "resistanceImport": 17,
+        "sampleCount": 219,
+        "resistanceImport": 15,
         "confidenceIntervalHigherBound": 20,
-        "confidenceIntervalLowerBound": 14
+        "confidenceIntervalLowerBound": 11
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "colistin",
-        "sampleCount": 73,
+        "sampleCount": 1,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 94
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 249,
+        "sampleCount": 218,
         "resistanceImport": 29,
-        "confidenceIntervalHigherBound": 35,
+        "confidenceIntervalHigherBound": 36,
         "confidenceIntervalLowerBound": 24
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "doxycycline",
-        "sampleCount": 318,
-        "resistanceImport": 99,
+        "sampleCount": 23,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
+        "confidenceIntervalLowerBound": 83
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "ertapenem",
-        "sampleCount": 195,
-        "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 4,
+        "sampleCount": 123,
+        "resistanceImport": 2,
+        "confidenceIntervalHigherBound": 6,
         "confidenceIntervalLowerBound": 0
     },
     {
@@ -1962,10 +1562,10 @@
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "gentamicin",
-        "sampleCount": 340,
-        "resistanceImport": 9,
-        "confidenceIntervalHigherBound": 12,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 197,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 5
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
@@ -1986,23 +1586,15 @@
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "minocycline",
-        "sampleCount": 318,
-        "resistanceImport": 99,
+        "sampleCount": 72,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
-    },
-    {
-        "bacteriaName": "proteus mirabilis / proteus",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 107,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 26,
-        "confidenceIntervalLowerBound": 12
+        "confidenceIntervalLowerBound": 94
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "nitrofurantoin",
-        "sampleCount": 165,
+        "sampleCount": 135,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
         "confidenceIntervalLowerBound": 97
@@ -2010,42 +1602,34 @@
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "norfloxacin",
-        "sampleCount": 476,
+        "sampleCount": 185,
         "resistanceImport": 17,
-        "confidenceIntervalHigherBound": 20,
-        "confidenceIntervalLowerBound": 14
-    },
-    {
-        "bacteriaName": "proteus mirabilis / proteus",
-        "compoundName": "ofloxacin",
-        "sampleCount": 476,
-        "resistanceImport": 17,
-        "confidenceIntervalHigherBound": 20,
-        "confidenceIntervalLowerBound": 14
+        "confidenceIntervalHigherBound": 23,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "tigecycline",
-        "sampleCount": 318,
-        "resistanceImport": 99,
+        "sampleCount": 74,
+        "resistanceImport": 97,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
+        "confidenceIntervalLowerBound": 90
     },
     {
         "bacteriaName": "proteus mirabilis / proteus",
         "compoundName": "tobramycin",
-        "sampleCount": 340,
-        "resistanceImport": 9,
-        "confidenceIntervalHigherBound": 12,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 60,
+        "resistanceImport": 13,
+        "confidenceIntervalHigherBound": 25,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "amoxicillin",
-        "sampleCount": 71,
+        "sampleCount": 36,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 94
+        "confidenceIntervalLowerBound": 88
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
@@ -2074,79 +1658,63 @@
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "cefepime",
-        "sampleCount": 335,
+        "sampleCount": 328,
         "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 19,
-        "confidenceIntervalLowerBound": 11
+        "confidenceIntervalHigherBound": 18,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "cefotaxime",
-        "sampleCount": 561,
-        "resistanceImport": 47,
-        "confidenceIntervalHigherBound": 51,
-        "confidenceIntervalLowerBound": 42
+        "sampleCount": 65,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 93
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "ceftazidime",
-        "sampleCount": 561,
-        "resistanceImport": 47,
-        "confidenceIntervalHigherBound": 51,
-        "confidenceIntervalLowerBound": 42
+        "sampleCount": 355,
+        "resistanceImport": 15,
+        "confidenceIntervalHigherBound": 20,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "ceftriaxone",
-        "sampleCount": 561,
-        "resistanceImport": 47,
-        "confidenceIntervalHigherBound": 51,
-        "confidenceIntervalLowerBound": 42
-    },
-    {
-        "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
-        "compoundName": "cefuroxime",
-        "sampleCount": 107,
+        "sampleCount": 71,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 96
+        "confidenceIntervalLowerBound": 94
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 107,
+        "sampleCount": 38,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 96
+        "confidenceIntervalLowerBound": 89
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 398,
+        "sampleCount": 357,
         "resistanceImport": 20,
         "confidenceIntervalHigherBound": 24,
         "confidenceIntervalLowerBound": 16
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
-        "compoundName": "clarithromycin",
-        "sampleCount": 38,
-        "resistanceImport": 97,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 85
-    },
-    {
-        "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "colistin",
-        "sampleCount": 286,
-        "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 3,
+        "sampleCount": 107,
+        "resistanceImport": 2,
+        "confidenceIntervalHigherBound": 7,
         "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 393,
+        "sampleCount": 351,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
         "confidenceIntervalLowerBound": 99
@@ -2154,18 +1722,10 @@
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "doxycycline",
-        "sampleCount": 235,
+        "sampleCount": 5,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
-    },
-    {
-        "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
-        "compoundName": "erithromycin",
-        "sampleCount": 38,
-        "resistanceImport": 97,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 85
+        "confidenceIntervalLowerBound": 51
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
@@ -2194,10 +1754,10 @@
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "gentamicin",
-        "sampleCount": 926,
-        "resistanceImport": 12,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 322,
+        "resistanceImport": 14,
+        "confidenceIntervalHigherBound": 18,
+        "confidenceIntervalLowerBound": 11
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
@@ -2226,18 +1786,10 @@
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "minocycline",
-        "sampleCount": 235,
+        "sampleCount": 178,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
-    },
-    {
-        "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 318,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 30,
-        "confidenceIntervalLowerBound": 21
+        "confidenceIntervalLowerBound": 97
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
@@ -2250,138 +1802,74 @@
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "norfloxacin",
-        "sampleCount": 398,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 24,
-        "confidenceIntervalLowerBound": 16
-    },
-    {
-        "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
-        "compoundName": "ofloxacin",
-        "sampleCount": 398,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 24,
-        "confidenceIntervalLowerBound": 16
+        "sampleCount": 41,
+        "resistanceImport": 22,
+        "confidenceIntervalHigherBound": 37,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 440,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 24,
-        "confidenceIntervalLowerBound": 17
+        "sampleCount": 322,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 20,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "tigecycline",
-        "sampleCount": 235,
+        "sampleCount": 16,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 98
+        "confidenceIntervalLowerBound": 77
     },
     {
         "bacteriaName": "pseudomonas aeruginosa / pseudomonas",
         "compoundName": "tobramycin",
-        "sampleCount": 926,
-        "resistanceImport": 12,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 10
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "amoxicillin",
-        "sampleCount": 10,
-        "resistanceImport": 40,
-        "confidenceIntervalHigherBound": 69,
-        "confidenceIntervalLowerBound": 17
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "cefotaxime",
-        "sampleCount": 28,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 19,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "ceftazidime",
-        "sampleCount": 28,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 19,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "ceftriaxone",
-        "sampleCount": 28,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 19,
-        "confidenceIntervalLowerBound": 0
+        "sampleCount": 315,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalLowerBound": 3
     },
     {
         "bacteriaName": "salmonella sp. / salmonella",
         "compoundName": "cefuroxime",
-        "sampleCount": 15,
+        "sampleCount": 4,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 76
+        "confidenceIntervalLowerBound": 45
     },
     {
         "bacteriaName": "salmonella sp. / salmonella",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 15,
+        "sampleCount": 9,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 76
+        "confidenceIntervalLowerBound": 65
     },
     {
         "bacteriaName": "salmonella sp. / salmonella",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 21,
-        "resistanceImport": 19,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 7
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "doxycycline",
-        "sampleCount": 8,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 50,
-        "confidenceIntervalLowerBound": 1
+        "sampleCount": 11,
+        "resistanceImport": 18,
+        "confidenceIntervalHigherBound": 49,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "salmonella sp. / salmonella",
         "compoundName": "gentamicin",
-        "sampleCount": 13,
+        "sampleCount": 9,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 73
+        "confidenceIntervalLowerBound": 65
     },
     {
         "bacteriaName": "salmonella sp. / salmonella",
         "compoundName": "levofloxacin",
-        "sampleCount": 6,
-        "resistanceImport": 17,
-        "confidenceIntervalHigherBound": 58,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "minocycline",
-        "sampleCount": 8,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 50,
-        "confidenceIntervalLowerBound": 1
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 6,
-        "resistanceImport": 17,
-        "confidenceIntervalHigherBound": 58,
-        "confidenceIntervalLowerBound": 2
+        "sampleCount": 5,
+        "resistanceImport": 20,
+        "confidenceIntervalHigherBound": 64,
+        "confidenceIntervalLowerBound": 3
     },
     {
         "bacteriaName": "salmonella sp. / salmonella",
@@ -2394,42 +1882,18 @@
     {
         "bacteriaName": "salmonella sp. / salmonella",
         "compoundName": "norfloxacin",
-        "sampleCount": 21,
-        "resistanceImport": 19,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 7
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "ofloxacin",
-        "sampleCount": 21,
-        "resistanceImport": 19,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 7
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "tigecycline",
-        "sampleCount": 8,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 50,
-        "confidenceIntervalLowerBound": 1
-    },
-    {
-        "bacteriaName": "salmonella sp. / salmonella",
-        "compoundName": "tobramycin",
-        "sampleCount": 13,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 73
+        "sampleCount": 9,
+        "resistanceImport": 22,
+        "confidenceIntervalHigherBound": 56,
+        "confidenceIntervalLowerBound": 6
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "amoxicillin",
-        "sampleCount": 88,
+        "sampleCount": 26,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 95
+        "confidenceIntervalLowerBound": 84
     },
     {
         "bacteriaName": "serratia sp. / serratia",
@@ -2442,81 +1906,73 @@
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "cefotaxime",
-        "sampleCount": 221,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 20,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 26,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "ceftazidime",
-        "sampleCount": 221,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 42,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 17,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "ceftriaxone",
-        "sampleCount": 221,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 88,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "cefuroxime",
-        "sampleCount": 112,
+        "sampleCount": 60,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 96
+        "confidenceIntervalLowerBound": 93
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 112,
+        "sampleCount": 27,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 96
+        "confidenceIntervalLowerBound": 85
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 209,
+        "sampleCount": 88,
         "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "serratia sp. / serratia",
-        "compoundName": "colistin",
-        "sampleCount": 50,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
+        "confidenceIntervalHigherBound": 12,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 108,
-        "resistanceImport": 10,
-        "confidenceIntervalHigherBound": 18,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 88,
+        "resistanceImport": 1,
+        "confidenceIntervalHigherBound": 7,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "doxycycline",
-        "sampleCount": 72,
-        "resistanceImport": 90,
-        "confidenceIntervalHigherBound": 95,
-        "confidenceIntervalLowerBound": 81
+        "sampleCount": 3,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 38
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "ertapenem",
-        "sampleCount": 76,
-        "resistanceImport": 1,
-        "confidenceIntervalHigherBound": 8,
+        "sampleCount": 26,
+        "resistanceImport": 4,
+        "confidenceIntervalHigherBound": 21,
         "confidenceIntervalLowerBound": 0
     },
     {
@@ -2525,14 +1981,6 @@
         "sampleCount": 81,
         "resistanceImport": 64,
         "confidenceIntervalHigherBound": 74,
-        "confidenceIntervalLowerBound": 53
-    },
-    {
-        "bacteriaName": "serratia sp. / serratia",
-        "compoundName": "gentamicin",
-        "sampleCount": 250,
-        "resistanceImport": 60,
-        "confidenceIntervalHigherBound": 65,
         "confidenceIntervalLowerBound": 53
     },
     {
@@ -2546,82 +1994,58 @@
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "minocycline",
-        "sampleCount": 72,
-        "resistanceImport": 90,
-        "confidenceIntervalHigherBound": 95,
-        "confidenceIntervalLowerBound": 81
-    },
-    {
-        "bacteriaName": "serratia sp. / serratia",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 56,
-        "resistanceImport": 2,
-        "confidenceIntervalHigherBound": 11,
-        "confidenceIntervalLowerBound": 0
+        "sampleCount": 5,
+        "resistanceImport": 60,
+        "confidenceIntervalHigherBound": 88,
+        "confidenceIntervalLowerBound": 23
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "nitrofurantoin",
-        "sampleCount": 64,
-        "resistanceImport": 98,
+        "sampleCount": 29,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 91
+        "confidenceIntervalLowerBound": 86
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "norfloxacin",
-        "sampleCount": 209,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "serratia sp. / serratia",
-        "compoundName": "ofloxacin",
-        "sampleCount": 209,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 70,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 14,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 93,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 14,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "serratia sp. / serratia",
-        "compoundName": "tigecycline",
-        "sampleCount": 72,
-        "resistanceImport": 90,
-        "confidenceIntervalHigherBound": 95,
-        "confidenceIntervalLowerBound": 81
+        "sampleCount": 86,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 12,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "serratia sp. / serratia",
         "compoundName": "tobramycin",
-        "sampleCount": 250,
-        "resistanceImport": 60,
-        "confidenceIntervalHigherBound": 65,
-        "confidenceIntervalLowerBound": 53
+        "sampleCount": 60,
+        "resistanceImport": 80,
+        "confidenceIntervalHigherBound": 88,
+        "confidenceIntervalLowerBound": 68
     },
     {
         "bacteriaName": "shigella sp. / shigella",
         "compoundName": "amoxicillin",
-        "sampleCount": 2,
+        "sampleCount": 1,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 29
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "shigella sp. / shigella",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 4,
-        "resistanceImport": 75,
-        "confidenceIntervalHigherBound": 96,
-        "confidenceIntervalLowerBound": 29
+        "sampleCount": 2,
+        "resistanceImport": 50,
+        "confidenceIntervalHigherBound": 90,
+        "confidenceIntervalLowerBound": 10
     },
     {
         "bacteriaName": "shigella sp. / shigella",
@@ -2634,26 +2058,18 @@
     {
         "bacteriaName": "shigella sp. / shigella",
         "compoundName": "norfloxacin",
-        "sampleCount": 4,
-        "resistanceImport": 75,
-        "confidenceIntervalHigherBound": 96,
-        "confidenceIntervalLowerBound": 29
-    },
-    {
-        "bacteriaName": "shigella sp. / shigella",
-        "compoundName": "ofloxacin",
-        "sampleCount": 4,
-        "resistanceImport": 75,
-        "confidenceIntervalHigherBound": 96,
-        "confidenceIntervalLowerBound": 29
+        "sampleCount": 1,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "amoxicillin",
-        "sampleCount": 812,
-        "resistanceImport": 73,
-        "confidenceIntervalHigherBound": 76,
-        "confidenceIntervalLowerBound": 70
+        "sampleCount": 237,
+        "resistanceImport": 76,
+        "confidenceIntervalHigherBound": 81,
+        "confidenceIntervalLowerBound": 71
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
@@ -2665,75 +2081,43 @@
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 929,
-        "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 16,
-        "confidenceIntervalLowerBound": 12
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "cefazolin",
-        "sampleCount": 204,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 10,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "cefotaxime",
-        "sampleCount": 658,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 6,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "ceftazidime",
-        "sampleCount": 658,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 6,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "ceftriaxone",
-        "sampleCount": 658,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 6,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 150,
+        "resistanceImport": 7,
+        "confidenceIntervalHigherBound": 12,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "cefuroxime",
-        "sampleCount": 259,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 67,
+        "resistanceImport": 4,
+        "confidenceIntervalHigherBound": 13,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 259,
+        "sampleCount": 19,
         "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 9,
-        "confidenceIntervalLowerBound": 3
+        "confidenceIntervalHigherBound": 27,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 1389,
-        "resistanceImport": 7,
+        "sampleCount": 833,
+        "resistanceImport": 6,
         "confidenceIntervalHigherBound": 8,
         "confidenceIntervalLowerBound": 5
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "clarithromycin",
-        "sampleCount": 929,
-        "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 16,
-        "confidenceIntervalLowerBound": 12
+        "sampleCount": 67,
+        "resistanceImport": 16,
+        "confidenceIntervalHigherBound": 27,
+        "confidenceIntervalLowerBound": 9
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
@@ -2746,9 +2130,9 @@
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 910,
-        "resistanceImport": 2,
-        "confidenceIntervalHigherBound": 3,
+        "sampleCount": 868,
+        "resistanceImport": 1,
+        "confidenceIntervalHigherBound": 2,
         "confidenceIntervalLowerBound": 1
     },
     {
@@ -2762,15 +2146,15 @@
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "doxycycline",
-        "sampleCount": 1489,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 2
+        "sampleCount": 60,
+        "resistanceImport": 2,
+        "confidenceIntervalHigherBound": 10,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "erithromycin",
-        "sampleCount": 929,
+        "compoundName": "erythromycin",
+        "sampleCount": 862,
         "resistanceImport": 14,
         "confidenceIntervalHigherBound": 16,
         "confidenceIntervalLowerBound": 12
@@ -2778,10 +2162,10 @@
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "flucloxacillin",
-        "sampleCount": 356,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 7,
-        "confidenceIntervalLowerBound": 3
+        "sampleCount": 41,
+        "resistanceImport": 2,
+        "confidenceIntervalHigherBound": 14,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
@@ -2802,66 +2186,50 @@
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "gentamicin",
-        "sampleCount": 1395,
-        "resistanceImport": 3,
+        "sampleCount": 810,
+        "resistanceImport": 2,
         "confidenceIntervalHigherBound": 3,
-        "confidenceIntervalLowerBound": 2
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "levofloxacin",
-        "sampleCount": 1284,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 612,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "minocycline",
-        "sampleCount": 1489,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 2
+        "sampleCount": 508,
+        "resistanceImport": 1,
+        "confidenceIntervalHigherBound": 3,
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "moxifloxacin",
-        "sampleCount": 1284,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 9
+        "sampleCount": 604,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "norfloxacin",
-        "sampleCount": 1389,
+        "sampleCount": 556,
         "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 8,
-        "confidenceIntervalLowerBound": 5
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "ofloxacin",
-        "sampleCount": 1389,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalHigherBound": 9,
         "confidenceIntervalLowerBound": 5
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "penicillin g",
-        "sampleCount": 860,
-        "resistanceImport": 73,
-        "confidenceIntervalHigherBound": 76,
-        "confidenceIntervalLowerBound": 70
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "penicillin v",
-        "sampleCount": 860,
-        "resistanceImport": 73,
-        "confidenceIntervalHigherBound": 76,
-        "confidenceIntervalLowerBound": 70
+        "sampleCount": 352,
+        "resistanceImport": 80,
+        "confidenceIntervalHigherBound": 83,
+        "confidenceIntervalLowerBound": 75
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
@@ -2874,122 +2242,82 @@
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "teicoplanin",
-        "sampleCount": 1665,
-        "resistanceImport": 0,
+        "sampleCount": 800,
+        "resistanceImport": 1,
         "confidenceIntervalHigherBound": 1,
         "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "tigecycline",
-        "sampleCount": 1489,
-        "resistanceImport": 3,
+        "sampleCount": 138,
+        "resistanceImport": 1,
         "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 2
+        "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus aureus / staphylococcus",
         "compoundName": "tobramycin",
-        "sampleCount": 1395,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 3,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "staphylococcus aureus / staphylococcus",
-        "compoundName": "vancomycin",
-        "sampleCount": 1665,
-        "resistanceImport": 0,
-        "confidenceIntervalHigherBound": 1,
-        "confidenceIntervalLowerBound": 0
+        "sampleCount": 574,
+        "resistanceImport": 2,
+        "confidenceIntervalHigherBound": 4,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "amoxicillin",
-        "sampleCount": 598,
-        "resistanceImport": 83,
-        "confidenceIntervalHigherBound": 85,
-        "confidenceIntervalLowerBound": 79
+        "sampleCount": 183,
+        "resistanceImport": 88,
+        "confidenceIntervalHigherBound": 92,
+        "confidenceIntervalLowerBound": 82
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "amoxicillin/clavulanate",
-        "sampleCount": 610,
+        "sampleCount": 608,
         "resistanceImport": 51,
         "confidenceIntervalHigherBound": 55,
         "confidenceIntervalLowerBound": 47
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 731,
-        "resistanceImport": 50,
-        "confidenceIntervalHigherBound": 54,
-        "confidenceIntervalLowerBound": 46
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "cefazolin",
-        "sampleCount": 175,
-        "resistanceImport": 56,
-        "confidenceIntervalHigherBound": 63,
-        "confidenceIntervalLowerBound": 49
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "cefotaxime",
-        "sampleCount": 391,
-        "resistanceImport": 49,
-        "confidenceIntervalHigherBound": 54,
-        "confidenceIntervalLowerBound": 44
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "ceftazidime",
-        "sampleCount": 391,
-        "resistanceImport": 49,
-        "confidenceIntervalHigherBound": 54,
-        "confidenceIntervalLowerBound": 44
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "ceftriaxone",
-        "sampleCount": 391,
-        "resistanceImport": 49,
-        "confidenceIntervalHigherBound": 54,
-        "confidenceIntervalLowerBound": 44
+        "sampleCount": 84,
+        "resistanceImport": 42,
+        "confidenceIntervalHigherBound": 52,
+        "confidenceIntervalLowerBound": 32
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "cefuroxime",
-        "sampleCount": 244,
-        "resistanceImport": 52,
-        "confidenceIntervalHigherBound": 58,
-        "confidenceIntervalLowerBound": 46
+        "sampleCount": 108,
+        "resistanceImport": 69,
+        "confidenceIntervalHigherBound": 77,
+        "confidenceIntervalLowerBound": 60
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "cefuroxime axetil",
-        "sampleCount": 244,
-        "resistanceImport": 52,
-        "confidenceIntervalHigherBound": 58,
-        "confidenceIntervalLowerBound": 46
+        "sampleCount": 7,
+        "resistanceImport": 14,
+        "confidenceIntervalHigherBound": 54,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 942,
+        "sampleCount": 589,
         "resistanceImport": 37,
         "confidenceIntervalHigherBound": 40,
-        "confidenceIntervalLowerBound": 34
+        "confidenceIntervalLowerBound": 33
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "clarithromycin",
-        "sampleCount": 731,
+        "sampleCount": 110,
         "resistanceImport": 50,
-        "confidenceIntervalHigherBound": 54,
-        "confidenceIntervalLowerBound": 46
+        "confidenceIntervalHigherBound": 59,
+        "confidenceIntervalLowerBound": 41
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
@@ -3002,10 +2330,10 @@
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 691,
-        "resistanceImport": 32,
-        "confidenceIntervalHigherBound": 36,
-        "confidenceIntervalLowerBound": 29
+        "sampleCount": 617,
+        "resistanceImport": 31,
+        "confidenceIntervalHigherBound": 35,
+        "confidenceIntervalLowerBound": 28
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
@@ -3018,15 +2346,15 @@
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "doxycycline",
-        "sampleCount": 1063,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 71,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 14,
+        "confidenceIntervalLowerBound": 2
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "erithromycin",
-        "sampleCount": 731,
+        "compoundName": "erythromycin",
+        "sampleCount": 619,
         "resistanceImport": 50,
         "confidenceIntervalHigherBound": 54,
         "confidenceIntervalLowerBound": 46
@@ -3034,10 +2362,10 @@
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "flucloxacillin",
-        "sampleCount": 312,
-        "resistanceImport": 52,
-        "confidenceIntervalHigherBound": 57,
-        "confidenceIntervalLowerBound": 46
+        "sampleCount": 61,
+        "resistanceImport": 46,
+        "confidenceIntervalHigherBound": 58,
+        "confidenceIntervalLowerBound": 34
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
@@ -3058,18 +2386,18 @@
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "gentamicin",
-        "sampleCount": 1012,
-        "resistanceImport": 40,
-        "confidenceIntervalHigherBound": 43,
-        "confidenceIntervalLowerBound": 37
+        "sampleCount": 550,
+        "resistanceImport": 29,
+        "confidenceIntervalHigherBound": 33,
+        "confidenceIntervalLowerBound": 26
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "levofloxacin",
-        "sampleCount": 1073,
-        "resistanceImport": 50,
-        "confidenceIntervalHigherBound": 53,
-        "confidenceIntervalLowerBound": 47
+        "sampleCount": 428,
+        "resistanceImport": 37,
+        "confidenceIntervalHigherBound": 42,
+        "confidenceIntervalLowerBound": 32
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
@@ -3081,19 +2409,11 @@
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "minocycline",
-        "sampleCount": 1063,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 10
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "moxifloxacin",
-        "sampleCount": 1073,
-        "resistanceImport": 50,
-        "confidenceIntervalHigherBound": 53,
-        "confidenceIntervalLowerBound": 47
+        "sampleCount": 405,
+        "resistanceImport": 35,
+        "confidenceIntervalHigherBound": 40,
+        "confidenceIntervalLowerBound": 31
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
@@ -3106,34 +2426,18 @@
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "norfloxacin",
-        "sampleCount": 942,
-        "resistanceImport": 37,
-        "confidenceIntervalHigherBound": 40,
-        "confidenceIntervalLowerBound": 34
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "ofloxacin",
-        "sampleCount": 942,
-        "resistanceImport": 37,
-        "confidenceIntervalHigherBound": 40,
-        "confidenceIntervalLowerBound": 34
+        "sampleCount": 353,
+        "resistanceImport": 38,
+        "confidenceIntervalHigherBound": 43,
+        "confidenceIntervalLowerBound": 33
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "penicillin g",
-        "sampleCount": 617,
-        "resistanceImport": 82,
-        "confidenceIntervalHigherBound": 85,
-        "confidenceIntervalLowerBound": 79
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "penicillin v",
-        "sampleCount": 617,
-        "resistanceImport": 82,
-        "confidenceIntervalHigherBound": 85,
-        "confidenceIntervalLowerBound": 79
+        "sampleCount": 310,
+        "resistanceImport": 89,
+        "confidenceIntervalHigherBound": 92,
+        "confidenceIntervalLowerBound": 85
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
@@ -3154,42 +2458,26 @@
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "teicoplanin",
-        "sampleCount": 1191,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 1063,
-        "resistanceImport": 11,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 10
+        "sampleCount": 576,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 8,
+        "confidenceIntervalLowerBound": 4
     },
     {
         "bacteriaName": "staphylococcus epidermidis / staphylococcus",
         "compoundName": "tobramycin",
-        "sampleCount": 1012,
+        "sampleCount": 348,
         "resistanceImport": 40,
-        "confidenceIntervalHigherBound": 43,
-        "confidenceIntervalLowerBound": 37
-    },
-    {
-        "bacteriaName": "staphylococcus epidermidis / staphylococcus",
-        "compoundName": "vancomycin",
-        "sampleCount": 1191,
-        "resistanceImport": 3,
-        "confidenceIntervalHigherBound": 4,
-        "confidenceIntervalLowerBound": 2
+        "confidenceIntervalHigherBound": 45,
+        "confidenceIntervalLowerBound": 35
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
         "compoundName": "amoxicillin",
-        "sampleCount": 29,
-        "resistanceImport": 79,
-        "confidenceIntervalHigherBound": 90,
-        "confidenceIntervalLowerBound": 61
+        "sampleCount": 22,
+        "resistanceImport": 95,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 76
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
@@ -3201,67 +2489,11 @@
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 48,
-        "resistanceImport": 46,
-        "confidenceIntervalHigherBound": 60,
-        "confidenceIntervalLowerBound": 33
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "cefazolin",
-        "sampleCount": 24,
-        "resistanceImport": 38,
-        "confidenceIntervalHigherBound": 57,
-        "confidenceIntervalLowerBound": 21
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "cefotaxime",
-        "sampleCount": 27,
-        "resistanceImport": 37,
-        "confidenceIntervalHigherBound": 56,
-        "confidenceIntervalLowerBound": 22
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "ceftazidime",
-        "sampleCount": 27,
-        "resistanceImport": 37,
-        "confidenceIntervalHigherBound": 56,
-        "confidenceIntervalLowerBound": 22
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
         "compoundName": "ceftriaxone",
-        "sampleCount": 27,
-        "resistanceImport": 37,
-        "confidenceIntervalHigherBound": 56,
-        "confidenceIntervalLowerBound": 22
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "cefuroxime",
-        "sampleCount": 24,
-        "resistanceImport": 42,
+        "sampleCount": 22,
+        "resistanceImport": 41,
         "confidenceIntervalHigherBound": 61,
-        "confidenceIntervalLowerBound": 25
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "cefuroxime axetil",
-        "sampleCount": 24,
-        "resistanceImport": 42,
-        "confidenceIntervalHigherBound": 61,
-        "confidenceIntervalLowerBound": 25
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "clarithromycin",
-        "sampleCount": 48,
-        "resistanceImport": 46,
-        "confidenceIntervalHigherBound": 60,
-        "confidenceIntervalLowerBound": 33
+        "confidenceIntervalLowerBound": 23
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
@@ -3274,34 +2506,18 @@
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 52,
+        "sampleCount": 51,
         "resistanceImport": 2,
         "confidenceIntervalHigherBound": 11,
         "confidenceIntervalLowerBound": 0
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "doxycycline",
-        "sampleCount": 75,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "erithromycin",
+        "compoundName": "erythromycin",
         "sampleCount": 48,
         "resistanceImport": 46,
         "confidenceIntervalHigherBound": 60,
         "confidenceIntervalLowerBound": 33
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "flucloxacillin",
-        "sampleCount": 43,
-        "resistanceImport": 44,
-        "confidenceIntervalHigherBound": 59,
-        "confidenceIntervalLowerBound": 30
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
@@ -3321,27 +2537,11 @@
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "minocycline",
-        "sampleCount": 75,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
         "compoundName": "penicillin g",
-        "sampleCount": 48,
+        "sampleCount": 43,
         "resistanceImport": 98,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 88
-    },
-    {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "penicillin v",
-        "sampleCount": 48,
-        "resistanceImport": 98,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 88
+        "confidenceIntervalLowerBound": 87
     },
     {
         "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
@@ -3352,20 +2552,12 @@
         "confidenceIntervalLowerBound": 0
     },
     {
-        "bacteriaName": "staphylococcus saprophyticus / staphylococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 75,
-        "resistanceImport": 5,
-        "confidenceIntervalHigherBound": 13,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "amoxicillin",
-        "sampleCount": 7,
+        "sampleCount": 2,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 59
+        "confidenceIntervalLowerBound": 29
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
@@ -3394,30 +2586,14 @@
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "cefotaxime",
-        "sampleCount": 18,
+        "sampleCount": 2,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 79
+        "confidenceIntervalLowerBound": 29
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "ceftazidime",
-        "sampleCount": 18,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 79
-    },
-    {
-        "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "ceftriaxone",
-        "sampleCount": 18,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 79
-    },
-    {
-        "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "cefuroxime",
         "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
@@ -3425,7 +2601,7 @@
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "cefuroxime axetil",
+        "compoundName": "ceftriaxone",
         "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
@@ -3434,26 +2610,18 @@
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "ciprofloxacin",
-        "sampleCount": 8,
-        "resistanceImport": 88,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 51
+        "sampleCount": 7,
+        "resistanceImport": 86,
+        "confidenceIntervalHigherBound": 99,
+        "confidenceIntervalLowerBound": 46
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "cotrimoxazole",
-        "sampleCount": 44,
-        "resistanceImport": 16,
-        "confidenceIntervalHigherBound": 30,
-        "confidenceIntervalLowerBound": 8
-    },
-    {
-        "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "doxycycline",
-        "sampleCount": 8,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 60,
-        "confidenceIntervalLowerBound": 7
+        "sampleCount": 39,
+        "resistanceImport": 5,
+        "confidenceIntervalHigherBound": 18,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
@@ -3466,10 +2634,10 @@
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "gentamicin",
-        "sampleCount": 23,
+        "sampleCount": 5,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 83
+        "confidenceIntervalLowerBound": 51
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
@@ -3505,14 +2673,6 @@
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 34,
-        "resistanceImport": 15,
-        "confidenceIntervalHigherBound": 31,
-        "confidenceIntervalLowerBound": 6
-    },
-    {
-        "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "nitrofurantoin",
         "sampleCount": 2,
         "resistanceImport": 100,
@@ -3522,70 +2682,38 @@
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "norfloxacin",
-        "sampleCount": 8,
-        "resistanceImport": 88,
+        "sampleCount": 1,
+        "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 51
-    },
-    {
-        "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "ofloxacin",
-        "sampleCount": 8,
-        "resistanceImport": 88,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 51
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "piperacillin/tazobactam",
-        "sampleCount": 13,
+        "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 73
-    },
-    {
-        "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
-        "compoundName": "tigecycline",
-        "sampleCount": 8,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 60,
-        "confidenceIntervalLowerBound": 7
+        "confidenceIntervalLowerBound": 59
     },
     {
         "bacteriaName": "stenotrophomonas maltophilia / stenotrophomonas",
         "compoundName": "tobramycin",
-        "sampleCount": 23,
+        "sampleCount": 7,
         "resistanceImport": 100,
         "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 83
-    },
-    {
-        "bacteriaName": "streptococcus agalactiae / streptococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 14,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 34,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "streptococcus agalactiae / streptococcus",
-        "compoundName": "clarithromycin",
-        "sampleCount": 14,
-        "resistanceImport": 7,
-        "confidenceIntervalHigherBound": 34,
-        "confidenceIntervalLowerBound": 0
+        "confidenceIntervalLowerBound": 59
     },
     {
         "bacteriaName": "streptococcus agalactiae / streptococcus",
         "compoundName": "doxycycline",
-        "sampleCount": 20,
-        "resistanceImport": 70,
-        "confidenceIntervalHigherBound": 86,
-        "confidenceIntervalLowerBound": 48
+        "sampleCount": 3,
+        "resistanceImport": 67,
+        "confidenceIntervalHigherBound": 94,
+        "confidenceIntervalLowerBound": 20
     },
     {
         "bacteriaName": "streptococcus agalactiae / streptococcus",
-        "compoundName": "erithromycin",
+        "compoundName": "erythromycin",
         "sampleCount": 14,
         "resistanceImport": 7,
         "confidenceIntervalHigherBound": 34,
@@ -3594,42 +2722,26 @@
     {
         "bacteriaName": "streptococcus agalactiae / streptococcus",
         "compoundName": "levofloxacin",
-        "sampleCount": 17,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 42,
-        "confidenceIntervalLowerBound": 6
+        "sampleCount": 14,
+        "resistanceImport": 21,
+        "confidenceIntervalHigherBound": 48,
+        "confidenceIntervalLowerBound": 7
     },
     {
         "bacteriaName": "streptococcus agalactiae / streptococcus",
         "compoundName": "minocycline",
-        "sampleCount": 20,
-        "resistanceImport": 70,
-        "confidenceIntervalHigherBound": 86,
-        "confidenceIntervalLowerBound": 48
-    },
-    {
-        "bacteriaName": "streptococcus agalactiae / streptococcus",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 17,
-        "resistanceImport": 18,
-        "confidenceIntervalHigherBound": 42,
-        "confidenceIntervalLowerBound": 6
-    },
-    {
-        "bacteriaName": "streptococcus agalactiae / streptococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 20,
-        "resistanceImport": 70,
-        "confidenceIntervalHigherBound": 86,
-        "confidenceIntervalLowerBound": 48
+        "sampleCount": 4,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 45
     },
     {
         "bacteriaName": "streptococcus milleri / streptococcus",
         "compoundName": "amoxicillin",
-        "sampleCount": 17,
-        "resistanceImport": 12,
-        "confidenceIntervalHigherBound": 36,
-        "confidenceIntervalLowerBound": 2
+        "sampleCount": 9,
+        "resistanceImport": 22,
+        "confidenceIntervalHigherBound": 56,
+        "confidenceIntervalLowerBound": 6
     },
     {
         "bacteriaName": "streptococcus milleri / streptococcus",
@@ -3638,14 +2750,6 @@
         "resistanceImport": 29,
         "confidenceIntervalHigherBound": 65,
         "confidenceIntervalLowerBound": 8
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 16,
-        "resistanceImport": 38,
-        "confidenceIntervalHigherBound": 61,
-        "confidenceIntervalLowerBound": 19
     },
     {
         "bacteriaName": "streptococcus milleri / streptococcus",
@@ -3665,14 +2769,6 @@
     },
     {
         "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "clarithromycin",
-        "sampleCount": 16,
-        "resistanceImport": 38,
-        "confidenceIntervalHigherBound": 61,
-        "confidenceIntervalLowerBound": 19
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
         "compoundName": "clindamycin",
         "sampleCount": 19,
         "resistanceImport": 26,
@@ -3682,14 +2778,14 @@
     {
         "bacteriaName": "streptococcus milleri / streptococcus",
         "compoundName": "doxycycline",
-        "sampleCount": 11,
-        "resistanceImport": 55,
-        "confidenceIntervalHigherBound": 79,
-        "confidenceIntervalLowerBound": 28
+        "sampleCount": 5,
+        "resistanceImport": 60,
+        "confidenceIntervalHigherBound": 88,
+        "confidenceIntervalLowerBound": 23
     },
     {
         "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "erithromycin",
+        "compoundName": "erythromycin",
         "sampleCount": 16,
         "resistanceImport": 38,
         "confidenceIntervalHigherBound": 61,
@@ -3702,62 +2798,6 @@
         "resistanceImport": 13,
         "confidenceIntervalHigherBound": 39,
         "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "minocycline",
-        "sampleCount": 11,
-        "resistanceImport": 55,
-        "confidenceIntervalHigherBound": 79,
-        "confidenceIntervalLowerBound": 28
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 15,
-        "resistanceImport": 13,
-        "confidenceIntervalHigherBound": 39,
-        "confidenceIntervalLowerBound": 3
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "norfloxacin",
-        "sampleCount": 1,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 17
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "ofloxacin",
-        "sampleCount": 1,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 17
-    },
-    {
-        "bacteriaName": "streptococcus milleri / streptococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 11,
-        "resistanceImport": 55,
-        "confidenceIntervalHigherBound": 79,
-        "confidenceIntervalLowerBound": 28
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 35,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 20,
-        "confidenceIntervalLowerBound": 1
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "clarithromycin",
-        "sampleCount": 35,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 20,
-        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "streptococcus pneumoniae / streptococcus",
@@ -3769,15 +2809,7 @@
     },
     {
         "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "doxycycline",
-        "sampleCount": 56,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 34,
-        "confidenceIntervalLowerBound": 13
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "erithromycin",
+        "compoundName": "erythromycin",
         "sampleCount": 35,
         "resistanceImport": 6,
         "confidenceIntervalHigherBound": 20,
@@ -3785,87 +2817,39 @@
     },
     {
         "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "flucloxacillin",
-        "sampleCount": 25,
-        "resistanceImport": 8,
-        "confidenceIntervalHigherBound": 26,
+        "compoundName": "levofloxacin",
+        "sampleCount": 35,
+        "resistanceImport": 6,
+        "confidenceIntervalHigherBound": 20,
         "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "levofloxacin",
-        "sampleCount": 47,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 15,
-        "confidenceIntervalLowerBound": 0
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
         "compoundName": "minocycline",
-        "sampleCount": 56,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 34,
-        "confidenceIntervalLowerBound": 13
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 47,
-        "resistanceImport": 4,
-        "confidenceIntervalHigherBound": 15,
-        "confidenceIntervalLowerBound": 0
+        "sampleCount": 24,
+        "resistanceImport": 29,
+        "confidenceIntervalHigherBound": 49,
+        "confidenceIntervalLowerBound": 15
     },
     {
         "bacteriaName": "streptococcus pneumoniae / streptococcus",
         "compoundName": "penicillin g",
-        "sampleCount": 47,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 18,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "penicillin v",
-        "sampleCount": 47,
-        "resistanceImport": 6,
-        "confidenceIntervalHigherBound": 18,
-        "confidenceIntervalLowerBound": 2
-    },
-    {
-        "bacteriaName": "streptococcus pneumoniae / streptococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 56,
-        "resistanceImport": 21,
-        "confidenceIntervalHigherBound": 34,
-        "confidenceIntervalLowerBound": 13
-    },
-    {
-        "bacteriaName": "streptococcus pyogenes / streptococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 4,
-        "resistanceImport": 50,
-        "confidenceIntervalHigherBound": 85,
-        "confidenceIntervalLowerBound": 15
-    },
-    {
-        "bacteriaName": "streptococcus pyogenes / streptococcus",
-        "compoundName": "clarithromycin",
-        "sampleCount": 4,
-        "resistanceImport": 50,
-        "confidenceIntervalHigherBound": 85,
-        "confidenceIntervalLowerBound": 15
+        "sampleCount": 24,
+        "resistanceImport": 8,
+        "confidenceIntervalHigherBound": 27,
+        "confidenceIntervalLowerBound": 1
     },
     {
         "bacteriaName": "streptococcus pyogenes / streptococcus",
         "compoundName": "doxycycline",
-        "sampleCount": 5,
-        "resistanceImport": 60,
-        "confidenceIntervalHigherBound": 88,
-        "confidenceIntervalLowerBound": 23
+        "sampleCount": 1,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "streptococcus pyogenes / streptococcus",
-        "compoundName": "erithromycin",
+        "compoundName": "erythromycin",
         "sampleCount": 4,
         "resistanceImport": 50,
         "confidenceIntervalHigherBound": 85,
@@ -3874,34 +2858,10 @@
     {
         "bacteriaName": "streptococcus pyogenes / streptococcus",
         "compoundName": "minocycline",
-        "sampleCount": 5,
-        "resistanceImport": 60,
-        "confidenceIntervalHigherBound": 88,
-        "confidenceIntervalLowerBound": 23
-    },
-    {
-        "bacteriaName": "streptococcus pyogenes / streptococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 5,
-        "resistanceImport": 60,
-        "confidenceIntervalHigherBound": 88,
-        "confidenceIntervalLowerBound": 23
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "amoxicillin",
-        "sampleCount": 21,
-        "resistanceImport": 14,
-        "confidenceIntervalHigherBound": 36,
-        "confidenceIntervalLowerBound": 4
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "azithromycin",
-        "sampleCount": 19,
-        "resistanceImport": 16,
-        "confidenceIntervalHigherBound": 39,
-        "confidenceIntervalLowerBound": 5
+        "sampleCount": 1,
+        "resistanceImport": 100,
+        "confidenceIntervalHigherBound": 100,
+        "confidenceIntervalLowerBound": 17
     },
     {
         "bacteriaName": "streptococcus viridans / streptococcus",
@@ -3913,35 +2873,11 @@
     },
     {
         "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "cefotaxime",
-        "sampleCount": 27,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 10
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "ceftazidime",
-        "sampleCount": 27,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 10
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
         "compoundName": "ceftriaxone",
-        "sampleCount": 27,
-        "resistanceImport": 22,
-        "confidenceIntervalHigherBound": 41,
-        "confidenceIntervalLowerBound": 10
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "clarithromycin",
-        "sampleCount": 19,
-        "resistanceImport": 16,
-        "confidenceIntervalHigherBound": 39,
-        "confidenceIntervalLowerBound": 5
+        "sampleCount": 23,
+        "resistanceImport": 26,
+        "confidenceIntervalHigherBound": 47,
+        "confidenceIntervalLowerBound": 12
     },
     {
         "bacteriaName": "streptococcus viridans / streptococcus",
@@ -3953,15 +2889,7 @@
     },
     {
         "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "doxycycline",
-        "sampleCount": 4,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 71,
-        "confidenceIntervalLowerBound": 4
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "erithromycin",
+        "compoundName": "erythromycin",
         "sampleCount": 19,
         "resistanceImport": 16,
         "confidenceIntervalHigherBound": 39,
@@ -3977,58 +2905,10 @@
     },
     {
         "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "minocycline",
-        "sampleCount": 4,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 71,
-        "confidenceIntervalLowerBound": 4
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "moxifloxacin",
-        "sampleCount": 7,
-        "resistanceImport": 29,
-        "confidenceIntervalHigherBound": 65,
-        "confidenceIntervalLowerBound": 8
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
         "compoundName": "penicillin g",
-        "sampleCount": 30,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 38,
-        "confidenceIntervalLowerBound": 9
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "penicillin v",
-        "sampleCount": 30,
-        "resistanceImport": 20,
-        "confidenceIntervalHigherBound": 38,
-        "confidenceIntervalLowerBound": 9
-    },
-    {
-        "bacteriaName": "streptococcus viridans / streptococcus",
-        "compoundName": "tigecycline",
-        "sampleCount": 4,
-        "resistanceImport": 25,
-        "confidenceIntervalHigherBound": 71,
-        "confidenceIntervalLowerBound": 4
-    },
-    {
-        "bacteriaName": "yersinia enterocolitica / yersinia",
-        "compoundName": "colistin",
-        "sampleCount": 1,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 17
-    },
-    {
-        "bacteriaName": "yersinia pseudotuberculosis / yersinia",
-        "compoundName": "colistin",
-        "sampleCount": 1,
-        "resistanceImport": 100,
-        "confidenceIntervalHigherBound": 100,
-        "confidenceIntervalLowerBound": 17
+        "sampleCount": 16,
+        "resistanceImport": 19,
+        "confidenceIntervalHigherBound": 44,
+        "confidenceIntervalLowerBound": 6
     }
 ]

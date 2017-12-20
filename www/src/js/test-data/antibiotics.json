@@ -565,9 +565,9 @@
         "iv": true,
         "languagae": "de",
         "id_language": 1,
-        "name": "Erithromycin",
+        "name": "Erythromycin",
         "substances": [
-            "Erithromycin"
+            "Erythromycin"
         ],
         "substanceClasses": [
             {
@@ -578,7 +578,7 @@
             }
         ],
         "id": 35,
-        "identifier": "Erithromycin"
+        "identifier": "Erythromycin"
     }, {
         "po": true,
         "iv": true,
