@@ -319,7 +319,7 @@
         "groupingLocales": [],
         "id": 27,
         "id_grouping": null,
-        "id_shape": 3,
+        "id_shape": 2,
         "id_species": 32,
         "localeNames": [],
         "name": "Pseudomonas aeruginosa",
@@ -330,7 +330,7 @@
             {
                 "id_language": 1,
                 "language": "de",
-                "name": "Coccobacillus"
+                "name": "Rod"
             }
         ],
         "species": "Pseudomonas aeruginosa"
@@ -1012,5 +1012,38 @@
             }
         ],
         "species": "Streptococcus pyogenes"
+    },
+    {
+        "aerobic": true,
+        "aerobicOptional": false,
+        "anaerobic": false,
+        "anaerobicOptional": true,
+        "genus": "Staphylococcus",
+        "gram": true,
+        "grouping": "Haufenkokken",
+        "groupingLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Haufenkokken"
+            }
+        ],
+        "id": 1001,
+        "id_grouping": 3,
+        "id_shape": 1,
+        "id_species": 1010,
+        "localeNames": [],
+        "name": "Staphylococcus sp. coagulase-negative",
+        "selectedLanguage": "de",
+        "selectedLanguageId": 1,
+        "shape": "Coccus",
+        "shapeLocales": [
+            {
+                "id_language": 1,
+                "language": "de",
+                "name": "Kokken"
+            }
+        ],
+        "species": "Staphylococcus sp. coagulase-negative"
     }
 ]
