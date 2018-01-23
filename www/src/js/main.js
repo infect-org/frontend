@@ -19,9 +19,14 @@ const log = debug('infect:Main');
 
 useStrict(true);
 
+const isBeta = window.location.hostname.includes('beta.');
+const dataFolder = isBeta ? 'beta' : 'live';
+log('Is beta? %o – Data folder is %s', isBeta, dataFolder);
+
+
 const config 				= {
 	endpoints				: {
-		apiPrefix			: '/src/js/test-data/'
+		apiPrefix			: `/src/js/data/${ dataFolder }/`
 		, bacteria			: 'bacteria.json'
 		, antibiotics		: 'antibiotics.json'
 		, resistances		: 'resistances.json'
