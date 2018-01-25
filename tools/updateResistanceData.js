@@ -30,10 +30,10 @@ const fileMapping = new Map([
 
 class Import {
 
-    async execute() {
+    async execute(mode) {
         for (const [inputFile, outputFile] of fileMapping.entries()) {
-            const inFile = path.join(__dirname, './data', inputFile+'.csv');
-            const outFile = path.join(__dirname, '../www/src/js/test-data/', outputFile+'.json');
+            const inFile = path.join(__dirname, './data/', mode, (mode === 'beta' ? 'beta_' : '')+inputFile+'.csv');
+            const outFile = path.join(__dirname, '../www/src/js/data/', mode, outputFile+'.json');
 
             const data = await readFile(inFile);
             const parsedData = await this.parseCSV(data.toString());
@@ -68,6 +68,11 @@ class Import {
 
 
 
-new Import().execute().then(() => {
+new Import().execute('live').then(() => {
+    log.success('done');
+}).catch(log);
+
+
+new Import().execute('beta').then(() => {
     log.success('done');
 }).catch(log);
