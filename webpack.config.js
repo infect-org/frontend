@@ -90,6 +90,7 @@ module.exports = function(env) {
 		, devServer: {
 			publicPath: '/dist/'
 			, contentBase: 'www'
+			, disableHostCheck: true
 			, hot: true
 		}
 		, module: {
