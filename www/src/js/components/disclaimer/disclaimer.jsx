@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { observable, action } from 'mobx';
+import GuidedTourButton from '../guidedTour/guidedTourButton';
 
 @observer
 export default class Disclaimer extends React.Component {
@@ -15,11 +16,6 @@ export default class Disclaimer extends React.Component {
 		}
 	}
 
-	openAbout() {
-		document.querySelector('.overlay').classList.toggle('overlay--open'); 
-		document.querySelector('.button--info').classList.toggle('button--info-active');
-	}
-
 	@action updateVisibility(visible) {
 		this.displayDisclaimer = !!visible;
 	}
@@ -29,6 +25,14 @@ export default class Disclaimer extends React.Component {
 		localStorage.setItem(this._localStoragePropertyName, 1);
 	}
 
+	startGuidedTour() {
+		this.props.guidedTour.start();
+	}
+
+	showInfoOverlay() {
+		this.props.infoOverlay.show();
+	}
+
 	render() {
 		// See https://github.com/infect-org/frontend/issues/64
 		return (
@@ -36,13 +40,19 @@ export default class Disclaimer extends React.Component {
 				{ this.displayDisclaimer && 
 				<div className="main__disclaimer disclaimer">
 					
-						<p>
-							<span className="disclaimer__text">INFECT is in a beta stage. It may contain bugs and does contain unvalidated data. If you have any questions or discover any issues, please contact <a href="mailto:info@infect.info">info@infect.info</a>.</span>
-							<span className="disclaimer__button-container disclaimer__button-container--close">
-								<a className="disclaimer__button" onClick={ () => this.close() }>Close</a>
+						<p className="disclaimer__paragraph">
+							<span className="disclaimer__text">By using INFECT, you accept 
+								our <a onClick={ () => this.showInfoOverlay() }>disclaimer</a>.
 							</span>
-							<span className="disclaimer__button-container">
+							{ /*Questions? <a href="mailto:info@infect.info">info@infect.info</a>*/ }
+							{/*<span className="disclaimer__button-container">
 								<a className="disclaimer__button" onClick={ () => this.openAbout() }>Information</a>
+							</span>*/ }
+							<span className="disclaimer__button-container">
+								<GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton>
+							</span>
+							<span className="disclaimer__button-container disclaimer__button-container--close">
+								<a className="disclaimer__button" onClick={ () => this.close() }>&times;</a>
 							</span>
 						</p>	
 				</div>

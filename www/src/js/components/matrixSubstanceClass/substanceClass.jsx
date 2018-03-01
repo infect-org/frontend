@@ -156,7 +156,7 @@ export default class SubstanceClass extends React.Component {
 
 	render() {
 		return (
-			<g transform={ this.transformation } className={ 'resistanceMatrix__substanceClassLabel ' + this.classModifier }
+			<g transform={ this.transformation } className={ 'resistanceMatrix__substanceClassLabel js-substance-class ' + this.classModifier }
 				onMouseEnter={ (ev) => this._updateHoveredState(true) } onMouseLeave={ (ev) => this._updateHoveredState(false) }
 				onClick={ (ev) => this._handleSubstanceClassClick() } >
 				{ /* use textPath to truncate text of substanceClass */ }

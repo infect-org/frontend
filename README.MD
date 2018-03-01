@@ -64,7 +64,7 @@ npm start
 To build the CSS and JS files needed for the production system, call
 
 ```
-npm build
+npm run build
 ```
 
 

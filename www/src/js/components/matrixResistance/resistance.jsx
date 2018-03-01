@@ -89,7 +89,7 @@ class Resistance extends React.Component {
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
 			<g transform={ this.transformation } 
-				className={ 'resistanceMatrix__resistance ' + this.classModifier }
+				className={ 'resistanceMatrix__resistance js-resistance ' + this.classModifier }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
 				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }>

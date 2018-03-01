@@ -1,9 +1,13 @@
 .disclaimer {
 	position: relative;
 	box-sizing: border-box;
-	background-color: #ffecec;
-	color: #d60000;
-	padding: 10px 50px;
+	background-color: #eee;
+	color: #000;
+	padding: 10px;
+
+	&__paragraph {
+		margin: 0;
+	}
 
 	&__text {
 		margin-right: 50px;

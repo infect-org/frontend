@@ -15,6 +15,8 @@ import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
 import OffsetFilters from './models/filters/offsetFilters';
 import SelectedFilters from './models/filters/selectedFilters';
+import GuidedTour from './models/guidedTour/guidedTour';
+import InfoOverlay from './models/infoOverlay/infoOverlay';
 import MostUsedFilters from './models/filters/mostUsedFilters';
 import { when, observable } from 'mobx';
 import debug from 'debug';
@@ -54,6 +56,8 @@ export default class InfectApp {
 		this._setupOffsetFilters();
 
 		this.mostUsedFilters = new MostUsedFilters(this.selectedFilters, this.filterValues);
+		this.infoOverlay = new InfoOverlay();
+		this.guidedTour = new GuidedTour(this.infoOverlay);
 
 		this._setupFetchers();
 

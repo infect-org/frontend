@@ -99,7 +99,7 @@ export default class FilterListMenu extends React.Component {
 
 	render() {
 		return (
-            <div className="group group--vertical group--left-aligned">
+            <div className="group group--vertical group--left-aligned js-filter-list-menu">
 				{ this.visibleButtons.map((section) => {
 					return <button key={ section }
 							title={ this._getNiceName(section) }
