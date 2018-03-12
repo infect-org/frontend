@@ -1,16 +1,21 @@
 //BASE
+$font-family--sans-serif: "acumin-pro", "Helvetica Neue", Arial;
+$line-height-base: 1.6;
+
+$transition-duration: 100ms;
+$transition-duration--long: 200ms;
+
 $group__title-h1:	18px;
 $group__title-h2:	12px;
 $group__title-h3:	14px;
 
+$font-size: 18px;
+$font-size--small: 16px;
+
 
 //COLORS
 $color--light-green: #cbe264;
-
-$hover-color:		$color--light-green;
-
-$transition-duration: 100ms;
-$transition-duration--long: 200ms;
+$hover-color: $color--light-green;
 
 $link-color: #BCD93A;
 $link-color--hover: #D2E67A;
@@ -32,10 +37,10 @@ $sidenavigation__group__title-size:	26px;
 $search-box--height:				70px;
 $header-search-height:				128px;
 
-	//checkbox
+
+//CHECKBOX
 $active__checkbox-color:			$color--light-green;
 
 
-//BASE
-$font-family--sans-serif: 			"acumin-pro", "Helvetica Neue", Arial;
-$line-height-base:					1.6;
+//RESPONSIVE
+$breakpoint-mobile: 800px;

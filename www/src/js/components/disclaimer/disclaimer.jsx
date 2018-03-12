@@ -52,7 +52,7 @@ export default class Disclaimer extends React.Component {
 								<GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton>
 							</span>
 							<span className="disclaimer__button-container disclaimer__button-container--close">
-								<a className="disclaimer__button" onClick={ () => this.close() }>&times;</a>
+								<button className="disclaimer__button button button--close" onClick={ () => this.close() }>&times;</button>
 							</span>
 						</p>	
 				</div>

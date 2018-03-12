@@ -32,7 +32,7 @@ export default class GuidedTour extends React.Component {
 		log(introJs);
 		this.introJs = introJs();
 		this.introJs.setOptions({
-			hintButtonLabel: 'Close',
+			hintButtonLabel: '&times;',
 			hintPosition: 'top-left',
 			hints: [{
 				element: document.querySelector('.js-filter-search-input'),
@@ -42,12 +42,12 @@ export default class GuidedTour extends React.Component {
 			}, {
 				element: document.querySelector('.js-filter-list-menu'),
 				hint: `Use the filter navigation to quickly jump to a filter section:
-					<ol>
-						<li>Favorites: Your most used filters for the current session (is only
+					<ol class="list">
+						<li><b>Favorites</b>: Your most used filters for the current session (is only
 							displayed after you add the first filter)</li>
-						<li>Antibiotic: Filter antibiotics by their characteristics</li>
-						<li>Bacteria: Filter bacteria by their characteristics</li>
-						<li>Offset and Population: Add offsets to the data displayed or limit 
+						<li><b>Antibiotic</b>: Filter antibiotics by their characteristics</li>
+						<li><b>Bacteria</b>: Filter bacteria by their characteristics</li>
+						<li><b>Offset and Population</b>: Add offsets to the data displayed or limit 
 							it to a certain region</li>
 					</ol>
 				`,

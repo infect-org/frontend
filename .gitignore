@@ -21,6 +21,7 @@ test.js
 node_modules
 config.js
 
+.idea
 
 coverage
 

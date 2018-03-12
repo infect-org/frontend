@@ -606,8 +606,8 @@ body {
   line-height: 1.6;
   color: #000;
   background-color: #fff;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   font-size: 18px;
@@ -705,7 +705,7 @@ address {
   .main__header {
     border-bottom: solid 1px #d3d2cd; }
   .main__matrix {
-    width: calc(100vw - 210px);
+    width: auto;
     height: 100%;
     overflow: auto;
     margin-top: 20px;
@@ -1036,72 +1036,6 @@ address {
   .label--gray {
     color: #787677; }
 
-.button {
-  border: none;
-  color: #000; }
-  .button span {
-    position: relative;
-    top: -2px; }
-  .button--close {
-    position: relative;
-    background-color: #d7d5c4;
-    padding: 0 20px;
-    margin: 0;
-    min-height: 38px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 0;
-    -webkit-border-top-left-radius: 0;
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -webkit-border-bottom-left-radius: 0;
-    -moz-border-radius-topleft: 0;
-    -moz-border-radius-topright: 5px;
-    -moz-border-radius-bottomright: 5px;
-    -moz-border-radius-bottomleft: 0;
-    font-weight: bold; }
-    @media (pointer: fine) {
-      .button--close {
-        padding: 0 8px; } }
-    .button--close:hover {
-      background-color: #d60000;
-      color: #fff; }
-    @media only screen and (hover-interaction: hover) {
-      .button--close {
-        padding: 0 10px !important; } }
-  .button--clearall {
-    height: 38px;
-    background-color: #d7d5c4;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    width: 38px;
-    font-weight: bold; }
-    .button--clearall:hover {
-      background-color: #d60000;
-      color: #fff; }
-  .button--info {
-    position: relative;
-    transition: background-color color 100ms linear;
-    -webkit-transition: background-color color 100ms linear;
-    -moz-transition: background-color color 100ms linear;
-    background-color: #363636;
-    color: #fff;
-    width: 35px;
-    top: 10px;
-    font-weight: bold;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px; }
-    .button--info:hover {
-      background-color: #616161; }
-    .button--info-active {
-      background-color: white;
-      color: black; }
-      .button--info-active:hover {
-        background-color: lightgrey; }
-
 .input {
   margin: 5px 0 10px 0; }
 
@@ -1191,6 +1125,85 @@ address {
 .list-item--radio input:hover + .side-label, .list-item--radio input:hover + .side-label::after, .list-item--radio input:checked + .side-label, .list-item--radio input:checked + .side-label::after {
   color: #cbe264;
   border-color: #cbe264; }
+
+.button {
+  border: none;
+  color: #000;
+  font-weight: 600; }
+  .button span {
+    position: relative;
+    top: -2px; }
+  .button--label {
+    position: relative;
+    min-height: 38px;
+    margin: 0;
+    padding: 0 20px;
+    background-color: #c5c3b2;
+    font-weight: bold;
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 0; }
+    @media (pointer: fine) {
+      .button--label {
+        padding: 0 8px; } }
+    .button--label:hover {
+      background-color: #d60000;
+      color: #fff; }
+    @media only screen and (hover-interaction: hover) {
+      .button--label {
+        padding: 0 10px !important; } }
+  .button--clearall {
+    height: 38px;
+    background-color: #c5c3b2;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    width: 38px;
+    font-weight: bold; }
+    .button--clearall:hover {
+      background-color: #d60000;
+      color: #fff; }
+  .button--info {
+    position: relative;
+    transition: background-color color 100ms linear;
+    -webkit-transition: background-color color 100ms linear;
+    -moz-transition: background-color color 100ms linear;
+    background-color: #363636;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+    border-radius: 18px;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px; }
+    .button--info:hover {
+      background-color: #616161; }
+    .button--info-active {
+      background-color: white;
+      color: black; }
+      .button--info-active:hover {
+        background-color: lightgrey; }
+  .button--guide {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 5px 15px;
+    color: white;
+    background-color: #578ffa;
+    transition: background-color 100ms linear;
+    -webkit-transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear; }
+    .button--guide:hover {
+      background-color: #4e79c7; }
 
 .button--icon--active:after {
   content: "";
@@ -1296,7 +1309,7 @@ matrixheader {
       opacity: 0;
       pointer-events: none; }
   .resistanceMatrix__overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 70px;
@@ -1386,13 +1399,39 @@ matrixheader {
   .overlay--open {
     z-index: 300;
     opacity: 1; }
+  .overlay__menu {
+    display: none; }
+    @media only screen and (min-width: 800px) {
+      .overlay__menu {
+        display: block;
+        position: fixed;
+        right: 35px;
+        top: 100px;
+        z-index: 200; } }
+    .overlay__menu .menu {
+      list-style: none; }
+      .overlay__menu .menu-item {
+        padding: 5px 0;
+        text-align: right; }
+        .overlay__menu .menu-item a {
+          position: relative;
+          text-transform: uppercase;
+          color: white; }
+          .overlay__menu .menu-item a:hover, .overlay__menu .menu-item a:active {
+            transition: font-weight 100ms linear;
+            -webkit-transition: font-weight 100ms linear;
+            -moz-transition: font-weight 100ms linear;
+            font-weight: 600; }
   .overlay__container {
     position: relative;
-    width: 40%;
+    width: 80%;
     max-width: 600px;
-    padding: 70px 0;
+    padding: 70px 0 200px 0;
     margin: auto;
     color: white; }
+    @media only screen and (min-width: 800px) {
+      .overlay__container {
+        width: 40%; } }
   .overlay h1 {
     margin-top: 1.3em; }
   .overlay__paragraph--footnote {
@@ -1426,6 +1465,11 @@ matrixheader {
       margin-bottom: 5%; }
   .overlay .image--fullwidth {
     width: 100%; }
+  .overlay .guide {
+    margin: 40px 0;
+    font-weight: 600; }
+    .overlay .guide button {
+      margin-left: 40px; }
 
 .search {
   position: absolute;
@@ -1518,9 +1562,10 @@ matrixheader {
 .disclaimer {
   position: relative;
   box-sizing: border-box;
+  padding: 10px;
   background-color: #eee;
   color: #000;
-  padding: 10px; }
+  font-size: 16px; }
   .disclaimer__paragraph {
     margin: 0; }
   .disclaimer__text {
@@ -1528,6 +1573,8 @@ matrixheader {
   .disclaimer__button-container {
     display: inline-block;
     margin-right: 10px; }
+    .disclaimer__button-container--close {
+      float: right; }
   .disclaimer__button {
     color: black !important;
     cursor: pointer; }
@@ -1538,9 +1585,52 @@ matrixheader {
 .introjs-hint {
   z-index: 250; }
   .introjs-hint-dot {
-    border-color: #cbe264; }
+    border-color: #578ffa; }
   .introjs-hint-pulse {
-    background-color: #cbe264; }
+    background-color: #578ffa; }
+
+.introjs-tooltip {
+  min-width: 400px;
+  background-color: #eeeeee;
+  font-size: 16px; }
+
+.introjs-tooltiptext {
+  padding: 0 25px; }
+  .introjs-tooltiptext .list {
+    padding-left: 25px; }
+    .introjs-tooltiptext .list li {
+      padding-left: 10px; }
+
+.introjs-button {
+  float: right;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  text-shadow: none;
+  background-color: #c5c3b2;
+  background-image: none;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  border: 0; }
+  .introjs-button:hover {
+    color: black;
+    background-color: #d7d5c4; }
+
+.introjs-arrow {
+  border: 5px solid #eeeeee; }
+  .introjs-arrow.top {
+    top: -10px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #eeeeee;
+    border-left-color: transparent; }
+  .introjs-arrow.left {
+    left: -10px;
+    top: 10px;
+    border-top-color: transparent;
+    border-right-color: #eeeeee;
+    border-bottom-color: transparent;
+    border-left-color: transparent; }
 
 .notification-container {
   position: fixed;
@@ -1622,4 +1712,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.df06d5b3b637f5599e47.css.map*/
+/*# sourceMappingURL=main.f4762500188164e6c897.css.map*/

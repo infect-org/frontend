@@ -1,3 +1,7 @@
+$active-filter--button-color: #c5c3b2;
+$active-filter--label-color: #d7d5c4;
+
+
 .filters {
 	&__menu {
 		margin-bottom: 10px;
@@ -117,7 +121,7 @@
 	
 	&--rounded {
 		padding: 3px 5px;
-		background-color: #d7d5c4;
+		background-color: $active-filter--label-color;
 		@include border-radius(5px 0 0 5px);
 		z-index: 2;
 	}
@@ -154,78 +158,6 @@
 		color: #787677;
 	}
 
-}
-
-$button-height: 38px;
-.button {
-	border: none;
-	color: #000;
-    
-    //used to center x
-	span {
-		position: relative;
-		top: -2px;
-	}
-
-	&--close {
-		position: relative;
-		background-color: #d7d5c4;
-		padding: 0 20px;
-		margin: 0;
-		min-height: $button-height;
-		@media (pointer: fine) {
-			padding: 0 8px;
-		}
-		@include border-radius-edges(0, 5px, 5px, 0)
-		font-weight: bold;
-		
-		&:hover {
-			background-color: #d60000;
-			color: #fff;
-		}
-
-		$hover-hover: hover;
-		@include hover-interaction($hover-hover) {
-            padding: 0 10px !important;
-       	}
-	}
-
-	&--clearall {
-		height: $button-height;
-		background-color: #d7d5c4;
-		@include border-radius(5px);
-		width: $button-height;
-		font-weight: bold;
-
-		&:hover {
-			background-color: #d60000;
-			color: #fff;
-		}
-	}
-
-	&--info {
-		position: relative;
-		@include transition(background-color color, $transition-duration);
-		background-color: $sidenavigation-background;
-		color: #fff;
-		width: 35px;
-		top:10px;
-		font-weight: bold;
-		@include border-radius(20px);
-
-		&:hover {
-			background-color: $navigation-background--lighter;
-		}
-
-		&-active {
-			background-color: white;
-			color: black;
-
-			&:hover {
-				background-color: lightgrey;
-			}
-		}
-	}
 }
 
 .input {

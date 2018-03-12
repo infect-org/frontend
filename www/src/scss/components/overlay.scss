@@ -18,13 +18,51 @@
 		opacity: 1;
 	}
 
+	&__menu {
+		display: none;
+
+		@include min-screen($breakpoint-mobile) {
+			display: block;
+			position: fixed;
+			right: 35px;
+			top: 100px;
+			z-index: 200;
+		}
+
+		.menu {
+			list-style: none;
+
+			&-item {
+				padding: 5px 0;
+				text-align: right;
+
+				a {
+					position: relative;
+					text-transform: uppercase;
+
+					color: white;
+
+					&:hover,
+					&:active {
+						@include transition(font-weight, $transition-duration);
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+
 	&__container {
 		position: relative;
-		width: 40%;
+		width: 80%;
 		max-width: 600px;
-		padding: $navigation-height 0;
+		padding: $navigation-height 0 200px 0;
 		margin: auto;
 		color: white;
+
+		@include min-screen($breakpoint-mobile) {
+			width: 40%;
+		}
 	}
 
 	h1 {
@@ -51,5 +89,14 @@
 
 	.image--fullwidth {
 		width: 100%;
+	}
+
+	.guide {
+		margin: 40px 0;
+		font-weight: 600;
+
+		button {
+			margin-left: 40px;
+		}
 	}
 }

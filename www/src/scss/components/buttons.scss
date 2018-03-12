@@ -1,0 +1,91 @@
+$button-height: 38px;
+$button-bg-color: #c5c3b2;
+$button-bg-color--hover: #d7d5c4;
+
+.button {
+  border: none;
+  color: #000;
+  font-weight: 600;
+
+  //used to center x
+  span {
+    position: relative;
+    top: -2px;
+  }
+
+  &--label {
+    position: relative;
+
+    min-height: $button-height;
+    margin: 0;
+    padding: 0 20px;
+    @media (pointer: fine) {
+      padding: 0 8px;
+    }
+
+    background-color: #c5c3b2;
+    font-weight: bold;
+    @include border-radius-edges(0, 5px, 5px, 0);
+
+
+    &:hover {
+      background-color: #d60000;
+      color: #fff;
+    }
+
+    $hover-hover: hover;
+    @include hover-interaction($hover-hover) {
+      padding: 0 10px !important;
+    }
+  }
+
+  &--clearall {
+    height: $button-height;
+    background-color: $button-bg-color;
+    @include border-radius(5px);
+    width: $button-height;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #d60000;
+      color: #fff;
+    }
+  }
+
+  &--info {
+    position: relative;
+    @include transition(background-color color, $transition-duration);
+    background-color: $sidenavigation-background;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+    @include border-radius(18px);
+
+    &:hover {
+      background-color: $navigation-background--lighter;
+    }
+
+    &-active {
+      background-color: white;
+      color: black;
+
+      &:hover {
+        background-color: lightgrey;
+      }
+    }
+  }
+
+  &--guide {
+    @include border-radius(5px);
+    padding: 5px 15px;
+
+    color: white;
+    background-color: #578ffa;
+    @include transition(background-color, $transition-duration);
+
+    &:hover {
+      background-color: #4e79c7;
+    }
+  }
+}

@@ -28,7 +28,7 @@
 	}
 
 	&__matrix {
-		width: calc(100vw - #{$navigation-width});
+		width: auto;
 		height: 100%;
 		overflow: auto;
 		margin-top: 20px;
