@@ -42,14 +42,17 @@ export default class Disclaimer extends React.Component {
 					
 						<p className="disclaimer__paragraph">
 							<span className="disclaimer__text">By using INFECT, you accept 
-								our <a onClick={ () => this.showInfoOverlay() }>disclaimer</a>.
+								our <a href="#disclaimer" onClick={ () => this.showInfoOverlay() }
+								className="disclaimer__link disclaimer__link--disclaimer">disclaimer</a>.
+								See some <a href="#" onClick={ () => this.showInfoOverlay() }
+								className="disclaimer__link">background information</a>.
+								If you have any questions, <a href="mailto:infect@joinbox.com"
+								className="disclaimer__link">contact us</a>. Or just get a short 
+								introduction:
 							</span>
-							{ /*Questions? <a href="mailto:info@infect.info">info@infect.info</a>*/ }
-							{/*<span className="disclaimer__button-container">
-								<a className="disclaimer__button" onClick={ () => this.openAbout() }>Information</a>
-							</span>*/ }
 							<span className="disclaimer__button-container">
-								<GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton>
+								<GuidedTourButton guidedTour={ this.props.guidedTour }>
+								</GuidedTourButton>
 							</span>
 							<span className="disclaimer__button-container disclaimer__button-container--close">
 								<button className="disclaimer__button button button--close" onClick={ () => this.close() }>&times;</button>

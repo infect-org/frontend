@@ -29,7 +29,7 @@ export default class InfoOverlay extends React.Component {
 					<h1 id="guide">Using INFECT</h1>
                     { /* Always «Start/stop guided tour» because it's not stoppable anywhere else
 					  if user has decided to hide disclaimer */ }
-					<div class="guide">Interactive INFECT tour: <GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton></div>
+					<div className="guide">Interactive INFECT tour: <GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton></div>
 					<p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding the susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while semi-transparent circles represent low sample sizes (N ≤ 20). The number in the middle of the circle represents the percentage of susceptible samples:</p>
 					<img className="image--fullwidth" src="dist/img/step1.svg" alt="Step 1" />
 					

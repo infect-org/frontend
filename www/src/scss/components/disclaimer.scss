@@ -2,7 +2,7 @@
 	position: relative;
 
 	box-sizing: border-box;
-	padding: 10px;
+	padding: 8px 16px;
 
 	background-color: #eee;
 	color: #000;
@@ -13,7 +13,7 @@
 	}
 
 	&__text {
-		margin-right: 50px;
+		margin-right: 20px;
 	}
 
 	&__button-container {
@@ -30,9 +30,22 @@
 		cursor: pointer;
 	}
 
-	a {
+	&__link {
 		color: inherit;
 		text-decoration: underline;
+		cursor: pointer;
+
+		&:focus,
+		&:hover {
+			color: inherit;
+		}
+
+		&--disclaimer {
+			font-weight: 800;
+		}
+
 	}
+
+
 
 }

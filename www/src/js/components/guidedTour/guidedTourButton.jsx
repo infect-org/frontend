@@ -20,10 +20,10 @@ export default class GuidedTourButton extends React.Component {
 		return (
 			<span>
 				{ !this.props.guidedTour.started && 
-					<button onClick={ () => this.startGuidedTour() } className="button button--guide">Start guided tour</button>
+					<button onClick={ () => this.startGuidedTour() } className="button button--guide">Show hints</button>
 				}
 				{ this.props.guidedTour.started && 
-					<button onClick={ () => this.stopGuidedTour() } className="button button--guide">Hide guided tour</button>
+					<button onClick={ () => this.stopGuidedTour() } className="button button--guide">Hide hints</button>
 				}
 			</span>
 		);

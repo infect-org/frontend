@@ -1,7 +1,8 @@
 .overlay {
-	position: absolute;
-	width: 100vw;
-	height: 100vh;
+	position: fixed;
+	display: none;
+	right: 0;
+	bottom: 0;
 	top: 0;
 	left: 0;
 	z-index: -1;
@@ -16,6 +17,7 @@
 	&--open {
 		z-index: 300;
 		opacity: 1;
+		display: block;
 	}
 
 	&__menu {
@@ -38,7 +40,7 @@
 
 				a {
 					position: relative;
-					text-transform: uppercase;
+					//text-transform: uppercase;
 
 					color: white;
 
