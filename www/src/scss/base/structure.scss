@@ -1,6 +1,8 @@
 .container {
 	@include flexbox();
 	@include flex-direction(row);
+
+	height: 100%;
 	
 	&__side-navigation {
 		@include flex-grow(0);
@@ -9,7 +11,7 @@
 	}
 
 	&__main {
-		height: 100vh;
+		height: 100%;
 		width: calc(100vw - #{$navigation-width});
 	}
 }
@@ -20,14 +22,16 @@
 	@include flex-direction(column);
 
 	&__header {
+		flex: auto;
 		border-bottom: solid 1px #d3d2cd;
 	}
 
 	&__disclaimer {
-		
+		flex: auto;
 	}
 
 	&__matrix {
+		@include flex-grow(1);
 		width: auto;
 		height: 100%;
 		overflow: auto;

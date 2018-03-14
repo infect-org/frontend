@@ -601,17 +601,17 @@ html {
   -moz-font-feature-settings: "kern=1"; }
 
 body {
-  margin: 0;
-  font-family: "acumin-pro", "Helvetica Neue", Arial;
-  line-height: 1.6;
-  color: #000;
-  background-color: #fff;
+  position: fixed;
   height: 100%;
   width: 100%;
+  margin: 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
-  font-size: 18px;
-  line-height: 1.65; }
+  font-family: "acumin-pro", "Helvetica Neue", Arial;
+  line-height: 1.65;
+  color: #000;
+  background-color: #fff;
+  font-size: 18px; }
 
 input,
 button,
@@ -677,7 +677,8 @@ address {
   -webkit-flex-direction: row;
   -moz-flex-direction: row;
   -ms-flex-direction: row;
-  flex-direction: row; }
+  flex-direction: row;
+  height: 100%; }
   .container__side-navigation {
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
@@ -687,7 +688,7 @@ address {
     width: 210px;
     min-width: 210px; }
   .container__main {
-    height: 100vh;
+    height: 100%;
     width: calc(100vw - 210px); }
 
 .main {
@@ -703,8 +704,16 @@ address {
   -ms-flex-direction: column;
   flex-direction: column; }
   .main__header {
+    flex: auto;
     border-bottom: solid 1px #d3d2cd; }
+  .main__disclaimer {
+    flex: auto; }
   .main__matrix {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
     width: auto;
     height: 100%;
     overflow: auto;
@@ -1719,4 +1728,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.a83321200c8231866590.css.map*/
+/*# sourceMappingURL=main.87b29a1b1341d9ffd917.css.map*/
