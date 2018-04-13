@@ -43,10 +43,23 @@ export default class Store {
 	}
 
 	@action add(item, overwrite) {
-		const id = this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
+		const id = this._getItemId(item);
 		if (!id) throw new Error(`Store: Field id is missing on item ${ JSON.stringify(item) }.`);
-		if (!overwrite && this._items.has(id)) throw new Error(`Store: Tried to overwrite item with id ${ id } without using the appropriate overwrite argument.`);
+		if (!overwrite && this._items.has(id)) throw new Error(`Store: Tried to overwrite item with 
+			id ${ id } without using the appropriate overwrite argument.`);
 		this._items.set(id, item);
+	}
+
+	/**
+	 * Returns id for a given item
+	 */
+	_getItemId(item) {
+		return this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
+	}
+
+	@action remove(item) {
+		const id = this._getItemId(item);
+		this._items.delete(id);
 	}
 
 	getById(id) {
@@ -59,7 +72,7 @@ export default class Store {
 	 * @return {boolean}
 	 */
 	hasWithId(item) {
-		const id = this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
+		const id = this._getItemId(item);
 		return !!this.getById(id);
 	}
 
@@ -68,7 +81,8 @@ export default class Store {
 	* of antibiotics/bacteria and resolve when (and not before) they are ready.
 	*/
 	@action setFetchPromise(promise) {
-		if (!(promise instanceof Promise)) throw new Error(`Store: Argument passed to setFetchPromise must be a Promise.`);
+		if (!(promise instanceof Promise)) throw new Error(`Store: Argument passed to 
+			setFetchPromise must be a Promise.`);
 		this._status.identifier = 'loading';
 		promise.then(() => {
 			runInAction(() => this._status.identifier = 'ready');

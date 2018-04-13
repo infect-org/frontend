@@ -44,6 +44,15 @@ test('hasWithId works as expected', (t) => {
 	t.end();
 });
 
+test('calculates correct item id', (t) => {
+	const store = new Store([], (item) => item.ide);
+	t.equals(store._getItemId({ ide: 1 }), 1);
+	const noItemStore = new Store([]);
+	t.equals(noItemStore._getItemId({ id: 1 }), 1);
+	t.end();
+});
+
+
 test('uses idGeneratorFunction if provided', (t) => {
 	const store = new Store([], (item) => item.idA + '/' + item.idB);
 	t.doesNotThrow(() => store.add({ idA: 3, idB: 3 }));
@@ -61,6 +70,14 @@ test('clears items', (t) => {
 	store.add({id: 2, value: 'test2'});
 	store.clear();
 	t.equals(store.get().size, 0);
+	t.end();
+});
+
+test('removes item', (t) => {
+	const store = new Store([{ id: 1 }, { id: 3 }]);
+	store.remove({ id: 1, value: 7});
+	t.equals(store.getAsArray().length, 1);
+	t.equals(store.getById(1), undefined);
 	t.end();
 });
 

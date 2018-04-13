@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "description": "infect fronend",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "homepage": "https://github.com/infect/application",
   "author": "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info/)",
   "license": "MIT",

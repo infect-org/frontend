@@ -56,8 +56,9 @@ class MatrixView {
 	constructor() {
 
 		// #todo: Why do decorators not work for Maps? Maybe it's a cross-compiling issue?
-		/* Key: Antibiotic ID (for inverse resolution of matrixView – mobx only allows numbers & shit), 
-		   value: AntibioticMatrixView */
+		/* Key: Antibiotic ID (for inverse resolution of matrixView – mobx only allows numbers & 
+		shit), value: AntibioticMatrixView. Problem: Updates to map (original data) is not reflected
+		here */
 		this._antibiotics = observable.map();
 		// Substance classes are added whenever an antibiotic is added.
 		this._substanceClasses = observable.map();
@@ -98,6 +99,12 @@ class MatrixView {
 				bacteria.getAsArray().forEach((bacterium) => {
 					this.addBacterium(bacterium);
 				});
+			}
+		});
+
+		observe(bacteria.get(), (change) => {
+			if (change.type === 'delete') {
+				this.removeBacterium(change.oldValue);
 			}
 		});
 
@@ -357,12 +364,18 @@ class MatrixView {
 		this._bacteria.set(bacterium.id, new BacteriumMatrixView(bacterium, this));
 	}
 
+	@action removeBacterium(bacterium) {
+		this._bacteria.delete(bacterium.id);
+	}
+
 	/**
 	* Returns bacteria, sorted A->Z
 	* @param {Array} 		Array of bacteria, sorted
 	*/
 	@computed get sortedBacteria() {
-		return Array.from(this._bacteria.values()).sort((a, b) => a.bacterium.name < b.bacterium.name ? -1 : 1);
+		return Array.from(this._bacteria.values()).sort((a, b) => {
+			return a.bacterium.name < b.bacterium.name ? -1 : 1;
+		});
 	}
 
 	@computed get sortedVisibleBacteria() {
@@ -376,7 +389,8 @@ class MatrixView {
 	}
 
 	@action setBacteriumLabelWidth(bacterium, width) {
-		//log('Set width of bacteriumLabel %o to %d', bacterium, width);
+		log('Set width of bacteriumLabel %o to %d', bacterium, width);
+		// Unchanged
 		if (this._bacteriaLabelWidths.has(bacterium) && this._bacteriaLabelWidths.get(bacterium) === width) return;
 		this._bacteriaLabelWidths.set(bacterium, width);
 		log('Set width of %o to %o', bacterium, width);

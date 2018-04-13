@@ -179,12 +179,13 @@ test('sorts bacteria', (t) => {
 });*/
 
 
-test('returns bacteria', (t) => {
+test('adds, removes and returns bacteria', (t) => {
 	const set = createValidSet();
 	const {matrix, bacteria} = set;
 	matrix.addBacterium(bacteria[0]);
 	matrix.addBacterium(bacteria[1]);
-	t.equal(matrix.sortedBacteria.length, 2);
+	matrix.removeBacterium(bacteria[0]);
+	t.equal(matrix.sortedBacteria.length, 1);
 	t.equal(matrix.getBacteriumView(bacteria[1]).bacterium, bacteria[1]);
 	t.end();
 });

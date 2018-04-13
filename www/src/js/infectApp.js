@@ -46,7 +46,8 @@ export default class InfectApp {
 		this.bacteria = new BacteriaStore();
 		this.antibiotics = new AntibioticsStore();
 		this.substanceClasses = new SubstanceClassesStore();
-		this.resistances = new ResistancesStore([], (item) => item.bacterium.id + '/' + item.antibiotic.id);
+		this.resistances = new ResistancesStore([], (item) => item.bacterium.id + '/' + 
+			item.antibiotic.id);
 		
 		this.filterValues = new PropertyMap();
 		this._setupFilterValues();

@@ -1,10 +1,12 @@
 import Fetcher from '../../helpers/standardFetcher';
 import Resistance from './resistance';
-import { reaction } from 'mobx';
+import { reaction, transaction } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:ResistancesFetcher');
 
 export default class ResistancesFetcher extends Fetcher {
+
+	dataHandled = 0;
 
 	/**
 	* Fetches resistances from server, then updates ResistancesStore passed as an argument.
@@ -70,11 +72,29 @@ export default class ResistancesFetcher extends Fetcher {
 	_handleData(data) {
 
 		log('Handle data %o', data);
+		this.dataHandled++;
 
 		this._store.clear();
 
 		const bacteria = this._stores.bacteria.get().values();
 		const antibiotics = this._stores.antibiotics.get().values();
+
+		// On the very first round (when we're getting data for switzerland-all) remove all 
+		// antibiotics that don't have any resistance data.
+		if (this.dataHandled === 1) {
+			const emptyBacteria = bacteria
+				// Get all bacteria that don't have any resistance data
+				.filter((bacterium) => !data.find((res) => res.id_bacterium === bacterium.id));
+
+			// Remove bacterium from store which triggers removal from matrixView – do it in 
+			// 1 step to save resources. TODO: update the whole logic and don't create Bacteria
+			// for unused bacteria data
+			transaction(() => {
+				emptyBacteria.forEach((emptyBacterium) => {
+					this._stores.bacteria.remove(emptyBacterium);
+				});	
+			});
+		}
 
 		data.forEach((resistance) => {
 
