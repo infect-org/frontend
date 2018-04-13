@@ -54,6 +54,16 @@ export default class Store {
 	}
 
 	/**
+	 * Returns true if an item with the same ID as the passed item exists.
+	 * @param {any}			Item to look for
+	 * @return {boolean}
+	 */
+	hasWithId(item) {
+		const id = this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
+		return !!this.getById(id);
+	}
+
+	/**
 	* Add promise that fetches the store's data. Needed for resistances to observe status
 	* of antibiotics/bacteria and resolve when (and not before) they are ready.
 	*/

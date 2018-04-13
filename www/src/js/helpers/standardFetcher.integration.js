@@ -10,6 +10,25 @@ test('throws on setup if params are missing', (t) => {
 	t.end();
 });
 
+test('passes fetch options to fetch call', (t) => {
+	fetchMock.mock('/test', { status: 200, body: [] });
+	const store = new Store();
+	const fetcher = new Fetcher('/test', store, { headers: { 'accept-language': 'fr' } });
+	fetcher.getData();
+	// Call done
+	setTimeout(() => {
+		// Check if request got back 200 (only happens when headers are passed)
+		//t.equals(store.status.identifier, 'ready'); 
+		t.deepEquals(fetchMock.lastCall()[1], {
+			headers: { 'accept-language': 'fr' },
+			'cache': 'no-store',
+		});
+		fetchMock.restore();
+		t.end();
+	});
+
+});
+
 test('updates status on store', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [] });
 	const store = new Store();
@@ -43,7 +62,7 @@ test('waits for dependent stores', (t) => {
 	const dependentStore = new Store();
 	let resolver;
 	dependentStore.setFetchPromise(new Promise((resolve) => { resolver = resolve; }));
-	const fetcher = new Fetcher('/test', store, [dependentStore]);
+	const fetcher = new Fetcher('/test', store, undefined, [dependentStore]);
 	fetcher.getData();
 	setTimeout(() => {
 		t.equals(store.status.identifier, 'loading');

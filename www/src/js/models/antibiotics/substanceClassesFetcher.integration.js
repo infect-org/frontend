@@ -28,15 +28,18 @@ test('creates hierarchy', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
 			id: 1
 			, name: 'test1'
-			, parent: 3
+			, left: 3
+			, right: 4
 		}, {
 			id: 3
 			, name: 'test1'
-			, parent: 2
+			, left: 2
+			, right: 5
 		}, {
 			id: 2
 			, name: 'test1'
-			, parent: null
+			, left: 1
+			, right: 6
 		}] 
 	});
 	const store = new SubstanceClassesStore();

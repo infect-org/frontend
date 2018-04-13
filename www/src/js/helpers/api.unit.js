@@ -4,11 +4,13 @@ import {fetchApi} from './api';
 
 
 test('throws on invalid states', (t) => {
-	fetchMock.mock('/api', 404);
+	fetchMock.mock('/api', { status: 404, body: 'nope' });
 	fetchApi('/api')
 		.then(() => {}, (err) => {
 			t.equal(err.name, 'HTTPStatusError');
 			t.equal(err.message.indexOf('invalid HTTP status 404') > -1, true);
+			// Reads content from request
+			t.equal(err.message.indexOf('nope') > -1, true);
 			fetchMock.restore();
 			t.end();
 		});

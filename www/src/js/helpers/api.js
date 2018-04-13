@@ -12,10 +12,13 @@ import 'babel-polyfill';
 async function fetchApi(url, options, validStates = []) {
 
 	const response = await fetch(url, options);
-	if ((response.status < 200 || response.status >= 300) && validStates.indexOf(response.status) === -1) {
-		const err = new Error(`apiFetch: API returned invalid HTTP status ${response.status}`);
-		err.name = 'HTTPStatusError';
-		throw err;
+	if ((response.status < 200 || response.status >= 300) && 
+		validStates.indexOf(response.status) === -1) {
+			const responseText = await response.text();
+			const err = new Error(`fetchApi: API returned invalid HTTP status ${response.status},
+				content is ${ responseText }.`);
+			err.name = 'HTTPStatusError';
+			throw err;
 	}
 	let data;
 	data = await response.json();

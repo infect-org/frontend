@@ -8,14 +8,17 @@ export default class StandardFetcher {
 	/**
 	* @param {String} url
 	* @param {Store} store					Store to which we save the data once it's loaded
-	* @param {Array} dependentStores		Stores that's status must be ready before data of this store is
-	*										handled; antibiotics must wait for substanceClasses, resistances
-	*										for antibiotics and bacteria.
+	* @param {Object} options 				Options for the fetch request (see fetch docs)
+	* @param {Array} dependentStores		Stores that's status must be ready before data of this 
+	*										store is handled; antibiotics must wait for 
+	*										substanceClasses, resistances for antibiotics and 
+	*										bacteria.
 	*/
-	constructor(url, store, dependentStores = []) {
+	constructor(url, store, options = {}, dependentStores = []) {
 		if (!url || !store) throw new Error(`StandardFetcher: Arguments 'url' or 'store' missing.`);
 		this._url = url;
 		this._store = store;
+		this._options = options;
 		this._dependentStores = dependentStores;
 	}
 
@@ -37,9 +40,9 @@ export default class StandardFetcher {
 		let result;
 		try {
 			// Add timestamp to prevent caching as file names don't change
-			result = await fetchApi(this._url, {
-				cache: 'no-store'
-			});
+			const defaultOptions = { cache: 'no-store' };
+			const options = { ...defaultOptions, ...this._options };
+			result = await fetchApi(this._url, options);
 			// Invalid HTTP Status
 			log('Got back data %o', result);
 			if (result.status !== 200) {
@@ -69,7 +72,9 @@ export default class StandardFetcher {
 	*/
 	async _awaitDependentStores() {
 
-		const loadingStores = this._dependentStores.filter((store) => store.status.identifier === 'loading');
+		const loadingStores = this._dependentStores.filter((store) => {
+			return store.status.identifier === 'loading';
+		});
 		if (!loadingStores.length) return Promise.resolve();
 
 		// Convert observers to promises; this method resolves when all promises are done

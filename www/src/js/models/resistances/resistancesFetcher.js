@@ -9,17 +9,24 @@ export default class ResistancesFetcher extends Fetcher {
 	/**
 	* Fetches resistances from server, then updates ResistancesStore passed as an argument.
 	* 
-	* @param [0-2] 								See Fetcher
+	* @param [0-3] 								See Fetcher
 	* @param {ResistanceStore} stores			Stores for antibiotics and bacteria
-	* @param {SelectedFilters} selectedFilters	Selected filters – needed to determine which resistance
-	*											data (e.g. region) to fetch.
+	* @param {SelectedFilters} selectedFilters	Selected filters – needed to determine which 
+	*											resistance data (e.g. region) to fetch.
 	*/
-	constructor(url, store, dependentStores, stores, selectedFilters) {
-		super(url, store, dependentStores);
-		// Remove json from URL
-		this._baseUrl = url.replace(/\..*$/, '');
+	constructor(url, store, options, dependentStores, stores, selectedFilters) {
+		super(url, store, options, dependentStores);
+
 		this._stores = stores;
 		this._selectedFilters = selectedFilters;
+
+		// Set default headers: When the initial API call is made, no filter will be set
+		this._options.headers = {
+			filter: `region.identifier='switzerland-all'`,
+			// this is a bug, '*', nothing or single propertiesshould work; TODO: update to save 
+			// traffic
+			select: '*, generics:region.identifier', 
+		};
 
 		// Only update data if region changed
 		this._previousRegions = [];
@@ -32,17 +39,25 @@ export default class ResistancesFetcher extends Fetcher {
 			// No change since last update
 			if (
 				regions.length === this._previousRegions.length 
-				// There's only 1 region that can be set. Check if names match, order is not important
-				&& regions.every((region, index) => this._previousRegions[index].value === region.value)
+				// There's only 1 region that can be set. Check if names match, order is not
+				// important
+				&& regions.every((region, index) => {
+					return this._previousRegions[index].value === region.value;
+				})
 			) {
 				log('Regions did not change, return');
 				return;
 			}
-			// Get URL
-			if (!regions.length) this._url = `${ this._baseUrl }.json`;
-			else this._url = `${ this._baseUrl }_${ regions[0].value }.json`;
-			log('Url for regions %o is %s, fetch data.', regions, this._url);
+			// switzerland-all will never be a filter (as it's a non-filter and should not be 
+			// displayed atop the matrix) – use it as default.
+			const region = regions.length ? regions[0].value : 'switzerland-all';
+			log('Selected region is %s, make new request', region);
 			this._previousRegions = regions.slice(0);
+			// Set header (will be consumed by StandardFetcher); this._options is an inherited
+			// property of StandardFetcher.
+			this._options.headers.filter = `region.identifier='${ region }'`;
+			log('Options to fetch resistances are %o', this._options);
+			
 			this.getData();
 		});
 	}
@@ -62,34 +77,55 @@ export default class ResistancesFetcher extends Fetcher {
 		const antibiotics = this._stores.antibiotics.get().values();
 
 		data.forEach((resistance) => {
-			const bacteriumName = resistance.bacteriaName.substr(0, resistance.bacteriaName.indexOf('/') - 1).toLowerCase();
-			const bacterium = bacteria.find((item) => item.name.toLowerCase() === bacteriumName);
-			const antibioticName = resistance.compoundName.toLowerCase();
-			const antibiotic = antibiotics.find((item) => {
-				return item.identifier.toLowerCase() === antibioticName;
-			});
+
+			// Some resistances don't contain compound data. Slack, 2018-04-05:
+			// fxstr [4:38 PM]
+			// es hat einige resistances ohne id_compound. wie soll ich die handeln? ignorieren?
+			// ee [4:38 PM]
+			// iu
+			// müssen wir dann noch anschauen
+			if (!resistance.id_compound) {
+				console.warn(`ResistanceFetcher: Resistance %o does not have compound information;
+					ignore for now, but should be fixed.`);
+				return;
+			}
+
+			const bacterium = bacteria.find((item) => item.id === resistance.id_bacterium);
+			const antibiotic = antibiotics.find((item) => item.id === resistance.id_compound);
 
 			if (!antibiotic) {
-				console.error('ResistancesFetcher: Antibiotic %o missing in %o for name %o and resistance %o', 
-					antibiotic, antibiotics, antibioticName, resistance);
+				console.error(`ResistancesFetcher: Antibiotic missing in %o for 
+					resistance %o`, antibiotics, resistance);
 				return;
 			}
 
 			if (!bacterium) {
-				console.error('ResistancesFetcher: Bacterium %o missing in %o for name %o and resistance %o', 
-					bacterium, bacteria, bacteriumName, resistance);
+				console.error(`ResistancesFetcher: Bacterium missing in %o for 
+					resistance %o`, bacteria, resistance);
 				return;
 			}
 
 			const resistanceValues = [{
 				type: 'import'
-				, value: resistance.resistanceImport / 100
+				, value: resistance.resistance / 100
 				, sampleSize: resistance.sampleCount || 0
-				, confidenceInterval: [resistance.confidenceIntervalLowerBound / 100, resistance.confidenceIntervalHigherBound / 100]
+				, confidenceInterval: [
+					resistance.confidenceIntervalLowerBound / 100, 
+					resistance.confidenceIntervalHigherBound / 100
+				]
 			}];
 			const resistanceObject = new Resistance(resistanceValues, antibiotic, bacterium);
+
+			// Duplicate resistance
+			if (this._store.hasWithId(resistanceObject)) {
+				console.warn(`ResistanceFetcher: Resistance ${ JSON.stringify(resistance) } is
+					a duplicate; an entry for the same bacterium and antibiotic does exist.`);
+				return;
+			}
+
 			this._store.add(resistanceObject);
 		});
 	}
 
 }
+

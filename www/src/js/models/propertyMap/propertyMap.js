@@ -1,5 +1,5 @@
 import SearchableMap from './searchableMap';
-import { computed, createTransformer } from 'mobx';
+import { computed } from 'mobx';
 import debug from 'debug';
 import Fuse from 'fuse.js';
 const log = debug ('infect:PropertyMap');
@@ -12,12 +12,11 @@ const log = debug ('infect:PropertyMap');
 export default class PropertyMap {
 
 	/**
-	* We want to search by property values – use them as keys so that they can be 
+	* We want to search by property values – use them as keys so that they can be 
 	* easily found.
 	*/
 	constructor() {
 
-		const latestSearchIndex = 0;
 		// Objects with properties: name, niceName and entityType
 		this._properties = new SearchableMap();
 		// Objects with property values: value, niceValue and property (link to a property in 
@@ -29,8 +28,8 @@ export default class PropertyMap {
 			shouldSort: true
 			, threshold: 0.3
 			, tokenize: true
-		  	, minMatchCharLength: 1
-		  	, keys: [
+			, minMatchCharLength: 1
+			, keys: [
 				{ name: 'niceValue', weight: 0.7 }
 				, { name: 'property.niceName', weight: 0.3 }
 			]
@@ -66,7 +65,7 @@ export default class PropertyMap {
 
 	/**
 	* Adds a configuration for an certain entity type. 
-	* @param {String} entityType
+	* @param {String} entityType
 	* @param {Object} config			Object with an property per property that should be added from entity:
 	*									  { 
 	*										[propertyName]: {

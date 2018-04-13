@@ -33,9 +33,13 @@ export default function() {
 			identifier: {
 				translation: 'Name'
 				, valueTranslations: (name) => {
-					return name.replace(/-/g, ' ').replace(/\b\w/g, (result) => {
-						return result.toUpperCase();
-					});
+					return name
+						.replace(/-/g, ' ')
+						// Remove «switzerland»
+						.replace('switzerland ', '')
+						.replace(/\b\w/g, (result) => {
+							return result.toUpperCase();
+						});
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 import Fetcher from '../../helpers/standardFetcher';
 import SubstanceClass from './substanceClass';
+import convertNestedSetToTree from '../../helpers/convertNestedSetToTree';
 import debug from 'debug';
 const log = debug('infect:SubstanceClassesFetcher');
 
@@ -11,33 +12,24 @@ export default class SubstanceClassesFetcher extends Fetcher {
 
 		// Clone array to not modify arguments
 		const data = originalData.slice(0);
-		let addedCount = 0;
+		const withParents = convertNestedSetToTree(data);
 
-		// First create all substanceClasses without parents, then all children, 
-		// then all grand-children.
-		while(this._store.get().size < originalData.length) {
-			let i = data.length;
-			while (i--) {
-				const item = data[i];
+		// withParents is ordered from parent to child – we therefore don't need to test if 
+		// parents are available
+		// Don't use forEach as we're splicing.
+		withParents.forEach((item, index) => {
+			const additionalProperties = {};
+			if (item.color) additionalProperties.color = item.color;
+			// Sort order corresponds to order of tree created from nested set
+			additionalProperties.order = index;
 
-				// Parent is not yet available
-				if (item.parent && !this._store.getById(item.parent)) continue;
+			const parent = item.parent ? this._store.getById(item.parent.id) : undefined;
+			const substanceClass = new SubstanceClass(item.id, item.name, parent, 
+				additionalProperties);
+			this._store.add(substanceClass);
+		});
 
-				// Parent available or has no parent: Create substanceClass
-				const additionalProperties = {};
-				if (item.color) additionalProperties.color = item.color;
-				additionalProperties.order = item.order;
-
-				const parent = item.parent ? this._store.getById(item.parent) : undefined;
-				const substanceClass = new SubstanceClass(item.id, item.name, parent, additionalProperties);
-				this._store.add(substanceClass);
-				addedCount++;
-
-				data.splice(i, 1);
-			}
-		}
-
-		log('%d substance classes added to store', addedCount);
+		log('%d substance classes added to store', this._store.get().size);
 
 	}
 

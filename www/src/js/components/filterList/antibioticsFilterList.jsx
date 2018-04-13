@@ -85,7 +85,7 @@ class AntibioticsFilterList extends React.Component {
 	_renderSubstanceClassFilters = (item) => {
 		return <FilterListCheckbox key={ item.value } name={ item.niceValue } 
 			value={ item.niceValue } checked={ this.props.selectedFilters.isSelected(item) }
-			onChangeHandler={ (ev) => this._handleFilterChange(item) } />;
+			onChangeHandler={ () => this._handleFilterChange(item) } />;
 	}
 
 	@computed get _sortedSubstanceClassFilters() {
@@ -103,7 +103,7 @@ class AntibioticsFilterList extends React.Component {
 					{ this._getNamesBySelection(true).map((item) => {
 						return <FilterListCheckbox key={ item.value } name={ item.niceValue } 
 							value={ item.niceValue } checked={ this.props.selectedFilters.isSelected(item) }
-							onChangeHandler={ (ev) => this._handleFilterChange(item) } />;
+							onChangeHandler={ () => this._handleFilterChange(item) } />;
 					}) }
 				</ul>
 				<select className="select" onChange={ (ev) => this._handleNameDropdownFilterChange(ev.target.value) }>
@@ -123,9 +123,9 @@ class AntibioticsFilterList extends React.Component {
                 <h3 className="gray margin-top">Application</h3>
 				<ul className="group__list group__list--vertical">
 					<FilterListCheckbox name="Per Os" value="perOs" checked={ this._isApplicationChecked('perOs') } 
-						onChangeHandler={ (ev) => this._handleApplicationFilterChange('perOs') } />
+						onChangeHandler={ () => this._handleApplicationFilterChange('perOs') } />
 					<FilterListCheckbox name="Intravenous" value="intravenous" checked={ this._isApplicationChecked('intravenous') } 
-						onChangeHandler={ (ev) => this._handleApplicationFilterChange('intravenous') } />
+						onChangeHandler={ () => this._handleApplicationFilterChange('intravenous') } />
 				</ul>
 
 			</div>

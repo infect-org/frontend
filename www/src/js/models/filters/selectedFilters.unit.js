@@ -20,14 +20,14 @@ test('add and return filters', (t) => {
 });
 
 test('does not add filters twice', (t) => {
-	const { filter, values } = setupFilters();
+	const { filter, values } = setupFilters();
 	filter.addFilter({ value: 1 });
 	t.deepEquals(filter.filters, values);
 	t.end();
 });
 
 test('remove filters', (t) => {
-	const { filter, values } = setupFilters();
+	const { filter, values } = setupFilters();
 	filter.removeFilter(values[0]);
 	t.deepEquals(filter.filters, [values[1]]);
 	t.end();

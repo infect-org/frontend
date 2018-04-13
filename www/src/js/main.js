@@ -14,27 +14,29 @@ import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadin
 import FilterSearch from './components/filterSearch/filterSearch';
 import Disclaimer from './components/disclaimer/disclaimer';
 import GuidedTour from './components/guidedTour/guidedTour';
-import GuidedTourButton from './components/guidedTour/guidedTourButton';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
-import {autorun, whyRun, useStrict} from 'mobx';
+import { useStrict } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:Main');
 
 useStrict(true);
 
-const isBeta = window.location.hostname.includes('beta.');
-const dataFolder = isBeta ? 'beta' : 'live';
-log('Is beta? %o – Data folder is %s', isBeta, dataFolder);
+const isBeta = window.location.hostname.includes('beta.') || 
+	window.location.hostname === 'localhost';
+const envPrefix = isBeta ? 'beta.' : '';
+log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
 
 
-const config 				= {
-	endpoints				: {
-		apiPrefix			: `/src/js/data/${ dataFolder }/`
-		, bacteria			: 'bacteria.json'
-		, antibiotics		: 'antibiotics.json'
-		, resistances		: 'resistances.json'
-		, substanceClasses	: 'substanceClasses.json'
+const config = {
+	endpoints: {
+		apiPrefix: `http://${ envPrefix }api.infect.info/`,
+		bacteria: 'pathogen.bacterium',
+		antibiotics: 'substance.compound',
+		resistances: 'rda.resistance',
+		substanceClasses: 'substance.substanceClass',
+		regions: 'generics.region',
+		countries: 'generics.country',
 	}
 };
 
@@ -44,10 +46,6 @@ const config 				= {
 let app;
 app = new InfectApp(config);
 
-/*autorun(() => {
-	console.log('CHANGE', app.views.matrix.antibiotics);
-	whyRun();
-});*/
 
 
 // React

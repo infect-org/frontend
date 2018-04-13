@@ -11,8 +11,9 @@ function setupFetcher() {
 			return { 
 				values: function() {
 					return [{
-						name: 'amoxicillin name'
-						, identifier: 'amoxicillin'
+						name: 'amoxicillin name',
+						identifier: 'amoxicillin',
+						id: 4
 					}];
 				} 
 			};
@@ -35,12 +36,12 @@ function setupFetcher() {
 
 test('handles resistance data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
-        "bacteriaName":"acinetobacter sp. / acinetobacter",
-        "compoundName":"amoxicillin",
-        "sampleCount":100,
-        "resistanceImport":100, 
-		"confidenceIntervalLowerBound": 75,
-		"confidenceIntervalHigherBound": 100
+        'id_bacterium': 5,
+        'id_compound': 4,
+        'sampleCount':100,
+        'resistance':100, 
+		'confidenceIntervalLowerBound': 75,
+		'confidenceIntervalHigherBound': 100,
     }] });
 	const { antibiotics, bacteria } = setupFetcher();
 	const store = new Store([], () => 2);
@@ -48,7 +49,7 @@ test('handles resistance data correctly', (t) => {
 		antibiotics
 		, bacteria
 	};
-	const fetcher = new ResistancesFetcher('/test', store, [], stores, {
+	const fetcher = new ResistancesFetcher('/test', store, {}, [], stores, {
 		getFiltersByType: () => {}
 	});
 	fetcher.getData();
@@ -67,22 +68,32 @@ test('handles resistance data correctly', (t) => {
 
 test('handles updates', (t) => {
 	fetchMock
-		.mock('/test.json', { status: 200, body: [{
-			"bacteriaName":"acinetobacter sp. / acinetobacter",
-			"compoundName":"amoxicillin",
-			"sampleCount":100,
-			"resistanceImport":100,
-			"confidenceIntervalLowerBound": 75,
-			"confidenceIntervalHigherBound": 100
-		}] })
-		.mock('/test_west.json', { status: 200, body: [{
-			"bacteriaName":"acinetobacter sp. / acinetobacter",
-			"compoundName":"amoxicillin",
-			"sampleCount":50,
-			"resistanceImport":90,
-			"confidenceIntervalLowerBound": 75,
-			"confidenceIntervalHigherBound": 100
-		}] });
+		.mock('/res', { status: 200, body: [{
+			'id_bacterium': 5,
+			'id_compound': 4,
+			'sampleCount': 100,
+			'resistance': 100,
+			'confidenceIntervalLowerBound': 75,
+			'confidenceIntervalHigherBound': 100,
+		}] }, {
+			headers: {
+				filter: 'region.identifier=\'switzerland-all\'',
+				select: '*, generics:region.identifier',
+			}
+		})
+		.mock('/res', { status: 200, body: [{
+			'id_bacterium': 5,
+			'id_compound': 4,
+			'sampleCount': 50,
+			'resistance': 90,
+			'confidenceIntervalLowerBound': 75,
+			'confidenceIntervalHigherBound': 100,
+		}] }, {
+			headers: {
+				filter: 'region.identifier=\'west\'',
+				select: '*, generics:region.identifier',
+			}
+		});
 	const { antibiotics, bacteria } = setupFetcher();
 	const store = new Store([], () => 2);
 	const stores = {
@@ -101,7 +112,7 @@ test('handles updates', (t) => {
 		}
 	}
 	const selectedFilters = new SelectedFilters();
-	const fetcher = new ResistancesFetcher('/test.json', store, [], stores, selectedFilters);
+	const fetcher = new ResistancesFetcher('/res', store, {}, [], stores, selectedFilters);
 	fetcher.getData();
 	setTimeout(() => {
 		const result = store.getById(2);

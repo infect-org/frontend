@@ -18,6 +18,7 @@ import SelectedFilters from './models/filters/selectedFilters';
 import GuidedTour from './models/guidedTour/guidedTour';
 import InfoOverlay from './models/infoOverlay/infoOverlay';
 import MostUsedFilters from './models/filters/mostUsedFilters';
+import { fetchApi } from './helpers/api.js';
 import { when, observable } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:App');
@@ -79,41 +80,45 @@ export default class InfectApp {
 
 		// Substance classes (must be loaded first)
 		const substanceClassesFetcher = new SubstanceClassesFetcher(
-			this._config.endpoints.apiPrefix + this._config.endpoints.substanceClasses
-			, this.substanceClasses
+			this._config.endpoints.apiPrefix + this._config.endpoints.substanceClasses,
+			this.substanceClasses,
 		);
 		substanceClassesFetcher.getData();
 		log('Fetching data for substanceClasses.');
 
 		// Antibiotics (wait for substance classes)
 		const antibioticsFetcher = new AntibioticsFetcher(
-			this._config.endpoints.apiPrefix + this._config.endpoints.antibiotics
-			, this.antibiotics
-			, [this.substanceClasses]
-			, this.substanceClasses
+			this._config.endpoints.apiPrefix + this._config.endpoints.antibiotics,
+			this.antibiotics,
+			{ headers: { select: 'substance.*, substance.substanceClass.*' } },
+			[this.substanceClasses],
+			this.substanceClasses,
 		);
 		antibioticsFetcher.getData();
 		log('Fetching data for antibiotics.');
 
 		// Bacteria
 		const bacteriaFetcher = new BacteriaFetcher(
-			this._config.endpoints.apiPrefix + this._config.endpoints.bacteria
-			, this.bacteria
+			this._config.endpoints.apiPrefix + this._config.endpoints.bacteria,
+			this.bacteria,
+			{ headers: { select: 'shape.*' } },
 		);
 		bacteriaFetcher.getData();
 		log('Fetching data for bacteria.');
 
 		// Resistances (wait for antibiotics and bacteria)
 		const resistanceFetcher = new ResistancesFetcher(
-			this._config.endpoints.apiPrefix + this._config.endpoints.resistances
-			, this.resistances
-			, [ this.antibiotics, this.bacteria ]
-			, {
-				antibiotics: this.antibiotics
-				, bacteria: this.bacteria
-			}
-			, this.selectedFilters
+			this._config.endpoints.apiPrefix + this._config.endpoints.resistances,
+			this.resistances,
+			{},
+			[ this.antibiotics, this.bacteria ],
+			{
+				antibiotics: this.antibiotics,
+				bacteria: this.bacteria,
+			},
+			this.selectedFilters,
 		);
+		// Gets data for default filter switzerland-all
 		resistanceFetcher.getData();
 		log('Fetching data for resistances.');
 
@@ -155,8 +160,8 @@ export default class InfectApp {
 
 		let entitiesReady = 0;
 		entities.forEach((entityConfig) => {
-			// Only add entities to filterValues when **all** entity types are ready to prevent unndecessary
-			// re-renderings when filterValues change.
+			// Only add entities to filterValues when **all** entity types are ready to prevent 
+			// unndecessary re-renderings when filterValues change.
 			when(() => this[entityConfig.plural].status.identifier === 'ready', () => {
 				entitiesReady++;
 				if (entitiesReady === entities.length ) this._addAllEntitiesToFilters(entities);
@@ -170,7 +175,8 @@ export default class InfectApp {
 
 	/**
 	* Adds all entities (subsClasses, ab, bact) to filterValues once they are ready. 
-	* @param {Array} entityConfig 			Object with singular and plural form for all entity types
+	* @param {Array} entityConfig 			Object with singular and plural form for all entity 
+	*                                		types
 	*/
 	_addAllEntitiesToFilters(entityConfigs) {
 		let counter = 0;
@@ -190,19 +196,25 @@ export default class InfectApp {
 
 
 	/**
-	* Creates filters for regions. 
-	* Replace as soon as real data is available.
+	* Fetches regions from server, adds them to filters and sets 'switzerland-all' as selected
+	* filter which triggers the resistancesFetcher to fetch.
 	*/
-	_createRegions() {
+	async _createRegions() {
 
-		const regionNames = ['west', 'east', 'south', 'geneva', 'central-west', 'central-east', 'north-east', 'north-west'];
-		const regions = regionNames.map((item) => ({
-			identifier: item
-		}));
-		regions.forEach((region) => {
-			this.filterValues.addEntity('region', region);
-			log('Added filter %o for region', region);
+		const url = this._config.endpoints.apiPrefix + this._config.endpoints.regions;
+		const regionData = await fetchApi(url);
+
+		regionData.data.forEach((region) => {
+			// Don't add default filter (switzerland-all) to filters; will be add manually to 
+			// filter list as it shouldnot be visible on selected filters (above matrix).
+			if (region.identifier === 'switzerland-all') return;
+			const regionObject = {
+				identifier: region.identifier
+			};
+			log('Add filter %o for region', regionObject);
+			this.filterValues.addEntity('region', regionObject);
 		});
+		log('Region filters added');
 
 	}
 

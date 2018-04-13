@@ -5,11 +5,14 @@ import fetchMock from 'fetch-mock';
 
 test('handles bacteria data correctly', (t) => {
 	fetchMock.mock('/bact', [{
-		id: 5
-		, name: 'testBact'
-		, shape: 'round'
-		, aerobicOptional: false
-		, aerobic: true
+		id: 5,
+		name: 'testBact',
+		shape: {
+			name: 'round',
+		},
+		aerobicOptional: false,
+		aerobic: true,
+		gramPositive: true,
 	}]);
 	const store = new BacteriaStore();
 	const fetcher = new BacteriaFetcher('/bact', store);
@@ -19,6 +22,7 @@ test('handles bacteria data correctly', (t) => {
 		t.equals(store.getById(5).name, 'testBact');
 		t.equals(store.getById(5).shape, 'round');
 		t.equals(store.getById(5).aerobic, true);
+		t.equals(store.getById(5).gram, true);
+		t.end();
 	});
-	t.end();
 });

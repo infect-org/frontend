@@ -7,19 +7,21 @@ import fetchMock from 'fetch-mock';
 
 test('handles antibacteria data correctly', (t) => {
 	fetchMock.mock('/test', [{
-			id: 1
-			, substanceClasses: [{
-				id: 5
-			}]
-			, name: 'testAB'
-			, iv: true
-			, po: false
-			, identifier: 'testId'
+			id: 1,
+			substance: [{
+				substanceClass: {
+					id: 5
+				}
+			}],
+			name: 'testAB',
+			intravenous: true,
+			perOs: false,
+			identifier: 'testId',
 		}]);
 	const abStore = new AntibioticsStore();
 	const scStore = new SubstanceClassesStore();
 	scStore.add(new SubstanceClass(5, 'testSC'));
-	const fetcher = new AntibioticsFetcher('/test', abStore, [], scStore);
+	const fetcher = new AntibioticsFetcher('/test', abStore, {}, [], scStore);
 	fetcher.getData();
 	setTimeout(() => {
 		t.equals(abStore.get().size, 1);
@@ -31,3 +33,35 @@ test('handles antibacteria data correctly', (t) => {
 		t.end();
 	});
 });
+
+
+test('handles special cases correctly correctly', (t) => {
+	// Prefer 'amoxicillin' in special case where 2 substance classes are available
+	fetchMock.mock('/test', [{
+			id: 1,
+			substance: [{
+				identifier: 'invalid',
+			}, {
+				identifier: 'amoxicillin',
+				substanceClass: {
+					id: 5,
+				},
+			}],
+			name: 'testAB',
+			intravenous: true,
+			perOs: false,
+			identifier: 'amoxicillin/clavulanate',
+		}]);
+	const abStore = new AntibioticsStore();
+	const scStore = new SubstanceClassesStore();
+	scStore.add(new SubstanceClass(5, 'testSC'));
+	const fetcher = new AntibioticsFetcher('/test', abStore, {}, [], scStore);
+	fetcher.getData();
+	setTimeout(() => {
+		t.equals(abStore.get().size, 1);
+		t.equals(abStore.getById(1).substanceClass.id, 5);
+		fetchMock.restore();
+		t.end();
+	});
+});
+

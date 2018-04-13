@@ -37,6 +37,13 @@ test('does not overwrite items', (t) => {
 	t.end();
 });
 
+test('hasWithId works as expected', (t) => {
+	const store = new Store([{ id: 1 }, { id: 2 }], (item) => item.id);
+	t.equals(store.hasWithId({ id: 1, otherProp: 4 }), true);
+	t.equals(store.hasWithId({ id: 4, otherProp: 1 }), false);
+	t.end();
+});
+
 test('uses idGeneratorFunction if provided', (t) => {
 	const store = new Store([], (item) => item.idA + '/' + item.idB);
 	t.doesNotThrow(() => store.add({ idA: 3, idB: 3 }));
