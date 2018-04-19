@@ -3,7 +3,7 @@ import SubstanceClassesFetcher from './substanceClassesFetcher';
 import SubstanceClassesStore from './substanceClassesStore';
 import fetchMock from 'fetch-mock';
 
-test('handles substanceClass data correctly', (t) => {
+test.skip('handles substanceClass data correctly', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
 			id: 1
 			, name: 'test1'
@@ -24,7 +24,7 @@ test('handles substanceClass data correctly', (t) => {
 	});
 });
 
-test('creates hierarchy', (t) => {
+test.skip('creates hierarchy', (t) => {
 	fetchMock.mock('/test', { status: 200, body: [{
 			id: 1
 			, name: 'test1'

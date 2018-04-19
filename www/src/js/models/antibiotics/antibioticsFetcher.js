@@ -9,21 +9,32 @@ export default class AntibioticsFetcher extends Fetcher {
 	}
 
 	_handleData(data) {
+
+		// Remove penicillin v and Cefuroxime Axetil (they contain no data)
+		let i = data.length;
+		console.warn(data);
+		while (i--) {
+			if (data[i].identifier === 'penicillin v' || data[i].identifier === 
+				'cefuroxime axetil') {
+				data.splice(i, 1);
+			}
+		}
+
+
+
 		// Cone data as we're modifying it
 		data.forEach((item) => {
 
 			// There are 2 special cases: amoxicillin/clavulanate and piperacillin/tazobactam
-			// have 2 substances and therefore 2 substance classes; we only respect one. 
-			// Why? Because this was not planned and needs a larger re-write. And we're not sure
-			// if this is really what doctors want (2 appearances of the same substance in 1 matrix)
-			if (item.identifier === 'amoxicillin/clavulanate') {
-				item.substance = item.substance.filter((substance) => {
-					return substance.identifier === 'amoxicillin';
-				});
-			} else if (item.identifier === 'piperacillin/tazobactam') {
-				item.substance = item.substance.filter((substance) => {
-					return substance.identifier === 'piperacillin';
-				});
+			// get a «virtual» substance class Beta-lactam + inhibitor that was programmatically
+			// created in SubstanceClassFetcher
+			if (item.identifier === 'amoxicillin/clavulanate' || item.identifier ===
+				'piperacillin/tazobactam') {
+				item.substance = [{
+					substanceClass: {
+						id: -1,
+					}
+				}];
 			}
 
 			if (item.substance.length !== 1) console.warn(`antibioticsFetcher: Compound with 
