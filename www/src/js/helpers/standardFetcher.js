@@ -40,7 +40,11 @@ export default class StandardFetcher {
 		let result;
 		try {
 			// Add timestamp to prevent caching as file names don't change
-			const defaultOptions = { cache: 'no-store' };
+			const defaultOptions = { 
+				cache: 'no-store',
+				// Requests at Insel (Edge) are rejected with status 407. This might help:
+				credentials: 'include',
+			};
 			const options = { ...defaultOptions, ...this._options };
 			result = await fetchApi(this._url, options);
 			// Invalid HTTP Status
