@@ -30,7 +30,6 @@ export default class SubstanceClassesFetcher extends Fetcher {
 			name: 'Beta-lactam + inhibitor',
 			parent: penicillin,
 		});
-		console.warn(withParents, index);
 
 		// withParents is ordered from parent to child – we therefore don't need to test if 
 		// parents are available

@@ -12,7 +12,6 @@ export default class AntibioticsFetcher extends Fetcher {
 
 		// Remove penicillin v and Cefuroxime Axetil (they contain no data)
 		let i = data.length;
-		console.warn(data);
 		while (i--) {
 			if (data[i].identifier === 'penicillin v' || data[i].identifier === 
 				'cefuroxime axetil') {
