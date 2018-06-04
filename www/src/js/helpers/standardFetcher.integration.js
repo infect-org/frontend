@@ -21,7 +21,8 @@ test('passes fetch options to fetch call', (t) => {
 		//t.equals(store.status.identifier, 'ready'); 
 		t.deepEquals(fetchMock.lastCall()[1], {
 			headers: { 'accept-language': 'fr' },
-			'cache': 'no-store',
+			cache: 'no-store',
+			credentials: 'include',
 		});
 		fetchMock.restore();
 		t.end();

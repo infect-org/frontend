@@ -4,6 +4,7 @@ import SubstanceClass from './substanceClass';
 test('throws if arguments are missing', (t) => {
 	t.throws(() => new SubstanceClass());
 	t.throws(() => new SubstanceClass(13, 'name', {}), /instance/);
+	t.doesNotThrow(() => new SubstanceClass(0, ''));
 	t.end();
 });
 

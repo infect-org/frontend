@@ -1,4 +1,6 @@
 import { computed, observable, action } from 'mobx';
+import debug from 'debug';
+const log = debug('infect:SubstanceClass');
 
 class SubstanceClass {
 
@@ -6,12 +8,21 @@ class SubstanceClass {
 
 	constructor(id, name, parent, properties = {}) {
 
-		if (!id || !name) throw new Error('SubstanceClass: Arguments missing');
-		if (parent && !(parent instanceof SubstanceClass)) throw new Error('SubstanceClass: parent must be an instance of SubstanceClass');
+		const debugData = { id, name, parent, properties };
+		log('Create SubstanceClass for data %o', debugData);
+
+		if (id === undefined) throw new Error(`SubstanceClass: Constructor argument 'id' must be 
+			set, is undefined for %O`, debugData);
+		if (typeof name !== 'string') throw new Error(`SubstanceClass: Argument 'name' must be
+			a string, is ${ typeof name }. Arguments are %O`, debugData);
+		if (parent && !(parent instanceof SubstanceClass)) throw new Error(`SubstanceClass: parent 
+			must be an instance of SubstanceClass, is %O`, parent);
+
 		this.id = id;
 		this.name = name;
 		// Parent property shall not be set if not available (and not .parent = undefined)
 		if (parent) this.parent = parent;
+
 		// Expanded is true by default
 		this.expanded = true;
 

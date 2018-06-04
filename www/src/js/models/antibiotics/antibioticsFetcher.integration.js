@@ -35,7 +35,7 @@ test('handles antibacteria data correctly', (t) => {
 });
 
 
-test('handles special cases correctly correctly', (t) => {
+test('handles special cases correctly', (t) => {
 	// Prefer 'amoxicillin' in special case where 2 substance classes are available
 	fetchMock.mock('/test', [{
 			id: 1,
@@ -54,12 +54,12 @@ test('handles special cases correctly correctly', (t) => {
 		}]);
 	const abStore = new AntibioticsStore();
 	const scStore = new SubstanceClassesStore();
-	scStore.add(new SubstanceClass(5, 'testSC'));
+	scStore.add(new SubstanceClass(-1, 'testSC'));
 	const fetcher = new AntibioticsFetcher('/test', abStore, {}, [], scStore);
 	fetcher.getData();
 	setTimeout(() => {
 		t.equals(abStore.get().size, 1);
-		t.equals(abStore.getById(1).substanceClass.id, 5);
+		t.equals(abStore.getById(1).substanceClass.id, -1);
 		fetchMock.restore();
 		t.end();
 	});
