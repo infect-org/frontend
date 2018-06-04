@@ -27,10 +27,10 @@ const isBeta = window.location.hostname.includes('beta.') ||
 const envPrefix = isBeta ? 'beta.' : '';
 log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
 
-
+const protocol = window.location.protocol;
 const config = {
 	endpoints: {
-		apiPrefix: `http://${ envPrefix }api.infect.info/`,
+		apiPrefix: `${ protocol }//${ envPrefix }api.infect.info/`,
 		bacteria: 'pathogen.bacterium',
 		antibiotics: 'substance.compound',
 		resistances: 'rda.resistance',
@@ -39,7 +39,6 @@ const config = {
 		countries: 'generics.country',
 	}
 };
-
 
 
 // Setup models
