@@ -12,9 +12,9 @@ class SubstanceClass {
 		log('Create SubstanceClass for data %o', debugData);
 
 		if (id === undefined) throw new Error(`SubstanceClass: Constructor argument 'id' must be 
-			set, is undefined for %O`, debugData);
+			set, is undefined for ${ JSON.stringify(debugData )}.`);
 		if (typeof name !== 'string') throw new Error(`SubstanceClass: Argument 'name' must be
-			a string, is ${ typeof name }. Arguments are %O`, debugData);
+			a string, is ${ typeof name }. Arguments are ${ JSON.stringify(debugData )}.`);
 		if (parent && !(parent instanceof SubstanceClass)) throw new Error(`SubstanceClass: parent 
 			must be an instance of SubstanceClass, is %O`, parent);
 

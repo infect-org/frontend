@@ -2,8 +2,8 @@ import test from 'tape';
 import Bacterium from './bacterium';
 
 test('initializes', (t) => {
-	t.throws(() => new Bacterium(), /missing/);
-	t.throws(() => new Bacterium(14), /missing/);
+	t.throws(() => new Bacterium(), /argument id/);
+	t.throws(() => new Bacterium(14), /argument name/);
 	t.doesNotThrow(() => new Bacterium(14, 'name'));
 	t.end();
 });

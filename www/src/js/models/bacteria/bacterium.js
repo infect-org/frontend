@@ -10,7 +10,11 @@ class Bacterium {
 
 	constructor(id, name, properties = {}) {
 
-		if (!id || !name) throw new Error('Bacterium: Required arguments id or name missing');
+		const debugData = { id, name, properties };
+		if (id === undefined) throw new Error(`Bacterium: Constructor argument id is required, 
+			is currently ${ id } for ${ JSON.stringify(debugData) }.`);
+		if (typeof name !== 'string') throw new Error(`Bacterium: Constructor argument name must
+			be a string, is currently ${ typeof name } for ${ JSON.stringify(debugData) }.`);
 
 		this.id = id;
 		this.name = name;
