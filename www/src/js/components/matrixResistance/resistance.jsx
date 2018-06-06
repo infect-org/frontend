@@ -104,7 +104,7 @@ class Resistance extends React.Component {
 					{ /* Don't display number if N < 20 */ }
 					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
 						dominantBaseline="central" className="resistanceMatrix__resistanceText"
-						dy={ supportsDominantBaseline('-2', '0.5em') }>
+						dy={ supportsDominantBaseline('-2', '0.35em') }>
 						{ Math.round((1 - this.value) * 100) }
 					</text>
 				</g>
