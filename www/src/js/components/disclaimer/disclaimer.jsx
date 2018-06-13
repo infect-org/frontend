@@ -46,11 +46,11 @@ export default class Disclaimer extends React.Component {
 								className="disclaimer__link disclaimer__link--disclaimer">disclaimer</a>.
 								See some <a href="#" onClick={ () => this.showInfoOverlay() }
 								className="disclaimer__link">background information</a>.
-								If you have any questions, <a href="mailto:infect@joinbox.com"
-								className="disclaimer__link">contact us</a>. Or just get a short 
-								introduction:
+								If you have any questions, <a href="mailto:info@infect.info"
+								className="disclaimer__link">contact us</a>. <span className="disclaimer__text--guide-info">Or just get a short
+									introduction:</span>
 							</span>
-							<span className="disclaimer__button-container">
+							<span className="disclaimer__button-container disclaimer__button-container--guide">
 								<GuidedTourButton guidedTour={ this.props.guidedTour }>
 								</GuidedTourButton>
 							</span>

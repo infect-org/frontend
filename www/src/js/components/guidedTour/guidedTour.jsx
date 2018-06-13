@@ -33,7 +33,8 @@ export default class GuidedTour extends React.Component {
 		this.introJs = introJs();
 		this.introJs.setOptions({
 			hintButtonLabel: '&times;',
-			hintPosition: 'top-left',
+			hintPosition: 'middle-left',
+			tooltipPosition: 'bottom-right-aligned',
 			hints: [{
 				element: document.querySelector('.js-filter-search-input'),
 				hint: `Quickly find any filter values. Enter «Amox» to quickly filter by 

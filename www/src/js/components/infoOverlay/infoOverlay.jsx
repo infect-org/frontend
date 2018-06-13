@@ -83,7 +83,7 @@ export default class InfoOverlay extends React.Component {
 					<div className="adresses">
 						<address>
 							Joinbox GmbH<br/>
-							<a href="mailto:infect@joinbox.ch">hello@joinbox.ch</a><br/>
+							<a href="mailto:hello@joinbox.com">hello@joinbox.com</a><br/>
 							3012 Bern<br/>
 						</address>
 					</div>

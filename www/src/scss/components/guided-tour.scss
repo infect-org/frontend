@@ -16,14 +16,55 @@ $tooltip-hint-color: #578ffa;
 	}
 
 	&-tooltip {
-		min-width: 400px;
+
 		background-color: $tooltip--bg-color;
 
-		font-size: $font-size--small;
+		@include max-screen($breakpoint-md) {
+			position: fixed;
+			top: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			left: 0 !important;
+			max-width: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			overflow: auto;
+		}
+
+
+		@include min-screen($breakpoint-md) {
+			/*position: absolute !important;
+			top: auto !important;
+			right: auto !important;
+			bottom: auto !important;
+			left: auto !important;
+			max-width: 300px !important;*/
+			width: auto;
+
+			min-width: 400px;
+			font-size: $font-size--small;
+		}
+
+
 	}
 
 	&-tooltiptext {
-		padding: 0 25px;
+
+		padding: 25px;
+
+		@include min-screen($breakpoint-md) {
+			height: auto;
+			@include clearfix();
+		}
+
+		> p {
+			margin-top: 30px;
+			margin-bottom: 0;
+
+			@include min-screen($breakpoint-md) {
+				margin-top: 0;
+			}
+		}
 
 		.list {
 
@@ -37,8 +78,10 @@ $tooltip-hint-color: #578ffa;
 	}
 
 	&-button {
-		float: right;
 
+		position: fixed;
+		top: 10px;
+		right: 25px;
 		font-size: $font-size--small;
 		font-weight: 600;
 		color: black;
@@ -47,9 +90,18 @@ $tooltip-hint-color: #578ffa;
 		background-color: #c5c3b2;
 		background-image: none;
 		padding: 5px 15px;
-		margin-bottom: 20px;
 
 		border: 0;
+
+		@include min-screen($breakpoint-md) {
+
+			position: static;
+			top: auto;
+			right: auto;
+
+			float: right;
+
+		}
 
 		&:hover {
 			color: black;
@@ -58,23 +110,35 @@ $tooltip-hint-color: #578ffa;
 	}
 
 	&-arrow {
-		border: 5px solid $tooltip--bg-color;
+
+		@include min-screen($breakpoint-md) {
+			display: block;
+			border: 5px solid $tooltip--bg-color;
+		}
 
 		&.top {
-			top: -10px;
-			border-top-color: transparent;
-			border-right-color: transparent;
-			border-bottom-color: $tooltip--bg-color;
-			border-left-color: transparent;
+
+			@include min-screen($breakpoint-md) {
+				top: -10px;
+				border-top-color: transparent;
+				border-right-color: transparent;
+				border-bottom-color: $tooltip--bg-color;
+				border-left-color: transparent;
+			}
+
 		}
 
 		&.left {
-			left: -10px;
-			top: 10px;
-			border-top-color: transparent;
-			border-right-color: $tooltip--bg-color;
-			border-bottom-color: transparent;
-			border-left-color: transparent;
+
+			@include min-screen($breakpoint-md) {
+				left: -10px;
+				top: 10px;
+				border-top-color: transparent;
+				border-right-color: $tooltip--bg-color;
+				border-bottom-color: transparent;
+				border-left-color: transparent;
+			}
+
 		}
 	}
 

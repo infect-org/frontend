@@ -1334,7 +1334,8 @@ matrixheader {
     justify-content: center; }
     .resistanceMatrix__overlay img {
       margin: 0 calc(50% - 150px);
-      width: 150px; }
+      width: 150px;
+      pointer-events: none; }
     .resistanceMatrix__overlay--active {
       opacity: 0.8;
       z-index: 200; }
@@ -1556,6 +1557,10 @@ matrixheader {
     .result:hover .result__checkmark {
       background: url(/dist/img/checkmark.svg) no-repeat center center; }
 
+disclaimer {
+  position: relative;
+  z-index: 1; }
+
 .disclaimer {
   position: relative;
   box-sizing: border-box;
@@ -1565,13 +1570,30 @@ matrixheader {
   font-size: 16px; }
   .disclaimer__paragraph {
     margin: 0; }
+    .disclaimer__paragraph:after {
+      content: "";
+      display: table;
+      clear: both; }
   .disclaimer__text {
     margin-right: 20px; }
+    .disclaimer__text--guide-info {
+      /*display: none;
+
+			@include min-screen('1000px') {
+				display: inline;
+			}*/ }
   .disclaimer__button-container {
     display: inline-block;
     margin-right: 10px; }
+    .disclaimer__button-container--guide {
+      /*display: none;
+
+			@include min-screen('1000px') {
+				display: inline-block;
+			}*/ }
     .disclaimer__button-container--close {
-      float: right; }
+      float: right;
+      position: relative; }
   .disclaimer__button {
     color: black !important;
     cursor: pointer; }
@@ -1592,19 +1614,54 @@ matrixheader {
     background-color: #578ffa; }
 
 .introjs-tooltip {
-  min-width: 400px;
-  background-color: #eeeeee;
-  font-size: 16px; }
+  background-color: #eeeeee; }
+  @media only screen and (max-width: 736px) {
+    .introjs-tooltip {
+      position: fixed;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: auto; } }
+  @media only screen and (min-width: 736px) {
+    .introjs-tooltip {
+      /*position: absolute !important;
+			top: auto !important;
+			right: auto !important;
+			bottom: auto !important;
+			left: auto !important;
+			max-width: 300px !important;*/
+      width: auto;
+      min-width: 400px;
+      font-size: 16px; } }
 
 .introjs-tooltiptext {
-  padding: 0 25px; }
+  padding: 25px; }
+  @media only screen and (min-width: 736px) {
+    .introjs-tooltiptext {
+      height: auto; }
+      .introjs-tooltiptext:after {
+        content: "";
+        display: table;
+        clear: both; } }
+  .introjs-tooltiptext > p {
+    margin-top: 30px;
+    margin-bottom: 0; }
+    @media only screen and (min-width: 736px) {
+      .introjs-tooltiptext > p {
+        margin-top: 0; } }
   .introjs-tooltiptext .list {
     padding-left: 25px; }
     .introjs-tooltiptext .list li {
       padding-left: 10px; }
 
 .introjs-button {
-  float: right;
+  position: fixed;
+  top: 10px;
+  right: 25px;
   font-size: 16px;
   font-weight: 600;
   color: black;
@@ -1612,27 +1669,38 @@ matrixheader {
   background-color: #c5c3b2;
   background-image: none;
   padding: 5px 15px;
-  margin-bottom: 20px;
   border: 0; }
+  @media only screen and (min-width: 736px) {
+    .introjs-button {
+      position: static;
+      top: auto;
+      right: auto;
+      float: right; } }
   .introjs-button:hover {
     color: black;
     background-color: #d7d5c4; }
 
-.introjs-arrow {
-  border: 5px solid #eeeeee; }
+@media only screen and (min-width: 736px) {
+  .introjs-arrow {
+    display: block;
+    border: 5px solid #eeeeee; } }
+
+@media only screen and (min-width: 736px) {
   .introjs-arrow.top {
     top: -10px;
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: #eeeeee;
-    border-left-color: transparent; }
+    border-left-color: transparent; } }
+
+@media only screen and (min-width: 736px) {
   .introjs-arrow.left {
     left: -10px;
     top: 10px;
     border-top-color: transparent;
     border-right-color: #eeeeee;
     border-bottom-color: transparent;
-    border-left-color: transparent; }
+    border-left-color: transparent; } }
 
 .notification-container {
   position: fixed;
@@ -1714,4 +1782,4 @@ matrixheader {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.3451c9179d39030882e8.css.map*/
+/*# sourceMappingURL=main.20208566455c5158dbef.css.map*/

@@ -62,6 +62,7 @@ matrixheader {
         img {
             margin: 0 calc(50% - 150px);
             width: 150px;
+            pointer-events: none;
         }
 
         &--active {
