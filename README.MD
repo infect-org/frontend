@@ -41,6 +41,11 @@ Frontent for the INFECT application
 
 # Build
 
+## Possible MacOS Error
+
+Case: ```Package cairo was not found in the pkg-config search path. ```on installing the node modules.
+Fix: ```brew install pkg-config cairo libpng jpeg giflib ``` and re-install the node modules
+
 ## Testing
 
 To run the tests provided, call
