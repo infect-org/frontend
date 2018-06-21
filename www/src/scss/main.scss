@@ -1,11 +1,12 @@
 @charset 'utf-8';
 
 @import 'utils/variables'
-		,'utils/mixins'
-		,'utils/inputrange'
-		,'../../src/bower_components/sass-flex-mixin/flex'
-		,'../../src/bower_components/sass-mediaqueries/media-queries'
-		,'../../../node_modules/intro.js/introjs.css';
+		, 'utils/mixins'
+		, 'utils/inputrange'
+		, 'utils/introjs'
+		, '../../src/bower_components/sass-flex-mixin/flex'
+		, '../../src/bower_components/sass-mediaqueries/media-queries';
+		//,'../../../node_modules/intro.js/introjs.css';
 		//,'../../../node_modules/intro.js/themes/introjs-modern.css';
 
 @import 'base/base'

@@ -80,12 +80,12 @@ $button-bg-color--hover: #d7d5c4;
     @include border-radius(5px);
     padding: 5px 15px;
 
-    color: white;
-    background-color: #578ffa;
+    color: #fff;
+    background-color: $guide-button-color--base;
     @include transition(background-color, $transition-duration);
 
     &:hover {
-      background-color: #4e79c7;
+      background-color: $guide-button-color--hover;
     }
   }
 }

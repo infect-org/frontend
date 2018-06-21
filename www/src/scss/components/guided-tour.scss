@@ -1,5 +1,4 @@
-$tooltip--bg-color: #eeeeee;
-$tooltip-hint-color: #578ffa;
+
 
 .introjs {
 	&-hint {
@@ -29,6 +28,9 @@ $tooltip-hint-color: #578ffa;
 			margin: 0 !important;
 			padding: 0 !important;
 			overflow: auto;
+
+			//@include flexbox();
+			//@include flex-direction(column);
 		}
 
 
@@ -40,6 +42,7 @@ $tooltip-hint-color: #578ffa;
 			left: auto !important;
 			max-width: 300px !important;*/
 			width: auto;
+			display: block;
 
 			min-width: 400px;
 			font-size: $font-size--small;
@@ -51,6 +54,7 @@ $tooltip-hint-color: #578ffa;
 	&-tooltiptext {
 
 		padding: 25px;
+		@include flex(1 1 auto);
 
 		@include min-screen($breakpoint-md) {
 			height: auto;
@@ -77,42 +81,138 @@ $tooltip-hint-color: #578ffa;
 
 	}
 
-	&-button {
+    &-tooltipbuttons {
 
 		position: fixed;
+		bottom: 0;
+		width: calc(100% - 50px); // 50px = padding left and right
+		background-color: #fff;
+		border-top: 1px solid #ccc;
+		padding: 10px 25px;
+
+		@include flexbox();
+		@include flex-wrap(nowrap);
+
+		@include min-screen($breakpoint-md) {
+			position: static;
+			bottom: auto;
+			padding: 0;
+			width: auto;
+			border: none;
+		}
+
+
+    }
+
+	&-button {
+
+		/*position: fixed;
 		top: 10px;
-		right: 25px;
+		right: 25px;*/
 		font-size: $font-size--small;
 		font-weight: 600;
-		color: black;
+		color: #fff;
 		text-shadow: none;
 
-		background-color: #c5c3b2;
+		//background-color: #c5c3b2;
+		background-color: $guide-button-color--base;
 		background-image: none;
 		padding: 5px 15px;
 
 		border: 0;
+		border-radius: 4px;
+
+        @include transition(background-color, $transition-duration, ease-in-out);
 
 		@include min-screen($breakpoint-md) {
 
-			position: static;
+			/*position: static;
 			top: auto;
 			right: auto;
 
-			float: right;
+			float: right;*/
 
 		}
 
 		&:hover {
-			color: black;
-			background-color: #d7d5c4;
+			background-color: $guide-button-color--hover;
+			background-image: none !important;
+			color: #fff;
+		}
+
+		&:active,
+		&:focus {
+			color: #fff;
+		}
+
+		&.introjs-disabled {
+			width: 0;
+			opacity: 0;
+			visibility: hidden;
+			padding: 0;
+			margin-right: 0;
 		}
 	}
 
+	// skip guided tour button
+	&-skipbutton {
+		background-color: transparent;
+		font-weight: normal;
+		margin-right: 0;
+		color: #000;
+
+		&:hover {
+			color: #000;
+			background: none;
+			text-decoration: underline;
+		}
+	}
+
+    // previous step button
+    &-prevbutton {
+      margin-left: auto;
+
+		&:hover {
+			//background-color: blue;
+		}
+    }
+
+	// next step button
+	&-nextbutton {
+		margin-left: 5px;
+
+		/*&:hover {
+			background-color: blue;
+		}*/
+	}
+
+	// done button (has skip-button class)
+	&-donebutton {
+		background-color: $guide-button-color--base;
+		background-image: none;
+		padding: 5px 15px;
+		order: 3;
+		font-weight: bold;
+
+		&:hover {
+			background-color: $guide-button-color--hover;
+			background-image: none !important;
+			color: #fff;
+			text-decoration: none;
+		}
+		&:active,
+		&:focus {
+			color: #fff;
+		}
+	}
+
+
 	&-arrow {
 
+		display: none !important;
+
 		@include min-screen($breakpoint-md) {
-			display: block;
+			display: block !important;
 			border: 5px solid $tooltip--bg-color;
 		}
 
