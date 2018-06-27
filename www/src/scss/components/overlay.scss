@@ -90,6 +90,7 @@
 	}
 
 	.image--fullwidth {
+		display: block;
 		width: 100%;
 	}
 
@@ -99,6 +100,70 @@
 
 		button {
 			//margin-left: 40px;
+		}
+	}
+
+	// step images wrapper
+	&__image-wrapper {
+
+		background-color: #fff;
+
+		&--step1 {
+			padding: 20px 40px;
+
+			@include min-screen($breakpoint-sm) {
+				padding: 40px 80px;
+			}
+			@include min-screen($breakpoint-md) {
+				padding: 60px 120px;
+			}
+			@include min-screen($breakpoint-mobile) {
+				padding: 20px 40px;
+			}
+			@include min-screen($breakpoint-lg) {
+				padding: 40px 80px;
+			}
+			@include min-screen($breakpoint-xl) {
+				padding: 80px 140px;
+			}
+		}
+		&--step2 {
+			padding: 20px 40px;
+
+			@include min-screen($breakpoint-sm) {
+				padding: 40px 80px;
+			}
+			@include min-screen($breakpoint-md) {
+				padding: 60px 120px;
+			}
+			@include min-screen($breakpoint-mobile) {
+				padding: 20px 40px;
+			}
+			@include min-screen($breakpoint-lg) {
+				padding: 40px 80px;
+			}
+			@include min-screen($breakpoint-xl) {
+				padding: 80px 140px;
+			}
+		}
+		&--step3 {
+			padding: 20px 40px;
+
+			@include min-screen($breakpoint-sm) {
+				padding: 40px 80px;
+			}
+			@include min-screen($breakpoint-md) {
+				padding: 60px 120px;
+			}
+			@include min-screen($breakpoint-mobile) {
+				padding: 20px 40px;
+			}
+			@include min-screen($breakpoint-lg) {
+				padding: 40px 80px;
+			}
+			@include min-screen($breakpoint-xl) {
+				padding: 80px 140px;
+			}
 		}
 	}
 }

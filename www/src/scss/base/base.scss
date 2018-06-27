@@ -103,3 +103,12 @@ a {
 address {
 	font-style: normal;
 }
+
+
+.image {
+	display: block;
+
+	&--fluid {
+		width: 100%;
+	}
+}

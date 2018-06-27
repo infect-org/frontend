@@ -43,28 +43,38 @@ export default class GuidedTour extends React.Component {
 					intro: `At the intersection between antibiotic substances (columns) and bacteria 
 						(rows), you can read the susceptibility of a substance 
 						against a bacterium. 
-						<img class="image--fullwidth" src="dist/img/step1.svg"/>
+						<div class="tour-image-wrapper tour-image-wrapper--step1">
+							<img class="image image--fluid" src="dist/img/step1.svg"/>
+						</div>
 					`,
 				},
 				// Resistance 2
 				{
 					element: resistanceElement,
 					intro: `
-						<img class="image--fullwidth" src="dist/img/step2.svg"/>
+						<div class="tour-image-wrapper tour-image-wrapper--step2">
+							<img class="image image--fluid" src="dist/img/step2.svg"/>
+						</div>
 					`,
 				},
 				// Resistance 3
 				{
 					element: resistanceElement,
 					intro: `
-						<img class="image--fullwidth" src="dist/img/step3.svg"/>
+						<div class="tour-image-wrapper tour-image-wrapper--step3">
+							<img class="image image--fluid" src="dist/img/step3.svg"/>
+						</div>
 					`,
 				},
 				// Substance class
 				{
 					element: document.querySelector('.js-substance-class:last-child'),
 					intro: `Substances are grouped by substance classes. Click on a substance class 
-						to add or remove the corresponding filter to the matrix.`,
+						to add or remove the corresponding filter to the matrix.
+						<div class="tour-image-wrapper tour-image-wrapper--small-devices-only tour-image-wrapper--substance-classes">
+							<img class="image image--fluid" src="dist/img/substance-classes.jpg"/>
+						</div>
+						`,
 				},
 				// Filter bar (dark, left)
 				{
@@ -72,7 +82,11 @@ export default class GuidedTour extends React.Component {
 					intro: `Use the dark filter area on the left to change the data displayed in 
 						the matrix. If you add filters for antibiotics, 
 						substances or bacteria, rows or columns will be hidden. If you add  
-						population or offset filters, the contents of the matrix will change.`,
+						population or offset filters, the contents of the matrix will change.
+						<div class="tour-image-wrapper tour-image-wrapper--small-devices-only tour-image-wrapper--filters">
+							<img class="image image--fluid" src="dist/img/filters.jpg"/>
+						</div>
+						`,
 					//hintPosition: 'top-right',
 				}, 
 				// Filter search
@@ -80,7 +94,11 @@ export default class GuidedTour extends React.Component {
 					element: document.querySelector('.js-filter-search-input'),
 					intro: `Quickly find any filter values. Enter «Amox» to quickly filter by 
 						Amoxicillin or «East» to display data for the East region. Your input must
-						not be precise, as we use a forgiving search algorithm.`,
+						not be precise, as we use a forgiving search algorithm.
+						<div class="tour-image-wrapper tour-image-wrapper--small-devices-only tour-image-wrapper--search-filters">
+							<img class="image image--fluid" src="dist/img/search-filters.jpg"/>
+						</div>
+						`,
 				}, 
 				// Filter navigation
 				{
@@ -94,6 +112,9 @@ export default class GuidedTour extends React.Component {
 							<li><b>Offset and Population</b>: Add offsets to the data displayed or 
 								limit it to a certain region</li>
 						</ol>
+						<div class="tour-image-wrapper tour-image-wrapper--small-devices-only tour-image-wrapper--filter-list-menu">
+							<img class="image image--fluid" src="dist/img/filter-list-menu.jpg"/>
+						</div>
 					`,
 				}, 
 			]
