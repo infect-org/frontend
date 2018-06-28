@@ -41,8 +41,8 @@ export default class GuidedTour extends React.Component {
 				{
 					element: resistanceElement,
 					intro: `At the intersection between antibiotic substances (columns) and bacteria 
-						(rows), you can read the susceptibility of a substance 
-						against a bacterium. 
+						(rows), you can read the susceptibility of a bacterium for an antimicrobial 
+						substance. 
 						<div class="tour-image-wrapper tour-image-wrapper--step1">
 							<img class="image image--fluid" src="dist/img/step1.svg"/>
 						</div>
@@ -96,7 +96,7 @@ export default class GuidedTour extends React.Component {
 				{
 					element: document.querySelector('.js-filter-search-input'),
 					intro: `Quickly find any filter values. Enter «Amox» to quickly filter by 
-						Amoxicillin or «East» to display data for the East region. Your input must
+						Amoxicillin or «East» to display data for the East region. Your input needs 
 						not be precise, as we use a forgiving search algorithm.
 						<div class="tour-image-wrapper tour-image-wrapper--small-devices-only tour-image-wrapper--search-filters">
 							<img class="image image--fluid" src="dist/img/search-filters.jpg"/>
