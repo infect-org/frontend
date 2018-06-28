@@ -52,6 +52,8 @@ export default class GuidedTour extends React.Component {
 				{
 					element: resistanceElement,
 					intro: `
+						The susceptibility is gradually colored from a pale red (low susceptibility) 
+						to an intense green (high susceptibility).
 						<div class="tour-image-wrapper tour-image-wrapper--step2">
 							<img class="image image--fluid" src="dist/img/step2.svg"/>
 						</div>
@@ -60,7 +62,8 @@ export default class GuidedTour extends React.Component {
 				// Resistance 3
 				{
 					element: resistanceElement,
-					intro: `
+					intro: `If you move your mouse cursor over a susceptibility circle (or tap it on  
+					your mobile phone), the additional details are displayed:
 						<div class="tour-image-wrapper tour-image-wrapper--step3">
 							<img class="image image--fluid" src="dist/img/step3.svg"/>
 						</div>
