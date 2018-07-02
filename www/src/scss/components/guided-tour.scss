@@ -74,8 +74,46 @@
 
 			padding-left: 25px;
 
-			li {
+			&--guided-tour-filter-list-menu {
+				padding-left: 0;
+				list-style: none;
+			}
+
+			&__item {
+				position: relative;
 				padding-left: 10px;
+				margin-bottom: 10px;
+
+				&--guided-tour-filter-list-menu {
+					padding-left: 30px;
+				}
+			}
+
+			&__icon {
+				&--guided-tour {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 21px;
+					fill: $color--light-green;
+
+					&-mostUsed {
+						height: 20px;
+						top: 3px;
+					}
+					&-antibiotics {
+						height: 8px;
+						top: 10px;
+					}
+					&-bacteria {
+						height: 20px;
+						top: 3px;
+					}
+					&-population {
+						height: 15px;
+						top: 8px;
+					}
+				}
 			}
 		}
 

@@ -35,6 +35,7 @@ export default class GuidedTour extends React.Component {
 		this.introJs.setOptions({
 			//hintButtonLabel: '&times;',
 			//hintPosition: 'middle-left',
+            showStepNumbers: false,
 			tooltipPosition: 'auto',
 			steps: [
 				// Resistance 1
@@ -107,13 +108,22 @@ export default class GuidedTour extends React.Component {
 				{
 					element: document.querySelector('.js-filter-list-menu'),
 					intro: `Use the filter navigation to quickly jump to a filter section:
-						<ol class="list">
-							<li><b>Favorites</b>: Your most used filters for the current session (is 
-								only displayed after you add the first filter)</li>
-							<li><b>Antibiotic</b>: Filter antibiotics by their characteristics</li>
-							<li><b>Bacteria</b>: Filter bacteria by their characteristics</li>
-							<li><b>Offset and Population</b>: Add offsets to the data displayed or 
-								limit it to a certain region</li>
+						<ol class="list list--guided-tour-filter-list-menu">
+							<li class="list__item list__item--guided-tour-filter-list-menu">
+								<svg aria-hidden="true" class="list__icon list__icon--guided-tour list__icon--guided-tour-mostUsed"><use xlink:href="#icon_mostUsed" /></svg>
+								<b>Favorites</b>: Your most used filters for the current session (is only displayed after you add the first filter)</li>
+							<li class="list__item list__item--guided-tour-filter-list-menu">
+								<svg aria-hidden="true" class="list__icon list__icon--guided-tour list__icon--guided-tour-antibiotics"><use xlink:href="#icon_antibiotics" /></svg>
+								<b>Antibiotic</b>: Filter antibiotics by their characteristics
+							</li>
+							<li class="list__item list__item--guided-tour-filter-list-menu">
+								<svg aria-hidden="true" class="list__icon list__icon--guided-tour list__icon--guided-tour-bacteria"><use xlink:href="#icon_bacteria" /></svg>
+								<b>Bacteria</b>: Filter bacteria by their characteristics
+							</li>
+							<li class="list__item list__item--guided-tour-filter-list-menu">
+								<svg aria-hidden="true" class="list__icon list__icon--guided-tour list__icon--guided-tour-population"><use xlink:href="#icon_population" /></svg>
+								<b>Offset and Population</b>: Add offsets to the data displayed or limit it to a certain region
+							</li>
 						</ol>
 						<div class="tour-image-wrapper tour-image-wrapper--small-devices-only tour-image-wrapper--filter-list-menu">
 							<img class="image image--fluid" src="dist/img/filter-list-menu.jpg"/>
