@@ -28,42 +28,92 @@
 			margin: 0 !important;
 			padding: 0 !important;
 			overflow: auto;
-
-			//@include flexbox();
-			//@include flex-direction(column);
 		}
 
 
 		@include min-screen($breakpoint-md) {
-			/*position: absolute !important;
-			top: auto !important;
-			right: auto !important;
-			bottom: auto !important;
-			left: auto !important;
-			max-width: 300px !important;*/
+
 			width: auto;
 			display: block;
+			min-width: 480px;
 
-			min-width: 400px;
-			font-size: $font-size--small;
+			font-size: $font-size--guided-tour;
+			line-height: $line-height--guided-tour;
 		}
 
+		// guided tour text/picture layout
+
+		&__layout {
+
+			@include min-screen($breakpoint-md) {
+				@include flexbox();
+			}
+
+			&--row {
+				@include min-screen($breakpoint-md) {
+					@include flex-direction(row);
+					@include justify-content(space-between);
+				}
+
+				> p {
+
+					@include css3-prefix(hyphens, auto);
+
+					@include min-screen($breakpoint-md) {
+						@include flex(0 0 45%);
+					}
+				}
+
+				> div {
+					@include min-screen($breakpoint-md) {
+						@include flex(0 0 45%);
+					}
+
+				}
+			}
+			&--column {
+
+				@include min-screen($breakpoint-md) {
+					@include flex-direction(column);
+				}
+
+				> p {
+
+					@include css3-prefix(hyphens, auto);
+
+					@include min-screen($breakpoint-md) {
+						@include flex(1 1 auto);
+					}
+
+				}
+
+				> div {
+
+					@include min-screen($breakpoint-md) {
+						@include flex(1 1 auto);
+					}
+				}
+			}
+
+		}
 
 	}
 
 	&-tooltiptext {
 
 		padding: 25px;
-		@include flex(1 1 auto);
+		//@include flex(1 1 auto);
+		/*@include flexbox();
+		@include flex-wrap(wrap);*/
 
 		@include min-screen($breakpoint-md) {
 			height: auto;
-			@include clearfix();
 		}
 
-		> p {
+		p {
 			margin-top: 30px;
 			margin-bottom: 0;
+
 
 			@include min-screen($breakpoint-md) {
 				margin-top: 0;
@@ -77,6 +127,7 @@
 			&--guided-tour-filter-list-menu {
 				padding-left: 0;
 				list-style: none;
+				margin-bottom: 0;
 			}
 
 			&__item {
@@ -141,6 +192,16 @@
 
 
     }
+
+	// progress dots
+	&-bullets {
+
+		@include min-screen($breakpoint-md) {
+			position: absolute;
+			left: 50%;
+			@include transform(translate(-50%, 25%));
+		}
+	}
 
 	&-button {
 
@@ -251,7 +312,7 @@
 
 		@include min-screen($breakpoint-md) {
 			display: block !important;
-			border: 5px solid $tooltip--bg-color;
+			//border: 5px solid $tooltip--bg-color;
 		}
 
 		&.top {
@@ -284,55 +345,54 @@
 
 .tour-image-wrapper {
 
-	margin: auto;
+	/*margin: auto;
+	padding: 25px 0 0 0;*/
+
+	img {
+		display: block;
+		margin: auto;
+	}
 
 	&--step1 {
-		padding: 20px;
 
-		@include min-screen($breakpoint-sm) {
-			padding: 40px 80px;
-			max-width: 400px;
-		}
-		@include min-screen($breakpoint-md) {
-			padding: 40px 60px;
-			max-width: none;
-		}
-		@include min-screen($breakpoint-lg) {
-			padding: 40px 80px;
+		img {
+
+			@include max-screen($breakpoint-md) {
+				margin-top: 25px;
+				max-width: 300px;
+			}
 		}
 
 	}
 
 	&--step2 {
-		padding: 20px;
 
-		@include min-screen($breakpoint-sm) {
-			padding: 40px 80px;
-			max-width: 400px;
+		padding: 25px 0 0 0;
+
+		img {
+			@include min-screen($breakpoint-sm) {
+				max-width: 360px;
+			}
+			@include min-screen($breakpoint-md) {
+				max-width: 200px;
+			}
+			@include min-screen($breakpoint-lg) {
+				max-width: 180px;
+			}
 		}
-		@include min-screen($breakpoint-md) {
-			padding: 40px 60px;
-			max-width: none;
-		}
-		@include min-screen($breakpoint-lg) {
-			padding: 40px 70px;
-		}
+
 	}
 
 	&--step3 {
-		padding: 20px;
 
-		@include min-screen($breakpoint-sm) {
-			padding: 40px 80px;
-			max-width: 360px;
+		img {
+
+			@include max-screen($breakpoint-md) {
+				margin-top: 25px;
+				max-width: 300px;
+			}
 		}
-		@include min-screen($breakpoint-md) {
-			padding: 40px 90px;
-			max-width: none;
-		}
-		@include min-screen($breakpoint-lg) {
-			padding: 40px 80px;
-		}
+
 	}
 
 	&--small-devices-only {
