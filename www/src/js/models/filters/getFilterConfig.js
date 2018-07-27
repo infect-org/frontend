@@ -30,16 +30,22 @@ export default function() {
 	}, {
 		entityType: 'region'
 		, config: {
-			identifier: {
+			// The property we need is id
+			id: {
 				translation: 'Name'
-				, valueTranslations: (name) => {
-					return name
-						.replace(/-/g, ' ')
-						// Remove «switzerland»
-						.replace('switzerland ', '')
-						.replace(/\b\w/g, (result) => {
-							return result.toUpperCase();
-						});
+				// Get name from the whole entity
+				, valueTranslations: (name, entity) => entity.name
+			}
+		}
+	}, {
+		entityType: 'ageGroup'
+		, config: {
+			// The property we need is id
+			id: {
+				translation: 'Name'
+				// Get name from the whole entity
+				, valueTranslations: (name, entity) => {
+					return entity.identifier.replace('-', '–').replace('>=', '≥');
 				}
 			}
 		}

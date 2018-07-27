@@ -26,22 +26,13 @@ export default class SelectedFilters {
 
 	@action addFilter(filter) {
 		log('Add filter %o, filters were %o', filter, this._selectedFilters.peek());
-		// Prevent users from adding similar filters
+
+		// Prevent users from adding the same filter twice
 		const duplicate = this._selectedFilters.find((item) => deepEqual(item, filter));
 		if (duplicate) {
 			console.warn('Tried to add duplicate entry %o', filter);
 			return;
 		}
-
-        // Special case: Don't allow multiselection of regions as long as we don't have
-        // RDA. TODO: Remove when RDA is ready.
-        // Test for filter.property as it's not part of the tests
-        if (filter.property && filter.property.entityType === 'region') {
-            if (this.getFiltersByType('region').length > 0) {
-                alert(`COMING SOON. \nYou cannot yet select multiple population filters. \nThis feature will be added 2018.\nPlease remove the other region filters first.`);
-                return;
-            }
-        }
 
 		this.filterChanges++;
 		this._selectedFilters.push(filter);

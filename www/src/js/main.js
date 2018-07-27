@@ -16,6 +16,9 @@ import Disclaimer from './components/disclaimer/disclaimer';
 import GuidedTour from './components/guidedTour/guidedTour';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
+// Models limited to web app
+import GuidedTourModel from './models/guidedTour/guidedTour';
+import InfoOverlayModel from './models/infoOverlay/infoOverlay';
 import { useStrict } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:Main');
@@ -24,27 +27,32 @@ useStrict(true);
 
 const isBeta = window.location.hostname.includes('beta.') || 
 	window.location.hostname === 'localhost';
-const envPrefix = isBeta ? 'beta.' : '';
+//const envPrefix = isBeta ? 'beta.' : '';
+const envPrefix = 'rda.';
 log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
 
-const protocol = window.location.protocol;
+//const protocol = window.location.protocol;
+const protocol = 'https:';
+
 const config = {
 	endpoints: {
-		apiPrefix: `${ protocol }//${ envPrefix }api.infect.info/`,
+		apiPrefix: `${ protocol }//${ envPrefix }infect.info/`,
 		bacteria: 'pathogen.bacterium',
 		antibiotics: 'substance.compound',
-		resistances: 'rda.resistance',
+		resistances: 'rda.data',
 		substanceClasses: 'substance.substanceClass',
 		regions: 'generics.region',
 		countries: 'generics.country',
+		ageGroups: 'generics.ageGroup',
 	}
 };
 
 
-// Setup models
-let app;
-app = new InfectApp(config);
+// Setup models that are shared between mobile and web app
+const app = new InfectApp(config);
 
+const infoOverlayModel = new InfoOverlayModel();
+const guidedTourModel = new GuidedTourModel(infoOverlayModel);
 
 
 // React
@@ -65,8 +73,8 @@ function renderReact() {
 	ReactDOM.render(<FilterListMenu mostUsedFilters={ app.mostUsedFilters }/>, document.querySelector('FilterListMenu'));
 	ReactDOM.render(<FilterSearch filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterSearch'));
 	ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));
-	ReactDOM.render(<Disclaimer infoOverlay={ app.infoOverlay } guidedTour={ app.guidedTour }/>, document.querySelector('Disclaimer'));
-	ReactDOM.render(<GuidedTour guidedTour={ app.guidedTour }/>, document.querySelector('GuidedTour'));
-	ReactDOM.render(<InfoOverlay guidedTour={ app.guidedTour } infoOverlay={ app.infoOverlay }/>, document.querySelector('InfoOverlay'));
-	ReactDOM.render(<InfoOverlayButton infoOverlay={ app.infoOverlay }/>, document.querySelector('InfoOverlayButton'));	
+	ReactDOM.render(<Disclaimer infoOverlay={ infoOverlayModel } guidedTour={ guidedTourModel }/>, document.querySelector('Disclaimer'));
+	ReactDOM.render(<GuidedTour guidedTour={ guidedTourModel }/>, document.querySelector('GuidedTour'));
+	ReactDOM.render(<InfoOverlay guidedTour={ guidedTourModel } infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlay'));
+	ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));	
 }

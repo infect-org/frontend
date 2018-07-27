@@ -8,6 +8,8 @@ const log = debug ('infect:PropertyMap');
 * Creates a map of properties of instances/objects so that they can be 
 * - searched
 * - filtered by (and be displayed in a filter list)
+* Creates entries for properties (e.g. gram) and values (e.g. gram-). Objects (e.g. antibiotics) 
+* will be filtered by checking if its property $property has value $value.
 */
 export default class PropertyMap {
 
@@ -17,10 +19,20 @@ export default class PropertyMap {
 	*/
 	constructor() {
 
-		// Objects with properties: name, niceName and entityType
+		// Objects with properties: name, niceName and entityType; e.g.
+		// {
+		//   name: 'gram', // This is the property on the bacterium we'll be filtering for
+		//   niceName: 'Gram',
+		//   entityType: 'bacterium'
+		// }
 		this._properties = new SearchableMap();
 		// Objects with property values: value, niceValue and property (link to a property in 
-		// this._properties)
+		// this._properties), e.g. 
+		// {
+		//   name: 'gram+', // This is the value we'll be filtering for
+		//   niceName: 'Gram +'
+		//   property: { see property above }
+		// }
 		this._propertyValues = new SearchableMap();
 		this._configurations = {};
 
@@ -83,7 +95,7 @@ export default class PropertyMap {
 	/**
 	* Parses an entity and adds filters
 	*/
-	addEntity(entityType, entity) {
+	addEntity(entityType, entity, valueTranslationFunction) {
 		const config = this._configurations[entityType];
 		if (!config) {
 			throw new Error(`PropertyMap: Before you can add an entity, you have to provide a configuration matching it.`);
@@ -112,11 +124,11 @@ export default class PropertyMap {
 			let niceValueName;
 			// valueTranslations is a function (one for all values)
 			if (typeof valueTranslations === 'function') {
-				niceValueName = this._getTranslation(valueTranslations, value);
+				niceValueName = this._getTranslation(valueTranslations, value, entity);
 			}
 			// valueTranslations is an array; get item for the current value
 			else if (Array.isArray(valueTranslations)) {
-				niceValueName = this._getTranslation(valueTranslations.find((item) => item.value === value).translation, value);
+				niceValueName = this._getTranslation(valueTranslations.find((item) => item.value === value).translation, value, entity);
 			}
 			else {
 				throw(`PropertyMap: Unknown type of valueTranslations; needs to be an Array or a Function, is ${ valueTranslations }.`);
@@ -146,14 +158,16 @@ export default class PropertyMap {
 	* corresponding value.
 	* @param {String|Function} translation
 	* @param {String} value
+	* @param {Object} entity			The original entity (to translate regions which consist of
+	*                          			IDs; we cannot get from an ID to the region's name)
 	*/
-	_getTranslation(translation, value) {	
+	_getTranslation(translation, value, entity) {	
 		if (!translation) {
 			console.warn(`PropertyMap: Translation for value ${ value } is missing; return original value.`);
 			return value;
 		}
 		if (typeof translation === 'string') return translation;
-		if (typeof translation === 'function') return translation(value);
+		if (typeof translation === 'function') return translation(value, entity);
 	}
 
 }

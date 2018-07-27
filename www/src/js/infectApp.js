@@ -15,10 +15,9 @@ import getFilterConfig from './models/filters/getFilterConfig.js';
 import PropertyMap from './models/propertyMap/propertyMap';
 import OffsetFilters from './models/filters/offsetFilters';
 import SelectedFilters from './models/filters/selectedFilters';
-import GuidedTour from './models/guidedTour/guidedTour';
-import InfoOverlay from './models/infoOverlay/infoOverlay';
 import MostUsedFilters from './models/filters/mostUsedFilters';
-import { fetchApi } from './helpers/api.js';
+import PopulationFilterUpdater from './models/populationFilter/populationFilterUpdater';
+import PopulationFilterFetcher from './models/populationFilter/populationFilterFetcher';
 import { when, observable } from 'mobx';
 import debug from 'debug';
 const log = debug('infect:App');
@@ -58,8 +57,6 @@ export default class InfectApp {
 		this._setupOffsetFilters();
 
 		this.mostUsedFilters = new MostUsedFilters(this.selectedFilters, this.filterValues);
-		this.infoOverlay = new InfoOverlay();
-		this.guidedTour = new GuidedTour(this.infoOverlay);
 
 		this._setupFetchers();
 
@@ -67,7 +64,8 @@ export default class InfectApp {
 		this.views.matrix.setOffsetFilters(this.offsetFilters);
 		this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
 
-		this._createRegions();
+		const populationFilterFetcher = new PopulationFilterFetcher(this._config, this.filterValues);
+		populationFilterFetcher.init();
 
 	}
 
@@ -117,12 +115,14 @@ export default class InfectApp {
 				antibiotics: this.antibiotics,
 				bacteria: this.bacteria,
 			},
-			this.selectedFilters,
 		);
 		// Gets data for default filter switzerland-all
 		resistanceFetcher.getData();
-		log('Fetching data for resistances.');
 
+		const populationFilterUpdater = new PopulationFilterUpdater(resistanceFetcher, 
+			this.selectedFilters);
+
+		log('Fetching data for resistances.');
 		log('Fetchers setup done.');
 
 	}
@@ -193,32 +193,6 @@ export default class InfectApp {
 		});
 		log('All relevant entities ready, added %d entities to filters.', counter);
 	}
-
-
-
-	/**
-	* Fetches regions from server, adds them to filters and sets 'switzerland-all' as selected
-	* filter which triggers the resistancesFetcher to fetch.
-	*/
-	async _createRegions() {
-
-		const url = this._config.endpoints.apiPrefix + this._config.endpoints.regions;
-		const regionData = await fetchApi(url);
-
-		regionData.data.forEach((region) => {
-			// Don't add default filter (switzerland-all) to filters; will be add manually to 
-			// filter list as it shouldnot be visible on selected filters (above matrix).
-			if (region.identifier === 'switzerland-all') return;
-			const regionObject = {
-				identifier: region.identifier
-			};
-			log('Add filter %o for region', regionObject);
-			this.filterValues.addEntity('region', regionObject);
-		});
-		log('Region filters added');
-
-	}
-
 
 }
 

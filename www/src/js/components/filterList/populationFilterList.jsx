@@ -1,27 +1,33 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { transaction, computed } from 'mobx';
+import filterTypes from '../../models/filters/filterTypes';
 import OffsetFilters from './offsetFilters';
 import FilterListCheckbox from '../filterListCheckbox/filterListCheckbox';
 import generateFilterList from './generateFilterList';
 import debug from 'debug';
 const log = debug('infect:PopulationFilterList');
 
+
+/**
+ * Returns first number in age group identifier ("<15", "15-45", "">=65" etc.); needed to sort
+ * age groups.
+ */
+function getFirstNumber(ageGroupIdentifier) {
+	const match = ageGroupIdentifier.match(/\d+/);
+	let value = match ? parseInt(match[0]) : undefined;
+	// <15 comes before 15-35; first numbers are equal (15), therefore count '<15' down.
+	if (ageGroupIdentifier[0] === '<') value--;
+	return value;
+}
+
+
 @observer
 class PopulationFilterList extends React.Component {
 
 	_handleFilterChange(item) {
 		log('Handle filter change for region %o', item);
-		// Make sure only one region filter is selected: Remove all currently
-		// selected filters. Do this in one single operation or multiple fetches
-		// will be done (selected region is removed, then new region is added).
-		transaction(() => {
-			this.props.selectedFilters.getFiltersByType('region').forEach((filter) => {
-				this.props.selectedFilters.removeFilter(filter);
-			});
-			// Add current filter – but only if not «all regions» (empty) was selected
-			if (item) this.props.selectedFilters.addFilter(item);
-		});
+		this.props.selectedFilters.toggleFilter(item);
 	}
 
 	/**
@@ -37,11 +43,16 @@ class PopulationFilterList extends React.Component {
 	 * Don't return switzerland-all as a filter as it cannot be combined and is a «non-filter»
 	 */
 	@computed get regionFilters() {
-		return this.props.filterValues.getValuesForProperty('region', 'identifier');
+		return this.props.filterValues.getValuesForProperty(filterTypes.region, 'id');
+	}
+
+	@computed get ageGroupFilters() {
+		const values = this.props.filterValues.getValuesForProperty(filterTypes.ageGroup, 'id');
+		return values.sort((a, b) => getFirstNumber(a.niceValue) - getFirstNumber(b.niceValue));
 	}
 
 	@computed get isNoRegionSelected() {
-		return this.props.selectedFilters.getFiltersByType('region').length === 0;
+		return this.props.selectedFilters.getFiltersByType(filterTypes.region).length === 0;
 	}
 
 	render() {
@@ -49,16 +60,19 @@ class PopulationFilterList extends React.Component {
 			<div id="population-filters">
                 <h3 className="gray margin-top">Region</h3>
 				<ul className="group__list group__list--vertical">
-
-					<FilterListCheckbox inputType="radio" 
-						name="All Regions" inputName="region-name" value="switzerland-all"
-						checked={ this.isNoRegionSelected }
-						onChangeHandler={ () => this._handleFilterChange() } />
-
 					{ this.regionFilters.map((item) => {
-						return <FilterListCheckbox inputType="radio" key={ item.value } 
+						return <FilterListCheckbox key={ item.value } 
 							name={ item.niceValue } inputName="region-name" value={ item.niceValue } 
 							checked={ this.isSelected(item) }
+							onChangeHandler={ () => this._handleFilterChange(item) } />;
+					})}
+				</ul>
+                <h3 className="gray margin-top">Age Group</h3>
+				<ul className="group__list group__list--vertical">
+					{ this.ageGroupFilters.map((item) => {
+						return <FilterListCheckbox key={ item.value } 
+							name={ item.niceValue } inputName="ageGroup-name" 
+							value={ item.niceValue } checked={ this.isSelected(item) }
 							onChangeHandler={ () => this._handleFilterChange(item) } />;
 					})}
 				</ul>
