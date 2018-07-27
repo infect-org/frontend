@@ -1,5 +1,6 @@
 import { computed, reaction } from 'mobx';
 import filterTypes from '../filters/filterTypes';
+import errorHandler from '../errorHandler/errorHandler';
 
 /**
  * Create headers for pupulation filters that will be passed to ResistanceFetcher. Invoke
@@ -34,8 +35,13 @@ export default class PopulationFilterUpdater {
      * @private
      */
     setupWatcher() {
-        reaction(() => this.filterHeaders, (data) => {
-            this.resistancesFetcher.getDataForFilters(data);
+        reaction(() => this.filterHeaders, async (data) => {
+            try {
+                await this.resistancesFetcher.getDataForFilters(data);
+            } catch (err) {
+                errorHandler.handle(err);
+            }
+            // errorHandler.handle(new Error('shit'));
         }, {
             // Overwrite existing compartor function as filterHeaders returns a *new* (and
             // therefore different) object every time it is invoked. Compare if their JSON

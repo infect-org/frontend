@@ -114,8 +114,8 @@ test('handles filter updates', async (t) => {
     await fetcher.getDataForFilters({ region: [3, 6] });
     t.equals(store.getById(2).values[0].value, 0.99);
 
-    const calls = fetchMock.calls();
-    console.log(JSON.stringify(calls, null, 2));
+    // const calls = fetchMock.calls();
+    // console.log(JSON.stringify(calls, null, 2));
 
     fetchMock.restore();
     t.end();

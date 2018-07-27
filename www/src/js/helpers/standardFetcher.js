@@ -38,26 +38,28 @@ export default class StandardFetcher {
         });
         this._store.setFetchPromise(promise);
 
+        // Add timestamp to prevent caching as file names don't change
+        const defaultOptions = {
+            cache: 'no-store',
+            // Requests at Insel (Edge) are rejected with status 407. This might help:
+            credentials: 'include',
+        };
+        const options = { ...defaultOptions, ...this._options };
+        log('Options are %o', options);
+
         let result;
         try {
-            // Add timestamp to prevent caching as file names don't change
-            const defaultOptions = {
-                cache: 'no-store',
-                // Requests at Insel (Edge) are rejected with status 407. This might help:
-                credentials: 'include',
-            };
-            const options = { ...defaultOptions, ...this._options };
-            log('Options are %o', options);
             result = await fetchApi(this._url, options);
             log('Got back data %o', result);
-            // Invalid HTTP Status
-            if (result.status !== 200) {
-                const err = new Error(`StandardFetcher: Status ${result.status} is invalid.`);
-                rejector(err);
-                throw err;
-            }
         } catch (err) {
             // Fetch failed: reject promise on store
+            rejector(err);
+            throw err;
+        }
+
+        // Invalid HTTP Status
+        if (result.status !== 200) {
+            const err = new Error(`StandardFetcher: Status ${result.status} is invalid.`);
             rejector(err);
             throw err;
         }
