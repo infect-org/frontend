@@ -1,12 +1,13 @@
 {
-  "name": "frontend",
+  "name": "infect-frontend",
   "description": "infect fronend",
   "version": "2.0.2",
   "homepage": "https://github.com/infect/application",
-  "author": "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info/)",
+  "author": "Felix Steiner <felix@joinbox.com> (http://infect.info/)",
+  "contributors": ["Sandro Kneubühl <sandro@joinbox.com> (http://infect.info/)"],
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/infect/related.git",
+    "url": "git+https://github.com/infect/related.git",
     "type": "git"
   },
   "engines": {
@@ -95,5 +96,6 @@
         "babelify"
       ]
     ]
-  }
+  },
+  "main": "index.js"
 }
