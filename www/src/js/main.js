@@ -4,7 +4,7 @@
 
 import '@babel/polyfill';
 
-import { useStrict } from 'mobx';
+import { configure } from 'mobx';
 import debug from 'debug';
 import InfectApp from 'infect-frontend-logic';
 import ReactDOM from 'react-dom';
@@ -27,7 +27,7 @@ import GuidedTourModel from './models/guidedTour/guidedTour';
 import InfoOverlayModel from './models/infoOverlay/infoOverlay';
 
 const log = debug('infect:Main');
-useStrict(true);
+configure({ enforceActions: true });
 
 /* global window */
 const isBeta = window.location.hostname.includes('beta.') ||

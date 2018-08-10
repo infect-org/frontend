@@ -29,8 +29,9 @@ export default class GuidedTour extends React.Component {
 	* Creates and starts the guided tour/hints
 	*/
 	setupGuidedTour() {
-		const resistanceElement = 
-			document.querySelector('.js-resistance:not(.-was-visible-is-hidden)');
+		// We cannot use first resistance circle as we don't know in what order they were rendere
+		// into the DOM; the first circle in the DOM might be at the very bottom of the screen.
+		const resistanceElement = document.querySelector('.resistanceMatrix__resistances');
 		this.introJs = introJs();
 		this.introJs.setOptions({
 			//hintButtonLabel: '&times;',

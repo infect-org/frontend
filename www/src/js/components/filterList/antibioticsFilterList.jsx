@@ -1,5 +1,6 @@
 import React from 'react';
-import { createTransformer, computed } from 'mobx';
+import { computed } from 'mobx';
+import { createTransformer } from 'mobx-utils';
 import { observer } from 'mobx-react';
 import FilterListCheckbox from '../filterListCheckbox/filterListCheckbox';
 import generateFilterList from './generateFilterList';
