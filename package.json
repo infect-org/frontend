@@ -1,7 +1,7 @@
 {
   "name": "infect-frontend",
   "description": "infect fronend",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "homepage": "https://github.com/infect/application",
   "author": "Felix Steiner <felix@joinbox.com> (http://infect.info/)",
   "contributors": [
@@ -39,6 +39,9 @@
     "csv": "^3.1.0",
     "gulp": "^4.0.0",
     "gulp-cli": "github:gulpjs/gulp-cli",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-collector": "^1.3.1",
+    "rev-del": "^1.0.5",
     "tape": "^4.9.1"
   },
   "optionalDependencies": {},
@@ -46,7 +49,8 @@
     "infect"
   ],
   "scripts": {
-    "start": "node ./node_modules/gulp-cli/bin/gulp.js"
+    "start": "node ./node_modules/gulp-cli/bin/gulp.js",
+    "build": "node ./node_modules/gulp-cli/bin/gulp.js infectProd"
   },
   "browserify": {
     "external": {
