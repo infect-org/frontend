@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { transaction, computed } from 'mobx';
-import filterTypes from '../../models/filters/filterTypes';
+import { filterTypes } from 'infect-frontend-logic';
 import OffsetFilters from './offsetFilters';
 import FilterListCheckbox from '../filterListCheckbox/filterListCheckbox';
 import generateFilterList from './generateFilterList';

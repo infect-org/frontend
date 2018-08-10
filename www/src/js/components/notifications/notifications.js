@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { computed, observable, action } from 'mobx';
-import errorHandler from '../../models/errorHandler/errorHandler';
+import { errorHandler } from 'infect-frontend-logic';
 
 @observer
 export default class Notifications extends React.Component {
@@ -22,7 +22,7 @@ export default class Notifications extends React.Component {
 
     render() {
         return (
-            <div className={ 'notification-container ' + (this.showErrors ? 'notification-container--active' : '') }>
+            <div className={ `notification-container ${this.showErrors ? 'notification-container--active' : ''}` }>
                 <div className="notification__error-icon">
                     <a className="notification__link" onClick={ () => this.hideErrors() }>
                         <img src="/img/error.svg" />
@@ -30,9 +30,9 @@ export default class Notifications extends React.Component {
                 </div>
                 <div className="notification__message message">
                     <h2>UPS, something went wrong!</h2>
-                    { errorHandler.errors.map((err) => {
-                        return <p key={ err.message }>{ err.message }</p>;
-                    })}
+                    { errorHandler.errors.map(err => (
+                        <p key={ err.message }>{ err.message }</p>
+                    ))}
                 </div>
             </div>
         );

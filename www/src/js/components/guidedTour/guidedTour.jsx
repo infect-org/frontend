@@ -44,7 +44,7 @@ export default class GuidedTour extends React.Component {
 					intro: `<div class="introjs-tooltip__layout introjs-tooltip__layout--row">
 								<p>At the intersection between antibiotic substances (columns) and bacteria (rows), you can read the susceptibility of a bacterium for an antimicrobial substance.</p>
 								<div class="tour-image-wrapper tour-image-wrapper--step1">
-									<img class="image image--fluid" src="dist/img/step1.svg"/>
+									<img class="image image--fluid" src="../img/step1.svg"/>
 								</div>
 							</div>`,
 				},
@@ -54,7 +54,7 @@ export default class GuidedTour extends React.Component {
 					intro: `<div class="introjs-tooltip__layout introjs-tooltip__layout--column">
 								<p>The susceptibility is gradually colored from a pale red (low susceptibility) to an intense green (high susceptibility).</p>
 								<div class="tour-image-wrapper tour-image-wrapper--step2">
-									<img class="image image--fluid" src="dist/img/step2.svg"/>
+									<img class="image image--fluid" src="../img/step2.svg"/>
 								</div>
 							</div>`,
 				},
@@ -64,7 +64,7 @@ export default class GuidedTour extends React.Component {
 					intro: `<div class="introjs-tooltip__layout introjs-tooltip__layout--row">
 								<p>If you move your mouse cursor over a susceptibility circle (or tap it on your mobile phone), the additional details are displayed:</p>
 								<div class="tour-image-wrapper tour-image-wrapper--step3">
-									<img class="image image--fluid" src="dist/img/step3.svg"/>
+									<img class="image image--fluid" src="../img/step3.svg"/>
 								</div>
 							</div>`,
 				},

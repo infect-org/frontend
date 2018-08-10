@@ -2,9 +2,11 @@
 * Bootstrap of the Infect application's frontend
 */
 
+import '@babel/polyfill';
+
 import { useStrict } from 'mobx';
 import debug from 'debug';
-import InfectApp from './infectApp';
+import InfectApp from 'infect-frontend-logic';
 import ReactDOM from 'react-dom';
 import React from 'react'; // Not needed here, but error is thrown if we don't import it
 
@@ -53,6 +55,11 @@ const config = {
 
 // Setup models that are shared between mobile and web app
 const app = new InfectApp(config);
+try {
+    app.initialize();
+} catch (err) {
+    app.errorHandler.handle(err);
+}
 
 const infoOverlayModel = new InfoOverlayModel();
 const guidedTourModel = new GuidedTourModel(infoOverlayModel);

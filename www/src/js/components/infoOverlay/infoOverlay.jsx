@@ -32,24 +32,24 @@ export default class InfoOverlay extends React.Component {
 					<div className="guide">Interactive INFECT tour: <GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton></div>
 					<p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding the susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while semi-transparent circles represent low sample sizes (N ≤ 20). The number in the middle of the circle represents the percentage of susceptible samples:</p>
 					<div className="overlay__image-wrapper overlay__image-wrapper--step1">
-						<img className="image--fullwidth" src="dist/img/step1.svg" alt="Step 1" />
+						<img className="image--fullwidth" src="../img/step1.svg" alt="Step 1" />
 					</div>
 					
 					<p>According to the percentage of susceptible samples, the colour of the circle changes gradually from green (100% susceptible) to red (0% susceptible):</p>
                     <div className="overlay__image-wrapper overlay__image-wrapper--step2">
-                        <img className="image--fullwidth" src="dist/img/step2.svg" alt="Step 2" />
+                        <img className="image--fullwidth" src="../img/step2.svg" alt="Step 2" />
                     </div>
 
 					<p>When a susceptibility circle is hovered by a cursor (“mouse-over”) or tabbed on a touch screen, the data’s details (susceptibility, sample size and 95% confidence interval) are displayed:</p>
                     <div className="overlay__image-wrapper overlay__image-wrapper--step3">
-                        <img className="image--fullwidth" src="dist/img/step3.svg" alt="Step 3" />
+                        <img className="image--fullwidth" src="../img/step3.svg" alt="Step 3" />
                     </div>
 
 					<p className="overlay__paragraph--footnote"><strong>95% confidence interval</strong> of the percentage of susceptibles: Agresti - Coull confidence intervals with “add two successes and two failures” adjustment.</p>
 					<p className="overlay__paragraph--footnote"><strong>Sample Size:</strong> number of isolates for which resistance data to the given antibiotic are available in the database (and in the respective population if filters have been set). CI is based on this number.</p>
 					
 					<h3>Regions</h3>
-					<img className="image--fullwidth" src="dist/img/map.svg" alt="Map" />
+					<img className="image--fullwidth" src="../img/map.svg" alt="Map" />
 					<p>For further information, please consult <a href="http://www.anresis.ch/index.php/definition-der-auswahlkriterien.html#Regions" target="_blank">the interacitve map of anresis</a>.</p>
 					
 					<h3>Data</h3>
