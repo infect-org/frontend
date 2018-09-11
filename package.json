@@ -1,11 +1,11 @@
 {
   "name": "infect-frontend",
   "description": "infect fronend",
-  "version": "3.1.1",
+  "version": "3.2.1",
   "homepage": "https://github.com/infect/application",
-  "author": "Felix Steiner <felix@joinbox.com> (http://infect.info/)",
+  "author": "Felix Steiner <felix@joinbox.com> (http://infect.info)",
   "contributors": [
-    "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info/)"
+    "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info)"
   ],
   "license": "MIT",
   "repository": {
@@ -25,7 +25,7 @@
     "distributed-prototype": "^2.30.0",
     "ee-log": "^2.0.4",
     "ee-types": "2.x",
-    "infect-frontend-logic": "^2.0.0",
+    "infect-frontend-logic": "^2.1.0",
     "intro.js": "^2.9.3",
     "mobx": "^4.3.1",
     "mobx-react": "^5.2.3",
@@ -37,7 +37,9 @@
   "devDependencies": {
     "@joinbox/build-task": "^0.4.4",
     "@joinbox/eslint-config-joinbox": "^1.0.5",
+    "babel-eslint": "^9.0.0",
     "csv": "^3.1.0",
+    "eslint-plugin-react": "^7.11.1",
     "gulp": "^4.0.0",
     "gulp-cli": "github:gulpjs/gulp-cli",
     "gulp-rev": "^8.1.1",

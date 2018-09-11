@@ -49,6 +49,7 @@ const config = {
         regions: 'generics.region',
         countries: 'generics.country',
         ageGroups: 'generics.ageGroup',
+        hospitalStatus: 'generics.hospitalStatus',
     },
 };
 
