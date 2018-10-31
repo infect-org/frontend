@@ -27,7 +27,7 @@ import GuidedTourModel from './models/guidedTour/guidedTour';
 import InfoOverlayModel from './models/infoOverlay/infoOverlay';
 
 const log = debug('infect:Main');
-configure({ enforceActions: true });
+configure({ enforceActions: 'always' });
 
 /* global window */
 const isBeta = window.location.hostname.includes('beta.') ||
