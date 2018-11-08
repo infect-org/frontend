@@ -46,9 +46,9 @@ export default class InfectApp {
 		this.bacteria = new BacteriaStore();
 		this.antibiotics = new AntibioticsStore();
 		this.substanceClasses = new SubstanceClassesStore();
-		this.resistances = new ResistancesStore([], (item) => item.bacterium.id + '/' + 
+		this.resistances = new ResistancesStore([], (item) => item.bacterium.id + '/' +
 			item.antibiotic.id);
-		
+
 		this.filterValues = new PropertyMap();
 		this._setupFilterValues();
 		// Filters for bacteria, antibiotics etc.
@@ -157,11 +157,11 @@ export default class InfectApp {
 			singular: 'bacterium'
 			, plural: 'bacteria'
 		}];
-		
+
 
 		let entitiesReady = 0;
 		entities.forEach((entityConfig) => {
-			// Only add entities to filterValues when **all** entity types are ready to prevent 
+			// Only add entities to filterValues when **all** entity types are ready to prevent
 			// unndecessary re-renderings when filterValues change.
 			when(() => this[entityConfig.plural].status.identifier === 'ready', () => {
 				entitiesReady++;
@@ -175,8 +175,8 @@ export default class InfectApp {
 
 
 	/**
-	* Adds all entities (subsClasses, ab, bact) to filterValues once they are ready. 
-	* @param {Array} entityConfig 			Object with singular and plural form for all entity 
+	* Adds all entities (subsClasses, ab, bact) to filterValues once they are ready.
+	* @param {Array} entityConfig 			Object with singular and plural form for all entity
 	*                                		types
 	*/
 	_addAllEntitiesToFilters(entityConfigs) {
@@ -206,7 +206,7 @@ export default class InfectApp {
 		const regionData = await fetchApi(url);
 
 		regionData.data.forEach((region) => {
-			// Don't add default filter (switzerland-all) to filters; will be add manually to 
+			// Don't add default filter (switzerland-all) to filters; will be add manually to
 			// filter list as it shouldnot be visible on selected filters (above matrix).
 			if (region.identifier === 'switzerland-all') return;
 			const regionObject = {

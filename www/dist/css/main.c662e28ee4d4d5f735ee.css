@@ -1935,6 +1935,62 @@ disclaimer {
     max-width: 300px;
     margin: auto; }
 
+appbanner {
+  display: block; }
+
+.app-banner {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 8px 16px;
+  background-color: #578ffa;
+  color: #fff;
+  font-size: 16px; }
+  .app-banner__paragraph {
+    margin: 0; }
+    .app-banner__paragraph:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .app-banner__text {
+    margin-right: 20px; }
+    .app-banner__text--guide-info {
+      /*display: none;
+
+			@include min-screen('1000px') {
+				display: inline;
+			}*/ }
+  .app-banner__button-container {
+    display: inline-block;
+    margin-right: 10px; }
+    .app-banner__button-container--guide {
+      /*display: none;
+
+			@include min-screen('1000px') {
+				display: inline-block;
+			}*/ }
+    .app-banner__button-container--close {
+      float: right;
+      position: relative; }
+  .app-banner__button {
+    color: #fff !important;
+    cursor: pointer; }
+  .app-banner__link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    /*&--disclaimer {
+			font-weight: 800;
+		}*/ }
+    .app-banner__link:focus, .app-banner__link:hover {
+      color: inherit; }
+  .app-banner__link {
+    display: inline-block; }
+  .app-banner__app-store-icon {
+    display: block;
+    margin-right: 10px;
+    height: 40px; }
+
 .notification-container {
   position: fixed;
   top: calc(50vh + 70px - 150px);
@@ -2015,4 +2071,4 @@ disclaimer {
     .notification-container .message p {
       font-size: 16px; }
 
-/*# sourceMappingURL=main.c6ab54b467a85565bbe9.css.map*/
+/*# sourceMappingURL=main.c662e28ee4d4d5f735ee.css.map*/

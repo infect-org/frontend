@@ -1,0 +1,82 @@
+appbanner {
+	display: block;
+}
+.app-banner {
+	position: relative;
+	z-index: 1;
+
+	box-sizing: border-box;
+	padding: 8px 16px;
+
+	background-color: $app-banner-bg;
+	color: #fff;
+	font-size: $font-size--small;
+
+	&__paragraph {
+		margin: 0;
+		@include clearfix();
+	}
+
+	&__text {
+		margin-right: 20px;
+
+		&--guide-info {
+			/*display: none;
+
+			@include min-screen('1000px') {
+				display: inline;
+			}*/
+		}
+	}
+
+	&__button-container {
+		display: inline-block;
+		margin-right: 10px;
+
+		&--guide {
+			/*display: none;
+
+			@include min-screen('1000px') {
+				display: inline-block;
+			}*/
+		}
+
+		&--close {
+			float: right;
+			position: relative;
+		}
+	}
+
+	&__button {
+		color: #fff !important;
+		cursor: pointer;
+	}
+
+	&__link {
+		color: inherit;
+		text-decoration: underline;
+		cursor: pointer;
+
+		&:focus,
+		&:hover {
+			color: inherit;
+		}
+
+		/*&--disclaimer {
+			font-weight: 800;
+		}*/
+
+	}
+
+	&__link {
+		display: inline-block;
+	}
+
+	&__app-store-icon {
+		display: block;
+		margin-right: 10px;
+		height: 40px;
+	}
+
+
+}

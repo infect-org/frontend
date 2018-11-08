@@ -14,6 +14,7 @@ import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadin
 import FilterSearch from './components/filterSearch/filterSearch';
 import Disclaimer from './components/disclaimer/disclaimer';
 import GuidedTour from './components/guidedTour/guidedTour';
+import AppBanner from './components/appBanner/appBanner';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
 import { useStrict } from 'mobx';
@@ -22,7 +23,7 @@ const log = debug('infect:Main');
 
 useStrict(true);
 
-const isBeta = window.location.hostname.includes('beta.') || 
+const isBeta = window.location.hostname.includes('beta.') ||
 	window.location.hostname === 'localhost';
 const envPrefix = isBeta ? 'beta.' : '';
 log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', renderReact);
 if (document.readyState !== 'loading') renderReact();
 
 function renderReact() {
-	ReactDOM.render(<Matrix matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters } />, 
+	ReactDOM.render(<Matrix matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters } />,
 		document.querySelector('Matrix'));
 	ReactDOM.render(<MatrixHeader matrix={ app.views.matrix } filters={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('MatrixHeader'));
 	ReactDOM.render(<FilterList mostUsedFilters={ app.mostUsedFilters } filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }
@@ -67,6 +68,7 @@ function renderReact() {
 	ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));
 	ReactDOM.render(<Disclaimer infoOverlay={ app.infoOverlay } guidedTour={ app.guidedTour }/>, document.querySelector('Disclaimer'));
 	ReactDOM.render(<GuidedTour guidedTour={ app.guidedTour }/>, document.querySelector('GuidedTour'));
-	ReactDOM.render(<InfoOverlay guidedTour={ app.guidedTour } infoOverlay={ app.infoOverlay }/>, document.querySelector('InfoOverlay'));
-	ReactDOM.render(<InfoOverlayButton infoOverlay={ app.infoOverlay }/>, document.querySelector('InfoOverlayButton'));	
+    ReactDOM.render(<AppBanner appBanner={ app.appBanner }/>, document.querySelector('AppBanner'));
+    ReactDOM.render(<InfoOverlay guidedTour={ app.guidedTour } infoOverlay={ app.infoOverlay }/>, document.querySelector('InfoOverlay'));
+	ReactDOM.render(<InfoOverlayButton infoOverlay={ app.infoOverlay }/>, document.querySelector('InfoOverlayButton'));
 }

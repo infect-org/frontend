@@ -18,7 +18,11 @@
 
         <meta name="MobileOptimized" content="width" />
         <meta name="HandheldFriendly" content="true" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=1024">
+        <!--meta name="viewport" content="width=device-width, initial-scale=1.0" /-->
+
+        <meta name="INFECT" content="app-id=1422829703" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <!-- IE 11 to display SVG -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +33,7 @@
 
         <% if (!htmlWebpackPlugin.options.isDebug) { %>
             <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.css %>">
-        <% } %>                
+        <% } %>
 
         <% htmlWebpackPlugin.files.js.forEach((file) => { %>
             <script async src="<%= file %>"></script>
@@ -77,7 +81,7 @@
                 </g>
             </symbol>
         </svg>
-    
+
         <div class="container">
             <div class="container__side-navigation side-navigation js-side-navigation">
                 <div class="side-navigation__header header">
@@ -92,7 +96,7 @@
                             <FilterListMenu/>
                         </div>
                         <hr class="divider divider--lead"/>
-                    </div>  
+                    </div>
                 </div>
                 <div class="side-navigation__filters">
                     <div>
@@ -111,6 +115,7 @@
                     </div>
                 </div>
                 <Disclaimer></Disclaimer>
+                <AppBanner></AppBanner>
                 <div class="main__matrix resistanceMatrix">
                     <!-- We cannot have the body and header in one single SVG as fixing the header would require a transformation
                         which is very imperformant -->
