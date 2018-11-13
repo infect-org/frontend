@@ -20,6 +20,7 @@ import FilterSearch from './components/filterSearch/filterSearch';
 import Disclaimer from './components/disclaimer/disclaimer';
 import Notifications from './components/notifications/notifications';
 import GuidedTour from './components/guidedTour/guidedTour';
+import AppBanner from './components/appBanner/appBanner';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
 
@@ -33,12 +34,13 @@ import InfoOverlayModel from './models/infoOverlay/infoOverlay';
 const log = debug('infect:Main');
 configure({ enforceActions: 'always' });
 
+
+// Get config based on environment
 /* global window */
 const isBeta = window.location.hostname.includes('beta.') ||
     window.location.hostname === 'localhost';
 const config = isBeta ? betaConfig : liveConfig;
 log('Is beta? %o. config is %o', isBeta, config);
-
 
 
 
@@ -50,6 +52,8 @@ try {
     app.errorHandler.handle(err);
 }
 
+
+// Web specific frontend models
 const infoOverlayModel = new InfoOverlayModel();
 const guidedTourModel = new GuidedTourModel(infoOverlayModel);
 
@@ -85,6 +89,8 @@ function renderReact() {
     ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));
     ReactDOM.render(<Disclaimer infoOverlay={ infoOverlayModel } guidedTour={ guidedTourModel }/>, document.querySelector('Disclaimer'));
     ReactDOM.render(<GuidedTour guidedTour={ guidedTourModel }/>, document.querySelector('GuidedTour'));
+    ReactDOM.render(<AppBanner appBanner={ app.appBanner }/>, document.querySelector('AppBanner'));
+
     ReactDOM.render(<InfoOverlay guidedTour={ guidedTourModel } infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlay'));
     ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));
 
@@ -99,3 +105,4 @@ function renderReact() {
 // it appears in DOM. Wait until dom is loaded – just to be sure.
 document.addEventListener('DOMContentLoaded', renderReact);
 if (document.readyState !== 'loading') renderReact();
+

@@ -37,11 +37,11 @@ export default class Disclaimer extends React.Component {
 		// See https://github.com/infect-org/frontend/issues/64
 		return (
 			<div>
-				{ this.displayDisclaimer && 
+				{ this.displayDisclaimer &&
 				<div className="main__disclaimer disclaimer">
-					
+
 						<p className="disclaimer__paragraph">
-							<span className="disclaimer__text">By using INFECT, you accept 
+							<span className="disclaimer__text">By using INFECT, you accept
 								our <a href="#disclaimer" onClick={ () => this.showInfoOverlay() }
 								className="disclaimer__link disclaimer__link--disclaimer">disclaimer</a>.
 								See some <a href="#" onClick={ () => this.showInfoOverlay() }
@@ -57,7 +57,7 @@ export default class Disclaimer extends React.Component {
 							<span className="disclaimer__button-container disclaimer__button-container--close">
 								<button className="disclaimer__button button button--close" onClick={ () => this.close() }>&times;</button>
 							</span>
-						</p>	
+						</p>
 				</div>
 				}
 			</div>
