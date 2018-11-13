@@ -25,7 +25,7 @@
     "distributed-prototype": "^2.30.0",
     "ee-log": "^2.0.4",
     "ee-types": "2.x",
-    "infect-frontend-logic": "^2.1.0",
+    "infect-frontend-logic": "^2.2.2",
     "intro.js": "^2.9.3",
     "mobx": "4.4.2",
     "mobx-react": "^5.2.8",

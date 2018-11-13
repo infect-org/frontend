@@ -20,6 +20,7 @@ import FilterSearch from './components/filterSearch/filterSearch';
 import Disclaimer from './components/disclaimer/disclaimer';
 import Notifications from './components/notifications/notifications';
 import GuidedTour from './components/guidedTour/guidedTour';
+import AppBanner from './components/appBanner/appBanner';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
 // Models limited to web app
@@ -34,6 +35,7 @@ const isBeta = window.location.hostname.includes('beta.') ||
     window.location.hostname === 'localhost';
 // const envPrefix = isBeta ? 'beta.' : '';
 const envPrefix = 'rda.';
+
 log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
 
 // const protocol = window.location.protocol;
@@ -97,8 +99,10 @@ function renderReact() {
     ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));
     ReactDOM.render(<Disclaimer infoOverlay={ infoOverlayModel } guidedTour={ guidedTourModel }/>, document.querySelector('Disclaimer'));
     ReactDOM.render(<GuidedTour guidedTour={ guidedTourModel }/>, document.querySelector('GuidedTour'));
+    ReactDOM.render(<AppBanner appBanner={ app.appBanner }/>, document.querySelector('AppBanner'));
+
     ReactDOM.render(<InfoOverlay guidedTour={ guidedTourModel } infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlay'));
-    ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));    
+    ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));
 
     ReactDOM.render(
         <Notifications/>,

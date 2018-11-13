@@ -5,7 +5,7 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108372802-1"></script>
         <script>
             if (!(
-                window.location.hostname === 'localhost' || 
+                window.location.hostname === 'localhost' ||
                 window.location.hostname === 'beta.infect.info'
             )) {
                 // Only load analytics if we're on a live environment
@@ -18,15 +18,17 @@
                 console.log('Index: Dev or staging environment');
             }
         </script>
-        
 
         <meta charset="utf-8" />
         <title>INFECT – INterface For Empirical antimicrobial ChemoTherapy</title>
-        <meta name="description" content="INFECT provides a fast and intuitive access to the latest antimicrobial resistance data. Thereby it assists health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region" />
+        <meta name="description" content="INFECT provides a fast and intuitive access to the latest antimicrobial resistance data. Thereby it assists health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region." />
 
         <meta name="MobileOptimized" content="width" />
         <meta name="HandheldFriendly" content="true" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=1024">
+
+        <meta name="INFECT" content="app-id=1422829703" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <!-- IE 11 to display SVG -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,12 +37,9 @@
         <script src="https://use.typekit.net/uac3uao.js"></script>
         <script>/* global Typekit */ try{Typekit.load();}catch(e){}</script>
 
-                        
-
-        
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script async src="js/main.js"></script>
-        
+
     </head>
 
     <body>
@@ -84,7 +83,7 @@
                 </g>
             </symbol>
         </svg>
-    
+
         <div class="container">
             <div class="container__side-navigation side-navigation js-side-navigation">
                 <div class="side-navigation__header header">
@@ -99,7 +98,7 @@
                             <FilterListMenu/>
                         </div>
                         <hr class="divider divider--lead"/>
-                    </div>  
+                    </div>
                 </div>
                 <div class="side-navigation__filters">
                     <div>
@@ -118,6 +117,7 @@
                     </div>
                 </div>
                 <Disclaimer></Disclaimer>
+                <AppBanner></AppBanner>
                 <div class="main__matrix resistanceMatrix">
                     <!-- We cannot have the body and header in one single SVG as fixing the header would require a transformation
                         which is very imperformant -->
