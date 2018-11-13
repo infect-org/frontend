@@ -22,6 +22,10 @@ import Notifications from './components/notifications/notifications';
 import GuidedTour from './components/guidedTour/guidedTour';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
+
+import betaConfig from '../config/config.beta.js';
+import liveConfig from '../config/config.live.js';
+
 // Models limited to web app
 import GuidedTourModel from './models/guidedTour/guidedTour';
 import InfoOverlayModel from './models/infoOverlay/infoOverlay';
@@ -32,26 +36,10 @@ configure({ enforceActions: 'always' });
 /* global window */
 const isBeta = window.location.hostname.includes('beta.') ||
     window.location.hostname === 'localhost';
-// const envPrefix = isBeta ? 'beta.' : '';
-const envPrefix = 'rda.';
-log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
+const config = isBeta ? betaConfig : liveConfig;
+log('Is beta? %o. config is %o', isBeta, config);
 
-// const protocol = window.location.protocol;
-const protocol = 'https:';
 
-const config = {
-    endpoints: {
-        apiPrefix: `${protocol}//${envPrefix}infect.info/`,
-        bacteria: 'pathogen.bacterium',
-        antibiotics: 'substance.compound',
-        resistances: 'rda.data',
-        substanceClasses: 'substance.substanceClass',
-        regions: 'generics.region',
-        countries: 'generics.country',
-        ageGroups: 'generics.ageGroup',
-        hospitalStatus: 'generics.hospitalStatus',
-    },
-};
 
 
 // Setup models that are shared between mobile and web app
@@ -98,7 +86,7 @@ function renderReact() {
     ReactDOM.render(<Disclaimer infoOverlay={ infoOverlayModel } guidedTour={ guidedTourModel }/>, document.querySelector('Disclaimer'));
     ReactDOM.render(<GuidedTour guidedTour={ guidedTourModel }/>, document.querySelector('GuidedTour'));
     ReactDOM.render(<InfoOverlay guidedTour={ guidedTourModel } infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlay'));
-    ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));    
+    ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));
 
     ReactDOM.render(
         <Notifications/>,
