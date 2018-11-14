@@ -1,6 +1,6 @@
 export default Object.freeze({
     endpoints: {
-        apiPrefix: 'https://api.infect.info/',
+        apiPrefix: 'https://rda.infect.info/',
         bacteria: 'pathogen.bacterium',
         antibiotics: 'substance.compound',
         resistances: 'rda.data',
