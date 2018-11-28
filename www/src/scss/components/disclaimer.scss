@@ -14,6 +14,7 @@ disclaimer {
 
 	&__paragraph {
 		margin: 0;
+		padding-right: 20px;
 		@include clearfix();
 	}
 
@@ -42,8 +43,9 @@ disclaimer {
 		}
 
 		&--close {
-			float: right;
-			position: relative;
+			position: absolute;
+			right: 0;
+			top: 10px;
 		}
 	}
 

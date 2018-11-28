@@ -32,6 +32,13 @@ export default @observer class InfoOverlay extends React.Component {
                     <p>Supported by the <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Federal Office of Public Health</a> and the <a href="http://ifik.unibe.ch" target="_blank">Institute for Infectious Diseases Bern</a>, the project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed. It is aimed at providing a fast and intuitive access to the latest antimicrobial resistance data to assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region.</p>
                     <p>An empirical antibiotic therapy (EAT) is an important clinical concept and a standard procedure for the treatment of many different types of infections in clinical medicine. Its need is based on the lack of knowledge of the causative agent at an early stage of the disease - usually when the patient presents to health professionals. EAT is based on epidemiological data on most frequently isolated pathogens and their antibiotic resistance pattern for certain diseases (e.g., <i>S. pneumoniae</i>, <i>H. influenzae</i>, and <i>M.catarrhalis</i> for otitis media [middle ear infection]). The adequacy of empirical antibiotics is an important determinant of patient outcomes and may play a role in the emergence of bacterial antibiotic resistance. While in Switzerland, the collection of antimicrobial resistance data has been coordinated through anresis.ch for over a decade - with the data being analysed and used to support antimicrobial treatment guidelines - an accessible and easy-to-use platform to visualise this data has yet been lacking.</p>
 
+                    <h2>Infect Mobile App</h2>
+                    <p>INFECT is available as an app for your smartphone and tablet.</p>
+
+                    <a href="https://itunes.apple.com/us/app/infect/id1422829703?ls=1&mt=8" className="app-banner__link" target="_blank"><img src="img/app-store-icon.png" alt="Download INFECT on the App Store" className="app-banner__app-store-icon" /></a>
+                    <a href="https://play.google.com/store/apps/details?id=info.infect.app" className="app-banner__link" target="_blank"><img src="img/google-play-icon.png" alt="Get INFECT on Google Play" className="app-banner__app-store-icon" /></a>
+
+
                     <h1 id="guide">Using INFECT</h1>
                     { /* Always «Start/stop guided tour» because it's not stoppable anywhere else
                       if user has decided to hide disclaimer */ }

@@ -13,11 +13,16 @@ export default class InfoOverlayButton extends React.Component {
 
 	render() {
 		return (
-            <button 
+            <button
 				className={ 'button button--info ' + (this.props.infoOverlay.visible ? 'button--info-active' : '') }
 				onClick={ () => this.toggleInfoOverlay() }>
-				{ !this.props.infoOverlay.visible && 'i' }
-				{ this.props.infoOverlay.visible && 
+				{ !this.props.infoOverlay.visible &&
+					<div>
+                        <span>&#9432;</span>
+						<span>Über INFECT</span>
+					</div>
+				}
+				{ this.props.infoOverlay.visible &&
 					<span>&times;</span>
 				}
             </button>

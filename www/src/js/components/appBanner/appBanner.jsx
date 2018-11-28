@@ -42,7 +42,7 @@ export default class AppBanner extends React.Component {
 
 						<p className="app-banner__paragraph">
 
-							<span className="app-banner__text">INFECT is now available as an app for your smartphone or tablet:</span>
+							<span className="app-banner__text">INFECT is available as an app for your smartphone and tablet:</span>
 
 							<a href="https://itunes.apple.com/us/app/infect/id1422829703?ls=1&mt=8" className="app-banner__link" target="_blank"><img src="img/app-store-icon.png" alt="Download INFECT on the App Store" className="app-banner__app-store-icon" /></a>
                             <a href="https://play.google.com/store/apps/details?id=info.infect.app" className="app-banner__link" target="_blank"><img src="img/google-play-icon.png" alt="Get INFECT on Google Play" className="app-banner__app-store-icon" /></a>
