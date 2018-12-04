@@ -19,7 +19,7 @@ export default class InfoOverlayButton extends React.Component {
 				{ !this.props.infoOverlay.visible &&
 					<div>
                         <span>&#9432;</span>
-						<span>Über INFECT</span>
+						<span>About <em>INFECT</em></span>
 					</div>
 				}
 				{ this.props.infoOverlay.visible &&

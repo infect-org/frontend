@@ -55,7 +55,7 @@ $button-bg-color--hover: #d7d5c4;
   &--info {
     position: relative;
     //@include transition(background-color color, $transition-duration);
-    color: #fff;
+    color: #000;
     padding: 0;
     margin: 0;
     //width: 36px;
@@ -64,27 +64,25 @@ $button-bg-color--hover: #d7d5c4;
 
     > div {
       position: relative;
-      background-color: #616161;
-      border-radius: 50px;
+      background-color: #eee;
+      @include border-radius-edges(5px, 5px, 5px, 5px);
       @include flexbox();
       @include flex-wrap(nowrap);
       @include transition(background-color, $transition-duration);
 
       &:hover {
-        background-color: $sidenavigation-background;
+        background-color: darken(#eee, 5%);
       }
 
       span {
         &:first-child {
-          //display: none;
           @include flex(0 0 auto);
           width: 30px;
-          border-radius: 50%;
-          color: #fff;
-          line-height: 30px;
+          color: #000;
+          line-height: 32px;
           padding-left: 0.25rem;
           font-weight: bold;
-          font-size: 24px;
+          font-size: 18px;
         }
         &:nth-child(2) {
           @include flex(1 1 auto);
@@ -93,6 +91,11 @@ $button-bg-color--hover: #d7d5c4;
           font-size: 16px;
           font-weight: bold;
           line-height: 34px;
+
+          em {
+            font-size: 15px;
+            font-style: normal;
+          }
         }
       }
     }
