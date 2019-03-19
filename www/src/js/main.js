@@ -31,7 +31,7 @@ log('Is beta? %o. envPrefix is %s', isBeta, envPrefix);
 const protocol = window.location.protocol;
 const config = {
 	endpoints: {
-		apiPrefix: `${ protocol }//${ envPrefix }api.uae.infect.info/`,
+		apiPrefix: `${ protocol }//${ envPrefix }api.uae.infect.info:8000/`,
 		bacteria: 'pathogen.bacterium',
 		antibiotics: 'substance.compound',
 		resistances: 'rda.resistance',
