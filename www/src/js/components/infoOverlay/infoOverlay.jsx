@@ -46,7 +46,7 @@ export default class InfoOverlay extends React.Component {
 					<p className="overlay__paragraph--footnote"><strong>Sample Size:</strong> number of isolates for which resistance data to the given antibiotic are available in the database (and in the respective population if filters have been set). CI is based on this number.</p>
 					
 					<h1 id="team">Team</h1>
-					<p>The INFECT team is affiliated with the, <a href="http://www.inneremedizin.insel.ch/de/" target="_blank">Department of General Internal Medicine, Bern University Hospital</a>, and organized as a non-profit <a href="https://www.admin.ch/opc/en/classified-compilation/19070042/index.html#id-ni2-ni6-ni8" target="_blank">association</a> and consists of highly motivated members (alphabetical order):</p>
+					<p>The INFECT team is affiliated with the, <a href="http://www.inneremedizin.insel.ch/de/" target="_blank">Department of General Internal Medicine Bern University Hospital</a>, and organized as a non-profit <a href="https://www.admin.ch/opc/en/classified-compilation/19070042/index.html#id-ni2-ni6-ni8" target="_blank">association</a> that consists of highly motivated members (alphabetical order):</p>
 					<p>
 						<strong>Silvio D. Brugger</strong>, MD, PhD, physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich<br/>
 						<strong>Pascal M. Frey</strong>, MD, MSc, INFECT project leader, physician at the Department of General Internal Medicine, Bern University Hospital<br/>
