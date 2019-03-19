@@ -14,23 +14,20 @@ export default class InfoOverlay extends React.Component {
 					<ol className="menu">
 						<li className="menu-item"><a href="#introduction">Introduction</a></li>
 						<li className="menu-item"><a href="#guide">Using Infect</a></li>
-						<li className="menu-item"><a href="#source">Source Code</a></li>
 						<li className="menu-item"><a href="#team">Team</a></li>
 						<li className="menu-item"><a href="#contact">Contact</a></li>
-						<li className="menu-item"><a href="#partners">Partners</a></li>
 						<li className="menu-item"><a href="#disclaimer">Disclaimer</a></li>
 					</ol>
 				</div>
 				<div className="overlay__container">
 					<h1 id="introduction">Introduction</h1>
-					<p>Supported by the <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Swiss Federal Office of Public Health</a>, the project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed. It is aimed at providing a fast and intuitive access to the latest antimicrobial resistance data to assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region.</p>
-					<p>An empirical antibiotic therapy (EAT) is an important clinical concept and a standard procedure for the treatment of many different types of infections in clinical medicine. Its need is based on the lack of knowledge of the causative agent at an early stage of the disease - usually when the patient presents to health professionals. EAT is based on epidemiological data on most frequently isolated pathogens and their antibiotic resistance pattern for certain diseases (e.g., <i>S. pneumoniae</i>, <i>H. influenzae</i>, and <i>M.catarrhalis</i> for otitis media [middle ear infection]). The adequacy of empirical antibiotics is an important determinant of patient outcomes and may play a role in the emergence of bacterial antibiotic resistance.</p>
+					<p>The project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed as an open-source framework to provide fast and intuitive access to the latest antimicrobial resistance data and assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region.</p>
+					<p>An empirical antibiotic therapy (EAT) is an important clinical concept and a standard procedure for the treatment of many different types of infections in clinical medicine. Its need is based on the lack of knowledge of the causative agent at an early stage of the disease - usually when the patient presents to health professionals. EAT is based on epidemiological data on most frequently isolated pathogens and their antibiotic resistance pattern for certain diseases (e.g., <i>S. pneumoniae</i>, <i>H. influenzae</i>, and <i>M.catarrhalis</i> for otitis media [middle ear infection]). The adequacy of empirical antibiotics is an important determinant of patient outcomes and may play an important role in the emergence of antimicrobial resistance.</p>
 					
 					<h1 id="guide">Using INFECT</h1>
-                    { /* Always «Start/stop guided tour» because it's not stoppable anywhere else
-					  if user has decided to hide disclaimer */ }
+                    { /* Always «Start/stop guided tour» because it's not stoppable anywhere else if user has decided to hide disclaimer */ }
 					<div className="guide">Interactive INFECT tour: <GuidedTourButton guidedTour={ this.props.guidedTour }></GuidedTourButton></div>
-					<p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding the susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while semi-transparent circles represent low sample sizes (N ≤ 20). The number in the middle of the circle represents the percentage of susceptible samples:</p>
+					<p>The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding the susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while semi-transparent circles represent low sample sizes (default N ≤ 20). The number in the middle of the circle represents the percentage of susceptible samples:</p>
 					<div className="overlay__image-wrapper overlay__image-wrapper--step1">
 						<img className="image--fullwidth" src="dist/img/step1.svg" alt="Step 1" />
 					</div>
@@ -49,10 +46,10 @@ export default class InfoOverlay extends React.Component {
 					<p className="overlay__paragraph--footnote"><strong>Sample Size:</strong> number of isolates for which resistance data to the given antibiotic are available in the database (and in the respective population if filters have been set). CI is based on this number.</p>
 					
 					<h1 id="team">Team</h1>
-					<p>The INFECT team is organized as a non-profit <a href="https://www.admin.ch/opc/en/classified-compilation/19070042/index.html#id-ni2-ni6-ni8" target="_blank">association</a> and consists of highly motivated members (alphabetical order):</p>
+					<p>The INFECT team is affiliated with the, <a href="http://www.inneremedizin.insel.ch/de/" target="_blank">Department of General Internal Medicine, Bern University Hospital</a>, and organized as a non-profit <a href="https://www.admin.ch/opc/en/classified-compilation/19070042/index.html#id-ni2-ni6-ni8" target="_blank">association</a> and consists of highly motivated members (alphabetical order):</p>
 					<p>
-						<strong>Silvio D. Brugger</strong>, MD, PhD, staff physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich<br/>
-						<strong>Pascal M. Frey</strong>, MD, MSc, INFECT project leader, staff physician at the Department of General Internal Medicine, Inselspital Bern<br/>
+						<strong>Silvio D. Brugger</strong>, MD, PhD, physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich<br/>
+						<strong>Pascal M. Frey</strong>, MD, MSc, INFECT project leader, physician at the Department of General Internal Medicine, Bern University Hospital<br/>
 						<strong>Markus Hilty</strong>, PhD, senior researcher at the Institute for Infectious Diseases Bern<br/>
 						<strong>Fabian Jordi</strong>, layout designer and CSS programmer at Joinbox GmbH Bern<br/>
 						<strong>Tobias Kneubühler</strong>, database developer and programmer at Joinbox GmbH Bern<br/>
@@ -60,7 +57,7 @@ export default class InfoOverlay extends React.Component {
 						<strong>Felix Steiner</strong>, graphics designer and programmer, and CEO at Joinbox GmBH Bern<br/>
 						<strong>Michael van der Weg</strong>, software architect, database and API programmer, and CTO at Joinbox GmbH Bern
 					</p>
-					<p>* <a href="http://www.joinbox.com/" target="_blank">Joinbox GmbH</a> is a web agency from Bern. They work not for but with our customers to build web applications that solve complex problems with simple user interfaces. Like this one.</p>
+					<p>* <a href="http://www.joinbox.com/" target="_blank">Joinbox GmbH</a> is a web agency from Bern. They work not for but with their customers to build web applications that solve complex problems with simple user interfaces. Like this one.</p>
 
 					<h1 id="contact">Contact</h1>
 					<p>Questions or feedback regarding the INFECT Project</p>
