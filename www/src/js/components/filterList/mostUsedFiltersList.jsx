@@ -92,7 +92,9 @@ class MostUsedFiltersList extends React.Component {
 		return (
 			<ul className="group__list group__list--vertical">
 				{ this.mostUsedFilters.map((used) => {
-					return <FilterListCheckbox key={ used.filter.value + used.filter.property.name } name={ used.filter.niceValue } 
+					return <FilterListCheckbox 
+						key={ used.filter.property.entityType + '-' + used.filter.property.name + '-' + used.filter.value } 
+						name={ used.filter.niceValue } 
 						value={ used.filter.niceValue } checked={ this.props.selectedFilters.isSelected(used.filter) }
 						onChangeHandler={ () => this._handleFilterChange(used.filter) } />;
 				}) }

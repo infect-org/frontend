@@ -8,10 +8,10 @@ $button-bg-color--hover: #d7d5c4;
   font-weight: 600;
 
   //used to center x
-  span {
+  /*span {
     position: relative;
     top: -2px;
-  }
+  }*/
 
   &--label {
     position: relative;
@@ -54,25 +54,74 @@ $button-bg-color--hover: #d7d5c4;
 
   &--info {
     position: relative;
-    @include transition(background-color color, $transition-duration);
-    background-color: $sidenavigation-background;
-    color: #fff;
-    width: 36px;
-    height: 36px;
-    font-weight: bold;
-    @include border-radius(18px);
+    //@include transition(background-color color, $transition-duration);
+    color: #000;
+    padding: 0;
+    margin: 0;
+    //width: 36px;
+    //height: 36px;
+    //@include border-radius(18px);
 
-    &:hover {
-      background-color: $navigation-background--lighter;
-    }
-
-    &-active {
-      background-color: white;
-      color: black;
+    > div {
+      position: relative;
+      background-color: #eee;
+      @include border-radius-edges(5px, 5px, 5px, 5px);
+      @include flexbox();
+      @include flex-wrap(nowrap);
+      @include transition(background-color, $transition-duration);
 
       &:hover {
-        background-color: lightgrey;
+        background-color: darken(#eee, 5%);
       }
+
+      span {
+        &:first-child {
+          @include flex(0 0 auto);
+          width: 30px;
+          color: #000;
+          line-height: 32px;
+          padding-left: 0.25rem;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        &:nth-child(2) {
+          @include flex(1 1 auto);
+          padding: 0 1rem 0 0.25rem;
+          white-space: nowrap;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 34px;
+
+          em {
+            font-size: 15px;
+            font-style: normal;
+          }
+        }
+      }
+    }
+
+    /*&:hover {
+      background-color: $navigation-background--lighter;
+    }*/
+
+    // overlay opened
+    &-active {
+
+      > span {
+        display: block;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #fff;
+        color: #000;
+        @include transition(background-color, $transition-duration);
+
+        &:hover {
+          background-color: lightgrey;
+        }
+      }
+
     }
   }
 

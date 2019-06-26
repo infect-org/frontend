@@ -1,3 +1,7 @@
+infooverlaybutton {
+	display: block;
+}
+
 .overlay {
 	position: fixed;
 	display: none;
@@ -69,6 +73,11 @@
 
 	h1 {
 		margin-top: 1.3em;
+	}
+
+	h2 {
+		margin-top: 1.3em;
+		margin-bottom: 0.8em;
 	}
 
 	&__paragraph {

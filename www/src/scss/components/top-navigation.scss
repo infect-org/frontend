@@ -3,7 +3,7 @@
 	min-height: $navigation-height;
 
 
-	&__active-filters, 
+	&__active-filters,
 	selectedfiltersList {
 		@include flex-grow(1);
 		@include flex-wrap(wrap);
@@ -18,12 +18,12 @@
 	&__info {
 		@include flex-grow(0);
 		z-index: 400;
-		width: 50px;
+		//width: 50px;
 		padding-right: 20px;
-		
+
 		strong {
 			font-size: 13px;
-			color: black;
+			color: #000;
 		}
 	}
 

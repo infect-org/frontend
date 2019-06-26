@@ -3,7 +3,7 @@
 	-webkit-appearance: none; 
     -moz-appearance: none;
     appearance: none;
-	background: url(/dist/img/arrow_dropdown.png) no-repeat 95% center;
+	background: url(../img/arrow_dropdown.png) no-repeat 95% center;
 	@include transition(background, $transition-duration);
 	margin: 3px 0;
 	padding: 2px 9px;
@@ -27,7 +27,7 @@
 .select:hover {
 	border: 1px solid $hover-color;
 	color: $hover-color;
-	background: url(/dist/img/arrow_dropdown_green.png) no-repeat 95% center;
+	background: url(../img/arrow_dropdown_green.png) no-repeat 95% center;
 }	
 
 .select::-ms-expand { 
