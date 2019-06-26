@@ -1,0 +1,121 @@
+$padding-lr: 30px;
+
+.search {
+	position: absolute;
+	display: block;
+	left: -$navigation-width;
+	@include transition(left, $transition-duration);
+	top: $search-box--height + 20px;
+	z-index: 99;
+	padding: 0;
+	width: $navigation-width;
+	height: 100vw;
+	background-color: $sidenavigation-background;
+
+	&--visible {
+		left: 0;
+	}
+
+	&__input {
+		line-height: 20px;
+		margin-bottom: 30px;
+		font-size: 11pt;
+
+		-webkit-appearance: none;
+        -moz-appearance:    none;
+        appearance:         none;
+        decoration: none;
+        border: 0;
+
+		/*&:not(:valid) + .search__clear {
+			display: none;
+		}*/
+	}
+
+	&__result {
+
+	}
+
+	&-wrapper {
+		position: relative;
+	}
+
+	/*&__clear {
+		position: absolute;
+		right: 0;
+		border:1px solid transparent;
+		background-color: transparent;
+		display: inline-block;
+		vertical-align: middle;
+		outline: 0;
+		cursor: pointer;
+
+		&:after {
+			content: "X";
+			display: block;
+			width: 15px;
+			height: 15px;
+			position: absolute;
+			background-color: $navigation-background--lighter;
+			z-index:1;
+			right: 25px;
+			top: -5px;
+			bottom: 0;
+			margin: auto;
+			padding: 2px;
+			border-radius: 50%;
+			text-align: center;
+			color: white;
+			font-weight: normal;
+			font-size: 10px;
+			cursor: pointer;
+		}
+	}*/
+
+
+}
+
+.result {
+	position: relative;
+	padding: 10px $padding-lr;
+	margin: 0;
+	
+	background-color: #d7d5c4;
+
+	&__item {
+		white-space: wrap;
+    	text-overflow: ellipsis;
+    	width: 150px;
+    	display: block;
+    	overflow: hidden
+	}
+
+	&__checkmark {
+		display: block;
+		position: absolute;
+		left: 10px;
+		width: 15px;
+		height: 40px;
+		top: calc(50% - 20px);
+		background: url(/dist/img/checkmark--grey.svg) no-repeat center center;
+
+
+	}
+
+	&--active {
+		background-color: #fff;
+
+		span {
+
+		}
+	}
+
+	&:hover {
+		background-color: #fff;
+		cursor: pointer;
+
+		.result__checkmark {
+			background: url(/dist/img/checkmark.svg) no-repeat center center;
+		}
+	}
+}

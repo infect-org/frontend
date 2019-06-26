@@ -1,0 +1,424 @@
+
+
+.introjs {
+	&-hint {
+		// Below info overlay
+		z-index: 250;
+
+		&-dot {
+			border-color: $tooltip-hint-color;
+		}
+		&-pulse {
+			background-color: $tooltip-hint-color;
+		}
+
+	}
+
+	&-tooltip {
+
+		background-color: $tooltip--bg-color;
+
+		@include max-screen($breakpoint-md) {
+			position: fixed;
+			top: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			left: 0 !important;
+			max-width: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			overflow: auto;
+		}
+
+
+		@include min-screen($breakpoint-md) {
+
+			width: auto;
+			display: block;
+			min-width: 480px;
+
+			font-size: $font-size--guided-tour;
+			line-height: $line-height--guided-tour;
+		}
+
+		// guided tour text/picture layout
+
+		&__layout {
+
+			@include min-screen($breakpoint-md) {
+				@include flexbox();
+			}
+
+			&--row {
+				@include min-screen($breakpoint-md) {
+					@include flex-direction(row);
+					@include justify-content(space-between);
+				}
+
+				> p {
+
+					@include css3-prefix(hyphens, auto);
+
+					@include min-screen($breakpoint-md) {
+						@include flex(0 0 45%);
+					}
+				}
+
+				> div {
+					@include min-screen($breakpoint-md) {
+						@include flex(0 0 45%);
+					}
+
+				}
+			}
+			&--column {
+
+				@include min-screen($breakpoint-md) {
+					@include flex-direction(column);
+				}
+
+				> p {
+
+					@include css3-prefix(hyphens, auto);
+
+					@include min-screen($breakpoint-md) {
+						@include flex(1 1 auto);
+					}
+
+				}
+
+				> div {
+
+					@include min-screen($breakpoint-md) {
+						@include flex(1 1 auto);
+					}
+				}
+			}
+
+		}
+
+	}
+
+	&-tooltiptext {
+
+		padding: 25px;
+		//@include flex(1 1 auto);
+		/*@include flexbox();
+		@include flex-wrap(wrap);*/
+
+		@include min-screen($breakpoint-md) {
+			height: auto;
+		}
+
+		p {
+			margin-top: 30px;
+			margin-bottom: 0;
+
+
+			@include min-screen($breakpoint-md) {
+				margin-top: 0;
+			}
+		}
+
+		.list {
+
+			padding-left: 25px;
+
+			&--guided-tour-filter-list-menu {
+				padding-left: 0;
+				list-style: none;
+				margin-bottom: 0;
+			}
+
+			&__item {
+				position: relative;
+				padding-left: 10px;
+				margin-bottom: 10px;
+
+				&--guided-tour-filter-list-menu {
+					padding-left: 30px;
+				}
+			}
+
+			&__icon {
+				&--guided-tour {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 21px;
+					fill: $color--light-green;
+
+					&-mostUsed {
+						height: 20px;
+						top: 3px;
+					}
+					&-antibiotics {
+						height: 8px;
+						top: 10px;
+					}
+					&-bacteria {
+						height: 20px;
+						top: 3px;
+					}
+					&-population {
+						height: 15px;
+						top: 8px;
+					}
+				}
+			}
+		}
+
+	}
+
+    &-tooltipbuttons {
+
+		position: fixed;
+		bottom: 0;
+		width: calc(100% - 50px); // 50px = padding left and right
+		background-color: #fff;
+		border-top: 1px solid #ccc;
+		padding: 10px 25px;
+
+		@include flexbox();
+		@include flex-wrap(nowrap);
+
+		@include min-screen($breakpoint-md) {
+			position: static;
+			bottom: auto;
+			padding: 0;
+			width: auto;
+			border: none;
+		}
+
+
+    }
+
+	// progress dots
+	&-bullets {
+
+		@include min-screen($breakpoint-md) {
+			position: absolute;
+			left: 50%;
+			@include transform(translate(-50%, 25%));
+		}
+	}
+
+	&-button {
+
+		/*position: fixed;
+		top: 10px;
+		right: 25px;*/
+		font-size: $font-size--small;
+		font-weight: 600;
+		color: #fff;
+		text-shadow: none;
+
+		//background-color: #c5c3b2;
+		background-color: $guide-button-color--base;
+		background-image: none;
+		padding: 5px 15px;
+
+		border: 0;
+		border-radius: 4px;
+
+        @include transition(background-color, $transition-duration, ease-in-out);
+
+		@include min-screen($breakpoint-md) {
+
+			/*position: static;
+			top: auto;
+			right: auto;
+
+			float: right;*/
+
+		}
+
+		&:hover {
+			background-color: $guide-button-color--hover;
+			background-image: none !important;
+			color: #fff;
+		}
+
+		&:active,
+		&:focus {
+			color: #fff;
+		}
+
+		&.introjs-disabled {
+			width: 0;
+			opacity: 0;
+			visibility: hidden;
+			padding: 0;
+			margin-right: 0;
+		}
+	}
+
+	// skip guided tour button
+	&-skipbutton {
+		background-color: transparent;
+		font-weight: normal;
+		margin-right: 0;
+		color: #000;
+
+		&:hover {
+			color: #000;
+			background: none;
+			text-decoration: underline;
+		}
+	}
+
+    // previous step button
+    &-prevbutton {
+      margin-left: auto;
+
+		&:hover {
+			//background-color: blue;
+		}
+    }
+
+	// next step button
+	&-nextbutton {
+		margin-left: 5px;
+
+		/*&:hover {
+			background-color: blue;
+		}*/
+	}
+
+	// done button (has skip-button class)
+	&-donebutton {
+		background-color: $guide-button-color--base;
+		background-image: none;
+		padding: 5px 15px;
+		order: 3;
+		font-weight: bold;
+
+		&:hover {
+			background-color: $guide-button-color--hover;
+			background-image: none !important;
+			color: #fff;
+			text-decoration: none;
+		}
+		&:active,
+		&:focus {
+			color: #fff;
+		}
+	}
+
+
+	&-arrow {
+
+		display: none !important;
+
+		@include min-screen($breakpoint-md) {
+			display: block !important;
+			//border: 5px solid $tooltip--bg-color;
+		}
+
+		&.top {
+
+			@include min-screen($breakpoint-md) {
+				top: -10px;
+				border-top-color: transparent;
+				border-right-color: transparent;
+				border-bottom-color: $tooltip--bg-color;
+				border-left-color: transparent;
+			}
+
+		}
+
+		&.left {
+
+			@include min-screen($breakpoint-md) {
+				left: -10px;
+				top: 10px;
+				border-top-color: transparent;
+				border-right-color: $tooltip--bg-color;
+				border-bottom-color: transparent;
+				border-left-color: transparent;
+			}
+
+		}
+	}
+
+}
+
+.tour-image-wrapper {
+
+	/*margin: auto;
+	padding: 25px 0 0 0;*/
+
+	img {
+		display: block;
+		margin: auto;
+	}
+
+	&--step1 {
+
+		img {
+
+			@include max-screen($breakpoint-md) {
+				margin-top: 25px;
+				max-width: 300px;
+			}
+		}
+
+	}
+
+	&--step2 {
+
+		padding: 25px 0 0 0;
+
+		img {
+			@include min-screen($breakpoint-sm) {
+				max-width: 360px;
+			}
+			@include min-screen($breakpoint-md) {
+				max-width: 200px;
+			}
+			@include min-screen($breakpoint-lg) {
+				max-width: 180px;
+			}
+		}
+
+	}
+
+	&--step3 {
+
+		img {
+
+			@include max-screen($breakpoint-md) {
+				margin-top: 25px;
+				max-width: 300px;
+			}
+		}
+
+	}
+
+	&--small-devices-only {
+		display: block;
+
+		@include min-screen($breakpoint-md) {
+			display: none;
+		}
+	}
+
+	&--substance-classes {
+		padding: 30px 0;
+	}
+	&--filters {
+		padding: 30px 0;
+		max-width: 300px;
+		margin: auto;
+	}
+	&--search-filters {
+		padding: 30px 0;
+		max-width: 300px;
+		margin: auto;
+	}
+	&--filter-list-menu {
+		padding: 30px 0;
+		max-width: 300px;
+		margin: auto;
+	}
+}

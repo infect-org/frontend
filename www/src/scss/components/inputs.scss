@@ -1,0 +1,105 @@
+//general
+.list-item--checkbox,
+.list-item--radio {
+  margin-left: 20px;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: none;
+  }
+
+  .side-label {
+  //  display: block;
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    @include transition(color, $transition-duration);
+  }
+
+  .side-label::before, .side-label::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -20px;
+  }
+}
+
+//checkbox
+.list-item--checkbox {
+  //unchecked
+  .side-label::before {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid;
+    border-color: #fff;
+    @include transition(border-color, $transition-duration);  
+  }
+
+  //checked
+  .side-label::after {
+    //display: none;
+    width: 6px;
+    height: 6px;
+    margin: 3px;
+    background-color: none;
+    @include transition(background-color, $transition-duration);
+  }
+
+  input:checked + .side-label::after {
+    //display: block;
+    background-color: $active__checkbox-color;
+  }
+
+  input:hover + .side-label
+  ,input:hover + .side-label::before
+  ,input:checked + .side-label
+  ,input:checked + .side-label::before {
+    color: $active__checkbox-color;
+    border-color: $active__checkbox-color;
+  }
+}
+
+//radio
+.list-item--radio {
+  .side-label::after {
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid;
+    border-color: #fff;
+    @include border-radius(7px);
+    @include transition(all, $transition-duration);  
+  }
+
+  //radio active
+  .side-label::before {
+    //display: none;
+    z-index: 2;
+    top: 4px;
+    width: 6px;
+    height: 6px;
+    margin: 4px;
+    background-color: $sidenavigation-background;
+    @include border-radius(5px);
+    @include transition(background-color, $transition-duration);
+  }
+
+  input:checked + .side-label::after {
+    //display: block;
+    background-color: $active__checkbox-color;
+  }
+
+  input:checked + .side-label::before {
+    //display: block;
+    background-color: $sidenavigation-background;
+  }
+
+  input:hover + .side-label
+  ,input:hover + .side-label::after
+  ,input:checked + .side-label
+  ,input:checked + .side-label::after {
+    color: $active__checkbox-color;
+    border-color: $active__checkbox-color;
+  }
+} 

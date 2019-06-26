@@ -1,0 +1,167 @@
+// Custom elements are display:inline if not specified otherwise, which 
+// interferes with the svg's with css rule.
+matrix,
+matrixheader {
+    display: block;
+}
+
+
+
+.resistanceMatrix {
+
+    $slowdown-factor: 1;
+
+
+    /* 
+    * Only display transitions and custom visibility style when and after the first
+    * filter is set 
+    */
+    .-with-transitions {
+
+        /**
+        * General modifers used for antibiotics, bacteria, substanceClasses and resistances
+        * (animations/transition)
+        */
+        .-was-visible-is-visible {
+            transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
+        }
+
+        .-was-hidden-is-visible {
+            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out calc(#{$slowdown-factor} * 0.3s);
+        }
+
+        .-was-visible-is-hidden {
+            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out;
+        }
+
+        .-was-hidden-is-hidden,
+        .-was-visible-is-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+    }
+
+
+
+    &__overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: $navigation-height;
+        left: $navigation-width;
+        background-color: #616161;
+        @include transition(opacity, $transition-duration);
+        opacity: 0;
+        z-index: -1;
+
+        @include flexbox();
+        @include flex-direction(column);
+        @include justify-content(center);
+
+        img {
+            margin: 0 calc(50% - 150px);
+            width: 150px;
+            pointer-events: none;
+        }
+
+        &--active {
+            opacity: 0.8;
+            z-index: 200;
+        }
+    }
+
+
+
+    &__body,
+    &__header {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+
+        max-width:2200px; /* or circles are too large */
+        min-width: 1500px; /* or circles are smaller than the font */
+        width: 100%;
+        font-size: 11pt;
+        font-family: "acumin-pro-condensed";
+    }
+
+    &__body {
+        position: relative;
+    }
+
+    &__header {
+        z-index: 100;
+        position: fixed;
+    }
+
+
+    &__bacteriumLabelText {
+        text-anchor: end;
+        font-style: italic;
+    }
+
+    &__resistance {
+        cursor: none;
+        // Use visiblity: hidden to hide resistances (for speed reasons)
+        // and ignore pointer-events on them
+        //pointer-events: visible;
+    }
+
+    &__substanceClassLine {
+
+        &--top {
+
+        }
+    }
+
+    &__antibioticLabelText,
+    &__bacteriumLabelText {
+
+        transition: fill 0.2s;
+
+        &.highlight {
+            text-decoration: underline;
+        }
+
+    }
+
+    &__substanceClassLabel {
+        cursor: pointer;
+
+        &:hover {
+            text {
+                fill: #fff;
+            }
+            rect {
+                fill: #{$sidenavigation-background};
+            }
+        }
+    }
+
+    /**
+    * Resistance Detail (Hover)
+    */
+    &__resistanceDetail {
+        transition: transform 0.2s;
+        // Don't let the <g> cause mouseLeaves on the underlying resistance
+        pointer-events: none;
+    }
+
+    &__resistanceDetailValueText {
+        font-size: 18pt;
+    }
+
+    &__resistanceDetailValuePercentSign {
+        font-size: 11pt;
+    }
+
+    &__resistanceDetailCircle {
+    }
+
+    &__resistanceDetailCircleShadow {
+        fill: #000;
+        opacity: 0.4;
+    }
+
+
+}

@@ -1,0 +1,64 @@
+//BASE
+$font-family--sans-serif: "acumin-pro", "Helvetica Neue", Arial;
+$line-height-base: 1.6;
+
+$transition-duration: 100ms;
+$transition-duration--long: 200ms;
+
+$group__title-h1:	18px;
+$group__title-h2:	12px;
+$group__title-h3:	14px;
+
+$font-size: 18px;
+$font-size--small: 16px;
+$font-size--guided-tour: 16px;
+$line-height--guided-tour: 1.35;
+
+
+//COLORS
+$color--light-green: #cbe264;
+$hover-color: $color--light-green;
+
+$link-color: #BCD93A;
+$link-color--hover: #D2E67A;
+
+$tooltip--bg-color: #fff;
+$tooltip-hint-color: #578ffa;
+
+$guide-button-color--base: #578ffa;
+$guide-button-color--hover: #4e79c7;
+
+
+$app-banner-bg:                     #578ffa;
+
+
+
+//TOP NAVIGATION
+$navigation-background--lighter: 	#616161;
+$navigation-height: 				70px;
+
+$navigation-button--label-size:		14px;
+$navigation-button--font-size:		26px;
+
+
+//SIDE NAVIGATION
+$sidenavigation-background: 		#363636;
+$navigation-min-width: 				210px;
+$navigation-width:					210px;
+$sidenavigation__group__title-size:	26px;
+$search-box--height:				70px;
+$header-search-height:				128px;
+
+
+//CHECKBOX
+$active__checkbox-color:			$color--light-green;
+
+
+//RESPONSIVE
+$breakpoint-mobile: 800px;
+
+$breakpoint-xs: 375px;
+$breakpoint-sm: 480px;
+$breakpoint-md: 736px;
+$breakpoint-lg: 980px;
+$breakpoint-xl: 1280px;

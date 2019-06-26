@@ -1,42 +1,71 @@
 {
-      "name"                            : "frontend"
-    , "description"                     : "infect fronend"
-    , "version"                         : "0.1.0"
-    , "homepage"                        : "https://github.com/infect/application"
-    , "author"                          : "Michael van der Weg <michael@joinbox.com> (http://infect.info/)"
-    , "license"                         : "MIT"
-    , "repository": {
-          "url"                         : "https://github.com/infect/related.git"
-        , "type"                        : "git"
-    }
-    , "engines": {
-        "node"                          : ">=6"
-    }
-    , "bugs": {
-        "url"                           : "https://github.com/infect/application/issues"
-    }
-    , "dependencies": {
-          "ee-types"                    : "2.x"
-        , "distributed-prototype"       : "2.x"
-    }
-    , "devDependencies": {
-          "mocha"                       : "3.x"
-          , "gulp"                      : "3.x"
-          , "gulp-babel"                : "6.x"
-          , "babel-preset-es2015"       : "6.x"
-          , "gulp-concat"               : "2.x"
-          , "gulp-uglify"               : "2.x"
-          , "gulp-sourcemaps"           : "2.x"
-          , "gulp-util"                 : "3.x"
-          , "gulp-expect-file"          : "0.0.x"
-          , "gulp-minify-css"           : "1.x"
-          , "gulp-sass"                 : "2.x"
-          , "gulp-debug"                : "3.x"
-          , "gulp-rename"               : "1.x"
-          , "run-sequence"              : "1.x"
-          , "babel-polyfill"            : "6.x"
-    }
-    , "optionalDependencies": {}
-    , "keywords"                        : ["infect"]
-    , "scripts"                         : {}
+  "name": "infect-frontend",
+  "description": "infect fronend",
+  "version": "3.3.5",
+  "homepage": "https://github.com/infect/application",
+  "author": "Felix Steiner <felix@joinbox.com> (http://infect.info)",
+  "contributors": [
+    "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info)"
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/infect/related.git",
+    "type": "git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "bugs": {
+    "url": "https://github.com/infect/application/issues"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-rc.1",
+    "babel-loader": "^8.0.0-beta.4",
+    "debug": "^3.1.0",
+    "distributed-prototype": "^2.30.0",
+    "ee-log": "^2.0.4",
+    "ee-types": "2.x",
+    "infect-frontend-logic": "^2.2.2",
+    "intro.js": "^2.9.3",
+    "mobx": "4.4.2",
+    "mobx-react": "^5.2.8",
+    "mobx-utils": "^4.0.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "tinycolor2": "^1.4.1"
+  },
+  "devDependencies": {
+    "@joinbox/build-task": "^0.4.4",
+    "@joinbox/eslint-config-joinbox": "^1.0.5",
+    "babel-eslint": "^9.0.0",
+    "csv": "^3.1.0",
+    "eslint-plugin-react": "^7.11.1",
+    "gulp": "^4.0.0",
+    "gulp-cli": "github:gulpjs/gulp-cli",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-collector": "^1.3.1",
+    "rev-del": "^1.0.5",
+    "tape": "^4.9.1"
+  },
+  "optionalDependencies": {},
+  "keywords": [
+    "infect"
+  ],
+  "scripts": {
+    "start": "node ./node_modules/gulp-cli/bin/gulp.js",
+    "build": "node ./node_modules/gulp-cli/bin/gulp.js infectProd"
+  },
+  "browserify": {
+    "external": {
+      "react/addon": true,
+      "react/lib/ExecutionEnvironment": true,
+      "react/lib/ReactContext": true
+    },
+    "transform": [
+      [
+        "babelify"
+      ]
+    ]
+  },
+  "main": "www/src/js/main.js"
 }

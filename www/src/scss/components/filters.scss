@@ -1,0 +1,166 @@
+$active-filter--button-color: #c5c3b2;
+$active-filter--label-color: #d7d5c4;
+
+
+.filters {
+	&__menu {
+		margin-bottom: 10px;
+	}
+	&__search {
+		position: relative;
+	}
+}
+
+
+.filter:last-child {
+	//288px height of last group 
+	padding-bottom: calc(100vh - (#{$navigation-height} + #{$header-search-height} + 288px));
+}
+
+.groups {
+	@include flexbox();
+	@include flex-wrap(wrap);
+	align-items: center;
+}
+
+.group {
+	@include flexbox();
+	@include flex-direction(column);
+	@include justify-content(center);
+	padding: 0 20px;
+	color: #fff;
+	
+	@include group-header-fonts(15px);
+
+	&__title {
+		
+	}
+
+	&__list {
+		@include flexbox();
+		@include flex-direction(row);
+		@include justify-content(space-evenly);
+		margin: 0;
+		padding: 0;
+
+		list-style-type: none;
+
+		&--vertical {
+			@include flex-direction(column);
+		}
+	}
+	&__list-item {
+		@include flex-grow(0);
+		margin-right: 5px;
+	}
+
+	//Modifiers
+	&--vertical {
+		@include flex-direction(row);
+	}
+
+	&--space-between {
+		@include justify-content(space-between);
+	}
+
+	&--left-aligned {
+		@include justify-content(flex-start);
+	}
+
+	&--lead {
+		padding-top: 20px;
+		height: $search-box--height;
+	}
+
+	&--black-font {
+		color: #000;
+	}
+
+	&--padding {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+}
+
+.list-item {
+	@include flexbox();
+	@include flex-direction(row);
+
+	&__label {
+		
+	}
+
+	&--button {
+		
+	}
+
+	&--checkbox,
+	&--radio {
+		font-size: 11pt;
+	}
+
+//TODO: DESKTOP ONLY
+	&:hover {
+		.label--rounded {
+			@include border-radius-edges(5px, 0, 0, 5px);
+		}
+
+		.button {
+			//display: block;
+			right: 0;
+			@include transition(right, $transition-duration);
+			//display: block;
+		}
+	}
+}
+
+.label {
+	line-height: 1.3;
+	font-size: $navigation-button--label-size;
+	margin: 0;
+	
+	&--rounded {
+		padding: 3px 5px;
+		background-color: $active-filter--label-color;
+		@include border-radius(5px 0 0 5px);
+		z-index: 2;
+	}
+
+	&--small {
+		font-size: ($navigation-button--label-size - 2);
+	}
+
+	&--smaller {
+		font-size: ($navigation-button--label-size - 4);
+	}
+
+	&--large {
+		font-size: $navigation-button--label-size + 2;
+	}
+
+	&--larger {
+		font-size: $navigation-button--label-size + 4;
+	}
+
+	&--bold {
+		font-weight: bold;
+	}
+
+	&--thin {
+		font-weight: 300;
+	}
+
+	&--nomargin {
+		margin: 0;
+	}
+
+	&--gray {
+		color: #787677;
+	}
+
+}
+
+.input {
+	margin: 5px 0 10px 0;
+	padding: 5px;
+}

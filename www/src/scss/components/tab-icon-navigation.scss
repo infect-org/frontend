@@ -1,0 +1,56 @@
+%triangle {
+	content:"";
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: -10px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid $color--light-green;
+}
+
+.button--icon {
+	position: relative;
+	width: 26px;
+	height: 26px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-right: 10px;
+	padding: 0;
+
+	svg {
+		fill: white;
+		height: inherit;
+		width: inherit;
+		@include transition(fill, $transition-duration);
+
+		&:hover {
+			fill: $color--light-green;
+		}
+	}
+
+	&--active {
+		svg {
+			fill: $color--light-green;
+		}
+		&:after {
+			@extend %triangle;
+			left: 7px;
+		}
+	}
+
+//special cases
+	&--population {
+		width: 22px;
+		&:after {
+			left: 5px;
+		}
+	}
+
+	&--bacteria {
+		width: 30px;
+		&:after {
+			left: 9px;
+		}
+	}
+}

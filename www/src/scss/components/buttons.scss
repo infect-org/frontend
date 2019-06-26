@@ -1,0 +1,140 @@
+$button-height: 38px;
+$button-bg-color: #c5c3b2;
+$button-bg-color--hover: #d7d5c4;
+
+.button {
+  border: none;
+  color: #000;
+  font-weight: 600;
+
+  //used to center x
+  /*span {
+    position: relative;
+    top: -2px;
+  }*/
+
+  &--label {
+    position: relative;
+
+    min-height: $button-height;
+    margin: 0;
+    padding: 0 20px;
+    @media (pointer: fine) {
+      padding: 0 8px;
+    }
+
+    background-color: #c5c3b2;
+    font-weight: bold;
+    @include border-radius-edges(0, 5px, 5px, 0);
+
+
+    &:hover {
+      background-color: #d60000;
+      color: #fff;
+    }
+
+    $hover-hover: hover;
+    @include hover-interaction($hover-hover) {
+      padding: 0 10px !important;
+    }
+  }
+
+  &--clearall {
+    height: $button-height;
+    background-color: $button-bg-color;
+    @include border-radius(5px);
+    width: $button-height;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #d60000;
+      color: #fff;
+    }
+  }
+
+  &--info {
+    position: relative;
+    //@include transition(background-color color, $transition-duration);
+    color: #000;
+    padding: 0;
+    margin: 0;
+    //width: 36px;
+    //height: 36px;
+    //@include border-radius(18px);
+
+    > div {
+      position: relative;
+      background-color: #eee;
+      @include border-radius-edges(5px, 5px, 5px, 5px);
+      @include flexbox();
+      @include flex-wrap(nowrap);
+      @include transition(background-color, $transition-duration);
+
+      &:hover {
+        background-color: darken(#eee, 5%);
+      }
+
+      span {
+        &:first-child {
+          @include flex(0 0 auto);
+          width: 30px;
+          color: #000;
+          line-height: 32px;
+          padding-left: 0.25rem;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        &:nth-child(2) {
+          @include flex(1 1 auto);
+          padding: 0 1rem 0 0.25rem;
+          white-space: nowrap;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 34px;
+
+          em {
+            font-size: 15px;
+            font-style: normal;
+          }
+        }
+      }
+    }
+
+    /*&:hover {
+      background-color: $navigation-background--lighter;
+    }*/
+
+    // overlay opened
+    &-active {
+
+      > span {
+        display: block;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #fff;
+        color: #000;
+        @include transition(background-color, $transition-duration);
+
+        &:hover {
+          background-color: lightgrey;
+        }
+      }
+
+    }
+  }
+
+  &--guide {
+    @include border-radius(5px);
+    padding: 5px 15px;
+
+    color: #fff;
+    background-color: $guide-button-color--base;
+    @include transition(background-color, $transition-duration);
+
+    &:hover {
+      background-color: $guide-button-color--hover;
+    }
+  }
+}
