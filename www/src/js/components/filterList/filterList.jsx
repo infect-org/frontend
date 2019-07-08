@@ -1,11 +1,15 @@
-import React from 'react';
-import AntibioticsFilterList from './antibioticsFilterList';
-import BacteriaFilterList from './bacteriaFilterList';
-import PopulationFilterList from './populationFilterList';
-import MostUsedFiltersList from './mostUsedFiltersList';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
+import React from 'react';
+import AntibioticsFilterList from './antibioticsFilterList.jsx';
+import BacteriaFilterList from './bacteriaFilterList.jsx';
+import PopulationFilterList from './populationFilterList.jsx';
+import MostUsedFiltersList from './mostUsedFiltersList.jsx';
+import GuidelinesFilterList from './GuidelinesFilterList.jsx';
 
+/**
+ * Holds all filters (without tab navigation or the search input) in the sidebar on the left.
+ */
 @observer
 class FilterList extends React.Component {
 
@@ -26,6 +30,11 @@ class FilterList extends React.Component {
                                 selectedFilters={ this.props.selectedFilters } key="content" />,
                             <hr className="divider" key="divider" />]
                         }
+                        <GuidelinesFilterList
+                            identifier="guidelines"
+                            additionalClassNames="guidelines-selector-for-fabian-blue-background"
+                            guidelines={this.props.guidelines}
+                        />
                         <AntibioticsFilterList identifier="antibiotics"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters } />

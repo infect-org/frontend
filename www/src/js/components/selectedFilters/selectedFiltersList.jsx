@@ -13,7 +13,9 @@ export default class SelectedFiltersList extends React.Component {
 	render() {
 		return (
             <div className="top-navigation__active-filters groups">
-            	<SelectedFiltersForType type="antibiotics" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.antibiotic)} />
+                { /* TODO: Use real filters; this is for Fabian only */ }
+            	<SelectedFiltersForType type="diagnoses" selectedFilters={[{ value: 'Diagnosenname', niceValue: 'Diagnosenname', property: { name: 'Diagnose', niceName: 'Diagnose' } }]}/>
+                <SelectedFiltersForType type="antibiotics" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.antibiotic)} />
             	<SelectedFiltersForType type="substanceClasses" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.substanceClass)} />
             	<SelectedFiltersForType type="bacteria" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.bacterium)} />
                 <SelectedFiltersForType type="regions" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.region)} />
