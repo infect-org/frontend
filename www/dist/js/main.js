@@ -45552,8 +45552,7 @@ function generateFilterList(Component) {
           bacteria: 'Filters for Bacteria',
           antibiotics: 'Filters for Antibiotics',
           population: 'Population and Offsets',
-          mostUsed: 'Favorites',
-          guidelines: 'Guidelines'
+          mostUsed: 'Favorites'
         };
         return _this;
       }
@@ -45561,12 +45560,8 @@ function generateFilterList(Component) {
       _createClass(_class, [{
         key: "render",
         value: function render() {
-          /**
-           * Guidelines need their own class (for blue background color), therefore we must be
-           * able to pass in additional class names.
-           */
           return _react.default.createElement("div", {
-            className: "group group--padding ".concat(this.props.additionalClassNames),
+            className: "group group--padding",
             id: "js-filter-list-".concat(this.props.identifier)
           }, _react.default.createElement("h1", null, this.translations[this.props.identifier]), _react.default.createElement(Component, this.props));
         }
@@ -47330,19 +47325,19 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var _bacteriumLabel = _interopRequireDefault(__webpack_require__(/*! ../matrixBacterium/bacteriumLabel */ "./www/src/js/components/matrixBacterium/bacteriumLabel.jsx"));
-
-var _resistance = _interopRequireDefault(__webpack_require__(/*! ../matrixResistance/resistance */ "./www/src/js/components/matrixResistance/resistance.jsx"));
-
-var _resistanceDetail = _interopRequireDefault(__webpack_require__(/*! ../matrixResistance/resistanceDetail */ "./www/src/js/components/matrixResistance/resistanceDetail.jsx"));
-
-var _substanceClassLine = _interopRequireDefault(__webpack_require__(/*! ../matrixSubstanceClass/substanceClassLine */ "./www/src/js/components/matrixSubstanceClass/substanceClassLine.jsx"));
-
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 
 var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 
 var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js"));
+
+var _bacteriumLabel = _interopRequireDefault(__webpack_require__(/*! ../matrixBacterium/bacteriumLabel.jsx */ "./www/src/js/components/matrixBacterium/bacteriumLabel.jsx"));
+
+var _resistance = _interopRequireDefault(__webpack_require__(/*! ../matrixResistance/resistance.jsx */ "./www/src/js/components/matrixResistance/resistance.jsx"));
+
+var _resistanceDetail = _interopRequireDefault(__webpack_require__(/*! ../matrixResistance/resistanceDetail.jsx */ "./www/src/js/components/matrixResistance/resistanceDetail.jsx"));
+
+var _substanceClassLine = _interopRequireDefault(__webpack_require__(/*! ../matrixSubstanceClass/substanceClassLine.jsx */ "./www/src/js/components/matrixSubstanceClass/substanceClassLine.jsx"));
 
 var _class, _class2, _descriptor;
 
@@ -47372,7 +47367,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and set to use loose mode. ' + 'To use proposal-class-properties in spec mode with decorators, wait for ' + 'the next major version of decorators in stage 2.'); }
 
-var log = (0, _debug.default)('infect:MatrixComponent'); //import DevTools from 'mobx-react-devtools';
+var log = (0, _debug.default)('infect:MatrixComponent');
 
 var Matrix = (0, _mobxReact.observer)(_class = (_class2 =
 /*#__PURE__*/
@@ -47380,11 +47375,17 @@ function (_React$Component) {
   _inherits(Matrix, _React$Component);
 
   function Matrix() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Matrix);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Matrix).call(this));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Matrix)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _initializerDefineProperty(_this, "svg", _descriptor, _assertThisInitialized(_assertThisInitialized(_this)));
 
@@ -47422,6 +47423,7 @@ function (_React$Component) {
     value: function _setupResizeListener() {
       var _this2 = this;
 
+      /* global window */
       window.addEventListener('resize', function () {
         return _this2._setDimensions();
       });
@@ -47438,36 +47440,33 @@ function (_React$Component) {
           height: this.height,
           top: this.props.matrix.headerHeight
         },
-        className: 'resistanceMatrix__body ' + (this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions')
+        className: "resistanceMatrix__body ".concat(this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions')
       }, this.props.matrix.defaultRadius && _react.default.createElement("g", {
         transform: this.mainMatrixTransformation
-      }, this.props.matrix.substanceClasses.map(function (sc) {
+      }, this.props.matrix.substanceClasses.map(function (substanceClass) {
         return _react.default.createElement(_substanceClassLine.default, {
-          key: sc.substanceClass.id,
-          substanceClass: sc,
+          key: substanceClass.substanceClass.id,
+          substanceClass: substanceClass,
           matrix: _this3.props.matrix,
           bodyHeight: _this3.visibleBacteriaHeight
         });
       })), _react.default.createElement("g", {
         className: "resistanceMatrix__bacteriaLabels"
-      }, this.props.matrix.sortedBacteria.map(function (bact) {
-        return (// Don't render bacteria that have no resistanceData
-          //bact.bacterium.hasDataForResistances &&
-          _react.default.createElement(_bacteriumLabel.default, {
-            key: bact.bacterium.id,
-            bacterium: bact,
-            matrix: _this3.props.matrix,
-            selectedFilters: _this3.props.selectedFilters
-          })
-        );
+      }, this.props.matrix.sortedBacteria.map(function (bacterium) {
+        return _react.default.createElement(_bacteriumLabel.default, {
+          key: bacterium.bacterium.id,
+          bacterium: bacterium,
+          matrix: _this3.props.matrix,
+          selectedFilters: _this3.props.selectedFilters
+        });
       })), this.props.matrix.defaultRadius && _react.default.createElement("g", {
         transform: this.mainMatrixTransformation,
         className: "resistanceMatrix__resistances"
-      }, this.props.matrix.resistances.map(function (res) {
+      }, this.props.matrix.resistances.map(function (resistance) {
         return _react.default.createElement(_resistance.default, {
-          key: res.resistance.antibiotic.id + '/' + res.resistance.bacterium.id,
+          key: "".concat(resistance.resistance.antibiotic.id, "/").concat(resistance.resistance.bacterium.id),
           matrix: _this3.props.matrix,
-          resistance: res
+          resistance: resistance
         });
       }), this.props.matrix.activeResistance && _react.default.createElement(_resistanceDetail.default, {
         resistance: this.props.matrix.activeResistance,
@@ -47477,11 +47476,11 @@ function (_React$Component) {
   }, {
     key: "height",
     get: function get() {
-      if (!this.props.matrix.defaultRadius) return 0; // Height: All bact labels + ab label + space between ab label and matrix (matrix.space + matrix.radius), 
-      // see bacteriumLabel
+      if (!this.props.matrix.defaultRadius) return 0; // Height: All bact labels + ab label + space between ab label and matrix (matrix.space +
+      // matrix.radius), see bacteriumLabel
 
       return this.bodyHeight;
-    } // Use a bound method for ref: 
+    } // Use a bound method for ref:
     // https://github.com/facebook/react/issues/4533#issuecomment-276783714
 
   }, {
@@ -47491,14 +47490,14 @@ function (_React$Component) {
       return "translate(".concat(left, ", 0)");
     }
     /**
-    * Returns height of the matrix' body (circles). 
+    * Returns height of the matrix' body (circles).
     */
 
   }, {
     key: "bodyHeight",
     get: function get() {
-      // Always display matrix in full height (also for invisible bacteria) or animations will be cut off at the bottom
-      // (height of matrix changes before the bacteria animate)
+      // Always display matrix in full height (also for invisible bacteria) or animations will
+      // be cut off at the bottom (height of matrix changes before the bacteria animate)
       return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedBacteria.length;
     }
   }, {
@@ -47771,7 +47770,7 @@ function (_React$Component) {
 
     /**
     * Set height of view on model; needed as height is variable (because uf the 45° angle)
-    * and space available for the matrix is calculated depending on the space that the highest 
+    * and space available for the matrix is calculated depending on the space that the highest
     * label takes up.
     */
     value: function _setDimensions() {
@@ -47779,11 +47778,11 @@ function (_React$Component) {
 
       var bounds = this._textElement.getBBox(); // Element has a rotation of -45deg. Those are not respected in getBBox.
       // When rotated by 45°, take    sin(45°) * width   plus   the triangle below the baseline
-      // that's a isosceles triangle. 
+      // that's a isosceles triangle.
       // Angle is more than 45°, use PI/3.
 
 
-      var height = Math.ceil(bounds.width * Math.sin(Math.PI / 3) + Math.sqrt(Math.pow(bounds.height, 2) / 2));
+      var height = Math.ceil(bounds.width * Math.sin(Math.PI / 3) + Math.sqrt(Math.pow(bounds.height, 2)) / 2);
       this.props.antibiotic.setDimensions(height, height);
     }
   }, {
@@ -47791,6 +47790,7 @@ function (_React$Component) {
     value: function _setupResizeListener() {
       var _this2 = this;
 
+      /* global window */
       window.addEventListener('resize', function () {
         return _this2._setDimensions();
       });
@@ -47803,20 +47803,28 @@ function (_React$Component) {
         style: {
           visibility: this.props.matrix.defaultRadius ? 'visible' : 'hidden'
         },
-        className: 'resistanceMatrix__antibioticLabel ' + this.classModifier
+        className: "resistanceMatrix__antibioticLabel ".concat(this.classModifier)
       }, _react.default.createElement("text", {
         dy: "-9",
         ref: this._setTextElement,
-        className: 'resistanceMatrix__antibioticLabelText ' + this.highlightClass
+        className: "resistanceMatrix__antibioticLabelText ".concat(this.highlightClass)
       }, this.props.antibiotic.antibiotic.name));
     }
   }, {
     key: "transformation",
     get: function get() {
-      var rotation = 'rotate(-75)'; // Before textElement is ready, hight of antibiotics (and therefore the transformation) cannot be known.
+      var rotation = 'rotate(-75)'; // Before textElement is ready, hight of antibiotics (and therefore the transformation)
+      // cannot be known.
 
-      if (!this.props.matrix.greatestSubstanceClassLabelHeight) return 'translate(0, 0) ' + rotation;
-      if (!this.props.antibiotic.visible) return "translate(".concat(this._previousPosition.left || 0, ", ").concat(this._previousPosition.top || 0, ") ").concat(rotation); // We must add some of the height (60°/90°) as we rotated the label which positions it more to the left
+      if (!this.props.matrix.greatestSubstanceClassLabelHeight) {
+        return "translate(0, 0) ".concat(rotation);
+      }
+
+      if (!this.props.antibiotic.visible) {
+        return "translate(".concat(this._previousPosition.left || 0, ", ").concat(this._previousPosition.top || 0, ") ").concat(rotation);
+      } // We must add some of the height (60°/90°) as we rotated the label which positions it more
+      // to the left
+
 
       var pos = this.props.matrix.xPositions.get(this.props.antibiotic);
       var left = (pos ? pos.left : 0) + this._textElement.getBBox().height * 1.2;
@@ -47927,7 +47935,7 @@ function (_React$Component) {
   }, {
     key: "_getPreviousPosition",
     value: function _getPreviousPosition() {
-      return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ", \n\t\t\t").concat(this._previousPosition && this._previousPosition.top || 0, ")");
+      return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ", ").concat(this._previousPosition && this._previousPosition.top || 0, ")");
     }
   }, {
     key: "_setTextElement",
@@ -47947,6 +47955,7 @@ function (_React$Component) {
     value: function _setupResizeWatcher() {
       var _this2 = this;
 
+      /* global window */
       window.addEventListener('resize', function () {
         return _this2._setWidth();
       });
@@ -47959,19 +47968,19 @@ function (_React$Component) {
 
       return _react.default.createElement("g", {
         transform: this.transformation,
-        className: 'resistanceMatrix__bacteriumLabel ' + this.classModifier
-      }, "/* rect is only used to give the g a height so that text can be aligned middle */ /* We have to place label to the right (x) in order for text-anchor to work. */", _react.default.createElement("text", (_React$createElement = {
+        className: "resistanceMatrix__bacteriumLabel ".concat(this.classModifier)
+      }, _react.default.createElement("text", (_React$createElement = {
         x: this.props.matrix.defaultRadius,
         y: this.props.matrix.defaultRadius,
-        ref: function ref(el) {
-          return _this3._setTextElement(el);
+        ref: function ref(element) {
+          return _this3._setTextElement(element);
         }
-      }, _defineProperty(_React$createElement, "x", this.props.matrix.bacteriumLabelColumnWidth), _defineProperty(_React$createElement, "className", 'resistanceMatrix__bacteriumLabelText ' + this.highlightClass), _defineProperty(_React$createElement, "dominantBaseline", "middle"), _defineProperty(_React$createElement, "y", this.props.matrix.defaultRadius), _React$createElement), this.props.bacterium.bacterium.name));
+      }, _defineProperty(_React$createElement, "x", this.props.matrix.bacteriumLabelColumnWidth), _defineProperty(_React$createElement, "className", "resistanceMatrix__bacteriumLabelText ".concat(this.highlightClass)), _defineProperty(_React$createElement, "dominantBaseline", "middle"), _defineProperty(_React$createElement, "y", this.props.matrix.defaultRadius), _React$createElement), this.props.bacterium.bacterium.name));
     }
   }, {
     key: "visible",
     get: function get() {
-      // Don't display bacterium when we are still measuring its width 
+      // Don't display bacterium when we are still measuring its width
       return this.props.matrix.defaultRadius !== undefined && this.props.bacterium.visible;
     }
   }, {
@@ -47988,13 +47997,13 @@ function (_React$Component) {
   }, {
     key: "transformation",
     get: function get() {
-      // We can only position elements correctly when we know defaultRadius. Until then, 
+      // We can only position elements correctly when we know defaultRadius. Until then,
       // hide the labels
       if (!this.props.matrix.defaultRadius) return this._getPreviousPosition();
       if (!this.visible) return this._getPreviousPosition(); // Top: top of bacterium plus radius (baseline corresponds to the center of the circles)
 
-      var pos = this.props.matrix.yPositions.get(this.props.bacterium); // If pos is not available (because bacterium is hidden) return previous top – we don't want to move
-      // labels if not necessary (as they're invisible; performance)
+      var pos = this.props.matrix.yPositions.get(this.props.bacterium); // If pos is not available (because bacterium is hidden) return previous top – we don't
+      // want to move labels if not necessary (as they're invisible; performance)
 
       var top = pos ? pos.top : this._previousTop;
       this._previousPosition = {
@@ -48504,6 +48513,8 @@ function (_React$Component) {
       var _this2 = this;
 
       this._measureHeight();
+      /* global window */
+
 
       window.addEventListener('resize', function () {
         return _this2._measureHeight();
@@ -48512,7 +48523,7 @@ function (_React$Component) {
   }, {
     key: "_getPreviousTransformation",
     value: function _getPreviousTransformation() {
-      return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ",\n\t\t\t").concat(this._previousPosition && this._previousPosition.top || 0, ")");
+      return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ", ").concat(this._previousPosition && this._previousPosition.top || 0, ")");
     }
   }, {
     key: "_setTextElement",
@@ -48524,7 +48535,7 @@ function (_React$Component) {
     key: "_measureHeight",
     value: function _measureHeight() {
       if (!this._textElement) {
-        log("SubstanceClass: Element not set, cannot get height.");
+        log('SubstanceClass: Element not set, cannot get height.');
         return;
       } // TODO: Use clipping path – so we can measure text's height
 
@@ -48553,7 +48564,7 @@ function (_React$Component) {
       this._afterHovered = hovered;
     }
     /**
-    * When user hovers a label, we must 
+    * When user hovers a label, we must
     * - first remove the label's cropping (which is done through a textPath)
     * - then measure the whole uncropped label
     * - then update the background and line rects accordingly (width of the whole label)
@@ -48592,7 +48603,7 @@ function (_React$Component) {
 
   }, {
     key: "_handleSubstanceClassClick",
-    value: function _handleSubstanceClassClick(substanceClass) {
+    value: function _handleSubstanceClassClick() {
       var _this4 = this;
 
       var filters = this.props.filters.getValuesForProperty('substanceClass', 'name');
@@ -48600,7 +48611,12 @@ function (_React$Component) {
         return item.value === _this4.props.substanceClass.substanceClass.name;
       });
       log('Clicked on substance class; corresponding filter is %o', filter);
-      if (this.props.selectedFilters.isSelected(filter)) this.props.selectedFilters.removeFilter(filter);else this.props.selectedFilters.addFilter(filter);
+
+      if (this.props.selectedFilters.isSelected(filter)) {
+        this.props.selectedFilters.removeFilter(filter);
+      } else {
+        this.props.selectedFilters.addFilter(filter);
+      }
     }
   }, {
     key: "render",
@@ -48609,18 +48625,18 @@ function (_React$Component) {
 
       return _react.default.createElement("g", {
         transform: this.transformation,
-        className: 'resistanceMatrix__substanceClassLabel js-substance-class ' + this.classModifier,
-        onMouseEnter: function onMouseEnter(ev) {
+        className: "resistanceMatrix__substanceClassLabel js-substance-class ".concat(this.classModifier),
+        onMouseEnter: function onMouseEnter() {
           return _this5._updateHoveredState(true);
         },
-        onMouseLeave: function onMouseLeave(ev) {
+        onMouseLeave: function onMouseLeave() {
           return _this5._updateHoveredState(false);
         },
-        onClick: function onClick(ev) {
+        onClick: function onClick() {
           return _this5._handleSubstanceClassClick();
         }
       }, _react.default.createElement("defs", null, _react.default.createElement("path", {
-        id: 'substance-class-' + this.props.substanceClass.substanceClass.id + '-path',
+        id: "substance-class-".concat(this.props.substanceClass.substanceClass.id, "-path"),
         d: "M 0 0 L ".concat(this._labelWidth - 5, " 0")
       })), _react.default.createElement("rect", {
         width: this._labelWidth,
@@ -48645,7 +48661,7 @@ function (_React$Component) {
           return _this5._setTextElement(el);
         }
       }, !this._isHovered && _react.default.createElement("textPath", {
-        xlinkHref: '#substance-class-' + this.props.substanceClass.substanceClass.id + '-path',
+        xlinkHref: "#substance-class-".concat(this.props.substanceClass.substanceClass.id, "-path"),
         dominantBaseline: "hanging"
       }, this.props.substanceClass.substanceClass.name), this._isHovered && this.props.substanceClass.substanceClass.name));
     }
@@ -48672,10 +48688,13 @@ function (_React$Component) {
   }, {
     key: "_labelWidth",
     get: function get() {
-      var xPos = this.props.substanceClass.xPosition; // If label is invisible, don't change its width (and just return the previous value) 
+      var xPos = this.props.substanceClass.xPosition; // If label is invisible, don't change its width (and just return the previous value)
       // to not mess with our animations.
 
-      if (!xPos || isNaN(xPos.right) || isNaN(xPos.left)) return this._previousLabelWidth || 0;
+      if (!xPos || Number.isNaN(xPos.right) || Number.isNaN(xPos.left)) {
+        return this._previousLabelWidth || 0;
+      }
+
       var minWidth = xPos.right - xPos.left;
       var width = this._afterHovered ? Math.max(minWidth, this._getApproximateTextWidth()) + 2 * this.props.matrix.space : minWidth;
       this._previousLabelWidth = width;
@@ -48695,7 +48714,7 @@ function (_React$Component) {
     key: "visible",
     get: function get() {
       var left = this.props.substanceClass.xPosition && this.props.substanceClass.xPosition.left;
-      return !isNaN(left) && left !== undefined;
+      return !Number.isNaN(left) && left !== undefined;
     }
   }, {
     key: "classModifier",
@@ -48775,11 +48794,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
 
-var SubstanceClassLine =
 /**
 * Represents a vertical line in the matrix that holds substance classes apart
 */
-(0, _mobxReact.observer)(_class = (_class2 =
+var SubstanceClassLine = (0, _mobxReact.observer)(_class = (_class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(SubstanceClassLine, _React$Component);
@@ -48798,7 +48816,7 @@ function (_React$Component) {
   _createClass(SubstanceClassLine, [{
     key: "_getPreviousPosition",
     value: function _getPreviousPosition() {
-      return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ", \n\t\t\t").concat(this._previousPosition && this._previousPosition.top || 0, ")");
+      return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ", ").concat(this._previousPosition && this._previousPosition.top || 0, ")");
     }
   }, {
     key: "render",
@@ -48808,7 +48826,7 @@ function (_React$Component) {
         height: this.props.bodyHeight || 0,
         fill: this.props.substanceClass.lineColor,
         transform: this.transformation,
-        className: 'resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body ' + this.classModifier
+        className: "resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body ".concat(this.classModifier)
       });
     }
   }, {
@@ -49369,16 +49387,6 @@ function (_React$Component) {
       return _react.default.createElement("div", {
         className: "top-navigation__active-filters groups"
       }, _react.default.createElement(_selectedFiltersForType.default, {
-        type: "diagnoses",
-        selectedFilters: [{
-          value: 'Diagnosenname',
-          niceValue: 'Diagnosenname',
-          property: {
-            name: 'Diagnose',
-            niceName: 'Diagnose'
-          }
-        }]
-      }), _react.default.createElement(_selectedFiltersForType.default, {
         type: "antibiotics",
         removeFilter: this.removeFilter.bind(this),
         selectedFilters: this.props.selectedFilters.getFiltersByType(_infectFrontendLogic.filterTypes.antibiotic)
