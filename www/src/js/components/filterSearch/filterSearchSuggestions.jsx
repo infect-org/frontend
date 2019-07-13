@@ -39,6 +39,11 @@ export default class FilterSearchSuggestions extends React.Component {
         return '';
     }
 
+    // TODO: Remove when Fabian's done
+    _getDiagnosisClass() {
+        return 'result--diagnosis'
+    }
+
     /**
     * Called on enter
     */
@@ -57,7 +62,7 @@ export default class FilterSearchSuggestions extends React.Component {
                 <ul className="group__list group__list--vertical search__results" >
                     { this.props.matches.length > 0 && 
                         this.props.matches.map((item, index) => {
-                            return <li className={'group__list-item list-item result ' + this._getActiveClass(index) }
+                            return <li className={'group__list-item list-item result ' + this._getActiveClass(index) + ' ' + this._getDiagnosisClass() }
                                 onClick={ (ev) => this._filterClickedHandler(item) }
                                 key={ item.property.entityType + '-' + item.property.name + '-' + item.value }>
 	                            <div style={ { opacity: this.props.isItemSelected(item) ? 1 : 0 } } className="result__checkmark"></div>

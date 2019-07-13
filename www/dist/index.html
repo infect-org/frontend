@@ -1,6 +1,13 @@
 <!DOCTYPE html>
     <head>
 
+        <style>
+            /** TODO: REMOVE */
+            .myDrawer.hidden {
+                display: none;
+            }
+        </style>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108372802-1"></script>
         <script>
@@ -117,8 +124,10 @@
             <div class="container__main main">
                 <div class="main__header">
                     <div class="top-navigation">
+                        <SelectedDiagnosisFilter></SelectedDiagnosisFilter>
                         <SelectedFiltersList></SelectedFiltersList>
 
+                        <OpenDiagnosisDrawerButton />
                         <div class="top-navigation__info info">
                             <InfoOverlayButton></InfoOverlayButton>
                         </div>
@@ -136,6 +145,7 @@
                 <GuidedTour></GuidedTour>
             </div>
         </div>
+        <Drawer />
         <InfoOverlay></InfoOverlay>
         <Notifications></Notifications>
 

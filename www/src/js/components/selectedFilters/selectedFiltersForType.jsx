@@ -26,9 +26,11 @@ export default class SelectedFiltersList extends React.Component {
             case 'bacteria':
                 return plural ? 'Bacteria' : 'Bacterium';
             case 'regions':
-                return 'Regions';
+                return plural ? 'Regions' : 'Region';
             case 'ageGroups':
-                return 'Age Groups';
+                return plural ? 'Age Groups' : 'Age Group';
+            case 'diagnoses':
+                return plural ? 'Diagnoses' : 'Diagnosis';
         }
     }
 
@@ -39,9 +41,12 @@ export default class SelectedFiltersList extends React.Component {
                 <h2>{ this._getTranslation(this.props.type) }</h2>
                 <ul className="group__list">
                     { this.props.selectedFilters.map((item) => {
-                        return <SelectedFilter key={ item.property.name + '-' + item.value } 
-                            filter={ item } 
-                            removeFilterHandler={ this.removeFilterHandler.bind(this) }/>;
+                        return <SelectedFilter
+                            type={this.props.type}
+                            key={`${item.property.name}-${item.value}`} 
+                            filter={item} 
+                            removeFilterHandler={this.removeFilterHandler.bind(this)}
+                        />;
                     }) }
                 </ul>
             </div>

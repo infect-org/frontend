@@ -4,7 +4,7 @@
 
 import '@babel/polyfill';
 
-import { configure } from 'mobx';
+import { configure, observable, action } from 'mobx';
 import debug from 'debug';
 import InfectApp from 'infect-frontend-logic';
 import ReactDOM from 'react-dom';
@@ -23,6 +23,9 @@ import GuidedTour from './components/guidedTour/guidedTour';
 import AppBanner from './components/appBanner/appBanner';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
+import Drawer from './components/drawer/Drawer.jsx';
+import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter';
+import OpenDiagnosisDrawerButton from './components/drawer/OpenDiagnosisDrawerButton.jsx';
 
 import betaConfig from '../config/config.beta.js';
 import liveConfig from '../config/config.live.js';
@@ -48,6 +51,7 @@ log('Is beta? %o. config is %o', isBeta, config);
 const app = new InfectApp(config);
 try {
     app.initialize();
+    log('App initialized, is %o', app);
 } catch (err) {
     app.errorHandler.handle(err);
 }
@@ -65,39 +69,104 @@ log('views:', app.views);
 function renderReact() {
 
     ReactDOM.render(
-        <Matrix matrix={ app.views.matrix } filters={ app.filterValues }
-            selectedFilters={ app.selectedFilters } />,
+        <Matrix
+            matrix={app.views.matrix}
+            filters={ app.filterValues }
+            selectedFilters={app.selectedFilters}
+        />,
         document.querySelector('Matrix'),
     );
 
     ReactDOM.render(
-        <MatrixHeader matrix={ app.views.matrix } filters={ app.filterValues }
-            selectedFilters={ app.selectedFilters }/>,
+        <MatrixHeader
+            matrix={app.views.matrix}
+            filters={app.filterValues}
+            selectedFilters={app.selectedFilters}
+        />,
         document.querySelector('MatrixHeader'),
     );
 
     ReactDOM.render(
-        <FilterList mostUsedFilters={ app.mostUsedFilters } filterValues={ app.filterValues }
-            selectedFilters={ app.selectedFilters }
-            offsetFilters={ app.offsetFilters }/>,
+        <FilterList
+            mostUsedFilters={app.mostUsedFilters}
+            filterValues={app.filterValues}
+            selectedFilters={app.selectedFilters}
+            offsetFilters={app.offsetFilters}
+            guidelines={app.guidelines}
+        />,
         document.querySelector('FilterList'),
     );
 
-    ReactDOM.render(<SelectedFiltersList selectedFilters={ app.selectedFilters }/>, document.querySelector('SelectedFiltersList'));
-    ReactDOM.render(<FilterListMenu mostUsedFilters={ app.mostUsedFilters }/>, document.querySelector('FilterListMenu'));
-    ReactDOM.render(<FilterSearch filterValues={ app.filterValues } selectedFilters={ app.selectedFilters }/>, document.querySelector('FilterSearch'));
-    ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));
-    ReactDOM.render(<Disclaimer infoOverlay={ infoOverlayModel } guidedTour={ guidedTourModel }/>, document.querySelector('Disclaimer'));
-    ReactDOM.render(<GuidedTour guidedTour={ guidedTourModel }/>, document.querySelector('GuidedTour'));
-    ReactDOM.render(<AppBanner appBanner={ app.appBanner }/>, document.querySelector('AppBanner'));
-
-    ReactDOM.render(<InfoOverlay guidedTour={ guidedTourModel } infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlay'));
-    ReactDOM.render(<InfoOverlayButton infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlayButton'));
+    ReactDOM.render(
+        <SelectedFiltersList selectedFilters={app.selectedFilters}/>,
+        document.querySelector('SelectedFiltersList'),
+    );
 
     ReactDOM.render(
-        <Notifications/>,
+        <FilterListMenu mostUsedFilters={app.mostUsedFilters} />,
+        document.querySelector('FilterListMenu'),
+    );
+
+    ReactDOM.render(
+        <FilterSearch
+            filterValues={app.filterValues}
+            selectedFilters={app.selectedFilters}
+        />,
+        document.querySelector('FilterSearch'),
+    );
+
+    ReactDOM.render(
+        <MatrixLoadingOverlay
+            stores={[app.bacteria, app.antibiotics, app.resistances, app.substanceClasses]}
+        />,
+        document.querySelector('MatrixLoadingOverlay'),
+    );
+
+    ReactDOM.render(
+        <Disclaimer infoOverlay={infoOverlayModel} guidedTour={guidedTourModel} />,
+        document.querySelector('Disclaimer'),
+    );
+
+    ReactDOM.render(
+        <GuidedTour guidedTour={guidedTourModel} />,
+        document.querySelector('GuidedTour'),
+    );
+
+    ReactDOM.render(
+        <AppBanner appBanner={app.appBanner} />,
+        document.querySelector('AppBanner'),
+    );
+
+    ReactDOM.render(
+        <InfoOverlay guidedTour={guidedTourModel} infoOverlay={infoOverlayModel} />,
+        document.querySelector('InfoOverlay'),
+    );
+
+    ReactDOM.render(
+        <InfoOverlayButton infoOverlay={infoOverlayModel} />,
+        document.querySelector('InfoOverlayButton'),
+    );
+
+    ReactDOM.render(
+        <OpenDiagnosisDrawerButton drawerViewModel={app.views.drawer} />,
+        document.querySelector('OpenDiagnosisDrawerButton'),
+    );
+
+    ReactDOM.render(
+        <Notifications />,
         document.querySelector('Notifications'),
     );
+
+    ReactDOM.render(
+        <Drawer drawerViewModel={app.views.drawer} />,
+        document.querySelector('Drawer'),
+    );
+
+    ReactDOM.render(
+        <SelectedDiagnosisFilter guidelines={app.guidelines} />,
+        document.querySelector('SelectedDiagnosisFilter'),
+    );
+
 }
 
 
