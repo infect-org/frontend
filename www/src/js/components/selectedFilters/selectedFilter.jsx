@@ -6,7 +6,7 @@ export default class SelectedFilter extends React.Component {
 
 	render() {
 		return (
-            <li className={`group__list-item list-item ${this.props.type === 'diagnoses' && 'list-item--diagnosis'}`}>
+            <li className="group__list-item list-item">
                 <div className="label label--rounded">
                     <p className="label--smaller label--nomargin">
                         {this.props.filter.property.niceName}

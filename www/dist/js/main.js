@@ -9253,43 +9253,47 @@ var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx
 
 var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
 
-var _antibioticsStore = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/antibioticsStore */ "../frontend-logic/src/models/antibiotics/antibioticsStore.js"));
+var _antibioticsStore = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/antibioticsStore.js */ "../frontend-logic/src/models/antibiotics/antibioticsStore.js"));
 
-var _antibioticsFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/antibioticsFetcher */ "../frontend-logic/src/models/antibiotics/antibioticsFetcher.js"));
+var _antibioticsFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/antibioticsFetcher.js */ "../frontend-logic/src/models/antibiotics/antibioticsFetcher.js"));
 
-var _substanceClassesStore = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/substanceClassesStore */ "../frontend-logic/src/models/antibiotics/substanceClassesStore.js"));
+var _substanceClassesStore = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/substanceClassesStore.js */ "../frontend-logic/src/models/antibiotics/substanceClassesStore.js"));
 
-var _substanceClassesFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/substanceClassesFetcher */ "../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js"));
+var _substanceClassesFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/antibiotics/substanceClassesFetcher.js */ "../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js"));
 
-var _bacteriaStore = _interopRequireDefault(__webpack_require__(/*! ./models/bacteria/bacteriaStore */ "../frontend-logic/src/models/bacteria/bacteriaStore.js"));
+var _bacteriaStore = _interopRequireDefault(__webpack_require__(/*! ./models/bacteria/bacteriaStore.js */ "../frontend-logic/src/models/bacteria/bacteriaStore.js"));
 
-var _bacteriaFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/bacteria/bacteriaFetcher */ "../frontend-logic/src/models/bacteria/bacteriaFetcher.js"));
+var _bacteriaFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/bacteria/bacteriaFetcher.js */ "../frontend-logic/src/models/bacteria/bacteriaFetcher.js"));
 
-var _resistancesStore = _interopRequireDefault(__webpack_require__(/*! ./models/resistances/resistancesStore */ "../frontend-logic/src/models/resistances/resistancesStore.js"));
+var _resistancesStore = _interopRequireDefault(__webpack_require__(/*! ./models/resistances/resistancesStore.js */ "../frontend-logic/src/models/resistances/resistancesStore.js"));
 
-var _resistancesFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/resistances/resistancesFetcher */ "../frontend-logic/src/models/resistances/resistancesFetcher.js"));
+var _resistancesFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/resistances/resistancesFetcher.js */ "../frontend-logic/src/models/resistances/resistancesFetcher.js"));
 
-var _matrixView = _interopRequireDefault(__webpack_require__(/*! ./models/matrix/matrixView */ "../frontend-logic/src/models/matrix/matrixView.js"));
+var _matrixView = _interopRequireDefault(__webpack_require__(/*! ./models/matrix/matrixView.js */ "../frontend-logic/src/models/matrix/matrixView.js"));
 
-var _getFilterConfig = _interopRequireDefault(__webpack_require__(/*! ./models/filters/getFilterConfig */ "../frontend-logic/src/models/filters/getFilterConfig.js"));
+var _DrawerViewModel = _interopRequireDefault(__webpack_require__(/*! ./models/drawer/DrawerViewModel.js */ "../frontend-logic/src/models/drawer/DrawerViewModel.js"));
 
-var _propertyMap = _interopRequireDefault(__webpack_require__(/*! ./models/propertyMap/propertyMap */ "../frontend-logic/src/models/propertyMap/propertyMap.js"));
+var _getFilterConfig = _interopRequireDefault(__webpack_require__(/*! ./models/filters/getFilterConfig.js */ "../frontend-logic/src/models/filters/getFilterConfig.js"));
 
-var _offsetFilters = _interopRequireDefault(__webpack_require__(/*! ./models/filters/offsetFilters */ "../frontend-logic/src/models/filters/offsetFilters.js"));
+var _propertyMap = _interopRequireDefault(__webpack_require__(/*! ./models/propertyMap/propertyMap.js */ "../frontend-logic/src/models/propertyMap/propertyMap.js"));
 
-var _selectedFilters = _interopRequireDefault(__webpack_require__(/*! ./models/filters/selectedFilters */ "../frontend-logic/src/models/filters/selectedFilters.js"));
+var _offsetFilters = _interopRequireDefault(__webpack_require__(/*! ./models/filters/offsetFilters.js */ "../frontend-logic/src/models/filters/offsetFilters.js"));
 
-var _mostUsedFilters = _interopRequireDefault(__webpack_require__(/*! ./models/filters/mostUsedFilters */ "../frontend-logic/src/models/filters/mostUsedFilters.js"));
+var _selectedFilters = _interopRequireDefault(__webpack_require__(/*! ./models/filters/selectedFilters.js */ "../frontend-logic/src/models/filters/selectedFilters.js"));
 
-var _populationFilterUpdater = _interopRequireDefault(__webpack_require__(/*! ./models/populationFilter/populationFilterUpdater */ "../frontend-logic/src/models/populationFilter/populationFilterUpdater.js"));
+var _mostUsedFilters = _interopRequireDefault(__webpack_require__(/*! ./models/filters/mostUsedFilters.js */ "../frontend-logic/src/models/filters/mostUsedFilters.js"));
 
-var _populationFilterFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/populationFilter/populationFilterFetcher */ "../frontend-logic/src/models/populationFilter/populationFilterFetcher.js"));
+var _populationFilterUpdater = _interopRequireDefault(__webpack_require__(/*! ./models/populationFilter/populationFilterUpdater.js */ "../frontend-logic/src/models/populationFilter/populationFilterUpdater.js"));
 
-var _GuidelineFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineFetcher */ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js"));
+var _populationFilterFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/populationFilter/populationFilterFetcher.js */ "../frontend-logic/src/models/populationFilter/populationFilterFetcher.js"));
 
-var _GuidelineStore = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineStore */ "../frontend-logic/src/models/guidelines/GuidelineStore.js"));
+var _GuidelineFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineFetcher.js */ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js"));
 
-var _errorHandler = _interopRequireDefault(__webpack_require__(/*! ./models/errorHandler/errorHandler */ "../frontend-logic/src/models/errorHandler/errorHandler.js"));
+var _GuidelineStore = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js"));
+
+var _errorHandler = _interopRequireDefault(__webpack_require__(/*! ./models/errorHandler/errorHandler.js */ "../frontend-logic/src/models/errorHandler/errorHandler.js"));
+
+var _updateDrawerFromGuidelines = _interopRequireDefault(__webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js"));
 
 var _class, _descriptor;
 
@@ -9350,6 +9354,7 @@ function () {
     this.views.matrix.setSelectedFilters(this.selectedFilters);
     this.views.matrix.setOffsetFilters(this.offsetFilters);
     this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
+    (0, _updateDrawerFromGuidelines.default)(this.guidelines, this.views.drawer, _errorHandler.default);
   }
   /**
    * Use separate init method as it uses async functions; we shall not use those in a
@@ -9496,7 +9501,8 @@ function () {
   enumerable: true,
   initializer: function initializer() {
     return {
-      matrix: new _matrixView.default()
+      matrix: new _matrixView.default(),
+      drawer: new _DrawerViewModel.default()
     };
   }
 })), _class);
@@ -10462,6 +10468,167 @@ exports.default = BacteriumMatrixView;
 
 /***/ }),
 
+/***/ "../frontend-logic/src/models/drawer/DrawerViewModel.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/drawer/DrawerViewModel.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
+var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+
+var _Guideline = _interopRequireDefault(__webpack_require__(/*! ../guidelines/Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js"));
+
+var _class, _descriptor, _descriptor2;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
+
+function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and set to use loose mode. ' + 'To use proposal-class-properties in spec mode with decorators, wait for ' + 'the next major version of decorators in stage 2.'); }
+
+var log = (0, _debug.default)('infect:DrawerViewModel');
+/**
+ * Represents the drawer view (right on web, overlay on mobile). Can either be visible or not
+ * and hold certain information (pharmacological data, guideline …)
+ */
+
+var DrawerViewModel = (_class =
+/*#__PURE__*/
+function () {
+  function DrawerViewModel() {
+    _classCallCheck(this, DrawerViewModel);
+
+    _initializerDefineProperty(this, "isOpen", _descriptor, this);
+
+    _initializerDefineProperty(this, "content", _descriptor2, this);
+  }
+
+  _createClass(DrawerViewModel, [{
+    key: "open",
+    value: function open() {
+      log('Open drawer');
+      this.isOpen = true;
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      log('Close drawer');
+      this.isOpen = false;
+    }
+    /**
+     * Set content to be displayed in Drawer
+     * @param {Diagnosis} content   Content to display in drawer; must be a Guideline (for now).
+     */
+
+  }, {
+    key: "setContent",
+    value: function setContent(content) {
+      if (content !== undefined && !(content instanceof _Guideline.default)) {
+        throw new Error("DrawerViewModel: For now, drawer only supports Guideline as content, make sure you pass a corresponding instance. Instead, you passed ".concat(JSON.stringify(content), "."));
+      }
+
+      this.content = content; // Automatically open whenever content changes
+
+      if (content === undefined) this.close();else this.open();
+    }
+    /**
+     * Returns content type as a string (e.g. 'guideline' if content is a Guideline). Method is used
+     * to not expose internals (Guideline class) to the outside world (to check content type via
+     * instanceof).
+     * @return {String}     Type of content, e.g. 'guideline'
+     */
+
+  }, {
+    key: "contentType",
+    get: function get() {
+      if (this.content instanceof _Guideline.default) return 'guideline';
+      return undefined;
+    }
+  }]);
+
+  return DrawerViewModel;
+}(), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isOpen", [_mobx.observable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "content", [_mobx.observable], {
+  enumerable: true,
+  initializer: null
+}), _applyDecoratedDescriptor(_class.prototype, "open", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "open"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "close", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "close"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setContent", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setContent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "contentType", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "contentType"), _class.prototype)), _class);
+exports.default = DrawerViewModel;
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = updateDrawerFromGuidelines;
+
+var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var log = (0, _debug.default)('infect:updateDrawerFromGuidelines');
+/**
+ * Drawer should not know about guidelines and guidelines should not know about the drawer.
+ * Therefore we introduce a pseudo-mediator that knows both and handles communication between them
+ * (updates drawer's content whenever a guideline's diagnosis is selected).
+ * If more drawer content is added, additional update functions may be implemented to set drawer's
+ * content.
+ */
+
+function updateDrawerFromGuidelines(guidelineStore, drawer, errorHandler) {
+  (0, _mobx.reaction)(function () {
+    return (// We only need to update the drawer when the diagnosis has changed (not the guideline),
+      // as guideline does not contain any relevant information for the drawer
+      guidelineStore.selectedGuideline && guidelineStore.selectedGuideline.selectedDiagnosis
+    );
+  }, function (diagnosis) {
+    log('Selected diagnosis changed to %o', diagnosis); // Reaction happens outside of main JS loop; possible errors must be handled here
+
+    try {
+      // Only set drawer's content if diagnosis was selected
+      if (diagnosis) drawer.setContent(guidelineStore.selectedGuideline);else drawer.setContent(undefined);
+    } catch (err) {
+      errorHandler.handle(err);
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "../frontend-logic/src/models/errorHandler/errorHandler.js":
 /*!*****************************************************************!*\
   !*** ../frontend-logic/src/models/errorHandler/errorHandler.js ***!
@@ -11222,38 +11389,90 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
+var _class, _descriptor;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
+
+function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and set to use loose mode. ' + 'To use proposal-class-properties in spec mode with decorators, wait for ' + 'the next major version of decorators in stage 2.'); }
+
+var log = (0, _debug.default)('infect:Guideline');
 /**
  * Represents a single guideline (from a hospital, institution or society, e.g. «Schweiz.
  * Gesellschaft für Infektiologie»)
  */
-var Guideline =
-/**
- * @param  {Number} id              ID of guideline (on API)
- * @param  {String} name            Guideline's name, mostly name of the publishing institution
- *                                  (e.g. «Schweiz. Ges. für Infektiologie»)
- * @param  {Diagnosis[]} diagnoses  Array of all diagnoses that this guideline consists of
- */
-function Guideline(id) {
-  var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  var diagnoses = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
 
-  _classCallCheck(this, Guideline);
+var Guideline = (_class =
+/*#__PURE__*/
+function () {
+  /**
+   * Holds the diagnosis that the user selected; matrix is highlighted correspondingly, diagnosis
+   * might be displayed in drawer.
+   */
 
-  if (typeof id !== 'number') {
-    throw new Error("Guideline: First constructor argument (id) must be a number, is ".concat(id, "."));
+  /**
+   * @param  {Number} id              ID of guideline (on API)
+   * @param  {String} name            Guideline's name, mostly name of the publishing institution
+   *                                  (e.g. «Schweiz. Ges. für Infektiologie»)
+   * @param  {Diagnosis[]} diagnoses  Array of all diagnoses that this guideline consists of
+   */
+  function Guideline(id) {
+    var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    var diagnoses = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+    _classCallCheck(this, Guideline);
+
+    _initializerDefineProperty(this, "selectedDiagnosis", _descriptor, this);
+
+    if (typeof id !== 'number') {
+      throw new Error("Guideline: First constructor argument (id) must be a number, is ".concat(id, "."));
+    }
+
+    if (typeof name !== 'string') {
+      throw new Error("Guideline: Second constructor argument (name) must be a string, is ".concat(name, "."));
+    }
+
+    this.id = id;
+    this.name = name;
+    this.diagnoses = diagnoses;
   }
+  /**
+   * Update selected diagnosis
+   * @param  {Diagnosis} [diagnosis]  Diagnosis to select
+   */
 
-  if (typeof name !== 'string') {
-    throw new Error("Guideline: Second constructor argument (name) must be a string, is ".concat(name, "."));
-  }
 
-  this.id = id;
-  this.name = name;
-  this.diagnoses = diagnoses;
-};
+  _createClass(Guideline, [{
+    key: "selectDiagnosis",
+    value: function selectDiagnosis(diagnosis) {
+      // Check if diagnosis is part of this.diagnoses
+      if (diagnosis !== undefined && !this.diagnoses.includes(diagnosis)) {
+        throw new Error("Guideline: Selected diagnosis ".concat(JSON.stringify(diagnosis), " is not part of this guideline's diagnoses."));
+      }
 
+      log('Select diagnosis %o', diagnosis);
+      this.selectedDiagnosis = diagnosis;
+    }
+  }]);
+
+  return Guideline;
+}(), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "selectedDiagnosis", [_mobx.observable], {
+  enumerable: true,
+  initializer: null
+}), _applyDecoratedDescriptor(_class.prototype, "selectDiagnosis", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "selectDiagnosis"), _class.prototype)), _class);
 exports.default = Guideline;
 
 /***/ }),
@@ -11273,13 +11492,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _Guideline = _interopRequireDefault(__webpack_require__(/*! ./Guideline */ "../frontend-logic/src/models/guidelines/Guideline.js"));
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
 
-var _Therapy = _interopRequireDefault(__webpack_require__(/*! ./Therapy */ "../frontend-logic/src/models/guidelines/Therapy.js"));
+var _Guideline = _interopRequireDefault(__webpack_require__(/*! ./Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js"));
 
-var _Diagnosis = _interopRequireDefault(__webpack_require__(/*! ./Diagnosis */ "../frontend-logic/src/models/guidelines/Diagnosis.js"));
+var _Therapy = _interopRequireDefault(__webpack_require__(/*! ./Therapy.js */ "../frontend-logic/src/models/guidelines/Therapy.js"));
 
-var _DiagnosisClass = _interopRequireDefault(__webpack_require__(/*! ./DiagnosisClass */ "../frontend-logic/src/models/guidelines/DiagnosisClass.js"));
+var _Diagnosis = _interopRequireDefault(__webpack_require__(/*! ./Diagnosis.js */ "../frontend-logic/src/models/guidelines/Diagnosis.js"));
+
+var _DiagnosisClass = _interopRequireDefault(__webpack_require__(/*! ./DiagnosisClass.js */ "../frontend-logic/src/models/guidelines/DiagnosisClass.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11289,10 +11510,12 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var log = (0, _debug.default)('infect:GuidelineFetcher');
 /**
  * Temporary solution that mocks all Guideline data (until API is done). TODO: Connect API through
  * a real fetcher. Maybe use multiple stores and fetchers (one per model entity).
  */
+
 var GuidelineFetcher =
 /*#__PURE__*/
 function () {
@@ -11323,10 +11546,10 @@ function () {
 
       var komplizierteZystitisTherapy1 = new _Therapy.default(0, [{
         antibiotic: sortedAntibiotics[0],
-        markdownText: "\n                        * TMP/SMX forte alle 12 h f\xFCr 7 d\n                        * (Anpassung gem\xE4ss Urinkultur!)\n                        * **ODER**\n                    "
+        markdownText: "* TMP/SMX forte alle 12 h f\xFCr 7 d\n* (Anpassung gem\xE4ss Urinkultur!)\n* **ODER**"
       }, {
         antibiotic: sortedAntibiotics[1],
-        markdownText: "\n                        Nitrofurantoin [100 mg](http://infect.info) alle 12 h f\xFCr 7 d\n                    "
+        markdownText: 'Nitrofurantoin [100 mg](http://infect.info) alle 12 h für 7 d'
       }], 1, 'Erste Wahl');
       var komplizierteZystitisTherapy2 = new _Therapy.default(1, [{
         antibiotic: sortedAntibiotics[2],
@@ -11344,15 +11567,16 @@ function () {
         antibiotic: sortedAntibiotics[10],
         markdownText: "\n                        Nitrofurantoin 100 mg alle 12 h f\xFCr 5 d\n                    "
       }, {
-        antibiotic: sortedAntibiotics[10],
-        markdownText: "\n                         TMP / SMX forte alle 12h f\xFCr 3d (lokale Resistenzlage E.coli beachten, \n                         aktuell in der Ostschweiz f\xFCr junge Frauen mit erstmaliger Symptomatik \n                         weiterhin 1. Wahl)\n                    "
+        antibiotic: sortedAntibiotics[11],
+        markdownText: "TMP / SMX forte *alle* 12h f\xFCr 3d (lokale Resistenzlage E.coli beachten, \naktuell in der Ostschweiz f\xFCr junge Frauen mit erstmaliger Symptomatik \nweiterhin 1. Wahl)\n# Zwischentitel hier!\n                    "
       }], 1, 'Erste Wahl');
       var unkomplizierteZystitisTherapy2 = new _Therapy.default(1, [{
         antibiotic: sortedAntibiotics[9],
-        markdownText: "\n                       Ciprofloxacin 500 mg alle 12 h f\xFCr 7 d\n                    "
+        markdownText: 'Ciprofloxacin 500 mg alle 12 h für 7 d'
       }], 2, 'Alternativ');
       var unkomplizierteZystitis = new _Diagnosis.default(2, 'Unkomplizierte Zystitis (Frau prämenopausal)', urinaryTractDiagnosisClass, sortedBacteria.slice(4, 8), 'Daran denken, dass urogenitale Symptome nicht immer auf HWI weisen, deshalb Diagnostik wichtig!', [unkomplizierteZystitisTherapy1, unkomplizierteZystitisTherapy2]);
       var sgiGuideline = new _Guideline.default(1, 'Schweizerische Gesellschaft für Infektiologie', [komplizierteZystitis, unkomplizierteZystitis]);
+      log('Guideline is %o', sgiGuideline);
       this.guidelineStore.add(sgiGuideline);
     }
   }]);
@@ -11383,7 +11607,7 @@ var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../fronten
 
 var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 
-var _store = _interopRequireDefault(__webpack_require__(/*! ../../helpers/store */ "../frontend-logic/src/helpers/store.js"));
+var _store = _interopRequireDefault(__webpack_require__(/*! ../../helpers/store.js */ "../frontend-logic/src/helpers/store.js"));
 
 var _class, _descriptor;
 
@@ -11447,6 +11671,11 @@ function (_Store) {
 
   _createClass(GuidelineStore, [{
     key: "add",
+
+    /**
+     * Adds a guideline to the store; automatically sets this.selectedGuideline to first guideline
+     * added
+     */
     value: function add(guideline) {
       var _get2;
 
@@ -11460,13 +11689,23 @@ function (_Store) {
 
       if (!this.selectedGuideline) this.selectedGuideline = guideline;
     }
+    /**
+     * Updates the currently selected guideline
+     * @param {Guideline} [selectedGuideline]
+     */
+
+  }, {
+    key: "selectGuideline",
+    value: function selectGuideline(selectedGuideline) {
+      this.selectedGuideline = selectedGuideline;
+    }
   }]);
 
   return GuidelineStore;
 }(_store.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "selectedGuideline", [_mobx.observable], {
   enumerable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class.prototype, "add", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "add"), _class.prototype)), _class);
+}), _applyDecoratedDescriptor(_class.prototype, "add", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "add"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "selectGuideline", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "selectGuideline"), _class.prototype)), _class);
 exports.default = GuidelineStore;
 
 /***/ }),
@@ -27568,6 +27807,1603 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 /***/ }),
 
+/***/ "./node_modules/marked/lib/marked.js":
+/*!*******************************************!*\
+  !*** ./node_modules/marked/lib/marked.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_RESULT__;
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/**
+ * marked - a markdown parser
+ * Copyright (c) 2011-2018, Christopher Jeffrey. (MIT Licensed)
+ * https://github.com/markedjs/marked
+ */
+;
+
+(function (root) {
+  'use strict';
+  /**
+   * Block-Level Grammar
+   */
+
+  var block = {
+    newline: /^\n+/,
+    code: /^( {4}[^\n]+\n*)+/,
+    fences: /^ {0,3}(`{3,}|~{3,})([^`~\n]*)\n(?:|([\s\S]*?)\n)(?: {0,3}\1[~`]* *(?:\n+|$)|$)/,
+    hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n+|$)/,
+    heading: /^ {0,3}(#{1,6}) +([^\n]*?)(?: +#+)? *(?:\n+|$)/,
+    blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
+    list: /^( {0,3})(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
+    html: '^ {0,3}(?:' // optional indentation
+    + '<(script|pre|style)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)' // (1)
+    + '|comment[^\\n]*(\\n+|$)' // (2)
+    + '|<\\?[\\s\\S]*?\\?>\\n*' // (3)
+    + '|<![A-Z][\\s\\S]*?>\\n*' // (4)
+    + '|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>\\n*' // (5)
+    + '|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:\\n{2,}|$)' // (6)
+    + '|<(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:\\n{2,}|$)' // (7) open tag
+    + '|</(?!script|pre|style)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:\\n{2,}|$)' // (7) closing tag
+    + ')',
+    def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,
+    nptable: noop,
+    table: noop,
+    lheading: /^([^\n]+)\n {0,3}(=+|-+) *(?:\n+|$)/,
+    // regex template, placeholders will be replaced according to different paragraph
+    // interruption rules of commonmark and the original markdown spec:
+    _paragraph: /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html)[^\n]+)*)/,
+    text: /^[^\n]+/
+  };
+  block._label = /(?!\s*\])(?:\\[\[\]]|[^\[\]])+/;
+  block._title = /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/;
+  block.def = edit(block.def).replace('label', block._label).replace('title', block._title).getRegex();
+  block.bullet = /(?:[*+-]|\d{1,9}\.)/;
+  block.item = /^( *)(bull) ?[^\n]*(?:\n(?!\1bull ?)[^\n]*)*/;
+  block.item = edit(block.item, 'gm').replace(/bull/g, block.bullet).getRegex();
+  block.list = edit(block.list).replace(/bull/g, block.bullet).replace('hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))').replace('def', '\\n+(?=' + block.def.source + ')').getRegex();
+  block._tag = 'address|article|aside|base|basefont|blockquote|body|caption' + '|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption' + '|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe' + '|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option' + '|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr' + '|track|ul';
+  block._comment = /<!--(?!-?>)[\s\S]*?-->/;
+  block.html = edit(block.html, 'i').replace('comment', block._comment).replace('tag', block._tag).replace('attribute', / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex();
+  block.paragraph = edit(block._paragraph).replace('hr', block.hr).replace('heading', ' {0,3}#{1,6} +').replace('|lheading', '') // setex headings don't interrupt commonmark paragraphs
+  .replace('blockquote', ' {0,3}>').replace('fences', ' {0,3}(?:`{3,}|~{3,})[^`\\n]*\\n').replace('list', ' {0,3}(?:[*+-]|1[.)]) ') // only lists starting from 1 can interrupt
+  .replace('html', '</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|!--)').replace('tag', block._tag) // pars can be interrupted by type (6) html blocks
+  .getRegex();
+  block.blockquote = edit(block.blockquote).replace('paragraph', block.paragraph).getRegex();
+  /**
+   * Normal Block Grammar
+   */
+
+  block.normal = merge({}, block);
+  /**
+   * GFM Block Grammar
+   */
+
+  block.gfm = merge({}, block.normal, {
+    nptable: /^ *([^|\n ].*\|.*)\n *([-:]+ *\|[-| :]*)(?:\n((?:.*[^>\n ].*(?:\n|$))*)\n*|$)/,
+    table: /^ *\|(.+)\n *\|?( *[-:]+[-| :]*)(?:\n((?: *[^>\n ].*(?:\n|$))*)\n*|$)/
+  });
+  /**
+   * Pedantic grammar (original John Gruber's loose markdown specification)
+   */
+
+  block.pedantic = merge({}, block.normal, {
+    html: edit('^ *(?:comment *(?:\\n|\\s*$)' + '|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)' // closed tag
+    + '|<tag(?:"[^"]*"|\'[^\']*\'|\\s[^\'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))').replace('comment', block._comment).replace(/tag/g, '(?!(?:' + 'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub' + '|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)' + '\\b)\\w+(?!:|[^\\w\\s@]*@)\\b').getRegex(),
+    def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,
+    heading: /^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)/,
+    fences: noop,
+    // fences not supported
+    paragraph: edit(block.normal._paragraph).replace('hr', block.hr).replace('heading', ' *#{1,6} *[^\n]').replace('lheading', block.lheading).replace('blockquote', ' {0,3}>').replace('|fences', '').replace('|list', '').replace('|html', '').getRegex()
+  });
+  /**
+   * Block Lexer
+   */
+
+  function Lexer(options) {
+    this.tokens = [];
+    this.tokens.links = Object.create(null);
+    this.options = options || marked.defaults;
+    this.rules = block.normal;
+
+    if (this.options.pedantic) {
+      this.rules = block.pedantic;
+    } else if (this.options.gfm) {
+      this.rules = block.gfm;
+    }
+  }
+  /**
+   * Expose Block Rules
+   */
+
+
+  Lexer.rules = block;
+  /**
+   * Static Lex Method
+   */
+
+  Lexer.lex = function (src, options) {
+    var lexer = new Lexer(options);
+    return lexer.lex(src);
+  };
+  /**
+   * Preprocessing
+   */
+
+
+  Lexer.prototype.lex = function (src) {
+    src = src.replace(/\r\n|\r/g, '\n').replace(/\t/g, '    ').replace(/\u00a0/g, ' ').replace(/\u2424/g, '\n');
+    return this.token(src, true);
+  };
+  /**
+   * Lexing
+   */
+
+
+  Lexer.prototype.token = function (src, top) {
+    src = src.replace(/^ +$/gm, '');
+    var next, loose, cap, bull, b, item, listStart, listItems, t, space, i, tag, l, isordered, istask, ischecked;
+
+    while (src) {
+      // newline
+      if (cap = this.rules.newline.exec(src)) {
+        src = src.substring(cap[0].length);
+
+        if (cap[0].length > 1) {
+          this.tokens.push({
+            type: 'space'
+          });
+        }
+      } // code
+
+
+      if (cap = this.rules.code.exec(src)) {
+        var lastToken = this.tokens[this.tokens.length - 1];
+        src = src.substring(cap[0].length); // An indented code block cannot interrupt a paragraph.
+
+        if (lastToken && lastToken.type === 'paragraph') {
+          lastToken.text += '\n' + cap[0].trimRight();
+        } else {
+          cap = cap[0].replace(/^ {4}/gm, '');
+          this.tokens.push({
+            type: 'code',
+            codeBlockStyle: 'indented',
+            text: !this.options.pedantic ? rtrim(cap, '\n') : cap
+          });
+        }
+
+        continue;
+      } // fences
+
+
+      if (cap = this.rules.fences.exec(src)) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'code',
+          lang: cap[2] ? cap[2].trim() : cap[2],
+          text: cap[3] || ''
+        });
+        continue;
+      } // heading
+
+
+      if (cap = this.rules.heading.exec(src)) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'heading',
+          depth: cap[1].length,
+          text: cap[2]
+        });
+        continue;
+      } // table no leading pipe (gfm)
+
+
+      if (cap = this.rules.nptable.exec(src)) {
+        item = {
+          type: 'table',
+          header: splitCells(cap[1].replace(/^ *| *\| *$/g, '')),
+          align: cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
+          cells: cap[3] ? cap[3].replace(/\n$/, '').split('\n') : []
+        };
+
+        if (item.header.length === item.align.length) {
+          src = src.substring(cap[0].length);
+
+          for (i = 0; i < item.align.length; i++) {
+            if (/^ *-+: *$/.test(item.align[i])) {
+              item.align[i] = 'right';
+            } else if (/^ *:-+: *$/.test(item.align[i])) {
+              item.align[i] = 'center';
+            } else if (/^ *:-+ *$/.test(item.align[i])) {
+              item.align[i] = 'left';
+            } else {
+              item.align[i] = null;
+            }
+          }
+
+          for (i = 0; i < item.cells.length; i++) {
+            item.cells[i] = splitCells(item.cells[i], item.header.length);
+          }
+
+          this.tokens.push(item);
+          continue;
+        }
+      } // hr
+
+
+      if (cap = this.rules.hr.exec(src)) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'hr'
+        });
+        continue;
+      } // blockquote
+
+
+      if (cap = this.rules.blockquote.exec(src)) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'blockquote_start'
+        });
+        cap = cap[0].replace(/^ *> ?/gm, ''); // Pass `top` to keep the current
+        // "toplevel" state. This is exactly
+        // how markdown.pl works.
+
+        this.token(cap, top);
+        this.tokens.push({
+          type: 'blockquote_end'
+        });
+        continue;
+      } // list
+
+
+      if (cap = this.rules.list.exec(src)) {
+        src = src.substring(cap[0].length);
+        bull = cap[2];
+        isordered = bull.length > 1;
+        listStart = {
+          type: 'list_start',
+          ordered: isordered,
+          start: isordered ? +bull : '',
+          loose: false
+        };
+        this.tokens.push(listStart); // Get each top-level item.
+
+        cap = cap[0].match(this.rules.item);
+        listItems = [];
+        next = false;
+        l = cap.length;
+        i = 0;
+
+        for (; i < l; i++) {
+          item = cap[i]; // Remove the list item's bullet
+          // so it is seen as the next token.
+
+          space = item.length;
+          item = item.replace(/^ *([*+-]|\d+\.) */, ''); // Outdent whatever the
+          // list item contains. Hacky.
+
+          if (~item.indexOf('\n ')) {
+            space -= item.length;
+            item = !this.options.pedantic ? item.replace(new RegExp('^ {1,' + space + '}', 'gm'), '') : item.replace(/^ {1,4}/gm, '');
+          } // Determine whether the next list item belongs here.
+          // Backpedal if it does not belong in this list.
+
+
+          if (i !== l - 1) {
+            b = block.bullet.exec(cap[i + 1])[0];
+
+            if (bull.length > 1 ? b.length === 1 : b.length > 1 || this.options.smartLists && b !== bull) {
+              src = cap.slice(i + 1).join('\n') + src;
+              i = l - 1;
+            }
+          } // Determine whether item is loose or not.
+          // Use: /(^|\n)(?! )[^\n]+\n\n(?!\s*$)/
+          // for discount behavior.
+
+
+          loose = next || /\n\n(?!\s*$)/.test(item);
+
+          if (i !== l - 1) {
+            next = item.charAt(item.length - 1) === '\n';
+            if (!loose) loose = next;
+          }
+
+          if (loose) {
+            listStart.loose = true;
+          } // Check for task list items
+
+
+          istask = /^\[[ xX]\] /.test(item);
+          ischecked = undefined;
+
+          if (istask) {
+            ischecked = item[1] !== ' ';
+            item = item.replace(/^\[[ xX]\] +/, '');
+          }
+
+          t = {
+            type: 'list_item_start',
+            task: istask,
+            checked: ischecked,
+            loose: loose
+          };
+          listItems.push(t);
+          this.tokens.push(t); // Recurse.
+
+          this.token(item, false);
+          this.tokens.push({
+            type: 'list_item_end'
+          });
+        }
+
+        if (listStart.loose) {
+          l = listItems.length;
+          i = 0;
+
+          for (; i < l; i++) {
+            listItems[i].loose = true;
+          }
+        }
+
+        this.tokens.push({
+          type: 'list_end'
+        });
+        continue;
+      } // html
+
+
+      if (cap = this.rules.html.exec(src)) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: this.options.sanitize ? 'paragraph' : 'html',
+          pre: !this.options.sanitizer && (cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style'),
+          text: this.options.sanitize ? this.options.sanitizer ? this.options.sanitizer(cap[0]) : escape(cap[0]) : cap[0]
+        });
+        continue;
+      } // def
+
+
+      if (top && (cap = this.rules.def.exec(src))) {
+        src = src.substring(cap[0].length);
+        if (cap[3]) cap[3] = cap[3].substring(1, cap[3].length - 1);
+        tag = cap[1].toLowerCase().replace(/\s+/g, ' ');
+
+        if (!this.tokens.links[tag]) {
+          this.tokens.links[tag] = {
+            href: cap[2],
+            title: cap[3]
+          };
+        }
+
+        continue;
+      } // table (gfm)
+
+
+      if (cap = this.rules.table.exec(src)) {
+        item = {
+          type: 'table',
+          header: splitCells(cap[1].replace(/^ *| *\| *$/g, '')),
+          align: cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
+          cells: cap[3] ? cap[3].replace(/\n$/, '').split('\n') : []
+        };
+
+        if (item.header.length === item.align.length) {
+          src = src.substring(cap[0].length);
+
+          for (i = 0; i < item.align.length; i++) {
+            if (/^ *-+: *$/.test(item.align[i])) {
+              item.align[i] = 'right';
+            } else if (/^ *:-+: *$/.test(item.align[i])) {
+              item.align[i] = 'center';
+            } else if (/^ *:-+ *$/.test(item.align[i])) {
+              item.align[i] = 'left';
+            } else {
+              item.align[i] = null;
+            }
+          }
+
+          for (i = 0; i < item.cells.length; i++) {
+            item.cells[i] = splitCells(item.cells[i].replace(/^ *\| *| *\| *$/g, ''), item.header.length);
+          }
+
+          this.tokens.push(item);
+          continue;
+        }
+      } // lheading
+
+
+      if (cap = this.rules.lheading.exec(src)) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'heading',
+          depth: cap[2].charAt(0) === '=' ? 1 : 2,
+          text: cap[1]
+        });
+        continue;
+      } // top-level paragraph
+
+
+      if (top && (cap = this.rules.paragraph.exec(src))) {
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'paragraph',
+          text: cap[1].charAt(cap[1].length - 1) === '\n' ? cap[1].slice(0, -1) : cap[1]
+        });
+        continue;
+      } // text
+
+
+      if (cap = this.rules.text.exec(src)) {
+        // Top-level should never reach here.
+        src = src.substring(cap[0].length);
+        this.tokens.push({
+          type: 'text',
+          text: cap[0]
+        });
+        continue;
+      }
+
+      if (src) {
+        throw new Error('Infinite loop on byte: ' + src.charCodeAt(0));
+      }
+    }
+
+    return this.tokens;
+  };
+  /**
+   * Inline-Level Grammar
+   */
+
+
+  var inline = {
+    escape: /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,
+    autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
+    url: noop,
+    tag: '^comment' + '|^</[a-zA-Z][\\w:-]*\\s*>' // self-closing tag
+    + '|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>' // open tag
+    + '|^<\\?[\\s\\S]*?\\?>' // processing instruction, e.g. <?php ?>
+    + '|^<![a-zA-Z]+\\s[\\s\\S]*?>' // declaration, e.g. <!DOCTYPE html>
+    + '|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>',
+    // CDATA section
+    link: /^!?\[(label)\]\(\s*(href)(?:\s+(title))?\s*\)/,
+    reflink: /^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,
+    nolink: /^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,
+    strong: /^__([^\s_])__(?!_)|^\*\*([^\s*])\*\*(?!\*)|^__([^\s][\s\S]*?[^\s])__(?!_)|^\*\*([^\s][\s\S]*?[^\s])\*\*(?!\*)/,
+    em: /^_([^\s_])_(?!_)|^\*([^\s*<\[])\*(?!\*)|^_([^\s<][\s\S]*?[^\s_])_(?!_|[^\spunctuation])|^_([^\s_<][\s\S]*?[^\s])_(?!_|[^\spunctuation])|^\*([^\s<"][\s\S]*?[^\s\*])\*(?!\*|[^\spunctuation])|^\*([^\s*"<\[][\s\S]*?[^\s])\*(?!\*)/,
+    code: /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,
+    br: /^( {2,}|\\)\n(?!\s*$)/,
+    del: noop,
+    text: /^(`+|[^`])(?:[\s\S]*?(?:(?=[\\<!\[`*]|\b_|$)|[^ ](?= {2,}\n))|(?= {2,}\n))/
+  }; // list of punctuation marks from common mark spec
+  // without ` and ] to workaround Rule 17 (inline code blocks/links)
+
+  inline._punctuation = '!"#$%&\'()*+,\\-./:;<=>?@\\[^_{|}~';
+  inline.em = edit(inline.em).replace(/punctuation/g, inline._punctuation).getRegex();
+  inline._escapes = /\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/g;
+  inline._scheme = /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/;
+  inline._email = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/;
+  inline.autolink = edit(inline.autolink).replace('scheme', inline._scheme).replace('email', inline._email).getRegex();
+  inline._attribute = /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/;
+  inline.tag = edit(inline.tag).replace('comment', block._comment).replace('attribute', inline._attribute).getRegex();
+  inline._label = /(?:\[[^\[\]]*\]|\\.|`[^`]*`|[^\[\]\\`])*?/;
+  inline._href = /<(?:\\[<>]?|[^\s<>\\])*>|[^\s\x00-\x1f]*/;
+  inline._title = /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/;
+  inline.link = edit(inline.link).replace('label', inline._label).replace('href', inline._href).replace('title', inline._title).getRegex();
+  inline.reflink = edit(inline.reflink).replace('label', inline._label).getRegex();
+  /**
+   * Normal Inline Grammar
+   */
+
+  inline.normal = merge({}, inline);
+  /**
+   * Pedantic Inline Grammar
+   */
+
+  inline.pedantic = merge({}, inline.normal, {
+    strong: /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
+    em: /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/,
+    link: edit(/^!?\[(label)\]\((.*?)\)/).replace('label', inline._label).getRegex(),
+    reflink: edit(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace('label', inline._label).getRegex()
+  });
+  /**
+   * GFM Inline Grammar
+   */
+
+  inline.gfm = merge({}, inline.normal, {
+    escape: edit(inline.escape).replace('])', '~|])').getRegex(),
+    _extended_email: /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/,
+    url: /^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/,
+    _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
+    del: /^~+(?=\S)([\s\S]*?\S)~+/,
+    text: /^(`+|[^`])(?:[\s\S]*?(?:(?=[\\<!\[`*~]|\b_|https?:\/\/|ftp:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))|(?= {2,}\n|[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))/
+  });
+  inline.gfm.url = edit(inline.gfm.url, 'i').replace('email', inline.gfm._extended_email).getRegex();
+  /**
+   * GFM + Line Breaks Inline Grammar
+   */
+
+  inline.breaks = merge({}, inline.gfm, {
+    br: edit(inline.br).replace('{2,}', '*').getRegex(),
+    text: edit(inline.gfm.text).replace('\\b_', '\\b_| {2,}\\n').replace(/\{2,\}/g, '*').getRegex()
+  });
+  /**
+   * Inline Lexer & Compiler
+   */
+
+  function InlineLexer(links, options) {
+    this.options = options || marked.defaults;
+    this.links = links;
+    this.rules = inline.normal;
+    this.renderer = this.options.renderer || new Renderer();
+    this.renderer.options = this.options;
+
+    if (!this.links) {
+      throw new Error('Tokens array requires a `links` property.');
+    }
+
+    if (this.options.pedantic) {
+      this.rules = inline.pedantic;
+    } else if (this.options.gfm) {
+      if (this.options.breaks) {
+        this.rules = inline.breaks;
+      } else {
+        this.rules = inline.gfm;
+      }
+    }
+  }
+  /**
+   * Expose Inline Rules
+   */
+
+
+  InlineLexer.rules = inline;
+  /**
+   * Static Lexing/Compiling Method
+   */
+
+  InlineLexer.output = function (src, links, options) {
+    var inline = new InlineLexer(links, options);
+    return inline.output(src);
+  };
+  /**
+   * Lexing/Compiling
+   */
+
+
+  InlineLexer.prototype.output = function (src) {
+    var out = '',
+        link,
+        text,
+        href,
+        title,
+        cap,
+        prevCapZero;
+
+    while (src) {
+      // escape
+      if (cap = this.rules.escape.exec(src)) {
+        src = src.substring(cap[0].length);
+        out += escape(cap[1]);
+        continue;
+      } // tag
+
+
+      if (cap = this.rules.tag.exec(src)) {
+        if (!this.inLink && /^<a /i.test(cap[0])) {
+          this.inLink = true;
+        } else if (this.inLink && /^<\/a>/i.test(cap[0])) {
+          this.inLink = false;
+        }
+
+        if (!this.inRawBlock && /^<(pre|code|kbd|script)(\s|>)/i.test(cap[0])) {
+          this.inRawBlock = true;
+        } else if (this.inRawBlock && /^<\/(pre|code|kbd|script)(\s|>)/i.test(cap[0])) {
+          this.inRawBlock = false;
+        }
+
+        src = src.substring(cap[0].length);
+        out += this.options.sanitize ? this.options.sanitizer ? this.options.sanitizer(cap[0]) : escape(cap[0]) : cap[0];
+        continue;
+      } // link
+
+
+      if (cap = this.rules.link.exec(src)) {
+        var lastParenIndex = findClosingBracket(cap[2], '()');
+
+        if (lastParenIndex > -1) {
+          var linkLen = 4 + cap[1].length + lastParenIndex;
+          cap[2] = cap[2].substring(0, lastParenIndex);
+          cap[0] = cap[0].substring(0, linkLen).trim();
+          cap[3] = '';
+        }
+
+        src = src.substring(cap[0].length);
+        this.inLink = true;
+        href = cap[2];
+
+        if (this.options.pedantic) {
+          link = /^([^'"]*[^\s])\s+(['"])(.*)\2/.exec(href);
+
+          if (link) {
+            href = link[1];
+            title = link[3];
+          } else {
+            title = '';
+          }
+        } else {
+          title = cap[3] ? cap[3].slice(1, -1) : '';
+        }
+
+        href = href.trim().replace(/^<([\s\S]*)>$/, '$1');
+        out += this.outputLink(cap, {
+          href: InlineLexer.escapes(href),
+          title: InlineLexer.escapes(title)
+        });
+        this.inLink = false;
+        continue;
+      } // reflink, nolink
+
+
+      if ((cap = this.rules.reflink.exec(src)) || (cap = this.rules.nolink.exec(src))) {
+        src = src.substring(cap[0].length);
+        link = (cap[2] || cap[1]).replace(/\s+/g, ' ');
+        link = this.links[link.toLowerCase()];
+
+        if (!link || !link.href) {
+          out += cap[0].charAt(0);
+          src = cap[0].substring(1) + src;
+          continue;
+        }
+
+        this.inLink = true;
+        out += this.outputLink(cap, link);
+        this.inLink = false;
+        continue;
+      } // strong
+
+
+      if (cap = this.rules.strong.exec(src)) {
+        src = src.substring(cap[0].length);
+        out += this.renderer.strong(this.output(cap[4] || cap[3] || cap[2] || cap[1]));
+        continue;
+      } // em
+
+
+      if (cap = this.rules.em.exec(src)) {
+        src = src.substring(cap[0].length);
+        out += this.renderer.em(this.output(cap[6] || cap[5] || cap[4] || cap[3] || cap[2] || cap[1]));
+        continue;
+      } // code
+
+
+      if (cap = this.rules.code.exec(src)) {
+        src = src.substring(cap[0].length);
+        out += this.renderer.codespan(escape(cap[2].trim(), true));
+        continue;
+      } // br
+
+
+      if (cap = this.rules.br.exec(src)) {
+        src = src.substring(cap[0].length);
+        out += this.renderer.br();
+        continue;
+      } // del (gfm)
+
+
+      if (cap = this.rules.del.exec(src)) {
+        src = src.substring(cap[0].length);
+        out += this.renderer.del(this.output(cap[1]));
+        continue;
+      } // autolink
+
+
+      if (cap = this.rules.autolink.exec(src)) {
+        src = src.substring(cap[0].length);
+
+        if (cap[2] === '@') {
+          text = escape(this.mangle(cap[1]));
+          href = 'mailto:' + text;
+        } else {
+          text = escape(cap[1]);
+          href = text;
+        }
+
+        out += this.renderer.link(href, null, text);
+        continue;
+      } // url (gfm)
+
+
+      if (!this.inLink && (cap = this.rules.url.exec(src))) {
+        if (cap[2] === '@') {
+          text = escape(cap[0]);
+          href = 'mailto:' + text;
+        } else {
+          // do extended autolink path validation
+          do {
+            prevCapZero = cap[0];
+            cap[0] = this.rules._backpedal.exec(cap[0])[0];
+          } while (prevCapZero !== cap[0]);
+
+          text = escape(cap[0]);
+
+          if (cap[1] === 'www.') {
+            href = 'http://' + text;
+          } else {
+            href = text;
+          }
+        }
+
+        src = src.substring(cap[0].length);
+        out += this.renderer.link(href, null, text);
+        continue;
+      } // text
+
+
+      if (cap = this.rules.text.exec(src)) {
+        src = src.substring(cap[0].length);
+
+        if (this.inRawBlock) {
+          out += this.renderer.text(this.options.sanitize ? this.options.sanitizer ? this.options.sanitizer(cap[0]) : escape(cap[0]) : cap[0]);
+        } else {
+          out += this.renderer.text(escape(this.smartypants(cap[0])));
+        }
+
+        continue;
+      }
+
+      if (src) {
+        throw new Error('Infinite loop on byte: ' + src.charCodeAt(0));
+      }
+    }
+
+    return out;
+  };
+
+  InlineLexer.escapes = function (text) {
+    return text ? text.replace(InlineLexer.rules._escapes, '$1') : text;
+  };
+  /**
+   * Compile Link
+   */
+
+
+  InlineLexer.prototype.outputLink = function (cap, link) {
+    var href = link.href,
+        title = link.title ? escape(link.title) : null;
+    return cap[0].charAt(0) !== '!' ? this.renderer.link(href, title, this.output(cap[1])) : this.renderer.image(href, title, escape(cap[1]));
+  };
+  /**
+   * Smartypants Transformations
+   */
+
+
+  InlineLexer.prototype.smartypants = function (text) {
+    if (!this.options.smartypants) return text;
+    return text // em-dashes
+    .replace(/---/g, "\u2014") // en-dashes
+    .replace(/--/g, "\u2013") // opening singles
+    .replace(/(^|[-\u2014/(\[{"\s])'/g, "$1\u2018") // closing singles & apostrophes
+    .replace(/'/g, "\u2019") // opening doubles
+    .replace(/(^|[-\u2014/(\[{\u2018\s])"/g, "$1\u201C") // closing doubles
+    .replace(/"/g, "\u201D") // ellipses
+    .replace(/\.{3}/g, "\u2026");
+  };
+  /**
+   * Mangle Links
+   */
+
+
+  InlineLexer.prototype.mangle = function (text) {
+    if (!this.options.mangle) return text;
+    var out = '',
+        l = text.length,
+        i = 0,
+        ch;
+
+    for (; i < l; i++) {
+      ch = text.charCodeAt(i);
+
+      if (Math.random() > 0.5) {
+        ch = 'x' + ch.toString(16);
+      }
+
+      out += '&#' + ch + ';';
+    }
+
+    return out;
+  };
+  /**
+   * Renderer
+   */
+
+
+  function Renderer(options) {
+    this.options = options || marked.defaults;
+  }
+
+  Renderer.prototype.code = function (code, infostring, escaped) {
+    var lang = (infostring || '').match(/\S*/)[0];
+
+    if (this.options.highlight) {
+      var out = this.options.highlight(code, lang);
+
+      if (out != null && out !== code) {
+        escaped = true;
+        code = out;
+      }
+    }
+
+    if (!lang) {
+      return '<pre><code>' + (escaped ? code : escape(code, true)) + '</code></pre>';
+    }
+
+    return '<pre><code class="' + this.options.langPrefix + escape(lang, true) + '">' + (escaped ? code : escape(code, true)) + '</code></pre>\n';
+  };
+
+  Renderer.prototype.blockquote = function (quote) {
+    return '<blockquote>\n' + quote + '</blockquote>\n';
+  };
+
+  Renderer.prototype.html = function (html) {
+    return html;
+  };
+
+  Renderer.prototype.heading = function (text, level, raw, slugger) {
+    if (this.options.headerIds) {
+      return '<h' + level + ' id="' + this.options.headerPrefix + slugger.slug(raw) + '">' + text + '</h' + level + '>\n';
+    } // ignore IDs
+
+
+    return '<h' + level + '>' + text + '</h' + level + '>\n';
+  };
+
+  Renderer.prototype.hr = function () {
+    return this.options.xhtml ? '<hr/>\n' : '<hr>\n';
+  };
+
+  Renderer.prototype.list = function (body, ordered, start) {
+    var type = ordered ? 'ol' : 'ul',
+        startatt = ordered && start !== 1 ? ' start="' + start + '"' : '';
+    return '<' + type + startatt + '>\n' + body + '</' + type + '>\n';
+  };
+
+  Renderer.prototype.listitem = function (text) {
+    return '<li>' + text + '</li>\n';
+  };
+
+  Renderer.prototype.checkbox = function (checked) {
+    return '<input ' + (checked ? 'checked="" ' : '') + 'disabled="" type="checkbox"' + (this.options.xhtml ? ' /' : '') + '> ';
+  };
+
+  Renderer.prototype.paragraph = function (text) {
+    return '<p>' + text + '</p>\n';
+  };
+
+  Renderer.prototype.table = function (header, body) {
+    if (body) body = '<tbody>' + body + '</tbody>';
+    return '<table>\n' + '<thead>\n' + header + '</thead>\n' + body + '</table>\n';
+  };
+
+  Renderer.prototype.tablerow = function (content) {
+    return '<tr>\n' + content + '</tr>\n';
+  };
+
+  Renderer.prototype.tablecell = function (content, flags) {
+    var type = flags.header ? 'th' : 'td';
+    var tag = flags.align ? '<' + type + ' align="' + flags.align + '">' : '<' + type + '>';
+    return tag + content + '</' + type + '>\n';
+  }; // span level renderer
+
+
+  Renderer.prototype.strong = function (text) {
+    return '<strong>' + text + '</strong>';
+  };
+
+  Renderer.prototype.em = function (text) {
+    return '<em>' + text + '</em>';
+  };
+
+  Renderer.prototype.codespan = function (text) {
+    return '<code>' + text + '</code>';
+  };
+
+  Renderer.prototype.br = function () {
+    return this.options.xhtml ? '<br/>' : '<br>';
+  };
+
+  Renderer.prototype.del = function (text) {
+    return '<del>' + text + '</del>';
+  };
+
+  Renderer.prototype.link = function (href, title, text) {
+    href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+
+    if (href === null) {
+      return text;
+    }
+
+    var out = '<a href="' + escape(href) + '"';
+
+    if (title) {
+      out += ' title="' + title + '"';
+    }
+
+    out += '>' + text + '</a>';
+    return out;
+  };
+
+  Renderer.prototype.image = function (href, title, text) {
+    href = cleanUrl(this.options.sanitize, this.options.baseUrl, href);
+
+    if (href === null) {
+      return text;
+    }
+
+    var out = '<img src="' + href + '" alt="' + text + '"';
+
+    if (title) {
+      out += ' title="' + title + '"';
+    }
+
+    out += this.options.xhtml ? '/>' : '>';
+    return out;
+  };
+
+  Renderer.prototype.text = function (text) {
+    return text;
+  };
+  /**
+   * TextRenderer
+   * returns only the textual part of the token
+   */
+
+
+  function TextRenderer() {} // no need for block level renderers
+
+
+  TextRenderer.prototype.strong = TextRenderer.prototype.em = TextRenderer.prototype.codespan = TextRenderer.prototype.del = TextRenderer.prototype.text = function (text) {
+    return text;
+  };
+
+  TextRenderer.prototype.link = TextRenderer.prototype.image = function (href, title, text) {
+    return '' + text;
+  };
+
+  TextRenderer.prototype.br = function () {
+    return '';
+  };
+  /**
+   * Parsing & Compiling
+   */
+
+
+  function Parser(options) {
+    this.tokens = [];
+    this.token = null;
+    this.options = options || marked.defaults;
+    this.options.renderer = this.options.renderer || new Renderer();
+    this.renderer = this.options.renderer;
+    this.renderer.options = this.options;
+    this.slugger = new Slugger();
+  }
+  /**
+   * Static Parse Method
+   */
+
+
+  Parser.parse = function (src, options) {
+    var parser = new Parser(options);
+    return parser.parse(src);
+  };
+  /**
+   * Parse Loop
+   */
+
+
+  Parser.prototype.parse = function (src) {
+    this.inline = new InlineLexer(src.links, this.options); // use an InlineLexer with a TextRenderer to extract pure text
+
+    this.inlineText = new InlineLexer(src.links, merge({}, this.options, {
+      renderer: new TextRenderer()
+    }));
+    this.tokens = src.reverse();
+    var out = '';
+
+    while (this.next()) {
+      out += this.tok();
+    }
+
+    return out;
+  };
+  /**
+   * Next Token
+   */
+
+
+  Parser.prototype.next = function () {
+    this.token = this.tokens.pop();
+    return this.token;
+  };
+  /**
+   * Preview Next Token
+   */
+
+
+  Parser.prototype.peek = function () {
+    return this.tokens[this.tokens.length - 1] || 0;
+  };
+  /**
+   * Parse Text Tokens
+   */
+
+
+  Parser.prototype.parseText = function () {
+    var body = this.token.text;
+
+    while (this.peek().type === 'text') {
+      body += '\n' + this.next().text;
+    }
+
+    return this.inline.output(body);
+  };
+  /**
+   * Parse Current Token
+   */
+
+
+  Parser.prototype.tok = function () {
+    switch (this.token.type) {
+      case 'space':
+        {
+          return '';
+        }
+
+      case 'hr':
+        {
+          return this.renderer.hr();
+        }
+
+      case 'heading':
+        {
+          return this.renderer.heading(this.inline.output(this.token.text), this.token.depth, unescape(this.inlineText.output(this.token.text)), this.slugger);
+        }
+
+      case 'code':
+        {
+          return this.renderer.code(this.token.text, this.token.lang, this.token.escaped);
+        }
+
+      case 'table':
+        {
+          var header = '',
+              body = '',
+              i,
+              row,
+              cell,
+              j; // header
+
+          cell = '';
+
+          for (i = 0; i < this.token.header.length; i++) {
+            cell += this.renderer.tablecell(this.inline.output(this.token.header[i]), {
+              header: true,
+              align: this.token.align[i]
+            });
+          }
+
+          header += this.renderer.tablerow(cell);
+
+          for (i = 0; i < this.token.cells.length; i++) {
+            row = this.token.cells[i];
+            cell = '';
+
+            for (j = 0; j < row.length; j++) {
+              cell += this.renderer.tablecell(this.inline.output(row[j]), {
+                header: false,
+                align: this.token.align[j]
+              });
+            }
+
+            body += this.renderer.tablerow(cell);
+          }
+
+          return this.renderer.table(header, body);
+        }
+
+      case 'blockquote_start':
+        {
+          body = '';
+
+          while (this.next().type !== 'blockquote_end') {
+            body += this.tok();
+          }
+
+          return this.renderer.blockquote(body);
+        }
+
+      case 'list_start':
+        {
+          body = '';
+          var ordered = this.token.ordered,
+              start = this.token.start;
+
+          while (this.next().type !== 'list_end') {
+            body += this.tok();
+          }
+
+          return this.renderer.list(body, ordered, start);
+        }
+
+      case 'list_item_start':
+        {
+          body = '';
+          var loose = this.token.loose;
+          var checked = this.token.checked;
+          var task = this.token.task;
+
+          if (this.token.task) {
+            body += this.renderer.checkbox(checked);
+          }
+
+          while (this.next().type !== 'list_item_end') {
+            body += !loose && this.token.type === 'text' ? this.parseText() : this.tok();
+          }
+
+          return this.renderer.listitem(body, task, checked);
+        }
+
+      case 'html':
+        {
+          // TODO parse inline content if parameter markdown=1
+          return this.renderer.html(this.token.text);
+        }
+
+      case 'paragraph':
+        {
+          return this.renderer.paragraph(this.inline.output(this.token.text));
+        }
+
+      case 'text':
+        {
+          return this.renderer.paragraph(this.parseText());
+        }
+
+      default:
+        {
+          var errMsg = 'Token with "' + this.token.type + '" type was not found.';
+
+          if (this.options.silent) {
+            console.log(errMsg);
+          } else {
+            throw new Error(errMsg);
+          }
+        }
+    }
+  };
+  /**
+   * Slugger generates header id
+   */
+
+
+  function Slugger() {
+    this.seen = {};
+  }
+  /**
+   * Convert string to unique id
+   */
+
+
+  Slugger.prototype.slug = function (value) {
+    var slug = value.toLowerCase().trim().replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g, '').replace(/\s/g, '-');
+
+    if (this.seen.hasOwnProperty(slug)) {
+      var originalSlug = slug;
+
+      do {
+        this.seen[originalSlug]++;
+        slug = originalSlug + '-' + this.seen[originalSlug];
+      } while (this.seen.hasOwnProperty(slug));
+    }
+
+    this.seen[slug] = 0;
+    return slug;
+  };
+  /**
+   * Helpers
+   */
+
+
+  function escape(html, encode) {
+    if (encode) {
+      if (escape.escapeTest.test(html)) {
+        return html.replace(escape.escapeReplace, function (ch) {
+          return escape.replacements[ch];
+        });
+      }
+    } else {
+      if (escape.escapeTestNoEncode.test(html)) {
+        return html.replace(escape.escapeReplaceNoEncode, function (ch) {
+          return escape.replacements[ch];
+        });
+      }
+    }
+
+    return html;
+  }
+
+  escape.escapeTest = /[&<>"']/;
+  escape.escapeReplace = /[&<>"']/g;
+  escape.replacements = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+  escape.escapeTestNoEncode = /[<>"']|&(?!#?\w+;)/;
+  escape.escapeReplaceNoEncode = /[<>"']|&(?!#?\w+;)/g;
+
+  function unescape(html) {
+    // explicitly match decimal, hex, and named HTML entities
+    return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig, function (_, n) {
+      n = n.toLowerCase();
+      if (n === 'colon') return ':';
+
+      if (n.charAt(0) === '#') {
+        return n.charAt(1) === 'x' ? String.fromCharCode(parseInt(n.substring(2), 16)) : String.fromCharCode(+n.substring(1));
+      }
+
+      return '';
+    });
+  }
+
+  function edit(regex, opt) {
+    regex = regex.source || regex;
+    opt = opt || '';
+    return {
+      replace: function replace(name, val) {
+        val = val.source || val;
+        val = val.replace(/(^|[^\[])\^/g, '$1');
+        regex = regex.replace(name, val);
+        return this;
+      },
+      getRegex: function getRegex() {
+        return new RegExp(regex, opt);
+      }
+    };
+  }
+
+  function cleanUrl(sanitize, base, href) {
+    if (sanitize) {
+      try {
+        var prot = decodeURIComponent(unescape(href)).replace(/[^\w:]/g, '').toLowerCase();
+      } catch (e) {
+        return null;
+      }
+
+      if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0 || prot.indexOf('data:') === 0) {
+        return null;
+      }
+    }
+
+    if (base && !originIndependentUrl.test(href)) {
+      href = resolveUrl(base, href);
+    }
+
+    try {
+      href = encodeURI(href).replace(/%25/g, '%');
+    } catch (e) {
+      return null;
+    }
+
+    return href;
+  }
+
+  function resolveUrl(base, href) {
+    if (!baseUrls[' ' + base]) {
+      // we can ignore everything in base after the last slash of its path component,
+      // but we might need to add _that_
+      // https://tools.ietf.org/html/rfc3986#section-3
+      if (/^[^:]+:\/*[^/]*$/.test(base)) {
+        baseUrls[' ' + base] = base + '/';
+      } else {
+        baseUrls[' ' + base] = rtrim(base, '/', true);
+      }
+    }
+
+    base = baseUrls[' ' + base];
+
+    if (href.slice(0, 2) === '//') {
+      return base.replace(/:[\s\S]*/, ':') + href;
+    } else if (href.charAt(0) === '/') {
+      return base.replace(/(:\/*[^/]*)[\s\S]*/, '$1') + href;
+    } else {
+      return base + href;
+    }
+  }
+
+  var baseUrls = {};
+  var originIndependentUrl = /^$|^[a-z][a-z0-9+.-]*:|^[?#]/i;
+
+  function noop() {}
+
+  noop.exec = noop;
+
+  function merge(obj) {
+    var i = 1,
+        target,
+        key;
+
+    for (; i < arguments.length; i++) {
+      target = arguments[i];
+
+      for (key in target) {
+        if (Object.prototype.hasOwnProperty.call(target, key)) {
+          obj[key] = target[key];
+        }
+      }
+    }
+
+    return obj;
+  }
+
+  function splitCells(tableRow, count) {
+    // ensure that every cell-delimiting pipe has a space
+    // before it to distinguish it from an escaped pipe
+    var row = tableRow.replace(/\|/g, function (match, offset, str) {
+      var escaped = false,
+          curr = offset;
+
+      while (--curr >= 0 && str[curr] === '\\') {
+        escaped = !escaped;
+      }
+
+      if (escaped) {
+        // odd number of slashes means | is escaped
+        // so we leave it alone
+        return '|';
+      } else {
+        // add space before unescaped |
+        return ' |';
+      }
+    }),
+        cells = row.split(/ \|/),
+        i = 0;
+
+    if (cells.length > count) {
+      cells.splice(count);
+    } else {
+      while (cells.length < count) {
+        cells.push('');
+      }
+    }
+
+    for (; i < cells.length; i++) {
+      // leading or trailing whitespace is ignored per the gfm spec
+      cells[i] = cells[i].trim().replace(/\\\|/g, '|');
+    }
+
+    return cells;
+  } // Remove trailing 'c's. Equivalent to str.replace(/c*$/, '').
+  // /c*$/ is vulnerable to REDOS.
+  // invert: Remove suffix of non-c chars instead. Default falsey.
+
+
+  function rtrim(str, c, invert) {
+    if (str.length === 0) {
+      return '';
+    } // Length of suffix matching the invert condition.
+
+
+    var suffLen = 0; // Step left until we fail to match the invert condition.
+
+    while (suffLen < str.length) {
+      var currChar = str.charAt(str.length - suffLen - 1);
+
+      if (currChar === c && !invert) {
+        suffLen++;
+      } else if (currChar !== c && invert) {
+        suffLen++;
+      } else {
+        break;
+      }
+    }
+
+    return str.substr(0, str.length - suffLen);
+  }
+
+  function findClosingBracket(str, b) {
+    if (str.indexOf(b[1]) === -1) {
+      return -1;
+    }
+
+    var level = 0;
+
+    for (var i = 0; i < str.length; i++) {
+      if (str[i] === '\\') {
+        i++;
+      } else if (str[i] === b[0]) {
+        level++;
+      } else if (str[i] === b[1]) {
+        level--;
+
+        if (level < 0) {
+          return i;
+        }
+      }
+    }
+
+    return -1;
+  }
+
+  function checkSanitizeDeprecation(opt) {
+    if (opt && opt.sanitize && !opt.silent) {
+      console.warn('marked(): sanitize and sanitizer parameters are deprecated since version 0.7.0, should not be used and will be removed in the future. Read more here: https://marked.js.org/#/USING_ADVANCED.md#options');
+    }
+  }
+  /**
+   * Marked
+   */
+
+
+  function marked(src, opt, callback) {
+    // throw error in case of non string input
+    if (typeof src === 'undefined' || src === null) {
+      throw new Error('marked(): input parameter is undefined or null');
+    }
+
+    if (typeof src !== 'string') {
+      throw new Error('marked(): input parameter is of type ' + Object.prototype.toString.call(src) + ', string expected');
+    }
+
+    if (callback || typeof opt === 'function') {
+      if (!callback) {
+        callback = opt;
+        opt = null;
+      }
+
+      opt = merge({}, marked.defaults, opt || {});
+      checkSanitizeDeprecation(opt);
+      var highlight = opt.highlight,
+          tokens,
+          pending,
+          i = 0;
+
+      try {
+        tokens = Lexer.lex(src, opt);
+      } catch (e) {
+        return callback(e);
+      }
+
+      pending = tokens.length;
+
+      var done = function done(err) {
+        if (err) {
+          opt.highlight = highlight;
+          return callback(err);
+        }
+
+        var out;
+
+        try {
+          out = Parser.parse(tokens, opt);
+        } catch (e) {
+          err = e;
+        }
+
+        opt.highlight = highlight;
+        return err ? callback(err) : callback(null, out);
+      };
+
+      if (!highlight || highlight.length < 3) {
+        return done();
+      }
+
+      delete opt.highlight;
+      if (!pending) return done();
+
+      for (; i < tokens.length; i++) {
+        (function (token) {
+          if (token.type !== 'code') {
+            return --pending || done();
+          }
+
+          return highlight(token.text, token.lang, function (err, code) {
+            if (err) return done(err);
+
+            if (code == null || code === token.text) {
+              return --pending || done();
+            }
+
+            token.text = code;
+            token.escaped = true;
+            --pending || done();
+          });
+        })(tokens[i]);
+      }
+
+      return;
+    }
+
+    try {
+      if (opt) opt = merge({}, marked.defaults, opt);
+      checkSanitizeDeprecation(opt);
+      return Parser.parse(Lexer.lex(src, opt), opt);
+    } catch (e) {
+      e.message += '\nPlease report this to https://github.com/markedjs/marked.';
+
+      if ((opt || marked.defaults).silent) {
+        return '<p>An error occurred:</p><pre>' + escape(e.message + '', true) + '</pre>';
+      }
+
+      throw e;
+    }
+  }
+  /**
+   * Options
+   */
+
+
+  marked.options = marked.setOptions = function (opt) {
+    merge(marked.defaults, opt);
+    return marked;
+  };
+
+  marked.getDefaults = function () {
+    return {
+      baseUrl: null,
+      breaks: false,
+      gfm: true,
+      headerIds: true,
+      headerPrefix: '',
+      highlight: null,
+      langPrefix: 'language-',
+      mangle: true,
+      pedantic: false,
+      renderer: new Renderer(),
+      sanitize: false,
+      sanitizer: null,
+      silent: false,
+      smartLists: false,
+      smartypants: false,
+      xhtml: false
+    };
+  };
+
+  marked.defaults = marked.getDefaults();
+  /**
+   * Expose
+   */
+
+  marked.Parser = Parser;
+  marked.parser = Parser.parse;
+  marked.Renderer = Renderer;
+  marked.TextRenderer = TextRenderer;
+  marked.Lexer = Lexer;
+  marked.lexer = Lexer.lex;
+  marked.InlineLexer = InlineLexer;
+  marked.inlineLexer = InlineLexer.output;
+  marked.Slugger = Slugger;
+  marked.parse = marked;
+
+  if (typeof module !== 'undefined' && ( false ? undefined : _typeof(exports)) === 'object') {
+    module.exports = marked;
+  } else if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return marked;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+})(void 0 || (typeof window !== 'undefined' ? window : global));
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/mobx-react/index.module.js":
 /*!*************************************************!*\
   !*** ./node_modules/mobx-react/index.module.js ***!
@@ -42619,7 +44455,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js"));
+
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+
+var _DrawerGuidelineContent = _interopRequireDefault(__webpack_require__(/*! ./DrawerGuidelineContent.jsx */ "./www/src/js/components/drawer/DrawerGuidelineContent.jsx"));
 
 var _class;
 
@@ -42642,6 +44482,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var log = (0, _debug.default)('infect:Drawer');
 
 var Drawer = (0, _mobxReact.observer)(_class =
 /*#__PURE__*/
@@ -42660,19 +44502,20 @@ function (_React$Component) {
     }
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Drawer)).call.apply(_getPrototypeOf2, [this].concat(props)));
-    _this.hideDrawer = _this.hideDrawer.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.closeDrawer = _this.closeDrawer.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Drawer, [{
-    key: "hideDrawer",
-    value: function hideDrawer() {
+    key: "closeDrawer",
+    value: function closeDrawer() {
+      log('Close button clicked');
       this.props.drawerViewModel.close();
     }
   }, {
     key: "getVisibilityClass",
     value: function getVisibilityClass() {
-      return this.props.drawerViewModel.isOpen ? 'open' : 'hidden';
+      return this.props.drawerViewModel && this.props.drawerViewModel.isOpen ? 'open' : 'hidden';
     }
   }, {
     key: "render",
@@ -42683,14 +44526,18 @@ function (_React$Component) {
           top: 0,
           right: 0,
           bottom: 0,
-          width: '100px',
-          backgroundColor: 'salmon',
-          zIndex: 10000
+          width: '800px',
+          backgroundColor: '#A7CCEB',
+          padding: 20,
+          zIndex: 10000,
+          boxShadow: '0 0 20px rgba(0, 0, 0, 0.7)'
         },
-        className: "myClassName ".concat(this.getVisibilityClass())
+        className: "myClassName myDrawer ".concat(this.getVisibilityClass())
       }, _react.default.createElement("button", {
-        onClick: this.hideDrawer
-      }, "\xD7"), "TEST");
+        onClick: this.closeDrawer
+      }, "\xD7"), this.props.drawerViewModel && this.props.drawerViewModel.contentType === 'guideline' && _react.default.createElement(_DrawerGuidelineContent.default, {
+        content: this.props.drawerViewModel.content
+      }));
     }
   }]);
 
@@ -42701,10 +44548,118 @@ exports.default = Drawer;
 
 /***/ }),
 
-/***/ "./www/src/js/components/drawer/OpenDrawerButton.jsx":
-/*!***********************************************************!*\
-  !*** ./www/src/js/components/drawer/OpenDrawerButton.jsx ***!
-  \***********************************************************/
+/***/ "./www/src/js/components/drawer/DrawerGuidelineContent.jsx":
+/*!*****************************************************************!*\
+  !*** ./www/src/js/components/drawer/DrawerGuidelineContent.jsx ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _marked = _interopRequireDefault(__webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js"));
+
+var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+
+var _class;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var DrawerGuidelineContent = (0, _mobxReact.observer)(_class =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DrawerGuidelineContent, _React$Component);
+
+  function DrawerGuidelineContent() {
+    _classCallCheck(this, DrawerGuidelineContent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DrawerGuidelineContent).apply(this, arguments));
+  }
+
+  _createClass(DrawerGuidelineContent, [{
+    key: "getAntibioticTherapyMarkup",
+
+    /**
+     * Rendered markdown contains HTML tags; in order to render them, we must use
+     * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
+     * unauthorized people.
+     */
+    value: function getAntibioticTherapyMarkup(antibioticTherapy) {
+      return {
+        __html: (0, _marked.default)(antibioticTherapy.markdownText)
+      };
+    }
+    /**
+     * See this.getAntibioticTherapyMarkup()
+     */
+
+  }, {
+    key: "getDiagnosisMarkup",
+    value: function getDiagnosisMarkup(diagnosis) {
+      return {
+        __html: (0, _marked.default)(diagnosis.markdownText)
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var guideline = this.props.content;
+      var diagnosis = guideline.selectedDiagnosis;
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, diagnosis.name), _react.default.createElement("p", null, diagnosis.diagnosisClass.name), _react.default.createElement("p", null, _react.default.createElement("em", null, guideline.name)), _react.default.createElement("p", null, "Alle Guidelines und Dosierung sind kritisch zu hinterfragen und in eigener Verantwortung anzuwenden. Dies setzt immer eine geeignete medizinische Ausbildung voraus. Disclaimer"), diagnosis.therapies.map(function (therapy) {
+        return _react.default.createElement("div", {
+          key: therapy.priority.order
+        }, _react.default.createElement("h3", null, therapy.priority.order, " ", therapy.priority.name), therapy.recommendedAntibiotics.map(function (antibiotic) {
+          return _react.default.createElement("div", {
+            key: antibiotic.antibiotic.id
+          }, _react.default.createElement("div", {
+            dangerouslySetInnerHTML: _this.getAntibioticTherapyMarkup(antibiotic)
+          }));
+        }));
+      }), _react.default.createElement("div", {
+        dangerouslySetInnerHTML: this.getDiagnosisMarkup(diagnosis)
+      }));
+    }
+  }]);
+
+  return DrawerGuidelineContent;
+}(_react.default.Component)) || _class;
+
+exports.default = DrawerGuidelineContent;
+
+/***/ }),
+
+/***/ "./www/src/js/components/drawer/OpenDiagnosisDrawerButton.jsx":
+/*!********************************************************************!*\
+  !*** ./www/src/js/components/drawer/OpenDiagnosisDrawerButton.jsx ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42720,7 +44675,9 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_mod
 
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 
-var _class;
+var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+
+var _class, _class2;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42742,45 +44699,58 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-var OpenDrawerButton = (0, _mobxReact.observer)(_class =
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
+
+var OpenDiagnosisDrawerButton = (0, _mobxReact.observer)(_class = (_class2 =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(OpenDrawerButton, _React$Component);
+  _inherits(OpenDiagnosisDrawerButton, _React$Component);
 
-  function OpenDrawerButton() {
+  function OpenDiagnosisDrawerButton() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, OpenDrawerButton);
+    _classCallCheck(this, OpenDiagnosisDrawerButton);
 
     for (var _len = arguments.length, props = new Array(_len), _key = 0; _key < _len; _key++) {
       props[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(OpenDrawerButton)).call.apply(_getPrototypeOf2, [this].concat(props)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(OpenDiagnosisDrawerButton)).call.apply(_getPrototypeOf2, [this].concat(props)));
     _this.openDrawer = _this.openDrawer.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
-  _createClass(OpenDrawerButton, [{
+  _createClass(OpenDiagnosisDrawerButton, [{
     key: "openDrawer",
     value: function openDrawer() {
       this.props.drawerViewModel.open();
     }
+    /**
+     * Button shall only be displayed if drawer's content references a Guideline. If drawer is
+     * used for other content (or drawer is already visible), button shall be hidden.
+     */
+
   }, {
     key: "render",
     value: function render() {
+      if (!this.isVisible) return null;
       return _react.default.createElement("button", {
         onClick: this.openDrawer
-      }, "Show Drawer");
+      }, "Show Guideline");
+    }
+  }, {
+    key: "isVisible",
+    get: function get() {
+      return this.props.drawerViewModel && this.props.drawerViewModel.contentType === 'guideline' && this.props.drawerViewModel.isOpen === false;
     }
   }]);
 
-  return OpenDrawerButton;
-}(_react.default.Component)) || _class;
+  return OpenDiagnosisDrawerButton;
+}(_react.default.Component), (_applyDecoratedDescriptor(_class2.prototype, "isVisible", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "isVisible"), _class2.prototype)), _class2)) || _class;
 
-exports.default = OpenDrawerButton;
+exports.default = OpenDiagnosisDrawerButton;
 
 /***/ }),
 
@@ -42803,6 +44773,8 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_mod
 
 var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
 
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js"));
+
 var _generateFilterList = _interopRequireDefault(__webpack_require__(/*! ./generateFilterList */ "./www/src/js/components/filterList/generateFilterList.js"));
 
 var _filterListCheckbox = _interopRequireDefault(__webpack_require__(/*! ../filterListCheckbox/filterListCheckbox.jsx */ "./www/src/js/components/filterListCheckbox/filterListCheckbox.jsx"));
@@ -42821,13 +44793,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var log = (0, _debug.default)('infect:GuidelinesFilterList');
 
 var GuidelinesFilterList = (0, _mobxReact.observer)(_class =
 /*#__PURE__*/
@@ -42835,23 +44809,46 @@ function (_React$Component) {
   _inherits(GuidelinesFilterList, _React$Component);
 
   function GuidelinesFilterList() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, GuidelinesFilterList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(GuidelinesFilterList).apply(this, arguments));
+    for (var _len = arguments.length, props = new Array(_len), _key = 0; _key < _len; _key++) {
+      props[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(GuidelinesFilterList)).call.apply(_getPrototypeOf2, [this].concat(props)));
+    _this.selectDiagnosis = _this.selectDiagnosis.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(GuidelinesFilterList, [{
+    key: "selectDiagnosis",
+    value: function selectDiagnosis(diagnosis) {
+      log('Update selected diagnosis to %o', diagnosis);
+      this.props.guidelines.selectedGuideline.selectDiagnosis(diagnosis);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      // Only display guideline if they were loaded and guideline was selected
+      if (!this.props.guidelines || !this.props.guidelines.selectedGuideline) return null;
       return _react.default.createElement("ul", {
         className: "group__list group__list--vertical"
-      }, // Only map through diagnoses after selectedGuideline has been set
-      this.props.guidelines.selectedGuideline && this.props.guidelines.selectedGuideline.diagnoses.map(function (diagnosis) {
+      }, this.props.guidelines.selectedGuideline.diagnoses.map(function (diagnosis) {
         return _react.default.createElement(_filterListCheckbox.default, {
           key: diagnosis.id,
           inputName: "diagnosis",
           name: diagnosis.name,
-          inputType: "radio"
+          inputType: "radio",
+          checked: diagnosis === _this2.props.guidelines.selectedGuideline.selectedDiagnosis,
+          onChangeHandler: function onChangeHandler() {
+            return _this2.selectDiagnosis(diagnosis);
+          }
         });
       }));
     }
@@ -46976,6 +48973,131 @@ exports.default = Notifications;
 
 /***/ }),
 
+/***/ "./www/src/js/components/selectedFilters/SelectedDiagnosisFilter.jsx":
+/*!***************************************************************************!*\
+  !*** ./www/src/js/components/selectedFilters/SelectedDiagnosisFilter.jsx ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+
+var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+
+var _class, _class2;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
+
+/**
+ * Represents a single selected diagnosis guideline in filter bar through whichd iagnosis can be
+ * removed.
+ */
+var SelectedDiagnosisFilter = (0, _mobxReact.observer)(_class = (_class2 =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SelectedDiagnosisFilter, _React$Component);
+
+  function SelectedDiagnosisFilter() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, SelectedDiagnosisFilter);
+
+    for (var _len = arguments.length, props = new Array(_len), _key = 0; _key < _len; _key++) {
+      props[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectedDiagnosisFilter)).call.apply(_getPrototypeOf2, [this].concat(props)));
+    _this.removeSelectedDiagnosis = _this.removeSelectedDiagnosis.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(SelectedDiagnosisFilter, [{
+    key: "removeSelectedDiagnosis",
+    value: function removeSelectedDiagnosis() {
+      this.props.guidelines.selectedGuideline.selectDiagnosis();
+    }
+    /**
+     * Returns currently selected diagnosis
+     * @return {Diagnosis}      Selected diagnosis or undefined if none is selected
+     */
+
+  }, {
+    key: "render",
+    value: function render() {
+      if (!this.visible) return null;
+      return _react.default.createElement("div", {
+        className: "group group--black-font"
+      }, _react.default.createElement("h2", null, "Guideline"), _react.default.createElement("ul", {
+        className: "group__list"
+      }, _react.default.createElement("li", {
+        className: "group__list-item list-item"
+      }, _react.default.createElement("div", {
+        className: "label label--rounded"
+      }, _react.default.createElement("p", {
+        className: "label--smaller label--nomargin"
+      }, "Diagnosis"), _react.default.createElement("p", {
+        className: "label--bold label--nomargin"
+      }, this.selectedDiagnosis.name)), _react.default.createElement("button", {
+        onClick: this.removeSelectedDiagnosis,
+        className: "button button--label"
+      }, _react.default.createElement("span", null, "\xD7")))));
+    }
+  }, {
+    key: "selectedDiagnosis",
+    get: function get() {
+      return this.props.guidelines && this.props.guidelines.selectedGuideline && this.props.guidelines.selectedGuideline.selectedDiagnosis;
+    }
+    /**
+     * Only show selected diagnosis filter if a diagnosis was selected
+     * @return {Bool}
+     */
+
+  }, {
+    key: "visible",
+    get: function get() {
+      return !!this.selectedDiagnosis;
+    }
+  }]);
+
+  return SelectedDiagnosisFilter;
+}(_react.default.Component), (_applyDecoratedDescriptor(_class2.prototype, "selectedDiagnosis", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "selectedDiagnosis"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "visible", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "visible"), _class2.prototype)), _class2)) || _class;
+
+exports.default = SelectedDiagnosisFilter;
+
+/***/ }),
+
 /***/ "./www/src/js/components/selectedFilters/selectedFilter.jsx":
 /*!******************************************************************!*\
   !*** ./www/src/js/components/selectedFilters/selectedFilter.jsx ***!
@@ -47034,7 +49156,7 @@ function (_React$Component) {
       var _this = this;
 
       return _react.default.createElement("li", {
-        className: "group__list-item list-item ".concat(this.props.type === 'diagnoses' && 'list-item--diagnosis')
+        className: "group__list-item list-item"
       }, _react.default.createElement("div", {
         className: "label label--rounded"
       }, _react.default.createElement("p", {
@@ -47429,7 +49551,9 @@ var _infoOverlayButton = _interopRequireDefault(__webpack_require__(/*! ./compon
 
 var _Drawer = _interopRequireDefault(__webpack_require__(/*! ./components/drawer/Drawer.jsx */ "./www/src/js/components/drawer/Drawer.jsx"));
 
-var _OpenDrawerButton = _interopRequireDefault(__webpack_require__(/*! ./components/drawer/OpenDrawerButton.jsx */ "./www/src/js/components/drawer/OpenDrawerButton.jsx"));
+var _SelectedDiagnosisFilter = _interopRequireDefault(__webpack_require__(/*! ./components/selectedFilters/SelectedDiagnosisFilter */ "./www/src/js/components/selectedFilters/SelectedDiagnosisFilter.jsx"));
+
+var _OpenDiagnosisDrawerButton = _interopRequireDefault(__webpack_require__(/*! ./components/drawer/OpenDiagnosisDrawerButton.jsx */ "./www/src/js/components/drawer/OpenDiagnosisDrawerButton.jsx"));
 
 var _configBeta = _interopRequireDefault(__webpack_require__(/*! ../config/config.beta.js */ "./www/src/config/config.beta.js"));
 
@@ -47439,22 +49563,13 @@ var _guidedTour2 = _interopRequireDefault(__webpack_require__(/*! ./models/guide
 
 var _infoOverlay2 = _interopRequireDefault(__webpack_require__(/*! ./models/infoOverlay/infoOverlay */ "./www/src/js/models/infoOverlay/infoOverlay.js"));
 
-var _class, _descriptor;
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
-
-function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and set to use loose mode. ' + 'To use proposal-class-properties in spec mode with decorators, wait for ' + 'the next major version of decorators in stage 2.'); }
-
+/**
+* Bootstrap of the Infect application's frontend
+*/
+// Not needed here, but error is thrown if we don't import it
+// Models limited to web app
 var log = (0, _debug.default)('infect:Main');
 (0, _mobx.configure)({
   enforceActions: 'always'
@@ -47477,37 +49592,7 @@ try {
 
 
 var infoOverlayModel = new _infoOverlay2.default();
-var guidedTourModel = new _guidedTour2.default(infoOverlayModel);
-var DrawerViewModel = (_class =
-/*#__PURE__*/
-function () {
-  function DrawerViewModel() {
-    _classCallCheck(this, DrawerViewModel);
-
-    _initializerDefineProperty(this, "isOpen", _descriptor, this);
-  }
-
-  _createClass(DrawerViewModel, [{
-    key: "open",
-    value: function open() {
-      this.isOpen = true;
-    }
-  }, {
-    key: "close",
-    value: function close() {
-      this.isOpen = false;
-    }
-  }]);
-
-  return DrawerViewModel;
-}(), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isOpen", [_mobx.observable], {
-  enumerable: true,
-  initializer: function initializer() {
-    return false;
-  }
-}), _applyDecoratedDescriptor(_class.prototype, "open", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "open"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "close", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "close"), _class.prototype)), _class);
-var drawerViewModel = new DrawerViewModel();
-console.error(drawerViewModel); // React
+var guidedTourModel = new _guidedTour2.default(infoOverlayModel); // React
 
 log('views:', app.views);
 /* global document */
@@ -47572,19 +49657,19 @@ function renderReact() {
     infoOverlay: infoOverlayModel
   }), document.querySelector('InfoOverlayButton'));
 
-  _reactDom.default.render(_react.default.createElement(_OpenDrawerButton.default, {
-    drawerViewModel: drawerViewModel
-  }), document.querySelector('OpenDrawerButton'));
-
-  _reactDom.default.render(_react.default.createElement(_OpenDrawerButton.default, {
-    drawerViewModel: drawerViewModel
-  }), document.querySelector('OpenDrawerButton'));
+  _reactDom.default.render(_react.default.createElement(_OpenDiagnosisDrawerButton.default, {
+    drawerViewModel: app.views.drawer
+  }), document.querySelector('OpenDiagnosisDrawerButton'));
 
   _reactDom.default.render(_react.default.createElement(_notifications.default, null), document.querySelector('Notifications'));
 
   _reactDom.default.render(_react.default.createElement(_Drawer.default, {
-    drawerViewModel: drawerViewModel
+    drawerViewModel: app.views.drawer
   }), document.querySelector('Drawer'));
+
+  _reactDom.default.render(_react.default.createElement(_SelectedDiagnosisFilter.default, {
+    guidelines: app.guidelines
+  }), document.querySelector('SelectedDiagnosisFilter'));
 } // Edge fails on reloads, sometimes. *Might* be a caching issue where cached JS is executed before
 // it appears in DOM. Wait until dom is loaded – just to be sure.
 

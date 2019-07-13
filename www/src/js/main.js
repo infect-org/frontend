@@ -24,7 +24,8 @@ import AppBanner from './components/appBanner/appBanner';
 import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
 import Drawer from './components/drawer/Drawer.jsx';
-import OpenDrawerButton from './components/drawer/OpenDrawerButton.jsx';
+import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter';
+import OpenDiagnosisDrawerButton from './components/drawer/OpenDiagnosisDrawerButton.jsx';
 
 import betaConfig from '../config/config.beta.js';
 import liveConfig from '../config/config.live.js';
@@ -59,19 +60,6 @@ try {
 // Web specific frontend models
 const infoOverlayModel = new InfoOverlayModel();
 const guidedTourModel = new GuidedTourModel(infoOverlayModel);
-
-
-class DrawerViewModel {
-    @observable isOpen = false;
-    @action open() {
-        this.isOpen = true;
-    }
-    @action close() {
-        this.isOpen = false;
-    }
-}
-const drawerViewModel = new DrawerViewModel();
-console.error(drawerViewModel);
 
 
 // React
@@ -160,13 +148,8 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <OpenDrawerButton drawerViewModel={drawerViewModel} />,
-        document.querySelector('OpenDrawerButton'),
-    );
-
-    ReactDOM.render(
-        <OpenDrawerButton drawerViewModel={drawerViewModel} />,
-        document.querySelector('OpenDrawerButton'),
+        <OpenDiagnosisDrawerButton drawerViewModel={app.views.drawer} />,
+        document.querySelector('OpenDiagnosisDrawerButton'),
     );
 
     ReactDOM.render(
@@ -175,8 +158,13 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <Drawer drawerViewModel={drawerViewModel} />,
+        <Drawer drawerViewModel={app.views.drawer} />,
         document.querySelector('Drawer'),
+    );
+
+    ReactDOM.render(
+        <SelectedDiagnosisFilter guidelines={app.guidelines} />,
+        document.querySelector('SelectedDiagnosisFilter'),
     );
 
 }

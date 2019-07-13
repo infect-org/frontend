@@ -27,6 +27,7 @@
     "ee-types": "2.x",
     "infect-frontend-logic": "^2.2.2",
     "intro.js": "^2.9.3",
+    "marked": "^0.7.0",
     "mobx": "4.4.2",
     "mobx-react": "^5.2.8",
     "mobx-utils": "^4.0.1",
