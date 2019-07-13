@@ -29,7 +29,7 @@ export default function generateFilterList(Component) {
                     className={`group group--padding ${this.props.additionalClassNames}`}
                     id={`js-filter-list-${this.props.identifier}`}
                 >
-                    <h1>{ this.translations[this.props.identifier] }</h1>
+                    <h1>{this.translations[this.props.identifier]}</h1>
                     <Component {...this.props}/>
                 </div>
             );

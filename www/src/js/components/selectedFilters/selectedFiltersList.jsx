@@ -13,7 +13,6 @@ export default class SelectedFiltersList extends React.Component {
 	render() {
 		return (
             <div className="top-navigation__active-filters groups">
-            	<SelectedFiltersForType type="diagnoses" selectedFilters={[{ value: 'Diagnosenname', niceValue: 'Diagnosenname', property: { name: 'Diagnose', niceName: 'Diagnose' } }]}/>
                 <SelectedFiltersForType type="antibiotics" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.antibiotic)} />
             	<SelectedFiltersForType type="substanceClasses" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.substanceClass)} />
             	<SelectedFiltersForType type="bacteria" removeFilter={this.removeFilter.bind(this)} selectedFilters={this.props.selectedFilters.getFiltersByType(filterTypes.bacterium)} />

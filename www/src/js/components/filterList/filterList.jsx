@@ -25,25 +25,33 @@ class FilterList extends React.Component {
                 { this.bacteriaFilters.length > 0 &&
                     <div>
                         { this.props.mostUsedFilters.mostUsedFilters.length > 0 &&
-                            [<MostUsedFiltersList identifier="mostUsed"
-                                mostUsedFilters={ this.props.mostUsedFilters }
-                                selectedFilters={ this.props.selectedFilters } key="content" />,
-                            <hr className="divider" key="divider" />]
+                            [
+                                <MostUsedFiltersList
+                                    identifier="mostUsed"
+                                    mostUsedFilters={ this.props.mostUsedFilters }
+                                    selectedFilters={ this.props.selectedFilters }
+                                    key="content"
+                                />,
+                                <hr className="divider" key="divider" />,
+                            ]
                         }
                         <GuidelinesFilterList
                             identifier="guidelines"
                             additionalClassNames="guidelines-selector-for-fabian-blue-background"
                             guidelines={this.props.guidelines}
                         />
-                        <AntibioticsFilterList identifier="antibiotics"
+                        <AntibioticsFilterList
+                            identifier="antibiotics"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters } />
                         <hr className="divider" />
-                        <BacteriaFilterList identifier="bacteria"
+                        <BacteriaFilterList
+                            identifier="bacteria"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters } />
                         <hr className="divider" />
-                        <PopulationFilterList identifier="population"
+                        <PopulationFilterList
+                            identifier="population"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters }
                             offsetFilters={ this.props.offsetFilters }/>

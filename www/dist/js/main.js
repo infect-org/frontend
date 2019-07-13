@@ -49369,16 +49369,6 @@ function (_React$Component) {
       return _react.default.createElement("div", {
         className: "top-navigation__active-filters groups"
       }, _react.default.createElement(_selectedFiltersForType.default, {
-        type: "diagnoses",
-        selectedFilters: [{
-          value: 'Diagnosenname',
-          niceValue: 'Diagnosenname',
-          property: {
-            name: 'Diagnose',
-            niceName: 'Diagnose'
-          }
-        }]
-      }), _react.default.createElement(_selectedFiltersForType.default, {
         type: "antibiotics",
         removeFilter: this.removeFilter.bind(this),
         selectedFilters: this.props.selectedFilters.getFiltersByType(_infectFrontendLogic.filterTypes.antibiotic)
