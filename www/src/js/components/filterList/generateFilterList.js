@@ -15,18 +15,13 @@ export default function generateFilterList(Component) {
                 antibiotics: 'Filters for Antibiotics',
                 population: 'Population and Offsets',
                 mostUsed: 'Favorites',
-                guidelines: 'Guidelines',
             };
         }
 
         render() {
-            /**
-             * Guidelines need their own class (for blue background color), therefore we must be
-             * able to pass in additional class names.
-             */
             return (
                 <div
-                    className={`group group--padding ${this.props.additionalClassNames}`}
+                    className="group group--padding"
                     id={`js-filter-list-${this.props.identifier}`}
                 >
                     <h1>{this.translations[this.props.identifier]}</h1>
