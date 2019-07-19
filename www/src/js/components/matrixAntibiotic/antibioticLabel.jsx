@@ -5,10 +5,25 @@ import getVisibilityClassModifier from '../../helpers/getVisibilityClassModifier
 
 export default @observer class AntibioticLabel extends React.Component {
 
-    constructor() {
-        super();
-        this._wasVisible = true;
-    }
+    /**
+     * Radius for blue circle that is displayed if label's antibiotic is relevant for selected
+     * guideline/diagnosis
+     * @private
+     */
+    guidelineCircleRadius = 10;
+
+    /**
+     * Space between multiple (blue) guideline circles or guideline circle and subsequent text
+     * @private
+     */
+    spaceBetweenGuidelineCircles = 4;
+
+    /**
+     * To animate label correctly, we must know if its visibility has changed with the latest
+     * update.
+     * @private
+     */
+    _wasVisible = true;
 
     componentDidMount() {
         this._setupResizeListener();
@@ -77,10 +92,53 @@ export default @observer class AntibioticLabel extends React.Component {
         window.addEventListener('resize', () => this._setDimensions());
     }
 
+    /**
+     * If mouse hovers resistance that relates to this label's antibiotic, highlight it.
+     * @return {String}         Class name to add to label
+     */
     @computed get highlightClass() {
         const { activeResistance } = this.props.matrix;
         if (!activeResistance) return '';
-        return this.props.antibiotic.antibiotic === activeResistance.resistance.antibiotic ? 'highlight' : '';
+        return this.props.antibiotic.antibiotic === activeResistance.resistance.antibiotic ?
+            'highlight' : '';
+    }
+
+    /**
+     * If this antibiotic is relevant for the selected diagnosis, it should be colored blue. Do
+     * this by returning the corresponding class
+     * @return {String}         Class name to add to antibiotic text
+     */
+    @computed get guidelineClass() {
+        return this.therapiesForSelectedDiagnosisAndAntibiotic.length > 0 ?
+            'containsGuidelineData' : '';
+    }
+
+    /**
+     * Checks if the current antibiotic is recommended in one or more therapies of the selected
+     * diagnosis/guideline.
+     * @return {[Number]|undefined}      Array of all the relevant therapies' orders (or [] if not
+     *                                   relevant)
+     */
+    @computed get therapiesForSelectedDiagnosisAndAntibiotic() {
+
+        const diagnosis = this.props.guidelines &&
+            this.props.guidelines.selectedGuideline &&
+            this.props.guidelines.selectedGuideline.selectedDiagnosis;
+
+        if (!diagnosis) return [];
+
+        return diagnosis.therapies
+            .filter(therapy => therapy.containsAntibiotic(this.props.antibiotic.antibiotic))
+            .map(therapy => therapy.priority.order);
+
+    }
+
+    /**
+     * Returns diameter of guideline circle (2 * radius) plus space
+     * @return {Number}
+     */
+    get totalGuidelineCircleWidth() {
+        return (this.guidelineCircleRadius * 2) + this.spaceBetweenGuidelineCircles;
     }
 
     render() {
@@ -90,10 +148,48 @@ export default @observer class AntibioticLabel extends React.Component {
                 style={{ visibility: this.props.matrix.defaultRadius ? 'visible' : 'hidden' }}
                 className={`resistanceMatrix__antibioticLabel ${this.classModifier}`}
             >
+                {/* Add circle with priority number if current antibiotic is relevant for the
+                    selected guideline/diagnosis */}
+                {this.therapiesForSelectedDiagnosisAndAntibiotic &&
+                    this.therapiesForSelectedDiagnosisAndAntibiotic.map((order, index) => (
+                        <g key={order}>
+                            <circle
+                                r={this.guidelineCircleRadius}
+                                /**
+                                 * Move x coordinate with every circle by (diameter + space) plus
+                                 * 10px as basis shift)
+                                 */
+                                cx={(index * this.totalGuidelineCircleWidth) + 9}
+                                cy="-13"
+                                className="resistanceMatrix__antibioticLabelGuidelinePriorityCircle"
+                            />
+                            <text
+                                dy="-9"
+                                /**
+                                 * Move x coordinate with every text/circle by (diameter + space)
+                                 * plus 5px as basis shift)
+                                 */
+                                dx={5 + (this.totalGuidelineCircleWidth * index)}
+                                className="resistanceMatrix__antibioticLabelGuidelinePriorityText"
+                            >
+                                {order}
+                            </text>
+                        </g>
+                    ))
+                }
                 <text
                     dy="-9"
                     ref={this._setTextElement}
-                    className={`resistanceMatrix__antibioticLabelText ${this.highlightClass}`}
+                    /**
+                     * If antibiotic is relevant for selected guideline/diagnosis, shift label's x
+                     * coordinate by amount of circles that are displayed in front of it
+                     * (diameter + space)
+                     */
+                    dx={
+                        this.therapiesForSelectedDiagnosisAndAntibiotic.length *
+                        this.totalGuidelineCircleWidth
+                    }
+                    className={`resistanceMatrix__antibioticLabelText ${this.highlightClass} ${this.guidelineClass}`}
                 >
                     {this.props.antibiotic.antibiotic.name}
                 </text>

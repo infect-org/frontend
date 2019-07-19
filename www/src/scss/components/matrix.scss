@@ -9,6 +9,7 @@ matrixheader {
 
 .resistanceMatrix {
 
+    /** @type {Number} Slow down all animations (for debugging purposes) */
     $slowdown-factor: 1;
 
 
@@ -23,15 +24,20 @@ matrixheader {
         * (animations/transition)
         */
         .-was-visible-is-visible {
-            transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
+            /* Wait until newly invisibles were faded out, then move */
+            transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out calc(#{$slowdown-factor} * 0.1s)
         }
 
         .-was-hidden-is-visible {
-            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out calc(#{$slowdown-factor} * 0.3s);
+            /* Only fade in after
+                a) newly hiddens were hidden and
+                b) (unchanged) visibles were moved */
+            transition: opacity calc(#{$slowdown-factor} * 0.1s) ease-in-out calc(#{$slowdown-factor} * 0.4s);
         }
 
         .-was-visible-is-hidden {
-            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out;
+            /* Fade out tutswitt to not block or slow down UI */
+            transition: opacity calc(#{$slowdown-factor} * 0.1s) ease-in-out;
         }
 
         .-was-hidden-is-hidden,
@@ -87,6 +93,7 @@ matrixheader {
 
     &__body {
         position: relative;
+        transition: height calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
     }
 
     &__header {
@@ -123,6 +130,23 @@ matrixheader {
             text-decoration: underline;
         }
 
+        &.containsGuidelineData {
+            /* FABIAN! */
+            fill: #3289CC;
+        }
+
+    }
+
+    &__antibioticLabelGuidelinePriorityCircle {
+        /* FABIAAAAAAN! */
+        fill: #3289CC;
+    }
+
+    &__antibioticLabelGuidelinePriorityText {
+        /* FABIAAAAAAN! */
+        fill: white;
+        font-family: $font-family--sans-serif;
+        font-weight: bold;
     }
 
     &__substanceClassLabel {

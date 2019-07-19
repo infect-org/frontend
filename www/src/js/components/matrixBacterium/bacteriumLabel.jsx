@@ -44,7 +44,7 @@ export default @observer class BacteriumLabel extends React.Component {
         const pos = this.props.matrix.yPositions.get(this.props.bacterium);
         // If pos is not available (because bacterium is hidden) return previous top – we don't
         // want to move labels if not necessary (as they're invisible; performance)
-        const top = pos ? pos.top : this._previousTop;
+        const top = pos && pos.top !== undefined ? pos.top : (this._previousTop || 0);
         this._previousPosition = { left: 0, top };
         return `translate(0, ${top})`;
     }
@@ -72,13 +72,13 @@ export default @observer class BacteriumLabel extends React.Component {
 
     render() {
         return (
-            <g transform={this.transformation}
-                className={`resistanceMatrix__bacteriumLabel ${this.classModifier}`}>
+            <g
+                transform={this.transformation}
+                className={`resistanceMatrix__bacteriumLabel ${this.classModifier}`}
+            >
                 {/* rect is only used to give the g a height so that text can be aligned middle
                      We have to place label to the right (x) in order for text-anchor to work. */}
                 <text
-                    x={this.props.matrix.defaultRadius}
-                    y={this.props.matrix.defaultRadius}
                     ref={element => this._setTextElement(element)}
                     x={this.props.matrix.bacteriumLabelColumnWidth}
                     className={`resistanceMatrix__bacteriumLabelText ${this.highlightClass}`}

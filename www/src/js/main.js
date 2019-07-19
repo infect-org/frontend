@@ -73,6 +73,7 @@ function renderReact() {
             matrix={app.views.matrix}
             filters={ app.filterValues }
             selectedFilters={app.selectedFilters}
+            guidelines={app.guidelines}
         />,
         document.querySelector('Matrix'),
     );
@@ -82,6 +83,7 @@ function renderReact() {
             matrix={app.views.matrix}
             filters={app.filterValues}
             selectedFilters={app.selectedFilters}
+            guidelines={app.guidelines}
         />,
         document.querySelector('MatrixHeader'),
     );
@@ -103,7 +105,10 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <FilterListMenu mostUsedFilters={app.mostUsedFilters} />,
+        <FilterListMenu
+            mostUsedFilters={app.mostUsedFilters}
+            guidelines={app.guidelines}
+        />,
         document.querySelector('FilterListMenu'),
     );
 

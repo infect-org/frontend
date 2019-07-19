@@ -40,6 +40,7 @@ class FilterList extends React.Component {
                             additionalClassNames="guidelines-selector-for-fabian-blue-background"
                             guidelines={this.props.guidelines}
                         />
+                        <hr className="divider" />
                         <AntibioticsFilterList
                             identifier="antibiotics"
                             filterValues={ this.props.filterValues }

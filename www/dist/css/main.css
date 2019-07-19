@@ -1364,6 +1364,7 @@ matrixheader {
 }
 
 .resistanceMatrix {
+  /** @type {Number} Slow down all animations (for debugging purposes) */
   /* 
     * Only display transitions and custom visibility style when and after the first
     * filter is set 
@@ -1381,15 +1382,20 @@ matrixheader {
 }
 
 .resistanceMatrix .-with-transitions .-was-visible-is-visible {
-  transition: transform 0.3s ease-in-out 0.2s;
+  /* Wait until newly invisibles were faded out, then move */
+  transition: transform 0.3s ease-in-out 0.1s;
 }
 
 .resistanceMatrix .-with-transitions .-was-hidden-is-visible {
-  transition: opacity 0.2s ease-in-out 0.3s;
+  /* Only fade in after
+                a) newly hiddens were hidden and
+                b) (unchanged) visibles were moved */
+  transition: opacity 0.1s ease-in-out 0.4s;
 }
 
 .resistanceMatrix .-with-transitions .-was-visible-is-hidden {
-  transition: opacity 0.2s ease-in-out;
+  /* Fade out tutswitt to not block or slow down UI */
+  transition: opacity 0.1s ease-in-out;
 }
 
 .resistanceMatrix .-with-transitions .-was-hidden-is-hidden,
@@ -1443,6 +1449,7 @@ matrixheader {
 
 .resistanceMatrix__body {
   position: relative;
+  transition: height 0.3s ease-in-out 0.2s;
 }
 
 .resistanceMatrix__header {
@@ -1465,6 +1472,23 @@ matrixheader {
 
 .resistanceMatrix__antibioticLabelText.highlight, .resistanceMatrix__bacteriumLabelText.highlight {
   text-decoration: underline;
+}
+
+.resistanceMatrix__antibioticLabelText.containsGuidelineData, .resistanceMatrix__bacteriumLabelText.containsGuidelineData {
+  /* FABIAN! */
+  fill: #3289CC;
+}
+
+.resistanceMatrix__antibioticLabelGuidelinePriorityCircle {
+  /* FABIAAAAAAN! */
+  fill: #3289CC;
+}
+
+.resistanceMatrix__antibioticLabelGuidelinePriorityText {
+  /* FABIAAAAAAN! */
+  fill: white;
+  font-family: "acumin-pro", "Helvetica Neue", Arial;
+  font-weight: bold;
 }
 
 .resistanceMatrix__substanceClassLabel {

@@ -48,7 +48,7 @@ export default @observer class SubstanceClassLine extends React.Component {
         return (
             <rect
                 width={this._lineWeight}
-                height={this.props.bodyHeight || 0}
+                height={this.props.height || 0}
                 fill={this.props.substanceClass.lineColor}
                 transform={this.transformation}
                 className={`resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body ${this.classModifier}`}

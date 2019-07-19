@@ -10548,7 +10548,7 @@ function () {
 
       this.content = content; // Automatically open whenever content changes
 
-      if (content === undefined) this.close();else this.open();
+      if (content === undefined) this.close(); // else this.open(); This sucks heavily, don't do it.
     }
     /**
      * Returns content type as a string (e.g. 'guideline' if content is a Guideline). Method is used
@@ -11554,6 +11554,9 @@ function () {
       var komplizierteZystitisTherapy2 = new _Therapy.default(1, [{
         antibiotic: sortedAntibiotics[2],
         markdownText: "\n                       Ciprofloxacin 500 mg alle 12 h f\xFCr 7 d\n                    "
+      }, {
+        antibiotic: sortedAntibiotics[0],
+        markdownText: "\n                       Ich komm doppelt vor in dieser Therapie.\n                    "
       }], 2, 'Zweite Wahl');
       var komplizierteZystitis = new _Diagnosis.default(1, 'Komplizierte Zystitis', urinaryTractDiagnosisClass, sortedBacteria.slice(0, 4), 'V.a. **akute Prostatitis**: Therapiedauer mind. 14 d (TMP/SMX oder Ciprofloxacin)', [komplizierteZystitisTherapy1, komplizierteZystitisTherapy2]);
       /** ***********************************************
@@ -11727,45 +11730,70 @@ exports.default = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 /**
  * Represents a therapy that applies to a certain diagnosis. Every diagnosis can be treated with
  * one or multiple therapies.
  */
 var Therapy =
-/**
- * @param {Number} id                          ID (from API)
- * @param {{antibiotic: Antibiotic, markdownText: String}[]} recommendedAntibiotics
- *                                             Antibiotics recommended for treatment
- * @param {Number} priorityOrder               Priority of this therapy for a given diagnosis
- * @param {String} priorityName                Name of the priority, e.g. «First Choice»,
- *                                             «Alternative Choice»
- */
-function Therapy(id) {
-  var recommendedAntibiotics = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  var priorityOrder = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-  var priorityName = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+/*#__PURE__*/
+function () {
+  /**
+   * @param {Number} id                          ID (from API)
+   * @param {{antibiotic: Antibiotic, markdownText: String}[]} recommendedAntibiotics
+   *                                             Antibiotics recommended for treatment
+   * @param {Number} priorityOrder               Priority of this therapy for a given diagnosis
+   * @param {String} priorityName                Name of the priority, e.g. «First Choice»,
+   *                                             «Alternative Choice»
+   */
+  function Therapy(id) {
+    var recommendedAntibiotics = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+    var priorityOrder = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+    var priorityName = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
-  _classCallCheck(this, Therapy);
+    _classCallCheck(this, Therapy);
 
-  if (typeof id !== 'number') {
-    throw new Error("Therapy: First constructor argument (id) must be a number, is ".concat(id, "."));
+    if (typeof id !== 'number') {
+      throw new Error("Therapy: First constructor argument (id) must be a number, is ".concat(id, "."));
+    }
+
+    if (typeof priorityOrder !== 'number') {
+      throw new Error("Therapy: Constructor argument priorityOrder must be a number, is ".concat(priorityOrder, "."));
+    }
+
+    if (typeof priorityName !== 'string') {
+      throw new Error("Therapy: Constructor argument priorityName must be a string, is ".concat(priorityName, "."));
+    }
+
+    this.id = id;
+    this.recommendedAntibiotics = recommendedAntibiotics;
+    this.priority = {
+      order: priorityOrder,
+      name: priorityName
+    };
   }
+  /**
+   * Returns true if this therapy contains a recommended antibiotic that equals antibiotic passed
+   * as param.
+   * @param  {Antibiotic} antibiotic
+   * @return {Boolean}
+   */
 
-  if (typeof priorityOrder !== 'number') {
-    throw new Error("Therapy: Constructor argument priorityOrder must be a number, is ".concat(priorityOrder, "."));
-  }
 
-  if (typeof priorityName !== 'string') {
-    throw new Error("Therapy: Constructor argument priorityName must be a string, is ".concat(priorityName, "."));
-  }
+  _createClass(Therapy, [{
+    key: "containsAntibiotic",
+    value: function containsAntibiotic(antibiotic) {
+      return this.recommendedAntibiotics.filter(function (recommendation) {
+        return recommendation.antibiotic === antibiotic;
+      }).length > 0;
+    }
+  }]);
 
-  this.id = id;
-  this.recommendedAntibiotics = recommendedAntibiotics;
-  this.priority = {
-    order: priorityOrder,
-    name: priorityName
-  };
-};
+  return Therapy;
+}();
 
 exports.default = Therapy;
 
@@ -12372,6 +12400,23 @@ function () {
       });
       return result;
     }
+    /**
+     * Returns with of all visible antibiotics (corresponds to position.right of the right-most
+     * antibiotic or substance class)
+     * @return {Number}
+     */
+
+  }, {
+    key: "visibleAntibioticsWidth",
+    get: function get() {
+      var rightMostPosition = 0;
+      this.xPositions.forEach(function (position) {
+        // right property is not set if antibiotic is invisble
+        if (position.right === undefined) return;
+        rightMostPosition = Math.max(rightMostPosition, position.right);
+      });
+      return rightMostPosition;
+    }
   }, {
     key: "maxAmountOfSubstanceClassHierarchies",
     get: function get() {
@@ -12422,6 +12467,18 @@ function () {
       });
       return yPositions;
     }
+    /**
+     * Returns the height (in px) for all bacteria that are currently visible.
+     * @return {Number}
+     */
+
+  }, {
+    key: "visibleBacteriaHeight",
+    get: function get() {
+      return Array.from(this.yPositions.values()).reduce(function (prev, yPosition) {
+        return yPosition && yPosition.top > prev ? yPosition.top : prev;
+      }, 0) + (this.defaultRadius || 0);
+    }
   }]);
 
   return MatrixView;
@@ -12468,7 +12525,7 @@ function () {
   initializer: function initializer() {
     return undefined;
   }
-}), _applyDecoratedDescriptor(_class.prototype, "setupDataWatchers", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupDataWatchers"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_clearResistances", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_clearResistances"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addAntibiotic", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "addAntibiotic"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "antibiotics", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "antibiotics"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "substanceClasses", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "substanceClasses"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sortedAntibiotics", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "sortedAntibiotics"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setAntibioticLabelDimensions", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setAntibioticLabelDimensions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateAntibioticLabelRowHeight", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateAntibioticLabelRowHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPositions", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "xPositions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "maxAmountOfSubstanceClassHierarchies", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "maxAmountOfSubstanceClassHierarchies"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setSubstanceClassHeight", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setSubstanceClassHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateGreatestSubstanceClassLabelHeight", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateGreatestSubstanceClassLabelHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "headerHeight", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "headerHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addResistance", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "addResistance"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "resistances", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "resistances"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_updateSampleSizeExtremes", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_updateSampleSizeExtremes"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setActiveResistance", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setActiveResistance"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDimensions", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setDimensions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateDefaultRadius", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateDefaultRadius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addBacterium", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "addBacterium"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeBacterium", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeBacterium"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sortedBacteria", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "sortedBacteria"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sortedVisibleBacteria", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "sortedVisibleBacteria"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setBacteriumLabelWidth", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setBacteriumLabelWidth"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateBacteriumLabelColumnWidth", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateBacteriumLabelColumnWidth"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPositions", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "yPositions"), _class.prototype)), _class));
+}), _applyDecoratedDescriptor(_class.prototype, "setupDataWatchers", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupDataWatchers"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_clearResistances", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_clearResistances"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addAntibiotic", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "addAntibiotic"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "antibiotics", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "antibiotics"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "substanceClasses", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "substanceClasses"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sortedAntibiotics", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "sortedAntibiotics"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setAntibioticLabelDimensions", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setAntibioticLabelDimensions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateAntibioticLabelRowHeight", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateAntibioticLabelRowHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPositions", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "xPositions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "visibleAntibioticsWidth", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "visibleAntibioticsWidth"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "maxAmountOfSubstanceClassHierarchies", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "maxAmountOfSubstanceClassHierarchies"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setSubstanceClassHeight", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setSubstanceClassHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateGreatestSubstanceClassLabelHeight", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateGreatestSubstanceClassLabelHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "headerHeight", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "headerHeight"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addResistance", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "addResistance"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "resistances", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "resistances"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_updateSampleSizeExtremes", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_updateSampleSizeExtremes"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setActiveResistance", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setActiveResistance"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDimensions", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setDimensions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateDefaultRadius", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateDefaultRadius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addBacterium", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "addBacterium"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeBacterium", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeBacterium"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sortedBacteria", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "sortedBacteria"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "sortedVisibleBacteria", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "sortedVisibleBacteria"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setBacteriumLabelWidth", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "setBacteriumLabelWidth"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_calculateBacteriumLabelColumnWidth", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "_calculateBacteriumLabelColumnWidth"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPositions", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "yPositions"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "visibleBacteriaHeight", [_mobx.computed], Object.getOwnPropertyDescriptor(_class.prototype, "visibleBacteriaHeight"), _class.prototype)), _class));
 var _default = MatrixView;
 exports.default = _default;
 
@@ -45461,6 +45518,8 @@ function (_React$Component) {
         identifier: "guidelines",
         additionalClassNames: "guidelines-selector-for-fabian-blue-background",
         guidelines: this.props.guidelines
+      }), _react.default.createElement("hr", {
+        className: "divider"
       }), _react.default.createElement(_antibioticsFilterList.default, {
         identifier: "antibiotics",
         filterValues: this.props.filterValues,
@@ -45552,7 +45611,8 @@ function generateFilterList(Component) {
           bacteria: 'Filters for Bacteria',
           antibiotics: 'Filters for Antibiotics',
           population: 'Population and Offsets',
-          mostUsed: 'Favorites'
+          mostUsed: 'Favorites',
+          guidelines: 'Guidelines'
         };
         return _this;
       }
@@ -46395,10 +46455,20 @@ function (_React$Component) {
     get: function get() {
       var _this4 = this;
 
-      return this.filterSections.filter(function (item) {
-        if (item === 'mostUsed' && _this4.props.mostUsedFilters.mostUsedFilters.length === 0) return false;
+      var visibleButtons = this.filterSections.filter(function (item) {
+        if (item === 'mostUsed' && _this4.props.mostUsedFilters.mostUsedFilters.length === 0) {
+          return false;
+        } // Only display guidelines if they are available on the current tenant
+
+
+        if (item === 'guidelines' && _this4.props.guidelines.getAsArray().length === 0) {
+          return false;
+        }
+
         return true;
       });
+      log('Visible buttons are %o', visibleButtons);
+      return visibleButtons;
     }
   }]);
 
@@ -46406,7 +46476,7 @@ function (_React$Component) {
 }(_react.default.Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "filterSections", [_mobx.observable], {
   enumerable: true,
   initializer: function initializer() {
-    return ['mostUsed', 'antibiotics', 'bacteria', 'population'];
+    return ['mostUsed', 'guidelines', 'antibiotics', 'bacteria', 'population'];
   }
 }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "currentlyActiveSection", [_mobx.observable], {
   enumerable: true,
@@ -47333,6 +47403,10 @@ var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "./node_mod
 
 var _bacteriumLabel = _interopRequireDefault(__webpack_require__(/*! ../matrixBacterium/bacteriumLabel.jsx */ "./www/src/js/components/matrixBacterium/bacteriumLabel.jsx"));
 
+var _BacteriumRowHighlightedBackground = _interopRequireDefault(__webpack_require__(/*! ../matrixBacterium/BacteriumRowHighlightedBackground.jsx */ "./www/src/js/components/matrixBacterium/BacteriumRowHighlightedBackground.jsx"));
+
+var _AntibioticColumnHighlightedBackground = _interopRequireDefault(__webpack_require__(/*! ../matrixAntibiotic/AntibioticColumnHighlightedBackground.jsx */ "./www/src/js/components/matrixAntibiotic/AntibioticColumnHighlightedBackground.jsx"));
+
 var _resistance = _interopRequireDefault(__webpack_require__(/*! ../matrixResistance/resistance.jsx */ "./www/src/js/components/matrixResistance/resistance.jsx"));
 
 var _resistanceDetail = _interopRequireDefault(__webpack_require__(/*! ../matrixResistance/resistanceDetail.jsx */ "./www/src/js/components/matrixResistance/resistanceDetail.jsx"));
@@ -47403,10 +47477,8 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this._setupResizeListener();
-    }
-    /**
-    * Returns height of the whole matrix
-    */
+    } // Use a bound method for ref:
+    // https://github.com/facebook/react/issues/4533#issuecomment-276783714
 
   }, {
     key: "_setDimensions",
@@ -47437,18 +47509,34 @@ function (_React$Component) {
         ref: this._setSVG,
         width: "100%",
         style: {
-          height: this.height,
+          height: this.props.matrix.visibleBacteriaHeight + this.props.matrix.spaceBetweenGroups,
           top: this.props.matrix.headerHeight
         },
         className: "resistanceMatrix__body ".concat(this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions')
-      }, this.props.matrix.defaultRadius && _react.default.createElement("g", {
+      }, this.props.matrix.defaultRadius && _react.default.createElement("g", null, this.props.matrix.sortedAntibiotics.map(function (antibiotic) {
+        return _react.default.createElement(_AntibioticColumnHighlightedBackground.default, {
+          key: antibiotic.antibiotic.id,
+          antibiotic: antibiotic,
+          matrix: _this3.props.matrix,
+          guidelines: _this3.props.guidelines
+        });
+      })), this.props.matrix.defaultRadius && _react.default.createElement("g", {
         transform: this.mainMatrixTransformation
       }, this.props.matrix.substanceClasses.map(function (substanceClass) {
-        return _react.default.createElement(_substanceClassLine.default, {
-          key: substanceClass.substanceClass.id,
-          substanceClass: substanceClass,
+        return (// SubstanceClassLine always has the height of an unfiltered matrix.
+          // It will be cropped when height of the whole matrix changes.
+          _react.default.createElement(_substanceClassLine.default, {
+            key: substanceClass.substanceClass.id,
+            substanceClass: substanceClass,
+            height: (_this3.props.matrix.defaultRadius * 2 + _this3.props.matrix.space) * _this3.props.matrix.sortedBacteria.length + _this3.props.matrix.spaceBetweenGroups
+          })
+        );
+      })), this.props.matrix.defaultRadius && _react.default.createElement("g", null, this.props.matrix.sortedBacteria.map(function (bacterium) {
+        return _react.default.createElement(_BacteriumRowHighlightedBackground.default, {
+          key: bacterium.bacterium.id,
+          bacterium: bacterium,
           matrix: _this3.props.matrix,
-          bodyHeight: _this3.visibleBacteriaHeight
+          guidelines: _this3.props.guidelines
         });
       })), _react.default.createElement("g", {
         className: "resistanceMatrix__bacteriaLabels"
@@ -47474,36 +47562,10 @@ function (_React$Component) {
       }))));
     }
   }, {
-    key: "height",
-    get: function get() {
-      if (!this.props.matrix.defaultRadius) return 0; // Height: All bact labels + ab label + space between ab label and matrix (matrix.space +
-      // matrix.radius), see bacteriumLabel
-
-      return this.bodyHeight;
-    } // Use a bound method for ref:
-    // https://github.com/facebook/react/issues/4533#issuecomment-276783714
-
-  }, {
     key: "mainMatrixTransformation",
     get: function get() {
       var left = this.props.matrix.bacteriumLabelColumnWidth + this.props.matrix.spaceBetweenGroups;
       return "translate(".concat(left, ", 0)");
-    }
-    /**
-    * Returns height of the matrix' body (circles).
-    */
-
-  }, {
-    key: "bodyHeight",
-    get: function get() {
-      // Always display matrix in full height (also for invisible bacteria) or animations will
-      // be cut off at the bottom (height of matrix changes before the bacteria animate)
-      return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedBacteria.length;
-    }
-  }, {
-    key: "visibleBacteriaHeight",
-    get: function get() {
-      return (this.props.matrix.defaultRadius * 2 + this.props.matrix.space) * this.props.matrix.sortedVisibleBacteria.length;
     }
   }]);
 
@@ -47511,7 +47573,7 @@ function (_React$Component) {
 }(_react.default.Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "svg", [_mobx.observable], {
   enumerable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "height", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "height"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mainMatrixTransformation", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "mainMatrixTransformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "bodyHeight", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "bodyHeight"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "visibleBacteriaHeight", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "visibleBacteriaHeight"), _class2.prototype)), _class2)) || _class;
+}), _applyDecoratedDescriptor(_class2.prototype, "mainMatrixTransformation", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "mainMatrixTransformation"), _class2.prototype)), _class2)) || _class;
 
 exports.default = Matrix;
 
@@ -47635,11 +47697,12 @@ function (_React$Component) {
       }), this.props.matrix.bacteriumLabelColumnWidth !== undefined && _react.default.createElement("g", null, _react.default.createElement("g", {
         className: "resistanceMatrix__antibioticsLabels",
         transform: this.headerTransformation
-      }, this.props.matrix.sortedAntibiotics.map(function (ab) {
+      }, this.props.matrix.sortedAntibiotics.map(function (antibiotic) {
         return _react.default.createElement(_antibioticLabel.default, {
-          key: ab.antibiotic.id,
-          antibiotic: ab,
-          matrix: _this3.props.matrix
+          key: antibiotic.antibiotic.id,
+          antibiotic: antibiotic,
+          matrix: _this3.props.matrix,
+          guidelines: _this3.props.guidelines
         });
       })), this.props.matrix.defaultRadius !== undefined && _react.default.createElement("g", {
         transform: this.headerTransformation
@@ -47687,6 +47750,171 @@ function (_React$Component) {
 }), _applyDecoratedDescriptor(_class2.prototype, "_updateScrollLeftPosition", [_mobx.action], Object.getOwnPropertyDescriptor(_class2.prototype, "_updateScrollLeftPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "headerTransformation", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "headerTransformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "headerScrollTransformation", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "headerScrollTransformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sortedSubstanceClasses", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "sortedSubstanceClasses"), _class2.prototype)), _class2)) || _class;
 
 exports.default = MatrixHeader;
+
+/***/ }),
+
+/***/ "./www/src/js/components/matrixAntibiotic/AntibioticColumnHighlightedBackground.jsx":
+/*!******************************************************************************************!*\
+  !*** ./www/src/js/components/matrixAntibiotic/AntibioticColumnHighlightedBackground.jsx ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+
+var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+
+var _getVisibilityClassModifier = _interopRequireDefault(__webpack_require__(/*! ../../helpers/getVisibilityClassModifier.js */ "./www/src/js/helpers/getVisibilityClassModifier.js"));
+
+var _class, _class2;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
+
+var AntibioticColumnHighlightedBackground = (0, _mobxReact.observer)(_class = (_class2 =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AntibioticColumnHighlightedBackground, _React$Component);
+
+  function AntibioticColumnHighlightedBackground() {
+    _classCallCheck(this, AntibioticColumnHighlightedBackground);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AntibioticColumnHighlightedBackground).apply(this, arguments));
+  }
+
+  _createClass(AntibioticColumnHighlightedBackground, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("g", {
+        className: "resistanceMatrix__antibioticColumnHighlightedBackground ".concat(this.transitionClassModifier),
+        transform: "translate(".concat(this.xPosition, ", 0)"),
+        style: {
+          opacity: this.visible ? 1 : 0
+        }
+      }, _react.default.createElement("rect", {
+        height: this.props.matrix.visibleBacteriaHeight + this.props.matrix.spaceBetweenGroups,
+        x: "0",
+        y: "0",
+        width: this.props.matrix.defaultRadius * 2,
+        style: {
+          opacity: this.opacity
+        }
+        /* FABIAN to the rescue! */
+        ,
+        fill: "#A7CCEB"
+      }));
+    }
+  }, {
+    key: "xPosition",
+
+    /**
+     * Returns xPosition of the current highlighted background
+     * @return {Number}     x position
+     */
+    get: function get() {
+      var position = this.props.matrix.xPositions.get(this.props.antibiotic);
+      /**
+       * If antibiotic is not visible, return previous position (to minimize objects that need to
+       * be rendered)
+       */
+
+      if (!position) return this.previousXPosition || 0;
+      var left = position.left + this.props.matrix.bacteriumLabelColumnWidth + this.props.matrix.spaceBetweenGroups;
+      this.previousXPosition = left;
+      return left;
+    }
+    /**
+     * Returns therapies (from selected guideline/diagnosis) that the current antibiotic is
+     * recommended for.
+     * @return {[Therapy]}
+     */
+
+  }, {
+    key: "selectedTherapiesForAntibiotic",
+    get: function get() {
+      var _this = this;
+
+      var diagnosis = this.props.guidelines && this.props.guidelines.selectedGuideline && this.props.guidelines.selectedGuideline.selectedDiagnosis;
+      if (!diagnosis) return [];
+      return diagnosis.therapies.filter(function (therapy) {
+        return therapy.containsAntibiotic(_this.props.antibiotic.antibiotic);
+      });
+    }
+    /**
+     * Returns true if antibiotic is contained in any one therapy that belongs to the currently
+     * selected diagnosis.
+     * @return {Boolean}    Visiblity of the highlighted background
+     */
+
+  }, {
+    key: "visible",
+    get: function get() {
+      return this.props.antibiotic.visible && this.selectedTherapiesForAntibiotic.length > 0;
+    }
+    /**
+     * If background was invisible and becomes visible, we only want to fade it in after all
+     * resistances got their position. Delay is added through a corresponding CSS class.
+     * @return {String}  CSS class to delay animation or not
+     */
+
+  }, {
+    key: "transitionClassModifier",
+    get: function get() {
+      // We must update class whenever position changes; if not, it will stay
+      // -was-hidden-is-visible after long after the first transformation
+      this.xPosition;
+      var modifier = (0, _getVisibilityClassModifier.default)(this.visible, this.wasVisible || false);
+      this.wasVisible = this.visible;
+      return modifier;
+    }
+    /**
+     * Opacity for therapies with priority order 1 should be more opaque.
+     * @return {Number}     Opacity for the highlight depending on matching therapy's priorty
+     */
+
+  }, {
+    key: "opacity",
+    get: function get() {
+      var priorities = this.selectedTherapiesForAntibiotic.map(function (therapy) {
+        return therapy.priority.order;
+      });
+      return priorities.includes(1) ? 0.8 : 0.3;
+    }
+  }]);
+
+  return AntibioticColumnHighlightedBackground;
+}(_react.default.Component), (_applyDecoratedDescriptor(_class2.prototype, "xPosition", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "xPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "selectedTherapiesForAntibiotic", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "selectedTherapiesForAntibiotic"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "visible", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "visible"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "transitionClassModifier", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "transitionClassModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "opacity", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "opacity"), _class2.prototype)), _class2)) || _class;
+
+exports.default = AntibioticColumnHighlightedBackground;
 
 /***/ }),
 
@@ -47743,11 +47971,20 @@ function (_React$Component) {
   _inherits(AntibioticLabel, _React$Component);
 
   function AntibioticLabel() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, AntibioticLabel);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AntibioticLabel).call(this));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AntibioticLabel)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.guidelineCircleRadius = 10;
+    _this.spaceBetweenGuidelineCircles = 4;
+    _this._wasVisible = true;
 
     _this._setTextElement = function (el) {
       if (!el) return;
@@ -47756,7 +47993,6 @@ function (_React$Component) {
       _this._setDimensions();
     };
 
-    _this._wasVisible = true;
     return _this;
   }
 
@@ -47795,19 +48031,56 @@ function (_React$Component) {
         return _this2._setDimensions();
       });
     }
+    /**
+     * If mouse hovers resistance that relates to this label's antibiotic, highlight it.
+     * @return {String}         Class name to add to label
+     */
+
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return _react.default.createElement("g", {
         transform: this.transformation,
         style: {
           visibility: this.props.matrix.defaultRadius ? 'visible' : 'hidden'
         },
         className: "resistanceMatrix__antibioticLabel ".concat(this.classModifier)
-      }, _react.default.createElement("text", {
+      }, this.therapiesForSelectedDiagnosisAndAntibiotic && this.therapiesForSelectedDiagnosisAndAntibiotic.map(function (order, index) {
+        return _react.default.createElement("g", {
+          key: order
+        }, _react.default.createElement("circle", {
+          r: _this3.guidelineCircleRadius
+          /**
+           * Move x coordinate with every circle by (diameter + space) plus
+           * 10px as basis shift)
+           */
+          ,
+          cx: index * _this3.totalGuidelineCircleWidth + 9,
+          cy: "-13",
+          className: "resistanceMatrix__antibioticLabelGuidelinePriorityCircle"
+        }), _react.default.createElement("text", {
+          dy: "-9"
+          /**
+           * Move x coordinate with every text/circle by (diameter + space)
+           * plus 5px as basis shift)
+           */
+          ,
+          dx: 5 + _this3.totalGuidelineCircleWidth * index,
+          className: "resistanceMatrix__antibioticLabelGuidelinePriorityText"
+        }, order));
+      }), _react.default.createElement("text", {
         dy: "-9",
-        ref: this._setTextElement,
-        className: "resistanceMatrix__antibioticLabelText ".concat(this.highlightClass)
+        ref: this._setTextElement
+        /**
+         * If antibiotic is relevant for selected guideline/diagnosis, shift label's x
+         * coordinate by amount of circles that are displayed in front of it
+         * (diameter + space)
+         */
+        ,
+        dx: this.therapiesForSelectedDiagnosisAndAntibiotic.length * this.totalGuidelineCircleWidth,
+        className: "resistanceMatrix__antibioticLabelText ".concat(this.highlightClass, " ").concat(this.guidelineClass)
       }, this.props.antibiotic.antibiotic.name));
     }
   }, {
@@ -47854,12 +48127,219 @@ function (_React$Component) {
       if (!activeResistance) return '';
       return this.props.antibiotic.antibiotic === activeResistance.resistance.antibiotic ? 'highlight' : '';
     }
+    /**
+     * If this antibiotic is relevant for the selected diagnosis, it should be colored blue. Do
+     * this by returning the corresponding class
+     * @return {String}         Class name to add to antibiotic text
+     */
+
+  }, {
+    key: "guidelineClass",
+    get: function get() {
+      return this.therapiesForSelectedDiagnosisAndAntibiotic.length > 0 ? 'containsGuidelineData' : '';
+    }
+    /**
+     * Checks if the current antibiotic is recommended in one or more therapies of the selected
+     * diagnosis/guideline.
+     * @return {[Number]|undefined}      Array of all the relevant therapies' orders (or [] if not
+     *                                   relevant)
+     */
+
+  }, {
+    key: "therapiesForSelectedDiagnosisAndAntibiotic",
+    get: function get() {
+      var _this4 = this;
+
+      var diagnosis = this.props.guidelines && this.props.guidelines.selectedGuideline && this.props.guidelines.selectedGuideline.selectedDiagnosis;
+      if (!diagnosis) return [];
+      return diagnosis.therapies.filter(function (therapy) {
+        return therapy.containsAntibiotic(_this4.props.antibiotic.antibiotic);
+      }).map(function (therapy) {
+        return therapy.priority.order;
+      });
+    }
+    /**
+     * Returns diameter of guideline circle (2 * radius) plus space
+     * @return {Number}
+     */
+
+  }, {
+    key: "totalGuidelineCircleWidth",
+    get: function get() {
+      return this.guidelineCircleRadius * 2 + this.spaceBetweenGuidelineCircles;
+    }
   }]);
 
   return AntibioticLabel;
-}(_react.default.Component), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "classModifier", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "classModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "highlightClass", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "highlightClass"), _class2.prototype)), _class2)) || _class;
+}(_react.default.Component), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "classModifier", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "classModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "highlightClass", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "highlightClass"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "guidelineClass", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "guidelineClass"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "therapiesForSelectedDiagnosisAndAntibiotic", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "therapiesForSelectedDiagnosisAndAntibiotic"), _class2.prototype)), _class2)) || _class;
 
 exports.default = AntibioticLabel;
+
+/***/ }),
+
+/***/ "./www/src/js/components/matrixBacterium/BacteriumRowHighlightedBackground.jsx":
+/*!*************************************************************************************!*\
+  !*** ./www/src/js/components/matrixBacterium/BacteriumRowHighlightedBackground.jsx ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _mobxReact = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/index.module.js");
+
+var _mobx = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+
+var _getVisibilityClassModifier = _interopRequireDefault(__webpack_require__(/*! ../../helpers/getVisibilityClassModifier.js */ "./www/src/js/helpers/getVisibilityClassModifier.js"));
+
+var _class, _class2;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object['ke' + 'ys'](descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object['define' + 'Property'](target, property, desc); desc = null; } return desc; }
+
+var BacteriumRowHighlightedBackground = (0, _mobxReact.observer)(_class = (_class2 =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BacteriumRowHighlightedBackground, _React$Component);
+
+  function BacteriumRowHighlightedBackground() {
+    _classCallCheck(this, BacteriumRowHighlightedBackground);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BacteriumRowHighlightedBackground).apply(this, arguments));
+  }
+
+  _createClass(BacteriumRowHighlightedBackground, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("g", {
+        transform: "translate(0, ".concat(this.yPosition, ")"),
+        style: {
+          opacity: this.opacity
+        },
+        className: "resistanceMatrix__bacteriumRowHighlightedBackground ".concat(this.transitionClassModifier)
+      }, _react.default.createElement("rect", {
+        height: this.height,
+        x: "0",
+        y: "0",
+        width: this.width,
+        style: {
+          opacity: 0.3
+        },
+        fill: "#A7CCEB"
+      }));
+    }
+  }, {
+    key: "yPosition",
+
+    /**
+     * Returns the y position of the current bacterium
+     * @return {Number}
+     */
+    get: function get() {
+      var position = this.props.matrix.yPositions.get(this.props.bacterium);
+      /**
+       * If bacterium is not visible, return previous position (to minimize objects that need to
+       * be rendered)
+       */
+
+      if (!position) return this.previousYPosition || 0;
+      this.previousYPosition = position.top;
+      return position.top;
+    }
+    /**
+     * Returns the width of the whole matrix (visible antibiotics only)
+     * return {Number}
+     */
+
+  }, {
+    key: "width",
+    get: function get() {
+      return this.props.matrix.bacteriumLabelColumnWidth + this.props.matrix.spaceBetweenGroups + this.props.matrix.visibleAntibioticsWidth;
+    }
+    /**
+     * If background was invisible and becomes visible, we only want to fade it in after all
+     * resistances got their position. Delay is added through a corresponding CSS class.
+     * @return {String}  CSS class to delay animation or not
+     */
+
+  }, {
+    key: "transitionClassModifier",
+    get: function get() {
+      // We must update class whenever position changes; if not, it will stay
+      // -was-hidden-is-visible after long after the first transformation
+      this.yPosition;
+      var modifier = (0, _getVisibilityClassModifier.default)(this.visible, this.wasVisible || false);
+      this.wasVisible = this.visible;
+      return modifier;
+    }
+    /**
+     * Only display highlighted background if a guideline and diagnosis were selected, if the
+     * bacterium is visible (filters match bacterium) and if the current bacterium induces the
+     * diagnosis.
+     * @return {Boolean}
+     */
+
+  }, {
+    key: "visible",
+    get: function get() {
+      if (!this.props.bacterium.visible) return false;
+      var diagnosis = this.props.guidelines && this.props.guidelines.selectedGuideline && this.props.guidelines.selectedGuideline.selectedDiagnosis;
+      if (!diagnosis) return false;
+      return diagnosis.inducingBacteria.includes(this.props.bacterium.bacterium);
+    }
+    /**
+     * Returns the background's opacity (0 if this.visible is false)
+     * @return {Number}
+     */
+
+  }, {
+    key: "opacity",
+    get: function get() {
+      return this.visible ? 1 : 0;
+    }
+    /**
+     * Returns height of a bacterium row, if available; else 0
+     * @return {Number}
+     */
+
+  }, {
+    key: "height",
+    get: function get() {
+      return this.props.matrix.defaultRadius * 2;
+    }
+  }]);
+
+  return BacteriumRowHighlightedBackground;
+}(_react.default.Component), (_applyDecoratedDescriptor(_class2.prototype, "yPosition", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "yPosition"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "width", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "width"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "transitionClassModifier", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "transitionClassModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "visible", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "visible"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "opacity", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "opacity"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "height", [_mobx.computed], Object.getOwnPropertyDescriptor(_class2.prototype, "height"), _class2.prototype)), _class2)) || _class;
+
+exports.default = BacteriumRowHighlightedBackground;
 
 /***/ }),
 
@@ -47891,8 +48371,6 @@ var _class, _class2;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -47963,19 +48441,20 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this,
-          _React$createElement;
+      var _this3 = this;
 
       return _react.default.createElement("g", {
         transform: this.transformation,
         className: "resistanceMatrix__bacteriumLabel ".concat(this.classModifier)
-      }, _react.default.createElement("text", (_React$createElement = {
-        x: this.props.matrix.defaultRadius,
-        y: this.props.matrix.defaultRadius,
+      }, _react.default.createElement("text", {
         ref: function ref(element) {
           return _this3._setTextElement(element);
-        }
-      }, _defineProperty(_React$createElement, "x", this.props.matrix.bacteriumLabelColumnWidth), _defineProperty(_React$createElement, "className", "resistanceMatrix__bacteriumLabelText ".concat(this.highlightClass)), _defineProperty(_React$createElement, "dominantBaseline", "middle"), _defineProperty(_React$createElement, "y", this.props.matrix.defaultRadius), _React$createElement), this.props.bacterium.bacterium.name));
+        },
+        x: this.props.matrix.bacteriumLabelColumnWidth,
+        className: "resistanceMatrix__bacteriumLabelText ".concat(this.highlightClass),
+        dominantBaseline: "middle",
+        y: this.props.matrix.defaultRadius
+      }, this.props.bacterium.bacterium.name));
     }
   }, {
     key: "visible",
@@ -48005,7 +48484,7 @@ function (_React$Component) {
       var pos = this.props.matrix.yPositions.get(this.props.bacterium); // If pos is not available (because bacterium is hidden) return previous top – we don't
       // want to move labels if not necessary (as they're invisible; performance)
 
-      var top = pos ? pos.top : this._previousTop;
+      var top = pos && pos.top !== undefined ? pos.top : this._previousTop || 0;
       this._previousPosition = {
         left: 0,
         top: top
@@ -48823,7 +49302,7 @@ function (_React$Component) {
     value: function render() {
       return _react.default.createElement("rect", {
         width: this._lineWeight,
-        height: this.props.bodyHeight || 0,
+        height: this.props.height || 0,
         fill: this.props.substanceClass.lineColor,
         transform: this.transformation,
         className: "resistanceMatrix__substanceClassLine resistanceMatrix__substanceClassLine--left-body ".concat(this.classModifier)
@@ -49609,13 +50088,15 @@ function renderReact() {
   _reactDom.default.render(_react.default.createElement(_matrix.default, {
     matrix: app.views.matrix,
     filters: app.filterValues,
-    selectedFilters: app.selectedFilters
+    selectedFilters: app.selectedFilters,
+    guidelines: app.guidelines
   }), document.querySelector('Matrix'));
 
   _reactDom.default.render(_react.default.createElement(_matrixHeader.default, {
     matrix: app.views.matrix,
     filters: app.filterValues,
-    selectedFilters: app.selectedFilters
+    selectedFilters: app.selectedFilters,
+    guidelines: app.guidelines
   }), document.querySelector('MatrixHeader'));
 
   _reactDom.default.render(_react.default.createElement(_filterList.default, {
@@ -49631,7 +50112,8 @@ function renderReact() {
   }), document.querySelector('SelectedFiltersList'));
 
   _reactDom.default.render(_react.default.createElement(_filterListMenu.default, {
-    mostUsedFilters: app.mostUsedFilters
+    mostUsedFilters: app.mostUsedFilters,
+    guidelines: app.guidelines
   }), document.querySelector('FilterListMenu'));
 
   _reactDom.default.render(_react.default.createElement(_filterSearch.default, {

@@ -3,6 +3,8 @@ import { observer } from 'mobx-react';
 import { observable, computed } from 'mobx';
 import debug from 'debug';
 import BacteriumLabel from '../matrixBacterium/bacteriumLabel.jsx';
+import BacteriumRowHighlightedBackground from '../matrixBacterium/BacteriumRowHighlightedBackground.jsx';
+import AntibioticColumnHighlightedBackground from '../matrixAntibiotic/AntibioticColumnHighlightedBackground.jsx';
 import Resistance from '../matrixResistance/resistance.jsx';
 import ResistanceDetail from '../matrixResistance/resistanceDetail.jsx';
 import SubstanceClassLine from '../matrixSubstanceClass/substanceClassLine.jsx';
@@ -15,16 +17,6 @@ export default @observer class Matrix extends React.Component {
 
     componentDidMount() {
         this._setupResizeListener();
-    }
-
-    /**
-    * Returns height of the whole matrix
-    */
-    @computed get height() {
-        if (!this.props.matrix.defaultRadius) return 0;
-        // Height: All bact labels + ab label + space between ab label and matrix (matrix.space +
-        // matrix.radius), see bacteriumLabel
-        return this.bodyHeight;
     }
 
     // Use a bound method for ref:
@@ -53,21 +45,6 @@ export default @observer class Matrix extends React.Component {
         return `translate(${left}, 0)`;
     }
 
-    /**
-    * Returns height of the matrix' body (circles).
-    */
-    @computed get bodyHeight() {
-        // Always display matrix in full height (also for invisible bacteria) or animations will
-        // be cut off at the bottom (height of matrix changes before the bacteria animate)
-        return ((this.props.matrix.defaultRadius * 2) + this.props.matrix.space)
-            * this.props.matrix.sortedBacteria.length;
-    }
-
-    @computed get visibleBacteriaHeight() {
-        return ((this.props.matrix.defaultRadius * 2) + this.props.matrix.space) *
-            this.props.matrix.sortedVisibleBacteria.length;
-    }
-
     render() {
         return (
             <div>
@@ -79,24 +56,66 @@ export default @observer class Matrix extends React.Component {
                 <svg
                     ref={this._setSVG}
                     width="100%"
-                    style={{ height: this.height, top: this.props.matrix.headerHeight }}
+                    style={{
+                        height: this.props.matrix.visibleBacteriaHeight +
+                            this.props.matrix.spaceBetweenGroups,
+                        top: this.props.matrix.headerHeight,
+                    }}
                     className={`resistanceMatrix__body ${this.props.selectedFilters.filterChanges > 0 ? '-with-transitions' : '-no-transitions'}`}>
+
+                    {/* Antibiotics: Highlighted background for guidelines */}
+                    {/* Only display when matrix has been completely measured */}
+                    {this.props.matrix.defaultRadius &&
+                        <g>
+                            {this.props.matrix.sortedAntibiotics.map(antibiotic => (
+                                <AntibioticColumnHighlightedBackground
+                                    key={antibiotic.antibiotic.id}
+                                    antibiotic={antibiotic}
+                                    matrix={this.props.matrix}
+                                    guidelines={this.props.guidelines}
+                                />
+                            ))}
+                        </g>
+                    }
 
                     {/* Lines for substance classes in body */}
                     {this.props.matrix.defaultRadius &&
                         <g transform={this.mainMatrixTransformation}>
                             {this.props.matrix.substanceClasses.map(substanceClass => (
+                                // SubstanceClassLine always has the height of an unfiltered matrix.
+                                // It will be cropped when height of the whole matrix changes.
                                 <SubstanceClassLine
                                     key={substanceClass.substanceClass.id}
                                     substanceClass={substanceClass}
+                                    height={
+                                        (((this.props.matrix.defaultRadius * 2) +
+                                        this.props.matrix.space) *
+                                        this.props.matrix.sortedBacteria.length) +
+                                        this.props.matrix.spaceBetweenGroups
+                                    }
+                                />
+                            ))}
+                        </g>
+                    }
+
+                    {/* Bacteria: Highlighted background for guidelines */}
+                    {/* Only display when matrix has been completely measured */}
+                    {this.props.matrix.defaultRadius &&
+                        <g>
+                            {this.props.matrix.sortedBacteria.map(bacterium => (
+                                <BacteriumRowHighlightedBackground
+                                    key={bacterium.bacterium.id}
+                                    bacterium={bacterium}
                                     matrix={this.props.matrix}
-                                    bodyHeight={this.visibleBacteriaHeight}
+                                    guidelines={this.props.guidelines}
                                 />
                             ))}
                         </g>
                     }
 
                     {/* Bacteria labels */}
+                    {/* Must be rendered before defaultRadius is known as bactera width is needed
+                        to calculate defaultRadius */ }
                     <g className="resistanceMatrix__bacteriaLabels">
                         {this.props.matrix.sortedBacteria.map(bacterium => (
                             <BacteriumLabel
