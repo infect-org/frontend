@@ -35,12 +35,18 @@ class FilterList extends React.Component {
                                 <hr className="divider" key="divider" />,
                             ]
                         }
-                        <GuidelinesFilterList
-                            identifier="guidelines"
-                            additionalClassNames="guidelines-selector-for-fabian-blue-background"
-                            guidelines={this.props.guidelines}
-                        />
-                        <hr className="divider" />
+                        {/* Don't display guidelines if there is no data. Some tenants may not have
+                            chosen the guideline module or not yet have entered their data */}
+                        { this.props.guidelines && this.props.guidelines.get().size > 0 &&
+                            <React.Fragment>
+                                <GuidelinesFilterList
+                                    identifier="guidelines"
+                                    additionalClassNames="guidelines-selector-for-fabian-blue-background"
+                                    guidelines={this.props.guidelines}
+                                />
+                                <hr className="divider" />
+                            </React.Fragment>
+                        }
                         <AntibioticsFilterList
                             identifier="antibiotics"
                             filterValues={ this.props.filterValues }

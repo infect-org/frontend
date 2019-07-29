@@ -8852,11 +8852,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _api = __webpack_require__(/*! ./api */ "../frontend-logic/src/helpers/api.js");
-
 var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 
 var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
+var _api = __webpack_require__(/*! ./api */ "../frontend-logic/src/helpers/api.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8884,9 +8884,14 @@ function () {
   * @param {Store} store                  Store to which we save the data once it's loaded
   * @param {Object} options               Options for the fetch request (see fetch docs)
   * @param {Array} dependentStores        Stores that's status must be ready before data of this
-  *                                       store is handled; antibiotics must wait for
+  *                                       store is handled. Example: Antibiotics must wait for
   *                                       substanceClasses, resistances for antibiotics and
   *                                       bacteria.
+  *                                       Pass a Store (and not the Fetcher) here as we might
+  *                                       want to access the store's data when it's ready – e.g.
+  *                                       to create links from a resistance to the corresponding
+  *                                       bacterium and antibiotic. As the store is a property of
+  *                                       this class, we can access it in this.handleData().
   */
   function StandardFetcher(url, store) {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
@@ -8894,14 +8899,18 @@ function () {
 
     _classCallCheck(this, StandardFetcher);
 
-    if (!url || !store) throw new Error("StandardFetcher: Arguments 'url' or 'store' missing.");
-    this._url = url;
-    this._store = store;
-    this._options = options;
-    this._dependentStores = dependentStores;
+    if (!url || !store) {
+      throw new Error("StandardFetcher: Arguments 'url' (".concat(url, ") or 'store' ").concat(store, " missing ."));
+    }
+
+    this.url = url;
+    this.store = store;
+    this.options = options;
+    this.dependentStores = dependentStores;
   }
   /**
-  * Main method: Fetches the data, stores in in the store.
+  * Main method: Fetches data from this.url, awaits this.dependentStores, then calls
+  * this.handleData() with the data fetched.
   */
 
 
@@ -8911,73 +8920,30 @@ function () {
       var _getData = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
-        var resolver, rejector, promise, defaultOptions, options, result, err;
+        var url, dataPromise;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                log('Get data for %s, options are %o', this._url, this._options); // Create a new promise to pass to the store – it must only be resolved **after**
-                // data was handled and rejected if status !== 200.
+                /**
+                 * We use url as an identifier for the call we made; it's passed along the function chain
+                 * and needed in handleData to see what call (i.e. url) the data belongs to. This helps us
+                 * prevent race conditions (we can check if data belongs to the latest call that was made
+                 * and ignore it otherwise)
+                 * We could use AbortController to cancel old/earlier requests; but it is not compatible
+                 * with IE11 (https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort)
+                 */
+                url = this.url;
+                dataPromise = this.getAndParseData(url);
+                this.store.setFetchPromise(dataPromise);
+                return _context.abrupt("return", dataPromise);
 
-                promise = new Promise(function (resolve, reject) {
-                  resolver = resolve;
-                  rejector = reject;
-                });
-
-                this._store.setFetchPromise(promise); // Add timestamp to prevent caching as file names don't change
-
-
-                defaultOptions = {
-                  cache: 'no-store',
-                  // Requests at Insel (Edge) are rejected with status 407. This might help:
-                  credentials: 'include'
-                };
-                options = _objectSpread({}, defaultOptions, this._options);
-                log('Options are %o', options);
-                _context.prev = 6;
-                _context.next = 9;
-                return (0, _api.fetchApi)(this._url, options);
-
-              case 9:
-                result = _context.sent;
-                log('Got back data %o', result);
-                _context.next = 17;
-                break;
-
-              case 13:
-                _context.prev = 13;
-                _context.t0 = _context["catch"](6);
-                // Fetch failed: reject promise on store
-                rejector(_context.t0);
-                throw _context.t0;
-
-              case 17:
-                if (!(result.status !== 200)) {
-                  _context.next = 21;
-                  break;
-                }
-
-                err = new Error("StandardFetcher: Status ".concat(result.status, " is invalid."));
-                rejector(err);
-                throw err;
-
-              case 21:
-                _context.next = 23;
-                return this._awaitDependentStores();
-
-              case 23:
-                this._handleData(result.data); // Resolve promise in store
-
-
-                log('Resolve fetch promise, added %d items to store', this._store.get().size);
-                resolver();
-
-              case 26:
+              case 4:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[6, 13]]);
+        }, _callee, this);
       }));
 
       return function getData() {
@@ -8985,33 +8951,94 @@ function () {
       };
     }()
     /**
-    * Waits until all dependent stores are 'ready'.
-    */
+     * Does the actual fetching and parsing; is needed as this.getData() needs a promise to store
+     * the fetch promise in this.store.
+     * @param {String} url  URL to fetch
+     * @return {Promise}    Promise that is resolved after data was handled by this.handleData (or
+     *                      rejected in case of failure)
+     * @private
+     */
 
   }, {
-    key: "_awaitDependentStores",
+    key: "getAndParseData",
     value: function () {
-      var _awaitDependentStores2 = _asyncToGenerator(
+      var _getAndParseData = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2() {
-        var loadingStores;
+      regeneratorRuntime.mark(function _callee2(url) {
+        var defaultOptions, options, result;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                loadingStores = this._dependentStores.filter(function (store) {
-                  return store.status.identifier === 'loading';
-                });
+                log('Get data for %s, options are %o', url, this.options);
+                defaultOptions = {
+                  cache: 'no-store',
+                  // Requests at Insel (Edge) are rejected with status 407. This might help:
+                  credentials: 'include'
+                };
+                options = _objectSpread({}, defaultOptions, this.options);
+                log('Options are %o', options);
+                _context2.next = 6;
+                return (0, _api.fetchApi)(url, options);
 
-                if (loadingStores.length) {
-                  _context2.next = 3;
+              case 6:
+                result = _context2.sent;
+                log('Got back data %o', result); // Invalid HTTP Status
+
+                if (!(result.status !== 200)) {
+                  _context2.next = 10;
                   break;
                 }
 
-                return _context2.abrupt("return", Promise.resolve());
+                throw new Error("StandardFetcher: Status ".concat(result.status, " is invalid."));
 
-              case 3:
-                _context2.next = 5;
+              case 10:
+                _context2.next = 12;
+                return this.awaitDependentStores();
+
+              case 12:
+                /**
+                 * Pass data and URL of the call to handleData; URL is needed to check what call data
+                 * belongs to.
+                 */
+                this.handleData(result.data, url); // Resolve promise in store
+
+                log('Data handled, store now contains %d items', this.store.get().size);
+
+              case 14:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function getAndParseData(_x) {
+        return _getAndParseData.apply(this, arguments);
+      };
+    }()
+    /**
+    * Waits until all dependent stores are 'ready'.
+    * @private
+    */
+
+  }, {
+    key: "awaitDependentStores",
+    value: function () {
+      var _awaitDependentStores = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee3() {
+        var loadingStores;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                loadingStores = this.dependentStores.filter(function (store) {
+                  return store.status.identifier === 'loading' || store.status.identifier === 'initialized';
+                });
+                log('Waiting for %d stores', loadingStores.length); // Convert observers to promises; this method resolves when all promises are done
+
+                _context3.next = 4;
                 return Promise.all(loadingStores.map(function (store) {
                   return new Promise(function (resolve) {
                     (0, _mobx.observe)(store.status, function (status) {
@@ -9020,31 +9047,32 @@ function () {
                   });
                 }));
 
-              case 5:
+              case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
 
-      return function _awaitDependentStores() {
-        return _awaitDependentStores2.apply(this, arguments);
+      return function awaitDependentStores() {
+        return _awaitDependentStores.apply(this, arguments);
       };
     }()
     /**
-    * Default data handler, should be overwritten in derived classes.
+    * Default data handler, should be overwritten in derived classes. Handles data and must add it
+    * to store if that's what you intend.
+    * @private
     */
 
   }, {
-    key: "_handleData",
-    value: function _handleData(data) {
+    key: "handleData",
+    value: function handleData(data) {
       var _this = this;
 
-      console.warn('StandardFetcher: _handleData method not implemented in derived class.');
-      if (!data) return;
+      console.warn('StandardFetcher: handleData method not implemented in derived class.');
       data.forEach(function (item) {
-        _this._store.add(item);
+        _this.store.add(item);
       });
     }
   }]);
@@ -9287,13 +9315,13 @@ var _populationFilterUpdater = _interopRequireDefault(__webpack_require__(/*! ./
 
 var _populationFilterFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/populationFilter/populationFilterFetcher.js */ "../frontend-logic/src/models/populationFilter/populationFilterFetcher.js"));
 
-var _GuidelineFetcher = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineFetcher.js */ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js"));
-
-var _GuidelineStore = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js"));
-
 var _errorHandler = _interopRequireDefault(__webpack_require__(/*! ./models/errorHandler/errorHandler.js */ "../frontend-logic/src/models/errorHandler/errorHandler.js"));
 
 var _updateDrawerFromGuidelines = _interopRequireDefault(__webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js"));
+
+var _setupGuidelines = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "../frontend-logic/src/models/guidelines/setupGuidelines.js"));
+
+var _GuidelineStore = _interopRequireDefault(__webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js"));
 
 var _class, _descriptor;
 
@@ -9335,8 +9363,8 @@ function () {
 
     this.bacteria = new _bacteriaStore.default();
     this.antibiotics = new _antibioticsStore.default();
-    this.substanceClasses = new _substanceClassesStore.default();
     this.guidelines = new _GuidelineStore.default();
+    this.substanceClasses = new _substanceClassesStore.default();
     this.resistances = new _resistancesStore.default([], function (item) {
       return "".concat(item.bacterium.id, "/").concat(item.antibiotic.id);
     });
@@ -9409,18 +9437,15 @@ function () {
       }); // Gets data for default filter switzerland-all
 
       var resistancePromise = resistanceFetcher.getData();
-      /**
-       * Fake-get guidelines; only fetch them after bacteria and antibiotics are ready as we need
-       * to link those to our therapies.
-       * TODO: Update when API is ready.
-       */
+      log('Fetching data for resistances.'); // Guidelines are important – but not crucial for INFECT to work. Handle errors nicely.
+      // TODO: Make sure we are informed when they fail!
 
-      var guidelinePromise = Promise.all([bacteriaPromise, antibioticPromise]).then(function () {
-        var guidelineFetcher = new _GuidelineFetcher.default(_this.guidelines, _this.antibiotics, _this.bacteria);
-        guidelineFetcher.getData();
+      var guidelinePromise = (0, _setupGuidelines.default)(this._config, this.guidelines, this.bacteria, this.antibiotics, _errorHandler.default.handle.bind(_errorHandler.default)).catch(function (err) {
+        var humanReadableError = new Error("Guidelines could not be fetched from server, but INFECT will work without them. Please contact us if the issue persists. Original error:  ".concat(err.message));
+
+        _this.errorHandler.handle(humanReadableError);
       });
       new _populationFilterUpdater.default(resistanceFetcher, this.selectedFilters);
-      log('Fetching data for resistances.');
       log('Fetchers setup done.');
       return Promise.all([substanceClassesPromise, antibioticPromise, bacteriaPromise, resistancePromise, guidelinePromise]);
     }
@@ -9732,8 +9757,8 @@ function (_Fetcher) {
   }
 
   _createClass(AntibioticsFetcher, [{
-    key: "_handleData",
-    value: function _handleData(data) {
+    key: "handleData",
+    value: function handleData(data) {
       var _this2 = this;
 
       // Remove penicillin v and Cefuroxime Axetil (they contain no data)
@@ -9775,7 +9800,7 @@ function (_Fetcher) {
           identifier: item.identifier
         });
 
-        _this2._store.add(antibiotic);
+        _this2.store.add(antibiotic);
       });
     }
   }]);
@@ -10104,8 +10129,8 @@ function (_Fetcher) {
   }
 
   _createClass(SubstanceClassesFetcher, [{
-    key: "_handleData",
-    value: function _handleData(originalData) {
+    key: "handleData",
+    value: function handleData(originalData) {
       var _this = this;
 
       log('Handle data %o', originalData); // Clone array to not modify arguments
@@ -10139,12 +10164,12 @@ function (_Fetcher) {
         if (item.color) additionalProperties.color = item.color; // Sort order corresponds to order of tree created from nested set
 
         additionalProperties.order = index;
-        var parent = item.parent ? _this._store.getById(item.parent.id) : undefined;
+        var parent = item.parent ? _this.store.getById(item.parent.id) : undefined;
         var substanceClass = new _substanceClass.default(item.id, item.name, parent, additionalProperties);
 
-        _this._store.add(substanceClass);
+        _this.store.add(substanceClass);
       });
-      log('%d substance classes added to store', this._store.get().size);
+      log('%d substance classes added to store', this.store.get().size);
     }
   }]);
 
@@ -10257,8 +10282,8 @@ function (_Fetcher) {
   }
 
   _createClass(BacteriaFetcher, [{
-    key: "_handleData",
-    value: function _handleData(data) {
+    key: "handleData",
+    value: function handleData(data) {
       var _this = this;
 
       data.forEach(function (item) {
@@ -10274,7 +10299,7 @@ function (_Fetcher) {
         };
         var bact = new _bacterium.default(item.id, item.name, options);
 
-        _this._store.add(bact);
+        _this.store.add(bact);
       });
     }
   }]);
@@ -10646,7 +10671,11 @@ exports.default = void 0;
 
 var _mobx = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
 var _class, _descriptor;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -10660,6 +10689,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and set to use loose mode. ' + 'To use proposal-class-properties in spec mode with decorators, wait for ' + 'the next major version of decorators in stage 2.'); }
 
+var log = (0, _debug.default)('infect:ErrorHandler');
 var ErrorHandler = (_class =
 /*#__PURE__*/
 function () {
@@ -10672,6 +10702,7 @@ function () {
   _createClass(ErrorHandler, [{
     key: "handle",
     value: function handle(err) {
+      console.error('Handle error %o', err);
       this.errors.push(err);
     }
   }]);
@@ -10682,7 +10713,7 @@ function () {
   initializer: function initializer() {
     return [];
   }
-}), _applyDecoratedDescriptor(_class.prototype, "handle", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "handle"), _class.prototype)), _class);
+}), _applyDecoratedDescriptor(_class.prototype, "handle", [_mobx.action], Object.getOwnPropertyDescriptor(_class.prototype, "handle"), _class.prototype)), _class); // Export instance (we only need one across the whole app)
 
 var _default = new ErrorHandler();
 
@@ -11281,47 +11312,80 @@ exports.default = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 /**
  * Represents a diagnosis (e.g. «Harnwegsinfekt, Unkomplizierte Zystitis») that belongs to *one*
  * guideline. Diagnosis have *no* hierarchy; there is not one «Harnwegsinfekt» with sub diagnosis
  * «Asymptomatische Bakteriurie», «Unkomplizierte Zystitis» etc.
  */
 var Diagnosis =
-/**
- * @param {Number} id                      ID (from API)
- * @param {String} name                    Name of diagnosis, e.g. «Komplizierte Zystitis»
- * @param {DiagnosisClass} diagnosisClass  Chapter that a (printed) guideline is structured by
- * @param {Bacterium[]} inducingBacteria   List of bacteria that may induce the diagnosis
- * @param {String} markdownText            Explanation of diagnosis (Markdown)
- * @param {Therapy[]} therapies            Suggested therapies for current diagnosis
- */
-function Diagnosis(id, name, diagnosisClass) {
-  var inducingBacteria = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
-  var markdownText = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
-  var therapies = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : [];
+/*#__PURE__*/
+function () {
+  /**
+   * @param {Number} id                      ID (from API)
+   * @param {String} name                    Name of diagnosis, e.g. «Komplizierte Zystitis»
+   * @param {DiagnosisClass} diagnosisClass  Chapter that a (printed) guideline is structured by
+   * @param {Bacterium[]} inducingBacteria   List of bacteria that may induce the diagnosis
+   * @param {String} markdownText            Explanation of diagnosis (Markdown)
+   * @param {Therapy[]} therapies            Suggested therapies for current diagnosis
+   */
+  function Diagnosis(id, name, diagnosisClass) {
+    var inducingBacteria = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
+    var markdownText = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
+    var therapies = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : [];
 
-  _classCallCheck(this, Diagnosis);
+    _classCallCheck(this, Diagnosis);
 
-  // Test parameters that are passed directly from API
-  if (typeof id !== 'number') {
-    throw new Error("Diagnosis: First constructor argument (id) must be a number, is ".concat(id, "."));
+    // Test parameters that are passed directly from API
+    if (typeof id !== 'number') {
+      throw new Error("Diagnosis: First constructor argument (id) must be a number, is ".concat(id, "."));
+    }
+
+    if (typeof name !== 'string') {
+      throw new Error("Diagnosis: Second constructor argument (name) must be a string, is ".concat(name, "."));
+    }
+
+    if (typeof markdownText !== 'string') {
+      throw new Error("Diagnosis: Constructor argument markdownText must be a string, is ".concat(markdownText, "."));
+    }
+
+    this.id = id;
+    this.name = name;
+    this.diagnosisClass = diagnosisClass;
+    this.inducingBacteria = inducingBacteria;
+    this.markdownText = markdownText;
+    this.therapies = therapies;
   }
+  /**
+   * On the API, id_guideline is part of diagnosis data; we want it the opposite way (diagnoses
+   * belong to guideline) and have therefore to store the relation temporarily (see
+   * GuidelineFetcher and DiagnosisFetcher).
+   * @param {Number} id   Guideline's ID on API
+   */
 
-  if (typeof name !== 'string') {
-    throw new Error("Diagnosis: Second constructor argument (name) must be a string, is ".concat(name, "."));
-  }
 
-  if (typeof markdownText !== 'string') {
-    throw new Error("Diagnosis: Constructor argument markdownText must be a string, is ".concat(markdownText, "."));
-  }
+  _createClass(Diagnosis, [{
+    key: "setGuidelineId",
+    value: function setGuidelineId(id) {
+      this.guidelineId = id;
+    }
+    /**
+     * Removes the guidelineId property completely when not needed any more (i.e. after setting up
+     * the guidelines)
+     */
 
-  this.id = id;
-  this.name = name;
-  this.diagnosisClass = diagnosisClass;
-  this.inducingBacteria = inducingBacteria;
-  this.markdownText = markdownText;
-  this.therapies = therapies;
-};
+  }, {
+    key: "removeGuidelineId",
+    value: function removeGuidelineId() {
+      delete this.guidelineId;
+    }
+  }]);
+
+  return Diagnosis;
+}();
 
 exports.default = Diagnosis;
 
@@ -11371,6 +11435,224 @@ function DiagnosisClass(id) {
 };
 
 exports.default = DiagnosisClass;
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _standardFetcher = _interopRequireDefault(__webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js"));
+
+var _DiagnosisClass = _interopRequireDefault(__webpack_require__(/*! ./DiagnosisClass.js */ "../frontend-logic/src/models/guidelines/DiagnosisClass.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var DiagnosisClassFetcher =
+/*#__PURE__*/
+function (_Fetcher) {
+  _inherits(DiagnosisClassFetcher, _Fetcher);
+
+  function DiagnosisClassFetcher() {
+    _classCallCheck(this, DiagnosisClassFetcher);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DiagnosisClassFetcher).apply(this, arguments));
+  }
+
+  _createClass(DiagnosisClassFetcher, [{
+    key: "handleData",
+    value: function handleData(data) {
+      var _this = this;
+
+      data.forEach(function (diagnosisClass) {
+        _this.store.add(new _DiagnosisClass.default(diagnosisClass.id, diagnosisClass.name));
+      });
+    }
+  }]);
+
+  return DiagnosisClassFetcher;
+}(_standardFetcher.default);
+
+exports.default = DiagnosisClassFetcher;
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisFetcher.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisFetcher.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
+var _standardFetcher = _interopRequireDefault(__webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js"));
+
+var _Diagnosis = _interopRequireDefault(__webpack_require__(/*! ./Diagnosis.js */ "../frontend-logic/src/models/guidelines/Diagnosis.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var log = (0, _debug.default)('infect:DiagnosisFetcher');
+
+var DiagnosisFetcher =
+/*#__PURE__*/
+function (_Fetcher) {
+  _inherits(DiagnosisFetcher, _Fetcher);
+
+  /**
+   * Pass same params as for Fetcher, but add handleError function that gracefully handles non-
+   * critical errors
+   * @param  {Function} handleError   Function that takes an Error instance as the only argument
+   *                                  (and displays it to the user)
+   */
+  function DiagnosisFetcher() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DiagnosisFetcher);
+
+    for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+      params[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DiagnosisFetcher)).call.apply(_getPrototypeOf2, [this].concat(params)));
+    _this.handleError = params[4];
+    log('handleError set to %o', _this.handleError);
+    return _this;
+  }
+  /**
+   * Handles data.
+   * @param  {Array} data         Data fetched from server
+   * @override
+   */
+
+
+  _createClass(DiagnosisFetcher, [{
+    key: "handleData",
+    value: function handleData(data) {
+      var _this2 = this;
+
+      // Destructure stores that were passed to fetcher on init; they contain data that is
+      // necessary to setup diagnosis models.
+      var _this$dependentStores = _slicedToArray(this.dependentStores, 4),
+          diagnosisClasses = _this$dependentStores[0],
+          diagnosesBacteria = _this$dependentStores[1],
+          bacteria = _this$dependentStores[2],
+          therapiesStore = _this$dependentStores[3];
+
+      data.forEach(function (diagnosis) {
+        log('Create model for diagnosis %o', diagnosis); // Get inducing bacteria; mappings are in store for diagnosis_bacterium, bacteria
+        // are in store for bacteria.
+
+        var inducingBacteria = diagnosesBacteria.getAsArray() // Go through diagnosis_bacterium mapping table and get all mappings that relate
+        // to the current diagnosis
+        .filter(function (mapping) {
+          return mapping.id_diagnosis === diagnosis.id;
+        }) // Get real bacterium model from bacteria store (via id_bacterium on the mapping
+        // table)
+        .map(function (mapping) {
+          var bacterium = bacteria.getById(mapping.id_bacterium); // If bacterium cannot be found, display error without crashing
+
+          if (!bacterium) {
+            var bacteriumMissingError = new Error("Bacterium ".concat(mapping.id_bacterium, " could not be found. The results displayed to you will therefore not be complete for diagnosis ").concat(diagnosis.name, "."));
+
+            _this2.handleError(bacteriumMissingError);
+          }
+
+          return bacterium;
+        }) // Remove entries that could not be found (error was thrown)
+        .filter(function (bacterium) {
+          return bacterium !== undefined;
+        }); // TODO: HANDLE GENTLY if missing
+
+        var therapies = therapiesStore.getAsArray().filter(function (therapy) {
+          return therapy.diagnosisId === diagnosis.id;
+        });
+        therapies.forEach(function (therapy) {
+          return therapy.removeDiagnosisId();
+        });
+        log('Inducing bacteria are %o, therapies are %o', inducingBacteria, therapies);
+        var diagnosisModel = new _Diagnosis.default(diagnosis.id, diagnosis.name, diagnosisClasses.getById(diagnosis.id_diagnosisClass), inducingBacteria, diagnosis.markdownText, therapies);
+        /**
+         * Temporarily store guideline ID on diagnosis; will be needed to resolve matching
+         * diagnoses when we create the guidelines (see GuidelineFetcher)
+         */
+
+        diagnosisModel.setGuidelineId(diagnosis.id_guideline);
+
+        _this2.store.add(diagnosisModel);
+      });
+    }
+  }]);
+
+  return DiagnosisFetcher;
+}(_standardFetcher.default);
+
+exports.default = DiagnosisFetcher;
 
 /***/ }),
 
@@ -11432,6 +11714,7 @@ function () {
   function Guideline(id) {
     var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
     var diagnoses = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var markdownDisclaimer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
 
     _classCallCheck(this, Guideline);
 
@@ -11448,6 +11731,7 @@ function () {
     this.id = id;
     this.name = name;
     this.diagnoses = diagnoses;
+    this.markdownDisclaimer = markdownDisclaimer;
   }
   /**
    * Update selected diagnosis
@@ -11492,17 +11776,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+var _standardFetcher = _interopRequireDefault(__webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js"));
 
 var _Guideline = _interopRequireDefault(__webpack_require__(/*! ./Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js"));
 
-var _Therapy = _interopRequireDefault(__webpack_require__(/*! ./Therapy.js */ "../frontend-logic/src/models/guidelines/Therapy.js"));
-
-var _Diagnosis = _interopRequireDefault(__webpack_require__(/*! ./Diagnosis.js */ "../frontend-logic/src/models/guidelines/Diagnosis.js"));
-
-var _DiagnosisClass = _interopRequireDefault(__webpack_require__(/*! ./DiagnosisClass.js */ "../frontend-logic/src/models/guidelines/DiagnosisClass.js"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11510,82 +11798,51 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var log = (0, _debug.default)('infect:GuidelineFetcher');
-/**
- * Temporary solution that mocks all Guideline data (until API is done). TODO: Connect API through
- * a real fetcher. Maybe use multiple stores and fetchers (one per model entity).
- */
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var GuidelineFetcher =
 /*#__PURE__*/
-function () {
-  function GuidelineFetcher(guidelineStore, antibioticsStore, bacteriaStore) {
+function (_Fetcher) {
+  _inherits(GuidelineFetcher, _Fetcher);
+
+  function GuidelineFetcher() {
     _classCallCheck(this, GuidelineFetcher);
 
-    this.guidelineStore = guidelineStore;
-    this.antibioticsStore = antibioticsStore;
-    this.bacteriaStore = bacteriaStore;
+    return _possibleConstructorReturn(this, _getPrototypeOf(GuidelineFetcher).apply(this, arguments));
   }
 
   _createClass(GuidelineFetcher, [{
-    key: "getData",
-    value: function getData() {
-      // Sort antibiotics and bacteria by ID to ensure that we always take the same antibiotics/
-      // bacteria to construct our fake guideline data. Sort modifies original array, use
-      // Array.from to clone.
-      var sortedAntibiotics = Array.from(this.antibioticsStore.getAsArray()).sort(function (a, b) {
-        return a.id - b.id;
-      });
-      var sortedBacteria = Array.from(this.bacteriaStore.getAsArray()).sort(function (a, b) {
-        return a.id - b.id;
-      });
-      var urinaryTractDiagnosisClass = new _DiagnosisClass.default(0, 'Urinary Tract');
-      /** ***********************************************
-       * KOMPLIZIERTE ZYSTITIS
-       *********************************************** */
+    key: "handleData",
+    value: function handleData(data) {
+      var _this = this;
 
-      var komplizierteZystitisTherapy1 = new _Therapy.default(0, [{
-        antibiotic: sortedAntibiotics[0],
-        markdownText: "* TMP/SMX forte alle 12 h f\xFCr 7 d\n* (Anpassung gem\xE4ss Urinkultur!)\n* **ODER**"
-      }, {
-        antibiotic: sortedAntibiotics[1],
-        markdownText: 'Nitrofurantoin [100 mg](http://infect.info) alle 12 h für 7 d'
-      }], 1, 'Erste Wahl');
-      var komplizierteZystitisTherapy2 = new _Therapy.default(1, [{
-        antibiotic: sortedAntibiotics[2],
-        markdownText: "\n                       Ciprofloxacin 500 mg alle 12 h f\xFCr 7 d\n                    "
-      }, {
-        antibiotic: sortedAntibiotics[0],
-        markdownText: "\n                       Ich komm doppelt vor in dieser Therapie.\n                    "
-      }], 2, 'Zweite Wahl');
-      var komplizierteZystitis = new _Diagnosis.default(1, 'Komplizierte Zystitis', urinaryTractDiagnosisClass, sortedBacteria.slice(0, 4), 'V.a. **akute Prostatitis**: Therapiedauer mind. 14 d (TMP/SMX oder Ciprofloxacin)', [komplizierteZystitisTherapy1, komplizierteZystitisTherapy2]);
-      /** ***********************************************
-       * UNKOMPLIZIERTE ZYSTITIS
-       *********************************************** */
+      var _this$dependentStores = _slicedToArray(this.dependentStores, 1),
+          diagnosesStore = _this$dependentStores[0];
 
-      var unkomplizierteZystitisTherapy1 = new _Therapy.default(0, [{
-        antibiotic: sortedAntibiotics[5],
-        markdownText: "\n                        Fosfomycin 3 g als __abendliche__ Einmaldosis\n                    "
-      }, {
-        antibiotic: sortedAntibiotics[10],
-        markdownText: "\n                        Nitrofurantoin 100 mg alle 12 h f\xFCr 5 d\n                    "
-      }, {
-        antibiotic: sortedAntibiotics[11],
-        markdownText: "TMP / SMX forte *alle* 12h f\xFCr 3d (lokale Resistenzlage E.coli beachten, \naktuell in der Ostschweiz f\xFCr junge Frauen mit erstmaliger Symptomatik \nweiterhin 1. Wahl)\n# Zwischentitel hier!\n                    "
-      }], 1, 'Erste Wahl');
-      var unkomplizierteZystitisTherapy2 = new _Therapy.default(1, [{
-        antibiotic: sortedAntibiotics[9],
-        markdownText: 'Ciprofloxacin 500 mg alle 12 h für 7 d'
-      }], 2, 'Alternativ');
-      var unkomplizierteZystitis = new _Diagnosis.default(2, 'Unkomplizierte Zystitis (Frau prämenopausal)', urinaryTractDiagnosisClass, sortedBacteria.slice(4, 8), 'Daran denken, dass urogenitale Symptome nicht immer auf HWI weisen, deshalb Diagnostik wichtig!', [unkomplizierteZystitisTherapy1, unkomplizierteZystitisTherapy2]);
-      var sgiGuideline = new _Guideline.default(1, 'Schweizerische Gesellschaft für Infektiologie', [komplizierteZystitis, unkomplizierteZystitis]);
-      log('Guideline is %o', sgiGuideline);
-      this.guidelineStore.add(sgiGuideline);
+      data.forEach(function (guideline) {
+        // TODO: HANDLE GENTLY if missing
+        var diagnoses = diagnosesStore.getAsArray().filter(function (diagnosis) {
+          return diagnosis.guidelineId === guideline.id;
+        });
+        diagnoses.forEach(function (diagnosis) {
+          return diagnosis.removeGuidelineId;
+        });
+
+        _this.store.add(new _Guideline.default(guideline.id, guideline.name, diagnoses, guideline.markdownDisclaimer));
+      });
     }
   }]);
 
   return GuidelineFetcher;
-}();
+}(_standardFetcher.default);
 
 exports.default = GuidelineFetcher;
 
@@ -11753,6 +12010,7 @@ function () {
     var recommendedAntibiotics = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
     var priorityOrder = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
     var priorityName = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+    var markdownText = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '';
 
     _classCallCheck(this, Therapy);
 
@@ -11774,6 +12032,7 @@ function () {
       order: priorityOrder,
       name: priorityName
     };
+    this.markdownText = markdownText;
   }
   /**
    * Returns true if this therapy contains a recommended antibiotic that equals antibiotic passed
@@ -11790,12 +12049,309 @@ function () {
         return recommendation.antibiotic === antibiotic;
       }).length > 0;
     }
+    /**
+     * Temporarily set diagnosisId, as on the API, diagnosis is a property of therapy, but in our
+     * models, we want therapies to belong to a diagnosis. See DiagnosisFetcher.
+     * @param {Number} id       ID of diagnosis this therapy belongs to
+     */
+
+  }, {
+    key: "setDiagnosisId",
+    value: function setDiagnosisId(id) {
+      this.diagnosisId = id;
+    }
+    /**
+     * As this.diagnosisId is only a temporary thing, we want it to be removed when it's not needed
+     * any more.
+     */
+
+  }, {
+    key: "removeDiagnosisId",
+    value: function removeDiagnosisId() {
+      delete this.diagnosisId;
+    }
   }]);
 
   return Therapy;
 }();
 
 exports.default = Therapy;
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/guidelines/TherapyFetcher.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/TherapyFetcher.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _debug = _interopRequireDefault(__webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js"));
+
+var _standardFetcher = _interopRequireDefault(__webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js"));
+
+var _Therapy = _interopRequireDefault(__webpack_require__(/*! ./Therapy.js */ "../frontend-logic/src/models/guidelines/Therapy.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var log = (0, _debug.default)('infect:TherapyFetcher');
+
+var TherapyFetcher =
+/*#__PURE__*/
+function (_Fetcher) {
+  _inherits(TherapyFetcher, _Fetcher);
+
+  /**
+   * Pass same params as for Fetcher, but add handleError function that gracefully handles non-
+   * critical errors
+   * @param  {Function} handleError   Function that takes an Error instance as the only argument
+   *                                  (and displays it to the user)
+   */
+  function TherapyFetcher() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, TherapyFetcher);
+
+    for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+      params[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TherapyFetcher)).call.apply(_getPrototypeOf2, [this].concat(params)));
+    _this.handleError = params[4];
+    log('handleError set to %o', _this.handleError);
+    return _this;
+  }
+
+  _createClass(TherapyFetcher, [{
+    key: "handleData",
+    value: function handleData(data) {
+      var _this2 = this;
+
+      data.forEach(function (therapy) {
+        log('Create model for therapy %o', therapy);
+
+        var _this2$dependentStore = _slicedToArray(_this2.dependentStores, 3),
+            therapyPriorityStore = _this2$dependentStore[0],
+            therapyCompoundsStore = _this2$dependentStore[1],
+            antibioticsStore = _this2$dependentStore[2]; // Get matching therapy priority from corresponding store
+        // TODO: HANDLE ERROR
+
+
+        var therapyPriority = therapyPriorityStore.getById(therapy.id_therapyPriority); // Map antibiotics to therapy through mapping table in therapyCompoundsStore
+
+        var recommendedAntibiotics = therapyCompoundsStore.getAsArray().filter(function (mapping) {
+          return mapping.id_therapy === therapy.id;
+        }).map(function (mapping) {
+          // If antibiotic does not exist in our store, display error, but don't break
+          // the app's functionality
+          var antibiotic = antibioticsStore.getById(mapping.id_compound);
+
+          if (!antibiotic) {
+            var antibioticMissingError = new Error("Antibiotic ".concat(mapping.id_compound, " could not be found. The results displayed to you will therefore not be complete for therapy ").concat(therapy.id, "."));
+
+            _this2.handleError(antibioticMissingError);
+
+            return undefined;
+          }
+
+          return {
+            antibiotic: antibioticsStore.getById(mapping.id_compound),
+            markdownText: mapping.markdownText
+          };
+        }) // Remove all antibiotics that do not exist
+        .filter(function (antibiotic) {
+          return antibiotic !== undefined;
+        });
+        log('Priority is %o, recommended antibiotics are %o', therapyPriority, recommendedAntibiotics);
+        var therapyModel = new _Therapy.default(therapy.id, recommendedAntibiotics, therapyPriority.priority, therapyPriority.name, therapy.markdownText);
+        therapyModel.setDiagnosisId(therapy.id_diagnosis);
+
+        _this2.store.add(therapyModel);
+      });
+    }
+  }]);
+
+  return TherapyFetcher;
+}(_standardFetcher.default);
+
+exports.default = TherapyFetcher;
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/guidelines/setupGuidelines.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/setupGuidelines.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setupGuidelines;
+
+var _store = _interopRequireDefault(__webpack_require__(/*! ../../helpers/store.js */ "../frontend-logic/src/helpers/store.js"));
+
+var _standardFetcher = _interopRequireDefault(__webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js"));
+
+var _GuidelineFetcher = _interopRequireDefault(__webpack_require__(/*! ./GuidelineFetcher.js */ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js"));
+
+var _DiagnosisFetcher = _interopRequireDefault(__webpack_require__(/*! ./DiagnosisFetcher.js */ "../frontend-logic/src/models/guidelines/DiagnosisFetcher.js"));
+
+var _TherapyFetcher = _interopRequireDefault(__webpack_require__(/*! ./TherapyFetcher.js */ "../frontend-logic/src/models/guidelines/TherapyFetcher.js"));
+
+var _DiagnosisClassFetcher = _interopRequireDefault(__webpack_require__(/*! ./DiagnosisClassFetcher.js */ "../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/**
+ * Gets guidelines and all their related data (therapies, diagnoses etc.) from server and returns
+ * the ready guidelineStore.
+ * @param  {Object} config                  Config that contains API URLs
+ * @param  {Object} config.endpoints        Object with API URLs. See below for all keys that are
+ *                                          needed
+ * @param  {BacteriaStore} bacteriaStore    Bacteria store; needed to resolve inducing bacteria
+ *                                          for Diagnosis
+ * @param  {AntibioticsStore} antibioticsStore    Antibiotics store; needed to resolve recommended
+ *                                                antibiotics for a Therapy
+ * @param {Function} handleError            Error handler function that we can pass an error to
+ *                                          which is then displayed. Needed to handle issues that
+ *                                          the user should be aware of but that should not break
+ *                                          the guideline functionality; e.g. if an bacteria that
+ *                                          incudes a diagnosis cannot be found.
+ * @return {Promise}                        Promise; returned value is an instnace of
+ *                                          GuidelineStore
+ */
+function setupGuidelines(_x, _x2, _x3, _x4, _x5) {
+  return _setupGuidelines.apply(this, arguments);
+}
+
+function _setupGuidelines() {
+  _setupGuidelines = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee(config, guidelineStore, bacteriaStore, antibioticsStore, handleError) {
+    var endpoints, urlKeys, notAllAvailable, fetchPromises, diagnosisClassesStore, diagnosisClassesURL, diagnosisClassesFetcher, therapyPriorityStore, therapyPriorityURL, therapyPriorityFetcher, therapyCompoundsStore, therapyCompoundsURL, therapyCompoundsFetcher, diagnosesBacteriaStore, diagnosesBacteriaURL, diagnosesBacteriaFetcher, dataSourcesStore, dataSourcesURL, dataSourcesFetcher, therapiesStore, therapiesURL, therapiesFetcher, diagnosesStore, diagnosesURL, diagnosesFetcher, guidelinesURL, guidelineFetcher;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!(!config || !config.endpoints)) {
+              _context.next = 2;
+              break;
+            }
+
+            throw new Error("setupGuidelines: Config or config.endpoints missing; is ".concat(JSON.stringify(config), "."));
+
+          case 2:
+            endpoints = config.endpoints;
+            urlKeys = ['guidelineBaseUrl', 'diagnosisClass', 'therapyPriorities', 'therapyCompounds', 'diagnosisBacteria', 'dataSources', 'diagnoses', 'guidelines', 'therapies'];
+            notAllAvailable = urlKeys.filter(function (key) {
+              return !Object.keys(endpoints).includes(key);
+            });
+
+            if (!notAllAvailable.length) {
+              _context.next = 7;
+              break;
+            }
+
+            throw new Error("setupGuidelines: Keys ".concat(notAllAvailable.join(', '), " missing in config.endpoints."));
+
+          case 7:
+            // Store all fetch promises
+            fetchPromises = []; // Diagnosis classes
+
+            diagnosisClassesStore = new _store.default();
+            diagnosisClassesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.diagnosisClass);
+            diagnosisClassesFetcher = new _DiagnosisClassFetcher.default(diagnosisClassesURL, diagnosisClassesStore);
+            fetchPromises.push(diagnosisClassesFetcher.getData()); // Therapy priority
+
+            therapyPriorityStore = new _store.default();
+            therapyPriorityURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.therapyPriorities);
+            therapyPriorityFetcher = new _standardFetcher.default(therapyPriorityURL, therapyPriorityStore);
+            fetchPromises.push(therapyPriorityFetcher.getData()); // Therapy compound
+
+            therapyCompoundsStore = new _store.default();
+            therapyCompoundsURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.therapyCompounds);
+            therapyCompoundsFetcher = new _standardFetcher.default(therapyCompoundsURL, therapyCompoundsStore);
+            fetchPromises.push(therapyCompoundsFetcher.getData()); // Diagnoses bacteria mapping
+
+            diagnosesBacteriaStore = new _store.default();
+            diagnosesBacteriaURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.diagnosisBacteria);
+            diagnosesBacteriaFetcher = new _standardFetcher.default(diagnosesBacteriaURL, diagnosesBacteriaStore);
+            fetchPromises.push(diagnosesBacteriaFetcher.getData()); // Data sources
+
+            dataSourcesStore = new _store.default();
+            dataSourcesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.dataSources);
+            dataSourcesFetcher = new _standardFetcher.default(dataSourcesURL, dataSourcesStore);
+            fetchPromises.push(dataSourcesFetcher.getData()); // Therapy
+
+            therapiesStore = new _store.default();
+            therapiesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.therapies);
+            therapiesFetcher = new _TherapyFetcher.default(therapiesURL, therapiesStore, undefined, [therapyPriorityStore, therapyCompoundsStore, antibioticsStore], handleError);
+            fetchPromises.push(therapiesFetcher.getData()); // Diagnoses
+
+            diagnosesStore = new _store.default();
+            diagnosesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.diagnoses);
+            diagnosesFetcher = new _DiagnosisFetcher.default(diagnosesURL, diagnosesStore, undefined, [diagnosisClassesStore, diagnosesBacteriaStore, bacteriaStore, therapiesStore], handleError);
+            fetchPromises.push(diagnosesFetcher.getData()); // Guidelines
+
+            guidelinesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.guidelines);
+            guidelineFetcher = new _GuidelineFetcher.default(guidelinesURL, guidelineStore, undefined, [diagnosesStore]);
+            fetchPromises.push(guidelineFetcher.getData());
+            return _context.abrupt("return", Promise.all(fetchPromises));
+
+          case 40:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+  return _setupGuidelines.apply(this, arguments);
+}
 
 /***/ }),
 
@@ -13722,6 +14278,10 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
@@ -13734,6 +14294,12 @@ var ResistancesFetcher =
 /*#__PURE__*/
 function (_Fetcher) {
   _inherits(ResistancesFetcher, _Fetcher);
+
+  /**
+   * Counts up every time handleData is called. Needed as we remove all antibiotics and bacteria
+   * that do not contain resistance data on the *first* call.
+   * @type {Number}
+   */
 
   /**
   * Fetches resistances from server, then updates ResistancesStore passed as an argument.
@@ -13750,25 +14316,40 @@ function (_Fetcher) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ResistancesFetcher).call(this, url, store, options, dependentStores));
     _this.dataHandled = 0;
-    _this._stores = stores;
+    _this.stores = stores;
     return _this;
   }
 
   _createClass(ResistancesFetcher, [{
-    key: "getDataForFilters",
+    key: "getData",
     value: function () {
-      var _getDataForFilters = _asyncToGenerator(
+      var _getData = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee(filters) {
+      regeneratorRuntime.mark(function _callee() {
+        var _get2;
+
+        var _len,
+            params,
+            _key,
+            _args = arguments;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // Store original URL
-                if (!this._baseUrl) this._baseUrl = this._url;
-                this._url = "".concat(this._baseUrl, "?filter=").concat(JSON.stringify(filters));
+                /**
+                 *  Set URL of latest call; in this.handleData(), drop all data that does not belong to
+                 *  latest call (as earlier calls might be answered later and data for the wrong filters
+                 *  would be displayed
+                 */
+                this.lastestCallURL = this.url;
+
+                for (_len = _args.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+                  params[_key] = _args[_key];
+                }
+
                 _context.next = 4;
-                return this.getData();
+                return (_get2 = _get(_getPrototypeOf(ResistancesFetcher.prototype), "getData", this)).call.apply(_get2, [this].concat(params));
 
               case 4:
               case "end":
@@ -13776,6 +14357,34 @@ function (_Fetcher) {
             }
           }
         }, _callee, this);
+      }));
+
+      return function getData() {
+        return _getData.apply(this, arguments);
+      };
+    }()
+  }, {
+    key: "getDataForFilters",
+    value: function () {
+      var _getDataForFilters = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(filters) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                // Store original URL
+                if (!this.baseUrl) this.baseUrl = this.url;
+                this.url = "".concat(this.baseUrl, "?filter=").concat(JSON.stringify(filters));
+                _context2.next = 4;
+                return this.getData();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
       }));
 
       return function getDataForFilters(_x) {
@@ -13788,20 +14397,24 @@ function (_Fetcher) {
     */
 
   }, {
-    key: "_handleData",
-    value: function _handleData(data) {
+    key: "handleData",
+    value: function handleData(data, url) {
       var _this2 = this;
 
       log('Handle data %o', data);
       this.dataHandled += 1;
 
-      this._store.clear();
+      if (url !== this.lastestCallURL) {
+        log('Data belongs to URL %s, latest URL is %s; drop data.', url, this.lastestCallURL);
+        return;
+      }
 
-      var bacteria = Array.from(this._stores.bacteria.get().values());
-      var antibiotics = Array.from(this._stores.antibiotics.get().values()); // On the very first round (when we're getting data for switzerland-all) remove all
+      this.store.clear();
+      var bacteria = Array.from(this.stores.bacteria.get().values());
+      var antibiotics = Array.from(this.stores.antibiotics.get().values()); // On the very first round (when we're getting data for switzerland-all) remove all
       // antibiotics that don't have any resistance data.
       // TODO: We need a good endpoint which only returns ab/bact with data available. This
-      // is bullshit.
+      // is a quick-fix.
 
       if (this.dataHandled === 1) {
         var emptyBacteria = bacteria // Get all bacteria that don't have any resistance data
@@ -13820,7 +14433,7 @@ function (_Fetcher) {
 
         (0, _mobx.transaction)(function () {
           emptyBacteria.forEach(function (emptyBacterium) {
-            _this2._stores.bacteria.remove(emptyBacterium);
+            _this2.stores.bacteria.remove(emptyBacterium);
           });
         });
       } // Values missing: There's nothing we could add
@@ -13867,12 +14480,12 @@ function (_Fetcher) {
         }];
         var resistanceObject = new _resistance.default(resistanceValues, antibiotic, bacterium); // Duplicate resistance
 
-        if (_this2._store.hasWithId(resistanceObject)) {
+        if (_this2.store.hasWithId(resistanceObject)) {
           console.warn("ResistanceFetcher: Resistance ".concat(JSON.stringify(resistance), " is\n                    a duplicate; an entry for the same bacterium and antibiotic does exist."));
           return;
         }
 
-        _this2._store.add(resistanceObject);
+        _this2.store.add(resistanceObject);
 
         counter += 1;
       });
@@ -44166,7 +44779,16 @@ var _default = Object.freeze({
     regions: 'generics.region',
     countries: 'generics.country',
     ageGroups: 'generics.ageGroup',
-    hospitalStatus: 'generics.hospitalStatus'
+    hospitalStatus: 'generics.hospitalStatus',
+    guidelineBaseUrl: 'http://guidelines.infect.info/v1/',
+    diagnosisClass: 'diagnosisClass',
+    therapyPriorities: 'therapyPriority',
+    therapyCompounds: 'therapy_compound',
+    diagnosisBacteria: 'diagnosis_bacterium',
+    dataSources: 'dataSource',
+    diagnoses: 'diagnosis',
+    guidelines: 'guideline',
+    therapies: 'therapy'
   }
 });
 
@@ -44199,7 +44821,16 @@ var _default = Object.freeze({
     regions: 'generics.region',
     countries: 'generics.country',
     ageGroups: 'generics.ageGroup',
-    hospitalStatus: 'generics.hospitalStatus'
+    hospitalStatus: 'generics.hospitalStatus',
+    guidelineBaseUrl: 'http://guidelines.infect.info/v1/',
+    diagnosisClass: 'diagnosisClass',
+    therapyPriorities: 'therapyPriority',
+    therapyCompounds: 'therapy_compound',
+    diagnosisBacteria: 'diagnosis_bacterium',
+    dataSources: 'dataSource',
+    diagnoses: 'diagnosis',
+    guidelines: 'guideline',
+    therapies: 'therapy'
   }
 });
 
@@ -44660,27 +45291,16 @@ function (_React$Component) {
   }
 
   _createClass(DrawerGuidelineContent, [{
-    key: "getAntibioticTherapyMarkup",
+    key: "generateMarkdownFromHtml",
 
     /**
      * Rendered markdown contains HTML tags; in order to render them, we must use
      * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
      * unauthorized people.
      */
-    value: function getAntibioticTherapyMarkup(antibioticTherapy) {
+    value: function generateMarkdownFromHtml(content) {
       return {
-        __html: (0, _marked.default)(antibioticTherapy.markdownText)
-      };
-    }
-    /**
-     * See this.getAntibioticTherapyMarkup()
-     */
-
-  }, {
-    key: "getDiagnosisMarkup",
-    value: function getDiagnosisMarkup(diagnosis) {
-      return {
-        __html: (0, _marked.default)(diagnosis.markdownText)
+        __html: (0, _marked.default)(content)
       };
     }
   }, {
@@ -44690,18 +45310,22 @@ function (_React$Component) {
 
       var guideline = this.props.content;
       var diagnosis = guideline.selectedDiagnosis;
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, diagnosis.name), _react.default.createElement("p", null, diagnosis.diagnosisClass.name), _react.default.createElement("p", null, _react.default.createElement("em", null, guideline.name)), _react.default.createElement("p", null, "Alle Guidelines und Dosierung sind kritisch zu hinterfragen und in eigener Verantwortung anzuwenden. Dies setzt immer eine geeignete medizinische Ausbildung voraus. Disclaimer"), diagnosis.therapies.map(function (therapy) {
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, diagnosis.name), _react.default.createElement("p", null, diagnosis.diagnosisClass.name), _react.default.createElement("p", null, _react.default.createElement("em", null, guideline.name)), guideline.markdownDisclaimer && _react.default.createElement("p", {
+        dangerouslySetInnerHTML: this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
+      }), diagnosis.therapies.map(function (therapy) {
         return _react.default.createElement("div", {
           key: therapy.priority.order
         }, _react.default.createElement("h3", null, therapy.priority.order, " ", therapy.priority.name), therapy.recommendedAntibiotics.map(function (antibiotic) {
           return _react.default.createElement("div", {
-            key: antibiotic.antibiotic.id
+            key: antibiotic.id
           }, _react.default.createElement("div", {
-            dangerouslySetInnerHTML: _this.getAntibioticTherapyMarkup(antibiotic)
+            dangerouslySetInnerHTML: _this.generateMarkdownFromHtml(antibiotic.markdownText)
           }));
+        }), therapy.markdownText && _react.default.createElement("p", {
+          dangerouslySetInnerHTML: _this.generateMarkdownFromHtml(therapy.markdownText)
         }));
       }), _react.default.createElement("div", {
-        dangerouslySetInnerHTML: this.getDiagnosisMarkup(diagnosis)
+        dangerouslySetInnerHTML: this.generateMarkdownFromHtml(diagnosis.markdownText)
       }));
     }
   }]);
@@ -45514,13 +46138,13 @@ function (_React$Component) {
       }), _react.default.createElement("hr", {
         className: "divider",
         key: "divider"
-      })], _react.default.createElement(_GuidelinesFilterList.default, {
+      })], this.props.guidelines && this.props.guidelines.get().size > 0 && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_GuidelinesFilterList.default, {
         identifier: "guidelines",
         additionalClassNames: "guidelines-selector-for-fabian-blue-background",
         guidelines: this.props.guidelines
       }), _react.default.createElement("hr", {
         className: "divider"
-      }), _react.default.createElement(_antibioticsFilterList.default, {
+      })), _react.default.createElement(_antibioticsFilterList.default, {
         identifier: "antibiotics",
         filterValues: this.props.filterValues,
         selectedFilters: this.props.selectedFilters
@@ -48010,16 +48634,10 @@ function (_React$Component) {
     * label takes up.
     */
     value: function _setDimensions() {
-      if (!this._textElement) return;
+      if (!this._textElement) return; // Assume a transformation of -90%. We only use -75% but having some space's not wrong.
 
-      var bounds = this._textElement.getBBox(); // Element has a rotation of -45deg. Those are not respected in getBBox.
-      // When rotated by 45°, take    sin(45°) * width   plus   the triangle below the baseline
-      // that's a isosceles triangle.
-      // Angle is more than 45°, use PI/3.
-
-
-      var height = Math.ceil(bounds.width * Math.sin(Math.PI / 3) + Math.sqrt(Math.pow(bounds.height, 2)) / 2);
-      this.props.antibiotic.setDimensions(height, height);
+      var width = Math.ceil(this._textElement.getBBox().width);
+      this.props.antibiotic.setDimensions(width, width);
     }
   }, {
     key: "_setupResizeListener",

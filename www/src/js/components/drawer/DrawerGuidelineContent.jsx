@@ -9,15 +9,8 @@ export default @observer class DrawerGuidelineContent extends React.Component {
      * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
      * unauthorized people.
      */
-    getAntibioticTherapyMarkup(antibioticTherapy) {
-        return { __html: marked(antibioticTherapy.markdownText) };
-    }
-
-    /**
-     * See this.getAntibioticTherapyMarkup()
-     */
-    getDiagnosisMarkup(diagnosis) {
-        return { __html: marked(diagnosis.markdownText) };
+    generateMarkdownFromHtml(content) {
+        return { __html: marked(content) };
     }
 
     render() {
@@ -29,26 +22,38 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                 <p>{diagnosis.diagnosisClass.name}</p>
                 <p><em>{guideline.name}</em></p>
 
-                <p>Alle Guidelines und Dosierung sind kritisch zu hinterfragen und in eigener
-                Verantwortung anzuwenden. Dies setzt immer eine geeignete medizinische Ausbildung
-                voraus. Disclaimer
-                </p>
+                {guideline.markdownDisclaimer &&
+                    <p
+                        dangerouslySetInnerHTML={
+                            this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
+                        }
+                    ></p>
+                }
 
                 {diagnosis.therapies.map(therapy => (
                     <div key={therapy.priority.order}>
                         <h3>{therapy.priority.order} {therapy.priority.name}</h3>
                         {therapy.recommendedAntibiotics.map(antibiotic => (
-                            <div key={antibiotic.antibiotic.id}>
+                            <div key={antibiotic.id}>
                                 <div dangerouslySetInnerHTML={
-                                    this.getAntibioticTherapyMarkup(antibiotic)
+                                    this.generateMarkdownFromHtml(antibiotic.markdownText)
                                 }>
                                 </div>
                             </div>
                         )) }
+                        {therapy.markdownText &&
+                            <p
+                                dangerouslySetInnerHTML={
+                                    this.generateMarkdownFromHtml(therapy.markdownText)
+                                }
+                            ></p>
+                        }
                     </div>
                 ))}
 
-                <div dangerouslySetInnerHTML={this.getDiagnosisMarkup(diagnosis)}></div>
+                <div
+                    dangerouslySetInnerHTML={this.generateMarkdownFromHtml(diagnosis.markdownText)}
+                ></div>
 
             </div>
         );
