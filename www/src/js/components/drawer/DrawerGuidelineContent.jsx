@@ -17,44 +17,60 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         const guideline = this.props.content;
         const diagnosis = guideline.selectedDiagnosis;
         return (
-            <div>
-                <h1>{diagnosis.name}</h1>
-                <p>{diagnosis.diagnosisClass.name}</p>
-                <p><em>{guideline.name}</em></p>
+            <div className={'drawer__inner'}>
+                <div className={'drawer__fixed'}>
+                    <h1>{diagnosis.name}</h1>
+                </div>
 
-                {guideline.markdownDisclaimer &&
-                    <p
-                        dangerouslySetInnerHTML={
-                            this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
-                        }
-                    ></p>
-                }
+                <div className={'drawer__scrollable'}>
+                    <div className={'drawer__scrollable-inner'}>
 
-                {diagnosis.therapies.map(therapy => (
-                    <div key={therapy.priority.order}>
-                        <h3>{therapy.priority.order} {therapy.priority.name}</h3>
-                        {therapy.recommendedAntibiotics.map(antibiotic => (
-                            <div key={antibiotic.id}>
-                                <div dangerouslySetInnerHTML={
-                                    this.generateMarkdownFromHtml(antibiotic.markdownText)
-                                }>
-                                </div>
-                            </div>
-                        )) }
-                        {therapy.markdownText &&
-                            <p
+                        <p>{diagnosis.diagnosisClass.name}</p>
+                        <p><em>{guideline.name}</em></p>
+
+                        {guideline.markdownDisclaimer &&
+                            <div
+                                className={'markdown'}
                                 dangerouslySetInnerHTML={
-                                    this.generateMarkdownFromHtml(therapy.markdownText)
+                                    this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
                                 }
-                            ></p>
+                            ></div>
                         }
+
+                        {diagnosis.therapies.map(therapy => (
+                            <div key={therapy.priority.order} className={'diagnosis-text'}>
+                                <h3 className={'diagnosis-text__choose-title'}>
+                                    <span className={'diagnosis-text__choose-title-number'}>
+                                        {therapy.priority.order}
+                                    </span>
+                                    {therapy.priority.name}
+                                </h3>
+                                {therapy.recommendedAntibiotics.map(antibiotic => (
+                                    <div
+                                        key={antibiotic.id}
+                                        className={'markdown'}
+                                        dangerouslySetInnerHTML={
+                                            this.generateMarkdownFromHtml(antibiotic.markdownText)
+                                        }
+                                    ></div>
+                                )) }
+                                {therapy.markdownText &&
+                                    <div
+                                        className={'markdown'}
+                                        dangerouslySetInnerHTML={
+                                            this.generateMarkdownFromHtml(therapy.markdownText)
+                                        }
+                                    ></div>
+                                }
+                            </div>
+                        ))}
+
+                        <div
+                            className={'markdown'}
+                            dangerouslySetInnerHTML={this.generateMarkdownFromHtml(diagnosis.markdownText)}
+                        ></div>
                     </div>
-                ))}
-
-                <div
-                    dangerouslySetInnerHTML={this.generateMarkdownFromHtml(diagnosis.markdownText)}
-                ></div>
-
+                </div>
             </div>
         );
     }

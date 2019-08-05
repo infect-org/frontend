@@ -1,16 +1,22 @@
 disclaimer {
-	position: relative;
-	z-index: 1;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 1500;
+	box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.15);
 }
 .disclaimer {
 	position: relative;
 
 	box-sizing: border-box;
-	padding: 8px 16px;
+	padding: 12px 16px;
 
-	background-color: #eee;
+	background-color: rgba(#eee, 0.9);
 	color: #000;
 	font-size: $font-size--small;
+
+	text-align: center;
 
 	&__paragraph {
 		margin: 0;

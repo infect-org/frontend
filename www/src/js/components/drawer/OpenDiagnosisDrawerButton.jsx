@@ -28,9 +28,12 @@ export default @observer class OpenDiagnosisDrawerButton extends React.Component
     render() {
         if (!this.isVisible) return null;
         return (
-            <button onClick={this.openDrawer}>
-                Show Guideline
-            </button>
+            <div className="open-diagnosis-drawer-button">
+                <button onClick={this.openDrawer} className="button button--show-guideline">
+                    <svg aria-hidden="true"><use xlinkHref="#icon_guidelines" /></svg>
+                    Show Guideline
+                </button>
+            </div>
         );
     }
 }

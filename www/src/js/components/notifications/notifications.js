@@ -23,16 +23,18 @@ export default class Notifications extends React.Component {
     render() {
         return (
             <div className={ `notification-container ${this.showErrors ? 'notification-container--active' : ''}` }>
-                <div className="notification__error-icon">
-                    <a className="notification__link" onClick={ () => this.hideErrors() }>
-                        <img src="/img/error.svg" />
-                    </a>
-                </div>
-                <div className="notification__message message">
-                    <h2>UPS, something went wrong!</h2>
-                    { errorHandler.errors.map(err => (
-                        <p key={ err.message }>{ err.message }</p>
-                    ))}
+                <div className="notification">
+                    <div className="notification__error-icon">
+                        <button className="notification__link button button--close" onClick={ () => this.hideErrors() }>
+                            &times;
+                        </button>
+                    </div>
+                    <div className="notification__message message">
+                        <h2>UPS, something went wrong!</h2>
+                        { errorHandler.errors.map(err => (
+                            <p key={ err.message }>{ err.message }</p>
+                        ))}
+                    </div>
                 </div>
             </div>
         );

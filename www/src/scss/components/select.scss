@@ -1,6 +1,6 @@
 .select {
 	width: $navigation-width - 40px;
-	-webkit-appearance: none; 
+	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 	background: url(../img/arrow_dropdown.png) no-repeat 95% center;
@@ -13,7 +13,7 @@
 	color: #fff;
 	@include transition(color, $transition-duration);
 	font-size: 13px;
-
+	cursor: pointer;
 
 	option {
 		color: #fff !important;
@@ -28,8 +28,8 @@
 	border: 1px solid $hover-color;
 	color: $hover-color;
 	background: url(../img/arrow_dropdown_green.png) no-repeat 95% center;
-}	
+}
 
-.select::-ms-expand { 
+.select::-ms-expand {
     display: none; /* hide the default arrow in ie10 and ie11 */
 }

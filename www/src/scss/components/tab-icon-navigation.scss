@@ -26,16 +26,34 @@
 
 		&:hover {
 			fill: $color--light-green;
+
+			@at-root {
+				.button--icon.button--icon--guidelines svg:hover {
+					fill: $guidelines-color;
+				}
+			}
 		}
 	}
 
 	&--active {
 		svg {
 			fill: $color--light-green;
+
+			@at-root {
+				.button--icon--active.button--icon--guidelines svg {
+					fill: $guidelines-color;
+				}
+			}
 		}
 		&:after {
 			@extend %triangle;
 			left: 7px;
+
+			@at-root {
+				.button--icon--active.button--icon--guidelines:after {
+					border-bottom-color: $guidelines-color;
+				}
+			}
 		}
 	}
 

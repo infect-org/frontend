@@ -841,6 +841,7 @@ address {
   justify-content: center;
   padding: 0 1.25rem;
   color: #fff;
+  /* guidelines specific styling */
 }
 
 .group h1 {
@@ -911,6 +912,15 @@ address {
   padding-bottom: 1.25rem;
 }
 
+.group--guidelines {
+  background-color: #D8E7F4;
+  color: #000;
+}
+
+.group--guidelines + .divider {
+  margin-top: 0;
+}
+
 .list-item {
   display: -moz-flex;
   display: flex;
@@ -957,6 +967,10 @@ address {
   -webkit-border-radius: 0.3125rem 0 0 0.3125rem;
   -moz-border-radius: 0.3125rem 0 0 0.3125rem;
   z-index: 2;
+}
+
+.label--guidelines {
+  background-color: #D8E7F4;
 }
 
 .label--small {
@@ -1011,7 +1025,7 @@ address {
 .list-item--radio .side-label {
   position: relative;
   cursor: pointer;
-  color: #fff;
+  color: inherit;
   transition: color 100ms linear;
   -webkit-transition: color 100ms linear;
   -moz-transition: color 100ms linear;
@@ -1056,12 +1070,33 @@ address {
   border-color: #cbe264;
 }
 
+.list-item--checkbox input:hover + .side-label::after {
+  background-color: rgba(203, 226, 100, 0.2);
+}
+
+.list-item--checkbox input:checked:hover + .side-label::after {
+  background-color: #cbe264;
+}
+
+.list-item--radio {
+  /*input[type="radio"]:checked + .side-label::after {
+    background-color: $active__checkbox-color;
+  }*/
+  /*input[type="radio"]:hover + .side-label
+  ,input[type="radio"]:hover + .side-label::after
+  ,input[type="radio"]:checked + .side-label
+  ,input[type="radio"]:checked + .side-label::after {
+    color: $active__checkbox-color;
+    border-color: $active__checkbox-color;
+  }*/
+}
+
 .list-item--radio .side-label::after {
   top: 0.25rem;
   width: 0.75rem;
   height: 0.75rem;
   border: 0.0625rem solid;
-  border-color: #fff;
+  border-color: #000;
   border-radius: 0.4375rem;
   -webkit-border-radius: 0.4375rem;
   -moz-border-radius: 0.4375rem;
@@ -1076,7 +1111,7 @@ address {
   width: 0.375rem;
   height: 0.375rem;
   margin: 0.25rem;
-  background-color: #363636;
+  background-color: transparent;
   border-radius: 0.3125rem;
   -webkit-border-radius: 0.3125rem;
   -moz-border-radius: 0.3125rem;
@@ -1085,17 +1120,29 @@ address {
   -moz-transition: background-color 100ms linear;
 }
 
-.list-item--radio input:checked + .side-label::after {
-  background-color: #cbe264;
-}
-
-.list-item--radio input:checked + .side-label::before {
+.list-item--radio input[type="checkbox"]:checked + .side-label::before {
   background-color: #363636;
 }
 
-.list-item--radio input:hover + .side-label, .list-item--radio input:hover + .side-label::after, .list-item--radio input:checked + .side-label, .list-item--radio input:checked + .side-label::after {
+.list-item--radio input[type="checkbox"]:checked + .side-label::after {
+  background-color: #cbe264;
+}
+
+.list-item--radio input[type="checkbox"]:hover + .side-label, .list-item--radio input[type="checkbox"]:hover + .side-label::after, .list-item--radio input[type="checkbox"]:checked + .side-label, .list-item--radio input[type="checkbox"]:checked + .side-label::after {
   color: #cbe264;
   border-color: #cbe264;
+}
+
+.list-item--radio input[type="radio"]:checked + .side-label::before {
+  background-color: #363636;
+}
+
+.list-item--radio input[type="radio"]:hover + .side-label::before {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.list-item--radio input[type="radio"]:checked:hover + .side-label::before {
+  background-color: #000;
 }
 
 .button {
@@ -1133,6 +1180,10 @@ address {
   .button--label {
     padding: 0 0.5rem;
   }
+}
+
+.list-item--guidelines .button--label {
+  background-color: #B9D5ED;
 }
 
 .button--label:hover {
@@ -1224,6 +1275,12 @@ address {
   font-style: normal;
 }
 
+.button--info-active {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
 .button--info-active > span {
   display: block;
   border-radius: 50%;
@@ -1239,6 +1296,57 @@ address {
 
 .button--info-active > span:hover {
   background-color: lightgrey;
+}
+
+.button--show-guideline {
+  position: relative;
+  transition: background-color 100ms linear;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  background-color: #D8E7F4;
+  border-top-left-radius: 0.3125rem;
+  border-top-right-radius: 0.3125rem;
+  border-bottom-right-radius: 0.3125rem;
+  border-bottom-left-radius: 0.3125rem;
+  -webkit-border-top-left-radius: 0.3125rem;
+  -webkit-border-top-right-radius: 0.3125rem;
+  -webkit-border-bottom-right-radius: 0.3125rem;
+  -webkit-border-bottom-left-radius: 0.3125rem;
+  -moz-border-radius-topleft: 0.3125rem;
+  -moz-border-radius-topright: 0.3125rem;
+  -moz-border-radius-bottomright: 0.3125rem;
+  -moz-border-radius-bottomleft: 0.3125rem;
+  padding: 0 1rem 0 0.25rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 2.125rem;
+}
+
+.button--show-guideline:hover {
+  background-color: #c4dbee;
+}
+
+.button--show-guideline svg {
+  width: 2.25rem;
+  height: 1rem;
+}
+
+.button--close-drawer {
+  margin: 1.25rem 1.25rem 0 0;
+  float: right;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  line-height: 1;
+  transition: background-color 100ms linear;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  background-color: #c4dbee;
+}
+
+.button--close-drawer:hover {
+  background-color: #b0cfe9;
 }
 
 .button--guide {
@@ -1291,12 +1399,24 @@ address {
   fill: #cbe264;
 }
 
+.button--icon.button--icon--guidelines svg:hover {
+  fill: #D8E7F4;
+}
+
 .button--icon--active svg {
   fill: #cbe264;
 }
 
+.button--icon--active.button--icon--guidelines svg {
+  fill: #D8E7F4;
+}
+
 .button--icon--active:after {
   left: 0.4375rem;
+}
+
+.button--icon--active.button--icon--guidelines:after {
+  border-bottom-color: #D8E7F4;
 }
 
 .button--icon--population {
@@ -1336,6 +1456,7 @@ address {
   -webkit-transition: color 100ms linear;
   -moz-transition: color 100ms linear;
   font-size: 0.8125rem;
+  cursor: pointer;
 }
 
 .select option {
@@ -1364,10 +1485,11 @@ matrixheader {
 }
 
 .resistanceMatrix {
+  position: relative;
   /** @type {Number} Slow down all animations (for debugging purposes) */
-  /* 
+  /*
     * Only display transitions and custom visibility style when and after the first
-    * filter is set 
+    * filter is set
     */
   /**
     * Resistance Detail (Hover)
@@ -1405,11 +1527,15 @@ matrixheader {
 }
 
 .resistanceMatrix__overlay {
-  position: fixed;
+  position: absolute;
+  /*width: 100%;
+        height: 100%;
+        top: $navigation-height;
+        left: $navigation-width;*/
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  top: 4.375rem;
-  left: 13.125rem;
   background-color: #616161;
   transition: opacity 100ms linear;
   -webkit-transition: opacity 100ms linear;
@@ -1519,6 +1645,158 @@ matrixheader {
 .resistanceMatrix__resistanceDetailCircleShadow {
   fill: #000;
   opacity: 0.4;
+}
+
+.open-diagnosis-drawer-button {
+  display: -moz-flex;
+  display: flex;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -moz-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  margin-right: 1.25rem;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 20rem;
+  background-color: #D8E7F4;
+  z-index: 1000;
+  box-shadow: -0.625rem 0 1.25rem rgba(0, 0, 0, 0.15);
+}
+
+.drawer.hidden {
+  display: none;
+}
+
+.drawer__inner {
+  clear: right;
+  padding-bottom: 6.25rem;
+  height: 100%;
+  display: -moz-flex;
+  display: flex;
+  -moz-flex-direction: column;
+  flex-direction: column;
+}
+
+.drawer__inner h1 {
+  font-size: 1.5rem;
+  max-width: 85%;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.drawer__inner h2 {
+  font-size: 1.25rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.drawer__inner p {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.drawer__fixed {
+  padding: 1.25rem;
+  -moz-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.drawer__scrollable {
+  -moz-flex: 1 1 auto;
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 0 1.25rem;
+  background: linear-gradient(#D8E7F4 30%, rgba(216, 231, 244, 0)), linear-gradient(rgba(216, 231, 244, 0), #D8E7F4 70%) 0 100%, radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+  background: linear-gradient(#D8E7F4 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), #D8E7F4 70%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: #D8E7F4;
+  background-size: 100% 2.5rem, 100% 2.5rem, 100% 0.875rem, 100% 0.875rem;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
+}
+
+.drawer__scrollable-inner {
+  padding-bottom: 3.75rem;
+}
+
+.drawer__scrollable-inner > .markdown {
+  margin: 1.875rem 0;
+}
+
+.drawer__scrollable-inner > .markdown p {
+  font-size: 0.8125rem;
+  color: #575757;
+}
+
+.diagnosis-text {
+  margin-bottom: 2.5rem;
+}
+
+.diagnosis-text__choose-title {
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.2;
+  margin: 0 0 0.375rem 0;
+  color: #3289CC;
+}
+
+.diagnosis-text__choose-title:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  background-color: #3289CC;
+}
+
+.diagnosis-text__choose-title-number {
+  position: relative;
+  color: #fff;
+  margin-left: 0;
+  line-height: 1.5;
+  width: 1.5rem;
+  display: inline-block;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-size: 1.125rem;
+  line-height: 1.1;
+  margin: 0 0 0.375rem 0;
+}
+
+.markdown p,
+.markdown li {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.markdown ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.markdown pre,
+.markdown code {
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.35;
 }
 
 infooverlaybutton {
@@ -1848,17 +2126,22 @@ infooverlaybutton {
 }
 
 disclaimer {
-  position: relative;
-  z-index: 1;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1500;
+  box-shadow: 0 -0.625rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
 .disclaimer {
   position: relative;
   box-sizing: border-box;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
+  padding: 0.75rem 1rem;
+  background-color: rgba(238, 238, 238, 0.9);
   color: #000;
   font-size: 1rem;
+  text-align: center;
 }
 
 .disclaimer__paragraph {
@@ -2337,8 +2620,8 @@ appbanner {
   z-index: 1;
   box-sizing: border-box;
   padding: 0.5rem 1rem;
-  background-color: #578ffa;
-  color: #fff;
+  background-color: #eee;
+  color: #000;
   font-size: 1rem;
 }
 
@@ -2349,6 +2632,8 @@ appbanner {
   display: flex;
   -moz-align-items: center;
   align-items: center;
+  -moz-justify-content: center;
+  justify-content: center;
 }
 
 .app-banner__paragraph:after {
@@ -2389,7 +2674,7 @@ appbanner {
 }
 
 .app-banner__button {
-  color: #fff !important;
+  color: #000 !important;
   cursor: pointer;
 }
 
@@ -2417,41 +2702,33 @@ appbanner {
 }
 
 .notification-container {
-  position: fixed;
-  top: calc(50vh - 5rem);
-  right: -21.875rem;
-  width: 21.875rem;
+  position: relative;
+  background-color: #ff4827;
+  height: 0;
   opacity: 0;
   transition: all 200ms linear;
   -webkit-transition: all 200ms linear;
   -moz-transition: all 200ms linear;
-  display: -moz-flex;
-  display: flex;
 }
 
 .notification-container--active {
   opacity: 1;
-  right: 0;
+  height: auto;
   transition: all 200ms linear;
   -webkit-transition: all 200ms linear;
   -moz-transition: all 200ms linear;
 }
 
+.notification-container .notification {
+  padding: 0.5rem 1rem;
+}
+
 .notification-container .notification__error-icon {
-  width: 15%;
-  background-color: #ff4827;
-  border-top-left-radius: 0.5625rem;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0.5625rem;
-  -webkit-border-top-left-radius: 0.5625rem;
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0.5625rem;
-  -moz-border-radius-topleft: 0.5625rem;
-  -moz-border-radius-topright: 0;
-  -moz-border-radius-bottomright: 0;
-  -moz-border-radius-bottomleft: 0.5625rem;
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  margin-right: 0.625rem;
+  top: 0.625rem;
   display: -moz-flex;
   display: flex;
   -moz-flex-direction: column;
@@ -2462,35 +2739,27 @@ appbanner {
 
 .notification-container .notification__message {
   height: 100%;
-  width: 100%;
-  background-color: lightgrey;
 }
 
 .notification-container .notification__link {
   cursor: pointer;
   text-align: center;
-}
-
-.notification-container .notification__link img {
-  width: 70%;
-}
-
-.notification-container .message {
-  display: -moz-flex;
-  display: flex;
-  -moz-flex-direction: column;
-  flex-direction: column;
-  padding: 0.625rem 1.875rem;
+  color: #fff;
+  /*img {
+				width: 70%;
+			}*/
 }
 
 .notification-container .message h2 {
-  margin: 0;
-  font-size: 1.25rem;
-  color: #a52604;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  color: #fff;
 }
 
 .notification-container .message p {
-  font-size: 1rem;
+  font-size: 0.875rem;
+  color: #fff;
+  margin: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

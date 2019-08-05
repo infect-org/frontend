@@ -1,0 +1,170 @@
+// opener
+.open-diagnosis-drawer-button {
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(center);
+  height: 100%;
+  margin-right: 1.25rem;
+}
+
+
+.drawer {
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  background-color: $guidelines-color;
+  z-index: 1000;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15);
+
+  &.hidden {
+    display: none;
+  }
+
+  &__inner {
+    clear: right;
+    padding-bottom: 100px;
+    height: 100%;
+    @include flexbox();
+    @include flex-direction(column);
+
+    h1 {
+      font-size: 24px;
+      max-width: 85%;
+      line-height: 1.1;
+      margin: 0;
+    }
+    h2 {
+      font-size: 20px;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    p {
+      margin: 0 0 4px 0;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+  }
+
+  &__fixed {
+    padding: 20px;
+    @include flex(0 0 auto);
+  }
+  &__scrollable {
+    @include flex(1 1 auto);
+    overflow: auto;
+    padding: 0 20px;
+
+    background:
+            /* Shadow covers */
+            linear-gradient($guidelines-color 30%, rgba($guidelines-color,0)),
+            linear-gradient(rgba($guidelines-color,0), $guidelines-color 70%) 0 100%,
+
+              /* Shadows */
+            radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+            radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+    background:
+            /* Shadow covers */
+            linear-gradient($guidelines-color 30%, rgba(255,255,255,0)),
+            linear-gradient(rgba(255,255,255,0), $guidelines-color 70%) 0 100%,
+
+              /* Shadows */
+            radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+            radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+    background-repeat: no-repeat;
+    background-color: $guidelines-color;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+
+    /* Opera doesn't support this in the shorthand */
+    background-attachment: local, local, scroll, scroll;
+
+
+  }
+  &__scrollable-inner {
+    padding-bottom: 60px;
+
+    // disclaimer only
+    > .markdown {
+      margin: 30px 0;
+
+      p {
+        font-size: 13px;
+        color: #575757;
+      }
+    }
+  }
+}
+
+
+.diagnosis-text {
+
+  margin-bottom: 40px;
+
+  &__choose-title { // styling for "wahl"-titles
+    position: relative;
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0 0 6px 0;
+    color: $guidelines-color--dark;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 100%;
+      background-color: $guidelines-color--dark;
+    }
+
+  }
+  &__choose-title-number {
+    position: relative;
+    color: #fff;
+    margin-left: 0;
+    line-height: 1.5;
+    width: 1.5rem;
+    display: inline-block;
+    text-align: center;
+    margin-right: 0.5rem;
+  }
+}
+
+
+.markdown {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 18px;
+    line-height: 1.1;
+    margin: 0 0 6px 0;
+  }
+
+  p,
+  li {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  pre,
+  code {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+}

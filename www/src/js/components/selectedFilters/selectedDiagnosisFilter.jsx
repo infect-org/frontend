@@ -42,8 +42,8 @@ export default @observer class SelectedDiagnosisFilter extends React.Component {
             <div className="group group--black-font">
                 <h2>Guideline</h2>
                 <ul className="group__list">
-                    <li className="group__list-item list-item">
-                        <div className="label label--rounded">
+                    <li className="group__list-item group__list-item--guidelines list-item list-item--guidelines">
+                        <div className="label label--rounded label--guidelines">
                             <p className="label--smaller label--nomargin">
                                 Diagnosis
                             </p>

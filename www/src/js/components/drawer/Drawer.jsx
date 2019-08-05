@@ -24,21 +24,9 @@ export default @observer class Drawer extends React.Component {
     render() {
         return (
             <div
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    width: '800px',
-                    backgroundColor: '#A7CCEB',
-                    padding: 20,
-                    zIndex: 10000,
-                    boxShadow: '0 0 20px rgba(0, 0, 0, 0.7)',
-                }}
-                className={`myClassName myDrawer ${this.getVisibilityClass()}`}
+                className={`drawer ${this.getVisibilityClass()}`}
             >
-                { /** FABIAN: Remove fake css from index.html when writing real css */ }
-                <button onClick={this.closeDrawer}>&times;</button>
+                <button onClick={this.closeDrawer} className={'drawer__close-button button button--close-drawer'}>&times;</button>
                 {
                     this.props.drawerViewModel &&
                     this.props.drawerViewModel.contentType === 'guideline' &&
