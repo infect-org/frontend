@@ -1,0 +1,44 @@
+corruptdatawarning {
+	position: relative;
+	z-index: 1;
+}
+.corruptdatawarning {
+	position: relative;
+
+	box-sizing: border-box;
+	padding: 8px 16px;
+	background-color: #ff7828;
+
+	color: #000;
+	font-size: $font-size--small;
+
+	&__paragraph {
+		background-color: #ff7828;
+
+		margin: 0;
+		padding-right: 20px;
+		@include clearfix();
+	}
+
+	&__text {
+		margin-right: 20px;
+	}
+
+	&__button-container {
+		display: inline-block;
+		margin-right: 10px;
+
+		&--close {
+			position: absolute;
+			right: 0;
+			top: 10px;
+		}
+	}
+
+	&__button {
+		color: black !important;
+		cursor: pointer;
+	}
+
+
+}

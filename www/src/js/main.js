@@ -18,6 +18,7 @@ import FilterListMenu from './components/filterListMenu/filterListMenu';
 import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadingOverlay';
 import FilterSearch from './components/filterSearch/filterSearch';
 import Disclaimer from './components/disclaimer/disclaimer';
+import CorruptDataWarning from "./components/corruptdatawarning/corruptdatawarning";
 import Notifications from './components/notifications/notifications';
 import GuidedTour from './components/guidedTour/guidedTour';
 import AppBanner from './components/appBanner/appBanner';
@@ -89,6 +90,7 @@ function renderReact() {
     ReactDOM.render(<MatrixLoadingOverlay stores={ [app.bacteria, app.antibiotics, app.resistances, app.substanceClasses] } />, document.querySelector('MatrixLoadingOverlay'));
     ReactDOM.render(<Disclaimer infoOverlay={ infoOverlayModel } guidedTour={ guidedTourModel }/>, document.querySelector('Disclaimer'));
     ReactDOM.render(<GuidedTour guidedTour={ guidedTourModel }/>, document.querySelector('GuidedTour'));
+    ReactDOM.render(<CorruptDataWarning />, document.querySelector('CorruptDataWarning'));
     ReactDOM.render(<AppBanner appBanner={ app.appBanner }/>, document.querySelector('AppBanner'));
 
     ReactDOM.render(<InfoOverlay guidedTour={ guidedTourModel } infoOverlay={ infoOverlayModel }/>, document.querySelector('InfoOverlay'));
