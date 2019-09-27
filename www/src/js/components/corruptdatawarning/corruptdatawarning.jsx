@@ -13,6 +13,13 @@ export default class CorruptDataWarning extends React.Component {
 		if (localStorage.getItem(this._localStoragePropertyName)) {
 			this.updateVisibility(false);
 		}
+
+		const now = new Date();
+        const doNotShowAnymoreDate = new Date(2019, 9, 1, 23, 59, 59, 999);
+
+        if (doNotShowAnymoreDate <= now) {
+            this.updateVisibility(false);
+        }
 	}
 
 	@action updateVisibility(visible) {
