@@ -8,7 +8,7 @@ export default Object.freeze({
         regions: 'generics.region',
         ageGroups: 'generics.ageGroup',
         hospitalStatus: 'generics.hospitalStatus',
-        guidelineBaseUrl: 'http://api.infect.info/guideline/v1/',
+        guidelineBaseUrl: 'https://api.infect.info/guideline/v1/',
         diagnosisClass: 'diagnosisClass',
         therapyPriorities: 'therapyPriority',
         therapyCompounds: 'therapy_compound',
