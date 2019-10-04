@@ -16,8 +16,10 @@ export default @observer class BacteriumRowHighlightedBackground extends React.C
          * be rendered)
          */
         if (!position) return (this.previousYPosition || 0);
-        this.previousYPosition = position.top;
-        return position.top;
+        // Remove 1/2 space from top so that backgrounds of neighbouring bacteria touch each other
+        const topPosition = position.top - (this.props.matrix.space / 2);
+        this.previousYPosition = topPosition;
+        return topPosition;
     }
 
     /**
@@ -75,7 +77,7 @@ export default @observer class BacteriumRowHighlightedBackground extends React.C
      * @return {Number}
      */
     @computed get height() {
-        return this.props.matrix.defaultRadius * 2;
+        return (this.props.matrix.defaultRadius * 2) + this.props.matrix.space;
     }
 
     render() {

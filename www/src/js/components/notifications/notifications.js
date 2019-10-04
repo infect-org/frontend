@@ -1,7 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { computed, observable, action } from 'mobx';
-import { errorHandler } from 'infect-frontend-logic';
 
 @observer
 export default class Notifications extends React.Component {
@@ -13,11 +12,11 @@ export default class Notifications extends React.Component {
     @observable hiddenErrorCounter = 0;
 
     @action hideErrors() {
-        this.hiddenErrorCounter = errorHandler.errors.length;
+        this.hiddenErrorCounter = this.props.errors.length;
     }
 
     @computed get showErrors() {
-        return errorHandler.errors.length > this.hiddenErrorCounter;
+        return this.props.errors.length > this.hiddenErrorCounter;
     }
 
     render() {
@@ -30,8 +29,8 @@ export default class Notifications extends React.Component {
                         </button>
                     </div>
                     <div className="notification__message message">
-                        <h2>UPS, something went wrong!</h2>
-                        { errorHandler.errors.map(err => (
+                        <h2>Oops, something went wrong!</h2>
+                        { this.props.errors.map(err => (
                             <p key={ err.message }>{ err.message }</p>
                         ))}
                     </div>

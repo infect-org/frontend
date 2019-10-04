@@ -10,7 +10,9 @@ export default @observer class DrawerGuidelineContent extends React.Component {
      * unauthorized people.
      */
     generateMarkdownFromHtml(content) {
-        return { __html: marked(content) };
+        // Marked throws if content is null or undefined; just return an empty string without
+        // invoking Marked.
+        return { __html: content ? marked(content) : '' };
     }
 
     render() {
@@ -38,7 +40,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                         }
 
                         {diagnosis.therapies.map(therapy => (
-                            <div key={therapy.priority.order} className={'diagnosis-text'}>
+                            <div key={therapy.id.toString()} className={'diagnosis-text'}>
                                 <h3 className={'diagnosis-text__choose-title'}>
                                     <span className={'diagnosis-text__choose-title-number'}>
                                         {therapy.priority.order}
@@ -47,7 +49,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                 </h3>
                                 {therapy.recommendedAntibiotics.map(antibiotic => (
                                     <div
-                                        key={antibiotic.id}
+                                        key={antibiotic.antibiotic.id.toString()}
                                         className={'markdown'}
                                         dangerouslySetInnerHTML={
                                             this.generateMarkdownFromHtml(antibiotic.markdownText)
@@ -67,8 +69,42 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                         <div
                             className={'markdown'}
-                            dangerouslySetInnerHTML={this.generateMarkdownFromHtml(diagnosis.markdownText)}
+                            dangerouslySetInnerHTML={
+                                this.generateMarkdownFromHtml(diagnosis.markdownText)
+                            }
                         ></div>
+
+                        {guideline.contactEmail &&
+                            <div>
+                                { /* FABIAN:START */ }
+                                <a href={`mailto:${guideline.contactEmail}`}>
+                                    Feedback
+                                </a>
+                                { /* FABIAN:END */ }
+                            </div>
+                        }
+
+                        {diagnosis.link &&
+                            <div>
+                                { /* FABIAN:START */ }
+                                <a href={diagnosis.link}>
+                                    {guideline.name}
+                                </a>
+                                { /* FABIAN:END */ }
+                            </div>
+                        }
+
+                        {diagnosis.latestUpdate &&
+                            <div>
+                                { /* FABIAN:START */ }
+                                Source:
+                                <a href={diagnosis.latestUpdate.link} target="_blank">
+                                    {diagnosis.latestUpdate.name}
+                                </a>
+                                Updated: {diagnosis.latestUpdate.date.toLocaleDateString()}
+                                { /* FABIAN:END */ }
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

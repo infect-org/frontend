@@ -16,8 +16,9 @@ export default @observer class AntibioticColumnHighlightedBackground extends Rea
          * be rendered)
          */
         if (!position) return (this.previousXPosition || 0);
+        // Remove 1/2 space so that background of neighbouring antibiotics touch each other
         const left = position.left + this.props.matrix.bacteriumLabelColumnWidth +
-            this.props.matrix.spaceBetweenGroups;
+            this.props.matrix.spaceBetweenGroups - (this.props.matrix.space / 2);
         this.previousXPosition = left;
         return left;
     }
@@ -85,7 +86,7 @@ export default @observer class AntibioticColumnHighlightedBackground extends Rea
                         this.props.matrix.spaceBetweenGroups}
                     x="0"
                     y="0"
-                    width={this.props.matrix.defaultRadius * 2}
+                    width={(this.props.matrix.defaultRadius * 2) + this.props.matrix.space}
                     style={{ opacity: this.opacity }}
                     /* FABIAN to the rescue! */
                     fill="#A7CCEB"
