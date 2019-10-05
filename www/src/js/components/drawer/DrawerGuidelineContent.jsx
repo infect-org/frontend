@@ -4,6 +4,15 @@ import { observer } from 'mobx-react';
 
 export default @observer class DrawerGuidelineContent extends React.Component {
 
+    constructor(...props) {
+        super(...props);
+        marked.setOptions({
+            gfm: true,
+            smartypants: true,
+            breaks: true,
+        });
+    }
+
     /**
      * Rendered markdown contains HTML tags; in order to render them, we must use
      * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
@@ -87,7 +96,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                         {diagnosis.link &&
                             <div>
                                 { /* FABIAN:START */ }
-                                <a href={diagnosis.link}>
+                                <a href={diagnosis.link} target="_blank">
                                     {guideline.name}
                                 </a>
                                 { /* FABIAN:END */ }
