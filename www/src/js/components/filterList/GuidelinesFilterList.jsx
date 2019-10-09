@@ -9,14 +9,19 @@ const log = debug('infect:GuidelinesFilterList');
 @observer
 class GuidelinesFilterList extends React.Component {
 
-    constructor(...props) {
-        super(...props);
-        this.selectDiagnosis = this.selectDiagnosis.bind(this);
-    }
+    selectDiagnosis = this.selectDiagnosis.bind(this);
 
     selectDiagnosis(diagnosis) {
         log('Update selected diagnosis to %o', diagnosis);
-        this.props.guidelines.selectedGuideline.selectDiagnosis(diagnosis);
+        const { selectedGuideline } = this.props.guidelines;
+        // Even though diagnosis is represented by a radio button, let users de-select diagnosis
+        // from list (through click on the radio button) – the official way of removing diagnoses
+        // may not be very intuitive to everybody.
+        if (selectedGuideline.selectedDiagnosis === diagnosis) {
+            selectedGuideline.selectDiagnosis();
+        } else {
+            selectedGuideline.selectDiagnosis(diagnosis);
+        }
     }
 
     render() {

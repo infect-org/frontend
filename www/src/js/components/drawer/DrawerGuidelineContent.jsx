@@ -28,30 +28,30 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         const guideline = this.props.content;
         const diagnosis = guideline.selectedDiagnosis;
         return (
-            <div className={'drawer__inner'}>
-                <div className={'drawer__fixed'}>
+            <div className="drawer__inner">
+                <div className="drawer__fixed">
                     <h1>{diagnosis.name}</h1>
                 </div>
 
-                <div className={'drawer__scrollable'}>
-                    <div className={'drawer__scrollable-inner'}>
+                <div className="drawer__scrollable">
+                    <div className="drawer__scrollable-inner">
 
                         <p>{diagnosis.diagnosisClass.name}</p>
-                        <p><em>{guideline.name}</em></p>
 
                         {guideline.markdownDisclaimer &&
                             <div
-                                className={'markdown'}
+                                className="markdown drawer-disclaimer"
                                 dangerouslySetInnerHTML={
                                     this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
                                 }
                             ></div>
                         }
+                        <a href="#information">Disclaimer</a>
 
                         {diagnosis.therapies.map(therapy => (
-                            <div key={therapy.id.toString()} className={'diagnosis-text'}>
-                                <h3 className={'diagnosis-text__choose-title'}>
-                                    <span className={'diagnosis-text__choose-title-number'}>
+                            <div key={therapy.id.toString()} className="diagnosis-text">
+                                <h3 className="diagnosis-text__choose-title">
+                                    <span className="diagnosis-text__choose-title-number">
                                         {therapy.priority.order}
                                     </span>
                                     {therapy.priority.name}
@@ -59,7 +59,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                 {therapy.recommendedAntibiotics.map(antibiotic => (
                                     <div
                                         key={antibiotic.antibiotic.id.toString()}
-                                        className={'markdown'}
+                                        className="markdown"
                                         dangerouslySetInnerHTML={
                                             this.generateMarkdownFromHtml(antibiotic.markdownText)
                                         }
@@ -67,7 +67,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                 )) }
                                 {therapy.markdownText &&
                                     <div
-                                        className={'markdown'}
+                                        className="markdown"
                                         dangerouslySetInnerHTML={
                                             this.generateMarkdownFromHtml(therapy.markdownText)
                                         }
@@ -76,12 +76,15 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                             </div>
                         ))}
 
-                        <div
-                            className={'markdown'}
-                            dangerouslySetInnerHTML={
-                                this.generateMarkdownFromHtml(diagnosis.markdownText)
-                            }
-                        ></div>
+                        <div className="diagnosis-general-considerations">
+                            <h3>General Considerations</h3>
+                            <div
+                                className="markdown"
+                                dangerouslySetInnerHTML={
+                                    this.generateMarkdownFromHtml(diagnosis.markdownText)
+                                }
+                            ></div>
+                        </div>
 
                         {guideline.contactEmail &&
                             <div>

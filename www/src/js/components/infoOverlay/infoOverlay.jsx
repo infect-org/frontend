@@ -8,8 +8,17 @@ export default @observer class InfoOverlay extends React.Component {
 
     componentDidMount() {
         /* global window */
+        window.addEventListener('hashchange', () => {
+            this.handleHashChange();
+        });
+        this.handleHashChange();
+    }
+
+    handleHashChange() {
         if (window.location.hash === '#information') {
             this.props.infoOverlay.show();
+        } else {
+            this.props.infoOverlay.hide();
         }
     }
 

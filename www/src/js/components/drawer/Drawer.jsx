@@ -26,7 +26,10 @@ export default @observer class Drawer extends React.Component {
             <div
                 className={`drawer ${this.getVisibilityClass()}`}
             >
-                <button onClick={this.closeDrawer} className={'drawer__close-button button button--close-drawer'}>&times;</button>
+                <button
+                    onClick={this.closeDrawer}
+                    className={'drawer__close-button button button--close-drawer'}
+                >&times;</button>
                 {
                     this.props.drawerViewModel &&
                     this.props.drawerViewModel.contentType === 'guideline' &&

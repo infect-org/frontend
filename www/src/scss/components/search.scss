@@ -4,7 +4,7 @@ $padding-lr: 30px;
 	position: absolute;
 	display: block;
 	left: -$navigation-width;
-	@include transition(left, $transition-duration);
+	@include transition(left, $transition-duration, ease-in-out);
 	top: $search-box--height + 20px;
 	z-index: 99;
 	padding: 0;
@@ -75,12 +75,24 @@ $padding-lr: 30px;
 
 }
 
+/** FABIAN :-D */
+/* FABIAN: Please also use the same colors for the hover effect (darker color instead of white) */
+/* BTW: How do I create a double-selector (.result--active.result--guideline) with SASS? */
+.result--active.result--guideline {
+	background-color: #c5daed;
+}
+
 .result {
 	position: relative;
 	padding: 10px $padding-lr;
 	margin: 0;
 	
 	background-color: #d7d5c4;
+
+	/* FABIAN: Use variable; */
+	&--guideline {
+		background-color: #D8E7F4;
+	}
 
 	&__item {
 		white-space: wrap;
@@ -103,11 +115,8 @@ $padding-lr: 30px;
 	}
 
 	&--active {
-		background-color: #fff;
-
-		span {
-
-		}
+		/* FABIAN: Use variable; */
+		background-color: #c7c5b3;
 	}
 
 	&:hover {

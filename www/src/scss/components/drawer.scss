@@ -19,6 +19,7 @@
   z-index: 1000;
   box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15);
 
+  /** FABIAN: Can we do an animation here? */
   &.hidden {
     display: none;
   }
@@ -35,6 +36,7 @@
       max-width: 85%;
       line-height: 1.1;
       margin: 0;
+      margin-right: 50px; // FABAIAN: Damit der nicht den close-button überlagert;
     }
     h2 {
       font-size: 20px;
@@ -135,6 +137,23 @@
   }
 }
 
+/* FABIAN: Please adjust according to mockup */
+.diagnosis-general-considerations {
+  border-top: 1px solid black;
+}
+
+/* FABIAN :'-(  – according to mockup */
+.drawer-disclaimer {
+  margin-top: 5px !important; // Move close to diagnosisClass
+  background-color: #3289CC;
+  border-radius: 6px;
+  padding: 10px;
+
+  p {
+    margin: 0 !important;
+    color: white !important;
+  }
+}
 
 .markdown {
 
@@ -150,7 +169,7 @@
   }
 
   a {
-    /* FABIAN */
+    /* FABIAN: Links black and underlined (not green); */
     color: black;
     text-decoration: underline;
   }

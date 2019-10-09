@@ -161,9 +161,13 @@ $button-bg-color--hover: #d7d5c4;
   }
 
 
+/* FABIAN: Next to title, not above it; */
   &--close-drawer {
-    margin: 1.25rem 1.25rem 0 0;
-    float: right;
+    // margin: 1.25rem 1.25rem 0 0;
+    // float: right;
+    position: absolute; // felix
+    right: 18px; // felix
+    top: 18px; // felix
     width: 2rem;
     height: 2rem;
     border-radius: 100%;

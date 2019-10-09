@@ -77,7 +77,7 @@ function renderReact() {
     ReactDOM.render(
         <Matrix
             matrix={app.views.matrix}
-            filters={ app.filterValues }
+            filters={app.filterValues}
             selectedFilters={app.selectedFilters}
             guidelines={app.guidelines}
         />,
@@ -120,8 +120,11 @@ function renderReact() {
 
     ReactDOM.render(
         <FilterSearch
-            filterValues={app.filterValues}
-            selectedFilters={app.selectedFilters}
+            searchMatrixFilters={app.filterValues.search.bind(app.filterValues)}
+            isMatrixFilterSelected={app.selectedFilters.isSelected.bind(app.selectedFilters)}
+            toggleMatrixFilter={app.selectedFilters.toggleFilter.bind(app.selectedFilters)}
+            searchGuidelineFilters={app.guidelines.search.bind(app.guidelines)}
+            guidelines={app.guidelines}
         />,
         document.querySelector('FilterSearch'),
     );
