@@ -86,7 +86,7 @@ $padding-lr: 30px;
 	position: relative;
 	padding: 10px $padding-lr;
 	margin: 0;
-	
+
 	background-color: #d7d5c4;
 
 	/* FABIAN: Use variable; */
@@ -95,7 +95,7 @@ $padding-lr: 30px;
 	}
 
 	&__item {
-		white-space: wrap;
+		//white-space: wrap;
     	text-overflow: ellipsis;
     	width: 150px;
     	display: block;
@@ -109,8 +109,7 @@ $padding-lr: 30px;
 		width: 15px;
 		height: 40px;
 		top: calc(50% - 20px);
-		background: url(/dist/img/checkmark--grey.svg) no-repeat center center;
-
+		background: url('../img/checkmark--grey.svg') no-repeat center center;
 
 	}
 
@@ -124,7 +123,7 @@ $padding-lr: 30px;
 		cursor: pointer;
 
 		.result__checkmark {
-			background: url(/dist/img/checkmark.svg) no-repeat center center;
+			background: url('../img/checkmark.svg') no-repeat center center;
 		}
 	}
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import GuidedTourButton from '../guidedTour/guidedTourButton.jsx';
+import InfoOverlayButton from './infoOverlayButton.jsx';
+
 // import debug from 'debug';
 // const log = debug('infect:InfoOverlay');
 
@@ -25,6 +27,9 @@ export default @observer class InfoOverlay extends React.Component {
     render() {
         return (
             <div className={ `overlay ${this.props.infoOverlay.visible ? 'overlay--open' : ''}` }>
+
+                <InfoOverlayButton infoOverlay={this.props.infoOverlay} />
+
                 <div className="overlay__menu">
                     <ol className="menu">
                         <li className="menu-item"><a href="#introduction">Introduction</a></li>

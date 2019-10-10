@@ -36,89 +36,124 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                 <div className="drawer__scrollable">
                     <div className="drawer__scrollable-inner">
 
-                        <p>{diagnosis.diagnosisClass.name}</p>
+                        <div className="drawer__header">
 
-                        {guideline.markdownDisclaimer &&
-                            <div
-                                className="markdown drawer-disclaimer"
-                                dangerouslySetInnerHTML={
-                                    this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
-                                }
-                            ></div>
-                        }
-                        <a href="#information">Disclaimer</a>
+                            <div className="drawer__header-inner">
 
-                        {diagnosis.therapies.map(therapy => (
-                            <div key={therapy.id.toString()} className="diagnosis-text">
-                                <h3 className="diagnosis-text__choose-title">
-                                    <span className="diagnosis-text__choose-title-number">
-                                        {therapy.priority.order}
-                                    </span>
-                                    {therapy.priority.name}
-                                </h3>
-                                {therapy.recommendedAntibiotics.map(antibiotic => (
+                                <p>{diagnosis.diagnosisClass.name}<br />
+                                <strong>{guideline.name}</strong></p>
+
+                                {guideline.markdownDisclaimer &&
                                     <div
-                                        key={antibiotic.antibiotic.id.toString()}
-                                        className="markdown"
+                                        className="markdown drawer-disclaimer"
                                         dangerouslySetInnerHTML={
-                                            this.generateMarkdownFromHtml(antibiotic.markdownText)
-                                        }
-                                    ></div>
-                                )) }
-                                {therapy.markdownText &&
-                                    <div
-                                        className="markdown"
-                                        dangerouslySetInnerHTML={
-                                            this.generateMarkdownFromHtml(therapy.markdownText)
+                                            this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
                                         }
                                     ></div>
                                 }
+
                             </div>
-                        ))}
 
-                        <div className="diagnosis-general-considerations">
-                            <h3>General Considerations</h3>
-                            <div
-                                className="markdown"
-                                dangerouslySetInnerHTML={
-                                    this.generateMarkdownFromHtml(diagnosis.markdownText)
-                                }
-                            ></div>
                         </div>
 
-                        {guideline.contactEmail &&
-                            <div>
-                                { /* FABIAN:START */ }
-                                <a href={`mailto:${guideline.contactEmail}`}>
-                                    Feedback
-                                </a>
-                                { /* FABIAN:END */ }
-                            </div>
-                        }
+                        <div className="drawer__therapies">
 
-                        {diagnosis.link &&
-                            <div>
-                                { /* FABIAN:START */ }
-                                <a href={diagnosis.link} target="_blank">
-                                    {guideline.name}
-                                </a>
-                                { /* FABIAN:END */ }
-                            </div>
-                        }
+                            <div className="drawer__therapies-inner">
 
-                        {diagnosis.latestUpdate &&
-                            <div>
-                                { /* FABIAN:START */ }
-                                Source:
-                                <a href={diagnosis.latestUpdate.link} target="_blank">
-                                    {diagnosis.latestUpdate.name}
-                                </a>
-                                Updated: {diagnosis.latestUpdate.date.toLocaleDateString()}
-                                { /* FABIAN:END */ }
+                                {diagnosis.therapies.map(therapy => (
+                                    <div key={therapy.id.toString()} className="diagnosis-text">
+                                        <h2 className="diagnosis-text__choose-title">
+                                            <span className="diagnosis-text__choose-title-number">
+                                                {therapy.priority.order}
+                                            </span>
+                                            {therapy.priority.name}
+                                        </h2>
+                                        {therapy.recommendedAntibiotics.map(antibiotic => (
+                                            <div
+                                                key={antibiotic.antibiotic.id.toString()}
+                                                className="markdown"
+                                                dangerouslySetInnerHTML={
+                                                    this.generateMarkdownFromHtml(antibiotic.markdownText)
+                                                }
+                                            ></div>
+                                        )) }
+                                        {therapy.markdownText &&
+                                            <div
+                                                className="markdown"
+                                                dangerouslySetInnerHTML={
+                                                    this.generateMarkdownFromHtml(therapy.markdownText)
+                                                }
+                                            ></div>
+                                        }
+                                    </div>
+                                ))}
+
                             </div>
-                        }
+
+                        </div>
+
+                        <div className="diagnosis-general-considerations">
+
+                            <div className="diagnosis-general-considerations__inner">
+
+                                <h2>General Considerations</h2>
+
+                                <div
+                                    className="markdown"
+                                    dangerouslySetInnerHTML={
+                                        this.generateMarkdownFromHtml(diagnosis.markdownText)
+                                    }
+                                ></div>
+
+                            </div>
+                        </div>
+
+                        <div className="diagnosis-additional-informations">
+
+                            <div className="diagnosis-additional-informations__guideline-link">
+
+                                {diagnosis.link &&
+                                    <div>
+                                        <a href={diagnosis.link} target="_blank">
+                                            {guideline.name}
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div className="diagnosis-additional-informations__contact">
+
+                                {guideline.contactEmail &&
+                                <div>
+                                    <a href={`mailto:${guideline.contactEmail}`}>
+                                        Feedback
+                                    </a>
+                                </div>
+                                }
+
+                            </div>
+
+                            <div className="diagnosis-additional-informations__latest-version">
+
+                                {diagnosis.latestUpdate &&
+                                    <div>
+
+                                        <p>Source: <a href={diagnosis.latestUpdate.link} target="_blank">
+                                            {diagnosis.latestUpdate.name}
+                                        </a><br />Updated: {diagnosis.latestUpdate.date.toLocaleDateString()}</p>
+
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
         );
     }

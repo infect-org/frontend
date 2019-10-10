@@ -73,7 +73,7 @@ matrixheader {
         @include justify-content(center);
 
         img {
-            margin: 0 calc(50% - 150px);
+            margin: auto;
             width: 150px;
             pointer-events: none;
         }

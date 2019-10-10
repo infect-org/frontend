@@ -19,9 +19,13 @@ infooverlaybutton {
 	@include transition(opacity, $transition-duration);
 
 	&--open {
-		z-index: 300;
+		z-index: 3000;
 		opacity: 1;
 		display: block;
+
+		.button--info {
+			position: fixed !important;
+		}
 	}
 
 	&__menu {
