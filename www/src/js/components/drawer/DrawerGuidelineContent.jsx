@@ -18,7 +18,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
      * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
      * unauthorized people.
      */
-    generateMarkdownFromHtml(content) {
+    generateHTMLFromMarkdown(content) {
         // Marked throws if content is null or undefined; just return an empty string without
         // invoking Marked.
         return { __html: content ? marked(content) : '' };
@@ -43,7 +43,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                             <div
                                 className={'markdown'}
                                 dangerouslySetInnerHTML={
-                                    this.generateMarkdownFromHtml(guideline.markdownDisclaimer)
+                                    this.generateHTMLFromMarkdown(guideline.markdownDisclaimer)
                                 }
                             ></div>
                         }
@@ -61,7 +61,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                         key={antibiotic.antibiotic.id.toString()}
                                         className={'markdown'}
                                         dangerouslySetInnerHTML={
-                                            this.generateMarkdownFromHtml(antibiotic.markdownText)
+                                            this.generateHTMLFromMarkdown(antibiotic.markdownText)
                                         }
                                     ></div>
                                 )) }
@@ -69,7 +69,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                     <div
                                         className={'markdown'}
                                         dangerouslySetInnerHTML={
-                                            this.generateMarkdownFromHtml(therapy.markdownText)
+                                            this.generateHTMLFromMarkdown(therapy.markdownText)
                                         }
                                     ></div>
                                 }
@@ -79,7 +79,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                         <div
                             className={'markdown'}
                             dangerouslySetInnerHTML={
-                                this.generateMarkdownFromHtml(diagnosis.markdownText)
+                                this.generateHTMLFromMarkdown(diagnosis.markdownText)
                             }
                         ></div>
 
