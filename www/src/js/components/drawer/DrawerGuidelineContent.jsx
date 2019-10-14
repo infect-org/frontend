@@ -19,9 +19,21 @@ export default @observer class DrawerGuidelineContent extends React.Component {
      * unauthorized people.
      */
     generateMarkdownFromHtml(content) {
-        // Marked throws if content is null or undefined; just return an empty string without
-        // invoking Marked.
-        return { __html: content ? marked(content) : '' };
+        // Marked and RegExes throws if content is null or undefined; just return an empty string
+        // without invoking Marked.
+        if (!content) {
+            return { __html: '' };
+        }
+        // Optimize spaces
+        const optimizedContent = content
+            // Abbreviations, e.g. x.y. (p.o. becomes p.(hairspace)o.)
+            .replace(/(\w\.)(\w\.)/g, '$1&#8202;$2')
+            // Number and unit (5g becomes 5(hairspace)g)
+            .replace(/(\d+)([a-z]{1,2})(\b)/g, '$1&#8202;$2')
+            // Slashes (4g/kg/d becomes 4g(hairspace)/(hairspace)kg(hairspace)/(hairspace)d)
+            // Only applies to slashes not followed or preceded by a space
+            .replace(/(\S)\/(?!\s)/g, '$1&#8202;/&#8202;');
+        return { __html: marked(optimizedContent) };
     }
 
     render() {
@@ -92,21 +104,23 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                         </div>
 
-                        <div className="diagnosis-general-considerations">
+                        { diagnosis.markdownText &&
+                            <div className="diagnosis-general-considerations">
 
-                            <div className="diagnosis-general-considerations__inner">
+                                <div className="diagnosis-general-considerations__inner">
 
-                                <h2>General Considerations</h2>
+                                    <h2>General Considerations</h2>
 
-                                <div
-                                    className="markdown"
-                                    dangerouslySetInnerHTML={
-                                        this.generateMarkdownFromHtml(diagnosis.markdownText)
-                                    }
-                                ></div>
+                                    <div
+                                        className="markdown"
+                                        dangerouslySetInnerHTML={
+                                            this.generateMarkdownFromHtml(diagnosis.markdownText)
+                                        }
+                                    ></div>
 
+                                </div>
                             </div>
-                        </div>
+                        }
 
                         <div className="diagnosis-additional-informations">
 

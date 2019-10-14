@@ -29,18 +29,22 @@ class GuidelinesFilterList extends React.Component {
         if (!this.props.guidelines || !this.props.guidelines.selectedGuideline) return null;
         return (
             <ul className="group__list group__list--vertical">
-                {this.props.guidelines.selectedGuideline.diagnoses.map(diagnosis => (
-                    <FilterListCheckbox
-                        key={diagnosis.id}
-                        inputName='diagnosis'
-                        name={diagnosis.name}
-                        inputType="radio"
-                        checked={
-                            diagnosis === this.props.guidelines.selectedGuideline.selectedDiagnosis
-                        }
-                        onChangeHandler={() => this.selectDiagnosis(diagnosis)}
-                    />
-                ))}
+                {this.props.guidelines.selectedGuideline.diagnoses
+                    .sort((a, b) => (a.name < b.name ? -1 : 1))
+                    .map(diagnosis => (
+                        <FilterListCheckbox
+                            key={diagnosis.id}
+                            inputName='diagnosis'
+                            name={diagnosis.name}
+                            inputType="radio"
+                            checked={
+                                diagnosis ===
+                                    this.props.guidelines.selectedGuideline.selectedDiagnosis
+                            }
+                            onChangeHandler={() => this.selectDiagnosis(diagnosis)}
+                        />
+                    ))
+                }
             </ul>
         );
     }
