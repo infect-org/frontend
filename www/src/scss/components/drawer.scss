@@ -17,10 +17,18 @@
   width: 480px;
   z-index: 1000;
   box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15);
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
   /** FABIAN: Can we do an animation here? */
   &.hidden {
-    display: none;
+    transform: translate3d(480px, 0, 0);
+    box-shadow: none;
+  }
+
+  &.is-empty {
+    // Hide instantly as content will disappear when drawer content is reset to undefined
+    transition: none;
   }
 
   &__inner {

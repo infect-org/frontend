@@ -194,5 +194,10 @@ matrixheader {
         opacity: 0.4;
     }
 
+    &__antibioticColumnHighlightedBackground,
+    &__bacteriumRowHighlightedBackground {
+        transition: opacity 0.1s ease-in;
+    }
+
 
 }

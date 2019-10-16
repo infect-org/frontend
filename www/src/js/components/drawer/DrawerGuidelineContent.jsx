@@ -52,8 +52,10 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                             <div className="drawer__header-inner">
 
-                                <p>{diagnosis.diagnosisClass.name}<br />
-                                <strong>{guideline.name}</strong></p>
+                                <p>
+                                    {diagnosis.diagnosisClass.name}<br />
+                                    <strong>{guideline.name}</strong>
+                                </p>
 
                                 {guideline.markdownDisclaimer &&
                                     <div
@@ -153,9 +155,15 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                 {diagnosis.latestUpdate &&
                                     <div>
 
-                                        <p>Source: <a href={diagnosis.latestUpdate.link} target="_blank">
-                                            {diagnosis.latestUpdate.name}
-                                        </a><br />Updated: {diagnosis.latestUpdate.date.toLocaleDateString()}</p>
+                                        <p>
+                                            <span>Source: </span>
+                                            <a href={diagnosis.latestUpdate.link} target="_blank">
+                                                {diagnosis.latestUpdate.name}
+                                            </a>
+                                            <br />
+                                            <span>Updated: </span>
+                                            {diagnosis.latestUpdate.date.toLocaleDateString()}
+                                        </p>
 
                                     </div>
                                 }
