@@ -45,6 +45,12 @@ const isBeta = window.location.hostname.includes('beta.') ||
 const config = isBeta ? betaConfig : liveConfig;
 log('Is beta? %o. config is %o', isBeta, config);
 
+// If URL's query params include ?preview or &preview, also load guideline data that has not yet
+// ben published. See https://github.com/infect-org/issues/issues/47.
+if (/(\?|&)preview/.test(window.location.search)) {
+    config.endpoints.diagnoses += '?showAllData=true';
+    config.endpoints.guidelines += '?showAllData=true';
+}
 
 
 // Setup models that are shared between mobile and web app
@@ -71,8 +77,9 @@ function renderReact() {
     ReactDOM.render(
         <Matrix
             matrix={app.views.matrix}
-            filters={ app.filterValues }
+            filters={app.filterValues}
             selectedFilters={app.selectedFilters}
+            guidelines={app.guidelines}
         />,
         document.querySelector('Matrix'),
     );
@@ -82,6 +89,7 @@ function renderReact() {
             matrix={app.views.matrix}
             filters={app.filterValues}
             selectedFilters={app.selectedFilters}
+            guidelines={app.guidelines}
         />,
         document.querySelector('MatrixHeader'),
     );
@@ -103,14 +111,20 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <FilterListMenu mostUsedFilters={app.mostUsedFilters} />,
+        <FilterListMenu
+            mostUsedFilters={app.mostUsedFilters}
+            guidelines={app.guidelines}
+        />,
         document.querySelector('FilterListMenu'),
     );
 
     ReactDOM.render(
         <FilterSearch
-            filterValues={app.filterValues}
-            selectedFilters={app.selectedFilters}
+            searchMatrixFilters={app.filterValues.search.bind(app.filterValues)}
+            isMatrixFilterSelected={app.selectedFilters.isSelected.bind(app.selectedFilters)}
+            toggleMatrixFilter={app.selectedFilters.toggleFilter.bind(app.selectedFilters)}
+            searchGuidelineFilters={app.guidelines.search.bind(app.guidelines)}
+            guidelines={app.guidelines}
         />,
         document.querySelector('FilterSearch'),
     );
@@ -153,7 +167,7 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <Notifications />,
+        <Notifications errors={app.errorHandler.errors} />,
         document.querySelector('Notifications'),
     );
 

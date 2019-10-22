@@ -57,8 +57,13 @@ export default class MatrixHeader extends React.Component {
 					<g>
 						<g className="resistanceMatrix__antibioticsLabels" transform={ this.headerTransformation }>
 							{ /* Antibiotic labels */ }
-							{this.props.matrix.sortedAntibiotics.map((ab) => 
-								<AntibioticLabel key={ ab.antibiotic.id } antibiotic={ ab } matrix={ this.props.matrix }/>
+							{this.props.matrix.sortedAntibiotics.map(antibiotic => 
+								<AntibioticLabel
+									key={antibiotic.antibiotic.id}
+									antibiotic={antibiotic}
+									matrix={this.props.matrix}
+									guidelines={this.props.guidelines}
+								/>
 							)}
 						</g>
 

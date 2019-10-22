@@ -1,4 +1,4 @@
-// Custom elements are display:inline if not specified otherwise, which 
+// Custom elements are display:inline if not specified otherwise, which
 // interferes with the svg's with css rule.
 matrix,
 matrixheader {
@@ -9,12 +9,15 @@ matrixheader {
 
 .resistanceMatrix {
 
+    position: relative;
+
+    /** @type {Number} Slow down all animations (for debugging purposes) */
     $slowdown-factor: 1;
 
 
-    /* 
+    /*
     * Only display transitions and custom visibility style when and after the first
-    * filter is set 
+    * filter is set
     */
     .-with-transitions {
 
@@ -23,15 +26,20 @@ matrixheader {
         * (animations/transition)
         */
         .-was-visible-is-visible {
-            transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
+            /* Wait until newly invisibles were faded out, then move */
+            transition: transform calc(#{$slowdown-factor} * 0.3s) ease-in-out calc(#{$slowdown-factor} * 0.1s)
         }
 
         .-was-hidden-is-visible {
-            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out calc(#{$slowdown-factor} * 0.3s);
+            /* Only fade in after
+                a) newly hiddens were hidden and
+                b) (unchanged) visibles were moved */
+            transition: opacity calc(#{$slowdown-factor} * 0.1s) ease-in-out calc(#{$slowdown-factor} * 0.4s);
         }
 
         .-was-visible-is-hidden {
-            transition: opacity calc(#{$slowdown-factor} * 0.2s) ease-in-out;
+            /* Fade out tutswitt to not block or slow down UI */
+            transition: opacity calc(#{$slowdown-factor} * 0.1s) ease-in-out;
         }
 
         .-was-hidden-is-hidden,
@@ -45,11 +53,16 @@ matrixheader {
 
 
     &__overlay {
-        position: fixed;
-        width: 100%;
+        //position: fixed;
+        position: absolute;
+        /*width: 100%;
         height: 100%;
         top: $navigation-height;
-        left: $navigation-width;
+        left: $navigation-width;*/
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-color: #616161;
         @include transition(opacity, $transition-duration);
         opacity: 0;
@@ -60,7 +73,7 @@ matrixheader {
         @include justify-content(center);
 
         img {
-            margin: 0 calc(50% - 150px);
+            margin: auto;
             width: 150px;
             pointer-events: none;
         }
@@ -87,6 +100,7 @@ matrixheader {
 
     &__body {
         position: relative;
+        transition: height calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
     }
 
     &__header {
@@ -123,6 +137,23 @@ matrixheader {
             text-decoration: underline;
         }
 
+        &.containsGuidelineData {
+            /* FABIAN! Use variable or something */
+            fill: #3289CC;
+        }
+
+    }
+
+    &__antibioticLabelGuidelinePriorityCircle {
+        /* FABIAAAAAAN! Use variable or something */
+        fill: #3289CC;
+    }
+
+    &__antibioticLabelGuidelinePriorityText {
+        /* FABIAAAAAAN! Number of therapy priority */
+        fill: white;
+        font-family: $font-family--sans-serif;
+        font-weight: bold;
     }
 
     &__substanceClassLabel {
@@ -161,6 +192,11 @@ matrixheader {
     &__resistanceDetailCircleShadow {
         fill: #000;
         opacity: 0.4;
+    }
+
+    &__antibioticColumnHighlightedBackground,
+    &__bacteriumRowHighlightedBackground {
+        transition: opacity 0.1s ease-in;
     }
 
 

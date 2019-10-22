@@ -1,13 +1,6 @@
 <!DOCTYPE html>
     <head>
 
-        <style>
-            /** TODO: REMOVE */
-            .myDrawer.hidden {
-                display: none;
-            }
-        </style>
-
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108372802-1"></script>
         <script>
@@ -58,6 +51,10 @@
     </head>
 
     <body>
+
+        <AppBanner></AppBanner>
+        <Notifications></Notifications>
+
         <!--icons -->
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none">
             <symbol id="icon_bacteria" viewBox="0 0 45 43.2">
@@ -92,6 +89,15 @@
                     <polygon points="21.79 30.64 8.47 41.4 14.32 25.37 0 15.83 17.15 16.64 21.79 0 26.43 16.64 43.58 15.83 29.25 25.37 35.1 41.4 21.79 30.64"/>
                 </g>
             </symbol>
+            <symbol id="icon_guidelines" viewBox="0 0 25.9 21.4">
+                <g id="icon_guidelines">
+                    <path class="st0" d="M21.3,6.6c-2.5,0-4.6,2-4.6,4.6c0,0.5,0.1,0.9,0.2,1.4c-1.1,1-1.8,2.3-2.2,3.7c-0.7,2.7-1.6,3.6-3.7,3.6
+	c-0.9,0-1.6-0.3-2.1-0.8c-1-1-1-2.6-1-2.7v-3.3c4-0.4,6.4-3.5,6.4-5.8V0h-0.7h-0.8h-2.3v4.2h2.3v3.2c0,1.5-2,4.4-5.7,4.4
+	S1.5,8.9,1.5,7.4V4.2h2.3V0H1.5H0.8H0v7.4c0,2.3,2.4,5.5,6.4,5.8v3.3c0,0.1,0,2.3,1.4,3.7c0.8,0.8,1.9,1.2,3.2,1.2
+	c3.5,0,4.5-2.3,5.2-4.7c0.3-1,0.8-1.9,1.5-2.7c0.8,1.1,2.1,1.8,3.6,1.8c2.5,0,4.6-2,4.6-4.6S23.8,6.6,21.3,6.6z M21.3,12.8
+	c-0.9,0-1.6-0.7-1.6-1.6s0.7-1.6,1.6-1.6s1.6,0.7,1.6,1.6S22.2,12.8,21.3,12.8z"/>
+                </g>
+            </symbol>
             <symbol id="icon_population" viewBox="0 0 50 50">
                 <g>
                     <rect class="cls-1" y="30" width="11" height="16"/><rect class="cls-1" x="14" y="10" width="11" height="36"/><rect class="cls-1" x="28" y="18" width="11" height="28"/>
@@ -124,18 +130,15 @@
             <div class="container__main main">
                 <div class="main__header">
                     <div class="top-navigation">
-                        <SelectedDiagnosisFilter />
+                        <SelectedDiagnosisFilter></SelectedDiagnosisFilter>
                         <SelectedFiltersList></SelectedFiltersList>
 
-                        <OpenDiagnosisDrawerButton />
+                        <OpenDiagnosisDrawerButton></OpenDiagnosisDrawerButton>
                         <div class="top-navigation__info info">
                             <InfoOverlayButton></InfoOverlayButton>
                         </div>
                     </div>
                 </div>
-                <CorruptDataWarning></CorruptDataWarning>
-                <Disclaimer></Disclaimer>
-                <AppBanner></AppBanner>
                 <div class="main__matrix resistanceMatrix">
                     <!-- We cannot have the body and header in one single SVG as fixing the header would require a transformation
                         which is very imperformant -->
@@ -146,9 +149,9 @@
                 <GuidedTour></GuidedTour>
             </div>
         </div>
-        <Drawer />
+        <Drawer></Drawer>
         <InfoOverlay></InfoOverlay>
-        <Notifications></Notifications>
+        <Disclaimer></Disclaimer>
 
     </body>
 </html>
