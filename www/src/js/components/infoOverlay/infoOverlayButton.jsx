@@ -7,8 +7,13 @@ const log = debug('infect:InfoOverlayButtonComponent');
 export default class InfoOverlayButton extends React.Component {
 
 	toggleInfoOverlay() {
-		log('Toggle');
-		this.props.infoOverlay.toggle();
+		log('Toggle overlay');
+		// this.props.infoOverlay.toggle();
+		if (window.location.hash === '#information') {
+			window.location.hash = '';
+		} else {
+			window.location.hash = '#information';
+		}
 	}
 
 	render() {

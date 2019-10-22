@@ -1,7 +1,7 @@
 .side-navigation {
 
 	z-index: 200;
-	
+
 	@include flexbox();
 	@include flex-direction(column);
 	background-color: $sidenavigation-background;
@@ -52,9 +52,10 @@
 .divider {
 	height: 1px;
 	border: 0;
-	border-top: 1px solid #575757; 
+	border-top: 1px solid #575757;
+	margin: 0;
 
-	&--lead {
+	/*&--lead {
 		margin: 0;
-	}
+	}*/
 }

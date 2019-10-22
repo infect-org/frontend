@@ -1,27 +1,36 @@
-$notification-width: 350px; 
+//$notification-width: 350px;
 
 .notification-container {
-	position: fixed;
-	top: calc(50vh + #{$navigation-height} - 150px);
-	right: - $notification-width;
-	width: $notification-width;
+	position: relative;
+	//top: calc(50vh + #{$navigation-height} - 150px);
+	//right: - $notification-width;
+	//width: $notification-width;
+	background-color: rgb(255, 72, 39);
+
+	height: 0;
 	opacity: 0;
 	@include transition(all, $transition-duration--long);
-
-	@include flexbox();
+	overflow: hidden;
 
 	&--active {
 		opacity: 1;
-		right: 0;
+		height: auto;
+		//right: 0;
 		@include transition(all, $transition-duration--long);
+
 	}
 
 	.notification {
-		&__error-icon {
-			width: 15%;
-			background-color: rgb(255, 72, 39);
 
-			@include border-radius-edges(9px, 0, 0, 9px);
+		padding: 0.5rem 1rem;
+
+		&__error-icon {
+			position: absolute;
+			right: 0;
+			display: inline-block;
+			margin-right: 10px;
+			top: 10px;
+			//background-color: rgb(255, 72, 39);
 
 			@include flexbox();
 			@include flex-direction(column);
@@ -30,34 +39,37 @@ $notification-width: 350px;
 
 		&__message {
 			height: 100%;
-			width: 100%;
-			background-color: lightgrey;
+			//width: 100%;
+
+			//background-color: lightgrey;
 		}
 
 		&__link {
 			cursor: pointer;
 			text-align: center;
+			color: #fff;
 
-			img {
+			/*img {
 				width: 70%;
-			}
+			}*/
 		}
+
 	}
 
 	.message {
-		@include flexbox();
-		@include flex-direction(column);
+		//@include flexbox();
+		//@include flex-direction(column);
 
-		padding: 10px 30px;
-		
 		h2 {
-			margin: 0;
-			font-size: 20px;
-			color: #a52604;
+			margin: 0 0 4px 0;
+			font-size: 18px;
+			color: #fff;
 		}
 
 		p {
-			font-size: 16px;
+			font-size: 14px;
+			color: #fff;
+			margin: 0;
 		}
 	}
 }

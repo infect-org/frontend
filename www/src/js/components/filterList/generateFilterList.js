@@ -15,13 +15,14 @@ export default function generateFilterList(Component) {
                 antibiotics: 'Filters for Antibiotics',
                 population: 'Population and Offsets',
                 mostUsed: 'Favorites',
+                guidelines: 'Guidelines',
             };
         }
 
         render() {
             return (
                 <div
-                    className="group group--padding"
+                    className={`group group--padding group--${this.props.identifier}`}
                     id={`js-filter-list-${this.props.identifier}`}
                 >
                     <h1>{this.translations[this.props.identifier]}</h1>

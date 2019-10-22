@@ -1,5 +1,5 @@
 import React from 'react';
-import { resistanceTypes } from 'infect-frontend-logic';
+import { resistanceTypes } from '@infect/frontend-logic';
 import debug from 'debug';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';

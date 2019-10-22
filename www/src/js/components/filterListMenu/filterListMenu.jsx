@@ -7,7 +7,19 @@ const log = debug('infect:FilterListMenuComponent');
 @observer
 export default class FilterListMenu extends React.Component {
 
-	@observable filterSections = ['mostUsed', 'antibiotics', 'bacteria', 'population'];
+	@observable filterSections = [
+		'mostUsed',
+		'guidelines',
+		'antibiotics',
+		'bacteria',
+		'population',
+	];
+	
+	/**
+	 * Section that's currently in the screen's center. Don't use mostUsed as it is not available
+	 * at startup time (before filters have been used).
+	 * @type {String}
+	 */
 	@observable currentlyActiveSection = this.filterSections[1];
 
 	componentDidMount() {
@@ -91,10 +103,18 @@ export default class FilterListMenu extends React.Component {
 	* visible if filters are available. 
 	*/
 	@computed get visibleButtons() {
-		return this.filterSections.filter((item) => {
-			if (item === 'mostUsed' && this.props.mostUsedFilters.mostUsedFilters.length === 0) return false;
+		const visibleButtons = this.filterSections.filter((item) => {
+			if (item === 'mostUsed' && this.props.mostUsedFilters.mostUsedFilters.length === 0) {
+				return false;
+			}
+			// Only display guidelines if they are available on the current tenant
+			if (item === 'guidelines' && this.props.guidelines.getAsArray().length === 0) {
+				return false;
+			}
 			return true;
 		});
+		log('Visible buttons are %o', visibleButtons);
+		return visibleButtons;
 	}
 
 	render() {

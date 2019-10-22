@@ -8,10 +8,19 @@ export default class SelectedFilter extends React.Component {
 		return (
             <li className="group__list-item list-item">
                 <div className="label label--rounded">
-                    <p className="label--smaller label--nomargin">{this.props.filter.property.niceName}</p>
-                    <p className="label--bold label--nomargin">{this.props.filter.niceValue}</p>
+                    <p className="label--smaller label--nomargin">
+                        {this.props.filter.property.niceName}
+                    </p>
+                    <p className="label--bold label--nomargin">
+                        {this.props.filter.niceValue}
+                    </p>
                 </div>
-                <button onClick={() => this.props.removeFilterHandler(this.props.filter)} className="button button--label"><span>&times;</span></button>
+                <button 
+                    onClick={() => this.props.removeFilterHandler(this.props.filter)}
+                    className="button button--label"
+                >
+                    <span>&times;</span>
+                </button>
             </li>
 		);
 	}

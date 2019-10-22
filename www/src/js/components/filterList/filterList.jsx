@@ -1,11 +1,15 @@
-import React from 'react';
-import AntibioticsFilterList from './antibioticsFilterList';
-import BacteriaFilterList from './bacteriaFilterList';
-import PopulationFilterList from './populationFilterList';
-import MostUsedFiltersList from './mostUsedFiltersList';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
+import React from 'react';
+import AntibioticsFilterList from './antibioticsFilterList.jsx';
+import BacteriaFilterList from './bacteriaFilterList.jsx';
+import PopulationFilterList from './populationFilterList.jsx';
+import MostUsedFiltersList from './mostUsedFiltersList.jsx';
+import GuidelinesFilterList from './GuidelinesFilterList.jsx';
 
+/**
+ * Holds all filters (without tab navigation or the search input) in the sidebar on the left.
+ */
 @observer
 class FilterList extends React.Component {
 
@@ -21,20 +25,40 @@ class FilterList extends React.Component {
                 { this.bacteriaFilters.length > 0 &&
                     <div>
                         { this.props.mostUsedFilters.mostUsedFilters.length > 0 &&
-                            [<MostUsedFiltersList identifier="mostUsed"
-                                mostUsedFilters={ this.props.mostUsedFilters }
-                                selectedFilters={ this.props.selectedFilters } key="content" />,
-                            <hr className="divider" key="divider" />]
+                            [
+                                <MostUsedFiltersList
+                                    identifier="mostUsed"
+                                    mostUsedFilters={ this.props.mostUsedFilters }
+                                    selectedFilters={ this.props.selectedFilters }
+                                    key="content"
+                                />,
+                                <hr className="divider" key="divider" />,
+                            ]
                         }
-                        <AntibioticsFilterList identifier="antibiotics"
+                        {/* Don't display guidelines if there is no data. Some tenants may not have
+                            chosen the guideline module or not yet have entered their data */}
+                        { this.props.guidelines && this.props.guidelines.get().size > 0 &&
+                            <React.Fragment>
+                                <GuidelinesFilterList
+                                    identifier="guidelines"
+                                    additionalClassNames="guidelines-selector-for-fabian-blue-background"
+                                    guidelines={this.props.guidelines}
+                                />
+                                <hr className="divider" />
+                            </React.Fragment>
+                        }
+                        <AntibioticsFilterList
+                            identifier="antibiotics"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters } />
                         <hr className="divider" />
-                        <BacteriaFilterList identifier="bacteria"
+                        <BacteriaFilterList
+                            identifier="bacteria"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters } />
                         <hr className="divider" />
-                        <PopulationFilterList identifier="population"
+                        <PopulationFilterList
+                            identifier="population"
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters }
                             offsetFilters={ this.props.offsetFilters }/>

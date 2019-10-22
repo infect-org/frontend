@@ -13,7 +13,7 @@ $active-filter--label-color: #d7d5c4;
 
 
 .filter:last-child {
-	//288px height of last group 
+	//288px height of last group
 	padding-bottom: calc(100vh - (#{$navigation-height} + #{$header-search-height} + 288px));
 }
 
@@ -29,11 +29,11 @@ $active-filter--label-color: #d7d5c4;
 	@include justify-content(center);
 	padding: 0 20px;
 	color: #fff;
-	
+
 	@include group-header-fonts(15px);
 
 	&__title {
-		
+
 	}
 
 	&__list {
@@ -80,6 +80,17 @@ $active-filter--label-color: #d7d5c4;
 		padding-top: 20px;
 		padding-bottom: 20px;
 	}
+
+	/* guidelines specific styling */
+	&--guidelines {
+		background-color: $guidelines-color;
+		color: #000;
+
+		+ .divider {
+			margin-top: 0;
+		}
+
+	}
 }
 
 .list-item {
@@ -87,11 +98,11 @@ $active-filter--label-color: #d7d5c4;
 	@include flex-direction(row);
 
 	&__label {
-		
+
 	}
 
 	&--button {
-		
+
 	}
 
 	&--checkbox,
@@ -118,12 +129,16 @@ $active-filter--label-color: #d7d5c4;
 	line-height: 1.3;
 	font-size: $navigation-button--label-size;
 	margin: 0;
-	
+
 	&--rounded {
 		padding: 3px 5px;
 		background-color: $active-filter--label-color;
 		@include border-radius(5px 0 0 5px);
 		z-index: 2;
+	}
+
+	&--guidelines {
+		background-color: $guidelines-color;
 	}
 
 	&--small {
