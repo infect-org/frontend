@@ -1,7 +1,7 @@
 {
   "name": "infect-frontend",
   "description": "infect fronend",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "homepage": "https://github.com/infect/application",
   "author": "Felix Steiner <felix@joinbox.com> (http://infect.info)",
   "contributors": [
@@ -25,7 +25,7 @@
     "distributed-prototype": "^2.30.0",
     "ee-log": "^2.0.4",
     "ee-types": "2.x",
-    "infect-frontend-logic": "^2.2.2",
+    "infect-frontend-logic": "^2.2.4",
     "intro.js": "^2.9.3",
     "marked": "^0.7.0",
     "mobx": "4.4.2",

@@ -1898,6 +1898,52 @@ disclaimer {
   font-weight: 800;
 }
 
+corruptdatawarning {
+  position: relative;
+  z-index: 1;
+}
+
+.corruptdatawarning {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  background-color: #ff7828;
+  color: #000;
+  font-size: 1rem;
+}
+
+.corruptdatawarning__paragraph {
+  background-color: #ff7828;
+  margin: 0;
+  padding-right: 1.25rem;
+}
+
+.corruptdatawarning__paragraph:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.corruptdatawarning__text {
+  margin-right: 1.25rem;
+}
+
+.corruptdatawarning__button-container {
+  display: inline-block;
+  margin-right: 0.625rem;
+}
+
+.corruptdatawarning__button-container--close {
+  position: absolute;
+  right: 0;
+  top: 0.625rem;
+}
+
+.corruptdatawarning__button {
+  color: black !important;
+  cursor: pointer;
+}
+
 .introjs-hint {
   z-index: 250;
 }
