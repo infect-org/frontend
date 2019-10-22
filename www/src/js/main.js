@@ -2,11 +2,12 @@
 * Bootstrap of the Infect application's frontend
 */
 
+import 'whatwg-fetch';
 import '@babel/polyfill';
 
 import { configure, observable, action } from 'mobx';
 import debug from 'debug';
-import InfectApp from 'infect-frontend-logic';
+import InfectApp from '@infect/frontend-logic';
 import ReactDOM from 'react-dom';
 import React from 'react'; // Not needed here, but error is thrown if we don't import it
 
