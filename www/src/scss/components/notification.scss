@@ -10,7 +10,7 @@
 	height: 0;
 	opacity: 0;
 	@include transition(all, $transition-duration--long);
-	//@include flexbox();
+	overflow: hidden;
 
 	&--active {
 		opacity: 1;

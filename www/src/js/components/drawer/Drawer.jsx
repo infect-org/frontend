@@ -21,12 +21,24 @@ export default @observer class Drawer extends React.Component {
         return this.props.drawerViewModel && this.props.drawerViewModel.isOpen ? 'open' : 'hidden';
     }
 
+    /**
+     * If drawer is empty, add class isEmpty to not show CSS animations. They would not look good
+     * with an empty (white) drawer – hide instantly therefore.
+     * @return {String}     Class that is added to drawer
+     */
+    getContentClass() {
+        return !this.props.drawerViewModel || !this.props.drawerViewModel.content ? 'is-empty' : '';
+    }
+
     render() {
         return (
             <div
-                className={`drawer ${this.getVisibilityClass()}`}
+                className={`drawer ${this.getVisibilityClass()} ${this.getContentClass()}`}
             >
-                <button onClick={this.closeDrawer} className={'drawer__close-button button button--close-drawer'}>&times;</button>
+                <button
+                    onClick={this.closeDrawer}
+                    className={'drawer__close-button button button--close-drawer'}
+                >&times;</button>
                 {
                     this.props.drawerViewModel &&
                     this.props.drawerViewModel.contentType === 'guideline' &&

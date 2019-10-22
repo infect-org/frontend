@@ -15,12 +15,20 @@
   right: 0;
   bottom: 0;
   width: 480px;
-  background-color: $guidelines-color;
   z-index: 1000;
   box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15);
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
+  /** FABIAN: Can we do an animation here? */
   &.hidden {
-    display: none;
+    transform: translate3d(480px, 0, 0);
+    box-shadow: none;
+  }
+
+  &.is-empty {
+    // Hide instantly as content will disappear when drawer content is reset to undefined
+    transition: none;
   }
 
   &__inner {
@@ -32,15 +40,16 @@
 
     h1 {
       font-size: 24px;
+      color: #fff;
       max-width: 85%;
       line-height: 1.1;
-      margin: 0;
+      margin: 0 3rem 0 2rem;
     }
-    h2 {
+    /*h2 {
       font-size: 20px;
       line-height: 1.1;
       margin: 0;
-    }
+    }*/
 
     p {
       margin: 0 0 8px 0;
@@ -51,13 +60,13 @@
   }
 
   &__fixed {
-    padding: 20px;
+    padding: 20px 30px;
     @include flex(0 0 auto);
+    background-color: $guidelines-color--dark;
   }
   &__scrollable {
     @include flex(1 1 auto);
     overflow: auto;
-    padding: 0 20px;
 
     background:
             /* Shadow covers */
@@ -97,6 +106,26 @@
       }
     }
   }
+
+
+  &__header {
+    background-color: $guidelines-color--medium;
+    padding: 20px 30px;
+
+    &-inner {
+      margin-left: 2rem;
+    }
+  }
+
+  &__therapies {
+
+    padding: 20px 30px;
+
+    &-inner {
+      margin-left: 2rem;
+    }
+  }
+
 }
 
 
@@ -104,11 +133,15 @@
 
   margin-bottom: 40px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &__choose-title { // styling for "wahl"-titles
     position: relative;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.2;
-    margin: 0 0 6px 0;
+    margin: 0 0 6px -2rem;
     color: $guidelines-color--dark;
 
     &:before {
@@ -136,21 +169,86 @@
 }
 
 
+.diagnosis-general-considerations {
+  border-top: 1px solid $guidelines-color--dark;
+  padding: 20px 30px;
+
+  &__inner {
+    margin-left: 2rem;
+
+    h2 {
+      font-size: 17px;
+      line-height: 1.2;
+      margin: 0 0 6px 0;
+    }
+  }
+}
+
+.diagnosis-additional-informations {
+  border-top: 1px solid $guidelines-color--dark;
+  padding: 20px 30px;
+
+  > div {
+    margin-left: 2rem;
+    font-size: 14px;
+  }
+
+  &__guideline-link,
+  &__contact {
+    a {
+      color: $guidelines-color--dark;
+      font-weight: bold;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__latest-version {
+    margin-top: 20px;
+
+    color: $color--darkgray;
+    font-size: 13px;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+
+
 .markdown {
 
-  h1,
-  h2,
-  h3,
+  color: #000;
+
+
+  h3 {
+    font-size: 17px;
+    line-height: 1.1;
+    margin: 24px 0 8px 0;
+  }
+  // first child in markdown follows directly after to a h2 – reduce top space
+  h3:first-child {
+    margin-top: 16px;
+  }
   h4,
   h5,
   h6 {
-    font-size: 18px;
+    font-size: 15.5px;
     line-height: 1.1;
-    margin: 18px 0 12px 0;
+    margin: 20px 0 8px 0;
   }
 
   a {
-    /* FABIAN */
     color: black;
     text-decoration: underline;
   }
@@ -162,16 +260,53 @@
   }
 
   p {
-    margin: 0 0 12px 0;    
+    margin: 16px 0 4px 0;
+  }
+
+  h3 + p,
+  h4 + p, 
+  h5 + p,
+  h6 + p {
+    margin-top: 4px;
   }
 
   li {
-    margin: 0 0 4px 0;        
+    position: relative;
+    margin: 0 0 4px 0;
   }
 
   ul {
     margin: 0;
-    padding-left: 1rem;
+    padding-left: 1.25rem;
+    list-style-type: none;
+
+    > li {
+      &:before {
+        position: absolute;
+        left: 0;
+        color: $color--gray;
+        content: '\2014';
+        margin-left: -1.25rem;
+      }
+
+      > ul {
+
+        margin-top: 0.25rem;
+        margin-left: 0;
+        padding-left: 0.75rem;
+
+        > li {
+          &:before {
+            position: absolute;
+            left: 0;
+            color: $color--gray;
+            content: '\2013';
+            margin-left: -0.75rem;
+          }
+        }
+      }
+    }
+
   }
 
   pre,
@@ -179,5 +314,26 @@
     font-family: inherit;
     font-size: 14px;
     line-height: 1.35;
+  }
+
+  // drawer disclaimer
+  &.drawer-disclaimer {
+    color: #444444;
+
+    p {
+      font-size: 13px;
+      margin-bottom: 0;
+      color: inherit;
+    }
+
+    a {
+      font-size: 13px;
+      color: $guidelines-color--dark;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }

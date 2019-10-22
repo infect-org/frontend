@@ -13,7 +13,7 @@ export default class MatrixLoadingOverlay extends React.Component {
 
 	render() {
 		return(
-            <div className={ 'resistanceMatrix__overlay ' + (this.loading ? 'resistanceMatrix__overlay--active' : '') }>
+			<div className={ 'resistanceMatrix__overlay ' + (this.loading ? 'resistanceMatrix__overlay--active' : '') }>
                 <img src="img/logo_spinner.svg" />
             </div>
 		);
