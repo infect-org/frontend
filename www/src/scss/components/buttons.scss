@@ -162,17 +162,20 @@ $button-bg-color--hover: #d7d5c4;
 
 
   &--close-drawer {
-    margin: 1.25rem 1.25rem 0 0;
-    float: right;
+    position: absolute;
+    right: 1.25rem;
+    top: 1rem;
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
     line-height: 1;
     @include transition(background-color, $transition-duration);
-    background-color: darken($guidelines-color, 5%);
+    //background-color: darken($guidelines-color, 5%);
+    background-color: #fff;
+    color: $guidelines-color--dark;
 
     &:hover {
-      background-color: darken($guidelines-color, 10%);
+      background-color: $guidelines-color;
     }
   }
 

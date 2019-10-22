@@ -73,7 +73,7 @@ matrixheader {
         @include justify-content(center);
 
         img {
-            margin: 0 calc(50% - 150px);
+            margin: auto;
             width: 150px;
             pointer-events: none;
         }
@@ -138,19 +138,19 @@ matrixheader {
         }
 
         &.containsGuidelineData {
-            /* FABIAN! */
+            /* FABIAN! Use variable or something */
             fill: #3289CC;
         }
 
     }
 
     &__antibioticLabelGuidelinePriorityCircle {
-        /* FABIAAAAAAN! */
+        /* FABIAAAAAAN! Use variable or something */
         fill: #3289CC;
     }
 
     &__antibioticLabelGuidelinePriorityText {
-        /* FABIAAAAAAN! */
+        /* FABIAAAAAAN! Number of therapy priority */
         fill: white;
         font-family: $font-family--sans-serif;
         font-weight: bold;
@@ -192,6 +192,11 @@ matrixheader {
     &__resistanceDetailCircleShadow {
         fill: #000;
         opacity: 0.4;
+    }
+
+    &__antibioticColumnHighlightedBackground,
+    &__bacteriumRowHighlightedBackground {
+        transition: opacity 0.1s ease-in;
     }
 
 
