@@ -1,7 +1,7 @@
 {
   "name": "@infect/frontend",
   "description": "infect fronend",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "homepage": "https://github.com/infect/application",
   "author": "Felix Steiner <felix@joinbox.com> (http://infect.info)",
   "contributors": [
