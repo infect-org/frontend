@@ -42,6 +42,24 @@ builder.watchTasks.push(imgWatch);
 builder.prodTasks.push(imgFiles);
 
 
+// Root folder files (favicon etc.)
+const rootFiles = ['www/src/root/**/*'];
+function copyRootFiles() {
+    return gulp.src(rootFiles)
+        .pipe(gulp.dest('www/dist/'));
+}
+function watchRootFiles() {
+    return gulp.watch(rootFiles, copyRootFiles);
+}
+
+builder.tasks.set('rootFiles', copyRootFiles);
+builder.tasks.set('rootWatch', watchRootFiles);
+
+builder.devTasks.push(copyRootFiles);
+builder.watchTasks.push(watchRootFiles);
+builder.prodTasks.push(copyRootFiles);
+
+
 // Cache
 function bustRename() {
     const distFolder = 'www/dist';
