@@ -1,11 +1,12 @@
 {
   "name": "@infect/frontend",
-  "description": "infect fronend",
+  "description": "infect frontend",
   "version": "4.0.2",
   "homepage": "https://github.com/infect/application",
   "author": "Felix Steiner <felix@joinbox.com> (http://infect.info)",
   "contributors": [
-    "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info)"
+    "Sandro Kneubühl <sandro@joinbox.com> (http://infect.info)",
+    "Fabian Jordi <fabian@joinbox.com> (http://infect.info)"
   ],
   "license": "MIT",
   "repository": {

@@ -41,6 +41,17 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         const diagnosis = guideline.selectedDiagnosis;
         return (
             <div className="drawer__inner">
+
+                <div className="drawer__teaser">
+                    <div className="drawer__teaser-flap">
+                        {/*<svg aria-hidden="true">
+                            <use xlinkHref="#icon_guidelines"></use>
+                        </svg>*/}
+                        <div className="drawer__teaser-subtitle">Guideline</div>
+                        <div className="drawer__teaser-title">{diagnosis.name}</div>
+                    </div>
+                </div>
+
                 <div className="drawer__fixed">
                     <h1>{diagnosis.name}</h1>
                 </div>
