@@ -10,6 +10,7 @@ export default @observer class BacteriumLabel extends React.Component {
     constructor() {
         super();
         this._wasVisible = true;
+        this.isWindowWide = window.innerWidth > 1200;
     }
 
     componentDidMount() {
@@ -85,7 +86,15 @@ export default @observer class BacteriumLabel extends React.Component {
                     dominantBaseline="middle"
                     y={this.props.matrix.defaultRadius}
                 >
-                    {this.props.bacterium.bacterium.name}
+                    {this.isWindowWide && this.props.bacterium.bacterium.name}
+                    {!this.isWindowWide &&
+                        <tspan>
+                            {this.props.bacterium.bacterium.shortName}
+                            <title>{this.props.bacterium.bacterium.name}</title>
+                        </tspan>
+                    }
+
+
                 </text>
             </g>
         );
