@@ -3,7 +3,8 @@
 */
 
 import 'whatwg-fetch';
-import '@babel/polyfill';
+import 'regenerator-runtime/runtime';
+import 'core-js/stable';
 
 import { configure, observable, action } from 'mobx';
 import debug from 'debug';
