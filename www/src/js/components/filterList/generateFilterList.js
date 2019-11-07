@@ -15,7 +15,6 @@ export default function generateFilterList(Component) {
                 antibiotics: 'Filters for Antibiotics',
                 population: 'Population and Offsets',
                 mostUsed: 'Favorites',
-                guidelines: 'Guidelines',
             };
         }
 
