@@ -82,7 +82,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                     >
                                         <span
                                             dangerouslySetInnerHTML={
-                                                this.generateMarkdownFromHtml(`${guideline.markdownDisclaimer} [Disclaimer](#information)`)
+                                                this.generateMarkdownFromHtml(`${guideline.markdownDisclaimer}`)
                                             }
                                         ></span>
                                     </div>
