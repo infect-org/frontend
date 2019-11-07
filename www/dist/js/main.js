@@ -52621,7 +52621,7 @@ function (_React$Component) {
         className: "resistanceMatrix__bacteriumLabelText ".concat(this.highlightClass),
         dominantBaseline: "middle",
         y: this.props.matrix.defaultRadius
-      }, this.props.bacterium.bacterium.shortName || this.props.bacterium.bacterium.name));
+      }, this.props.bacterium.bacterium.name));
     }
   }, {
     key: "visible",
