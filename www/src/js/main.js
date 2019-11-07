@@ -48,9 +48,18 @@ log('Is beta? %o. config is %o', isBeta, config);
 
 // If URL's query params include ?preview or &preview, also load guideline data that has not yet
 // ben published. See https://github.com/infect-org/issues/issues/47.
+// TODO: Solve nicely when new API endpoints are ready (GPC)
 if (/(\?|&)preview/.test(window.location.search)) {
-    config.endpoints.diagnoses += '?showAllData=true';
-    config.endpoints.guidelines += '?showAllData=true';
+    const concernedEndpoints = [
+        'diagnoses',
+        'guidelines',
+        'therapies',
+        'therapyPriorities',
+        'diagnosisClass',
+        'therapyCompounds',
+        'diagnosisBacteria',
+    ];
+    concernedEndpoints.forEach((endpoint) => { config.endpoints[endpoint] += '?showAllData=true'; });
 }
 
 
