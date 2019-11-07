@@ -16,7 +16,9 @@
   bottom: 0;
   width: 480px;
   z-index: 1000;
-  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15);
+  /* Move to the left as teaser is not part of the drawer itself, but attached to the left side
+     of it */
+  box-shadow: -20px 0 25px rgba(0, 0, 0, 0.25);
   transform: translate3d(0, 0, 0);
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
@@ -59,9 +61,22 @@
 
   }
 
+
+  /** FABIAN: How would I do that correctly? */
+  &.hidden {
+    .drawer__teaser {
+      cursor: w-resize;
+    }
+
+    // Make line wider when drawer is hidden
+    .drawer__teaser:after {
+      width: 10PX;
+    }
+  }
+
   // Teaser
   &__teaser {
-    cursor: pointer;
+    cursor: e-resize;
     position: absolute;
     top: 0;
     right: 100%;
@@ -84,11 +99,12 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 10PX;
+      width: 2PX;
       height: 100%;
       background-color: $guidelines-color--dark;
-      @include transition(background-color, $transition-duration);
+      transition: background-color $transition-duration, width $transition-duration;
     }
+
 
     &-flap {
       position: absolute;
