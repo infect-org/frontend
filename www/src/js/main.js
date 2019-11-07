@@ -27,7 +27,6 @@ import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
 import Drawer from './components/drawer/Drawer.jsx';
 import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter';
-import OpenDiagnosisDrawerButton from './components/drawer/OpenDiagnosisDrawerButton.jsx';
 
 import betaConfig from '../config/config.beta.js';
 import liveConfig from '../config/config.live.js';
@@ -170,11 +169,6 @@ function renderReact() {
     ReactDOM.render(
         <InfoOverlayButton infoOverlay={infoOverlayModel} />,
         document.querySelector('InfoOverlayButton'),
-    );
-
-    ReactDOM.render(
-        <OpenDiagnosisDrawerButton drawerViewModel={app.views.drawer} />,
-        document.querySelector('OpenDiagnosisDrawerButton'),
     );
 
     ReactDOM.render(

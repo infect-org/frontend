@@ -20,7 +20,7 @@
      of it */
   box-shadow: -20px 0 25px rgba(0, 0, 0, 0.25);
   transform: translate3d(0, 0, 0);
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.4s;
 
   /** FABIAN: Can we do an animation here? */
   &.hidden {

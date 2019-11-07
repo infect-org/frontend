@@ -12,6 +12,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
             breaks: true,
         });
         this.renderer = this.prepareRenderer();
+        this.toggleDrawer = this.toggleDrawer.bind(this);
     }
 
     /**
@@ -44,6 +45,12 @@ export default @observer class DrawerGuidelineContent extends React.Component {
             { __html: '' };
     }
 
+    toggleDrawer() {
+        this.props.drawerViewModel.isOpen ?
+            this.props.drawerViewModel.close() :
+            this.props.drawerViewModel.open();
+    }
+
     render() {
         const guideline = this.props.content;
         const diagnosis = guideline.selectedDiagnosis;
@@ -51,7 +58,10 @@ export default @observer class DrawerGuidelineContent extends React.Component {
             <div className="drawer__inner">
 
                 <div className="drawer__teaser">
-                    <div className="drawer__teaser-flap">
+                    <div
+                        className="drawer__teaser-flap"
+                        onClick={this.toggleDrawer}
+                    >
                         {/*<svg aria-hidden="true">
                             <use xlinkHref="#icon_guidelines"></use>
                         </svg>*/}
