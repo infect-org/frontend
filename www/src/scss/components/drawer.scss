@@ -191,6 +191,16 @@
 
     &-inner {
       margin-left: 2rem;
+
+      &-link {
+        color: $guidelines-color--dark;
+        cursor: pointer;
+
+        &:hover {
+          color: $guidelines-color--dark;
+          text-decoration: underline;
+        }
+      }
     }
   }
 

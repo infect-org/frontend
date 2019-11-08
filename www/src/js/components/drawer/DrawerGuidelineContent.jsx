@@ -20,7 +20,9 @@ export default @observer class DrawerGuidelineContent extends React.Component {
      * e.g. html elements)
      */
     prepareRenderer() {
+
         const renderer = new marked.Renderer();
+
         renderer.text = text => text
             // Abbreviations, e.g. x.y. (p.o. becomes p.(hairspace)o.)
             .replace(/(\w\.)(\w\.)/g, '$1&#8202;$2')
@@ -29,7 +31,15 @@ export default @observer class DrawerGuidelineContent extends React.Component {
             // Slashes (4g/kg/d becomes 4g(hairspace)/(hairspace)kg(hairspace)/(hairspace)d)
             // Only applies to slashes not followed or preceded by a space
             .replace(/(\S)\/(?!\s)/g, '$1&#8202;/&#8202;');
+
+        // Open all links in a new window (add target="_blank")
+        renderer.link = (href, title, text) => {
+            const titleString = title ? `title=${title}` : '';
+            return `<a href="${href}" target="_blank" ${titleString}>${text}</a>`;
+        }
+
         return renderer;
+
     }
 
     /**
@@ -49,6 +59,11 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         this.props.drawerViewModel.isOpen ?
             this.props.drawerViewModel.close() :
             this.props.drawerViewModel.open();
+    }
+
+    formatDate(date) {
+        const pad = nr => nr < 10 ? `0${nr}` : `${nr}`;
+        return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
     }
 
     render() {
@@ -83,7 +98,13 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                                 <p>
                                     {diagnosis.diagnosisClass.name}<br />
-                                    <strong>{guideline.name}</strong>
+                                    <strong><a
+                                        href={guideline.link}
+                                        target="_blank"
+                                        className="drawer__header-inner-link"
+                                    >
+                                        {guideline.name}
+                                    </a></strong>
                                 </p>
 
                                 {guideline.markdownDisclaimer &&
@@ -158,18 +179,6 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                         <div className="diagnosis-additional-informations">
 
-                            <div className="diagnosis-additional-informations__guideline-link">
-
-                                {diagnosis.link &&
-                                    <div>
-                                        <a href={diagnosis.link} target="_blank">
-                                            {guideline.name}
-                                        </a>
-                                    </div>
-                                }
-
-                            </div>
-
                             <div className="diagnosis-additional-informations__contact">
 
                                 {guideline.contactEmail &&
@@ -188,13 +197,12 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                     <div>
 
                                         <p>
-                                            <span>Source: </span>
+                                            Updated on{' '}
+                                            {this.formatDate(diagnosis.latestUpdate.date)}{' '}
+                                            from{' '}
                                             <a href={diagnosis.latestUpdate.link} target="_blank">
                                                 {diagnosis.latestUpdate.name}
                                             </a>
-                                            <br />
-                                            <span>Updated: </span>
-                                            {diagnosis.latestUpdate.date.toLocaleDateString()}
                                         </p>
 
                                     </div>
