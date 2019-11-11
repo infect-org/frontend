@@ -72,11 +72,8 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         return (
             <div className="drawer__inner">
 
-                <div className="drawer__teaser">
-                    <div
-                        className="drawer__teaser-flap"
-                        onClick={this.toggleDrawer}
-                    >
+                <div className="drawer__teaser" onClick={this.toggleDrawer}>
+                    <div className="drawer__teaser-flap">
                         {/*<svg aria-hidden="true">
                             <use xlinkHref="#icon_guidelines"></use>
                         </svg>*/}

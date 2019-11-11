@@ -115,8 +115,8 @@
       border-radius: 5px;
       color: $color--white;
       @include transition(background-color, $transition-duration);
-      @include flexbox();
-      @include align-items(flex-end);
+      // Width: (15px * 1.2 lineHeight) + (18px * 1.2 line-height)
+      width: 40px;
     }
 
     &-subtitle {
@@ -125,6 +125,7 @@
       writing-mode: vertical-rl;
       text-orientation: mixed;
       @include transform(rotate(180deg));
+      display: inline;
     }
     &-title {
       font-size: 18px;
@@ -133,6 +134,7 @@
       writing-mode: vertical-rl;
       text-orientation: mixed;
       @include transform(rotate(180deg));
+      display: inline;
     }
   }
 
