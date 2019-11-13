@@ -197,7 +197,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                                             Updated on{' '}
                                             {this.formatDate(diagnosis.latestUpdate.date)}{' '}
                                             from{' '}
-                                            <a href={diagnosis.latestUpdate.link} target="_blank">
+                                            <a href={diagnosis.link} target="_blank">
                                                 {diagnosis.latestUpdate.name}
                                             </a>
                                         </p>
