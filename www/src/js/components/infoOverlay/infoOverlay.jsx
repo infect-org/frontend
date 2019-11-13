@@ -30,7 +30,11 @@ export default @observer class InfoOverlay extends React.Component {
 
                 <InfoOverlayButton infoOverlay={this.props.infoOverlay} />
 
-                <div className="overlay__menu">
+                { /* 
+                    Remove temporarily; changes hashtag which closes overlay
+                    TODO: Re-enable
+                */ }
+                { /* <div className="overlay__menu">
                     <ol className="menu">
                         <li className="menu-item"><a href="#introduction">Introduction</a></li>
                         <li className="menu-item"><a href="#guide">Using Infect</a></li>
@@ -40,7 +44,7 @@ export default @observer class InfoOverlay extends React.Component {
                         <li className="menu-item"><a href="#partners">Partners</a></li>
                         <li className="menu-item"><a href="#disclaimer">Disclaimer</a></li>
                     </ol>
-                </div>
+                </div> */ }
                 <div className="overlay__container">
                     <h1 id="introduction">Introduction</h1>
                     <p>Supported by the <a href="https://www.bag.admin.ch/bag/en/home.html" target="_blank">Federal Office of Public Health</a> and the <a href="http://ifik.unibe.ch" target="_blank">Institute for Infectious Diseases Bern</a>, the project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed. It is aimed at providing a fast and intuitive access to the latest antimicrobial resistance data to assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients’ geographical region.</p>
