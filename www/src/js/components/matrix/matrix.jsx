@@ -123,6 +123,7 @@ export default @observer class Matrix extends React.Component {
                                 bacterium={bacterium}
                                 matrix={this.props.matrix}
                                 selectedFilters={this.props.selectedFilters}
+                                guidelines={this.props.guidelines}
                             />
                         ))}
                     </g>

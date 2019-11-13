@@ -42,7 +42,10 @@ export default @observer class Drawer extends React.Component {
                 {
                     this.props.drawerViewModel &&
                     this.props.drawerViewModel.contentType === 'guideline' &&
-                    <DrawerGuidelineContent content={this.props.drawerViewModel.content} />
+                    <DrawerGuidelineContent
+                        content={this.props.drawerViewModel.content}
+                        drawerViewModel={this.props.drawerViewModel}
+                    />
                 }
             </div>
         );

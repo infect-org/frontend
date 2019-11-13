@@ -16,9 +16,11 @@
   bottom: 0;
   width: 480px;
   z-index: 1000;
-  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.15);
+  /* Move to the left as teaser is not part of the drawer itself, but attached to the left side
+     of it */
+  box-shadow: -20px 0 25px rgba(0, 0, 0, 0.25);
   transform: translate3d(0, 0, 0);
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.4s;
 
   /** FABIAN: Can we do an animation here? */
   &.hidden {
@@ -57,6 +59,83 @@
       line-height: 1.35;
     }
 
+  }
+
+
+  /** FABIAN: How would I do that correctly? */
+  &.hidden {
+    .drawer__teaser {
+      cursor: w-resize;
+    }
+
+    // Make line wider when drawer is hidden
+    .drawer__teaser:after {
+      width: 10PX;
+    }
+  }
+
+  // Teaser
+  &__teaser {
+    cursor: e-resize;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    height: 100%;
+    bottom: 0;
+    z-index: 999;
+
+    &:hover {
+      &:after {
+        background-color: darken($guidelines-color--dark, 7%);
+      }
+
+      .drawer__teaser-flap {
+        background-color: darken($guidelines-color--dark, 7%);
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2PX;
+      height: 100%;
+      background-color: $guidelines-color--dark;
+      transition: background-color $transition-duration, width $transition-duration;
+    }
+
+
+    &-flap {
+      position: absolute;
+      top: 15%;
+      right: 0;
+      background-color: $guidelines-color--dark;
+      padding: 20px 20px 20px 10px;
+      border-radius: 5px;
+      color: $color--white;
+      @include transition(background-color, $transition-duration);
+      // Width: (15px * 1.2 lineHeight) + (18px * 1.2 line-height)
+      width: 40px;
+    }
+
+    &-subtitle {
+      font-size: 15px;
+      line-height: 1.2;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      @include transform(rotate(180deg));
+      display: inline;
+    }
+    &-title {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1.2;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      @include transform(rotate(180deg));
+      display: inline;
+    }
   }
 
   &__fixed {
@@ -114,6 +193,16 @@
 
     &-inner {
       margin-left: 2rem;
+
+      &-link {
+        color: $guidelines-color--dark;
+        cursor: pointer;
+
+        &:hover {
+          color: $guidelines-color--dark;
+          text-decoration: underline;
+        }
+      }
     }
   }
 
@@ -264,7 +353,7 @@
   }
 
   h3 + p,
-  h4 + p, 
+  h4 + p,
   h5 + p,
   h6 + p {
     margin-top: 4px;

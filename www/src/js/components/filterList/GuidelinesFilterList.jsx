@@ -6,8 +6,7 @@ import FilterListCheckbox from '../filterListCheckbox/filterListCheckbox.jsx';
 
 const log = debug('infect:GuidelinesFilterList');
 
-@observer
-class GuidelinesFilterList extends React.Component {
+export default @observer class GuidelinesFilterList extends React.Component {
 
     selectDiagnosis = this.selectDiagnosis.bind(this);
 
@@ -28,27 +27,53 @@ class GuidelinesFilterList extends React.Component {
         // Only display guideline if they were loaded and guideline was selected
         if (!this.props.guidelines || !this.props.guidelines.selectedGuideline) return null;
         return (
-            <ul className="group__list group__list--vertical">
-                {this.props.guidelines.selectedGuideline.diagnoses
-                    .sort((a, b) => (a.name < b.name ? -1 : 1))
-                    .map(diagnosis => (
-                        <FilterListCheckbox
-                            key={diagnosis.id}
-                            inputName='diagnosis'
-                            name={diagnosis.name}
-                            inputType="radio"
-                            checked={
-                                diagnosis ===
-                                    this.props.guidelines.selectedGuideline.selectedDiagnosis
-                            }
-                            onChangeHandler={() => this.selectDiagnosis(diagnosis)}
-                        />
-                    ))
-                }
-            </ul>
+            <div
+                className={`group group--padding group--${this.props.identifier}`}
+                id={`js-filter-list-${this.props.identifier}`}
+            >
+                <h1>{this.props.guidelines.selectedGuideline.name}</h1>
+                <h3 className="black margin-top">
+                    Empirical Therapies
+                </h3>
+                <ul className="group__list group__list--vertical">
+                    {this.props.guidelines.selectedGuideline.diagnoses
+                        .sort((a, b) => (a.name < b.name ? -1 : 1))
+                        .map(diagnosis => (
+                            <FilterListCheckbox
+                                key={diagnosis.id}
+                                inputName='diagnosis'
+                                name={diagnosis.name}
+                                inputType="radio"
+                                checked={
+                                    diagnosis ===
+                                        this.props.guidelines.selectedGuideline.selectedDiagnosis
+                                }
+                                onChangeHandler={() => this.selectDiagnosis(diagnosis)}
+                            />
+                        ))
+                    }
+                </ul>
+                <h3 className="black margin-top">
+                    Specific Therapies<br/>(Coming Soon …)
+                </h3>
+                { /* TODO: This is a quick fix to tease specific therapies on INFECT by anresis.ch. 
+                    Remove when specifi therapies are available and make tenant dependent when we
+                    create the first tenant. */}
+                <ul className="group__list group__list--vertical">
+                    <li className="list-item--radio group__list-item">
+                        <input type="radio" disabled />
+                        <label className="side-label gray">Chlamydia (C. trachomatis) / LGV</label>
+                    </li>
+                    <li className="list-item--radio group__list-item">
+                        <input type="radio" disabled />
+                        <label className="side-label gray">Gonorrhoe/ Tripper (N.gonorrhoea)</label>
+                    </li>
+                    <li className="list-item--radio group__list-item">
+                        <input type="radio" disabled />
+                        <label className="side-label gray">Syphilis / Lues</label>
+                    </li>
+                </ul>
+            </div>
         );
     }
 }
-
-export default generateFilterList(GuidelinesFilterList);
-

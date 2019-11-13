@@ -108,10 +108,14 @@ matrixheader {
         position: fixed;
     }
 
-
     &__bacteriumLabelText {
         text-anchor: end;
         font-style: italic;
+
+        &.-causes-diagnosis {
+            fill: $guidelines-color--dark;
+        }
+
     }
 
     &__resistance {

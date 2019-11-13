@@ -10,6 +10,7 @@ export default @observer class BacteriumLabel extends React.Component {
     constructor() {
         super();
         this._wasVisible = true;
+        this.isWindowWide = window.innerWidth > 1200;
     }
 
     componentDidMount() {
@@ -70,6 +71,17 @@ export default @observer class BacteriumLabel extends React.Component {
         return this.props.bacterium.bacterium === activeResistance.resistance.bacterium ? 'highlight' : '';
     }
 
+    /**
+     * If current bacterium causes the selected diagnosis, use guideline color (blue) as text color
+     * @return {boolean}        True if bacterium can cause selected diagnosis
+     */
+    @computed get causesSelectedDiagnosis() {
+        const diagnosis = this.props.guidelines &&
+            this.props.guidelines.selectedGuideline &&
+            this.props.guidelines.selectedGuideline.selectedDiagnosis;
+        return diagnosis && diagnosis.inducingBacteria.includes(this.props.bacterium.bacterium);
+    }
+
     render() {
         return (
             <g
@@ -81,11 +93,19 @@ export default @observer class BacteriumLabel extends React.Component {
                 <text
                     ref={element => this._setTextElement(element)}
                     x={this.props.matrix.bacteriumLabelColumnWidth}
-                    className={`resistanceMatrix__bacteriumLabelText ${this.highlightClass}`}
+                    className={`resistanceMatrix__bacteriumLabelText ${this.highlightClass} ${this.causesSelectedDiagnosis && '-causes-diagnosis'}`}
                     dominantBaseline="middle"
                     y={this.props.matrix.defaultRadius}
                 >
-                    {this.props.bacterium.bacterium.name}
+                    {this.isWindowWide && this.props.bacterium.bacterium.name}
+                    {!this.isWindowWide &&
+                        <tspan>
+                            {this.props.bacterium.bacterium.shortName}
+                            <title>{this.props.bacterium.bacterium.name}</title>
+                        </tspan>
+                    }
+
+
                 </text>
             </g>
         );

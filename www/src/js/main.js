@@ -3,7 +3,8 @@
 */
 
 import 'whatwg-fetch';
-import '@babel/polyfill';
+import 'regenerator-runtime/runtime';
+import 'core-js/stable';
 
 import { configure, observable, action } from 'mobx';
 import debug from 'debug';
@@ -26,7 +27,6 @@ import InfoOverlay from './components/infoOverlay/infoOverlay';
 import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
 import Drawer from './components/drawer/Drawer.jsx';
 import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter';
-import OpenDiagnosisDrawerButton from './components/drawer/OpenDiagnosisDrawerButton.jsx';
 
 import betaConfig from '../config/config.beta.js';
 import liveConfig from '../config/config.live.js';
@@ -48,9 +48,18 @@ log('Is beta? %o. config is %o', isBeta, config);
 
 // If URL's query params include ?preview or &preview, also load guideline data that has not yet
 // ben published. See https://github.com/infect-org/issues/issues/47.
+// TODO: Solve nicely when new API endpoints are ready (GPC)
 if (/(\?|&)preview/.test(window.location.search)) {
-    config.endpoints.diagnoses += '?showAllData=true';
-    config.endpoints.guidelines += '?showAllData=true';
+    const concernedEndpoints = [
+        'diagnoses',
+        'guidelines',
+        'therapies',
+        'therapyPriorities',
+        'diagnosisClass',
+        'therapyCompounds',
+        'diagnosisBacteria',
+    ];
+    concernedEndpoints.forEach((endpoint) => { config.endpoints[endpoint] += '?showAllData=true'; });
 }
 
 
@@ -160,11 +169,6 @@ function renderReact() {
     ReactDOM.render(
         <InfoOverlayButton infoOverlay={infoOverlayModel} />,
         document.querySelector('InfoOverlayButton'),
-    );
-
-    ReactDOM.render(
-        <OpenDiagnosisDrawerButton drawerViewModel={app.views.drawer} />,
-        document.querySelector('OpenDiagnosisDrawerButton'),
     );
 
     ReactDOM.render(
