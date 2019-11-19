@@ -1,32 +1,36 @@
-@charset 'utf-8';
+@charset "utf-8";
 
-@import 'utils/variables'
-		, 'utils/mixins'
-		, 'utils/inputrange'
-		, 'utils/introjs'
-		, '../../src/bower_components/sass-flex-mixin/flex'
-		, '../../src/bower_components/sass-mediaqueries/media-queries';
-		//,'../../../node_modules/intro.js/introjs.css';
-		//,'../../../node_modules/intro.js/themes/introjs-modern.css';
 
-@import 'base/base'
-		,'base/structure'
-		,'base/modifiers';
+@import "utils/variables";
+@import "utils/mixins";
+@import "utils/inputrange";
+@import "utils/introjs";
+@import "../../src/bower_components/sass-flex-mixin/flex";
+@import "../../src/bower_components/sass-mediaqueries/media-queries";
+//@import "../../../node_modules/intro.js/introjs.css";
+//@import "../../../node_modules/intro.js/themes/introjs-modern.css";
 
-@import 'components/top-navigation'
-		,'components/side-navigation'
-		,'components/slider'
-		,'components/filters'
-		,'components/inputs'
-		,'components/buttons'
-		,'components/tab-icon-navigation'
-		,'components/select'
-		,'components/matrix'
-		,'components/drawer'
-		,'components/overlay'
-		,'components/search'
-		,'components/disclaimer'
-		,'components/corrupt-data-warning'
-		,'components/guided-tour'
-		,'components/app-banner'
-		,'components/notification';
+// BASE
+@import "base/base";
+@import "base/structure";
+@import "base/modifiers";
+
+// COMPONENTS
+@import "components/top-navigation";
+@import "components/logo";
+@import "components/side-navigation";
+@import "components/slider";
+@import "components/filters";
+@import "components/inputs";
+@import "components/buttons";
+@import "components/tab-icon-navigation";
+@import "components/select";
+@import "components/matrix";
+@import "components/drawer";
+@import "components/overlay";
+@import "components/search";
+@import "components/disclaimer";
+@import "components/corrupt-data-warning";
+@import "components/guided-tour";
+@import "components/app-banner";
+@import "components/notification";

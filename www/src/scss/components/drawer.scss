@@ -22,7 +22,6 @@
   transform: translate3d(0, 0, 0);
   transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.4s;
 
-  /** FABIAN: Can we do an animation here? */
   &.hidden {
     transform: translate3d(480px, 0, 0);
     box-shadow: none;
@@ -62,7 +61,6 @@
   }
 
 
-  /** FABIAN: How would I do that correctly? */
   &.hidden {
     .drawer__teaser {
       cursor: w-resize;
@@ -86,11 +84,11 @@
 
     &:hover {
       &:after {
-        background-color: darken($guidelines-color--dark, 7%);
+        background-color: darken($color--jelly-bean, 7%);
       }
 
       .drawer__teaser-flap {
-        background-color: darken($guidelines-color--dark, 7%);
+        background-color: darken($color--jelly-bean, 7%);
       }
     }
 
@@ -101,7 +99,7 @@
       right: 0;
       width: 2PX;
       height: 100%;
-      background-color: $guidelines-color--dark;
+      background-color: $color--jelly-bean;
       transition: background-color $transition-duration, width $transition-duration;
     }
 
@@ -110,7 +108,7 @@
       position: absolute;
       top: 15%;
       right: 0;
-      background-color: $guidelines-color--dark;
+      background-color: $color--jelly-bean;
       padding: 20px 20px 20px 10px;
       border-radius: 5px;
       color: $color--white;
@@ -141,7 +139,7 @@
   &__fixed {
     padding: 20px 30px;
     @include flex(0 0 auto);
-    background-color: $guidelines-color--dark;
+    background-color: $color--jelly-bean;
   }
   &__scrollable {
     @include flex(1 1 auto);
@@ -149,22 +147,22 @@
 
     background:
             /* Shadow covers */
-            linear-gradient($guidelines-color 30%, rgba($guidelines-color,0)),
-            linear-gradient(rgba($guidelines-color,0), $guidelines-color 70%) 0 100%,
+            linear-gradient($color--link-water 30%, rgba($color--link-water,0)),
+            linear-gradient(rgba($color--link-water,0), $color--link-water 70%) 0 100%,
 
               /* Shadows */
             radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
             radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
     background:
             /* Shadow covers */
-            linear-gradient($guidelines-color 30%, rgba(255,255,255,0)),
-            linear-gradient(rgba(255,255,255,0), $guidelines-color 70%) 0 100%,
+            linear-gradient($color--link-water 30%, rgba(255,255,255,0)),
+            linear-gradient(rgba(255,255,255,0), $color--link-water 70%) 0 100%,
 
               /* Shadows */
             radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
             radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
     background-repeat: no-repeat;
-    background-color: $guidelines-color;
+    background-color: $color--link-water;
     background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
 
     /* Opera doesn't support this in the shorthand */
@@ -188,18 +186,18 @@
 
 
   &__header {
-    background-color: $guidelines-color--medium;
+    background-color: $color--spindle;
     padding: 20px 30px;
 
     &-inner {
       margin-left: 2rem;
 
       &-link {
-        color: $guidelines-color--dark;
+        color: $color--jelly-bean;
         cursor: pointer;
 
         &:hover {
-          color: $guidelines-color--dark;
+          color: $color--jelly-bean;
           text-decoration: underline;
         }
       }
@@ -231,7 +229,7 @@
     font-size: 17px;
     line-height: 1.2;
     margin: 0 0 6px -2rem;
-    color: $guidelines-color--dark;
+    color: $color--jelly-bean;
 
     &:before {
       content: '';
@@ -241,7 +239,7 @@
       width: 1.5rem;
       height: 1.5rem;
       border-radius: 100%;
-      background-color: $guidelines-color--dark;
+      background-color: $color--jelly-bean;
     }
 
   }
@@ -259,7 +257,7 @@
 
 
 .diagnosis-general-considerations {
-  border-top: 1px solid $guidelines-color--dark;
+  border-top: 1px solid $color--jelly-bean;
   padding: 20px 30px;
 
   &__inner {
@@ -274,7 +272,7 @@
 }
 
 .diagnosis-additional-informations {
-  border-top: 1px solid $guidelines-color--dark;
+  border-top: 1px solid $color--jelly-bean;
   padding: 20px 30px;
 
   > div {
@@ -285,7 +283,7 @@
   &__guideline-link,
   &__contact {
     a {
-      color: $guidelines-color--dark;
+      color: $color--jelly-bean;
       font-weight: bold;
       text-decoration: underline;
 
@@ -298,7 +296,7 @@
   &__latest-version {
     margin-top: 20px;
 
-    color: $color--darkgray;
+    color: $color--tundora;
     font-size: 13px;
 
     a {
@@ -417,7 +415,7 @@
 
     a {
       font-size: 13px;
-      color: $guidelines-color--dark;
+      color: $color--jelly-bean;
       text-decoration: underline;
 
       &:hover {

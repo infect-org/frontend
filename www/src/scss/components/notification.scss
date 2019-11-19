@@ -47,7 +47,7 @@
 		&__link {
 			cursor: pointer;
 			text-align: center;
-			color: #fff;
+			color: $color--white;
 
 			/*img {
 				width: 70%;
@@ -63,12 +63,12 @@
 		h2 {
 			margin: 0 0 4px 0;
 			font-size: 18px;
-			color: #fff;
+			color: $color--white;
 		}
 
 		p {
 			font-size: 14px;
-			color: #fff;
+			color: $color--white;
 			margin: 0;
 		}
 	}

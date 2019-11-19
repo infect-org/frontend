@@ -63,7 +63,7 @@ matrixheader {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #616161;
+        background-color: $color--dove-gray;
         @include transition(opacity, $transition-duration);
         opacity: 0;
         z-index: -1;
@@ -113,7 +113,7 @@ matrixheader {
         font-style: italic;
 
         &.-causes-diagnosis {
-            fill: $guidelines-color--dark;
+            fill: $color--jelly-bean;
         }
 
     }
@@ -142,20 +142,19 @@ matrixheader {
         }
 
         &.containsGuidelineData {
-            /* FABIAN! Use variable or something */
-            fill: #3289CC;
+            fill: $color--curious-blue;
         }
 
     }
 
     &__antibioticLabelGuidelinePriorityCircle {
         /* FABIAAAAAAN! Use variable or something */
-        fill: #3289CC;
+        fill: $color--curious-blue;
     }
 
     &__antibioticLabelGuidelinePriorityText {
         /* FABIAAAAAAN! Number of therapy priority */
-        fill: white;
+        fill: $color--white;
         font-family: $font-family--sans-serif;
         font-weight: bold;
     }
@@ -165,10 +164,10 @@ matrixheader {
 
         &:hover {
             text {
-                fill: #fff;
+                fill: $color--white;
             }
             rect {
-                fill: #{$sidenavigation-background};
+                fill: #{$color--mine-shaft};
             }
         }
     }
@@ -194,7 +193,7 @@ matrixheader {
     }
 
     &__resistanceDetailCircleShadow {
-        fill: #000;
+        fill: $color--black;
         opacity: 0.4;
     }
 

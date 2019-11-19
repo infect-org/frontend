@@ -1,0 +1,29 @@
+.c-logo {
+	@include flexbox();
+	@include justify-content(left);
+	padding-left: 20px;
+	align-items: center;
+	/* TODO: FEEEEEEEEEEEEEEELIX, feel free to be free */
+	//background-color: $color--dove-gray;
+	background-color: var(--color--accent-1, $color--yellow-green);
+
+	&__link {
+		z-index: 5;
+		height: $navigation-height - 20px;
+	}
+
+	&__vector-image {
+		width: auto;
+		height: 100%;
+		max-width: $navigation-width - 20px; // - 20px = padding-left of logo
+
+		&--hidden {
+			display: none;
+		}
+
+		/* TODO: FEEEEEELIX, you may wanna remove this */
+		* {
+			fill: $color--black !important;
+		}
+	}
+}

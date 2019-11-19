@@ -33,7 +33,7 @@
     width: 10px;
     height: 10px;
     border: 1px solid;
-    border-color: #fff;
+    border-color: $color--white;
     @include transition(border-color, $transition-duration);
   }
 
@@ -49,21 +49,21 @@
 
   input:checked + .side-label::after {
     //display: block;
-    background-color: $active__checkbox-color;
+    background-color: var(--color--accent-1, $color--yellow-green);
   }
 
   input:hover + .side-label
   ,input:hover + .side-label::before
   ,input:checked + .side-label
   ,input:checked + .side-label::before {
-    color: $active__checkbox-color;
-    border-color: $active__checkbox-color;
+    color: var(--color--accent-1, $color--yellow-green);
+    border-color: var(--color--accent-1, $color--yellow-green);
   }
   input:hover + .side-label::after {
-    background-color: rgba($active__checkbox-color, 0.2);
+    background-color: rgba(var(--color--accent-1, $color--yellow-green), 0.2);
   }
   input:checked:hover + .side-label::after {
-    background-color: $active__checkbox-color;
+    background-color: var(--color--accent-1, $color--yellow-green);
   }
 }
 
@@ -74,7 +74,7 @@
     width: 12px;
     height: 12px;
     border: 1px solid;
-    border-color: #000;
+    border-color: $color--black;
     @include border-radius(7px);
     @include transition(all, $transition-duration);
   }
@@ -94,22 +94,22 @@
   }
 
   input[type="checkbox"]:checked + .side-label::before {
-    background-color: $sidenavigation-background;
+    background-color: $color--mine-shaft;
   }
   input[type="checkbox"]:checked + .side-label::after {
-    background-color: $active__checkbox-color;
+    background-color: var(--color--accent-1, $color--yellow-green);
   }
   input[type="checkbox"]:hover + .side-label
   ,input[type="checkbox"]:hover + .side-label::after
   ,input[type="checkbox"]:checked + .side-label
   ,input[type="checkbox"]:checked + .side-label::after {
-    color: $active__checkbox-color;
-    border-color: $active__checkbox-color;
+    color: var(--color--accent-1, $color--yellow-green);
+    border-color: var(--color--accent-1, $color--yellow-green);
   }
 
 
   input[type="radio"]:checked + .side-label::before {
-    background-color: $sidenavigation-background;
+    background-color: $color--mine-shaft;
   }
   /*input[type="radio"]:checked + .side-label::after {
     background-color: $active__checkbox-color;
