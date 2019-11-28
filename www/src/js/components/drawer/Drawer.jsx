@@ -45,6 +45,7 @@ export default @observer class Drawer extends React.Component {
                     <DrawerGuidelineContent
                         content={this.props.drawerViewModel.content}
                         drawerViewModel={this.props.drawerViewModel}
+                        app={this.props.app}
                     />
                 }
             </div>

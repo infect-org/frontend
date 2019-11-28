@@ -16,12 +16,9 @@ class MostUsedFiltersList extends React.Component {
 		this._previousHeight = 0;
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this._scrollElement = document.querySelector('.side-navigation__filters');
 		this._setScrollPositionBeforeChange();
-	}
-
-	componentDidMount() {
 		this._filterElement = document.querySelector('#js-filter-list-mostUsed');
 		setTimeout(() => {
 			log('componentDidMount');
