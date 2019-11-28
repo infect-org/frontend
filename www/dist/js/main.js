@@ -56154,6 +56154,17 @@ function (_React$Component) {
       this.props.app.guidelineRelatedFilters.selectFiltersRelatedToSelectedDiagnosis();
     }
     /**
+     * Only show the button to show relevant bacteria/antibiotics in matrix if they are not already
+     * selected
+     * @return {boolean}    true if button should be displayed, else false
+     */
+
+  }, {
+    key: "showRelevantFiltersButton",
+    value: function showRelevantFiltersButton() {
+      return !this.props.app.guidelineRelatedFilters.areAllDiagnosisRelatedFiltersSelected();
+    }
+    /**
      * Rendered markdown contains HTML tags; in order to render them, we must use
      * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
      * unauthorized people.
@@ -56224,7 +56235,7 @@ function (_React$Component) {
         dangerouslySetInnerHTML: this.generateMarkdownFromHtml("".concat(guideline.markdownDisclaimer))
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "drawer__therapies"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.showRelevantFiltersButton() && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "button button--info",
         onClick: this.selectRelevantFilters
       }, "Only show relevant data in matrix"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

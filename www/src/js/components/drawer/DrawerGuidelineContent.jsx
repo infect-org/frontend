@@ -52,6 +52,15 @@ export default @observer class DrawerGuidelineContent extends React.Component {
     }
 
     /**
+     * Only show the button to show relevant bacteria/antibiotics in matrix if they are not already
+     * selected
+     * @return {boolean}    true if button should be displayed, else false
+     */
+    showRelevantFiltersButton() {
+        return !this.props.app.guidelineRelatedFilters.areAllDiagnosisRelatedFiltersSelected();
+    }
+
+    /**
      * Rendered markdown contains HTML tags; in order to render them, we must use
      * dangerouslySetInnerHTML, which doesn't pose a threat here as content is never created by
      * unauthorized people.
@@ -131,12 +140,14 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                         <div className="drawer__therapies">
 
-                            <button
-                                className="button button--info"
-                                onClick={this.selectRelevantFilters}
-                            >
-                                Only show relevant data in matrix
-                            </button>
+                            {this.showRelevantFiltersButton() &&
+                                <button
+                                    className="button button--info"
+                                    onClick={this.selectRelevantFilters}
+                                >
+                                    Only show relevant data in matrix
+                                </button>
+                            }
 
                             <div className="drawer__therapies-inner">
 
