@@ -141,7 +141,12 @@ function renderReact() {
 
     ReactDOM.render(
         <MatrixLoadingOverlay
-            stores={[app.bacteria, app.antibiotics, app.resistances, app.substanceClasses]}
+            stores={[
+                app.bacteria,
+                app.antibiotics,
+                app.resistances,
+                app.substanceClasses,
+            ]}
         />,
         document.querySelector('MatrixLoadingOverlay'),
     );

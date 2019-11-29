@@ -90,7 +90,7 @@
 /*!**********************************!*\
   !*** ../frontend-logic/index.js ***!
   \**********************************/
-/*! exports provided: default, filterTypes, resistanceTypes, models */
+/*! exports provided: default, filterTypes, resistanceTypes, models, storeStatus, severityLevels */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105,7 +105,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/models/resistances/resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "resistanceTypes", function() { return _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/models/antibiotics/antibioticMatrixView */ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
+/* harmony import */ var _src_helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/helpers/storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "storeStatus", function() { return _src_helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _src_models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/models/notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "severityLevels", function() { return _src_models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/models/antibiotics/antibioticMatrixView */ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
+
+
 
 
  // Export models. Needed in App to check if value returned by xPositions is an Antibiotic or
@@ -113,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var models = {
-  AntibioticMatrixView: _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_3__["default"]
+  AntibioticMatrixView: _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_5__["default"]
 };
 
 
@@ -9333,12 +9341,13 @@ var StandardFetcher =
 /*#__PURE__*/
 function () {
   /**
-  * @param {String} url
-  * @param {Store} store                  Store to which we save the data once it's loaded
-  * @param {Object} options               Options for the fetch request (see fetch docs)
-  * @param {Array} dependentStores        Stores that's status must be ready before data of this
-  *                                       store is handled. Example: Antibiotics must wait for
-  *                                       substanceClasses, resistances for antibiotics and
+  * @param {object} options
+  * @param {string} options.url
+  * @param {Store} options.store          Store to which we save the data once it's loaded
+  * @param {object} options.options       Options for the fetch request (see fetch docs)
+  * @param {Store[]} options.dependentStores   Stores that's status must be ready before data of
+  *                                       this store is handled. Example: Antibiotics must wait
+  *                                       for substanceClasses, resistances for antibiotics and
   *                                       bacteria.
   *                                       Pass a Store (and not the Fetcher) here as we might
   *                                       want to access the store's data when it's ready – e.g.
@@ -9346,9 +9355,14 @@ function () {
   *                                       bacterium and antibiotic. As the store is a property of
   *                                       this class, we can access it in this.handleData().
   */
-  function StandardFetcher(url, store) {
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    var dependentStores = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
+  function StandardFetcher() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        url = _ref.url,
+        store = _ref.store,
+        _ref$options = _ref.options,
+        options = _ref$options === void 0 ? {} : _ref$options,
+        _ref$dependentStores = _ref.dependentStores,
+        dependentStores = _ref$dependentStores === void 0 ? [] : _ref$dependentStores;
 
     _classCallCheck(this, StandardFetcher);
 
@@ -9696,30 +9710,46 @@ function () {
       var _this2 = this;
 
       // Substance classes (must be loaded first)
-      var substanceClassesFetcher = new _models_antibiotics_substanceClassesFetcher_js__WEBPACK_IMPORTED_MODULE_6__["default"](this._config.endpoints.apiPrefix + this._config.endpoints.substanceClasses, this.substanceClasses);
+      var substanceClassesFetcher = new _models_antibiotics_substanceClassesFetcher_js__WEBPACK_IMPORTED_MODULE_6__["default"]({
+        url: this._config.endpoints.apiPrefix + this._config.endpoints.substanceClasses,
+        store: this.substanceClasses
+      });
       var substanceClassesPromise = substanceClassesFetcher.getData();
       log('Fetching data for substanceClasses.'); // Antibiotics (wait for substance classes)
 
-      var antibioticsFetcher = new _models_antibiotics_antibioticsFetcher_js__WEBPACK_IMPORTED_MODULE_4__["default"](this._config.endpoints.apiPrefix + this._config.endpoints.antibiotics, this.antibiotics, {
-        headers: {
-          select: 'substance.*, substance.substanceClass.*'
-        }
-      }, [this.substanceClasses, this.rdaCounterStore], this.notificationCenter.handle.bind(this.notificationCenter));
+      var antibioticsFetcher = new _models_antibiotics_antibioticsFetcher_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
+        url: this._config.endpoints.apiPrefix + this._config.endpoints.antibiotics,
+        store: this.antibiotics,
+        options: {
+          headers: {
+            select: 'substance.*, substance.substanceClass.*'
+          }
+        },
+        dependentStores: [this.substanceClasses, this.rdaCounterStore],
+        handleError: this.notificationCenter.handle.bind(this.notificationCenter)
+      });
       var antibioticPromise = antibioticsFetcher.getData();
       log('Fetching data for antibiotics.'); // Bacteria
 
-      var bacteriaFetcher = new _models_bacteria_bacteriaFetcher_js__WEBPACK_IMPORTED_MODULE_8__["default"](this._config.endpoints.apiPrefix + this._config.endpoints.bacteria, this.bacteria, {
-        headers: {
-          select: 'shape.*'
-        }
+      var bacteriaFetcher = new _models_bacteria_bacteriaFetcher_js__WEBPACK_IMPORTED_MODULE_8__["default"]({
+        url: this._config.endpoints.apiPrefix + this._config.endpoints.bacteria,
+        store: this.bacteria,
+        options: {
+          headers: {
+            select: 'shape.*'
+          }
+        },
+        dependentStores: [this.rdaCounterStore]
       });
       var bacteriaPromise = bacteriaFetcher.getData();
       log('Fetching data for bacteria.'); // Resistances (wait for antibiotics and bacteria)
 
-      var resistanceFetcher = new _models_resistances_resistancesFetcher_js__WEBPACK_IMPORTED_MODULE_10__["default"](this._config.endpoints.apiPrefix + this._config.endpoints.resistances, this.resistances, {}, [this.antibiotics, this.bacteria], {
-        antibiotics: this.antibiotics,
-        bacteria: this.bacteria
-      }, this.notificationCenter.handle.bind(this.notificationCenter)); // Gets data for default filter switzerland-all
+      var resistanceFetcher = new _models_resistances_resistancesFetcher_js__WEBPACK_IMPORTED_MODULE_10__["default"]({
+        url: this._config.endpoints.apiPrefix + this._config.endpoints.resistances,
+        store: this.resistances,
+        dependentStores: [this.antibiotics, this.bacteria],
+        handleError: this.notificationCenter.handle.bind(this.notificationCenter)
+      }); // Gets data for default filter switzerland-all
 
       var resistancePromise = resistanceFetcher.getData();
       log('Fetching data for resistances.'); // Guidelines are important – but not crucial for INFECT to work. Handle errors nicely.
@@ -9733,7 +9763,11 @@ function () {
           message: humanReadableError
         });
       });
-      var rdaCounterFetcher = new _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_25__["default"]("".concat(this._config.endpoints.apiPrefix).concat(this._config.endpoints.rdaCounter), this.rdaCounterStore, this.notificationCenter.handle.bind(this.notificationCenter));
+      var rdaCounterFetcher = new _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_25__["default"]({
+        url: "".concat(this._config.endpoints.apiPrefix).concat(this._config.endpoints.rdaCounter),
+        store: this.rdaCounterStore,
+        handleError: this.notificationCenter.handle.bind(this.notificationCenter)
+      });
       var rdaCounterFetcherPromise = rdaCounterFetcher.getData();
       var updater = new _models_populationFilter_populationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__["default"](resistanceFetcher, this.selectedFilters, this.notificationCenter.handle.bind(this.notificationCenter));
       updater.setup();
@@ -9981,8 +10015,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AntibioticsFetcher; });
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _antibiotic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./antibiotic */ "../frontend-logic/src/models/antibiotics/antibiotic.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _antibiotic_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./antibiotic.js */ "../frontend-logic/src/models/antibiotics/antibiotic.js");
 /* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 /* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -9993,13 +10027,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10029,21 +10063,27 @@ var AntibioticsFetcher =
 function (_Fetcher) {
   _inherits(AntibioticsFetcher, _Fetcher);
 
+  /**
+   * @param {Object} config
+   * @param {function} config.handleError    Error handling function
+   * @param {Array} config.dependentStores   SubstanceClassStore and RDACounterStore (optional)
+   */
   function AntibioticsFetcher() {
-    var _getPrototypeOf2;
-
     var _this;
+
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, AntibioticsFetcher);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AntibioticsFetcher).call(this, config));
+    var dependentStores = config.dependentStores,
+        handleError = config.handleError; // rdaCounter is optional (for easier testing)
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AntibioticsFetcher)).call.apply(_getPrototypeOf2, [this].concat(_toConsumableArray(args.slice(0, 4)))));
-    _this.substanceClasses = args[3][0];
-    _this.rdaCounter = args[3][1];
-    _this.handleError = args[4];
+    var _dependentStores = _slicedToArray(dependentStores, 2);
+
+    _this.substanceClasses = _dependentStores[0];
+    _this.rdaCounter = _dependentStores[1];
+    _this.handleError = handleError;
     return _this;
   }
 
@@ -10058,9 +10098,11 @@ function (_Fetcher) {
         // is not an exception, it is an expected behavior.
 
 
-        if (!_this2.rdaCounter.hasItem(_rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].antibiotic, antibioticData.id)) {
-          log('Antibiotic %o has no RDA data, ignore it.', antibioticData);
-          return;
+        if (_this2.rdaCounter) {
+          if (!_this2.rdaCounter.hasItem(_rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].antibiotic, antibioticData.id)) {
+            log('Antibiotic %o has no RDA data, ignore it.', antibioticData);
+            return;
+          }
         } // There are 2 special cases: amoxicillin/clavulanate and piperacillin/tazobactam
         // get a «virtual» substance class Beta-lactam + inhibitor that was programmatically
         // created in SubstanceClassFetcher
@@ -10121,7 +10163,7 @@ function (_Fetcher) {
           return;
         }
 
-        var antibiotic = new _antibiotic__WEBPACK_IMPORTED_MODULE_2__["default"](antibioticData.id, antibioticData.name, substanceClass, {
+        var antibiotic = new _antibiotic_js__WEBPACK_IMPORTED_MODULE_2__["default"](antibioticData.id, antibioticData.name, substanceClass, {
           iv: antibioticData.intravenous,
           po: antibioticData.perOs,
           identifier: antibioticData.identifier
@@ -10133,7 +10175,7 @@ function (_Fetcher) {
   }]);
 
   return AntibioticsFetcher;
-}(_helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_1__["default"]);
+}(_helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
 
@@ -10534,9 +10576,20 @@ function (_Store) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriaFetcher; });
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _bacterium__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bacterium */ "../frontend-logic/src/models/bacteria/bacterium.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _bacterium__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bacterium */ "../frontend-logic/src/models/bacteria/bacterium.js");
+/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10557,23 +10610,44 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:BacteriaFetcher');
+
 var BacteriaFetcher =
 /*#__PURE__*/
 function (_Fetcher) {
   _inherits(BacteriaFetcher, _Fetcher);
 
-  function BacteriaFetcher() {
+  function BacteriaFetcher(options) {
+    var _this;
+
     _classCallCheck(this, BacteriaFetcher);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BacteriaFetcher).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BacteriaFetcher).call(this, options));
+    var dependentStores = options.dependentStores; // Make rdaCounter optional for easiert testing
+
+    if (dependentStores) {
+      var _dependentStores = _slicedToArray(dependentStores, 1);
+
+      _this.rdaCounter = _dependentStores[0];
+    }
+
+    return _this;
   }
 
   _createClass(BacteriaFetcher, [{
     key: "handleData",
     value: function handleData(data) {
-      var _this = this;
+      var _this2 = this;
 
       data.forEach(function (item) {
+        if (_this2.rdaCounter) {
+          if (!_this2.rdaCounter.hasItem(_rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_3__["default"].bacterium, item.id)) {
+            log('Bacterium %o has not RDA data, remove');
+            return;
+          }
+        }
+
         var options = {
           // Use two properties for aerobic/anaerobic, as selecting both
           // should only display values that validate for *both* properties:
@@ -10584,15 +10658,15 @@ function (_Fetcher) {
           gram: item.gramPositive,
           shortName: item.shortName
         };
-        var bact = new _bacterium__WEBPACK_IMPORTED_MODULE_1__["default"](item.id, item.name, options);
+        var bact = new _bacterium__WEBPACK_IMPORTED_MODULE_2__["default"](item.id, item.name, options);
 
-        _this.store.add(bact);
+        _this2.store.add(bact);
       });
     }
   }]);
 
   return BacteriaFetcher;
-}(_helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__["default"]);
+}(_helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
 
@@ -11736,6 +11810,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
 /* harmony import */ var _Diagnosis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Diagnosis.js */ "../frontend-logic/src/models/guidelines/Diagnosis.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -11765,6 +11840,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:DiagnosisFetcher');
 
 var DiagnosisFetcher =
@@ -11778,19 +11854,14 @@ function (_Fetcher) {
    * @param  {Function} handleError   Function that takes an Error instance as the only argument
    *                                  (and displays it to the user)
    */
-  function DiagnosisFetcher() {
-    var _getPrototypeOf2;
-
+  function DiagnosisFetcher(options) {
     var _this;
 
     _classCallCheck(this, DiagnosisFetcher);
 
-    for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
-      params[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DiagnosisFetcher)).call.apply(_getPrototypeOf2, [this].concat(params)));
-    _this.handleError = params[4];
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DiagnosisFetcher).call(this, options));
+    var handleError = options.handleError;
+    _this.handleError = handleError;
     log('handleError set to %o', _this.handleError);
     return _this;
   }
@@ -11828,9 +11899,10 @@ function (_Fetcher) {
           var bacterium = bacteria.getById(mapping.id_bacterium); // If bacterium cannot be found, display error without crashing
 
           if (!bacterium) {
-            var bacteriumMissingError = new Error("Bacterium ".concat(mapping.id_bacterium, " could not be found. The results displayed to you will therefore not be complete for diagnosis ").concat(diagnosis.name, "."));
-
-            _this2.handleError(bacteriumMissingError);
+            _this2.handleError({
+              severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
+              message: "Bacterium ".concat(mapping.id_bacterium, " could not be found. The results displayed to you will therefore not be complete for diagnosis ").concat(diagnosis.name, ".")
+            });
           }
 
           return bacterium;
@@ -12354,6 +12426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
 /* harmony import */ var _Therapy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Therapy.js */ "../frontend-logic/src/models/guidelines/Therapy.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -12383,6 +12456,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:TherapyFetcher');
 
 var TherapyFetcher =
@@ -12393,22 +12467,17 @@ function (_Fetcher) {
   /**
    * Pass same params as for Fetcher, but add handleError function that gracefully handles non-
    * critical errors
-   * @param  {Function} handleError   Function that takes an Error instance as the only argument
-   *                                  (and displays it to the user)
+   * @param  {function} options.handleError   Function that takes an Error instance as the only
+   *                                          argument (and displays it to the user)
    */
-  function TherapyFetcher() {
-    var _getPrototypeOf2;
-
+  function TherapyFetcher(options) {
     var _this;
 
     _classCallCheck(this, TherapyFetcher);
 
-    for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
-      params[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TherapyFetcher)).call.apply(_getPrototypeOf2, [this].concat(params)));
-    _this.handleError = params[4];
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TherapyFetcher).call(this, options));
+    var handleError = options.handleError;
+    _this.handleError = handleError;
     log('handleError set to %o', _this.handleError);
     return _this;
   }
@@ -12438,9 +12507,10 @@ function (_Fetcher) {
           var antibiotic = antibioticsStore.getById(mapping.id_compound);
 
           if (!antibiotic) {
-            var antibioticMissingError = new Error("Antibiotic ".concat(mapping.id_compound, " could not be found. The results displayed to you will therefore not be complete for therapy ").concat(therapy.id, "."));
-
-            _this2.handleError(antibioticMissingError);
+            _this2.handleError({
+              severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
+              message: "Antibiotic ".concat(mapping.id_compound, " could not be found. The results displayed to you will therefore not be complete for therapy ").concat(therapy.id, ".")
+            });
 
             return undefined;
           }
@@ -12651,36 +12721,62 @@ function setupGuidelines(config, guidelineStore, bacteriaStore, antibioticsStore
 
           diagnosisClassesStore = new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
           diagnosisClassesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.diagnosisClass);
-          diagnosisClassesFetcher = new _DiagnosisClassFetcher_js__WEBPACK_IMPORTED_MODULE_5__["default"](diagnosisClassesURL, diagnosisClassesStore);
+          diagnosisClassesFetcher = new _DiagnosisClassFetcher_js__WEBPACK_IMPORTED_MODULE_5__["default"]({
+            url: diagnosisClassesURL,
+            store: diagnosisClassesStore
+          });
           fetchPromises.push(diagnosisClassesFetcher.getData()); // Therapy priority
 
           therapyPriorityStore = new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
           therapyPriorityURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.therapyPriorities);
-          therapyPriorityFetcher = new _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"](therapyPriorityURL, therapyPriorityStore);
+          therapyPriorityFetcher = new _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            url: therapyPriorityURL,
+            store: therapyPriorityStore
+          });
           fetchPromises.push(therapyPriorityFetcher.getData()); // Therapy compound
 
           therapyCompoundsStore = new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
           therapyCompoundsURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.therapyCompounds);
-          therapyCompoundsFetcher = new _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"](therapyCompoundsURL, therapyCompoundsStore);
+          therapyCompoundsFetcher = new _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            url: therapyCompoundsURL,
+            store: therapyCompoundsStore
+          });
           fetchPromises.push(therapyCompoundsFetcher.getData()); // Diagnoses bacteria mapping
 
           diagnosesBacteriaStore = new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
           diagnosesBacteriaURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.diagnosisBacteria);
-          diagnosesBacteriaFetcher = new _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"](diagnosesBacteriaURL, diagnosesBacteriaStore);
+          diagnosesBacteriaFetcher = new _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            url: diagnosesBacteriaURL,
+            store: diagnosesBacteriaStore
+          });
           fetchPromises.push(diagnosesBacteriaFetcher.getData()); // Therapy
 
           therapiesStore = new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
           therapiesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.therapies);
-          therapiesFetcher = new _TherapyFetcher_js__WEBPACK_IMPORTED_MODULE_4__["default"](therapiesURL, therapiesStore, undefined, [therapyPriorityStore, therapyCompoundsStore, antibioticsStore], handleError);
+          therapiesFetcher = new _TherapyFetcher_js__WEBPACK_IMPORTED_MODULE_4__["default"]({
+            url: therapiesURL,
+            store: therapiesStore,
+            dependentStores: [therapyPriorityStore, therapyCompoundsStore, antibioticsStore],
+            handleError: handleError
+          });
           fetchPromises.push(therapiesFetcher.getData()); // Diagnoses
 
           diagnosesStore = new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
           diagnosesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.diagnoses);
-          diagnosesFetcher = new _DiagnosisFetcher_js__WEBPACK_IMPORTED_MODULE_3__["default"](diagnosesURL, diagnosesStore, undefined, [diagnosisClassesStore, diagnosesBacteriaStore, bacteriaStore, therapiesStore], handleError);
+          diagnosesFetcher = new _DiagnosisFetcher_js__WEBPACK_IMPORTED_MODULE_3__["default"]({
+            url: diagnosesURL,
+            store: diagnosesStore,
+            dependentStores: [diagnosisClassesStore, diagnosesBacteriaStore, bacteriaStore, therapiesStore],
+            handleError: handleError
+          });
           fetchPromises.push(diagnosesFetcher.getData()); // Guidelines
 
           guidelinesURL = "".concat(endpoints.guidelineBaseUrl).concat(endpoints.guidelines);
-          guidelineFetcher = new _GuidelineFetcher_js__WEBPACK_IMPORTED_MODULE_2__["default"](guidelinesURL, guidelineStore, undefined, [diagnosesStore]);
+          guidelineFetcher = new _GuidelineFetcher_js__WEBPACK_IMPORTED_MODULE_2__["default"]({
+            url: guidelinesURL,
+            store: guidelineStore,
+            dependentStores: [diagnosesStore]
+          });
           fetchPromises.push(guidelineFetcher.getData());
           return _context.abrupt("return", Promise.all(fetchPromises));
 
@@ -13907,8 +14003,10 @@ function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PopulationFilterUpdater; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 var _class, _temp;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13921,6 +14019,8 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 
 
+
+var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:PopulationFilterUpdater');
 /**
  * Create headers for population filters that will be passed to ResistanceFetcher. Invoke
  * ResistancesFetcher whenever population filters change. Do this in a separate class to not
@@ -13965,7 +14065,7 @@ function () {
     value: function setupWatcher() {
       var _this = this;
 
-      Object(mobx__WEBPACK_IMPORTED_MODULE_0__["reaction"])(function () {
+      Object(mobx__WEBPACK_IMPORTED_MODULE_1__["reaction"])(function () {
         return _this.filterHeaders;
       }, function _callee(data) {
         return regeneratorRuntime.async(function _callee$(_context) {
@@ -13973,25 +14073,26 @@ function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                log('Selected filters changed, new headers are %o', data);
+                _context.next = 4;
                 return regeneratorRuntime.awrap(_this.resistancesFetcher.getDataForFilters(data));
 
-              case 3:
-                _context.next = 8;
+              case 4:
+                _context.next = 9;
                 break;
 
-              case 5:
-                _context.prev = 5;
+              case 6:
+                _context.prev = 6;
                 _context.t0 = _context["catch"](0);
 
                 _this.handleError(_context.t0);
 
-              case 8:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, null, null, [[0, 5]]);
+        }, null, null, [[0, 6]]);
       }, {
         // Overwrite existing comparator function as filterHeaders returns a *new* (and
         // therefore different) object every time it is invoked. Compare if their JSON
@@ -14004,9 +14105,9 @@ function () {
   }, {
     key: "filterHeaders",
     get: function get() {
-      var region = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__["default"].region);
-      var ageGroup = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__["default"].ageGroup);
-      var hospitalStatus = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__["default"].hospitalStatus);
+      var region = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].region);
+      var ageGroup = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].ageGroup);
+      var hospitalStatus = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].hospitalStatus);
       return {
         regionIds: region.map(function (filter) {
           return filter.value;
@@ -14022,7 +14123,7 @@ function () {
   }]);
 
   return PopulationFilterUpdater;
-}(), _temp), (_applyDecoratedDescriptor(_class.prototype, "filterHeaders", [mobx__WEBPACK_IMPORTED_MODULE_0__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "filterHeaders"), _class.prototype)), _class);
+}(), _temp), (_applyDecoratedDescriptor(_class.prototype, "filterHeaders", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "filterHeaders"), _class.prototype)), _class);
 
 
 /***/ }),
@@ -14421,13 +14522,14 @@ function (_Fetcher) {
   * Fetches resistances from server, then updates ResistancesStore passed as an argument.
   * @param {function} handleException   Exception handler
   */
-  function ResistancesFetcher(url, store, handleException) {
+  function ResistancesFetcher(options) {
     var _this;
 
     _classCallCheck(this, ResistancesFetcher);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResistancesFetcher).call(this, url, store));
-    _this.handleException = handleException;
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResistancesFetcher).call(this, options));
+    var handleError = options.handleError;
+    _this.handleException = handleError;
     return _this;
   }
   /**
@@ -14937,9 +15039,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _resistance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./resistance */ "../frontend-logic/src/models/resistances/resistance.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _resistance_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./resistance.js */ "../frontend-logic/src/models/resistances/resistance.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -14965,6 +15076,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var log = debug__WEBPACK_IMPORTED_MODULE_1___default()('infect:ResistancesFetcher');
 
 var ResistancesFetcher =
@@ -14981,18 +15093,28 @@ function (_Fetcher) {
   /**
   * Fetches resistances from server, then updates ResistancesStore passed as an argument.
   *
-  * @param [0-3]                              See Fetcher
-  * @param {ResistanceStore} stores           Stores for antibiotics *and* bacteria
-  * @param {Function} handleError             Function that gently handles non-critical exceptions
+  * @param {object} options
+  * @param {array} options.dependentStores    AntibioticStore and BacteriaStore
+  * @param {function} options.handleError     Error handling function
   */
-  function ResistancesFetcher(url, store, options, dependentStores, stores, handleError) {
+  function ResistancesFetcher(options) {
     var _this;
 
     _classCallCheck(this, ResistancesFetcher);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResistancesFetcher).call(this, url, store, options, dependentStores));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResistancesFetcher).call(this, options));
     _this.dataHandled = 0;
-    _this.stores = stores;
+    var handleError = options.handleError,
+        dependentStores = options.dependentStores;
+
+    var _dependentStores = _slicedToArray(dependentStores, 2),
+        antibiotics = _dependentStores[0],
+        bacteria = _dependentStores[1];
+
+    _this.stores = {
+      antibiotics: antibiotics,
+      bacteria: bacteria
+    };
     _this.handleError = handleError;
     return _this;
   }
@@ -15072,52 +15194,15 @@ function (_Fetcher) {
 
       this.store.clear();
       var bacteria = Array.from(this.stores.bacteria.get().values());
-      var antibiotics = Array.from(this.stores.antibiotics.get().values()); // On the very first round (when we're getting data for switzerland-all) remove all
-      // antibiotics that don't have any resistance data.
-      // TODO: We need a good endpoint which only returns ab/bact with data available. This
-      // is a quick-fix.
-
-      if (this.dataHandled === 1) {
-        var emptyBacteria = bacteria // Get all bacteria that don't have any resistance data
-        .filter(function (bacterium) {
-          return !data.values.find(function (res) {
-            return res.bacteriumId === bacterium.id;
-          });
-        });
-
-        if (emptyBacteria.length) {
-          log('Remove empty bacteria %o', emptyBacteria);
-        } // Remove bacterium from store which triggers removal from matrixView – do it in
-        // 1 step to save resources. TODO: update the whole logic and don't create Bacteria
-        // for unused bacteria data
-
-
-        Object(mobx__WEBPACK_IMPORTED_MODULE_0__["transaction"])(function () {
-          emptyBacteria.forEach(function (emptyBacterium) {
-            _this2.stores.bacteria.remove(emptyBacterium);
-          });
-        });
-      } // Values missing: There's nothing we could add
-
+      var antibiotics = Array.from(this.stores.antibiotics.get().values()); // Values missing: There's nothing we could add
 
       if (!data.values || !data.values.length) {
-        log('Values missing');
+        log('Values missing for %o', data);
         return;
       }
 
       var counter = 0;
       data.values.forEach(function (resistance) {
-        // Some resistances don't contain compound data. Slack, 2018-04-05:
-        // fxstr [4:38 PM]
-        // es hat einige resistances ohne id_compound. wie soll ich die handeln? ignorieren?
-        // ee [4:38 PM]
-        // iu
-        // müssen wir dann noch anschauen
-        if (!Object.prototype.hasOwnProperty.call(resistance, 'compoundId')) {
-          console.error("ResistanceFetcher: Resistance ".concat(JSON.stringify(resistance), " does not have compound information; ignore for now, but should be fixed."));
-          return;
-        }
-
         var bacterium = bacteria.find(function (item) {
           return item.id === resistance.bacteriumId;
         });
@@ -15126,18 +15211,20 @@ function (_Fetcher) {
         }); // Missing bacterium or antibiotic is not crucial; display error but continue
 
         if (!antibiotic) {
-          var antibioticMissingError = new Error("ResistancesFetcher: Antibiotic with ID ".concat(resistance.compoundId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed."));
-
-          _this2.handleError(antibioticMissingError);
+          _this2.handleError({
+            severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"].warning,
+            message: "ResistancesFetcher: Antibiotic with ID ".concat(resistance.compoundId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed.")
+          });
 
           console.error('Antibiotic for resistance %o missing; antibiotics are %o', resistance, antibiotics);
           return;
         }
 
         if (!bacterium) {
-          var bacteriumMissingError = new Error("ResistancesFetcher: Bacterium with ID ".concat(resistance.bacteriumId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed."));
-
-          _this2.handleError(bacteriumMissingError);
+          _this2.handleError({
+            severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"].warning,
+            message: "ResistancesFetcher: Bacterium with ID ".concat(resistance.bacteriumId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed.")
+          });
 
           console.error('Bacterium for resistance %o missing; bacteria are %o', resistance, bacteria);
           return;
@@ -15149,7 +15236,7 @@ function (_Fetcher) {
           sampleSize: resistance.sampleCount || 0,
           confidenceInterval: [resistance.confidenceInterval.lowerBound / 100, resistance.confidenceInterval.upperBound / 100]
         }];
-        var resistanceObject = new _resistance__WEBPACK_IMPORTED_MODULE_3__["default"](resistanceValues, antibiotic, bacterium); // Duplicate resistance
+        var resistanceObject = new _resistance_js__WEBPACK_IMPORTED_MODULE_3__["default"](resistanceValues, antibiotic, bacterium); // Duplicate resistance
 
         if (_this2.store.hasWithId(resistanceObject)) {
           console.warn("ResistanceFetcher: Resistance ".concat(JSON.stringify(resistance), " is\n                    a duplicate; an entry for the same bacterium and antibiotic does exist."));
@@ -15165,7 +15252,7 @@ function (_Fetcher) {
   }]);
 
   return ResistancesFetcher;
-}(_helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_2__["default"]);
+}(_helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 
 
@@ -56611,8 +56698,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return null; // Only display guideline if they were loaded and guideline was selected
-
+      // Only display guideline if they were loaded and guideline was selected
       if (!this.props.guidelines || !this.props.guidelines.selectedGuideline) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "group group--padding group--".concat(this.props.identifier),
@@ -60361,10 +60447,11 @@ function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MatrixLoadingOverlay; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 var _class, _class2;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -60391,7 +60478,8 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 
 
-var MatrixLoadingOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class = (_class2 =
+
+var MatrixLoadingOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = (_class2 =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(MatrixLoadingOverlay, _React$Component);
@@ -60405,9 +60493,9 @@ function (_React$Component) {
   _createClass(MatrixLoadingOverlay, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: 'resistanceMatrix__overlay ' + (this.loading ? 'resistanceMatrix__overlay--active' : '')
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         src: "img/logo_spinner.svg"
       }));
     }
@@ -60415,13 +60503,13 @@ function (_React$Component) {
     key: "loading",
     get: function get() {
       return this.props.stores.some(function (store) {
-        return store.status.identifier === 'loading';
+        return store.status.identifier === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_0__["storeStatus"].loading;
       });
     }
   }]);
 
   return MatrixLoadingOverlay;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), (_applyDecoratedDescriptor(_class2.prototype, "loading", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "loading"), _class2.prototype)), _class2)) || _class;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component), (_applyDecoratedDescriptor(_class2.prototype, "loading", [mobx__WEBPACK_IMPORTED_MODULE_3__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "loading"), _class2.prototype)), _class2)) || _class;
 
 
 
