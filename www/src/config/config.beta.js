@@ -11,6 +11,7 @@ export default Object.freeze({
         guidelineBaseUrl: 'https://api.infect.info/guideline/v1/',
         diagnosisClass: 'diagnosisClass',
         therapyPriorities: 'therapyPriority',
+        rdaCounter: 'rda.data?functionName=infect-configuration',
         therapyCompounds: 'therapy_compound',
         diagnosisBacteria: 'diagnosis_bacterium',
         diagnoses: 'diagnosis',

@@ -1,11 +1,14 @@
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
+import debug from 'debug';
 import React from 'react';
 import AntibioticsFilterList from './antibioticsFilterList.jsx';
 import BacteriaFilterList from './bacteriaFilterList.jsx';
 import PopulationFilterList from './populationFilterList.jsx';
 import MostUsedFiltersList from './mostUsedFiltersList.jsx';
 import GuidelinesFilterList from './GuidelinesFilterList.jsx';
+
+const log = debug('infect:filterList');
 
 /**
  * Holds all filters (without tab navigation or the search input) in the sidebar on the left.
@@ -14,7 +17,9 @@ import GuidelinesFilterList from './GuidelinesFilterList.jsx';
 class FilterList extends React.Component {
 
     @computed get bacteriaFilters() {
-        return this.props.filterValues.getPropertiesForEntityType('bacterium');
+        const filters = this.props.filterValues.getPropertiesForEntityType('bacterium');
+        log('Bacteria filters are %o', filters);
+        return filters;
     }
 
     render() {

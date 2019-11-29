@@ -69,7 +69,7 @@ try {
     app.initialize();
     log('App initialized, is %o', app);
 } catch (err) {
-    app.errorHandler.handle(err);
+    app.notificationCenter.handle(err);
 }
 
 
@@ -172,7 +172,7 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <Notifications errors={app.errorHandler.errors} />,
+        <Notifications errors={app.notificationCenter.notifications} />,
         document.querySelector('Notifications'),
     );
 
