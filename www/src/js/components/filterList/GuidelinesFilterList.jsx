@@ -24,7 +24,6 @@ export default @observer class GuidelinesFilterList extends React.Component {
     }
 
     render() {
-        return null;
         // Only display guideline if they were loaded and guideline was selected
         if (!this.props.guidelines || !this.props.guidelines.selectedGuideline) return null;
         return (
