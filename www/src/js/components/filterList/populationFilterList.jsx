@@ -26,6 +26,11 @@ function getFirstNumber(ageGroupIdentifier) {
 @observer
 class PopulationFilterList extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.handleAnimalFilterChange = this.handleAnimalFilterChange.bind(this);
+    }
+
     _handleFilterChange(item) {
         log('Handle filter change for population filter %o', item);
         this.props.selectedFilters.toggleFilter(item);
@@ -47,6 +52,10 @@ class PopulationFilterList extends React.Component {
         return this.props.filterValues.getValuesForProperty(filterTypes.region, 'id');
     }
 
+    @computed get animalFilters() {
+        return this.props.filterValues.getValuesForProperty(filterTypes.animal, 'id');        
+    }
+
     @computed get ageGroupFilters() {
         const values = this.props.filterValues.getValuesForProperty(filterTypes.ageGroup, 'id');
         return values.sort((a, b) => getFirstNumber(a.niceValue) - getFirstNumber(b.niceValue));
@@ -60,9 +69,31 @@ class PopulationFilterList extends React.Component {
         return this.props.selectedFilters.getFiltersByType(filterTypes.region).length === 0;
     }
 
+    handleAnimalFilterChange(event) {
+        const filter = this.animalFilters[event.target.value];
+        this.props.selectedFilters.toggleFilter(filter);
+    }
+
     render() {
         return (
             <div id="population-filters">
+                {this.animalFilters.length > 0 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Animal</h3>
+                        <select
+                            className="select"
+                            onChange={this.handleAnimalFilterChange}
+                        >
+                            <option>Please choose …</option>
+                            {this.animalFilters.map((animalFilter, index) => (
+                                <option key={animalFilter.value} value={index}>
+                                    {animalFilter.niceValue}
+                                </option>
+                            ))}
+                        </select>
+                    </React.Fragment>
+                }
+
                 <h3 className="gray margin-top">Region</h3>
                 <ul className="group__list group__list--vertical">
                     { this.regionFilters.map(item => (

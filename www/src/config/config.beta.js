@@ -10,6 +10,7 @@ export default Object.freeze({
         hospitalStatus: 'generics.hospitalStatus',
         guidelineBaseUrl: 'https://api.infect.info/guideline/v1/',
         diagnosisClass: 'diagnosisClass',
+        animals: 'generics.animal',
         therapyPriorities: 'therapyPriority',
         rdaCounter: 'rda.data?functionName=infect-configuration',
         therapyCompounds: 'therapy_compound',
