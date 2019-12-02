@@ -142,7 +142,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
                             {this.showRelevantFiltersButton() &&
                                 <button
-                                    className="button button--info"
+                                    className="button button--show-relevant-guideline-information"
                                     onClick={this.selectRelevantFilters}
                                 >
                                     Only show relevant data in matrix

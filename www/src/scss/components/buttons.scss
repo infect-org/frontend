@@ -179,7 +179,8 @@ $button-bg-color--hover: #d7d5c4;
     }
   }
 
-  &--guide {
+  &--guide,
+  &--show-relevant-guideline-information {
     @include border-radius(5px);
     padding: 5px 15px;
 
@@ -190,5 +191,9 @@ $button-bg-color--hover: #d7d5c4;
     &:hover {
       background-color: $guide-button-color--hover;
     }
+  }
+
+  &--show-relevant-guideline-information {
+    margin-bottom: 1.25rem;
   }
 }

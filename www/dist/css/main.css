@@ -1358,7 +1358,7 @@ address {
   background-color: #D8E7F4;
 }
 
-.button--guide {
+.button--guide, .button--show-relevant-guideline-information {
   border-radius: 0.3125rem;
   -webkit-border-radius: 0.3125rem;
   -moz-border-radius: 0.3125rem;
@@ -1370,8 +1370,12 @@ address {
   -moz-transition: background-color 100ms linear;
 }
 
-.button--guide:hover {
+.button--guide:hover, .button--show-relevant-guideline-information:hover {
   background-color: #4e79c7;
+}
+
+.button--show-relevant-guideline-information {
+  margin-bottom: 1.25rem;
 }
 
 .button--icon--active:after {
