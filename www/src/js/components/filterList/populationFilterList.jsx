@@ -36,6 +36,11 @@ class PopulationFilterList extends React.Component {
         this.props.selectedFilters.toggleFilter(item);
     }
 
+    @computed get offsetMinimumValue() {
+        const rdaConfig = this.props.tenantConfig.getConfig('rda');
+        if (rdaConfig) return rdaConfig.sampleCountFilterLowerThreshold || 0;
+    }
+
     /**
      * At least one filter must be selected (defaults to 'all'); therefore we have to overwrite the
      * filter selection logic.
@@ -121,7 +126,11 @@ class PopulationFilterList extends React.Component {
                             onChangeHandler={ () => this._handleFilterChange(item) } />
                     ))}
                 </ul>
-                <OffsetFilters identifier="data" offsetFilters={ this.props.offsetFilters } />
+                <OffsetFilters
+                    identifier="data"
+                    offsetFilters={this.props.offsetFilters}
+                    offsetMinimumValue={this.offsetMinimumValue}
+                />
             </div>
         );
     }

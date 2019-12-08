@@ -64,6 +64,7 @@ class FilterList extends React.Component {
                         <hr className="divider" />
                         <PopulationFilterList
                             identifier="population"
+                            tenantConfig={this.props.tenantConfig}
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters }
                             offsetFilters={ this.props.offsetFilters }/>

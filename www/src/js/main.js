@@ -111,6 +111,7 @@ function renderReact() {
             selectedFilters={app.selectedFilters}
             offsetFilters={app.offsetFilters}
             guidelines={app.guidelines}
+            tenantConfig={app.tenantConfig}
         />,
         document.querySelector('FilterList'),
     );
