@@ -185,11 +185,11 @@ $button-bg-color--hover: #d7d5c4;
     padding: 5px 15px;
 
     color: #fff;
-    background-color: $guide-button-color--base;
+    background-color: $guidelines-color--dark;
     @include transition(background-color, $transition-duration);
 
     &:hover {
-      background-color: $guide-button-color--hover;
+      background-color: darken($guidelines-color--dark, 7%);
     }
   }
 

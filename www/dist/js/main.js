@@ -86,26 +86,26 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "../infect-frontend-logic/index.js":
-/*!*****************************************!*\
-  !*** ../infect-frontend-logic/index.js ***!
-  \*****************************************/
+/***/ "../frontend-logic/index.js":
+/*!**********************************!*\
+  !*** ../frontend-logic/index.js ***!
+  \**********************************/
 /*! exports provided: default, filterTypes, resistanceTypes, models */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "models", function() { return models; });
-/* harmony import */ var _src_infectApp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/infectApp */ "../infect-frontend-logic/src/infectApp.js");
+/* harmony import */ var _src_infectApp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/infectApp */ "../frontend-logic/src/infectApp.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _src_infectApp__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _src_models_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/models/filters/filterTypes */ "../infect-frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _src_models_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/models/filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "filterTypes", function() { return _src_models_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/models/resistances/resistanceTypes */ "../infect-frontend-logic/src/models/resistances/resistanceTypes.js");
+/* harmony import */ var _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/models/resistances/resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "resistanceTypes", function() { return _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/models/antibiotics/antibioticMatrixView */ "../infect-frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
+/* harmony import */ var _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/models/antibiotics/antibioticMatrixView */ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
 
 
  // Export models. Needed in App to check if value returned by xPositions is an Antibiotic or
@@ -119,10 +119,10 @@ var models = {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/debug/src/browser.js":
-/*!******************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/debug/src/browser.js ***!
-  \******************************************************************/
+/***/ "../frontend-logic/node_modules/debug/src/browser.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/node_modules/debug/src/browser.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -290,7 +290,7 @@ function localstorage() {
   }
 }
 
-module.exports = __webpack_require__(/*! ./common */ "../infect-frontend-logic/node_modules/debug/src/common.js")(exports);
+module.exports = __webpack_require__(/*! ./common */ "../frontend-logic/node_modules/debug/src/common.js")(exports);
 var formatters = module.exports.formatters;
 /**
  * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
@@ -303,14 +303,14 @@ formatters.j = function (v) {
     return '[UnexpectedJSONParseError]: ' + error.message;
   }
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../frontend/node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../infect-frontend/node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/debug/src/common.js":
-/*!*****************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/debug/src/common.js ***!
-  \*****************************************************************/
+/***/ "../frontend-logic/node_modules/debug/src/common.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/node_modules/debug/src/common.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -333,7 +333,7 @@ function setup(env) {
   createDebug.disable = disable;
   createDebug.enable = enable;
   createDebug.enabled = enabled;
-  createDebug.humanize = __webpack_require__(/*! ms */ "../infect-frontend-logic/node_modules/ms/index.js");
+  createDebug.humanize = __webpack_require__(/*! ms */ "../frontend-logic/node_modules/ms/index.js");
   Object.keys(env).forEach(function (key) {
     createDebug[key] = env[key];
   });
@@ -590,26 +590,26 @@ module.exports = setup;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/deep-equal/index.js":
-/*!*****************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/deep-equal/index.js ***!
-  \*****************************************************************/
+/***/ "../frontend-logic/node_modules/deep-equal/index.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/node_modules/deep-equal/index.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var objectKeys = __webpack_require__(/*! object-keys */ "../infect-frontend-logic/node_modules/object-keys/index.js");
+var objectKeys = __webpack_require__(/*! object-keys */ "../frontend-logic/node_modules/object-keys/index.js");
 
-var isArguments = __webpack_require__(/*! is-arguments */ "../infect-frontend-logic/node_modules/is-arguments/index.js");
+var isArguments = __webpack_require__(/*! is-arguments */ "../frontend-logic/node_modules/is-arguments/index.js");
 
-var is = __webpack_require__(/*! object-is */ "../infect-frontend-logic/node_modules/object-is/index.js");
+var is = __webpack_require__(/*! object-is */ "../frontend-logic/node_modules/object-is/index.js");
 
-var isRegex = __webpack_require__(/*! is-regex */ "../infect-frontend-logic/node_modules/is-regex/index.js");
+var isRegex = __webpack_require__(/*! is-regex */ "../frontend-logic/node_modules/is-regex/index.js");
 
-var flags = __webpack_require__(/*! regexp.prototype.flags */ "../infect-frontend-logic/node_modules/regexp.prototype.flags/index.js");
+var flags = __webpack_require__(/*! regexp.prototype.flags */ "../frontend-logic/node_modules/regexp.prototype.flags/index.js");
 
-var isDate = __webpack_require__(/*! is-date-object */ "../infect-frontend-logic/node_modules/is-date-object/index.js");
+var isDate = __webpack_require__(/*! is-date-object */ "../frontend-logic/node_modules/is-date-object/index.js");
 
 var getTime = Date.prototype.getTime;
 
@@ -759,10 +759,10 @@ module.exports = deepEqual;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/define-properties/index.js":
-/*!************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/define-properties/index.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/node_modules/define-properties/index.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/node_modules/define-properties/index.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -771,7 +771,7 @@ module.exports = deepEqual;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var keys = __webpack_require__(/*! object-keys */ "../infect-frontend-logic/node_modules/object-keys/index.js");
+var keys = __webpack_require__(/*! object-keys */ "../frontend-logic/node_modules/object-keys/index.js");
 
 var hasSymbols = typeof Symbol === 'function' && _typeof(Symbol('foo')) === 'symbol';
 var toStr = Object.prototype.toString;
@@ -840,10 +840,10 @@ module.exports = defineProperties;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/function-bind/implementation.js":
-/*!*****************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/function-bind/implementation.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/node_modules/function-bind/implementation.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/node_modules/function-bind/implementation.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -902,26 +902,26 @@ module.exports = function bind(that) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/function-bind/index.js":
-/*!********************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/function-bind/index.js ***!
-  \********************************************************************/
+/***/ "../frontend-logic/node_modules/function-bind/index.js":
+/*!*************************************************************!*\
+  !*** ../frontend-logic/node_modules/function-bind/index.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var implementation = __webpack_require__(/*! ./implementation */ "../infect-frontend-logic/node_modules/function-bind/implementation.js");
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/function-bind/implementation.js");
 
 module.exports = Function.prototype.bind || implementation;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/fuse.js/dist/fuse.js":
-/*!******************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/fuse.js/dist/fuse.js ***!
-  \******************************************************************/
+/***/ "../frontend-logic/node_modules/fuse.js/dist/fuse.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/node_modules/fuse.js/dist/fuse.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1578,30 +1578,30 @@ module.exports = Function.prototype.bind || implementation;
     };
   }]);
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../frontend/node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../infect-frontend/node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/has/src/index.js":
-/*!**************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/has/src/index.js ***!
-  \**************************************************************/
+/***/ "../frontend-logic/node_modules/has/src/index.js":
+/*!*******************************************************!*\
+  !*** ../frontend-logic/node_modules/has/src/index.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var bind = __webpack_require__(/*! function-bind */ "../infect-frontend-logic/node_modules/function-bind/index.js");
+var bind = __webpack_require__(/*! function-bind */ "../frontend-logic/node_modules/function-bind/index.js");
 
 module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/is-arguments/index.js":
-/*!*******************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/is-arguments/index.js ***!
-  \*******************************************************************/
+/***/ "../frontend-logic/node_modules/is-arguments/index.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/node_modules/is-arguments/index.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1639,10 +1639,10 @@ module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArgum
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/is-date-object/index.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/is-date-object/index.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/node_modules/is-date-object/index.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/node_modules/is-date-object/index.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1676,10 +1676,10 @@ module.exports = function isDateObject(value) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/is-regex/index.js":
-/*!***************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/is-regex/index.js ***!
-  \***************************************************************/
+/***/ "../frontend-logic/node_modules/is-regex/index.js":
+/*!********************************************************!*\
+  !*** ../frontend-logic/node_modules/is-regex/index.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1688,7 +1688,7 @@ module.exports = function isDateObject(value) {
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var has = __webpack_require__(/*! has */ "../infect-frontend-logic/node_modules/has/src/index.js");
+var has = __webpack_require__(/*! has */ "../frontend-logic/node_modules/has/src/index.js");
 
 var regexExec = RegExp.prototype.exec;
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -1731,10 +1731,10 @@ module.exports = function isRegex(value) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/node_modules/mobx/lib/mobx.module.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/node_modules/mobx/lib/mobx.module.js ***!
+  \**************************************************************/
 /*! exports provided: $mobx, IDerivationState, ObservableMap, ObservableSet, Reaction, _allowStateChanges, _allowStateChangesInsideComputed, _endAction, _getAdministration, _getGlobalState, _interceptReads, _isComputingDerivation, _resetGlobalState, _startAction, action, autorun, comparer, computed, configure, createAtom, decorate, entries, extendObservable, extendShallowObservable, flow, get, getAtom, getDebugName, getDependencyTree, getObserverTree, has, intercept, isAction, isArrayLike, isBoxedObservable, isComputed, isComputedProp, isObservable, isObservableArray, isObservableMap, isObservableObject, isObservableProp, isObservableSet, keys, observable, observe, onBecomeObserved, onBecomeUnobserved, onReactionError, reaction, remove, runInAction, set, spy, toJS, trace, transaction, untracked, values, when */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6916,14 +6916,14 @@ if ( true && typeof module.exports !== "undefined") {
 }
 
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../frontend/node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../frontend/node_modules/process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../../../frontend/node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../infect-frontend/node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../infect-frontend/node_modules/process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../../../infect-frontend/node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/ms/index.js":
-/*!*********************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/ms/index.js ***!
-  \*********************************************************/
+/***/ "../frontend-logic/node_modules/ms/index.js":
+/*!**************************************************!*\
+  !*** ../frontend-logic/node_modules/ms/index.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7112,10 +7112,10 @@ function plural(ms, msAbs, n, name) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/object-is/index.js":
-/*!****************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/object-is/index.js ***!
-  \****************************************************************/
+/***/ "../frontend-logic/node_modules/object-is/index.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/node_modules/object-is/index.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7141,10 +7141,10 @@ module.exports = function is(a, b) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/object-keys/implementation.js":
-/*!***************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/object-keys/implementation.js ***!
-  \***************************************************************************/
+/***/ "../frontend-logic/node_modules/object-keys/implementation.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/node_modules/object-keys/implementation.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7160,7 +7160,7 @@ if (!Object.keys) {
   var has = Object.prototype.hasOwnProperty;
   var toStr = Object.prototype.toString;
 
-  var isArgs = __webpack_require__(/*! ./isArguments */ "../infect-frontend-logic/node_modules/object-keys/isArguments.js"); // eslint-disable-line global-require
+  var isArgs = __webpack_require__(/*! ./isArguments */ "../frontend-logic/node_modules/object-keys/isArguments.js"); // eslint-disable-line global-require
 
 
   var isEnumerable = Object.prototype.propertyIsEnumerable;
@@ -7286,10 +7286,10 @@ module.exports = keysShim;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/object-keys/index.js":
-/*!******************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/object-keys/index.js ***!
-  \******************************************************************/
+/***/ "../frontend-logic/node_modules/object-keys/index.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/node_modules/object-keys/index.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7298,12 +7298,12 @@ module.exports = keysShim;
 
 var slice = Array.prototype.slice;
 
-var isArgs = __webpack_require__(/*! ./isArguments */ "../infect-frontend-logic/node_modules/object-keys/isArguments.js");
+var isArgs = __webpack_require__(/*! ./isArguments */ "../frontend-logic/node_modules/object-keys/isArguments.js");
 
 var origKeys = Object.keys;
 var keysShim = origKeys ? function keys(o) {
   return origKeys(o);
-} : __webpack_require__(/*! ./implementation */ "../infect-frontend-logic/node_modules/object-keys/implementation.js");
+} : __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/object-keys/implementation.js");
 var originalKeys = Object.keys;
 
 keysShim.shim = function shimObjectKeys() {
@@ -7335,10 +7335,10 @@ module.exports = keysShim;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/object-keys/isArguments.js":
-/*!************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/object-keys/isArguments.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/node_modules/object-keys/isArguments.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/node_modules/object-keys/isArguments.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7362,10 +7362,10 @@ module.exports = function isArguments(value) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/regexp.prototype.flags/implementation.js":
-/*!**************************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/regexp.prototype.flags/implementation.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/implementation.js":
+/*!*******************************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/implementation.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7411,23 +7411,23 @@ module.exports = function flags() {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/regexp.prototype.flags/index.js":
-/*!*****************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/regexp.prototype.flags/index.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/index.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/index.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var define = __webpack_require__(/*! define-properties */ "../infect-frontend-logic/node_modules/define-properties/index.js");
+var define = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js");
 
-var implementation = __webpack_require__(/*! ./implementation */ "../infect-frontend-logic/node_modules/regexp.prototype.flags/implementation.js");
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/regexp.prototype.flags/implementation.js");
 
-var getPolyfill = __webpack_require__(/*! ./polyfill */ "../infect-frontend-logic/node_modules/regexp.prototype.flags/polyfill.js");
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js");
 
-var shim = __webpack_require__(/*! ./shim */ "../infect-frontend-logic/node_modules/regexp.prototype.flags/shim.js");
+var shim = __webpack_require__(/*! ./shim */ "../frontend-logic/node_modules/regexp.prototype.flags/shim.js");
 
 var flagsBound = Function.call.bind(implementation);
 define(flagsBound, {
@@ -7439,19 +7439,19 @@ module.exports = flagsBound;
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/regexp.prototype.flags/polyfill.js":
-/*!********************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/regexp.prototype.flags/polyfill.js ***!
-  \********************************************************************************/
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var implementation = __webpack_require__(/*! ./implementation */ "../infect-frontend-logic/node_modules/regexp.prototype.flags/implementation.js");
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/regexp.prototype.flags/implementation.js");
 
-var supportsDescriptors = __webpack_require__(/*! define-properties */ "../infect-frontend-logic/node_modules/define-properties/index.js").supportsDescriptors;
+var supportsDescriptors = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js").supportsDescriptors;
 
 var gOPD = Object.getOwnPropertyDescriptor;
 var TypeErr = TypeError;
@@ -7474,19 +7474,19 @@ module.exports = function getPolyfill() {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/regexp.prototype.flags/shim.js":
-/*!****************************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/regexp.prototype.flags/shim.js ***!
-  \****************************************************************************/
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/shim.js":
+/*!*********************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/shim.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var supportsDescriptors = __webpack_require__(/*! define-properties */ "../infect-frontend-logic/node_modules/define-properties/index.js").supportsDescriptors;
+var supportsDescriptors = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js").supportsDescriptors;
 
-var getPolyfill = __webpack_require__(/*! ./polyfill */ "../infect-frontend-logic/node_modules/regexp.prototype.flags/polyfill.js");
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js");
 
 var gOPD = Object.getOwnPropertyDescriptor;
 var defineProperty = Object.defineProperty;
@@ -7516,10 +7516,10 @@ module.exports = function shimFlags() {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/node_modules/tinycolor2/tinycolor.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/node_modules/tinycolor2/tinycolor.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/node_modules/tinycolor2/tinycolor.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/node_modules/tinycolor2/tinycolor.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8825,10 +8825,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === 
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/helpers/api.js":
-/*!***************************************************!*\
-  !*** ../infect-frontend-logic/src/helpers/api.js ***!
-  \***************************************************/
+/***/ "../frontend-logic/src/helpers/api.js":
+/*!********************************************!*\
+  !*** ../frontend-logic/src/helpers/api.js ***!
+  \********************************************/
 /*! exports provided: fetchApi */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8901,10 +8901,10 @@ function fetchApi(url, options) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/helpers/convertNestedSetToTree.js":
-/*!**********************************************************************!*\
-  !*** ../infect-frontend-logic/src/helpers/convertNestedSetToTree.js ***!
-  \**********************************************************************/
+/***/ "../frontend-logic/src/helpers/convertNestedSetToTree.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/helpers/convertNestedSetToTree.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8960,10 +8960,10 @@ function convertNestedSetToTree(set) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/helpers/getArrayDiff.js":
-/*!************************************************************!*\
-  !*** ../infect-frontend-logic/src/helpers/getArrayDiff.js ***!
-  \************************************************************/
+/***/ "../frontend-logic/src/helpers/getArrayDiff.js":
+/*!*****************************************************!*\
+  !*** ../frontend-logic/src/helpers/getArrayDiff.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8993,10 +8993,10 @@ function getArrayDiff(array1, array2) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/helpers/getRelativeValue.js":
-/*!****************************************************************!*\
-  !*** ../infect-frontend-logic/src/helpers/getRelativeValue.js ***!
-  \****************************************************************/
+/***/ "../frontend-logic/src/helpers/getRelativeValue.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/src/helpers/getRelativeValue.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9026,20 +9026,20 @@ function getRelativeValue(value, min, max) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/helpers/standardFetcher.js":
-/*!***************************************************************!*\
-  !*** ../infect-frontend-logic/src/helpers/standardFetcher.js ***!
-  \***************************************************************/
+/***/ "../frontend-logic/src/helpers/standardFetcher.js":
+/*!********************************************************!*\
+  !*** ../frontend-logic/src/helpers/standardFetcher.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StandardFetcher; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api.js */ "../infect-frontend-logic/src/helpers/api.js");
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api.js */ "../frontend-logic/src/helpers/api.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -9246,17 +9246,17 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/helpers/store.js":
-/*!*****************************************************!*\
-  !*** ../infect-frontend-logic/src/helpers/store.js ***!
-  \*****************************************************/
+/***/ "../frontend-logic/src/helpers/store.js":
+/*!**********************************************!*\
+  !*** ../frontend-logic/src/helpers/store.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Store; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -9420,41 +9420,41 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/infectApp.js":
-/*!*************************************************!*\
-  !*** ../infect-frontend-logic/src/infectApp.js ***!
-  \*************************************************/
+/***/ "../frontend-logic/src/infectApp.js":
+/*!******************************************!*\
+  !*** ../frontend-logic/src/infectApp.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfectApp; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _models_antibiotics_antibioticsStore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/antibiotics/antibioticsStore.js */ "../infect-frontend-logic/src/models/antibiotics/antibioticsStore.js");
-/* harmony import */ var _models_antibiotics_antibioticsFetcher_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/antibiotics/antibioticsFetcher.js */ "../infect-frontend-logic/src/models/antibiotics/antibioticsFetcher.js");
-/* harmony import */ var _models_antibiotics_substanceClassesStore_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesStore.js */ "../infect-frontend-logic/src/models/antibiotics/substanceClassesStore.js");
-/* harmony import */ var _models_antibiotics_substanceClassesFetcher_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesFetcher.js */ "../infect-frontend-logic/src/models/antibiotics/substanceClassesFetcher.js");
-/* harmony import */ var _models_bacteria_bacteriaStore_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/bacteria/bacteriaStore.js */ "../infect-frontend-logic/src/models/bacteria/bacteriaStore.js");
-/* harmony import */ var _models_bacteria_bacteriaFetcher_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./models/bacteria/bacteriaFetcher.js */ "../infect-frontend-logic/src/models/bacteria/bacteriaFetcher.js");
-/* harmony import */ var _models_resistances_resistancesStore_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/resistances/resistancesStore.js */ "../infect-frontend-logic/src/models/resistances/resistancesStore.js");
-/* harmony import */ var _models_resistances_resistancesFetcher_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/resistances/resistancesFetcher.js */ "../infect-frontend-logic/src/models/resistances/resistancesFetcher.js");
-/* harmony import */ var _models_matrix_matrixView_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./models/matrix/matrixView.js */ "../infect-frontend-logic/src/models/matrix/matrixView.js");
-/* harmony import */ var _models_drawer_DrawerViewModel_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./models/drawer/DrawerViewModel.js */ "../infect-frontend-logic/src/models/drawer/DrawerViewModel.js");
-/* harmony import */ var _models_filters_getFilterConfig_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./models/filters/getFilterConfig.js */ "../infect-frontend-logic/src/models/filters/getFilterConfig.js");
-/* harmony import */ var _models_propertyMap_propertyMap_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./models/propertyMap/propertyMap.js */ "../infect-frontend-logic/src/models/propertyMap/propertyMap.js");
-/* harmony import */ var _models_filters_offsetFilters_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./models/filters/offsetFilters.js */ "../infect-frontend-logic/src/models/filters/offsetFilters.js");
-/* harmony import */ var _models_filters_selectedFilters_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./models/filters/selectedFilters.js */ "../infect-frontend-logic/src/models/filters/selectedFilters.js");
-/* harmony import */ var _models_filters_mostUsedFilters_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./models/filters/mostUsedFilters.js */ "../infect-frontend-logic/src/models/filters/mostUsedFilters.js");
-/* harmony import */ var _models_populationFilter_populationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./models/populationFilter/populationFilterUpdater.js */ "../infect-frontend-logic/src/models/populationFilter/populationFilterUpdater.js");
-/* harmony import */ var _models_populationFilter_populationFilterFetcher_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./models/populationFilter/populationFilterFetcher.js */ "../infect-frontend-logic/src/models/populationFilter/populationFilterFetcher.js");
-/* harmony import */ var _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./models/notifications/NotificationCenter.js */ "../infect-frontend-logic/src/models/notifications/NotificationCenter.js");
-/* harmony import */ var _models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../infect-frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js");
-/* harmony import */ var _models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "../infect-frontend-logic/src/models/guidelines/setupGuidelines.js");
-/* harmony import */ var _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../infect-frontend-logic/src/models/guidelines/GuidelineStore.js");
-/* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../infect-frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
+/* harmony import */ var _models_antibiotics_antibioticsStore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/antibiotics/antibioticsStore.js */ "../frontend-logic/src/models/antibiotics/antibioticsStore.js");
+/* harmony import */ var _models_antibiotics_antibioticsFetcher_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/antibiotics/antibioticsFetcher.js */ "../frontend-logic/src/models/antibiotics/antibioticsFetcher.js");
+/* harmony import */ var _models_antibiotics_substanceClassesStore_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesStore.js */ "../frontend-logic/src/models/antibiotics/substanceClassesStore.js");
+/* harmony import */ var _models_antibiotics_substanceClassesFetcher_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesFetcher.js */ "../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js");
+/* harmony import */ var _models_bacteria_bacteriaStore_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/bacteria/bacteriaStore.js */ "../frontend-logic/src/models/bacteria/bacteriaStore.js");
+/* harmony import */ var _models_bacteria_bacteriaFetcher_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./models/bacteria/bacteriaFetcher.js */ "../frontend-logic/src/models/bacteria/bacteriaFetcher.js");
+/* harmony import */ var _models_resistances_resistancesStore_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/resistances/resistancesStore.js */ "../frontend-logic/src/models/resistances/resistancesStore.js");
+/* harmony import */ var _models_resistances_resistancesFetcher_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/resistances/resistancesFetcher.js */ "../frontend-logic/src/models/resistances/resistancesFetcher.js");
+/* harmony import */ var _models_matrix_matrixView_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./models/matrix/matrixView.js */ "../frontend-logic/src/models/matrix/matrixView.js");
+/* harmony import */ var _models_drawer_DrawerViewModel_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./models/drawer/DrawerViewModel.js */ "../frontend-logic/src/models/drawer/DrawerViewModel.js");
+/* harmony import */ var _models_filters_getFilterConfig_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./models/filters/getFilterConfig.js */ "../frontend-logic/src/models/filters/getFilterConfig.js");
+/* harmony import */ var _models_propertyMap_propertyMap_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./models/propertyMap/propertyMap.js */ "../frontend-logic/src/models/propertyMap/propertyMap.js");
+/* harmony import */ var _models_filters_offsetFilters_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./models/filters/offsetFilters.js */ "../frontend-logic/src/models/filters/offsetFilters.js");
+/* harmony import */ var _models_filters_selectedFilters_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./models/filters/selectedFilters.js */ "../frontend-logic/src/models/filters/selectedFilters.js");
+/* harmony import */ var _models_filters_mostUsedFilters_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./models/filters/mostUsedFilters.js */ "../frontend-logic/src/models/filters/mostUsedFilters.js");
+/* harmony import */ var _models_populationFilter_populationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./models/populationFilter/populationFilterUpdater.js */ "../frontend-logic/src/models/populationFilter/populationFilterUpdater.js");
+/* harmony import */ var _models_populationFilter_populationFilterFetcher_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./models/populationFilter/populationFilterFetcher.js */ "../frontend-logic/src/models/populationFilter/populationFilterFetcher.js");
+/* harmony import */ var _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./models/notifications/NotificationCenter.js */ "../frontend-logic/src/models/notifications/NotificationCenter.js");
+/* harmony import */ var _models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js");
+/* harmony import */ var _models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "../frontend-logic/src/models/guidelines/setupGuidelines.js");
+/* harmony import */ var _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js");
+/* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -9704,17 +9704,17 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/antibiotic.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/antibiotic.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibiotic.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibiotic.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Antibiotic; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -9777,17 +9777,17 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/antibioticMatrixView.js":
-/*!*******************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/antibioticMatrixView.js ***!
-  \*******************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibioticMatrixView.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../infect-frontend-logic/src/models/filters/doFiltersMatch.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../frontend-logic/src/models/filters/doFiltersMatch.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9845,18 +9845,18 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/antibioticsFetcher.js":
-/*!*****************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/antibioticsFetcher.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibioticsFetcher.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibioticsFetcher.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AntibioticsFetcher; });
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _antibiotic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./antibiotic */ "../infect-frontend-logic/src/models/antibiotics/antibiotic.js");
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _antibiotic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./antibiotic */ "../frontend-logic/src/models/antibiotics/antibiotic.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -9985,17 +9985,17 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/antibioticsStore.js":
-/*!***************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/antibioticsStore.js ***!
-  \***************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibioticsStore.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibioticsStore.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AnitibioticsStore; });
-/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../infect-frontend-logic/src/helpers/store.js");
+/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../frontend-logic/src/helpers/store.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10030,17 +10030,17 @@ function (_Store) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/substanceClass.js":
-/*!*************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/substanceClass.js ***!
-  \*************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClass.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClass.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 var _class, _descriptor, _temp;
 
@@ -10153,19 +10153,19 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/substanceClassMatrixView.js":
-/*!***********************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/substanceClassMatrixView.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClassMatrixView.js":
+/*!****************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClassMatrixView.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "../infect-frontend-logic/node_modules/tinycolor2/tinycolor.js");
+/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "../frontend-logic/node_modules/tinycolor2/tinycolor.js");
 /* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tinycolor2__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../infect-frontend-logic/src/models/filters/doFiltersMatch.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../frontend-logic/src/models/filters/doFiltersMatch.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10223,20 +10223,20 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/substanceClassesFetcher.js":
-/*!**********************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/substanceClassesFetcher.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js":
+/*!***************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubstanceClassesFetcher; });
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _substanceClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./substanceClass */ "../infect-frontend-logic/src/models/antibiotics/substanceClass.js");
-/* harmony import */ var _helpers_convertNestedSetToTree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/convertNestedSetToTree */ "../infect-frontend-logic/src/helpers/convertNestedSetToTree.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _substanceClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./substanceClass */ "../frontend-logic/src/models/antibiotics/substanceClass.js");
+/* harmony import */ var _helpers_convertNestedSetToTree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/convertNestedSetToTree */ "../frontend-logic/src/helpers/convertNestedSetToTree.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -10325,17 +10325,17 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/antibiotics/substanceClassesStore.js":
-/*!********************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/antibiotics/substanceClassesStore.js ***!
-  \********************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClassesStore.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClassesStore.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubstanceClassesStore; });
-/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../infect-frontend-logic/src/helpers/store.js");
+/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../frontend-logic/src/helpers/store.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10370,18 +10370,18 @@ function (_Store) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/bacteria/bacteriaFetcher.js":
-/*!***********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/bacteria/bacteriaFetcher.js ***!
-  \***********************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacteriaFetcher.js":
+/*!****************************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacteriaFetcher.js ***!
+  \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriaFetcher; });
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _bacterium__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bacterium */ "../infect-frontend-logic/src/models/bacteria/bacterium.js");
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _bacterium__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bacterium */ "../frontend-logic/src/models/bacteria/bacterium.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10444,17 +10444,17 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/bacteria/bacteriaStore.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/bacteria/bacteriaStore.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacteriaStore.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacteriaStore.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriaStore; });
-/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../infect-frontend-logic/src/helpers/store.js");
+/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../frontend-logic/src/helpers/store.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10489,16 +10489,16 @@ function (_Store) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/bacteria/bacterium.js":
-/*!*****************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/bacteria/bacterium.js ***!
-  \*****************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacterium.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacterium.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class, _descriptor, _temp;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -10551,18 +10551,18 @@ function Bacterium(id, name) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/bacteria/bacteriumMatrixView.js":
-/*!***************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/bacteria/bacteriumMatrixView.js ***!
-  \***************************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacteriumMatrixView.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacteriumMatrixView.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriumMatrixView; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../infect-frontend-logic/src/models/filters/doFiltersMatch.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../frontend-logic/src/models/filters/doFiltersMatch.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10608,20 +10608,20 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/drawer/DrawerViewModel.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/drawer/DrawerViewModel.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/src/models/drawer/DrawerViewModel.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/drawer/DrawerViewModel.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DrawerViewModel; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _guidelines_Guideline_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guidelines/Guideline.js */ "../infect-frontend-logic/src/models/guidelines/Guideline.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _guidelines_Guideline_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guidelines/Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js");
 var _class, _descriptor, _descriptor2, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -10731,18 +10731,18 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js":
-/*!********************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js ***!
-  \********************************************************************************/
+/***/ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return updateDrawerFromGuidelines; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 
 
@@ -10775,17 +10775,17 @@ function updateDrawerFromGuidelines(guidelineStore, drawer, errorHandler) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/filters/doFiltersMatch.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/filters/doFiltersMatch.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/src/models/filters/doFiltersMatch.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/doFiltersMatch.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return doFiltersMatch; });
-/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! deep-equal */ "../infect-frontend-logic/node_modules/deep-equal/index.js");
+/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! deep-equal */ "../frontend-logic/node_modules/deep-equal/index.js");
 /* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(deep_equal__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -10830,10 +10830,10 @@ function matches(target, filter) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/filters/filterTypes.js":
-/*!******************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/filters/filterTypes.js ***!
-  \******************************************************************/
+/***/ "../frontend-logic/src/models/filters/filterTypes.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/src/models/filters/filterTypes.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -10853,10 +10853,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/filters/getFilterConfig.js":
-/*!**********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/filters/getFilterConfig.js ***!
-  \**********************************************************************/
+/***/ "../frontend-logic/src/models/filters/getFilterConfig.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/getFilterConfig.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -10991,17 +10991,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/filters/mostUsedFilters.js":
-/*!**********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/filters/mostUsedFilters.js ***!
-  \**********************************************************************/
+/***/ "../frontend-logic/src/models/filters/mostUsedFilters.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/mostUsedFilters.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MostUsedFilters; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _dec, _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -11083,17 +11083,17 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/filters/offsetFilters.js":
-/*!********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/filters/offsetFilters.js ***!
-  \********************************************************************/
+/***/ "../frontend-logic/src/models/filters/offsetFilters.js":
+/*!*************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/offsetFilters.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OffsetFilters; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11159,20 +11159,20 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/filters/selectedFilters.js":
-/*!**********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/filters/selectedFilters.js ***!
-  \**********************************************************************/
+/***/ "../frontend-logic/src/models/filters/selectedFilters.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/selectedFilters.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SelectedFilters; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! deep-equal */ "../infect-frontend-logic/node_modules/deep-equal/index.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! deep-equal */ "../frontend-logic/node_modules/deep-equal/index.js");
 /* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(deep_equal__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
 var _dec, _class, _descriptor, _descriptor2, _temp;
 
@@ -11325,20 +11325,20 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js":
-/*!************************************************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js ***!
-  \************************************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js":
+/*!*****************************************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js ***!
+  \*****************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuidelineSelectedFiltersBridge; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "../infect-frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "../frontend-logic/src/models/filters/filterTypes.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -11455,10 +11455,10 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/Diagnosis.js":
-/*!*******************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/Diagnosis.js ***!
-  \*******************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/Diagnosis.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/Diagnosis.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11594,10 +11594,10 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/DiagnosisClass.js":
-/*!************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/DiagnosisClass.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisClass.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisClass.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11636,18 +11636,18 @@ function DiagnosisClass(id) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js":
-/*!*******************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js ***!
-  \*******************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DiagnosisClassFetcher; });
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _DiagnosisClass_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosisClass.js */ "../infect-frontend-logic/src/models/guidelines/DiagnosisClass.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _DiagnosisClass_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosisClass.js */ "../frontend-logic/src/models/guidelines/DiagnosisClass.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11698,20 +11698,20 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/DiagnosisFetcher.js":
-/*!**************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/DiagnosisFetcher.js ***!
-  \**************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisFetcher.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisFetcher.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DiagnosisFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _Diagnosis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Diagnosis.js */ "../infect-frontend-logic/src/models/guidelines/Diagnosis.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _Diagnosis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Diagnosis.js */ "../frontend-logic/src/models/guidelines/Diagnosis.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -11869,18 +11869,18 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/Guideline.js":
-/*!*******************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/Guideline.js ***!
-  \*******************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/Guideline.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/Guideline.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Guideline; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 var _class, _descriptor, _temp;
 
@@ -11984,18 +11984,18 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/GuidelineFetcher.js":
-/*!**************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/GuidelineFetcher.js ***!
-  \**************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/GuidelineFetcher.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuidelineFetcher; });
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _Guideline_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Guideline.js */ "../infect-frontend-logic/src/models/guidelines/Guideline.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _Guideline_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -12071,21 +12071,21 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/GuidelineStore.js":
-/*!************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/GuidelineStore.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/GuidelineStore.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/GuidelineStore.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuidelineStore; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/store.js */ "../infect-frontend-logic/src/helpers/store.js");
-/* harmony import */ var _searchDiagnoses_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./searchDiagnoses.js */ "../infect-frontend-logic/src/models/guidelines/searchDiagnoses.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/store.js */ "../frontend-logic/src/helpers/store.js");
+/* harmony import */ var _searchDiagnoses_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./searchDiagnoses.js */ "../frontend-logic/src/models/guidelines/searchDiagnoses.js");
 var _class, _descriptor, _temp;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -12212,10 +12212,10 @@ function (_Store) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/Therapy.js":
-/*!*****************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/Therapy.js ***!
-  \*****************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/Therapy.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/Therapy.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12316,20 +12316,20 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/TherapyFetcher.js":
-/*!************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/TherapyFetcher.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/TherapyFetcher.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/TherapyFetcher.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TherapyFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _Therapy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Therapy.js */ "../infect-frontend-logic/src/models/guidelines/Therapy.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _Therapy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Therapy.js */ "../frontend-logic/src/models/guidelines/Therapy.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -12445,10 +12445,10 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/createDiagnosesSearchData.js":
-/*!***********************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/createDiagnosesSearchData.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/createDiagnosesSearchData.js":
+/*!****************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/createDiagnosesSearchData.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12499,19 +12499,19 @@ function createDiagnosesSearchData(guidelines) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/searchDiagnoses.js":
-/*!*************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/searchDiagnoses.js ***!
-  \*************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/searchDiagnoses.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/searchDiagnoses.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return searchDiagnoses; });
-/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fuse.js */ "../infect-frontend-logic/node_modules/fuse.js/dist/fuse.js");
+/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fuse.js */ "../frontend-logic/node_modules/fuse.js/dist/fuse.js");
 /* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fuse_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _createDiagnosesSearchData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createDiagnosesSearchData.js */ "../infect-frontend-logic/src/models/guidelines/createDiagnosesSearchData.js");
+/* harmony import */ var _createDiagnosesSearchData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createDiagnosesSearchData.js */ "../frontend-logic/src/models/guidelines/createDiagnosesSearchData.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -12553,22 +12553,22 @@ function searchDiagnoses(guidelines, searchTerm) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/guidelines/setupGuidelines.js":
-/*!*************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/guidelines/setupGuidelines.js ***!
-  \*************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/setupGuidelines.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/setupGuidelines.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return setupGuidelines; });
-/* harmony import */ var _helpers_store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store.js */ "../infect-frontend-logic/src/helpers/store.js");
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _GuidelineFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GuidelineFetcher.js */ "../infect-frontend-logic/src/models/guidelines/GuidelineFetcher.js");
-/* harmony import */ var _DiagnosisFetcher_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DiagnosisFetcher.js */ "../infect-frontend-logic/src/models/guidelines/DiagnosisFetcher.js");
-/* harmony import */ var _TherapyFetcher_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TherapyFetcher.js */ "../infect-frontend-logic/src/models/guidelines/TherapyFetcher.js");
-/* harmony import */ var _DiagnosisClassFetcher_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DiagnosisClassFetcher.js */ "../infect-frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js");
+/* harmony import */ var _helpers_store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store.js */ "../frontend-logic/src/helpers/store.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _GuidelineFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GuidelineFetcher.js */ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js");
+/* harmony import */ var _DiagnosisFetcher_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DiagnosisFetcher.js */ "../frontend-logic/src/models/guidelines/DiagnosisFetcher.js");
+/* harmony import */ var _TherapyFetcher_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TherapyFetcher.js */ "../frontend-logic/src/models/guidelines/TherapyFetcher.js");
+/* harmony import */ var _DiagnosisClassFetcher_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DiagnosisClassFetcher.js */ "../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js");
 
 
 
@@ -12670,18 +12670,18 @@ function setupGuidelines(config, guidelineStore, bacteriaStore, antibioticsStore
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/matrix/calculateXPositions.js":
-/*!*************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/matrix/calculateXPositions.js ***!
-  \*************************************************************************/
+/***/ "../frontend-logic/src/models/matrix/calculateXPositions.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/matrix/calculateXPositions.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return calculateXPositions; });
-/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "../infect-frontend-logic/src/helpers/getArrayDiff.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "../frontend-logic/src/helpers/getArrayDiff.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 
 
@@ -12771,26 +12771,26 @@ function calculateXPositions(sortedAntibiotics, diameter, space) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/matrix/matrixView.js":
-/*!****************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/matrix/matrixView.js ***!
-  \****************************************************************/
+/***/ "../frontend-logic/src/models/matrix/matrixView.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/src/models/matrix/matrixView.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _calculateXPositions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculateXPositions */ "../infect-frontend-logic/src/models/matrix/calculateXPositions.js");
-/* harmony import */ var _sortAntibiotics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sortAntibiotics */ "../infect-frontend-logic/src/models/matrix/sortAntibiotics.js");
-/* harmony import */ var _antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../antibiotics/antibioticMatrixView */ "../infect-frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
-/* harmony import */ var _resistances_resistanceMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../resistances/resistanceMatrixView */ "../infect-frontend-logic/src/models/resistances/resistanceMatrixView.js");
-/* harmony import */ var _antibiotics_substanceClassMatrixView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../antibiotics/substanceClassMatrixView */ "../infect-frontend-logic/src/models/antibiotics/substanceClassMatrixView.js");
-/* harmony import */ var _antibiotics_substanceClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../antibiotics/substanceClass */ "../infect-frontend-logic/src/models/antibiotics/substanceClass.js");
-/* harmony import */ var _bacteria_bacteriumMatrixView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../bacteria/bacteriumMatrixView */ "../infect-frontend-logic/src/models/bacteria/bacteriumMatrixView.js");
-/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "../infect-frontend-logic/src/helpers/getArrayDiff.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _calculateXPositions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculateXPositions */ "../frontend-logic/src/models/matrix/calculateXPositions.js");
+/* harmony import */ var _sortAntibiotics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sortAntibiotics */ "../frontend-logic/src/models/matrix/sortAntibiotics.js");
+/* harmony import */ var _antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../antibiotics/antibioticMatrixView */ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
+/* harmony import */ var _resistances_resistanceMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../resistances/resistanceMatrixView */ "../frontend-logic/src/models/resistances/resistanceMatrixView.js");
+/* harmony import */ var _antibiotics_substanceClassMatrixView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../antibiotics/substanceClassMatrixView */ "../frontend-logic/src/models/antibiotics/substanceClassMatrixView.js");
+/* harmony import */ var _antibiotics_substanceClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../antibiotics/substanceClass */ "../frontend-logic/src/models/antibiotics/substanceClass.js");
+/* harmony import */ var _bacteria_bacteriumMatrixView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../bacteria/bacteriumMatrixView */ "../frontend-logic/src/models/bacteria/bacteriumMatrixView.js");
+/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "../frontend-logic/src/helpers/getArrayDiff.js");
 var _dec, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -13404,10 +13404,10 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/matrix/sortAntibiotics.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/matrix/sortAntibiotics.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/src/models/matrix/sortAntibiotics.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/matrix/sortAntibiotics.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -13467,17 +13467,17 @@ function sortAntibiotics(antibiotics) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/notifications/Notification.js":
-/*!*************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/notifications/Notification.js ***!
-  \*************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/Notification.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/Notification.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Notification; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -13524,21 +13524,21 @@ function Notification(notification) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/notifications/NotificationCenter.js":
-/*!*******************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/notifications/NotificationCenter.js ***!
-  \*******************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/NotificationCenter.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/NotificationCenter.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NotificationCenter; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wrapNotification_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wrapNotification.js */ "../infect-frontend-logic/src/models/notifications/wrapNotification.js");
-/* harmony import */ var _Notification_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Notification.js */ "../infect-frontend-logic/src/models/notifications/Notification.js");
+/* harmony import */ var _wrapNotification_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wrapNotification.js */ "../frontend-logic/src/models/notifications/wrapNotification.js");
+/* harmony import */ var _Notification_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Notification.js */ "../frontend-logic/src/models/notifications/Notification.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -13605,10 +13605,10 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/notifications/wrapNotification.js":
-/*!*****************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/notifications/wrapNotification.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/wrapNotification.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/wrapNotification.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -13659,21 +13659,21 @@ var wrapNotification = function wrapNotification(notification, severityLevels) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/populationFilter/populationFilterFetcher.js":
-/*!***************************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/populationFilter/populationFilterFetcher.js ***!
-  \***************************************************************************************/
+/***/ "../frontend-logic/src/models/populationFilter/populationFilterFetcher.js":
+/*!********************************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/populationFilterFetcher.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PopulationFilterFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api.js */ "../infect-frontend-logic/src/helpers/api.js");
-/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filters/filterTypes */ "../infect-frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api.js */ "../frontend-logic/src/helpers/api.js");
+/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -13846,18 +13846,18 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/populationFilter/populationFilterUpdater.js":
-/*!***************************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/populationFilter/populationFilterUpdater.js ***!
-  \***************************************************************************************/
+/***/ "../frontend-logic/src/models/populationFilter/populationFilterUpdater.js":
+/*!********************************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/populationFilterUpdater.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PopulationFilterUpdater; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/filterTypes */ "../infect-frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 var _class, _temp;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13976,21 +13976,21 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/propertyMap/propertyMap.js":
-/*!**********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/propertyMap/propertyMap.js ***!
-  \**********************************************************************/
+/***/ "../frontend-logic/src/models/propertyMap/propertyMap.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/propertyMap/propertyMap.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PropertyMap; });
-/* harmony import */ var _searchableMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./searchableMap */ "../infect-frontend-logic/src/models/propertyMap/searchableMap.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var _searchableMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./searchableMap */ "../frontend-logic/src/models/propertyMap/searchableMap.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! fuse.js */ "../infect-frontend-logic/node_modules/fuse.js/dist/fuse.js");
+/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! fuse.js */ "../frontend-logic/node_modules/fuse.js/dist/fuse.js");
 /* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(fuse_js__WEBPACK_IMPORTED_MODULE_3__);
 var _class;
 
@@ -14220,17 +14220,17 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/propertyMap/searchableMap.js":
-/*!************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/propertyMap/searchableMap.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/src/models/propertyMap/searchableMap.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/propertyMap/searchableMap.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SearchableMap; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _dec, _class, _descriptor, _temp;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -14324,18 +14324,18 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/resistances/resistance.js":
-/*!*********************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/resistances/resistance.js ***!
-  \*********************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistance.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistance.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Resistance; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _resistanceValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resistanceValue */ "../infect-frontend-logic/src/models/resistances/resistanceValue.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _resistanceValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resistanceValue */ "../frontend-logic/src/models/resistances/resistanceValue.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -14422,22 +14422,22 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/resistances/resistanceMatrixView.js":
-/*!*******************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/resistances/resistanceMatrixView.js ***!
-  \*******************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistanceMatrixView.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistanceMatrixView.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistanceMatrixView; });
-/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "../infect-frontend-logic/node_modules/tinycolor2/tinycolor.js");
+/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "../frontend-logic/node_modules/tinycolor2/tinycolor.js");
 /* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tinycolor2__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _helpers_getRelativeValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/getRelativeValue */ "../infect-frontend-logic/src/helpers/getRelativeValue.js");
+/* harmony import */ var _helpers_getRelativeValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/getRelativeValue */ "../frontend-logic/src/helpers/getRelativeValue.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14559,10 +14559,10 @@ function () {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/resistances/resistanceTypes.js":
-/*!**************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/resistances/resistanceTypes.js ***!
-  \**************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistanceTypes.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistanceTypes.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -14586,17 +14586,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/resistances/resistanceValue.js":
-/*!**************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/resistances/resistanceValue.js ***!
-  \**************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistanceValue.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistanceValue.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _default; });
-/* harmony import */ var _resistanceTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resistanceTypes */ "../infect-frontend-logic/src/models/resistances/resistanceTypes.js");
+/* harmony import */ var _resistanceTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -14660,21 +14660,21 @@ function _default(type, value, sampleSize, confidenceInterval) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/resistances/resistancesFetcher.js":
-/*!*****************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/resistances/resistancesFetcher.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistancesFetcher.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistancesFetcher.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistancesFetcher; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../infect-frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../infect-frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../infect-frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _resistance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./resistance */ "../infect-frontend-logic/src/models/resistances/resistance.js");
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _resistance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./resistance */ "../frontend-logic/src/models/resistances/resistance.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14907,17 +14907,17 @@ function (_Fetcher) {
 
 /***/ }),
 
-/***/ "../infect-frontend-logic/src/models/resistances/resistancesStore.js":
-/*!***************************************************************************!*\
-  !*** ../infect-frontend-logic/src/models/resistances/resistancesStore.js ***!
-  \***************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistancesStore.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistancesStore.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistancesStore; });
-/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../infect-frontend-logic/src/helpers/store.js");
+/* harmony import */ var _helpers_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/store */ "../frontend-logic/src/helpers/store.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57439,7 +57439,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @infect/frontend-logic */ "../infect-frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _offsetFilters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./offsetFilters */ "./www/src/js/components/filterList/offsetFilters.jsx");
@@ -60188,7 +60188,7 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @infect/frontend-logic */ "../infect-frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
@@ -61360,7 +61360,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @infect/frontend-logic */ "../infect-frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var _selectedFiltersForType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./selectedFiltersForType */ "./www/src/js/components/selectedFilters/selectedFiltersForType.jsx");
 var _class;
 
@@ -61539,7 +61539,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @infect/frontend-logic */ "../infect-frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -61856,7 +61856,7 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/fabianjordi/Arbeit/Joinbox/_Repos/infect-org/frontend/www/src/js/main.js */"./www/src/js/main.js");
+module.exports = __webpack_require__(/*! /Users/fs/Sites/infect/infect-frontend/www/src/js/main.js */"./www/src/js/main.js");
 
 
 /***/ })

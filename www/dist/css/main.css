@@ -1364,14 +1364,14 @@ address {
   -moz-border-radius: 0.3125rem;
   padding: 0.3125rem 0.9375rem;
   color: #fff;
-  background-color: #578ffa;
+  background-color: #2b78b3;
   transition: background-color 100ms linear;
   -webkit-transition: background-color 100ms linear;
   -moz-transition: background-color 100ms linear;
 }
 
 .button--guide:hover, .button--show-relevant-guideline-information:hover {
-  background-color: #4e79c7;
+  background-color: #246596;
 }
 
 .button--show-relevant-guideline-information {
