@@ -59,6 +59,23 @@ builder.devTasks.push(copyRootFiles);
 builder.watchTasks.push(watchRootFiles);
 builder.prodTasks.push(copyRootFiles);
 
+// Tenant specific files (overlay text etc.)
+const tenantFilesPath = ['www/src/tenant/**/*'];
+function copyTenantFiles() {
+    return gulp.src(tenantFilesPath)
+        .pipe(gulp.dest('www/dist/tenant'));
+}
+function watchTenantFiles() {
+    return gulp.watch(tenantFilesPath, copyTenantFiles);
+}
+
+builder.tasks.set('tenantFiles', copyTenantFiles);
+builder.tasks.set('tenantWatch', watchTenantFiles);
+
+builder.devTasks.push(copyTenantFiles);
+builder.watchTasks.push(watchTenantFiles);
+builder.prodTasks.push(copyTenantFiles);
+
 
 // Cache
 function bustRename() {

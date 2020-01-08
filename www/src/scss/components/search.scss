@@ -10,7 +10,7 @@ $padding-lr: 30px;
 	padding: 0;
 	width: $navigation-width;
 	height: 100vw;
-	background-color: $sidenavigation-background;
+	background-color: $color--mine-shaft;
 
 	&--visible {
 		left: 0;
@@ -20,16 +20,8 @@ $padding-lr: 30px;
 		line-height: 20px;
 		margin-bottom: 30px;
 		font-size: 11pt;
-
-		-webkit-appearance: none;
-        -moz-appearance:    none;
-        appearance:         none;
-        decoration: none;
+		@include css3-prefix(appearance, none);
         border: 0;
-
-		/*&:not(:valid) + .search__clear {
-			display: none;
-		}*/
 	}
 
 	&__result {
@@ -40,62 +32,24 @@ $padding-lr: 30px;
 		position: relative;
 	}
 
-	/*&__clear {
-		position: absolute;
-		right: 0;
-		border:1px solid transparent;
-		background-color: transparent;
-		display: inline-block;
-		vertical-align: middle;
-		outline: 0;
-		cursor: pointer;
-
-		&:after {
-			content: "X";
-			display: block;
-			width: 15px;
-			height: 15px;
-			position: absolute;
-			background-color: $navigation-background--lighter;
-			z-index:1;
-			right: 25px;
-			top: -5px;
-			bottom: 0;
-			margin: auto;
-			padding: 2px;
-			border-radius: 50%;
-			text-align: center;
-			color: white;
-			font-weight: normal;
-			font-size: 10px;
-			cursor: pointer;
-		}
-	}*/
-
 
 }
 
-/** FABIAN :-D */
-/* FABIAN: Please also use the same colors for the hover effect (darker color instead of white) */
-/* BTW: How do I create a double-selector (.result--active.result--guideline) with SASS? */
 .result--active.result--guideline {
-	background-color: #c5daed;
+	background-color: $color--spindle;
 }
 
 .result {
 	position: relative;
 	padding: 10px $padding-lr;
 	margin: 0;
+	background-color: $color--moon-mist;
 
-	background-color: #d7d5c4;
-
-	/* FABIAN: Use variable; */
 	&--guideline {
-		background-color: #D8E7F4;
+		background-color: $color--link-water;
 	}
 
 	&__item {
-		//white-space: wrap;
     	text-overflow: ellipsis;
     	width: 150px;
     	display: block;
@@ -114,12 +68,11 @@ $padding-lr: 30px;
 	}
 
 	&--active {
-		/* FABIAN: Use variable; */
-		background-color: #c7c5b3;
+		background-color: $color--ash;
 	}
 
 	&:hover {
-		background-color: #fff;
+		background-color: $color--white;
 		cursor: pointer;
 
 		.result__checkmark {

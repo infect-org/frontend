@@ -26,8 +26,8 @@ body {
 
 	font-family: $font-family--sans-serif;
 	line-height: 1.65;
-	color: #000;
-	background-color: #fff;
+	color: $color--black;
+	background-color: $color--white;
 	font-size: 18px;
 }
 
@@ -56,11 +56,11 @@ button {
 
 // Links
 a {
-	color: $link-color;
+	color: var(--color--accent-2, $color--conifer);
 	text-decoration: none;
 
 	&:hover {
-		color: $link-color--hover;
+		color: var(--color--accent-1, $color--yellow-green);
 		text-decoration: none;
 		outline: none;
 	}
@@ -74,7 +74,7 @@ a {
 }
 
 //Scrollbar
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
 	background-color: transparent;
 	width: 5px;
 	height: 5px;
@@ -88,7 +88,7 @@ a {
 
 }
 
-::-webkit-scrollbar-track-piece { 
+::-webkit-scrollbar-track-piece {
 	background-color: transparent;
 }
 

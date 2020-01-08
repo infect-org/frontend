@@ -18,35 +18,47 @@ $line-height--guided-tour: 1.35;
 //COLORS
 /* FABIAN: #f5d3b3 for Vets? */
 
-$color--white:       #fff;
-
-$color--gray:       #888888;
-$color--darkgray:       #444444;
-
-$color--light-green: #cbe264;
-$hover-color: $color--light-green;
-
-$link-color: #BCD93A;
-$link-color--hover: #D2E67A;
-
-$tooltip--bg-color: #fff;
-$tooltip-hint-color: #578ffa;
-
-$guide-button-color--base: #578ffa;
-$guide-button-color--hover: #4e79c7;
+// Set basic colors.
+$color--white:              #FFFFFF;
+$color--gallery:            #eee;
+$color--gray:               #888;
+$color--silver:             #ccc;
+$color--dove-gray:          #616161;
+$color--tundora:            #444;
+$color--mine-shaft:         #363636;
+$color--scorpion:           #575757;
+$color--black:              #000000;
 
 
-$guidelines-color: #D8E7F4;
-$guidelines-color--medium: #b9d5ed;
-$guidelines-color--dark: #2b78b3;
+// (Yellowish) grays
+$color--ash:                #c5c3b2;
+$color--moon-mist:          #d7d5c4;
+$color--quill-gray:         #d3d2cd;
+
+// (Yellowish) greens == accent colors
+$color--yellow-green:       #cbe264; // == --color--accent-1
+$color--conifer:            #BCD93A; // == --color--accent-2
 
 
-$app-banner-bg:                     #eee;
+// Blues
+$color--cornflower-blue:    #578ffa;
+$color--curious-blue:       #3289CC;
+$color--indigo:             #4e79c7;
+$color--link-water:         #D8E7F4;
+$color--spindle:            #b9d5ed;
+$color--jelly-bean:         #2b78b3;
 
+// Reds (for errors)
+$color--guardsman-red:      #d60000;
+
+
+// Buttons
+$button-height: 38px;
+//$button-bg-color: #c5c3b2;
+//$button-bg-color--hover: #d7d5c4;
 
 
 //TOP NAVIGATION
-$navigation-background--lighter: 	#616161;
 $navigation-height: 				70px;
 
 $navigation-button--label-size:		14px;
@@ -54,16 +66,12 @@ $navigation-button--font-size:		26px;
 
 
 //SIDE NAVIGATION
-$sidenavigation-background: 		#363636;
 $navigation-min-width: 				210px;
 $navigation-width:					210px;
 $sidenavigation__group__title-size:	26px;
 $search-box--height:				70px;
 $header-search-height:				128px;
 
-
-//CHECKBOX
-$active__checkbox-color:			$color--light-green;
 
 
 //RESPONSIVE
