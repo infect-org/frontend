@@ -54368,7 +54368,7 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/fabianjordi/Arbeit/Joinbox/_Repos/infect-org/frontend/www/src/js/main.js */"./www/src/js/main.js");
+module.exports = __webpack_require__(/*! /Users/fs/Sites/infect/infect-frontend/www/src/js/main.js */"./www/src/js/main.js");
 
 
 /***/ })
