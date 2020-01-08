@@ -12,24 +12,24 @@ import InfectApp from '@infect/frontend-logic';
 import ReactDOM from 'react-dom';
 import React from 'react'; // Not needed here, but error is thrown if we don't import it
 
-import Matrix from './components/matrix/matrix';
-import MatrixHeader from './components/matrix/matrixHeader';
-import FilterList from './components/filterList/filterList';
-import SelectedFiltersList from './components/selectedFilters/selectedFiltersList';
-import FilterListMenu from './components/filterListMenu/filterListMenu';
-import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadingOverlay';
-import FilterSearch from './components/filterSearch/filterSearch';
-import Disclaimer from './components/disclaimer/disclaimer';
-import Notifications from './components/notifications/notifications';
-import GuidedTour from './components/guidedTour/guidedTour';
-import AppBanner from './components/appBanner/appBanner';
-import InfoOverlay from './components/infoOverlay/infoOverlay';
-import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
+import Matrix from './components/matrix/matrix.jsx';
+import MatrixHeader from './components/matrix/matrixHeader.jsx';
+import FilterList from './components/filterList/filterList.jsx';
+import SelectedFiltersList from './components/selectedFilters/selectedFiltersList.jsx';
+import FilterListMenu from './components/filterListMenu/filterListMenu.jsx';
+import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadingOverlay.jsx';
+import FilterSearch from './components/filterSearch/filterSearch.jsx';
+import Disclaimer from './components/disclaimer/disclaimer.jsx';
+import Notifications from './components/notifications/notifications.jsx';
+import GuidedTour from './components/guidedTour/guidedTour.jsx';
+import AppBanner from './components/appBanner/appBanner.jsx';
+import InfoOverlay from './components/infoOverlay/infoOverlay.jsx';
+import InfoOverlayButton from './components/infoOverlay/infoOverlayButton.jsx';
 import Drawer from './components/drawer/Drawer.jsx';
-import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter';
+import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter.jsx';
+import TenantLogo from './components/tenantLogo/TenantLogo.jsx';
 
-import betaConfig from '../config/config.beta.js';
-import liveConfig from '../config/config.live.js';
+import getURL from '../config/getURL.js';
 
 // Models limited to web app
 import GuidedTourModel from './models/guidedTour/guidedTour';
@@ -39,32 +39,9 @@ const log = debug('infect:Main');
 configure({ enforceActions: 'always' });
 
 
-// Get config based on environment
-/* global window */
-const isBeta = window.location.hostname.includes('beta.') ||
-    window.location.hostname === 'localhost';
-const config = isBeta ? betaConfig : liveConfig;
-log('Is beta? %o. config is %o', isBeta, config);
-
-// If URL's query params include ?preview or &preview, also load guideline data that has not yet
-// ben published. See https://github.com/infect-org/issues/issues/47.
-// TODO: Solve nicely when new API endpoints are ready (GPC)
-if (/(\?|&)preview/.test(window.location.search)) {
-    const concernedEndpoints = [
-        'diagnoses',
-        'guidelines',
-        'therapies',
-        'therapyPriorities',
-        'diagnosisClass',
-        'therapyCompounds',
-        'diagnosisBacteria',
-    ];
-    concernedEndpoints.forEach((endpoint) => { config.endpoints[endpoint] += '?showAllData=true'; });
-}
-
 
 // Setup models that are shared between mobile and web app
-const app = new InfectApp(config);
+const app = new InfectApp({ getURL });
 try {
     app.initialize();
     log('App initialized, is %o', app);
@@ -190,6 +167,11 @@ function renderReact() {
     ReactDOM.render(
         <SelectedDiagnosisFilter guidelines={app.guidelines} />,
         document.querySelector('SelectedDiagnosisFilter'),
+    );
+
+    ReactDOM.render(
+        <TenantLogo tenantConfig={app.tenantConfig} />,
+        document.querySelector('TenantLogo'),
     );
 
 }
