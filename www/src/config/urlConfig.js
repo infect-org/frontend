@@ -23,7 +23,7 @@ export default Object.freeze({
             prefix: 'rda/v1',
             paths: {
                 data: 'rda.data',
-                counter: 'rda.data?functionName=infect-configuration',
+                counter: 'rda.configuration',
             },
         },
         guideline: {

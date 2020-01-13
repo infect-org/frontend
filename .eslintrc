@@ -1,6 +1,9 @@
 {
     "parser": "babel-eslint",
     "extends": "@joinbox/joinbox",
+    "rules": {
+        "import/extensions": ["error", "ignorePackages"],
+    },
     "plugins": [
         "react"
     ]

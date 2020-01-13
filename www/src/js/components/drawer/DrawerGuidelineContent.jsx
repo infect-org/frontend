@@ -36,7 +36,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         renderer.link = (href, title, text) => {
             const titleString = title ? `title=${title}` : '';
             return `<a href="${href}" target="_blank" ${titleString}>${text}</a>`;
-        }
+        };
 
         return renderer;
 

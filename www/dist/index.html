@@ -3,22 +3,7 @@
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108372802-1"></script>
-        <script>
-            if (!(
-                window.location.hostname === 'localhost' ||
-                window.location.hostname === 'beta.infect.info'
-            )) {
-                // Only load analytics if we're on a live environment
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){window.dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-108372802-1');
-            }
-            else {
-                console.log('Index: Dev or staging environment');
-            }
-        </script>
-
+ 
         <meta charset="utf-8" />
         <title>INFECT – INterface For Empirical antimicrobial ChemoTherapy</title>
         <meta name="description" content="INFECT provides a fast and intuitive access to the latest antimicrobial resistance data. Thereby it assists health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients' geographical region." />
@@ -47,21 +32,6 @@
 
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <script async src="js/main.js"></script>
-
-        <script>
-            let root = document.documentElement;
-            // TODO: FEEEELIX, define the two accent colors with js
-            root.style.setProperty('--color--accent-1', '#CEE265');
-            root.style.setProperty('--color--accent-2', '#f4b3a7');
-
-            document.addEventListener("DOMContentLoaded", function(event) {
-                // show 4vets tenant logo
-                // TODO: FEEEEEEEEEEEEEEEEEEEEEEELIX, make this code beautiful
-                let logo = document.querySelector('svg[data-tenant-name=infect]');
-                logo.classList.remove('c-logo__vector-image--hidden');
-            });
-
-        </script>
 
     </head>
 
@@ -169,6 +139,7 @@
         <Drawer></Drawer>
         <InfoOverlay></InfoOverlay>
         <Disclaimer></Disclaimer>
+        <TenantRunner></TenantRunner>
 
     </body>
 </html>

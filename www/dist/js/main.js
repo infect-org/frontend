@@ -56440,7 +56440,7 @@ __webpack_require__.r(__webpack_exports__);
       prefix: 'rda/v1',
       paths: {
         data: 'rda.data',
-        counter: 'rda.data?functionName=infect-configuration'
+        counter: 'rda.configuration'
       }
     },
     guideline: {
@@ -59515,11 +59515,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
-/* harmony import */ var _guidedTour_guidedTourButton_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guidedTour/guidedTourButton.jsx */ "./www/src/js/components/guidedTour/guidedTourButton.jsx");
-/* harmony import */ var _infoOverlayButton_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./infoOverlayButton.jsx */ "./www/src/js/components/infoOverlay/infoOverlayButton.jsx");
-var _class;
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
+/* harmony import */ var _guidedTour_guidedTourButton_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../guidedTour/guidedTourButton.jsx */ "./www/src/js/components/guidedTour/guidedTourButton.jsx");
+/* harmony import */ var _infoOverlayButton_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./infoOverlayButton.jsx */ "./www/src/js/components/infoOverlay/infoOverlayButton.jsx");
+var _class, _class2, _descriptor, _temp;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -59529,13 +59535,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
+
+
+
 
 
 
@@ -59543,27 +59556,110 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  // import debug from 'debug';
 // const log = debug('infect:InfoOverlay');
 
-var InfoOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class =
+var InfoOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class = (_class2 = (_temp =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(InfoOverlay, _React$Component);
 
   function InfoOverlay() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, InfoOverlay);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(InfoOverlay).apply(this, arguments));
+    for (var _len = arguments.length, props = new Array(_len), _key = 0; _key < _len; _key++) {
+      props[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InfoOverlay)).call.apply(_getPrototypeOf2, [this].concat(props)));
+
+    _initializerDefineProperty(_this, "content", _descriptor, _assertThisInitialized(_this));
+
+    marked__WEBPACK_IMPORTED_MODULE_3___default.a.setOptions({
+      gfm: true,
+      smartypants: true,
+      breaks: true
+    });
+    return _this;
   }
+  /**
+   * Takes path to info overlay content from tenantConfig, fetches content and renders
+   * corresponding markdown
+   */
+
 
   _createClass(InfoOverlay, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this = this;
+      var _this2 = this;
 
       /* global window */
       window.addEventListener('hashchange', function () {
-        _this.handleHashChange();
+        _this2.handleHashChange();
       });
       this.handleHashChange();
+      this.awaitTenantConfigAndFetchContent();
+    }
+  }, {
+    key: "awaitTenantConfigAndFetchContent",
+    value: function awaitTenantConfigAndFetchContent() {
+      var _this3 = this;
+
+      Object(mobx__WEBPACK_IMPORTED_MODULE_2__["reaction"])(function () {
+        return _this3.props.tenantConfig.config && _this3.props.tenantConfig.config.get('frontend');
+      }, function (frontendConfig, disposer) {
+        if (!frontendConfig.userInterface || !frontendConfig.userInterface.aboutDocumentUrl) {
+          _this3.props.notifications.handle({
+            message: "Property aboutDocumentUrl on tenantConfig.frontendConfig is missing; frontendConfig is ".concat(JSON.stringify(frontendConfig), " instead."),
+            severity: _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__["severityLevels"].warning
+          });
+
+          return;
+        }
+
+        _this3.fetchContent(frontendConfig.userInterface.aboutDocumentUrl); // Tenant config should not change once it has been fetched; dispose current
+        // reaction
+
+
+        disposer.dispose();
+      });
+    }
+  }, {
+    key: "fetchContent",
+    value: function fetchContent(url) {
+      var rawContent, textContent, htmlContent;
+      return regeneratorRuntime.async(function fetchContent$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return regeneratorRuntime.awrap(fetch(url));
+
+            case 2:
+              rawContent = _context.sent;
+              _context.next = 5;
+              return regeneratorRuntime.awrap(rawContent.text());
+
+            case 5:
+              textContent = _context.sent;
+              htmlContent = marked__WEBPACK_IMPORTED_MODULE_3___default()(textContent);
+              this.updateContent(htmlContent);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this);
+    }
+  }, {
+    key: "updateContent",
+    value: function updateContent(htmlContent) {
+      console.log(htmlContent);
+      this.content = {
+        __html: htmlContent
+      };
     }
   }, {
     key: "handleHashChange",
@@ -59579,148 +59675,25 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "overlay ".concat(this.props.infoOverlay.visible ? 'overlay--open' : '')
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_infoOverlayButton_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_infoOverlayButton_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
         infoOverlay: this.props.infoOverlay
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "overlay__menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
-        className: "menu"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#introduction"
-      }, "Introduction")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#guide"
-      }, "Using Infect")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#source"
-      }, "Source Code")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#team"
-      }, "Team")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#contact"
-      }, "Contact")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#partners"
-      }, "Partners")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "menu-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#disclaimer"
-      }, "Disclaimer")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "overlay__container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "introduction"
-      }, "Introduction"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Supported by the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://www.bag.admin.ch/bag/en/home.html",
-        target: "_blank"
-      }, "Federal Office of Public Health"), " and the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://ifik.unibe.ch",
-        target: "_blank"
-      }, "Institute for Infectious Diseases Bern"), ", the project INFECT, an INterface For Empirical antimicrobial ChemoTherapy, has been developed. It is aimed at providing a fast and intuitive access to the latest antimicrobial resistance data to assist health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients\u2019 geographical region."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An empirical antibiotic therapy (EAT) is an important clinical concept and a standard procedure for the treatment of many different types of infections in clinical medicine. Its need is based on the lack of knowledge of the causative agent at an early stage of the disease - usually when the patient presents to health professionals. EAT is based on epidemiological data on most frequently isolated pathogens and their antibiotic resistance pattern for certain diseases (e.g., ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "S. pneumoniae"), ", ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "H. influenzae"), ", and ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, "M.catarrhalis"), " for otitis media [middle ear infection]). The adequacy of empirical antibiotics is an important determinant of patient outcomes and may play a role in the emergence of bacterial antibiotic resistance. While in Switzerland, the collection of antimicrobial resistance data has been coordinated through anresis.ch for over a decade - with the data being analysed and used to support antimicrobial treatment guidelines - an accessible and easy-to-use platform to visualise this data has yet been lacking."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Infect Mobile App"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "INFECT is available as an app for your smartphone and tablet."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://itunes.apple.com/us/app/infect/id1422829703?ls=1&mt=8",
-        className: "app-banner__link",
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/app-store-icon.png",
-        alt: "Download INFECT on the App Store",
-        className: "app-banner__app-store-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://play.google.com/store/apps/details?id=info.infect.app",
-        className: "app-banner__link",
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/google-play-icon.png",
-        alt: "Get INFECT on Google Play",
-        className: "app-banner__app-store-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "guide"
-      }, "Using INFECT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "guide"
-      }, "Interactive INFECT tour: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_guidedTour_guidedTourButton_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        guidedTour: this.props.guidedTour
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The coloured circles displayed in the bacteria-antimicrobial matrix represent data regarding the susceptibility of each bacterium (left column) to each antibiotic (top row). The circle size is logarithmically proportional to the sample size, while semi-transparent circles represent low sample sizes (N \u2264 20). The number in the middle of the circle represents the percentage of susceptible samples:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "overlay__image-wrapper overlay__image-wrapper--step1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image--fullwidth",
-        src: "../img/step1.svg",
-        alt: "Step 1"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "According to the percentage of susceptible samples, the colour of the circle changes gradually from green (100% susceptible) to red (0% susceptible):"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "overlay__image-wrapper overlay__image-wrapper--step2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image--fullwidth",
-        src: "../img/step2.svg",
-        alt: "Step 2"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "When a susceptibility circle is hovered by a cursor (\u201Cmouse-over\u201D) or tabbed on a touch screen, the data\u2019s details (susceptibility, sample size and 95% confidence interval) are displayed:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "overlay__image-wrapper overlay__image-wrapper--step3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image--fullwidth",
-        src: "../img/step3.svg",
-        alt: "Step 3"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "overlay__paragraph--footnote"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "95% confidence interval"), " of the percentage of susceptibles: Agresti - Coull confidence intervals with \u201Cadd two successes and two failures\u201D adjustment."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "overlay__paragraph--footnote"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Sample Size:"), " number of isolates for which resistance data to the given antibiotic are available in the database (and in the respective population if filters have been set). CI is based on this number."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Regions"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "image--fullwidth",
-        src: "../img/map.svg",
-        alt: "Map"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "For further information, please consult ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://www.anresis.ch/index.php/definition-der-auswahlkriterien.html#Regions",
-        target: "_blank"
-      }, "the interacitve map of anresis"), "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Data"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "INFECT imports an anonymised subset of the latest 365 days of bacterial resistance data from ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://www.anresis.ch",
-        target: "_blank"
-      }, "the Swiss Center for Antibiotic resistance"), ", including all clinically important pathogens. The import is run monthly."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "For any questions regarding anresis.ch data kindly contact ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "mailto:anresis@ifik.unibe.ch"
-      }, "anresis@ifik.unibe.ch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "source"
-      }, "Source Code"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "INFECT is an open source project developed under MIT license. You may view and clone the source code on ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/infect-org",
-        target: "_blank"
-      }, "GitHub"), "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "team"
-      }, "Team"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The INFECT team is organized as a non-profit ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://www.admin.ch/opc/en/classified-compilation/19070042/index.html#id-ni2-ni6-ni8",
-        target: "_blank"
-      }, "association"), " and consists of highly motivated members (alphabetical order):"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Silvio D. Brugger"), ", MD, PhD, staff physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Pascal M. Frey"), ", MD, MSc, INFECT project leader, staff physician at the Department of General Internal Medicine, Inselspital Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Markus Hilty"), ", PhD, senior researcher at the Institute for Infectious Diseases Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Fabian Jordi"), ", layout designer and CSS programmer at Joinbox GmbH Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tobias Kneub\xFChler"), ", database developer and programmer at Joinbox GmbH Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Raphael Marti"), ", responsible for marketing, distribution and administration", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Felix Steiner"), ", graphics designer and programmer, and CEO at Joinbox GmBH Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Michael van der Weg"), ", software architect, database and API programmer, and CTO at Joinbox GmbH Bern"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://www.joinbox.com/",
-        target: "_blank"
-      }, "Joinbox GmbH"), " is a web agency from Bern. They work not for but with our customers to build web applications that solve complex problems with simple user interfaces. Like this one."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "contact"
-      }, "Contact"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Questions or feedback regarding the INFECT Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "adresses"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("address", null, "Pascal Frey, MD, MSc", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "INFECT Project Leader", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "mailto:info@infect.info"
-      }, "info@infect.info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Department of General Internal Medicine", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Berne University Hospital, 3010 Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "INFECT is developed and maintained by Joinbox"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "adresses"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("address", null, "Joinbox GmbH", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "mailto:hello@joinbox.com"
-      }, "hello@joinbox.com"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "3012 Bern", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "partners"
-      }, "Partners"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://www.anresis.ch",
-        target: "_blank"
-      }, "Swiss Centre for Antibiotic resistance (anresis)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://ifik.unibe.ch",
-        target: "_blank"
-      }, "Institute for Infectious Diseases, University of Bern"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://www.bag.admin.ch/bag/en/home.html",
-        target: "_blank"
-      }, "Swiss Federal Office of Public Health")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        id: "disclaimer"
-      }, "Disclaimer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "INFECT maintains this website to enhance public access to information about antibiotic resistance, antibiotic consumption and its control. Our goal is to keep this information timely and accurate and to minimize disruption caused by technical errors. However, some data or information on our site may have been created or structured in files or formats that are not error-free and we cannot guarantee that our service will not be interrupted or otherwise affected by such problems. If errors are brought to our attention, we will try to correct them as soon as possible."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "INFECT accepts no responsibility or liability with regard to such problems incurred as a result of using this site or any linked external sites."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This information is:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "of a general nature only and is not intended to address the specific circumstances of any particular individual or entity;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "not necessarily comprehensive, complete, accurate or up to date;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "sometimes linked to external sources over which INFECT has no control and for which INFECT assumes neither responsibility nor liability;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "not professional or medical advice (if you need specific advice, you should always consult a suitably qualified professional).")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Although INFECT is intended to be used to guide and support an optimal empirical antimicrobial therapy, its use does not substitute a thorough investigation of patients\u2019 signs and symptoms, or sound diagnostic and therapeutic reasoning. Although all data is routinely checked for correctness, there is always a possibility of error. Therefore, INFECT specifically DISCLAIMS LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES and assumes no responsibility or liability for any loss or damage suffered by any person as a result of the use or misuse of any of the information or content on this website.")));
+        dangerouslySetInnerHTML: this.content
+      }));
     }
   }]);
 
   return InfoOverlay;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component)) || _class;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "content", [mobx__WEBPACK_IMPORTED_MODULE_2__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return {
+      __html: ''
+    };
+  }
+}), _applyDecoratedDescriptor(_class2.prototype, "updateContent", [mobx__WEBPACK_IMPORTED_MODULE_2__["action"]], Object.getOwnPropertyDescriptor(_class2.prototype, "updateContent"), _class2.prototype)), _class2)) || _class;
 
 
 
@@ -62320,17 +62293,175 @@ function (_React$Component) {
   _createClass(FilterList, [{
     key: "getLogoURL",
     value: function getLogoURL() {
-      console.log(this.props.tenantConfig); // this.props.tenantConfig.getConfig('');
+      var frontendConfig = this.props.tenantConfig.getConfig('frontend');
+      return frontendConfig && frontendConfig.userInterface && frontendConfig.userInterface.logoUrl;
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "TEST");
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, !this.getLogoURL() && null, this.getLogoURL() && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        className: "c-logo__vector-image",
+        src: this.getLogoURL()
+      }));
     }
   }]);
 
   return FilterList;
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component)) || _class;
+
+
+
+/***/ }),
+
+/***/ "./www/src/js/components/tenantRunner/TenantRunner.jsx":
+/*!*************************************************************!*\
+  !*** ./www/src/js/components/tenantRunner/TenantRunner.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfoOverlay; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
+var _class;
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var log = debug__WEBPACK_IMPORTED_MODULE_3___default()('infect:TenantRunner');
+/**
+ * Executes tenant related functions that cannot be tied to a real React component:
+ * - loads Google Analytics
+ * - sets CSS variables
+ */
+
+var InfoOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(InfoOverlay, _React$Component);
+
+  function InfoOverlay() {
+    _classCallCheck(this, InfoOverlay);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(InfoOverlay).apply(this, arguments));
+  }
+
+  _createClass(InfoOverlay, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this = this;
+
+      // As soon as tenant data has been fetched from server, update DOM
+      Object(mobx__WEBPACK_IMPORTED_MODULE_2__["reaction"])(function () {
+        return _this.props.tenantConfig.config && _this.props.tenantConfig.config.get('frontend');
+      }, function (frontendConfig, disposer) {
+        log('frontend config is %o', frontendConfig);
+
+        if (_typeof(frontendConfig) !== 'object') {
+          _this.props.notifications.handle({
+            message: "Property frontendConfig on tenantConfig must be an object, is ".concat(JSON.stringify(frontendConfig), " instead."),
+            severity: _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__["severityLevels"].warning
+          });
+
+          return;
+        }
+
+        _this.updateCSSVariables(frontendConfig);
+
+        _this.initializeGoogleAnalytics(frontendConfig); // Let's assume that tenantConfig does not change once it has been fetched.
+        // Therefore we can and should dispose the reaction.
+
+
+        disposer.dispose();
+      });
+    }
+    /**
+     * @param {object} userInterfaceConfig    frontend.userInterface config from tenantConfig
+     */
+
+  }, {
+    key: "updateCSSVariables",
+    value: function updateCSSVariables(frontendConfig) {
+      if (!frontendConfig.userInterface || _typeof(frontendConfig.userInterface) !== 'object' || !frontendConfig.userInterface.darkColor || !frontendConfig.userInterface.lightColor) {
+        this.props.notifications.handle({
+          message: "Expected userIterface config to be an object with properties darkColor and lightColor, got ".concat(JSON.stringify(frontendConfig.userInterface), " instead."),
+          severity: _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__["severityLevels"].warning
+        });
+        return;
+      }
+
+      var _frontendConfig$userI = frontendConfig.userInterface,
+          lightColor = _frontendConfig$userI.lightColor,
+          darkColor = _frontendConfig$userI.darkColor;
+      /* global document */
+
+      var documentRoot = document.documentElement;
+      documentRoot.style.setProperty('--color--accent-1', lightColor);
+      documentRoot.style.setProperty('--color--accent-2', darkColor);
+      log('Colors set to %o and %o', lightColor, darkColor);
+    }
+  }, {
+    key: "initializeGoogleAnalytics",
+    value: function initializeGoogleAnalytics(frontendConfig) {
+      if (!frontendConfig.analytics) {
+        this.props.notifications.handle({
+          message: "Expected analytics config to be an object with property googleAnalyticsTag, received ".concat(JSON.stringify(frontendConfig.analytics), " instead."),
+          severity: _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__["severityLevels"].warning
+        });
+        return;
+      }
+      /* global window */
+
+
+      var host = window.location.hostname; // Don't track on local dev installation
+
+      if (host === 'localhost') return;
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+      gtag('config', 'UA-108372802-1');
+      log('Google Analytics initialized');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return null;
+    }
+  }]);
+
+  return InfoOverlay;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component)) || _class;
 
 
 
@@ -62448,9 +62579,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_drawer_Drawer_jsx__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/drawer/Drawer.jsx */ "./www/src/js/components/drawer/Drawer.jsx");
 /* harmony import */ var _components_selectedFilters_SelectedDiagnosisFilter_jsx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/selectedFilters/SelectedDiagnosisFilter.jsx */ "./www/src/js/components/selectedFilters/SelectedDiagnosisFilter.jsx");
 /* harmony import */ var _components_tenantLogo_TenantLogo_jsx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/tenantLogo/TenantLogo.jsx */ "./www/src/js/components/tenantLogo/TenantLogo.jsx");
-/* harmony import */ var _config_getURL_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../config/getURL.js */ "./www/src/config/getURL.js");
-/* harmony import */ var _models_guidedTour_guidedTour__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./models/guidedTour/guidedTour */ "./www/src/js/models/guidedTour/guidedTour.js");
-/* harmony import */ var _models_infoOverlay_infoOverlay__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./models/infoOverlay/infoOverlay */ "./www/src/js/models/infoOverlay/infoOverlay.js");
+/* harmony import */ var _components_tenantRunner_TenantRunner_jsx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/tenantRunner/TenantRunner.jsx */ "./www/src/js/components/tenantRunner/TenantRunner.jsx");
+/* harmony import */ var _config_getURL_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../config/getURL.js */ "./www/src/config/getURL.js");
+/* harmony import */ var _models_guidedTour_guidedTour__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./models/guidedTour/guidedTour */ "./www/src/js/models/guidedTour/guidedTour.js");
+/* harmony import */ var _models_infoOverlay_infoOverlay__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./models/infoOverlay/infoOverlay */ "./www/src/js/models/infoOverlay/infoOverlay.js");
 /**
 * Bootstrap of the Infect application's frontend
 */
@@ -62479,6 +62611,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
  // Models limited to web app
 
 
@@ -62489,7 +62622,7 @@ Object(mobx__WEBPACK_IMPORTED_MODULE_3__["configure"])({
 }); // Setup models that are shared between mobile and web app
 
 var app = new _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_5__["default"]({
-  getURL: _config_getURL_js__WEBPACK_IMPORTED_MODULE_24__["default"]
+  getURL: _config_getURL_js__WEBPACK_IMPORTED_MODULE_25__["default"]
 });
 
 try {
@@ -62500,8 +62633,8 @@ try {
 } // Web specific frontend models
 
 
-var infoOverlayModel = new _models_infoOverlay_infoOverlay__WEBPACK_IMPORTED_MODULE_26__["default"]();
-var guidedTourModel = new _models_guidedTour_guidedTour__WEBPACK_IMPORTED_MODULE_25__["default"](infoOverlayModel); // React
+var infoOverlayModel = new _models_infoOverlay_infoOverlay__WEBPACK_IMPORTED_MODULE_27__["default"]();
+var guidedTourModel = new _models_guidedTour_guidedTour__WEBPACK_IMPORTED_MODULE_26__["default"](infoOverlayModel); // React
 
 log('views:', app.views);
 /* global document */
@@ -62556,8 +62689,14 @@ function renderReact() {
   }), document.querySelector('AppBanner'));
   react_dom__WEBPACK_IMPORTED_MODULE_6___default.a.render(react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_infoOverlay_infoOverlay_jsx__WEBPACK_IMPORTED_MODULE_19__["default"], {
     guidedTour: guidedTourModel,
-    infoOverlay: infoOverlayModel
+    infoOverlay: infoOverlayModel,
+    tenantConfig: app.tenantConfig,
+    notifications: app.notificationCenter
   }), document.querySelector('InfoOverlay'));
+  react_dom__WEBPACK_IMPORTED_MODULE_6___default.a.render(react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_tenantRunner_TenantRunner_jsx__WEBPACK_IMPORTED_MODULE_24__["default"], {
+    tenantConfig: app.tenantConfig,
+    notifications: app.notificationCenter
+  }), document.querySelector('TenantRunner'));
   react_dom__WEBPACK_IMPORTED_MODULE_6___default.a.render(react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_infoOverlay_infoOverlayButton_jsx__WEBPACK_IMPORTED_MODULE_20__["default"], {
     infoOverlay: infoOverlayModel
   }), document.querySelector('InfoOverlayButton'));

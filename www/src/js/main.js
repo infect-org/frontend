@@ -28,6 +28,7 @@ import InfoOverlayButton from './components/infoOverlay/infoOverlayButton.jsx';
 import Drawer from './components/drawer/Drawer.jsx';
 import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter.jsx';
 import TenantLogo from './components/tenantLogo/TenantLogo.jsx';
+import TenantRunner from './components/tenantRunner/TenantRunner.jsx';
 
 import getURL from '../config/getURL.js';
 
@@ -145,8 +146,21 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <InfoOverlay guidedTour={guidedTourModel} infoOverlay={infoOverlayModel} />,
+        <InfoOverlay
+            guidedTour={guidedTourModel}
+            infoOverlay={infoOverlayModel}
+            tenantConfig={app.tenantConfig}
+            notifications={app.notificationCenter}
+        />,
         document.querySelector('InfoOverlay'),
+    );
+
+    ReactDOM.render(
+        <TenantRunner
+            tenantConfig={app.tenantConfig}
+            notifications={app.notificationCenter}
+        />,
+        document.querySelector('TenantRunner'),
     );
 
     ReactDOM.render(
