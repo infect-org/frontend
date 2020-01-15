@@ -35,9 +35,10 @@ $color--ash:                #c5c3b2;
 $color--moon-mist:          #d7d5c4;
 $color--quill-gray:         #d3d2cd;
 
-// (Yellowish) greens == accent colors
-$color--yellow-green:       #cbe264; // == --color--accent-1
-$color--conifer:            #BCD93A; // == --color--accent-2
+// (Yellowish) greens == accent colors – use neutral (tenant-independant) tones to check if
+// everything is overwritten by tenant colors.
+$color--yellow-green:       #bbbbbb; // == --color--accent-1
+$color--conifer:            #999999; // == --color--accent-2
 
 
 // Blues

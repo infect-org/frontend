@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import { reaction } from 'mobx';
 import debug from 'debug';
 import { severityLevels } from '@infect/frontend-logic';
+import cssVars from 'css-vars-ponyfill';
 
 const log = debug('infect:TenantRunner');
 
@@ -58,9 +59,17 @@ export default @observer class InfoOverlay extends React.Component {
         }
         const { lightColor, darkColor } = frontendConfig.userInterface;
         /* global document */
-        const documentRoot = document.documentElement;
-        documentRoot.style.setProperty('--color--accent-1', lightColor);
-        documentRoot.style.setProperty('--color--accent-2', darkColor);
+        // Use this code later when we can drop IE11 support 🙏
+        // const documentRoot = document.documentElement;
+        // documentRoot.style.setProperty('--color--accent-1', lightColor);
+        // documentRoot.style.setProperty('--color--accent-2', darkColor);
+        // IE11: https://jhildenbiddle.github.io/css-vars-ponyfill/#/
+        cssVars({
+            variables: {
+                '--color--accent-1': lightColor,
+                '--color--accent-2': darkColor,
+            }
+        });
         log('Colors set to %o and %o', lightColor, darkColor);
     }
 

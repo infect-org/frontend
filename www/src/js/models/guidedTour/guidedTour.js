@@ -10,6 +10,12 @@ export default class GuidedTour {
 	*/
 	constructor(infoOverlay) {
 		this.infoOverlay = infoOverlay;
+		// Guided tour can be started from infoOverlay. Its content is Markdown – we can only
+		// inject JavaScript through its renderer and therein we do not have access to our React
+		// models. Therefore we have to dispatch an event – listen to it here and start guided
+		// tour when it's fired.
+		/* global window */
+		window.addEventListener('startGuidedTour', this.start.bind(this));
 	}
 
 	@observable started = false;

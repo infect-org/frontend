@@ -15,11 +15,38 @@ export default @observer class InfoOverlay extends React.Component {
 
     constructor(...props) {
         super(...props);
+
+        this.renderer = this.prepareRenderer();
+
         marked.setOptions({
             gfm: true,
             smartypants: true,
             breaks: true,
         });
+    }
+
+    /**
+     * Tour button needs to open guided tour. Other links should open in a new window. This is not
+     * a native function of Markdown, we therefore have to extend/hijack it
+     */
+    prepareRenderer() {
+
+        const renderer = new marked.Renderer();
+
+        renderer.link = (href, title, text) => {
+            const titleString = title ? `title=${title}` : '';
+            if (href === '#tourGuideButton') {
+                // TourGuideButton: Dispatch startGuidedTour event, is listened to in GuidedTour
+                // model. Use # link to remove #information from URL.
+                return `<a href="#" data-guided-tour-button onClick="window.dispatchEvent(new Event('startGuidedTour'));" ${titleString}>${text}</a>`;
+            } else {
+                // Open all links in a new window (add target="_blank")
+                return `<a href="${href}" target="_blank" ${titleString}>${text}</a>`;
+            }
+        };
+
+        return renderer;
+
     }
 
     /**
@@ -64,7 +91,7 @@ export default @observer class InfoOverlay extends React.Component {
         /* global fetch */
         const rawContent = await fetch(url);
         const textContent = await rawContent.text();
-        const htmlContent = marked(textContent);
+        const htmlContent = marked(textContent, { renderer: this.renderer });
         this.updateContent(htmlContent);
     }
 

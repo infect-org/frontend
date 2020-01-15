@@ -3,8 +3,6 @@
 	@include justify-content(left);
 	padding-left: 20px;
 	align-items: center;
-	/* TODO: FEEEEEEEEEEEEEEELIX, feel free to be free */
-	//background-color: $color--dove-gray;
 	background-color: var(--color--accent-1, $color--yellow-green);
 
 	&__link {
