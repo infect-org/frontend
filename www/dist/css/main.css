@@ -2086,6 +2086,11 @@ infooverlaybutton {
   left: 0;
   z-index: -1;
   overflow: auto;
+  -webkit-hyphens: auto;
+  -khtml-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
   background-color: #616161;
   opacity: 0;
   transition: opacity 100ms linear;
@@ -2150,82 +2155,6 @@ infooverlaybutton {
 @media only screen and (min-width: 800px) {
   .overlay__container {
     width: 40%;
-  }
-}
-
-.overlay h1 {
-  margin-top: 1.3em;
-}
-
-.overlay h2 {
-  margin-top: 1.3em;
-  margin-bottom: 0.8em;
-}
-
-.overlay__paragraph--footnote {
-  font-size: 0.8em;
-}
-
-.overlay .adresses {
-  display: -moz-flex;
-  display: flex;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: wrap;
-  -moz-justify-content: space-between;
-  justify-content: space-between;
-}
-
-.overlay .adresses address {
-  flex-basis: 40%;
-  margin-bottom: 5%;
-}
-
-.overlay .image--fullwidth {
-  display: block;
-  width: 100%;
-}
-
-.overlay .guide {
-  margin: 2.5rem 0;
-  font-weight: 600;
-}
-
-.overlay__image-wrapper {
-  background-color: #FFFFFF;
-}
-
-.overlay__image-wrapper--step1 {
-  padding: 1.25rem 2.5rem;
-}
-
-@media only screen and (min-width: 480px) {
-  .overlay__image-wrapper--step1 {
-    padding: 2.5rem 5rem;
-  }
-}
-
-@media only screen and (min-width: 736px) {
-  .overlay__image-wrapper--step1 {
-    padding: 3.75rem 7.5rem;
-  }
-}
-
-@media only screen and (min-width: 800px) {
-  .overlay__image-wrapper--step1 {
-    padding: 1.25rem 2.5rem;
-  }
-}
-
-@media only screen and (min-width: 980px) {
-  .overlay__image-wrapper--step1 {
-    padding: 2.5rem 5rem;
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  .overlay__image-wrapper--step1 {
-    padding: 5rem 8.75rem;
   }
 }
 
@@ -2295,6 +2224,145 @@ infooverlaybutton {
   .overlay__image-wrapper--step3 {
     padding: 5rem 8.75rem;
   }
+}
+
+.overlay-markdown {
+  color: #FFFFFF;
+}
+
+.overlay-markdown h1 {
+  margin-top: 1.3em;
+}
+
+.overlay-markdown h2 {
+  margin-top: 1.3em;
+  margin-bottom: 0.8em;
+}
+
+.overlay-markdown p small {
+  font-size: 0.8em;
+}
+
+.overlay-markdown a {
+  transition: color 100ms ease-in-out;
+  -webkit-transition: color 100ms ease-in-out;
+  -moz-transition: color 100ms ease-in-out;
+  color: var(--color--accent-1, #BCD93A);
+}
+
+.overlay-markdown a:hover {
+  text-decoration: underline;
+}
+
+.overlay-markdown a[href*="apple"],
+.overlay-markdown a[href*="google"] {
+  display: inline-block;
+}
+
+.overlay-markdown a[href*="apple"] img,
+.overlay-markdown a[href*="google"] img {
+  display: block;
+  margin-top: 1rem;
+  margin-right: 0.625rem;
+  height: 2.5rem;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.overlay-markdown a[href*="apple"] + br,
+.overlay-markdown a[href*="google"] + br {
+  display: none;
+}
+
+.overlay-markdown img[src*="/tenant/"] {
+  margin-top: 1rem;
+  border-style: solid;
+  border-color: #FFFFFF;
+  background-color: #FFFFFF;
+  border-width: 1.25rem 2.5rem;
+}
+
+@media only screen and (min-width: 480px) {
+  .overlay-markdown img[src*="/tenant/"] {
+    border-width: 2.5rem 5rem;
+  }
+}
+
+@media only screen and (min-width: 736px) {
+  .overlay-markdown img[src*="/tenant/"] {
+    border-width: 3.75rem 7.5rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .overlay-markdown img[src*="/tenant/"] {
+    border-width: 1.25rem 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .overlay-markdown img[src*="/tenant/"] {
+    border-width: 2.5rem 5rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .overlay-markdown img[src*="/tenant/"] {
+    border-width: 5rem 8.75rem;
+  }
+}
+
+.overlay-markdown img[src*="map.svg"] {
+  border: none !important;
+}
+
+.overlay-markdown a[href="#tourguideButton"] {
+  border: none;
+  font-weight: 600;
+  border-radius: 0.3125rem;
+  -webkit-border-radius: 0.3125rem;
+  -moz-border-radius: 0.3125rem;
+  padding: 0.3125rem 0.9375rem;
+  color: #fff;
+  background-color: #578ffa;
+  transition: background-color 100ms linear;
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+}
+
+.overlay-markdown a[href="#tourguideButton"]:hover {
+  text-decoration: none;
+  background-color: #4e79c7;
+}
+
+.overlay-markdown ul {
+  margin-left: 0.25rem;
+  padding-left: 1rem;
+}
+
+.overlay-markdown .adresses {
+  display: -moz-flex;
+  display: flex;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.overlay-markdown .adresses address {
+  flex-basis: 40%;
+  margin-bottom: 5%;
+}
+
+.overlay-markdown .image--fullwidth {
+  display: block;
+  width: 100%;
+}
+
+.overlay-markdown .guide {
+  margin: 2.5rem 0;
+  font-weight: 600;
 }
 
 .search {

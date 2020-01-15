@@ -12,6 +12,8 @@ infooverlaybutton {
 	z-index: -1;
 	overflow: auto;
 
+	@include css3-prefix(hyphens, auto);
+
 	background-color: $color--dove-gray;
 	// Must be above transition so that overlay does not fade out
 	// when site is loading.
@@ -75,71 +77,11 @@ infooverlaybutton {
 		}
 	}
 
-	h1 {
-		margin-top: 1.3em;
-	}
-
-	h2 {
-		margin-top: 1.3em;
-		margin-bottom: 0.8em;
-	}
-
-	&__paragraph {
-		&--footnote {
-			font-size: 0.8em;
-		}
-	}
-
-	.adresses {
-		@include flexbox();
-		@include flex-direction(row);
-		@include flex-wrap(wrap);
-		@include justify-content(space-between);
-
-		address {
-			@include flex-basis(40%);
-			margin-bottom: 5%;
-		}
-	}
-
-	.image--fullwidth {
-		display: block;
-		width: 100%;
-	}
-
-	.guide {
-		margin: 40px 0;
-		font-weight: 600;
-
-		button {
-			//margin-left: 40px;
-		}
-	}
 
 	// step images wrapper
 	&__image-wrapper {
 
-		background-color: $color--white;
 
-		&--step1 {
-			padding: 20px 40px;
-
-			@include min-screen($breakpoint-sm) {
-				padding: 40px 80px;
-			}
-			@include min-screen($breakpoint-md) {
-				padding: 60px 120px;
-			}
-			@include min-screen($breakpoint-mobile) {
-				padding: 20px 40px;
-			}
-			@include min-screen($breakpoint-lg) {
-				padding: 40px 80px;
-			}
-			@include min-screen($breakpoint-xl) {
-				padding: 80px 140px;
-			}
-		}
 		&--step2 {
 			padding: 20px 40px;
 
@@ -179,4 +121,134 @@ infooverlaybutton {
 			}
 		}
 	}
+}
+
+
+.overlay-markdown {
+
+	color: $color--white;
+
+	h1 {
+		margin-top: 1.3em;
+	}
+
+	h2 {
+		margin-top: 1.3em;
+		margin-bottom: 0.8em;
+	}
+
+	p {
+		small {
+			font-size: 0.8em;
+		}
+	}
+
+	a {
+		@include transition(color, $transition-duration, ease-in-out);
+		color: var(--color--accent-1, $color--conifer);
+
+		&:hover {
+			//color: var(--color--accent-2, $color--yellow-green);
+			text-decoration: underline;
+		}
+	}
+
+	// store links
+	a[href*="apple"],
+	a[href*="google"] {
+		display: inline-block;
+
+		img {
+			display: block;
+			margin-top: 1rem;
+			margin-right: 0.625rem;
+			height: 2.5rem;
+			border: none !important;
+			background-color: transparent !important;
+		}
+
+		+ br {
+			display: none;
+		}
+	}
+
+
+	// specials/local images
+	img[src*="/tenant/"] {
+		margin-top: 1rem;
+		border-style: solid;
+		border-color: $color--white;
+		background-color: $color--white;
+		border-width: 20px 40px;
+
+		@include min-screen($breakpoint-sm) {
+			border-width: 40px 80px;
+		}
+		@include min-screen($breakpoint-md) {
+			border-width: 60px 120px;
+		}
+		@include min-screen($breakpoint-mobile) {
+			border-width: 20px 40px;
+		}
+		@include min-screen($breakpoint-lg) {
+			border-width: 40px 80px;
+		}
+		@include min-screen($breakpoint-xl) {
+			border-width: 80px 140px;
+		}
+	}
+
+	img[src*="map.svg"] {
+		border: none !important;
+	}
+
+	// tourguide button
+	a[href="#tourguideButton"] {
+		border: none;
+		font-weight: 600;
+		@include border-radius(5px);
+		padding: 5px 15px;
+
+		color: #fff;
+		background-color: $color--cornflower-blue;
+		@include transition(background-color, $transition-duration);
+
+		&:hover {
+			text-decoration: none;
+			background-color: $color--indigo;
+		}
+	}
+
+	ul {
+		margin-left: 0.25rem;
+		padding-left: 1rem;
+	}
+
+
+	.adresses {
+		@include flexbox();
+		@include flex-direction(row);
+		@include flex-wrap(wrap);
+		@include justify-content(space-between);
+
+		address {
+			@include flex-basis(40%);
+			margin-bottom: 5%;
+		}
+	}
+
+	.image--fullwidth {
+		display: block;
+		width: 100%;
+	}
+
+	.guide {
+		margin: 40px 0;
+		font-weight: 600;
+
+		button {
+			//margin-left: 40px;
+		}
+	}
+
 }

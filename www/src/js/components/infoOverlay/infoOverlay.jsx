@@ -86,7 +86,9 @@ export default @observer class InfoOverlay extends React.Component {
             <div className={ `overlay ${this.props.infoOverlay.visible ? 'overlay--open' : ''}` }>
 
                 <InfoOverlayButton infoOverlay={this.props.infoOverlay} />
-                <div dangerouslySetInnerHTML={this.content}></div>
+                <div className="overlay__container">
+                    <div className="overlay-markdown" dangerouslySetInnerHTML={this.content}></div>
+                </div>
 
             </div>
         );
