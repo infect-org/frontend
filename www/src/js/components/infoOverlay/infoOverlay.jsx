@@ -69,7 +69,6 @@ export default @observer class InfoOverlay extends React.Component {
     }
 
     @action updateContent(htmlContent) {
-        console.log(htmlContent);
         this.content = { __html: htmlContent };
     }
 

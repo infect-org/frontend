@@ -67,6 +67,7 @@ class FilterList extends React.Component {
                             tenantConfig={this.props.tenantConfig}
                             filterValues={ this.props.filterValues }
                             selectedFilters={ this.props.selectedFilters }
+                            ageGroupStore={this.props.ageGroupStore}
                             offsetFilters={ this.props.offsetFilters }/>
                     </div>
                 }

@@ -8844,7 +8844,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BaseStore; });
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _storeStatus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storeStatus */ "../frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -8891,15 +8891,15 @@ function () {
         throw new Error("Store: Argument passed to setFetchPromise must be a Promise, is ".concat(promise, " instead."));
       }
 
-      this.status.identifier = _storeStatus__WEBPACK_IMPORTED_MODULE_1__["default"].loading;
+      this.status.identifier = _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__["default"].loading;
       promise.then(function () {
         Object(mobx__WEBPACK_IMPORTED_MODULE_0__["runInAction"])(function () {
-          _this.status.identifier = _storeStatus__WEBPACK_IMPORTED_MODULE_1__["default"].ready;
+          _this.status.identifier = _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__["default"].ready;
         });
       }, function (error) {
         Object(mobx__WEBPACK_IMPORTED_MODULE_0__["runInAction"])(function () {
           _this.status = {
-            identifier: _storeStatus__WEBPACK_IMPORTED_MODULE_1__["default"].error,
+            identifier: _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__["default"].error,
             error: error
           };
         });
@@ -8914,7 +8914,7 @@ function () {
   writable: true,
   initializer: function initializer() {
     return {
-      identifier: _storeStatus__WEBPACK_IMPORTED_MODULE_1__["default"].initialized
+      identifier: _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__["default"].initialized
     };
   }
 }), _applyDecoratedDescriptor(_class.prototype, "setFetchPromise", [mobx__WEBPACK_IMPORTED_MODULE_0__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setFetchPromise"), _class.prototype)), _class);
@@ -9531,6 +9531,187 @@ function () {
 
 /***/ }),
 
+/***/ "../frontend-logic/src/helpers/store.js":
+/*!**********************************************!*\
+  !*** ../frontend-logic/src/helpers/store.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Store; });
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseStore.js */ "../frontend-logic/src/helpers/BaseStore.js");
+var _class, _temp;
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+
+
+/**
+* Simple store for list-like entries (antibiotics, bacteria) etc. For other types of entries
+* (non-list-like), extend from BaseStore.
+*/
+
+var Store = (_class = (_temp =
+/*#__PURE__*/
+function (_BaseStore) {
+  _inherits(Store, _BaseStore);
+
+  /**
+   * Stores all list-like items.
+   * Key: id, value: content. Use map to speed up lookups.
+   */
+
+  /**
+  * @param {Array} values                 this.add is called for every value on initialization,
+  *                                       therefore an array of items must be provided.
+  * @param {Function} idGeneratorFunction Function to generate a unique ID from the items passed
+  *                                       in. Takes item as an argument, must return a string,
+  *                                       e.g. (item) => item.prop1 + '/' + item.prop2;
+  */
+  function Store() {
+    var _this;
+
+    var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var idGeneratorFunction = arguments.length > 1 ? arguments[1] : undefined;
+
+    _classCallCheck(this, Store);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Store).call(this));
+    _this._items = mobx__WEBPACK_IMPORTED_MODULE_0__["observable"].map();
+    _this._idGeneratorFunction = idGeneratorFunction; // If values are passed, add them
+
+    values.forEach(function (item) {
+      return _this.add(item);
+    });
+    return _this;
+  }
+  /**
+   * Returns all of the store's items as an array
+   * @return {*[]}     All the store's items
+   */
+
+
+  _createClass(Store, [{
+    key: "getAsArray",
+    value: function getAsArray() {
+      return Array.from(this._items.values());
+    }
+    /**
+     * Returns all items as a map
+     * @return {Map.<*,*>}    Map with id as key and item as value
+     */
+
+  }, {
+    key: "get",
+    value: function get() {
+      return this._items;
+    }
+    /**
+    * Needed for resistances that need to be cleared when new data is loaded.
+    */
+
+  }, {
+    key: "clear",
+    value: function clear() {
+      this._items.clear();
+    }
+    /**
+     * Adds an item to the store
+     * @param {*} item              The item to add
+     * @param {boolean} overwrite   True if you want to overwrite a (possibly) existing item with
+     *                              the same id. Defaults to false. If you try to overwrite an
+     *                              existing item, an error is thrown.
+     */
+
+  }, {
+    key: "add",
+    value: function add(item, overwrite) {
+      var id = this._getItemId(item);
+
+      if (id === undefined) {
+        throw new Error("Store: Field id is missing on item ".concat(JSON.stringify(item), "."));
+      }
+
+      if (!overwrite && this._items.has(id)) {
+        throw new Error("Store: Tried to overwrite item with id ".concat(id, " without using the appropriate overwrite argument."));
+      }
+
+      this._items.set(id, item);
+    }
+    /**
+     * Returns id for a given item
+     */
+
+  }, {
+    key: "_getItemId",
+    value: function _getItemId(item) {
+      return this._idGeneratorFunction ? this._idGeneratorFunction(item) : item.id;
+    }
+    /**
+     * Removes an item from store
+     * @param  {*} item     The item you want to remove
+     */
+
+  }, {
+    key: "remove",
+    value: function remove(item) {
+      var id = this._getItemId(item);
+
+      this._items.delete(id);
+    }
+    /**
+     * Returns element with ID id
+     * @param  {*} id      ID of the element we're looking for
+     * @return {*}         Item found for ID passed in
+     */
+
+  }, {
+    key: "getById",
+    value: function getById(id) {
+      return this._items.get(id);
+    }
+    /**
+     * Returns true if an item with the same ID as the passed item exists.
+     * @param {any}         Item to look for
+     * @return {boolean}
+     */
+
+  }, {
+    key: "hasWithId",
+    value: function hasWithId(item) {
+      var id = this._getItemId(item);
+
+      return !!this.getById(id);
+    }
+  }]);
+
+  return Store;
+}(_BaseStore_js__WEBPACK_IMPORTED_MODULE_1__["default"]), _temp), (_applyDecoratedDescriptor(_class.prototype, "clear", [mobx__WEBPACK_IMPORTED_MODULE_0__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "clear"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "add", [mobx__WEBPACK_IMPORTED_MODULE_0__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "add"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "remove", [mobx__WEBPACK_IMPORTED_MODULE_0__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "remove"), _class.prototype)), _class);
+
+
+/***/ }),
+
 /***/ "../frontend-logic/src/helpers/storeStatus.js":
 /*!****************************************************!*\
   !*** ../frontend-logic/src/helpers/storeStatus.js ***!
@@ -9579,17 +9760,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_filters_selectedFilters_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./models/filters/selectedFilters.js */ "../frontend-logic/src/models/filters/selectedFilters.js");
 /* harmony import */ var _models_filters_mostUsedFilters_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./models/filters/mostUsedFilters.js */ "../frontend-logic/src/models/filters/mostUsedFilters.js");
 /* harmony import */ var _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./models/populationFilter/PopulationFilterUpdater.js */ "../frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js");
-/* harmony import */ var _models_populationFilter_setupPopulationFilters_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./models/populationFilter/setupPopulationFilters.js */ "../frontend-logic/src/models/populationFilter/setupPopulationFilters.js");
-/* harmony import */ var _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./models/notifications/NotificationCenter.js */ "../frontend-logic/src/models/notifications/NotificationCenter.js");
-/* harmony import */ var _models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js");
-/* harmony import */ var _models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "../frontend-logic/src/models/guidelines/setupGuidelines.js");
-/* harmony import */ var _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js");
-/* harmony import */ var _models_rdaCounter_RDACounterStore_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterStore.js */ "../frontend-logic/src/models/rdaCounter/RDACounterStore.js");
-/* harmony import */ var _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterFetcher.js */ "../frontend-logic/src/models/rdaCounter/RDACounterFetcher.js");
-/* harmony import */ var _models_tenantConfig_TenantConfigFetcher_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigFetcher.js */ "../frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js");
-/* harmony import */ var _models_tenantConfig_TenantConfigStore_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigStore.js */ "../frontend-logic/src/models/tenantConfig/TenantConfigStore.js");
-/* harmony import */ var _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./models/notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
-/* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
+/* harmony import */ var _models_populationFilter_setupAgeGroups_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./models/populationFilter/setupAgeGroups.js */ "../frontend-logic/src/models/populationFilter/setupAgeGroups.js");
+/* harmony import */ var _models_populationFilter_setupPopulationFilters_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./models/populationFilter/setupPopulationFilters.js */ "../frontend-logic/src/models/populationFilter/setupPopulationFilters.js");
+/* harmony import */ var _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./models/notifications/NotificationCenter.js */ "../frontend-logic/src/models/notifications/NotificationCenter.js");
+/* harmony import */ var _models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js");
+/* harmony import */ var _models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "../frontend-logic/src/models/guidelines/setupGuidelines.js");
+/* harmony import */ var _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js");
+/* harmony import */ var _models_rdaCounter_RDACounterStore_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterStore.js */ "../frontend-logic/src/models/rdaCounter/RDACounterStore.js");
+/* harmony import */ var _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterFetcher.js */ "../frontend-logic/src/models/rdaCounter/RDACounterFetcher.js");
+/* harmony import */ var _models_tenantConfig_TenantConfigFetcher_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigFetcher.js */ "../frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js");
+/* harmony import */ var _models_tenantConfig_TenantConfigStore_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigStore.js */ "../frontend-logic/src/models/tenantConfig/TenantConfigStore.js");
+/* harmony import */ var _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./models/notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
+/* harmony import */ var _helpers_store_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./helpers/store.js */ "../frontend-logic/src/helpers/store.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -9637,12 +9820,16 @@ function _initializerWarningHelper(descriptor, context) { throw new Error('Decor
 
 
 
+
+
 var log = debug__WEBPACK_IMPORTED_MODULE_1___default()('infect:App');
 var InfectApp = (_class = (_temp =
 /*#__PURE__*/
 function () {
   // Filters for bacteria, antibiotics etc.
   // Filters for sampleSize and resistance, bound to a range input
+  // Age groups need to be stored so that we can retreive the from/to values when an
+  // age group is selected
   // Counts amount of properties available on RDA (in unfiltered state for the current tenant)
 
   /**
@@ -9657,19 +9844,20 @@ function () {
 
     this.bacteria = new _models_bacteria_bacteriaStore_js__WEBPACK_IMPORTED_MODULE_7__["default"]();
     this.antibiotics = new _models_antibiotics_antibioticsStore_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
-    this.guidelines = new _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_23__["default"]();
+    this.guidelines = new _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_24__["default"]();
     this.substanceClasses = new _models_antibiotics_substanceClassesStore_js__WEBPACK_IMPORTED_MODULE_5__["default"]();
     this.resistances = new _models_resistances_resistancesStore_js__WEBPACK_IMPORTED_MODULE_9__["default"]([], function (item) {
       return "".concat(item.bacterium.id, "/").concat(item.antibiotic.id);
     });
     this.filterValues = new _models_propertyMap_propertyMap_js__WEBPACK_IMPORTED_MODULE_14__["default"]();
-    this.tenantConfig = new _models_tenantConfig_TenantConfigStore_js__WEBPACK_IMPORTED_MODULE_27__["default"]();
+    this.tenantConfig = new _models_tenantConfig_TenantConfigStore_js__WEBPACK_IMPORTED_MODULE_28__["default"]();
     this.selectedFilters = new _models_filters_selectedFilters_js__WEBPACK_IMPORTED_MODULE_16__["default"]();
     this.offsetFilters = new _models_filters_offsetFilters_js__WEBPACK_IMPORTED_MODULE_15__["default"]();
     this.mostUsedFilters = new _models_filters_mostUsedFilters_js__WEBPACK_IMPORTED_MODULE_17__["default"](this.selectedFilters, this.filterValues);
-    this.notificationCenter = new _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_20__["default"]();
-    this.rdaCounterStore = new _models_rdaCounter_RDACounterStore_js__WEBPACK_IMPORTED_MODULE_24__["default"](this.notificationCenter.handle.bind(this.notificationCenter));
-    this.guidelineRelatedFilters = new _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_29__["default"](this.guidelines, this.selectedFilters, this.filterValues);
+    this.notificationCenter = new _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_21__["default"]();
+    this.ageGroupStore = new _helpers_store_js__WEBPACK_IMPORTED_MODULE_31__["default"]();
+    this.rdaCounterStore = new _models_rdaCounter_RDACounterStore_js__WEBPACK_IMPORTED_MODULE_25__["default"](this.notificationCenter.handle.bind(this.notificationCenter));
+    this.guidelineRelatedFilters = new _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_30__["default"](this.guidelines, this.selectedFilters, this.filterValues);
     this._config = config;
 
     this._setupFilterValues();
@@ -9679,7 +9867,7 @@ function () {
     this.views.matrix.setSelectedFilters(this.selectedFilters);
     this.views.matrix.setOffsetFilters(this.offsetFilters);
     this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
-    Object(_models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_21__["default"])(this.guidelines, this.views.drawer, this.notificationCenter);
+    Object(_models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_22__["default"])(this.guidelines, this.views.drawer, this.notificationCenter);
   }
   /**
    * Use separate init method as it uses async functions; we shall not use those in a
@@ -9694,8 +9882,9 @@ function () {
 
       var fetcherPromise = this._setupFetchers();
 
-      var populationFilterPromise = Object(_models_populationFilter_setupPopulationFilters_js__WEBPACK_IMPORTED_MODULE_19__["default"])(this._config.getURL, this.filterValues, this.rdaCounterStore);
-      return Promise.all([fetcherPromise, populationFilterPromise]) // Catch and display error; if we don't, app will fail half-way because we're async.
+      var populationFilterPromise = Object(_models_populationFilter_setupPopulationFilters_js__WEBPACK_IMPORTED_MODULE_20__["default"])(this._config.getURL, this.filterValues, this.rdaCounterStore);
+      var ageGroupFilterPromise = Object(_models_populationFilter_setupAgeGroups_js__WEBPACK_IMPORTED_MODULE_19__["default"])(this.tenantConfig, this.filterValues, this.ageGroupStore, this.notificationCenter.handle.bind(this.notificationCenter));
+      return Promise.all([fetcherPromise, populationFilterPromise, ageGroupFilterPromise]) // Catch and display error; if we don't, app will fail half-way because we're async.
       .then(function () {
         log('INFECT app successfully initialized');
       }, function (err) {
@@ -9759,15 +9948,15 @@ function () {
       log('Fetching data for resistances.'); // Guidelines are important – but not crucial for INFECT to work. Handle errors nicely.
       // TODO: Make sure we are informed when they fail!
 
-      var guidelinePromise = Object(_models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_22__["default"])(this._config.getURL, this.guidelines, this.bacteria, this.antibiotics, this.notificationCenter.handle.bind(this.notificationCenter)).catch(function (err) {
+      var guidelinePromise = Object(_models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_23__["default"])(this._config.getURL, this.guidelines, this.bacteria, this.antibiotics, this.notificationCenter.handle.bind(this.notificationCenter)).catch(function (err) {
         var humanReadableError = "Guidelines could not be fetched from server, but INFECT will work without them. Please contact us if the issue persists. Original error:  ".concat(err.message);
 
         _this2.notificationCenter.handle({
-          severity: _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_28__["default"].warning,
+          severity: _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_29__["default"].warning,
           message: humanReadableError
         });
       });
-      var tenantConfigFetcher = new _models_tenantConfig_TenantConfigFetcher_js__WEBPACK_IMPORTED_MODULE_26__["default"]({
+      var tenantConfigFetcher = new _models_tenantConfig_TenantConfigFetcher_js__WEBPACK_IMPORTED_MODULE_27__["default"]({
         url: this._config.getURL('tenant', 'config'),
         store: this.tenantConfig,
         // Handle errors gracefully, as there should always be a fallback for all values/flags
@@ -9775,13 +9964,13 @@ function () {
         handleException: this.notificationCenter.handle.bind(this.notificationCenter)
       });
       var tenantConfigFetcherPromise = tenantConfigFetcher.getData();
-      var rdaCounterFetcher = new _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_25__["default"]({
+      var rdaCounterFetcher = new _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_26__["default"]({
         url: this._config.getURL('rda', 'counter'),
         store: this.rdaCounterStore,
         handleError: this.notificationCenter.handle.bind(this.notificationCenter)
       });
       var rdaCounterFetcherPromise = rdaCounterFetcher.getData();
-      var updater = new _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__["default"](resistanceFetcher, this.selectedFilters, this.notificationCenter.handle.bind(this.notificationCenter));
+      var updater = new _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__["default"](resistanceFetcher, this.selectedFilters, this.ageGroupStore, this.notificationCenter.handle.bind(this.notificationCenter));
       updater.setup();
       log('Fetchers setup done.');
       return Promise.all([substanceClassesPromise, rdaCounterFetcherPromise, antibioticPromise, bacteriaPromise, resistancePromise, guidelinePromise, tenantConfigFetcherPromise]);
@@ -11154,7 +11343,7 @@ __webpack_require__.r(__webpack_exports__);
         translation: 'Name' // Get name from the whole entity
         ,
         valueTranslations: function valueTranslations(name, entity) {
-          return entity.identifier.replace('-', '–').replace('>=', '≥');
+          return entity.label;
         }
       }
     }
@@ -14027,8 +14216,8 @@ function (_StandardFetcher) {
 
       Object(mobx__WEBPACK_IMPORTED_MODULE_1__["transaction"])(function () {
         data.forEach(function (filterEntry) {
-          // If RDACounter was passed in but current animal is not part of RDA, don't add
-          // it to filters
+          // If RDACounter was passed in but current filter type (e.g. animal) is not part of
+          // RDA, don't add it to filters
           if (_this2.rdaCounterType) {
             if (!_this2.rdaCounterStore.hasItem(_this2.rdaCounterType, filterEntry.id)) {
               log('Population filter %o is not part of RDA, skip it', filterEntry);
@@ -14088,12 +14277,13 @@ var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:PopulationFilterU
 var PopulationFilterUpdater = (_class = (_temp =
 /*#__PURE__*/
 function () {
-  function PopulationFilterUpdater(resistancesFetcher, selectedFilters, handleError) {
+  function PopulationFilterUpdater(resistancesFetcher, selectedFilters, ageGroupStore, handleError) {
     _classCallCheck(this, PopulationFilterUpdater);
 
     this.previousFilters = '';
     this.resistancesFetcher = resistancesFetcher;
     this.selectedFilters = selectedFilters;
+    this.ageGroupStore = ageGroupStore;
     this.handleError = handleError;
   }
   /**
@@ -14164,14 +14354,10 @@ function () {
     key: "filterHeaders",
     get: function get() {
       var region = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].region);
-      var ageGroup = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].ageGroup);
       var hospitalStatus = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].hospitalStatus);
       var animal = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].animal);
-      return {
+      var filters = {
         regionIds: region.map(function (filter) {
-          return filter.value;
-        }),
-        ageGroupIds: ageGroup.map(function (filter) {
           return filter.value;
         }),
         hospitalStatusIds: hospitalStatus.map(function (filter) {
@@ -14179,14 +14365,113 @@ function () {
         }),
         animalIds: animal.map(function (filter) {
           return filter.value;
-        })
-      };
+        }),
+        ageGroupIntervals: []
+      }; // Add daysFrom/daysTo for ageGroups, if user filtered by ageGroups
+
+      var ageGroupFilter = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].ageGroup);
+
+      if (ageGroupFilter.length) {
+        var selectedAgeGroupIds = ageGroupFilter.map(function (_ref) {
+          var value = _ref.value;
+          return value;
+        });
+        var ageGroupsFromStore = this.ageGroupStore.getAsArray().filter(function (item) {
+          return selectedAgeGroupIds.includes(item.id);
+        });
+        var ageGroupIntervals = ageGroupsFromStore.map(function (_ref2) {
+          var daysTo = _ref2.daysTo,
+              daysFrom = _ref2.daysFrom;
+          return {
+            daysTo: daysTo,
+            daysFrom: daysFrom
+          };
+        });
+        ageGroupIntervals.forEach(function (interval) {
+          return filters.ageGroupIntervals.push(interval);
+        });
+      }
+
+      return filters;
     }
   }]);
 
   return PopulationFilterUpdater;
 }(), _temp), (_applyDecoratedDescriptor(_class.prototype, "filterHeaders", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "filterHeaders"), _class.prototype)), _class);
 
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/populationFilter/setupAgeGroups.js":
+/*!***********************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/setupAgeGroups.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "../frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+/**
+ * Sets up age groups; those are *not* taken from an ageGroup endpoint but from the tenantConfig
+ * because:
+ * 1. they depend on the tenant (there are e.g. big differences between humans and animals)
+ * 2. they resolve to numbers (age in days from/to)
+ *
+ * Let us rely on the given constructs (filterValues, store). Therefore we have to
+ * 1. get ageGroups from tenantConfig
+ * 2. add ageGroups to ageGroupStore
+ * 3. add ageGroups to filterValues
+ *
+ * When a user is filtering by ageGroups, let's
+ * 1. get the ageGroup data from the store (through the ID we added)
+ * 2. prepare the rda filter accordingly
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (function (tenantConfig, filterValues, ageGroupStore, handleNotification) {
+  Object(mobx__WEBPACK_IMPORTED_MODULE_0__["reaction"])( // Wait for tenantConfig
+  function () {
+    return tenantConfig.status.identifier;
+  }, function (statusIdentifier) {
+    // Only continue when all necessary data is available
+    if (statusIdentifier !== _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_1__["default"].ready) return; // Get tenantConfig.frontend.rda.ageGroups
+
+    var frontendConfig = tenantConfig.getConfig('frontend');
+
+    if (!frontendConfig || !frontendConfig.rda || !frontendConfig.rda.ageGroups // We cannot easily check if it's an array, as ageGroups is an observableArray
+    ) {
+        handleNotification({
+          message: "setupAgeGroups: Age groups missing or invalid on tenant config; expected Array under frontend.rda.ageGroups; frontend property is ".concat(JSON.stringify(frontendConfig), ", however."),
+          severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__["default"].warning
+        });
+        return;
+      } // Add age groups to filterValues and ageGroupStore
+
+
+    frontendConfig.rda.ageGroups.forEach(function (ageGroup, index) {
+      // Stores need an ID; generate it from the ageGroup's index
+      var ageGroupWithId = _objectSpread({}, ageGroup, {
+        id: index
+      });
+
+      ageGroupStore.add(ageGroupWithId);
+      filterValues.addEntity(_filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__["default"].ageGroup, ageGroupWithId);
+    });
+  });
+});
 
 /***/ }),
 
@@ -14229,16 +14514,6 @@ __webpack_require__.r(__webpack_exports__);
     filterType: _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__["default"].animal
   });
   var fetchAnimals = animalsFetcher.getData();
-  var ageGroupFetcher = new _PopulationFilterFetcher_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
-    url: getURL(filterScope, 'ageGroups'),
-    // Just pass in any store – is not used, but necessary to work
-    store: new _helpers_Store_js__WEBPACK_IMPORTED_MODULE_1__["default"](),
-    dependentStores: [rdaCounterStore],
-    filterValues: filterValues,
-    rdaCounterType: _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_2__["default"].ageGroup,
-    filterType: _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__["default"].ageGroup
-  });
-  var fetchAgeGroups = ageGroupFetcher.getData();
   var hospitalStatusFetcher = new _PopulationFilterFetcher_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
     url: getURL(filterScope, 'hospitalStatus'),
     // Just pass in any store – is not used, but necessary to work
@@ -14258,7 +14533,7 @@ __webpack_require__.r(__webpack_exports__);
     filterType: _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__["default"].region
   });
   var fetchRegions = regionFetcher.getData();
-  return Promise.all([fetchAnimals, fetchAgeGroups, fetchHospitalStatus, fetchRegions]);
+  return Promise.all([fetchAnimals, fetchHospitalStatus, fetchRegions]);
 });
 
 /***/ }),
@@ -57802,6 +58077,7 @@ function (_React$Component) {
         tenantConfig: this.props.tenantConfig,
         filterValues: this.props.filterValues,
         selectedFilters: this.props.selectedFilters,
+        ageGroupStore: this.props.ageGroupStore,
         offsetFilters: this.props.offsetFilters
       })));
     }
@@ -58264,18 +58540,6 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 
 var log = debug__WEBPACK_IMPORTED_MODULE_4___default()('infect:PopulationFilterList');
-/**
- * Returns first number in age group identifier ("<15", "15-45", "">=65" etc.); needed to sort
- * age groups.
- */
-
-function getFirstNumber(ageGroupIdentifier) {
-  var match = ageGroupIdentifier.match(/\d+/);
-  var value = match ? parseInt(match[0], 10) : undefined; // <15 comes before 15-35; first numbers are equal (15), therefore count '<15' down.
-
-  if (ageGroupIdentifier[0] === '<') value -= 1;
-  return value;
-}
 
 var PopulationFilterList = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class = (_class2 =
 /*#__PURE__*/
@@ -58406,9 +58670,17 @@ function (_React$Component) {
   }, {
     key: "ageGroupFilters",
     get: function get() {
-      var values = this.props.filterValues.getValuesForProperty(_infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__["filterTypes"].ageGroup, 'id');
+      var ageGroups = this.props.ageGroupStore.getAsArray();
+      var values = this.props.filterValues.getValuesForProperty(_infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__["filterTypes"].ageGroup, 'id'); // Take sort order from tenantConfig which was stored in ageGroupStore
+
       return values.sort(function (a, b) {
-        return getFirstNumber(a.niceValue) - getFirstNumber(b.niceValue);
+        return ageGroups.find(function (_ref) {
+          var id = _ref.id;
+          return id === a.value;
+        }).order - ageGroups.find(function (_ref2) {
+          var id = _ref2.id;
+          return id === b.value;
+        }).order;
       });
     }
   }, {
@@ -59656,7 +59928,6 @@ function (_React$Component) {
   }, {
     key: "updateContent",
     value: function updateContent(htmlContent) {
-      console.log(htmlContent);
       this.content = {
         __html: htmlContent
       };
@@ -62430,9 +62701,9 @@ function (_React$Component) {
   }, {
     key: "initializeGoogleAnalytics",
     value: function initializeGoogleAnalytics(frontendConfig) {
-      if (!frontendConfig.analytics) {
+      if (!frontendConfig.analytics || !frontendConfig.analytics.googleAnalyticsTag || typeof frontendConfig.analytics.googleAnalyticsTag !== 'string') {
         this.props.notifications.handle({
-          message: "Expected analytics config to be an object with property googleAnalyticsTag, received ".concat(JSON.stringify(frontendConfig.analytics), " instead."),
+          message: "Expected analytics config to be an object with property googleAnalyticsTag (string), received ".concat(JSON.stringify(frontendConfig.analytics), " instead."),
           severity: _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__["severityLevels"].warning
         });
         return;
@@ -62442,7 +62713,12 @@ function (_React$Component) {
 
       var host = window.location.hostname; // Don't track on local dev installation
 
-      if (host === 'localhost') return;
+      if (host === 'localhost') {
+        console.log('Dev environment; don\'t add Analytics');
+        return;
+      } // Start: Code from Google
+
+
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -62450,7 +62726,8 @@ function (_React$Component) {
       }
 
       gtag('js', new Date());
-      gtag('config', 'UA-108372802-1');
+      gtag('config', frontendConfig.analytics.googleAnalyticsTag); // End: Code from Google
+
       log('Google Analytics initialized');
     }
   }, {
@@ -62658,7 +62935,8 @@ function renderReact() {
     selectedFilters: app.selectedFilters,
     offsetFilters: app.offsetFilters,
     guidelines: app.guidelines,
-    tenantConfig: app.tenantConfig
+    tenantConfig: app.tenantConfig,
+    ageGroupStore: app.ageGroupStore
   }), document.querySelector('FilterList'));
   react_dom__WEBPACK_IMPORTED_MODULE_6___default.a.render(react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_selectedFilters_selectedFiltersList_jsx__WEBPACK_IMPORTED_MODULE_11__["default"], {
     selectedFilters: app.selectedFilters

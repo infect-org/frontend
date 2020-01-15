@@ -9,20 +9,6 @@ import generateFilterList from './generateFilterList';
 
 const log = debug('infect:PopulationFilterList');
 
-
-/**
- * Returns first number in age group identifier ("<15", "15-45", "">=65" etc.); needed to sort
- * age groups.
- */
-function getFirstNumber(ageGroupIdentifier) {
-    const match = ageGroupIdentifier.match(/\d+/);
-    let value = match ? parseInt(match[0], 10) : undefined;
-    // <15 comes before 15-35; first numbers are equal (15), therefore count '<15' down.
-    if (ageGroupIdentifier[0] === '<') value -= 1;
-    return value;
-}
-
-
 @observer
 class PopulationFilterList extends React.Component {
 
@@ -38,7 +24,7 @@ class PopulationFilterList extends React.Component {
 
     @computed get offsetMinimumValue() {
         const rdaConfig = this.props.tenantConfig.getConfig('rda');
-        if (rdaConfig) return rdaConfig.sampleCountFilterLowerThreshold || 0;
+        if (rdaConfig) return rdaConfig.sampleCountFilterLowerThreshold || 0;
     }
 
     /**
@@ -58,12 +44,15 @@ class PopulationFilterList extends React.Component {
     }
 
     @computed get animalFilters() {
-        return this.props.filterValues.getValuesForProperty(filterTypes.animal, 'id');        
+        return this.props.filterValues.getValuesForProperty(filterTypes.animal, 'id');
     }
 
     @computed get ageGroupFilters() {
+        const ageGroups = this.props.ageGroupStore.getAsArray();
         const values = this.props.filterValues.getValuesForProperty(filterTypes.ageGroup, 'id');
-        return values.sort((a, b) => getFirstNumber(a.niceValue) - getFirstNumber(b.niceValue));
+        // Take sort order from tenantConfig which was stored in ageGroupStore
+        return values.sort((a, b) => ageGroups.find(({ id }) => id === a.value).order -
+            ageGroups.find(({ id }) => id === b.value).order);
     }
 
     @computed get hospitalStatusFilters() {

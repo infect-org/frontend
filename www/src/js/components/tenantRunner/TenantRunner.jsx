@@ -67,9 +67,12 @@ export default @observer class InfoOverlay extends React.Component {
 
     initializeGoogleAnalytics(frontendConfig) {
 
-        if (!frontendConfig.analytics) {
+        if (!frontendConfig.analytics ||
+            !frontendConfig.analytics.googleAnalyticsTag ||
+            typeof frontendConfig.analytics.googleAnalyticsTag !== 'string'
+        ) {
             this.props.notifications.handle({
-                message: `Expected analytics config to be an object with property googleAnalyticsTag, received ${JSON.stringify(frontendConfig.analytics)} instead.`,
+                message: `Expected analytics config to be an object with property googleAnalyticsTag (string), received ${JSON.stringify(frontendConfig.analytics)} instead.`,
                 severity: severityLevels.warning,
             });
             return;
@@ -79,14 +82,19 @@ export default @observer class InfoOverlay extends React.Component {
         const host = window.location.hostname;
 
         // Don't track on local dev installation
-        if (host === 'localhost') return;
+        if (host === 'localhost') {
+            console.log('Dev environment; don\'t add Analytics');
+            return;
+        }
 
+        // Start: Code from Google
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             window.dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'UA-108372802-1');
+        gtag('config', frontendConfig.analytics.googleAnalyticsTag);
+        // End: Code from Google
 
         log('Google Analytics initialized');
 

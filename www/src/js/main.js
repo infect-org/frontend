@@ -90,6 +90,7 @@ function renderReact() {
             offsetFilters={app.offsetFilters}
             guidelines={app.guidelines}
             tenantConfig={app.tenantConfig}
+            ageGroupStore={app.ageGroupStore}
         />,
         document.querySelector('FilterList'),
     );
