@@ -13,6 +13,7 @@ export default @observer class DrawerGuidelineContent extends React.Component {
         });
         this.renderer = this.prepareRenderer();
         this.toggleDrawer = this.toggleDrawer.bind(this);
+        this.selectRelevantFilters = this.selectRelevantFilters.bind(this);
     }
 
     /**
@@ -40,6 +41,23 @@ export default @observer class DrawerGuidelineContent extends React.Component {
 
         return renderer;
 
+    }
+
+    /**
+     * Selects all relevant bacteria and antibiotics for currently selected diagnosis
+     * and filters matrix by them
+     */
+    selectRelevantFilters() {
+        this.props.app.guidelineRelatedFilters.selectFiltersRelatedToSelectedDiagnosis();
+    }
+
+    /**
+     * Only show the button to show relevant bacteria/antibiotics in matrix if they are not already
+     * selected
+     * @return {boolean}    true if button should be displayed, else false
+     */
+    showRelevantFiltersButton() {
+        return !this.props.app.guidelineRelatedFilters.areAllDiagnosisRelatedFiltersSelected();
     }
 
     /**
@@ -121,6 +139,15 @@ export default @observer class DrawerGuidelineContent extends React.Component {
                         </div>
 
                         <div className="drawer__therapies">
+
+                            {this.showRelevantFiltersButton() &&
+                                <button
+                                    className="button button--show-relevant-guideline-information"
+                                    onClick={this.selectRelevantFilters}
+                                >
+                                    Only show relevant data in matrix
+                                </button>
+                            }
 
                             <div className="drawer__therapies-inner">
 

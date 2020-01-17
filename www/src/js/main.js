@@ -175,7 +175,7 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <Drawer drawerViewModel={app.views.drawer} />,
+        <Drawer drawerViewModel={app.views.drawer} app={app} />,
         document.querySelector('Drawer'),
     );
 

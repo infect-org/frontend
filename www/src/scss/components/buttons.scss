@@ -175,7 +175,8 @@
     }
   }
 
-  &--guide {
+  &--guide,
+  &--show-relevant-guideline-information {
     @include border-radius(5px);
     padding: 5px 15px;
 
@@ -186,5 +187,9 @@
     &:hover {
       background-color: $color--indigo;
     }
+  }
+
+  &--show-relevant-guideline-information {
+    margin-bottom: 1.25rem;
   }
 }
