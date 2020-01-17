@@ -1,5 +1,5 @@
 # Introduction
-INFECT – an __IN__terface For __E__mpirical __a__ntimicrobial __C__hemoTherapy – provides intuitive access to the latest data regarding microbes, antibiotic susceptibility and antibiotic treatment recommendations. INFECT aims to innovate patient care, reduce antimicrobial resistance, and save lives.
+INFECT – an __IN__terface __F__or __E__mpirical antimicrobial __C__hemo**T**herapy – provides intuitive access to the latest data regarding microbes, antibiotic susceptibility and antibiotic treatment recommendations. INFECT aims to innovate patient care, reduce antimicrobial resistance, and save lives.
 
 # Feedback
 Feedback is very welcome. Please write to [info@infect.info](mailto:info@infect.info) for issues regarding INFECT.
@@ -12,14 +12,13 @@ INFECT is available as an app for your smartphone and tablet:
 # Using INFECT
 
 ## Guided Tour
-Interactive INFECT tour: [tourguideButton](#tourguideButton)
+Interactive INFECT tour: [Start Guided Tour](#tourGuideButton)
 
 ## Data
-Anonymized antimicrobial susceptibility data is provided by the Swiss Centre for Antibiotic resistance (anresis.ch). Data are provided as delivered by the participating laboratories. 
-Data is updated on a monthly basis and contains susceptibility information for the previous 12 months.
+Anonymized antimicrobial susceptibility data is provided by the Swiss Centre for Antibiotic resistance ([anresis.ch](http://anresis.ch/)). Data are provided as delivered by the participating laboratories. Data is updated on a monthly basis and contains susceptibility information for the previous 12 months.
 
 ## User Interface
-The coloured circles displayed in the matrix represent the susceptibility of each bacterium (rows) to each antibiotic (columns). The circle size is logarithmically proportional to the sample size. Semi-transparent circles represent low sample sizes (N≤20). Data points with N≤5 are not displayed due to low data validity. The number in the center of the circle represents the percentage of susceptible samples. 
+The coloured circles displayed in the matrix represent the susceptibility of each bacterium (rows) to each antibiotic (columns). The circle size is logarithmically proportional to the sample size. Semi-transparent circles represent low sample sizes (N≤20). Data points with N≤5 are not displayed due to potential low data validity. The number in the center of the circle represents the percentage of susceptible samples. 
 ![Step 1][step1]
 
 
@@ -41,7 +40,7 @@ The antimicrobial treatment guideline data are based on guidelines from the Swis
 
 ## Regions
 ![Map][map]
-For further information, please consult the interactive map of anresis.ch.
+For further information, please consult [the interactive map of anresis.ch](http://www.anresis.ch/index.php/definition-der-auswahlkriterien.html#Regions).
 
 # Team and Support
 INFECT by anresis.ch is designed, developed and operated by INFECT, a non-profit association under Swiss law (founded on Feb 13, 2016). 
@@ -58,23 +57,30 @@ INFECT association consists of (alphabetical order):
 - Michael van der Weg, software architect, database and API programmer, and CTO at Joinbox Ltd. Bern
 
 
-Verein INFECT, Pascal M. Frey, Dept. of General Internal Medicine, Inselspital, Berne, Switzerland
+Verein INFECT
+Pascal M. Frey
+Dept. of General Internal Medicine
+Inselspital
+Berne, Switzerland
 
 
-Software development and product design for the INFECT application is done by Joinbox Ltd., a web and software development agency in Bern. 
+Software development and product design for the INFECT application is done by [Joinbox Ltd.](http://joinbox.com), a web and software development agency in Bern. 
 
 
-The resistance data displayed is provided by the Swiss Centre for Antibiotic resistance (anresis.ch):
+The resistance data displayed is provided by [the Swiss Centre for Antibiotic resistance (anresis.ch)](http://anresis.ch/):
 - Prof. Andreas Kronenberg, MD, Head of project anresis.ch, Institute for Infectious Diseases, University of Bern, Bern, Switzerland 
 - Michael Gasser, PhD, Epidemiologist, Institute for Infectious Diseases, University of Bern, Bern, Switzerland
 
 
 The INFECT project is supported by
-- Swiss Federal Office of Public Health
-- Swiss Centre for Antibiotic resistance (anresis.ch)
-- Institute for Infectious Diseases, University of Bern
-- Dept. of General Internal Medicine, University Hospital Bern (Inselspital)
-- Joinbox Ltd., Bern
+- [Swiss Federal Office of Public Health](https://www.bag.admin.ch/bag/en/home.html)
+- [Swiss Centre for Antibiotic resistance (anresis.ch)](http://anresis.ch/)
+- [Institute for Infectious Diseases, University of Bern](http://ifik.unibe.ch/)
+- [Dept. of General Internal Medicine, University Hospital Bern (Inselspital)](http://www.inneremedizin.insel.ch/)
+- [Joinbox Ltd., Bern](http://joinbox.com)
+- [Swiss Federal Food Safety and Veterinary Office](https://www.blv.admin.ch/blv/en/home.html)
+- [Institute of Veterinary Bacteriology, University of Bern](https://www.vbi.unibe.ch/index_eng.html)
+
 
 # Background Information
 
@@ -84,7 +90,7 @@ The INFECT project is supported by
 - Assist health professionals with empirical treatment choices by integrating validated antimicrobial treatment guidelines from external sources
 
 ## Source Code
-INFECT is an open source project developed under MIT license. You may view and clone the source code on GitHub.
+INFECT is an open source project developed under MIT license. You may [view and clone the source code on GitHub](https://github.com/infect-org).
 
 ## Terminology
 ### Empirical Antibiotic Therapy
@@ -102,7 +108,7 @@ The antibiotic treatment recommended by a guideline as an optional choice instea
 
 
 # Disclaimer
-INFECT in collaboration with anresis.ch and SSI maintains this website to enhance public access to information about antibiotic resistance, treatment guidelines, antibiotic consumption, infection control and epidemiology. Our goal is to keep this information timely and accurate and to minimize disruption caused by technical errors. However, some data, information, content or functions on our site may not be error-free and we cannot guarantee that our service will not be interrupted or otherwise affected by such problems.
+INFECT – in collaboration with anresis.ch and SSI – maintains this website to enhance public access to information about antibiotic resistance, treatment guidelines, antibiotic consumption, infection control and epidemiology. Our goal is to keep this information timely and accurate and to minimize disruption caused by technical errors. However, some data, information, content, or functions on our site may not be error-free and we cannot guarantee that our service will not be interrupted or otherwise affected by such problems.
 
 
 Therefore, INFECT specifically DISCLAIMS LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES and assumes no responsibility or liability for any loss or damage suffered by any person as a result of the use or misuse of any of the information, content or function on this website or any linked external sites.
