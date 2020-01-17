@@ -49,21 +49,21 @@
 
   input:checked + .side-label::after {
     //display: block;
-    background-color: var(--color--accent-1, $color--yellow-green);
+    background-color: var(--color--accent-1, $color--dusty-gray);
   }
 
   input:hover + .side-label
   ,input:hover + .side-label::before
   ,input:checked + .side-label
   ,input:checked + .side-label::before {
-    color: var(--color--accent-1, $color--yellow-green);
-    border-color: var(--color--accent-1, $color--yellow-green);
+    color: var(--color--accent-1, $color--dusty-gray);
+    border-color: var(--color--accent-1, $color--dusty-gray);
   }
   input:hover + .side-label::after {
-    background-color: rgba(var(--color--accent-1, $color--yellow-green), 0.2);
+    background-color: rgba(var(--color--accent-1, $color--dusty-gray), 0.2);
   }
   input:checked:hover + .side-label::after {
-    background-color: var(--color--accent-1, $color--yellow-green);
+    background-color: var(--color--accent-1, $color--dusty-gray);
   }
 }
 
@@ -97,14 +97,14 @@
     background-color: $color--mine-shaft;
   }
   input[type="checkbox"]:checked + .side-label::after {
-    background-color: var(--color--accent-1, $color--yellow-green);
+    background-color: var(--color--accent-1, $color--dusty-gray);
   }
   input[type="checkbox"]:hover + .side-label
   ,input[type="checkbox"]:hover + .side-label::after
   ,input[type="checkbox"]:checked + .side-label
   ,input[type="checkbox"]:checked + .side-label::after {
-    color: var(--color--accent-1, $color--yellow-green);
-    border-color: var(--color--accent-1, $color--yellow-green);
+    color: var(--color--accent-1, $color--dusty-gray);
+    border-color: var(--color--accent-1, $color--dusty-gray);
   }
 
 

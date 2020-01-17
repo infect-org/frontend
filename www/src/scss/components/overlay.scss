@@ -147,10 +147,10 @@ infooverlaybutton {
 
 	a {
 		@include transition(color, $transition-duration, ease-in-out);
-		color: var(--color--accent-1, $color--conifer);
+		color: var(--color--accent-1, $color--silver);
 
 		&:hover {
-			//color: var(--color--accent-2, $color--yellow-green);
+			//color: var(--color--accent-2, $color--dusty-gray);
 			text-decoration: underline;
 		}
 	}

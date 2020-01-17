@@ -39,6 +39,10 @@ $padding-lr: 30px;
 	background-color: $color--spindle;
 }
 
+.result.result--guideline:hover {
+	background-color: $color--spindle;
+}
+
 .result {
 	position: relative;
 	padding: 10px $padding-lr;
@@ -72,7 +76,7 @@ $padding-lr: 30px;
 	}
 
 	&:hover {
-		background-color: $color--white;
+		background-color: $color--ash;
 		cursor: pointer;
 
 		.result__checkmark {

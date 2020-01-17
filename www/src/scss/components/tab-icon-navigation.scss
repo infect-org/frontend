@@ -6,7 +6,7 @@
 	bottom: -10px;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-bottom: 6px solid var(--color--accent-1, $color--yellow-green);
+	border-bottom: 6px solid var(--color--accent-1, $color--dusty-gray);
 }
 
 .button--icon {
@@ -25,7 +25,7 @@
 		@include transition(fill, $transition-duration);
 
 		&:hover {
-			fill: var(--color--accent-1, $color--yellow-green);
+			fill: var(--color--accent-1, $color--dusty-gray);
 
 			@at-root {
 				.button--icon.button--icon--guidelines svg:hover {
@@ -37,7 +37,7 @@
 
 	&--active {
 		svg {
-			fill: var(--color--accent-1, $color--yellow-green);
+			fill: var(--color--accent-1, $color--dusty-gray);
 
 			@at-root {
 				.button--icon--active.button--icon--guidelines svg {

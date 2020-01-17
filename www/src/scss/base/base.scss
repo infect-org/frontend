@@ -56,11 +56,11 @@ button {
 
 // Links
 a {
-	color: var(--color--accent-2, $color--conifer);
+	color: var(--color--accent-2, $color--silver);
 	text-decoration: none;
 
 	&:hover {
-		color: var(--color--accent-1, $color--yellow-green);
+		color: var(--color--accent-1, $color--dusty-gray);
 		text-decoration: none;
 		outline: none;
 	}

@@ -3,7 +3,7 @@
 	@include justify-content(left);
 	padding-left: 20px;
 	align-items: center;
-	background-color: var(--color--accent-1, $color--yellow-green);
+	background-color: var(--color--accent-1, $color--dusty-gray);
 
 	&__link {
 		z-index: 5;
