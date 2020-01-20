@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { reaction, observable, action } from 'mobx';
+import { reaction, observable, action, runInAction } from 'mobx';
 import marked from 'marked';
 import { severityLevels } from '@infect/frontend-logic';
 import GuidedTourButton from '../guidedTour/guidedTourButton.jsx';
@@ -12,6 +12,12 @@ import InfoOverlayButton from './infoOverlayButton.jsx';
 export default @observer class InfoOverlay extends React.Component {
 
     @observable content = { __html: '' };
+
+    /**
+     * Contains all sections (equals h1 titles); is needed to create table of contents. Contains
+     * objects with properties title and className
+     */
+    @observable sections = [];
 
     constructor(...props) {
         super(...props);
@@ -32,6 +38,20 @@ export default @observer class InfoOverlay extends React.Component {
     prepareRenderer() {
 
         const renderer = new marked.Renderer();
+
+        // If we come across an H1, add it to sections
+        let sectionNumber = 0;
+        renderer.heading = (text, level) => {
+            if (level === 1) {
+                runInAction(() => {
+                    this.sections.push({
+                        title: text,
+                        className: `section-${++sectionNumber}`,
+                    });
+                })
+            }
+            return `<h${level} class='section-${sectionNumber}''>${text}</h${level}>`;
+        };
 
         renderer.link = (href, title, text) => {
             const titleString = title ? `title=${title}` : '';
@@ -107,9 +127,31 @@ export default @observer class InfoOverlay extends React.Component {
         }
     }
 
+    handleTableOfContentClick(event, className) {
+        event.preventDefault();
+        const sectionTitle = document.querySelector(`h1.${className}`);
+        if (!sectionTitle) return;
+        sectionTitle.scrollIntoView({ behavior: 'smooth' });
+    }
+
     render() {
         return (
             <div className={ `overlay ${this.props.infoOverlay.visible ? 'overlay--open' : ''}` }>
+
+                <div className="overlay__menu">
+                    <ol className="menu">
+                        {this.sections.map(item => (
+                            <li className={`menu-item ${item.className}`} key={item.className}>
+                                <a
+                                    href="#"
+                                    onClick={(ev) => this.handleTableOfContentClick(ev, item.className)}
+                                >
+                                    {item.title}
+                                </a>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
 
                 <InfoOverlayButton infoOverlay={this.props.infoOverlay} />
                 <div className="overlay__container">
