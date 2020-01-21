@@ -12,6 +12,7 @@ const log = debug('infect:TenantRunner');
  * Executes tenant related functions that cannot be tied to a real React component:
  * - loads Google Analytics
  * - sets CSS variables
+ * - sets Favicon
  */
 export default @observer class InfoOverlay extends React.Component {
 
@@ -32,6 +33,7 @@ export default @observer class InfoOverlay extends React.Component {
                 }
                 this.updateCSSVariables(frontendConfig);
                 this.initializeGoogleAnalytics(frontendConfig);
+                this.updateFavicon(frontendConfig);
                 // Let's assume that tenantConfig does not change once it has been fetched.
                 // Therefore we can and should dispose the reaction.
                 disposer.dispose();
@@ -71,6 +73,68 @@ export default @observer class InfoOverlay extends React.Component {
             }
         });
         log('Colors set to %o and %o', lightColor, darkColor);
+    }
+
+
+    updateFavicon(frontendConfig) {
+
+        if (
+            !frontendConfig.userInterface ||
+            typeof frontendConfig.userInterface !== 'object' ||
+            !frontendConfig.userInterface.darkColor
+        ) {
+            this.props.notifications.handle({
+                message: `Expected userIterface config to be an object with property darkColor, got ${JSON.stringify(frontendConfig.userInterface)} instead.`,
+                severity: severityLevels.warning,
+            });
+            return;
+        }
+
+        // There are multiple favicons (16x16 and 32x32). Replace all of them.
+        const favicons = document.querySelectorAll('link[rel="icon"]');
+        if (!favicons.length) {
+            // Favicon is just a «nice to have». Handle errors very discreetly.
+            console.warn('Could not find favicon, is %o', favicon);
+            return;
+        }
+
+        const color = frontendConfig.userInterface.darkColor;
+        const faviconSize = 32;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = faviconSize;
+        canvas.height = faviconSize;
+
+        // Create 3 levels of circles
+        const createCircle = (level, [x, y], radius, maxDepth) => {
+            if (level > maxDepth - 1) return;
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI * 2, true);
+            context.closePath();
+            context.fill();
+            // Draw 8 child circles around parent circle. If level is 0, only 1 circle is needed. 
+            for (let number = 0; number < 6; number++) {
+                // Angle of the current circle in relation to the previous circle; 0 is 3 o'clock,
+                // Math.PI is 9 o'clock (unit circle)
+                const angle = (Math.PI * 2) / 6 * number;
+                // Distance from center of parent to center of child circle
+                const centerDistance = radius * 2.4;
+                const newX = x + Math.cos(angle) * centerDistance;
+                const newY = y + Math.sin(angle) * centerDistance;
+                createCircle(level + 1, [newX, newY], radius / 3, maxDepth);
+            }
+        };
+        
+        const context = canvas.getContext('2d');
+        context.fillStyle = color;
+        createCircle(0, [faviconSize / 2, faviconSize / 2], faviconSize / 8, 8);
+
+        // To test, use size of ~640
+        // document.body.prepend(canvas);
+
+        for (const favicon of favicons) {
+            favicon.href = canvas.toDataURL('image/png');
+        }
     }
 
 
