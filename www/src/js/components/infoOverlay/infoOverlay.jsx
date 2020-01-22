@@ -1,78 +1,43 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { reaction, observable, action, runInAction } from 'mobx';
-import marked from 'marked';
+import { reaction, observable, action } from 'mobx';
 import { severityLevels } from '@infect/frontend-logic';
 import GuidedTourButton from '../guidedTour/guidedTourButton.jsx';
 import InfoOverlayButton from './infoOverlayButton.jsx';
+import setupMarked from './setupMarked';
+import fetchContents from './fetchContents.js';
 
 // import debug from 'debug';
 // const log = debug('infect:InfoOverlay');
 
 export default @observer class InfoOverlay extends React.Component {
 
+    /**
+     * Overlay content contains HTML; it's safe to use as source is server/source code. This
+     * requires us to pass a corresponding object to dangerouslySetInnerHTML.
+     */
     @observable content = { __html: '' };
 
     /**
      * Contains all sections (equals h1 titles); is needed to create table of contents. Contains
-     * objects with properties title and className
+     * objects with properties title and className.
      */
     @observable sections = [];
 
-    constructor(...props) {
-        super(...props);
 
-        this.renderer = this.prepareRenderer();
-
-        marked.setOptions({
-            gfm: true,
-            smartypants: true,
-            breaks: true,
+    /**
+     * Callback for marked renderer. Adds section object to this.sections.
+     * @param {string} title        Title of the section (h1)
+     * @param {string} className    Class of the section; needed to scroll to section when menu
+     *                              is clicked.
+     */
+    @action addSection(title, className) {
+        this.sections.push({
+            title,
+            className,
         });
     }
 
-    /**
-     * Tour button needs to open guided tour. Other links should open in a new window. This is not
-     * a native function of Markdown, we therefore have to extend/hijack it
-     */
-    prepareRenderer() {
-
-        const renderer = new marked.Renderer();
-
-        // If we come across an H1, add it to sections
-        let sectionNumber = 0;
-        renderer.heading = (text, level) => {
-            if (level === 1) {
-                runInAction(() => {
-                    this.sections.push({
-                        title: text,
-                        className: `section-${++sectionNumber}`,
-                    });
-                })
-            }
-            return `<h${level} class='section-${sectionNumber}''>${text}</h${level}>`;
-        };
-
-        renderer.link = (href, title, text) => {
-            const titleString = title ? `title=${title}` : '';
-            if (href === '#tourGuideButton') {
-                // TourGuideButton: Dispatch startGuidedTour event, is listened to in GuidedTour
-                // model. Use # link to remove #information from URL.
-                return `<a href="#" data-guided-tour-button onClick="window.dispatchEvent(new Event('startGuidedTour'));" ${titleString}>${text}</a>`;
-            } else {
-                // Open all links in a new window (add target="_blank")
-                return `<a href="${href}" target="_blank" ${titleString}>${text}</a>`;
-            }
-        };
-
-        return renderer;
-
-    }
-
-    /**
-     * Takes path to info overlay content from tenantConfig, fetches content and renders
-     * corresponding markdown
-     */
     componentDidMount() {
 
         /* global window */
@@ -81,37 +46,39 @@ export default @observer class InfoOverlay extends React.Component {
         });
         this.handleHashChange();
 
-        this.awaitTenantConfigAndFetchContent();
-    }
-
-    awaitTenantConfigAndFetchContent() {
+        // When overlay becomes visible and content has not yet been fetched, get it. Do not fetch
+        // content when app is loaded to not slow loading process down.
         reaction(
-            () => this.props.tenantConfig.config &&
-                this.props.tenantConfig.config.get('frontend'),
-            (frontendConfig, disposer) => {
-                if (
-                    !frontendConfig.userInterface ||
-                    !frontendConfig.userInterface.aboutDocumentUrl
-                ) {
-                    this.props.notifications.handle({
-                        message: `Property aboutDocumentUrl on tenantConfig.frontendConfig is missing; frontendConfig is ${JSON.stringify(frontendConfig)} instead.`,
-                        severity: severityLevels.warning,
-                    });
-                    return;
-                }
-                this.fetchContent(frontendConfig.userInterface.aboutDocumentUrl);
-                // Tenant config should not change once it has been fetched; dispose current
-                // reaction
-                disposer.dispose();
-            },
+            // Fire reaction when info overlay is switched and when tenantConfig changes, as
+            // tenantConfig may not be ready when user visits INFECT with #information hash
+            () => [this.props.infoOverlay.visible, this.props.tenantConfig.config.get('frontend')],
+            // Only fetch content once (when this.content.__html has not yet been set)
+            ([visible]) => visible && this.content.__html === '' &&
+                this.props.tenantConfig.config.get('frontend') && this.fetchContent(),
+            { fireImmediately: true },
         );
+
     }
 
-    async fetchContent(url) {
-        /* global fetch */
-        const rawContent = await fetch(url);
-        const textContent = await rawContent.text();
-        const htmlContent = marked(textContent, { renderer: this.renderer });
+    async fetchContent() {
+        const frontendConfig = this.props.tenantConfig.config.get('frontend');
+        if (
+            !frontendConfig.userInterface ||
+            !frontendConfig.userInterface.aboutDocumentUrl
+        ) {
+            this.props.notifications.handle({
+                message: `Property aboutDocumentUrl on tenantConfig.frontendConfig is missing; frontendConfig is ${JSON.stringify(frontendConfig)} instead. Cannot display info overlay.`,
+                severity: severityLevels.warning,
+            });
+            return;
+        }
+        const contentPaths = [
+            frontendConfig.userInterface.aboutDocumentUrl,
+            '/tenant/shared/about/privacyPolicy.md',
+        ];
+        const textContent = await fetchContents(contentPaths);
+        const { renderer, marked } = setupMarked(this.addSection.bind(this));
+        const htmlContent = marked(textContent, { renderer: renderer });
         this.updateContent(htmlContent);
     }
 
