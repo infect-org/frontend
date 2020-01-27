@@ -87,34 +87,45 @@ class PopulationFilterList extends React.Component {
                         </select>
                     </React.Fragment>
                 }
-
-                <h3 className="gray margin-top">Region</h3>
-                <ul className="group__list group__list--vertical">
-                    { this.regionFilters.map(item => (
-                        <FilterListCheckbox key={ item.value }
-                            name={ item.niceValue } inputName="region-name" value={ item.niceValue }
-                            checked={ this.isSelected(item) }
-                            onChangeHandler={ () => this._handleFilterChange(item) } />
-                    ))}
-                </ul>
-                <h3 className="gray margin-top">Age Group</h3>
-                <ul className="group__list group__list--vertical">
-                    { this.ageGroupFilters.map(item => (
-                        <FilterListCheckbox key={ item.value }
-                            name={ item.niceValue } inputName="ageGroup-name"
-                            value={ item.niceValue } checked={ this.isSelected(item) }
-                            onChangeHandler={ () => this._handleFilterChange(item) } />
-                    ))}
-                </ul>
-                <h3 className="gray margin-top">Hospital status</h3>
-                <ul className="group__list group__list--vertical">
-                    { this.hospitalStatusFilters.map(item => (
-                        <FilterListCheckbox key={ item.value }
-                            name={ item.niceValue } inputName="hospitalStatus-name"
-                            value={ item.niceValue } checked={ this.isSelected(item) }
-                            onChangeHandler={ () => this._handleFilterChange(item) } />
-                    ))}
-                </ul>
+                {this.regionFilters.length > 0 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Region</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.regionFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="region-name" value={ item.niceValue }
+                                    checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.ageGroupFilters.length > 0 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Age Group</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.ageGroupFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="ageGroup-name"
+                                    value={ item.niceValue } checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.hospitalStatusFilters.length > 0 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Hospital status</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.hospitalStatusFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="hospitalStatus-name"
+                                    value={ item.niceValue } checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
                 <OffsetFilters
                     identifier="data"
                     offsetFilters={this.props.offsetFilters}

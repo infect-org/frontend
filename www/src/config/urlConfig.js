@@ -20,7 +20,7 @@ export default Object.freeze({
             },
         },
         rda: {
-            prefix: 'rda/v1',
+            prefix: 'rda/v2',
             paths: {
                 data: 'rda.data',
                 counter: 'rda.configuration',

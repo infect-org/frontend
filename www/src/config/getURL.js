@@ -39,8 +39,7 @@ export default function getURL(scope, endpoint) {
         filter = '?showAllData=true';
     }
     
-
-    return `//${apiURL}/${scopeData.prefix}/${scopeData.paths[endpoint]}${filter}`;
+    return `https://${apiURL}/${scopeData.prefix}/${scopeData.paths[endpoint]}${filter}`;
 
 }
 
