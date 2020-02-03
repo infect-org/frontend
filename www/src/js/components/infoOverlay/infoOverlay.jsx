@@ -5,7 +5,6 @@ import { severityLevels } from '@infect/frontend-logic';
 import GuidedTourButton from '../guidedTour/guidedTourButton.jsx';
 import InfoOverlayButton from './infoOverlayButton.jsx';
 import setupMarked from './setupMarked';
-import fetchContents from './fetchContents.js';
 
 // import debug from 'debug';
 // const log = debug('infect:InfoOverlay');
@@ -72,11 +71,15 @@ export default @observer class InfoOverlay extends React.Component {
             });
             return;
         }
-        const contentPaths = [
-            frontendConfig.userInterface.aboutDocumentUrl,
-            '/tenant/shared/about/privacyPolicy.md',
-        ];
-        const textContent = await fetchContents(contentPaths);
+        const contentPath = frontendConfig.userInterface.aboutDocumentUrl;
+        let textContent;
+        try {
+            const rawContent = await fetch(contentPath);
+            textContent = await rawContent.text();
+        } catch (err) {
+            this.props.notifications.handle(err);
+            textContent = 'Content could not be loaded';
+        }
         const { renderer, marked } = setupMarked(this.addSection.bind(this));
         const htmlContent = marked(textContent, { renderer: renderer });
         this.updateContent(htmlContent);
