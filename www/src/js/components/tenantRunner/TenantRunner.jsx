@@ -107,6 +107,9 @@ export default @observer class InfoOverlay extends React.Component {
 
         // Create 3 levels of circles
         const createCircle = (level, [x, y], radius, maxDepth) => {
+            if (maxDepth > 3) {
+                console.warn('TenantRunner createCircle has a high maxDepth which may slow down INFECT');
+            }
             if (level > maxDepth - 1) return;
             context.beginPath();
             context.arc(x, y, radius, 0, Math.PI * 2, true);
@@ -121,13 +124,13 @@ export default @observer class InfoOverlay extends React.Component {
                 const centerDistance = radius * 2.4;
                 const newX = x + Math.cos(angle) * centerDistance;
                 const newY = y + Math.sin(angle) * centerDistance;
-                createCircle(level + 1, [newX, newY], radius / 3, maxDepth);
+                createCircle(level + 1, [newX, newY], radius / 2, maxDepth);
             }
         };
         
         const context = canvas.getContext('2d');
         context.fillStyle = color;
-        createCircle(0, [faviconSize / 2, faviconSize / 2], faviconSize / 8, 8);
+        createCircle(0, [faviconSize / 2, faviconSize / 2], faviconSize / 8, 3);
 
         // To test, use size of ~640
         // document.body.prepend(canvas);
@@ -135,6 +138,7 @@ export default @observer class InfoOverlay extends React.Component {
         for (const favicon of favicons) {
             favicon.href = canvas.toDataURL('image/png');
         }
+
     }
 
 
