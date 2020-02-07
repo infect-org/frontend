@@ -41,8 +41,14 @@ configure({ enforceActions: 'always' });
 
 
 
+// Use ?preview to show preview data (and also preview guidelines, see getURL)
+const showPreviewData = /(\?|&)preview/.test(window.location.search) ?
+    { showPreviewData : true } : {};
+
+
+
 // Setup models that are shared between mobile and web app
-const app = new InfectApp({ getURL });
+const app = new InfectApp({ getURL, ...showPreviewData });
 try {
     app.initialize();
     log('App initialized, is %o', app);

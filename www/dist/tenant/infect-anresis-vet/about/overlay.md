@@ -61,10 +61,10 @@ Sample size: number of isolates for which resistance data to the given antibioti
 INFECT by anresis.ch is designed, developed and operated by INFECT, a non-profit association under Swiss law (founded on Feb 13, 2016). 
 
 The board (Vorstand) of the INFECT association is currently formed by (alphabetical order): 
-- Silvio D. Brugger, MD, PhD, physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich
-- Pascal M. Frey (President), MD, MSc, INFECT project leader, physician at the Department of General Internal Medicine, Inselspital Bern
-- Felix Steiner, CEO at Joinbox Ltd. Bern
-- Lina van der Weg, CTO at Joinbox Ltd. Bern
+- Silvio D. Brugger, MD, PhD; attending physician at the Department of Infectious Diseases and Hospital Epidemiology, University Hospital Zurich; INFECT founding member
+- Pascal M. Frey MD, MSc; attending physician at the Department of General Internal Medicine, Bern University Hospital (Inselspital); INFECT founding member and president
+- Felix Steiner, CEO at Joinbox Ltd. Bern; INFECT founding member
+- Lina van der Weg, CTO at Joinbox Ltd. Bern; INFECT founding member
 
 
 Verein INFECT

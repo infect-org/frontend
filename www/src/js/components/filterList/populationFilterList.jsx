@@ -71,7 +71,7 @@ class PopulationFilterList extends React.Component {
     render() {
         return (
             <div id="population-filters">
-                {this.animalFilters.length > 0 &&
+                {this.animalFilters.length > 1 &&
                     <React.Fragment>
                         <h3 className="gray margin-top">Animal</h3>
                         <select
@@ -87,7 +87,7 @@ class PopulationFilterList extends React.Component {
                         </select>
                     </React.Fragment>
                 }
-                {this.regionFilters.length > 0 &&
+                {this.regionFilters.length > 1 &&
                     <React.Fragment>
                         <h3 className="gray margin-top">Region</h3>
                         <ul className="group__list group__list--vertical">
@@ -100,7 +100,7 @@ class PopulationFilterList extends React.Component {
                         </ul>
                     </React.Fragment>
                 }
-                {this.ageGroupFilters.length > 0 &&
+                {this.ageGroupFilters.length > 1 &&
                     <React.Fragment>
                         <h3 className="gray margin-top">Age Group</h3>
                         <ul className="group__list group__list--vertical">
@@ -113,7 +113,7 @@ class PopulationFilterList extends React.Component {
                         </ul>
                     </React.Fragment>
                 }
-                {this.hospitalStatusFilters.length > 0 &&
+                {this.hospitalStatusFilters.length > 1 &&
                     <React.Fragment>
                         <h3 className="gray margin-top">Hospital status</h3>
                         <ul className="group__list group__list--vertical">
