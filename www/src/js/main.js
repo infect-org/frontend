@@ -148,7 +148,7 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <AppBanner appBanner={app.appBanner} />,
+        <AppBanner appBanner={app.appBanner} tenantConfig={app.tenantConfig} />,
         document.querySelector('AppBanner'),
     );
 

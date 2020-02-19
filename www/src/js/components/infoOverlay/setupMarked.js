@@ -7,7 +7,7 @@ import marked from 'marked';
  * @param {function} sectionCallback      Callback that takes two params (title and className) of
  *                                        a section (and adds it to the menu)
  */
-export default (sectionCallback) => {
+export default (sectionCallback, appStoreURLs) => {
     
     marked.setOptions({
         gfm: true,
@@ -31,6 +31,10 @@ export default (sectionCallback) => {
             // TourGuideButton: Dispatch startGuidedTour event, is listened to in GuidedTour
             // model. Use # link to remove #information from URL.
             return `<a href="#" data-guided-tour-button onClick="window.dispatchEvent(new Event('startGuidedTour'));" ${titleString}>${text}</a>`;
+        } else if (href === '#iOSAppStoreLink') {
+            return `<a href=${appStoreURLs.iOS} target="_blank"><img src="img/apps/app-store-icon.png" alt="Apple App Store"></a>`;
+        } else if (href === '#androidPlayStoreLink') {
+            return `<a href=${appStoreURLs.playStore} target="_blank"><img src="img/apps/google-play-icon.png" alt="Google Play Store"></a>`;
         } else {
             // Open all links in a new window (add target="_blank")
             return `<a href="${href}" target="_blank" ${titleString}>${text}</a>`;

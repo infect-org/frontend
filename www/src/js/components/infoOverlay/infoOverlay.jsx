@@ -80,7 +80,10 @@ export default @observer class InfoOverlay extends React.Component {
             this.props.notifications.handle(err);
             textContent = 'Content could not be loaded';
         }
-        const { renderer, marked } = setupMarked(this.addSection.bind(this));
+        const { renderer, marked } = setupMarked(
+            this.addSection.bind(this),
+            frontendConfig.appStoreURLs || {},
+        );
         const htmlContent = marked(textContent, { renderer: renderer });
         this.updateContent(htmlContent);
     }
@@ -108,6 +111,8 @@ export default @observer class InfoOverlay extends React.Component {
         return (
             <div className={ `overlay ${this.props.infoOverlay.visible ? 'overlay--open' : ''}` }>
 
+                <InfoOverlayButton infoOverlay={this.props.infoOverlay} />
+
                 <div className="overlay__menu">
                     <ol className="menu">
                         {this.sections.map(item => (
@@ -124,6 +129,7 @@ export default @observer class InfoOverlay extends React.Component {
                 </div>
 
                 <InfoOverlayButton infoOverlay={this.props.infoOverlay} />
+
                 <div className="overlay__container">
                     <div className="overlay-markdown" dangerouslySetInnerHTML={this.content}></div>
                 </div>
