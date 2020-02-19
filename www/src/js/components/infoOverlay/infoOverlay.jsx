@@ -14,6 +14,55 @@ export default @observer class InfoOverlay extends React.Component {
             this.handleHashChange();
         });
         this.handleHashChange();
+<<<<<<< Updated upstream
+=======
+
+        // When overlay becomes visible and content has not yet been fetched, get it. Do not fetch
+        // content when app is loaded to not slow loading process down.
+        reaction(
+            // Fire reaction when info overlay is switched and when tenantConfig changes, as
+            // tenantConfig may not be ready when user visits INFECT with #information hash
+            () => [this.props.infoOverlay.visible, this.props.tenantConfig.config.get('frontend')],
+            // Only fetch content once (when this.content.__html has not yet been set)
+            ([visible]) => visible && this.content.__html === '' &&
+                this.props.tenantConfig.config.get('frontend') && this.fetchContent(),
+            { fireImmediately: true },
+        );
+
+    }
+
+    async fetchContent() {
+        const frontendConfig = this.props.tenantConfig.config.get('frontend');
+        if (
+            !frontendConfig.userInterface ||
+            !frontendConfig.userInterface.aboutDocumentUrl
+        ) {
+            this.props.notifications.handle({
+                message: `Property aboutDocumentUrl on tenantConfig.frontendConfig is missing; frontendConfig is ${JSON.stringify(frontendConfig)} instead. Cannot display info overlay.`,
+                severity: severityLevels.warning,
+            });
+            return;
+        }
+        const contentPath = frontendConfig.userInterface.aboutDocumentUrl;
+        let textContent;
+        try {
+            const rawContent = await fetch(contentPath);
+            textContent = await rawContent.text();
+        } catch (err) {
+            this.props.notifications.handle(err);
+            textContent = 'Content could not be loaded';
+        }
+        const { renderer, marked } = setupMarked(
+            this.addSection.bind(this),
+            frontendConfig.appStoreURLs || {},
+        );
+        const htmlContent = marked(textContent, { renderer: renderer });
+        this.updateContent(htmlContent);
+    }
+
+    @action updateContent(htmlContent) {
+        this.content = { __html: htmlContent };
+>>>>>>> Stashed changes
     }
 
     handleHashChange() {
