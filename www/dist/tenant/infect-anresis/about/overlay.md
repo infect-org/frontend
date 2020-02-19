@@ -8,11 +8,8 @@ Feedback is very welcome. Please write to [info@infect.info](mailto:info@infect.
 
 # INFECT Mobile App
 INFECT is available as an app for your smartphone and tablet:
-[![Apple Store][app-store-icon]](https://itunes.apple.com/us/app/infect/id1422829703?ls=1&mt=8)
-[![Google Play Store][google-play-icon]](https://play.google.com/store/apps/details?id=info.infect.app)
-
-[app-store-icon]: /tenant/infect-anresis/about/app-store-icon.png "Apple Store"
-[google-play-icon]: /tenant/infect-anresis/about/google-play-icon.png "Google Play Store"
+[iOS](#iOSAppStoreLink)
+[android](#androidPlayStoreLink)
 
 
 # Using INFECT
@@ -46,9 +43,9 @@ When a susceptibility circle is hovered by a cursor (“mouse-over”) or tapped
 Sample size: number of isolates for which resistance data to the given antibiotic are available (in the respective population if filters have been set). CI is based on this number.
 
 
-[step1]: /tenant/infect-anresis/about/step1.svg "Step 1"
-[step2]: /tenant/infect-anresis/about/step2.svg "Step2"
-[step3]: /tenant/infect-anresis/about/step3.svg "Step3"
+[step1]: /tenant/shared/about/step1.svg "Step 1"
+[step2]: /tenant/shared/about/step2.svg "Step2"
+[step3]: /tenant/shared/about/step3.svg "Step3"
 
 
 ## Regions

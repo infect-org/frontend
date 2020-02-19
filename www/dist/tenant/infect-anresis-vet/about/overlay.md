@@ -46,9 +46,9 @@ When a susceptibility circle is hovered by a cursor (“mouse-over”) or tapped
 Sample size: number of isolates for which resistance data to the given antibiotic are available (in the respective population if filters have been set). CI is based on this number.
 
 
-[step1]: /tenant/infect-anresis/about/step1.svg "Step 1"
-[step2]: /tenant/infect-anresis/about/step2.svg "Step2"
-[step3]: /tenant/infect-anresis/about/step3.svg "Step3"
+[step1]: /tenant/shared/about/step1.svg "Step 1"
+[step2]: /tenant/shared/about/step2.svg "Step2"
+[step3]: /tenant/shared/about/step3.svg "Step3"
 
 
 ## Regions
