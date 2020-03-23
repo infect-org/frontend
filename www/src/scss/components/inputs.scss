@@ -129,3 +129,17 @@
   }
 
 }
+
+
+/**
+ * Bright input element on dark background (animal filters for VET)
+ */
+.list-item--radio.list-item--bright {
+  .side-label::after {
+    border-color: $color--white;
+  }  
+  
+  input[type="radio"]:checked + .side-label::before {
+    background-color: $color--white;
+  }
+}

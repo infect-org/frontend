@@ -14,11 +14,26 @@ class PopulationFilterList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleAnimalFilterChange = this.handleAnimalFilterChange.bind(this);
     }
 
     _handleFilterChange(item) {
         log('Handle filter change for population filter %o', item);
+        this.props.selectedFilters.toggleFilter(item);
+    }
+
+    /**
+     * Animal name filter is a radio button; we therefore have to uncheck all other animal name
+     * filters before a new one is being set
+     * @param  {[type]} item [description]
+     * @return {[type]}      [description]
+     */
+    handleAnimalFilterChange(item) {
+        log('Handle filter change for population filter %o', item);
+        const selectedAnimals = this.props.selectedFilters.getFiltersByType(filterTypes.animal);
+        const filtersToRemove = selectedAnimals.filter(filter => filter !== item);
+        filtersToRemove.forEach(filter => this.props.selectedFilters.removeFilter(filter));
+        // Toggle filter (also allow users to de-select a filter by clicking a selected radio
+        // button)
         this.props.selectedFilters.toggleFilter(item);
     }
 
@@ -63,28 +78,24 @@ class PopulationFilterList extends React.Component {
         return this.props.selectedFilters.getFiltersByType(filterTypes.region).length === 0;
     }
 
-    handleAnimalFilterChange(event) {
-        const filter = this.animalFilters[event.target.value];
-        this.props.selectedFilters.toggleFilter(filter);
-    }
-
     render() {
         return (
             <div id="population-filters">
                 {this.animalFilters.length > 1 &&
                     <React.Fragment>
                         <h3 className="gray margin-top">Animal</h3>
-                        <select
-                            className="select"
-                            onChange={this.handleAnimalFilterChange}
-                        >
-                            <option>Please choose …</option>
-                            {this.animalFilters.map((animalFilter, index) => (
-                                <option key={animalFilter.value} value={index}>
-                                    {animalFilter.niceValue}
-                                </option>
+                        <ul className="group__list group__list--vertical">
+                            { this.animalFilters.map(item => (
+                                <FilterListCheckbox key={item.value}
+                                    name={item.niceValue}
+                                    inputName="animal-name"
+                                    shade="bright"
+                                    value={item.niceValue}
+                                    checked={this.isSelected(item)}
+                                    inputType="radio"
+                                    onChangeHandler={() => this.handleAnimalFilterChange(item) }/>
                             ))}
-                        </select>
+                        </ul>
                     </React.Fragment>
                 }
                 {this.regionFilters.length > 1 &&

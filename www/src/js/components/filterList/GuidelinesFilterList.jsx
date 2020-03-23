@@ -41,7 +41,7 @@ export default @observer class GuidelinesFilterList extends React.Component {
                         .map(diagnosis => (
                             <FilterListCheckbox
                                 key={diagnosis.id}
-                                inputName='diagnosis'
+                                inputName="diagnosis"
                                 name={diagnosis.name}
                                 inputType="radio"
                                 checked={
