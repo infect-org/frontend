@@ -116,6 +116,10 @@ matrixheader {
             fill: $color--jelly-bean;
         }
 
+        &.-deactivated {
+            fill: $color--silver;
+        }
+
     }
 
     &__resistance {
