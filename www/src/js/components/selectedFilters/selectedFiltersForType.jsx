@@ -33,6 +33,8 @@ export default class SelectedFiltersList extends React.Component {
                 return plural ? 'Diagnoses' : 'Diagnosis';
             case 'animals':
                 return plural ? 'Animals' : 'Animal';
+            case 'hospitalStatus':
+                return plural ? 'Patient Setting' :  'Patient Settings';
         }
     }
 
