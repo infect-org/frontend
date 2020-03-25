@@ -6,7 +6,7 @@ INFECT – an __IN__terface __F__or __E__mpirical antimicrobial __C__hemo**T**he
 Feedback is very welcome. Please write to [info@infect.info](mailto:info@infect.info) for issues regarding INFECT.
 
 
-# INFECT Mobile App
+# Mobile App
 INFECT is available as an app for your smartphone and tablet:
 [iOS](#iOSAppStoreLink)
 [android](#androidPlayStoreLink)
@@ -25,7 +25,7 @@ Anonymized antimicrobial susceptibility data is provided by the Swiss Centre for
 The antimicrobial treatment guideline data are based on [guidelines from the Swiss Society for Infectious Diseases (SSI)](http://ssi.guidelines.ch).
 
 ## User Interface
-The coloured circles displayed in the matrix represent the susceptibility of each bacterium (rows) to each antibiotic (columns). The circle size is logarithmically proportional to the sample size. Semi-transparent circles represent low sample sizes (N≤20). Data points with N≤5 are not displayed due to potential low data validity. The number in the center of the circle represents the percentage of susceptible samples. 
+The coloured circles displayed in the matrix represent the susceptibility of each bacterium (rows) to each antibiotic (columns). The circle size is logarithmically proportional to the sample size. Semi-transparent circles represent low sample sizes (default N≤20). Data points with N≤5 are not displayed due to potential low data validity. The number in the center of the circle represents the percentage of susceptible samples. 
 ![Step 1][step1]
 
 

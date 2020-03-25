@@ -1,5 +1,5 @@
 ## User Interface
-The coloured circles displayed in the matrix represent the susceptibility of each bacterium (rows) to each antibiotic (columns). The circle size is logarithmically proportional to the sample size. Semi-transparent circles represent low sample sizes (default N≤20). Data points with N≤5 are not displayed due to potential low data validity. The number in the center of the circle represents the percentage of susceptible samples. 
+The coloured circles displayed in the matrix represent the susceptibility of each bacterium (rows) to each antibiotic (columns). The circle size is logarithmically proportional to the sample size. Semi-transparent circles represent low sample sizes (default N≤5). Data points with N≤1 are not displayed due to potential low data validity. The number in the center of the circle represents the percentage of susceptible samples. 
 ![Step 1][step1]
 
 
