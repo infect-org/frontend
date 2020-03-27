@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { computed } from 'mobx';
+import { computed, action } from 'mobx';
 import { filterTypes } from '@infect/frontend-logic';
 import debug from 'debug';
 import OffsetFilters from './offsetFilters';
@@ -24,17 +24,19 @@ class PopulationFilterList extends React.Component {
     /**
      * Animal name filter is a radio button; we therefore have to uncheck all other animal name
      * filters before a new one is being set
-     * @param  {[type]} item [description]
-     * @return {[type]}      [description]
+     * *Must* be wrappend in an @action which executs the whole thing in a transaction
+     * (https://mobx.js.org/refguide/action.html); if it is not transactionized, 2 XHRs will fire
+     * (one without any filters, one with the new filters) and data displayed in matrix won't
+     * update at all.
      */
-    handleAnimalFilterChange(item) {
+    @action handleAnimalFilterChange(item) {
         log('Handle filter change for population filter %o', item);
         const selectedAnimals = this.props.selectedFilters.getFiltersByType(filterTypes.animal);
         const filtersToRemove = selectedAnimals.filter(filter => filter !== item);
         filtersToRemove.forEach(filter => this.props.selectedFilters.removeFilter(filter));
         // Toggle filter (also allow users to de-select a filter by clicking a selected radio
         // button)
-        this.props.selectedFilters.toggleFilter(item);
+        this.props.selectedFilters.toggleFilter(item);            
     }
 
     @computed get offsetMinimumValue() {
