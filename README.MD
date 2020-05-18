@@ -2,51 +2,6 @@
 
 Frontent for the INFECT application
 
-## Abbreviations
-- **SC**: Substance class
-- **AB**: Antibiotic
-- **BACT*: Bacterium
-
-## Flow
- 
-- Get data from server (unfiltered)
-- AB (including substance classes) and bact will never change; sample sizes and resistances may change depending on population filters
-- Create substance classes, AB, bact and resistances. 
-
-## Filters
-**BACTs** can be filtered by:
-- Properties of bacteria
-- Diagnosis; those relate directly to bacteria (1 diagnosis can be caused by n bacteria)
-
-**ABs** can be filtered by
-- properties of AB and SC
-- Diagnosis; those relate directly to bacteria (1 diagnosis can be caused by n bacteria)
-
-**Resistances** can be filtered by
-- Offset; the rows/cols of the matrix do not change, only the visibility of the resistances is updated
-
-
-# Structure
-## Components
-- Resistance
-- BacteriumTableHeader
-- AntibioticTableHeader
-- AntibioticSubstanceClassTableHeader
-
-## Models
-- Resistance (resistance, sampleSize, antibiotic, bacterium, visibilty)
-- Antibiotic (substanceClass)
-- Bacterium
-- SubstanceClass (parent)
-
-# Build
-
-## Possible MacOS Error
-
-Error: ```Package cairo was not found in the pkg-config search path.``` on installing the node modules.
-
-Fix: ```brew install pkg-config cairo libpng jpeg giflib``` and re-install the node modules
-
 ## Testing
 
 To run the tests provided, call
@@ -63,7 +18,10 @@ To run the dev server, call
 npm start
 ```
 
-`-env.dev` writes CSS files to JS and allows for hot reloading. Not using this flag writes CSS files to the file system.
+Parameters:
+- Pass `host` of a valid API to the URL when testing, e.g. http://localhost:3000/?host=beta.infect.info
+- Pass `previewGuidelines` to preview unpublished guidelines: http://localhost:3000/?previewGuidelines
+- Pass `dataVersionStatusIdentifiers` to preview a certain version of RDA data; valid values are `active` and `preview`, multiple entries must be comma separated, e.g. http://localhost:3000/?dataVersionStatusIdentifiers=active,preview
 
 ## Build
 
@@ -72,5 +30,3 @@ To build the CSS and JS files needed for the production system, call
 ```
 npm run build
 ```
-
-
