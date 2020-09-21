@@ -36,8 +36,12 @@ export default @observer class GuidelinesFilterList extends React.Component {
                     Empirical Therapies
                 </h3>
                 <ul className="group__list group__list--vertical">
+                    { /* Quick-Fix: List all therapies that belong to the diagnosisClass 'Specific
+                         Therapies' under their own chapter. TODO: Remove when specific diagnosis
+                         module is available */ }
                     {this.props.guidelines.selectedGuideline.diagnoses
                         .sort((a, b) => (a.name < b.name ? -1 : 1))
+                        .filter(diagnosis => diagnosis.diagnosisClass.name !== 'Specific Therapies')
                         .map(diagnosis => (
                             <FilterListCheckbox
                                 key={diagnosis.id}
@@ -54,24 +58,29 @@ export default @observer class GuidelinesFilterList extends React.Component {
                     }
                 </ul>
                 <h3 className="black margin-top">
-                    Specific Therapies<br/>(Coming Soon …)
+                    Specific Therapies
                 </h3>
-                { /* TODO: This is a quick fix to tease specific therapies on INFECT by anresis.ch. 
-                    Remove when specifi therapies are available and make tenant dependent when we
-                    create the first tenant. */}
                 <ul className="group__list group__list--vertical">
-                    <li className="list-item--radio group__list-item">
-                        <input type="radio" disabled />
-                        <label className="side-label gray">Chlamydia (C. trachomatis) / LGV</label>
-                    </li>
-                    <li className="list-item--radio group__list-item">
-                        <input type="radio" disabled />
-                        <label className="side-label gray">Gonorrhoe/ Tripper (N.gonorrhoea)</label>
-                    </li>
-                    <li className="list-item--radio group__list-item">
-                        <input type="radio" disabled />
-                        <label className="side-label gray">Syphilis / Lues</label>
-                    </li>
+                    { /* Quick-Fix: List all therapies that belong to the diagnosisClass 'Specific
+                         Therapies' under their own chapter. TODO: Remove when specific diagnosis
+                         module is available */ }
+                    {this.props.guidelines.selectedGuideline.diagnoses
+                        .sort((a, b) => (a.name < b.name ? -1 : 1))
+                        .filter(diagnosis => diagnosis.diagnosisClass.name === 'Specific Therapies')
+                        .map(diagnosis => (
+                            <FilterListCheckbox
+                                key={diagnosis.id}
+                                inputName="diagnosis"
+                                name={diagnosis.name}
+                                inputType="radio"
+                                checked={
+                                    diagnosis ===
+                                        this.props.guidelines.selectedGuideline.selectedDiagnosis
+                                }
+                                onChangeHandler={() => this.selectDiagnosis(diagnosis)}
+                            />
+                        ))
+                    }
                 </ul>
             </div>
         );
