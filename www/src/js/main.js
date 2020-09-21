@@ -41,14 +41,22 @@ configure({ enforceActions: 'always' });
 
 
 
-// Use ?preview to show preview data (and also preview guidelines, see getURL)
-const showPreviewData = /(\?|&)preview/.test(window.location.search) ?
-    { showPreviewData : true } : {};
-
+const previews = {};
+// Use ?previewGuideline to preview guidelines
+if (/(\?|&)previewGuidelines/.test(window.location.search)) {
+    previews.previewGuidelines = true;
+}
+// Use ?dataVersionStatusIdentifiers=active,preview to view corresponding data versions of RDA
+const dataVersionsParam = /(\?|&)dataVersionStatusIdentifiers=([^\&]*)/
+    .exec(window.location.search);
+if (dataVersionsParam && dataVersionsParam.length > 2 && dataVersionsParam[2].length) {
+    const dataVersions = dataVersionsParam[2].split(',');
+    previews.dataVersionStatusIdentifiers = dataVersions;
+}
 
 
 // Setup models that are shared between mobile and web app
-const app = new InfectApp({ getURL, ...showPreviewData });
+const app = new InfectApp({ getURL, ...previews });
 try {
     app.initialize();
     log('App initialized, is %o', app);

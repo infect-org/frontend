@@ -35,7 +35,7 @@ export default function getURL(scope, endpoint) {
     
     // If URL's query params include ?preview or &preview, also load guideline data that has not yet
     // ben published. See https://github.com/infect-org/issues/issues/47.
-    if (scope === 'guidelines' && /(\?|&)preview/.test(window.location.search)) {
+    if (scope === 'guideline' && /(\?|&)preview/.test(window.location.search)) {
         filter = '?showAllData=true';
     }
     
