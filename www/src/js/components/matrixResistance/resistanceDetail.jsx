@@ -16,12 +16,8 @@ class ResistanceDetail extends React.Component {
 
 	@computed get transformation() {
 		log('Get transformation for resistanceDetail');
-		// Make sure resistanceDetail is not hidden behind matrix header (which has a higher z-index
-		// due to it's fixed position when scrolling). 
-		const correctTop = this.props.resistance.yPosition.top + this.props.defaultRadius;
-		const top = Math.max(correctTop, this._radius);
 		return `translate(${ this.props.resistance.xPosition.left + this.props.defaultRadius }, 
-			${ top })`;
+			${ this.props.resistance.yPosition.top + this.props.defaultRadius })`;
 	}
 
 	render() {

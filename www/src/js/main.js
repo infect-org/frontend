@@ -13,7 +13,6 @@ import ReactDOM from 'react-dom';
 import React from 'react'; // Not needed here, but error is thrown if we don't import it
 
 import Matrix from './components/matrix/matrix.jsx';
-import MatrixHeader from './components/matrix/matrixHeader.jsx';
 import FilterList from './components/filterList/filterList.jsx';
 import SelectedFiltersList from './components/selectedFilters/selectedFiltersList.jsx';
 import FilterListMenu from './components/filterListMenu/filterListMenu.jsx';
@@ -84,16 +83,6 @@ function renderReact() {
             guidelines={app.guidelines}
         />,
         document.querySelector('Matrix'),
-    );
-
-    ReactDOM.render(
-        <MatrixHeader
-            matrix={app.views.matrix}
-            filters={app.filterValues}
-            selectedFilters={app.selectedFilters}
-            guidelines={app.guidelines}
-        />,
-        document.querySelector('MatrixHeader'),
     );
 
     ReactDOM.render(
