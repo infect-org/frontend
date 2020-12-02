@@ -26,3 +26,5 @@ config.js
 coverage
 
 www/src/bower_components
+
+.DS_Store
