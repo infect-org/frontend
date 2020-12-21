@@ -128,7 +128,7 @@ class PopulationFilterList extends React.Component {
                 }
                 {this.hospitalStatusFilters.length > 1 &&
                     <React.Fragment>
-                        <h3 className="gray margin-top">Hospital status</h3>
+                        <h3 className="gray margin-top">Patient Setting</h3>
                         <ul className="group__list group__list--vertical">
                             { this.hospitalStatusFilters.map(item => (
                                 <FilterListCheckbox key={ item.value }
