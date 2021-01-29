@@ -8,14 +8,6 @@ import urlConfig from './urlConfig.js';
  */
 export default function getURL(scope, endpoint) {
 
-
-    // TODO: VET2020
-    // Also remove mock api endpoint?
-    if (scope === 'coreData' && endpoint === 'sampleSource') {
-        const url = `${window.location.protocol}//${window.location.hostname}:${window.location.port}/mockApi/sampleSource.json`;
-        return url;
-    }
-
     let baseURL = window.location.host;
 
     // Let users chose tenant (only on dev environment). To do so, add e.g. ?host=vet.infect.info

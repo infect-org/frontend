@@ -9125,7 +9125,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // https://babeljs.io/docs/usage/polyfill/
 // Tests throw ReferenceError: regeneratorRuntime is not defined if we don't include the polyfill
-//import 'babel-polyfill';
+// import 'babel-polyfill';
 
 /**
 * Wrapper for fetch API requests.
@@ -9167,7 +9167,7 @@ function _fetchApi() {
 
           case 7:
             responseText = _context.sent;
-            err = new Error("fetchApi: API returned invalid HTTP status ".concat(response.status, ",\n            content is ").concat(responseText, "."));
+            err = new Error("fetchApi: Calling ".concat(url, " returned invalid HTTP status ").concat(response.status, ",\n            content is ").concat(responseText, "."));
             err.name = 'HTTPStatusError';
             throw err;
 
@@ -14205,8 +14205,8 @@ var PopulationFilterFetcher = /*#__PURE__*/function (_StandardFetcher) {
           // by only 1 animal – humans).
           if (_this2.rdaCounterType) {
             if (!_this2.rdaCounterStore.hasItem(_this2.rdaCounterType, filterEntry.id)) {
-              log('Population filter %o is not part of RDA, skip it', filterEntry); // TODO VET2020 uncomment
-              // return;
+              log('Population filter %o is not part of RDA, skip it', filterEntry);
+              return;
             }
           }
 
@@ -15398,11 +15398,12 @@ var ResistanceMatrixView = (_class = /*#__PURE__*/function () {
 
       var lightness = this._getRelativeColorValue(bestValue, 0.4, 0.9);
 
-      return tinycolor2__WEBPACK_IMPORTED_MODULE_0___default.a.fromRatio({
+      var backgroundColor = tinycolor2__WEBPACK_IMPORTED_MODULE_0___default.a.fromRatio({
         h: hue,
         s: saturation,
         l: lightness
       });
+      return backgroundColor;
     }
   }, {
     key: "fontColor",
@@ -15437,7 +15438,7 @@ var ResistanceMatrixView = (_class = /*#__PURE__*/function () {
   }]);
 
   return ResistanceMatrixView;
-}(), (_applyDecoratedDescriptor(_class.prototype, "visible", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "visible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mostPreciseValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "mostPreciseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "radius", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "radius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "backgroundColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "backgroundColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "xPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "yPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "matchesOffsets", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "matchesOffsets"), _class.prototype)), _class);
+}(), (_applyDecoratedDescriptor(_class.prototype, "visible", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "visible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mostPreciseValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "mostPreciseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "radius", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "radius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "backgroundColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "backgroundColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "fontColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "fontColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "xPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "yPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "matchesOffsets", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "matchesOffsets"), _class.prototype)), _class);
 
 
 /***/ }),
@@ -60429,12 +60430,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function getURL(scope, endpoint) {
-  // TODO: VET2020
-  if (scope === 'coreData' && endpoint === 'sampleSource') {
-    var url = "".concat(window.location.protocol, "//").concat(window.location.hostname, ":").concat(window.location.port, "/mockApi/sampleSource.json");
-    return url;
-  }
-
   var baseURL = window.location.host; // Let users chose tenant (only on dev environment). To do so, add e.g. ?host=vet.infect.info
   // to the URL
 
@@ -60496,7 +60491,8 @@ __webpack_require__.r(__webpack_exports__);
         substanceClasses: 'substance.substanceClass',
         ageGroups: 'generics.ageGroup',
         hospitalStatus: 'generics.hospitalStatus',
-        animals: 'generics.animal'
+        animals: 'generics.animal',
+        sampleSource: 'generics.sampleSource'
       }
     },
     rda: {
