@@ -86,32 +86,32 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/@infect/frontend-logic/index.js":
-/*!******************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/index.js ***!
-  \******************************************************/
+/***/ "../frontend-logic/index.js":
+/*!**********************************!*\
+  !*** ../frontend-logic/index.js ***!
+  \**********************************/
 /*! exports provided: default, filterTypes, resistanceTypes, models, storeStatus, severityLevels */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "models", function() { return models; });
-/* harmony import */ var _src_infectApp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/infectApp */ "./node_modules/@infect/frontend-logic/src/infectApp.js");
+/* harmony import */ var _src_infectApp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/infectApp */ "../frontend-logic/src/infectApp.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _src_infectApp__WEBPACK_IMPORTED_MODULE_0__["default"]; });
 
-/* harmony import */ var _src_models_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/models/filters/filterTypes */ "./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _src_models_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/models/filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "filterTypes", function() { return _src_models_filters_filterTypes__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/models/resistances/resistanceTypes */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceTypes.js");
+/* harmony import */ var _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/models/resistances/resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "resistanceTypes", function() { return _src_models_resistances_resistanceTypes__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _src_helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/helpers/storeStatus.js */ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var _src_helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/helpers/storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "storeStatus", function() { return _src_helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _src_models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/models/notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _src_models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/models/notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "severityLevels", function() { return _src_models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/models/antibiotics/antibioticMatrixView */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
+/* harmony import */ var _src_models_antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/models/antibiotics/antibioticMatrixView */ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
 
 
 
@@ -127,18 +127,9697 @@ var models = {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/BaseStore.js":
+/***/ "../frontend-logic/node_modules/call-bind/callBound.js":
+/*!*************************************************************!*\
+  !*** ../frontend-logic/node_modules/call-bind/callBound.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var GetIntrinsic = __webpack_require__(/*! get-intrinsic */ "../frontend-logic/node_modules/get-intrinsic/index.js");
+
+var callBind = __webpack_require__(/*! ./ */ "../frontend-logic/node_modules/call-bind/index.js");
+
+var $indexOf = callBind(GetIntrinsic('String.prototype.indexOf'));
+
+module.exports = function callBoundIntrinsic(name, allowMissing) {
+  var intrinsic = GetIntrinsic(name, !!allowMissing);
+
+  if (typeof intrinsic === 'function' && $indexOf(name, '.prototype.') > -1) {
+    return callBind(intrinsic);
+  }
+
+  return intrinsic;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/call-bind/index.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/node_modules/call-bind/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bind = __webpack_require__(/*! function-bind */ "../frontend-logic/node_modules/function-bind/index.js");
+
+var GetIntrinsic = __webpack_require__(/*! get-intrinsic */ "../frontend-logic/node_modules/get-intrinsic/index.js");
+
+var $apply = GetIntrinsic('%Function.prototype.apply%');
+var $call = GetIntrinsic('%Function.prototype.call%');
+var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
+var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
+var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
+var $max = GetIntrinsic('%Math.max%');
+
+if ($defineProperty) {
+  try {
+    $defineProperty({}, 'a', {
+      value: 1
+    });
+  } catch (e) {
+    // IE 8 has a broken defineProperty
+    $defineProperty = null;
+  }
+}
+
+module.exports = function callBind(originalFunction) {
+  var func = $reflectApply(bind, $call, arguments);
+
+  if ($gOPD && $defineProperty) {
+    var desc = $gOPD(func, 'length');
+
+    if (desc.configurable) {
+      // original length, plus the receiver, minus any additional arguments (after the receiver)
+      $defineProperty(func, 'length', {
+        value: 1 + $max(0, originalFunction.length - (arguments.length - 1))
+      });
+    }
+  }
+
+  return func;
+};
+
+var applyBind = function applyBind() {
+  return $reflectApply(bind, $apply, arguments);
+};
+
+if ($defineProperty) {
+  $defineProperty(module.exports, 'apply', {
+    value: applyBind
+  });
+} else {
+  module.exports.apply = applyBind;
+}
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/debug/src/browser.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/node_modules/debug/src/browser.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/* eslint-env browser */
+
+/**
+ * This is the web browser implementation of `debug()`.
+ */
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = localstorage();
+
+exports.destroy = function () {
+  var warned = false;
+  return function () {
+    if (!warned) {
+      warned = true;
+      console.warn('Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`.');
+    }
+  };
+}();
+/**
+ * Colors.
+ */
+
+
+exports.colors = ['#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC', '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF', '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC', '#3399FF', '#33CC00', '#33CC33', '#33CC66', '#33CC99', '#33CCCC', '#33CCFF', '#6600CC', '#6600FF', '#6633CC', '#6633FF', '#66CC00', '#66CC33', '#9900CC', '#9900FF', '#9933CC', '#9933FF', '#99CC00', '#99CC33', '#CC0000', '#CC0033', '#CC0066', '#CC0099', '#CC00CC', '#CC00FF', '#CC3300', '#CC3333', '#CC3366', '#CC3399', '#CC33CC', '#CC33FF', '#CC6600', '#CC6633', '#CC9900', '#CC9933', '#CCCC00', '#CCCC33', '#FF0000', '#FF0033', '#FF0066', '#FF0099', '#FF00CC', '#FF00FF', '#FF3300', '#FF3333', '#FF3366', '#FF3399', '#FF33CC', '#FF33FF', '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'];
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+// eslint-disable-next-line complexity
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && (window.process.type === 'renderer' || window.process.__nwjs)) {
+    return true;
+  } // Internet Explorer and Edge do not support colors.
+
+
+  if (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/)) {
+    return false;
+  } // Is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+
+
+  return typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance || // Is firebug? http://stackoverflow.com/a/398120/376773
+  typeof window !== 'undefined' && window.console && (window.console.firebug || window.console.exception && window.console.table) || // Is firefox >= v31?
+  // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+  typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31 || // Double check webkit in userAgent just in case we are in a worker
+  typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/);
+}
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+
+function formatArgs(args) {
+  args[0] = (this.useColors ? '%c' : '') + this.namespace + (this.useColors ? ' %c' : ' ') + args[0] + (this.useColors ? '%c ' : ' ') + '+' + module.exports.humanize(this.diff);
+
+  if (!this.useColors) {
+    return;
+  }
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit'); // The final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function (match) {
+    if (match === '%%') {
+      return;
+    }
+
+    index++;
+
+    if (match === '%c') {
+      // We only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+  args.splice(lastC, 0, c);
+}
+/**
+ * Invokes `console.debug()` when available.
+ * No-op when `console.debug` is not a "function".
+ * If `console.debug` is not available, falls back
+ * to `console.log`.
+ *
+ * @api public
+ */
+
+
+exports.log = console.debug || console.log || function () {};
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+
+function save(namespaces) {
+  try {
+    if (namespaces) {
+      exports.storage.setItem('debug', namespaces);
+    } else {
+      exports.storage.removeItem('debug');
+    }
+  } catch (error) {// Swallow
+    // XXX (@Qix-) should we be logging these?
+  }
+}
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+
+function load() {
+  var r;
+
+  try {
+    r = exports.storage.getItem('debug');
+  } catch (error) {// Swallow
+    // XXX (@Qix-) should we be logging these?
+  } // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+
+
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+
+function localstorage() {
+  try {
+    // TVMLKit (Apple TV JS Runtime) does not have a window object, just localStorage in the global context
+    // The Browser also has localStorage in the global context.
+    return localStorage;
+  } catch (error) {// Swallow
+    // XXX (@Qix-) should we be logging these?
+  }
+}
+
+module.exports = __webpack_require__(/*! ./common */ "../frontend-logic/node_modules/debug/src/common.js")(exports);
+var formatters = module.exports.formatters;
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+formatters.j = function (v) {
+  try {
+    return JSON.stringify(v);
+  } catch (error) {
+    return '[UnexpectedJSONParseError]: ' + error.message;
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../infect-frontend/node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/debug/src/common.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/node_modules/debug/src/common.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ */
+function setup(env) {
+  createDebug.debug = createDebug;
+  createDebug.default = createDebug;
+  createDebug.coerce = coerce;
+  createDebug.disable = disable;
+  createDebug.enable = enable;
+  createDebug.enabled = enabled;
+  createDebug.humanize = __webpack_require__(/*! ms */ "../frontend-logic/node_modules/ms/index.js");
+  createDebug.destroy = destroy;
+  Object.keys(env).forEach(function (key) {
+    createDebug[key] = env[key];
+  });
+  /**
+  * The currently active debug mode names, and names to skip.
+  */
+
+  createDebug.names = [];
+  createDebug.skips = [];
+  /**
+  * Map of special "%n" handling functions, for the debug "format" argument.
+  *
+  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+  */
+
+  createDebug.formatters = {};
+  /**
+  * Selects a color for a debug namespace
+  * @param {String} namespace The namespace string for the for the debug instance to be colored
+  * @return {Number|String} An ANSI color code for the given namespace
+  * @api private
+  */
+
+  function selectColor(namespace) {
+    var hash = 0;
+
+    for (var i = 0; i < namespace.length; i++) {
+      hash = (hash << 5) - hash + namespace.charCodeAt(i);
+      hash |= 0; // Convert to 32bit integer
+    }
+
+    return createDebug.colors[Math.abs(hash) % createDebug.colors.length];
+  }
+
+  createDebug.selectColor = selectColor;
+  /**
+  * Create a debugger with the given `namespace`.
+  *
+  * @param {String} namespace
+  * @return {Function}
+  * @api public
+  */
+
+  function createDebug(namespace) {
+    var prevTime;
+    var enableOverride = null;
+    var namespacesCache;
+    var enabledCache;
+
+    function debug() {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      // Disabled?
+      if (!debug.enabled) {
+        return;
+      }
+
+      var self = debug; // Set `diff` timestamp
+
+      var curr = Number(new Date());
+      var ms = curr - (prevTime || curr);
+      self.diff = ms;
+      self.prev = prevTime;
+      self.curr = curr;
+      prevTime = curr;
+      args[0] = createDebug.coerce(args[0]);
+
+      if (typeof args[0] !== 'string') {
+        // Anything else let's inspect with %O
+        args.unshift('%O');
+      } // Apply any `formatters` transformations
+
+
+      var index = 0;
+      args[0] = args[0].replace(/%([a-zA-Z%])/g, function (match, format) {
+        // If we encounter an escaped % then don't increase the array index
+        if (match === '%%') {
+          return '%';
+        }
+
+        index++;
+        var formatter = createDebug.formatters[format];
+
+        if (typeof formatter === 'function') {
+          var val = args[index];
+          match = formatter.call(self, val); // Now we need to remove `args[index]` since it's inlined in the `format`
+
+          args.splice(index, 1);
+          index--;
+        }
+
+        return match;
+      }); // Apply env-specific formatting (colors, etc.)
+
+      createDebug.formatArgs.call(self, args);
+      var logFn = self.log || createDebug.log;
+      logFn.apply(self, args);
+    }
+
+    debug.namespace = namespace;
+    debug.useColors = createDebug.useColors();
+    debug.color = createDebug.selectColor(namespace);
+    debug.extend = extend;
+    debug.destroy = createDebug.destroy; // XXX Temporary. Will be removed in the next major release.
+
+    Object.defineProperty(debug, 'enabled', {
+      enumerable: true,
+      configurable: false,
+      get: function get() {
+        if (enableOverride !== null) {
+          return enableOverride;
+        }
+
+        if (namespacesCache !== createDebug.namespaces) {
+          namespacesCache = createDebug.namespaces;
+          enabledCache = createDebug.enabled(namespace);
+        }
+
+        return enabledCache;
+      },
+      set: function set(v) {
+        enableOverride = v;
+      }
+    }); // Env-specific initialization logic for debug instances
+
+    if (typeof createDebug.init === 'function') {
+      createDebug.init(debug);
+    }
+
+    return debug;
+  }
+
+  function extend(namespace, delimiter) {
+    var newDebug = createDebug(this.namespace + (typeof delimiter === 'undefined' ? ':' : delimiter) + namespace);
+    newDebug.log = this.log;
+    return newDebug;
+  }
+  /**
+  * Enables a debug mode by namespaces. This can include modes
+  * separated by a colon and wildcards.
+  *
+  * @param {String} namespaces
+  * @api public
+  */
+
+
+  function enable(namespaces) {
+    createDebug.save(namespaces);
+    createDebug.namespaces = namespaces;
+    createDebug.names = [];
+    createDebug.skips = [];
+    var i;
+    var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+    var len = split.length;
+
+    for (i = 0; i < len; i++) {
+      if (!split[i]) {
+        // ignore empty strings
+        continue;
+      }
+
+      namespaces = split[i].replace(/\*/g, '.*?');
+
+      if (namespaces[0] === '-') {
+        createDebug.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+      } else {
+        createDebug.names.push(new RegExp('^' + namespaces + '$'));
+      }
+    }
+  }
+  /**
+  * Disable debug output.
+  *
+  * @return {String} namespaces
+  * @api public
+  */
+
+
+  function disable() {
+    var namespaces = [].concat(_toConsumableArray(createDebug.names.map(toNamespace)), _toConsumableArray(createDebug.skips.map(toNamespace).map(function (namespace) {
+      return '-' + namespace;
+    }))).join(',');
+    createDebug.enable('');
+    return namespaces;
+  }
+  /**
+  * Returns true if the given mode name is enabled, false otherwise.
+  *
+  * @param {String} name
+  * @return {Boolean}
+  * @api public
+  */
+
+
+  function enabled(name) {
+    if (name[name.length - 1] === '*') {
+      return true;
+    }
+
+    var i;
+    var len;
+
+    for (i = 0, len = createDebug.skips.length; i < len; i++) {
+      if (createDebug.skips[i].test(name)) {
+        return false;
+      }
+    }
+
+    for (i = 0, len = createDebug.names.length; i < len; i++) {
+      if (createDebug.names[i].test(name)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+  /**
+  * Convert regexp to namespace
+  *
+  * @param {RegExp} regxep
+  * @return {String} namespace
+  * @api private
+  */
+
+
+  function toNamespace(regexp) {
+    return regexp.toString().substring(2, regexp.toString().length - 2).replace(/\.\*\?$/, '*');
+  }
+  /**
+  * Coerce `val`.
+  *
+  * @param {Mixed} val
+  * @return {Mixed}
+  * @api private
+  */
+
+
+  function coerce(val) {
+    if (val instanceof Error) {
+      return val.stack || val.message;
+    }
+
+    return val;
+  }
+  /**
+  * XXX DO NOT USE. This is a temporary stub function.
+  * XXX It WILL be removed in the next major release.
+  */
+
+
+  function destroy() {
+    console.warn('Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`.');
+  }
+
+  createDebug.enable(createDebug.load());
+  return createDebug;
+}
+
+module.exports = setup;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/deep-equal/index.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/node_modules/deep-equal/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var objectKeys = __webpack_require__(/*! object-keys */ "../frontend-logic/node_modules/object-keys/index.js");
+
+var isArguments = __webpack_require__(/*! is-arguments */ "../frontend-logic/node_modules/is-arguments/index.js");
+
+var is = __webpack_require__(/*! object-is */ "../frontend-logic/node_modules/object-is/index.js");
+
+var isRegex = __webpack_require__(/*! is-regex */ "../frontend-logic/node_modules/is-regex/index.js");
+
+var flags = __webpack_require__(/*! regexp.prototype.flags */ "../frontend-logic/node_modules/regexp.prototype.flags/index.js");
+
+var isDate = __webpack_require__(/*! is-date-object */ "../frontend-logic/node_modules/is-date-object/index.js");
+
+var getTime = Date.prototype.getTime;
+
+function deepEqual(actual, expected, options) {
+  var opts = options || {}; // 7.1. All identical values are equivalent, as determined by ===.
+
+  if (opts.strict ? is(actual, expected) : actual === expected) {
+    return true;
+  } // 7.3. Other pairs that do not both pass typeof value == 'object', equivalence is determined by ==.
+
+
+  if (!actual || !expected || _typeof(actual) !== 'object' && _typeof(expected) !== 'object') {
+    return opts.strict ? is(actual, expected) : actual == expected;
+  }
+  /*
+   * 7.4. For all other Object pairs, including Array objects, equivalence is
+   * determined by having the same number of owned properties (as verified
+   * with Object.prototype.hasOwnProperty.call), the same set of keys
+   * (although not necessarily the same order), equivalent values for every
+   * corresponding key, and an identical 'prototype' property. Note: this
+   * accounts for both named and indexed properties on Arrays.
+   */
+  // eslint-disable-next-line no-use-before-define
+
+
+  return objEquiv(actual, expected, opts);
+}
+
+function isUndefinedOrNull(value) {
+  return value === null || value === undefined;
+}
+
+function isBuffer(x) {
+  if (!x || _typeof(x) !== 'object' || typeof x.length !== 'number') {
+    return false;
+  }
+
+  if (typeof x.copy !== 'function' || typeof x.slice !== 'function') {
+    return false;
+  }
+
+  if (x.length > 0 && typeof x[0] !== 'number') {
+    return false;
+  }
+
+  return true;
+}
+
+function objEquiv(a, b, opts) {
+  /* eslint max-statements: [2, 50] */
+  var i, key;
+
+  if (_typeof(a) !== _typeof(b)) {
+    return false;
+  }
+
+  if (isUndefinedOrNull(a) || isUndefinedOrNull(b)) {
+    return false;
+  } // an identical 'prototype' property.
+
+
+  if (a.prototype !== b.prototype) {
+    return false;
+  }
+
+  if (isArguments(a) !== isArguments(b)) {
+    return false;
+  }
+
+  var aIsRegex = isRegex(a);
+  var bIsRegex = isRegex(b);
+
+  if (aIsRegex !== bIsRegex) {
+    return false;
+  }
+
+  if (aIsRegex || bIsRegex) {
+    return a.source === b.source && flags(a) === flags(b);
+  }
+
+  if (isDate(a) && isDate(b)) {
+    return getTime.call(a) === getTime.call(b);
+  }
+
+  var aIsBuffer = isBuffer(a);
+  var bIsBuffer = isBuffer(b);
+
+  if (aIsBuffer !== bIsBuffer) {
+    return false;
+  }
+
+  if (aIsBuffer || bIsBuffer) {
+    // && would work too, because both are true or both false here
+    if (a.length !== b.length) {
+      return false;
+    }
+
+    for (i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  if (_typeof(a) !== _typeof(b)) {
+    return false;
+  }
+
+  try {
+    var ka = objectKeys(a);
+    var kb = objectKeys(b);
+  } catch (e) {
+    // happens when one is a string literal and the other isn't
+    return false;
+  } // having the same number of owned properties (keys incorporates hasOwnProperty)
+
+
+  if (ka.length !== kb.length) {
+    return false;
+  } // the same set of keys (although not necessarily the same order),
+
+
+  ka.sort();
+  kb.sort(); // ~~~cheap key test
+
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] != kb[i]) {
+      return false;
+    }
+  } // equivalent values for every corresponding key, and ~~~possibly expensive deep test
+
+
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+
+    if (!deepEqual(a[key], b[key], opts)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+module.exports = deepEqual;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/define-properties/index.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/node_modules/define-properties/index.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var keys = __webpack_require__(/*! object-keys */ "../frontend-logic/node_modules/object-keys/index.js");
+
+var hasSymbols = typeof Symbol === 'function' && _typeof(Symbol('foo')) === 'symbol';
+var toStr = Object.prototype.toString;
+var concat = Array.prototype.concat;
+var origDefineProperty = Object.defineProperty;
+
+var isFunction = function isFunction(fn) {
+  return typeof fn === 'function' && toStr.call(fn) === '[object Function]';
+};
+
+var arePropertyDescriptorsSupported = function arePropertyDescriptorsSupported() {
+  var obj = {};
+
+  try {
+    origDefineProperty(obj, 'x', {
+      enumerable: false,
+      value: obj
+    }); // eslint-disable-next-line no-unused-vars, no-restricted-syntax
+
+    for (var _ in obj) {
+      // jscs:ignore disallowUnusedVariables
+      return false;
+    }
+
+    return obj.x === obj;
+  } catch (e) {
+    /* this is IE 8. */
+    return false;
+  }
+};
+
+var supportsDescriptors = origDefineProperty && arePropertyDescriptorsSupported();
+
+var defineProperty = function defineProperty(object, name, value, predicate) {
+  if (name in object && (!isFunction(predicate) || !predicate())) {
+    return;
+  }
+
+  if (supportsDescriptors) {
+    origDefineProperty(object, name, {
+      configurable: true,
+      enumerable: false,
+      value: value,
+      writable: true
+    });
+  } else {
+    object[name] = value;
+  }
+};
+
+var defineProperties = function defineProperties(object, map) {
+  var predicates = arguments.length > 2 ? arguments[2] : {};
+  var props = keys(map);
+
+  if (hasSymbols) {
+    props = concat.call(props, Object.getOwnPropertySymbols(map));
+  }
+
+  for (var i = 0; i < props.length; i += 1) {
+    defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
+  }
+};
+
+defineProperties.supportsDescriptors = !!supportsDescriptors;
+module.exports = defineProperties;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/function-bind/implementation.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/BaseStore.js ***!
+  !*** ../frontend-logic/node_modules/function-bind/implementation.js ***!
   \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/* eslint no-invalid-this: 1 */
+
+var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
+var slice = Array.prototype.slice;
+var toStr = Object.prototype.toString;
+var funcType = '[object Function]';
+
+module.exports = function bind(that) {
+  var target = this;
+
+  if (typeof target !== 'function' || toStr.call(target) !== funcType) {
+    throw new TypeError(ERROR_MESSAGE + target);
+  }
+
+  var args = slice.call(arguments, 1);
+  var bound;
+
+  var binder = function binder() {
+    if (this instanceof bound) {
+      var result = target.apply(this, args.concat(slice.call(arguments)));
+
+      if (Object(result) === result) {
+        return result;
+      }
+
+      return this;
+    } else {
+      return target.apply(that, args.concat(slice.call(arguments)));
+    }
+  };
+
+  var boundLength = Math.max(0, target.length - args.length);
+  var boundArgs = [];
+
+  for (var i = 0; i < boundLength; i++) {
+    boundArgs.push('$' + i);
+  }
+
+  bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
+
+  if (target.prototype) {
+    var Empty = function Empty() {};
+
+    Empty.prototype = target.prototype;
+    bound.prototype = new Empty();
+    Empty.prototype = null;
+  }
+
+  return bound;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/function-bind/index.js":
+/*!*************************************************************!*\
+  !*** ../frontend-logic/node_modules/function-bind/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/function-bind/implementation.js");
+
+module.exports = Function.prototype.bind || implementation;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/fuse.js/dist/fuse.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/node_modules/fuse.js/dist/fuse.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*!
+ * Fuse.js v3.6.1 - Lightweight fuzzy-search (http://fusejs.io)
+ * 
+ * Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
+ * All Rights Reserved. Apache Software License 2.0
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+!function (e, t) {
+  "object" == ( false ? undefined : _typeof(exports)) && "object" == ( false ? undefined : _typeof(module)) ? module.exports = t() :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
+}(this, function () {
+  return function (e) {
+    var t = {};
+
+    function r(n) {
+      if (t[n]) return t[n].exports;
+      var o = t[n] = {
+        i: n,
+        l: !1,
+        exports: {}
+      };
+      return e[n].call(o.exports, o, o.exports, r), o.l = !0, o.exports;
+    }
+
+    return r.m = e, r.c = t, r.d = function (e, t, n) {
+      r.o(e, t) || Object.defineProperty(e, t, {
+        enumerable: !0,
+        get: n
+      });
+    }, r.r = function (e) {
+      "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+        value: "Module"
+      }), Object.defineProperty(e, "__esModule", {
+        value: !0
+      });
+    }, r.t = function (e, t) {
+      if (1 & t && (e = r(e)), 8 & t) return e;
+      if (4 & t && "object" == _typeof(e) && e && e.__esModule) return e;
+      var n = Object.create(null);
+      if (r.r(n), Object.defineProperty(n, "default", {
+        enumerable: !0,
+        value: e
+      }), 2 & t && "string" != typeof e) for (var o in e) {
+        r.d(n, o, function (t) {
+          return e[t];
+        }.bind(null, o));
+      }
+      return n;
+    }, r.n = function (e) {
+      var t = e && e.__esModule ? function () {
+        return e.default;
+      } : function () {
+        return e;
+      };
+      return r.d(t, "a", t), t;
+    }, r.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t);
+    }, r.p = "", r(r.s = 0);
+  }([function (e, t, r) {
+    function n(e) {
+      return (n = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
+        return _typeof(e);
+      } : function (e) {
+        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : _typeof(e);
+      })(e);
+    }
+
+    function o(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];
+        n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }
+
+    var i = r(1),
+        a = r(7),
+        s = a.get,
+        c = (a.deepValue, a.isArray),
+        h = function () {
+      function e(t, r) {
+        var n = r.location,
+            o = void 0 === n ? 0 : n,
+            i = r.distance,
+            a = void 0 === i ? 100 : i,
+            c = r.threshold,
+            h = void 0 === c ? .6 : c,
+            l = r.maxPatternLength,
+            u = void 0 === l ? 32 : l,
+            f = r.caseSensitive,
+            v = void 0 !== f && f,
+            p = r.tokenSeparator,
+            d = void 0 === p ? / +/g : p,
+            g = r.findAllMatches,
+            y = void 0 !== g && g,
+            m = r.minMatchCharLength,
+            k = void 0 === m ? 1 : m,
+            b = r.id,
+            S = void 0 === b ? null : b,
+            x = r.keys,
+            M = void 0 === x ? [] : x,
+            _ = r.shouldSort,
+            w = void 0 === _ || _,
+            L = r.getFn,
+            A = void 0 === L ? s : L,
+            O = r.sortFn,
+            C = void 0 === O ? function (e, t) {
+          return e.score - t.score;
+        } : O,
+            j = r.tokenize,
+            P = void 0 !== j && j,
+            I = r.matchAllTokens,
+            F = void 0 !== I && I,
+            T = r.includeMatches,
+            N = void 0 !== T && T,
+            z = r.includeScore,
+            E = void 0 !== z && z,
+            W = r.verbose,
+            K = void 0 !== W && W;
+        !function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, e), this.options = {
+          location: o,
+          distance: a,
+          threshold: h,
+          maxPatternLength: u,
+          isCaseSensitive: v,
+          tokenSeparator: d,
+          findAllMatches: y,
+          minMatchCharLength: k,
+          id: S,
+          keys: M,
+          includeMatches: N,
+          includeScore: E,
+          shouldSort: w,
+          getFn: A,
+          sortFn: C,
+          verbose: K,
+          tokenize: P,
+          matchAllTokens: F
+        }, this.setCollection(t), this._processKeys(M);
+      }
+
+      var t, r, a;
+      return t = e, (r = [{
+        key: "setCollection",
+        value: function value(e) {
+          return this.list = e, e;
+        }
+      }, {
+        key: "_processKeys",
+        value: function value(e) {
+          if (this._keyWeights = {}, this._keyNames = [], e.length && "string" == typeof e[0]) for (var t = 0, r = e.length; t < r; t += 1) {
+            var n = e[t];
+            this._keyWeights[n] = 1, this._keyNames.push(n);
+          } else {
+            for (var o = null, i = null, a = 0, s = 0, c = e.length; s < c; s += 1) {
+              var h = e[s];
+              if (!h.hasOwnProperty("name")) throw new Error('Missing "name" property in key object');
+              var l = h.name;
+              if (this._keyNames.push(l), !h.hasOwnProperty("weight")) throw new Error('Missing "weight" property in key object');
+              var u = h.weight;
+              if (u < 0 || u > 1) throw new Error('"weight" property in key must bein the range of [0, 1)');
+              i = null == i ? u : Math.max(i, u), o = null == o ? u : Math.min(o, u), this._keyWeights[l] = u, a += u;
+            }
+
+            if (a > 1) throw new Error("Total of weights cannot exceed 1");
+          }
+        }
+      }, {
+        key: "search",
+        value: function value(e) {
+          var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {
+            limit: !1
+          };
+
+          this._log('---------\nSearch pattern: "'.concat(e, '"'));
+
+          var r = this._prepareSearchers(e),
+              n = r.tokenSearchers,
+              o = r.fullSearcher,
+              i = this._search(n, o);
+
+          return this._computeScore(i), this.options.shouldSort && this._sort(i), t.limit && "number" == typeof t.limit && (i = i.slice(0, t.limit)), this._format(i);
+        }
+      }, {
+        key: "_prepareSearchers",
+        value: function value() {
+          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
+              t = [];
+          if (this.options.tokenize) for (var r = e.split(this.options.tokenSeparator), n = 0, o = r.length; n < o; n += 1) {
+            t.push(new i(r[n], this.options));
+          }
+          return {
+            tokenSearchers: t,
+            fullSearcher: new i(e, this.options)
+          };
+        }
+      }, {
+        key: "_search",
+        value: function value() {
+          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
+              t = arguments.length > 1 ? arguments[1] : void 0,
+              r = this.list,
+              n = {},
+              o = [];
+
+          if ("string" == typeof r[0]) {
+            for (var i = 0, a = r.length; i < a; i += 1) {
+              this._analyze({
+                key: "",
+                value: r[i],
+                record: i,
+                index: i
+              }, {
+                resultMap: n,
+                results: o,
+                tokenSearchers: e,
+                fullSearcher: t
+              });
+            }
+
+            return o;
+          }
+
+          for (var s = 0, c = r.length; s < c; s += 1) {
+            for (var h = r[s], l = 0, u = this._keyNames.length; l < u; l += 1) {
+              var f = this._keyNames[l];
+
+              this._analyze({
+                key: f,
+                value: this.options.getFn(h, f),
+                record: h,
+                index: s
+              }, {
+                resultMap: n,
+                results: o,
+                tokenSearchers: e,
+                fullSearcher: t
+              });
+            }
+          }
+
+          return o;
+        }
+      }, {
+        key: "_analyze",
+        value: function value(e, t) {
+          var r = this,
+              n = e.key,
+              o = e.arrayIndex,
+              i = void 0 === o ? -1 : o,
+              a = e.value,
+              s = e.record,
+              h = e.index,
+              l = t.tokenSearchers,
+              u = void 0 === l ? [] : l,
+              f = t.fullSearcher,
+              v = t.resultMap,
+              p = void 0 === v ? {} : v,
+              d = t.results,
+              g = void 0 === d ? [] : d;
+          !function e(t, o, i, a) {
+            if (null != o) if ("string" == typeof o) {
+              var s = !1,
+                  h = -1,
+                  l = 0;
+
+              r._log("\nKey: ".concat("" === n ? "--" : n));
+
+              var v = f.search(o);
+
+              if (r._log('Full text: "'.concat(o, '", score: ').concat(v.score)), r.options.tokenize) {
+                for (var d = o.split(r.options.tokenSeparator), y = d.length, m = [], k = 0, b = u.length; k < b; k += 1) {
+                  var S = u[k];
+
+                  r._log('\nPattern: "'.concat(S.pattern, '"'));
+
+                  for (var x = !1, M = 0; M < y; M += 1) {
+                    var _ = d[M],
+                        w = S.search(_),
+                        L = {};
+                    w.isMatch ? (L[_] = w.score, s = !0, x = !0, m.push(w.score)) : (L[_] = 1, r.options.matchAllTokens || m.push(1)), r._log('Token: "'.concat(_, '", score: ').concat(L[_]));
+                  }
+
+                  x && (l += 1);
+                }
+
+                h = m[0];
+
+                for (var A = m.length, O = 1; O < A; O += 1) {
+                  h += m[O];
+                }
+
+                h /= A, r._log("Token score average:", h);
+              }
+
+              var C = v.score;
+              h > -1 && (C = (C + h) / 2), r._log("Score average:", C);
+              var j = !r.options.tokenize || !r.options.matchAllTokens || l >= u.length;
+
+              if (r._log("\nCheck Matches: ".concat(j)), (s || v.isMatch) && j) {
+                var P = {
+                  key: n,
+                  arrayIndex: t,
+                  value: o,
+                  score: C
+                };
+                r.options.includeMatches && (P.matchedIndices = v.matchedIndices);
+                var I = p[a];
+                I ? I.output.push(P) : (p[a] = {
+                  item: i,
+                  output: [P]
+                }, g.push(p[a]));
+              }
+            } else if (c(o)) for (var F = 0, T = o.length; F < T; F += 1) {
+              e(F, o[F], i, a);
+            }
+          }(i, a, s, h);
+        }
+      }, {
+        key: "_computeScore",
+        value: function value(e) {
+          this._log("\n\nComputing score:\n");
+
+          for (var t = this._keyWeights, r = !!Object.keys(t).length, n = 0, o = e.length; n < o; n += 1) {
+            for (var i = e[n], a = i.output, s = a.length, c = 1, h = 0; h < s; h += 1) {
+              var l = a[h],
+                  u = l.key,
+                  f = r ? t[u] : 1,
+                  v = 0 === l.score && t && t[u] > 0 ? Number.EPSILON : l.score;
+              c *= Math.pow(v, f);
+            }
+
+            i.score = c, this._log(i);
+          }
+        }
+      }, {
+        key: "_sort",
+        value: function value(e) {
+          this._log("\n\nSorting...."), e.sort(this.options.sortFn);
+        }
+      }, {
+        key: "_format",
+        value: function value(e) {
+          var t = [];
+
+          if (this.options.verbose) {
+            var r = [];
+            this._log("\n\nOutput:\n\n", JSON.stringify(e, function (e, t) {
+              if ("object" === n(t) && null !== t) {
+                if (-1 !== r.indexOf(t)) return;
+                r.push(t);
+              }
+
+              return t;
+            }, 2)), r = null;
+          }
+
+          var o = [];
+          this.options.includeMatches && o.push(function (e, t) {
+            var r = e.output;
+            t.matches = [];
+
+            for (var n = 0, o = r.length; n < o; n += 1) {
+              var i = r[n];
+
+              if (0 !== i.matchedIndices.length) {
+                var a = {
+                  indices: i.matchedIndices,
+                  value: i.value
+                };
+                i.key && (a.key = i.key), i.hasOwnProperty("arrayIndex") && i.arrayIndex > -1 && (a.arrayIndex = i.arrayIndex), t.matches.push(a);
+              }
+            }
+          }), this.options.includeScore && o.push(function (e, t) {
+            t.score = e.score;
+          });
+
+          for (var i = 0, a = e.length; i < a; i += 1) {
+            var s = e[i];
+
+            if (this.options.id && (s.item = this.options.getFn(s.item, this.options.id)[0]), o.length) {
+              for (var c = {
+                item: s.item
+              }, h = 0, l = o.length; h < l; h += 1) {
+                o[h](s, c);
+              }
+
+              t.push(c);
+            } else t.push(s.item);
+          }
+
+          return t;
+        }
+      }, {
+        key: "_log",
+        value: function value() {
+          var e;
+          this.options.verbose && (e = console).log.apply(e, arguments);
+        }
+      }]) && o(t.prototype, r), a && o(t, a), e;
+    }();
+
+    e.exports = h;
+  }, function (e, t, r) {
+    function n(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];
+        n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }
+
+    var o = r(2),
+        i = r(3),
+        a = r(6),
+        s = function () {
+      function e(t, r) {
+        var n = r.location,
+            o = void 0 === n ? 0 : n,
+            i = r.distance,
+            s = void 0 === i ? 100 : i,
+            c = r.threshold,
+            h = void 0 === c ? .6 : c,
+            l = r.maxPatternLength,
+            u = void 0 === l ? 32 : l,
+            f = r.isCaseSensitive,
+            v = void 0 !== f && f,
+            p = r.tokenSeparator,
+            d = void 0 === p ? / +/g : p,
+            g = r.findAllMatches,
+            y = void 0 !== g && g,
+            m = r.minMatchCharLength,
+            k = void 0 === m ? 1 : m,
+            b = r.includeMatches,
+            S = void 0 !== b && b;
+        !function (e, t) {
+          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+        }(this, e), this.options = {
+          location: o,
+          distance: s,
+          threshold: h,
+          maxPatternLength: u,
+          isCaseSensitive: v,
+          tokenSeparator: d,
+          findAllMatches: y,
+          includeMatches: S,
+          minMatchCharLength: k
+        }, this.pattern = v ? t : t.toLowerCase(), this.pattern.length <= u && (this.patternAlphabet = a(this.pattern));
+      }
+
+      var t, r, s;
+      return t = e, (r = [{
+        key: "search",
+        value: function value(e) {
+          var t = this.options,
+              r = t.isCaseSensitive,
+              n = t.includeMatches;
+
+          if (r || (e = e.toLowerCase()), this.pattern === e) {
+            var a = {
+              isMatch: !0,
+              score: 0
+            };
+            return n && (a.matchedIndices = [[0, e.length - 1]]), a;
+          }
+
+          var s = this.options,
+              c = s.maxPatternLength,
+              h = s.tokenSeparator;
+          if (this.pattern.length > c) return o(e, this.pattern, h);
+          var l = this.options,
+              u = l.location,
+              f = l.distance,
+              v = l.threshold,
+              p = l.findAllMatches,
+              d = l.minMatchCharLength;
+          return i(e, this.pattern, this.patternAlphabet, {
+            location: u,
+            distance: f,
+            threshold: v,
+            findAllMatches: p,
+            minMatchCharLength: d,
+            includeMatches: n
+          });
+        }
+      }]) && n(t.prototype, r), s && n(t, s), e;
+    }();
+
+    e.exports = s;
+  }, function (e, t) {
+    var r = /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g;
+
+    e.exports = function (e, t) {
+      var n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : / +/g,
+          o = new RegExp(t.replace(r, "\\$&").replace(n, "|")),
+          i = e.match(o),
+          a = !!i,
+          s = [];
+      if (a) for (var c = 0, h = i.length; c < h; c += 1) {
+        var l = i[c];
+        s.push([e.indexOf(l), l.length - 1]);
+      }
+      return {
+        score: a ? .5 : 1,
+        isMatch: a,
+        matchedIndices: s
+      };
+    };
+  }, function (e, t, r) {
+    var n = r(4),
+        o = r(5);
+
+    e.exports = function (e, t, r, i) {
+      for (var a = i.location, s = void 0 === a ? 0 : a, c = i.distance, h = void 0 === c ? 100 : c, l = i.threshold, u = void 0 === l ? .6 : l, f = i.findAllMatches, v = void 0 !== f && f, p = i.minMatchCharLength, d = void 0 === p ? 1 : p, g = i.includeMatches, y = void 0 !== g && g, m = s, k = e.length, b = u, S = e.indexOf(t, m), x = t.length, M = [], _ = 0; _ < k; _ += 1) {
+        M[_] = 0;
+      }
+
+      if (-1 !== S) {
+        var w = n(t, {
+          errors: 0,
+          currentLocation: S,
+          expectedLocation: m,
+          distance: h
+        });
+
+        if (b = Math.min(w, b), -1 !== (S = e.lastIndexOf(t, m + x))) {
+          var L = n(t, {
+            errors: 0,
+            currentLocation: S,
+            expectedLocation: m,
+            distance: h
+          });
+          b = Math.min(L, b);
+        }
+      }
+
+      S = -1;
+
+      for (var A = [], O = 1, C = x + k, j = 1 << (x <= 31 ? x - 1 : 30), P = 0; P < x; P += 1) {
+        for (var I = 0, F = C; I < F;) {
+          n(t, {
+            errors: P,
+            currentLocation: m + F,
+            expectedLocation: m,
+            distance: h
+          }) <= b ? I = F : C = F, F = Math.floor((C - I) / 2 + I);
+        }
+
+        C = F;
+        var T = Math.max(1, m - F + 1),
+            N = v ? k : Math.min(m + F, k) + x,
+            z = Array(N + 2);
+        z[N + 1] = (1 << P) - 1;
+
+        for (var E = N; E >= T; E -= 1) {
+          var W = E - 1,
+              K = r[e.charAt(W)];
+
+          if (K && (M[W] = 1), z[E] = (z[E + 1] << 1 | 1) & K, 0 !== P && (z[E] |= (A[E + 1] | A[E]) << 1 | 1 | A[E + 1]), z[E] & j && (O = n(t, {
+            errors: P,
+            currentLocation: W,
+            expectedLocation: m,
+            distance: h
+          })) <= b) {
+            if (b = O, (S = W) <= m) break;
+            T = Math.max(1, 2 * m - S);
+          }
+        }
+
+        if (n(t, {
+          errors: P + 1,
+          currentLocation: m,
+          expectedLocation: m,
+          distance: h
+        }) > b) break;
+        A = z;
+      }
+
+      var $ = {
+        isMatch: S >= 0,
+        score: 0 === O ? .001 : O
+      };
+      return y && ($.matchedIndices = o(M, d)), $;
+    };
+  }, function (e, t) {
+    e.exports = function (e, t) {
+      var r = t.errors,
+          n = void 0 === r ? 0 : r,
+          o = t.currentLocation,
+          i = void 0 === o ? 0 : o,
+          a = t.expectedLocation,
+          s = void 0 === a ? 0 : a,
+          c = t.distance,
+          h = void 0 === c ? 100 : c,
+          l = n / e.length,
+          u = Math.abs(s - i);
+      return h ? l + u / h : u ? 1 : l;
+    };
+  }, function (e, t) {
+    e.exports = function () {
+      for (var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [], t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 1, r = [], n = -1, o = -1, i = 0, a = e.length; i < a; i += 1) {
+        var s = e[i];
+        s && -1 === n ? n = i : s || -1 === n || ((o = i - 1) - n + 1 >= t && r.push([n, o]), n = -1);
+      }
+
+      return e[i - 1] && i - n >= t && r.push([n, i - 1]), r;
+    };
+  }, function (e, t) {
+    e.exports = function (e) {
+      for (var t = {}, r = e.length, n = 0; n < r; n += 1) {
+        t[e.charAt(n)] = 0;
+      }
+
+      for (var o = 0; o < r; o += 1) {
+        t[e.charAt(o)] |= 1 << r - o - 1;
+      }
+
+      return t;
+    };
+  }, function (e, t) {
+    var r = function r(e) {
+      return Array.isArray ? Array.isArray(e) : "[object Array]" === Object.prototype.toString.call(e);
+    },
+        n = function n(e) {
+      return null == e ? "" : function (e) {
+        if ("string" == typeof e) return e;
+        var t = e + "";
+        return "0" == t && 1 / e == -1 / 0 ? "-0" : t;
+      }(e);
+    },
+        o = function o(e) {
+      return "string" == typeof e;
+    },
+        i = function i(e) {
+      return "number" == typeof e;
+    };
+
+    e.exports = {
+      get: function get(e, t) {
+        var a = [];
+        return function e(t, s) {
+          if (s) {
+            var c = s.indexOf("."),
+                h = s,
+                l = null;
+            -1 !== c && (h = s.slice(0, c), l = s.slice(c + 1));
+            var u = t[h];
+            if (null != u) if (l || !o(u) && !i(u)) {
+              if (r(u)) for (var f = 0, v = u.length; f < v; f += 1) {
+                e(u[f], l);
+              } else l && e(u, l);
+            } else a.push(n(u));
+          } else a.push(t);
+        }(e, t), a;
+      },
+      isArray: r,
+      isString: o,
+      isNum: i,
+      toString: n
+    };
+  }]);
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../infect-frontend/node_modules/webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/get-intrinsic/index.js":
+/*!*************************************************************!*\
+  !*** ../frontend-logic/node_modules/get-intrinsic/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/* globals
+	AggregateError,
+	SharedArrayBuffer,
+*/
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var undefined;
+var $SyntaxError = SyntaxError;
+var $Function = Function;
+var $TypeError = TypeError; // eslint-disable-next-line consistent-return
+
+var getEvalledConstructor = function getEvalledConstructor(expressionSyntax) {
+  try {
+    return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
+  } catch (e) {}
+};
+
+var $gOPD = Object.getOwnPropertyDescriptor;
+
+if ($gOPD) {
+  try {
+    $gOPD({}, '');
+  } catch (e) {
+    $gOPD = null; // this is IE 8, which has a broken gOPD
+  }
+}
+
+var throwTypeError = function throwTypeError() {
+  throw new $TypeError();
+};
+
+var ThrowTypeError = $gOPD ? function () {
+  try {
+    // eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
+    arguments.callee; // IE 8 does not throw here
+
+    return throwTypeError;
+  } catch (calleeThrows) {
+    try {
+      // IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
+      return $gOPD(arguments, 'callee').get;
+    } catch (gOPDthrows) {
+      return throwTypeError;
+    }
+  }
+}() : throwTypeError;
+
+var hasSymbols = __webpack_require__(/*! has-symbols */ "../frontend-logic/node_modules/get-intrinsic/node_modules/has-symbols/index.js")();
+
+var getProto = Object.getPrototypeOf || function (x) {
+  return x.__proto__;
+}; // eslint-disable-line no-proto
+
+
+var needsEval = {};
+var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
+var INTRINSICS = {
+  '%AggregateError%': typeof AggregateError === 'undefined' ? undefined : AggregateError,
+  '%Array%': Array,
+  '%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
+  '%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
+  '%AsyncFromSyncIteratorPrototype%': undefined,
+  '%AsyncFunction%': needsEval,
+  '%AsyncGenerator%': needsEval,
+  '%AsyncGeneratorFunction%': needsEval,
+  '%AsyncIteratorPrototype%': needsEval,
+  '%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
+  '%BigInt%': typeof BigInt === 'undefined' ? undefined : BigInt,
+  '%Boolean%': Boolean,
+  '%DataView%': typeof DataView === 'undefined' ? undefined : DataView,
+  '%Date%': Date,
+  '%decodeURI%': decodeURI,
+  '%decodeURIComponent%': decodeURIComponent,
+  '%encodeURI%': encodeURI,
+  '%encodeURIComponent%': encodeURIComponent,
+  '%Error%': Error,
+  '%eval%': eval,
+  // eslint-disable-line no-eval
+  '%EvalError%': EvalError,
+  '%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
+  '%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
+  '%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
+  '%Function%': $Function,
+  '%GeneratorFunction%': needsEval,
+  '%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
+  '%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
+  '%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
+  '%isFinite%': isFinite,
+  '%isNaN%': isNaN,
+  '%IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,
+  '%JSON%': (typeof JSON === "undefined" ? "undefined" : _typeof(JSON)) === 'object' ? JSON : undefined,
+  '%Map%': typeof Map === 'undefined' ? undefined : Map,
+  '%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),
+  '%Math%': Math,
+  '%Number%': Number,
+  '%Object%': Object,
+  '%parseFloat%': parseFloat,
+  '%parseInt%': parseInt,
+  '%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
+  '%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
+  '%RangeError%': RangeError,
+  '%ReferenceError%': ReferenceError,
+  '%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
+  '%RegExp%': RegExp,
+  '%Set%': typeof Set === 'undefined' ? undefined : Set,
+  '%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),
+  '%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
+  '%String%': String,
+  '%StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,
+  '%Symbol%': hasSymbols ? Symbol : undefined,
+  '%SyntaxError%': $SyntaxError,
+  '%ThrowTypeError%': ThrowTypeError,
+  '%TypedArray%': TypedArray,
+  '%TypeError%': $TypeError,
+  '%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
+  '%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
+  '%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
+  '%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
+  '%URIError%': URIError,
+  '%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
+  '%WeakRef%': typeof WeakRef === 'undefined' ? undefined : WeakRef,
+  '%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet
+};
+
+var doEval = function doEval(name) {
+  var value;
+
+  if (name === '%AsyncFunction%') {
+    value = getEvalledConstructor('async function () {}');
+  } else if (name === '%GeneratorFunction%') {
+    value = getEvalledConstructor('function* () {}');
+  } else if (name === '%AsyncGeneratorFunction%') {
+    value = getEvalledConstructor('async function* () {}');
+  } else if (name === '%AsyncGenerator%') {
+    var fn = doEval('%AsyncGeneratorFunction%');
+
+    if (fn) {
+      value = fn.prototype;
+    }
+  } else if (name === '%AsyncIteratorPrototype%') {
+    var gen = doEval('%AsyncGenerator%');
+
+    if (gen) {
+      value = getProto(gen.prototype);
+    }
+  }
+
+  INTRINSICS[name] = value;
+  return value;
+};
+
+var LEGACY_ALIASES = {
+  '%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
+  '%ArrayPrototype%': ['Array', 'prototype'],
+  '%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
+  '%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
+  '%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
+  '%ArrayProto_values%': ['Array', 'prototype', 'values'],
+  '%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
+  '%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
+  '%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
+  '%BooleanPrototype%': ['Boolean', 'prototype'],
+  '%DataViewPrototype%': ['DataView', 'prototype'],
+  '%DatePrototype%': ['Date', 'prototype'],
+  '%ErrorPrototype%': ['Error', 'prototype'],
+  '%EvalErrorPrototype%': ['EvalError', 'prototype'],
+  '%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
+  '%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
+  '%FunctionPrototype%': ['Function', 'prototype'],
+  '%Generator%': ['GeneratorFunction', 'prototype'],
+  '%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
+  '%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
+  '%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
+  '%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
+  '%JSONParse%': ['JSON', 'parse'],
+  '%JSONStringify%': ['JSON', 'stringify'],
+  '%MapPrototype%': ['Map', 'prototype'],
+  '%NumberPrototype%': ['Number', 'prototype'],
+  '%ObjectPrototype%': ['Object', 'prototype'],
+  '%ObjProto_toString%': ['Object', 'prototype', 'toString'],
+  '%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
+  '%PromisePrototype%': ['Promise', 'prototype'],
+  '%PromiseProto_then%': ['Promise', 'prototype', 'then'],
+  '%Promise_all%': ['Promise', 'all'],
+  '%Promise_reject%': ['Promise', 'reject'],
+  '%Promise_resolve%': ['Promise', 'resolve'],
+  '%RangeErrorPrototype%': ['RangeError', 'prototype'],
+  '%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
+  '%RegExpPrototype%': ['RegExp', 'prototype'],
+  '%SetPrototype%': ['Set', 'prototype'],
+  '%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
+  '%StringPrototype%': ['String', 'prototype'],
+  '%SymbolPrototype%': ['Symbol', 'prototype'],
+  '%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
+  '%TypedArrayPrototype%': ['TypedArray', 'prototype'],
+  '%TypeErrorPrototype%': ['TypeError', 'prototype'],
+  '%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
+  '%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
+  '%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
+  '%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
+  '%URIErrorPrototype%': ['URIError', 'prototype'],
+  '%WeakMapPrototype%': ['WeakMap', 'prototype'],
+  '%WeakSetPrototype%': ['WeakSet', 'prototype']
+};
+
+var bind = __webpack_require__(/*! function-bind */ "../frontend-logic/node_modules/function-bind/index.js");
+
+var hasOwn = __webpack_require__(/*! has */ "../frontend-logic/node_modules/has/src/index.js");
+
+var $concat = bind.call(Function.call, Array.prototype.concat);
+var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
+var $replace = bind.call(Function.call, String.prototype.replace);
+var $strSlice = bind.call(Function.call, String.prototype.slice);
+/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
+
+var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
+var reEscapeChar = /\\(\\)?/g;
+/** Used to match backslashes in property paths. */
+
+var stringToPath = function stringToPath(string) {
+  var first = $strSlice(string, 0, 1);
+  var last = $strSlice(string, -1);
+
+  if (first === '%' && last !== '%') {
+    throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
+  } else if (last === '%' && first !== '%') {
+    throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
+  }
+
+  var result = [];
+  $replace(string, rePropName, function (match, number, quote, subString) {
+    result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;
+  });
+  return result;
+};
+/* end adaptation */
+
+
+var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
+  var intrinsicName = name;
+  var alias;
+
+  if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
+    alias = LEGACY_ALIASES[intrinsicName];
+    intrinsicName = '%' + alias[0] + '%';
+  }
+
+  if (hasOwn(INTRINSICS, intrinsicName)) {
+    var value = INTRINSICS[intrinsicName];
+
+    if (value === needsEval) {
+      value = doEval(intrinsicName);
+    }
+
+    if (typeof value === 'undefined' && !allowMissing) {
+      throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
+    }
+
+    return {
+      alias: alias,
+      name: intrinsicName,
+      value: value
+    };
+  }
+
+  throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
+};
+
+module.exports = function GetIntrinsic(name, allowMissing) {
+  if (typeof name !== 'string' || name.length === 0) {
+    throw new $TypeError('intrinsic name must be a non-empty string');
+  }
+
+  if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
+    throw new $TypeError('"allowMissing" argument must be a boolean');
+  }
+
+  var parts = stringToPath(name);
+  var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
+  var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
+  var intrinsicRealName = intrinsic.name;
+  var value = intrinsic.value;
+  var skipFurtherCaching = false;
+  var alias = intrinsic.alias;
+
+  if (alias) {
+    intrinsicBaseName = alias[0];
+    $spliceApply(parts, $concat([0, 1], alias));
+  }
+
+  for (var i = 1, isOwn = true; i < parts.length; i += 1) {
+    var part = parts[i];
+    var first = $strSlice(part, 0, 1);
+    var last = $strSlice(part, -1);
+
+    if ((first === '"' || first === "'" || first === '`' || last === '"' || last === "'" || last === '`') && first !== last) {
+      throw new $SyntaxError('property names with quotes must have matching quotes');
+    }
+
+    if (part === 'constructor' || !isOwn) {
+      skipFurtherCaching = true;
+    }
+
+    intrinsicBaseName += '.' + part;
+    intrinsicRealName = '%' + intrinsicBaseName + '%';
+
+    if (hasOwn(INTRINSICS, intrinsicRealName)) {
+      value = INTRINSICS[intrinsicRealName];
+    } else if (value != null) {
+      if (!(part in value)) {
+        if (!allowMissing) {
+          throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
+        }
+
+        return void undefined;
+      }
+
+      if ($gOPD && i + 1 >= parts.length) {
+        var desc = $gOPD(value, part);
+        isOwn = !!desc; // By convention, when a data property is converted to an accessor
+        // property to emulate a data property that does not suffer from
+        // the override mistake, that accessor's getter is marked with
+        // an `originalValue` property. Here, when we detect this, we
+        // uphold the illusion by pretending to see that original data
+        // property, i.e., returning the value rather than the getter
+        // itself.
+
+        if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
+          value = desc.get;
+        } else {
+          value = value[part];
+        }
+      } else {
+        isOwn = hasOwn(value, part);
+        value = value[part];
+      }
+
+      if (isOwn && !skipFurtherCaching) {
+        INTRINSICS[intrinsicRealName] = value;
+      }
+    }
+  }
+
+  return value;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/get-intrinsic/node_modules/has-symbols/index.js":
+/*!**************************************************************************************!*\
+  !*** ../frontend-logic/node_modules/get-intrinsic/node_modules/has-symbols/index.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var origSymbol = global.Symbol;
+
+var hasSymbolSham = __webpack_require__(/*! ./shams */ "../frontend-logic/node_modules/get-intrinsic/node_modules/has-symbols/shams.js");
+
+module.exports = function hasNativeSymbols() {
+  if (typeof origSymbol !== 'function') {
+    return false;
+  }
+
+  if (typeof Symbol !== 'function') {
+    return false;
+  }
+
+  if (_typeof(origSymbol('foo')) !== 'symbol') {
+    return false;
+  }
+
+  if (_typeof(Symbol('bar')) !== 'symbol') {
+    return false;
+  }
+
+  return hasSymbolSham();
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../infect-frontend/node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/get-intrinsic/node_modules/has-symbols/shams.js":
+/*!**************************************************************************************!*\
+  !*** ../frontend-logic/node_modules/get-intrinsic/node_modules/has-symbols/shams.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/* eslint complexity: [2, 18], max-statements: [2, 33] */
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+module.exports = function hasSymbols() {
+  if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') {
+    return false;
+  }
+
+  if (_typeof(Symbol.iterator) === 'symbol') {
+    return true;
+  }
+
+  var obj = {};
+  var sym = Symbol('test');
+  var symObj = Object(sym);
+
+  if (typeof sym === 'string') {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(sym) !== '[object Symbol]') {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(symObj) !== '[object Symbol]') {
+    return false;
+  } // temp disabled per https://github.com/ljharb/object.assign/issues/17
+  // if (sym instanceof Symbol) { return false; }
+  // temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
+  // if (!(symObj instanceof Symbol)) { return false; }
+  // if (typeof Symbol.prototype.toString !== 'function') { return false; }
+  // if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
+
+
+  var symVal = 42;
+  obj[sym] = symVal;
+
+  for (sym in obj) {
+    return false;
+  } // eslint-disable-line no-restricted-syntax
+
+
+  if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) {
+    return false;
+  }
+
+  if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) {
+    return false;
+  }
+
+  var syms = Object.getOwnPropertySymbols(obj);
+
+  if (syms.length !== 1 || syms[0] !== sym) {
+    return false;
+  }
+
+  if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) {
+    return false;
+  }
+
+  if (typeof Object.getOwnPropertyDescriptor === 'function') {
+    var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
+
+    if (descriptor.value !== symVal || descriptor.enumerable !== true) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/has/src/index.js":
+/*!*******************************************************!*\
+  !*** ../frontend-logic/node_modules/has/src/index.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bind = __webpack_require__(/*! function-bind */ "../frontend-logic/node_modules/function-bind/index.js");
+
+module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/is-arguments/index.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/node_modules/is-arguments/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var hasToStringTag = typeof Symbol === 'function' && _typeof(Symbol.toStringTag) === 'symbol';
+
+var callBound = __webpack_require__(/*! call-bind/callBound */ "../frontend-logic/node_modules/call-bind/callBound.js");
+
+var $toString = callBound('Object.prototype.toString');
+
+var isStandardArguments = function isArguments(value) {
+  if (hasToStringTag && value && _typeof(value) === 'object' && Symbol.toStringTag in value) {
+    return false;
+  }
+
+  return $toString(value) === '[object Arguments]';
+};
+
+var isLegacyArguments = function isArguments(value) {
+  if (isStandardArguments(value)) {
+    return true;
+  }
+
+  return value !== null && _typeof(value) === 'object' && typeof value.length === 'number' && value.length >= 0 && $toString(value) !== '[object Array]' && $toString(value.callee) === '[object Function]';
+};
+
+var supportsStandardArguments = function () {
+  return isStandardArguments(arguments);
+}();
+
+isStandardArguments.isLegacyArguments = isLegacyArguments; // for tests
+
+module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArguments;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/is-date-object/index.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/node_modules/is-date-object/index.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var getDay = Date.prototype.getDay;
+
+var tryDateObject = function tryDateGetDayCall(value) {
+  try {
+    getDay.call(value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+var toStr = Object.prototype.toString;
+var dateClass = '[object Date]';
+var hasToStringTag = typeof Symbol === 'function' && _typeof(Symbol.toStringTag) === 'symbol';
+
+module.exports = function isDateObject(value) {
+  if (_typeof(value) !== 'object' || value === null) {
+    return false;
+  }
+
+  return hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/is-regex/index.js":
+/*!********************************************************!*\
+  !*** ../frontend-logic/node_modules/is-regex/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var hasSymbols = __webpack_require__(/*! has-symbols */ "../frontend-logic/node_modules/is-regex/node_modules/has-symbols/index.js")();
+
+var hasToStringTag = hasSymbols && _typeof(Symbol.toStringTag) === 'symbol';
+var hasOwnProperty;
+var regexExec;
+var isRegexMarker;
+var badStringifier;
+
+if (hasToStringTag) {
+  hasOwnProperty = Function.call.bind(Object.prototype.hasOwnProperty);
+  regexExec = Function.call.bind(RegExp.prototype.exec);
+  isRegexMarker = {};
+
+  var throwRegexMarker = function throwRegexMarker() {
+    throw isRegexMarker;
+  };
+
+  badStringifier = {
+    toString: throwRegexMarker,
+    valueOf: throwRegexMarker
+  };
+
+  if (_typeof(Symbol.toPrimitive) === 'symbol') {
+    badStringifier[Symbol.toPrimitive] = throwRegexMarker;
+  }
+}
+
+var toStr = Object.prototype.toString;
+var gOPD = Object.getOwnPropertyDescriptor;
+var regexClass = '[object RegExp]';
+module.exports = hasToStringTag // eslint-disable-next-line consistent-return
+? function isRegex(value) {
+  if (!value || _typeof(value) !== 'object') {
+    return false;
+  }
+
+  var descriptor = gOPD(value, 'lastIndex');
+  var hasLastIndexDataProperty = descriptor && hasOwnProperty(descriptor, 'value');
+
+  if (!hasLastIndexDataProperty) {
+    return false;
+  }
+
+  try {
+    regexExec(value, badStringifier);
+  } catch (e) {
+    return e === isRegexMarker;
+  }
+} : function isRegex(value) {
+  // In older browsers, typeof regex incorrectly returns 'function'
+  if (!value || _typeof(value) !== 'object' && typeof value !== 'function') {
+    return false;
+  }
+
+  return toStr.call(value) === regexClass;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/is-regex/node_modules/has-symbols/index.js":
+/*!*********************************************************************************!*\
+  !*** ../frontend-logic/node_modules/is-regex/node_modules/has-symbols/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var origSymbol = global.Symbol;
+
+var hasSymbolSham = __webpack_require__(/*! ./shams */ "../frontend-logic/node_modules/is-regex/node_modules/has-symbols/shams.js");
+
+module.exports = function hasNativeSymbols() {
+  if (typeof origSymbol !== 'function') {
+    return false;
+  }
+
+  if (typeof Symbol !== 'function') {
+    return false;
+  }
+
+  if (_typeof(origSymbol('foo')) !== 'symbol') {
+    return false;
+  }
+
+  if (_typeof(Symbol('bar')) !== 'symbol') {
+    return false;
+  }
+
+  return hasSymbolSham();
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../infect-frontend/node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/is-regex/node_modules/has-symbols/shams.js":
+/*!*********************************************************************************!*\
+  !*** ../frontend-logic/node_modules/is-regex/node_modules/has-symbols/shams.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/* eslint complexity: [2, 18], max-statements: [2, 33] */
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+module.exports = function hasSymbols() {
+  if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') {
+    return false;
+  }
+
+  if (_typeof(Symbol.iterator) === 'symbol') {
+    return true;
+  }
+
+  var obj = {};
+  var sym = Symbol('test');
+  var symObj = Object(sym);
+
+  if (typeof sym === 'string') {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(sym) !== '[object Symbol]') {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(symObj) !== '[object Symbol]') {
+    return false;
+  } // temp disabled per https://github.com/ljharb/object.assign/issues/17
+  // if (sym instanceof Symbol) { return false; }
+  // temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
+  // if (!(symObj instanceof Symbol)) { return false; }
+  // if (typeof Symbol.prototype.toString !== 'function') { return false; }
+  // if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
+
+
+  var symVal = 42;
+  obj[sym] = symVal;
+
+  for (sym in obj) {
+    return false;
+  } // eslint-disable-line no-restricted-syntax
+
+
+  if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) {
+    return false;
+  }
+
+  if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) {
+    return false;
+  }
+
+  var syms = Object.getOwnPropertySymbols(obj);
+
+  if (syms.length !== 1 || syms[0] !== sym) {
+    return false;
+  }
+
+  if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) {
+    return false;
+  }
+
+  if (typeof Object.getOwnPropertyDescriptor === 'function') {
+    var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
+
+    if (descriptor.value !== symVal || descriptor.enumerable !== true) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/mobx/lib/mobx.module.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/node_modules/mobx/lib/mobx.module.js ***!
+  \**************************************************************/
+/*! exports provided: $mobx, FlowCancellationError, IDerivationState, ObservableMap, ObservableSet, Reaction, _allowStateChanges, _allowStateChangesInsideComputed, _allowStateReadsEnd, _allowStateReadsStart, _endAction, _getAdministration, _getGlobalState, _interceptReads, _isComputingDerivation, _resetGlobalState, _startAction, action, autorun, comparer, computed, configure, createAtom, decorate, entries, extendObservable, extendShallowObservable, flow, get, getAtom, getDebugName, getDependencyTree, getObserverTree, has, intercept, isAction, isArrayLike, isBoxedObservable, isComputed, isComputedProp, isFlowCancellationError, isObservable, isObservableArray, isObservableMap, isObservableObject, isObservableProp, isObservableSet, keys, observable, observe, onBecomeObserved, onBecomeUnobserved, onReactionError, reaction, remove, runInAction, set, spy, toJS, trace, transaction, untracked, values, when */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global, process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "$mobx", function() { return $mobx; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlowCancellationError", function() { return FlowCancellationError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IDerivationState", function() { return IDerivationState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ObservableMap", function() { return ObservableMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ObservableSet", function() { return ObservableSet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Reaction", function() { return Reaction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_allowStateChanges", function() { return allowStateChanges; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_allowStateChangesInsideComputed", function() { return allowStateChangesInsideComputed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_allowStateReadsEnd", function() { return allowStateReadsEnd; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_allowStateReadsStart", function() { return allowStateReadsStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_endAction", function() { return _endAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_getAdministration", function() { return getAdministration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_getGlobalState", function() { return getGlobalState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_interceptReads", function() { return interceptReads; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_isComputingDerivation", function() { return isComputingDerivation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_resetGlobalState", function() { return resetGlobalState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_startAction", function() { return _startAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "action", function() { return action; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "autorun", function() { return autorun; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "comparer", function() { return comparer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "computed", function() { return computed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configure", function() { return configure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAtom", function() { return createAtom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decorate", function() { return decorate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "entries", function() { return entries; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extendObservable", function() { return extendObservable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extendShallowObservable", function() { return extendShallowObservable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flow", function() { return flow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAtom", function() { return getAtom; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDebugName", function() { return getDebugName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDependencyTree", function() { return getDependencyTree; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getObserverTree", function() { return getObserverTree; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "has", function() { return has; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "intercept", function() { return intercept; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isAction", function() { return isAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isArrayLike", function() { return isArrayLike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBoxedObservable", function() { return isObservableValue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isComputed", function() { return isComputed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isComputedProp", function() { return isComputedProp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isFlowCancellationError", function() { return isFlowCancellationError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObservable", function() { return isObservable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObservableArray", function() { return isObservableArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObservableMap", function() { return isObservableMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObservableObject", function() { return isObservableObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObservableProp", function() { return isObservableProp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObservableSet", function() { return isObservableSet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keys", function() { return keys; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observable", function() { return observable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observe", function() { return observe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBecomeObserved", function() { return onBecomeObserved; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBecomeUnobserved", function() { return onBecomeUnobserved; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onReactionError", function() { return onReactionError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reaction", function() { return reaction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "remove", function() { return remove; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "runInAction", function() { return runInAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set", function() { return set; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "spy", function() { return spy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toJS", function() { return toJS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trace", function() { return trace; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transaction", function() { return transaction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "untracked", function() { return untracked; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "values", function() { return values; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "when", function() { return when; });
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/** MobX - (c) Michel Weststrate 2015 - 2020 - MIT Licensed */
+var OBFUSCATED_ERROR = "An invariant failed, however the error is obfuscated because this is an production build.";
+var EMPTY_ARRAY = [];
+Object.freeze(EMPTY_ARRAY);
+var EMPTY_OBJECT = {};
+Object.freeze(EMPTY_OBJECT);
+var mockGlobal = {};
+
+function getGlobal() {
+  if (typeof window !== "undefined") {
+    return window;
+  }
+
+  if (typeof global !== "undefined") {
+    return global;
+  }
+
+  if (typeof self !== "undefined") {
+    return self;
+  }
+
+  return mockGlobal;
+}
+
+function getNextId() {
+  return ++globalState.mobxGuid;
+}
+
+function fail(message) {
+  invariant(false, message);
+  throw "X"; // unreachable
+}
+
+function invariant(check, message) {
+  if (!check) throw new Error("[mobx] " + (message || OBFUSCATED_ERROR));
+}
+/**
+ * Prints a deprecation message, but only one time.
+ * Returns false if the deprecated message was already printed before
+ */
+
+
+var deprecatedMessages = [];
+
+function deprecated(msg, thing) {
+  if (false) {}
+
+  if (thing) {
+    return deprecated("'" + msg + "', use '" + thing + "' instead.");
+  }
+
+  if (deprecatedMessages.indexOf(msg) !== -1) return false;
+  deprecatedMessages.push(msg);
+  console.error("[mobx] Deprecated: " + msg);
+  return true;
+}
+/**
+ * Makes sure that the provided function is invoked at most once.
+ */
+
+
+function once(func) {
+  var invoked = false;
+  return function () {
+    if (invoked) return;
+    invoked = true;
+    return func.apply(this, arguments);
+  };
+}
+
+var noop = function noop() {};
+
+function unique(list) {
+  var res = [];
+  list.forEach(function (item) {
+    if (res.indexOf(item) === -1) res.push(item);
+  });
+  return res;
+}
+
+function isObject(value) {
+  return value !== null && _typeof(value) === "object";
+}
+
+function isPlainObject(value) {
+  if (value === null || _typeof(value) !== "object") return false;
+  var proto = Object.getPrototypeOf(value);
+  return proto === Object.prototype || proto === null;
+}
+
+function convertToMap(dataStructure) {
+  if (isES6Map(dataStructure) || isObservableMap(dataStructure)) {
+    return dataStructure;
+  } else if (Array.isArray(dataStructure)) {
+    return new Map(dataStructure);
+  } else if (isPlainObject(dataStructure)) {
+    var map = new Map();
+
+    for (var key in dataStructure) {
+      map.set(key, dataStructure[key]);
+    }
+
+    return map;
+  } else {
+    return fail("Cannot convert to map from '" + dataStructure + "'");
+  }
+}
+
+function makeNonEnumerable(object, propNames) {
+  for (var i = 0; i < propNames.length; i++) {
+    addHiddenProp(object, propNames[i], object[propNames[i]]);
+  }
+}
+
+function addHiddenProp(object, propName, value) {
+  Object.defineProperty(object, propName, {
+    enumerable: false,
+    writable: true,
+    configurable: true,
+    value: value
+  });
+}
+
+function addHiddenFinalProp(object, propName, value) {
+  Object.defineProperty(object, propName, {
+    enumerable: false,
+    writable: false,
+    configurable: true,
+    value: value
+  });
+}
+
+function isPropertyConfigurable(object, prop) {
+  var descriptor = Object.getOwnPropertyDescriptor(object, prop);
+  return !descriptor || descriptor.configurable !== false && descriptor.writable !== false;
+}
+
+function assertPropertyConfigurable(object, prop) {
+  if ( true && !isPropertyConfigurable(object, prop)) fail("Cannot make property '" + prop + "' observable, it is not configurable and writable in the target object");
+}
+
+function createInstanceofPredicate(name, clazz) {
+  var propName = "isMobX" + name;
+  clazz.prototype[propName] = true;
+  return function (x) {
+    return isObject(x) && x[propName] === true;
+  };
+}
+
+function areBothNaN(a, b) {
+  return typeof a === "number" && typeof b === "number" && isNaN(a) && isNaN(b);
+}
+/**
+ * Returns whether the argument is an array, disregarding observability.
+ */
+
+
+function isArrayLike(x) {
+  return Array.isArray(x) || isObservableArray(x);
+}
+
+function isES6Map(thing) {
+  if (getGlobal().Map !== undefined && thing instanceof getGlobal().Map) return true;
+  return false;
+}
+
+function isES6Set(thing) {
+  return thing instanceof Set;
+} // use Array.from in Mobx 5
+
+
+function iteratorToArray(it) {
+  var res = [];
+
+  while (true) {
+    var r = it.next();
+    if (r.done) break;
+    res.push(r.value);
+  }
+
+  return res;
+}
+
+function primitiveSymbol() {
+  // es-disable-next-line
+  return typeof Symbol === "function" && Symbol.toPrimitive || "@@toPrimitive";
+}
+
+function toPrimitive(value) {
+  return value === null ? null : _typeof(value) === "object" ? "" + value : value;
+} // Use "for of" in V5
+
+
+function forOf(iter, callback) {
+  var next = iter.next();
+
+  while (!next.done) {
+    callback(next.value);
+    next = iter.next();
+  }
+}
+
+function iteratorSymbol() {
+  return typeof Symbol === "function" && Symbol.iterator || "@@iterator";
+}
+
+function declareIterator(prototType, iteratorFactory) {
+  addHiddenFinalProp(prototType, iteratorSymbol(), iteratorFactory);
+}
+
+function makeIterable(iterator) {
+  iterator[iteratorSymbol()] = getSelf;
+  return iterator;
+}
+
+function toStringTagSymbol() {
+  return typeof Symbol === "function" && Symbol.toStringTag || "@@toStringTag";
+}
+
+function getSelf() {
+  return this;
+}
+/**
+ * Anything that can be used to _store_ state is an Atom in mobx. Atoms have two important jobs
+ *
+ * 1) detect when they are being _used_ and report this (using reportObserved). This allows mobx to make the connection between running functions and the data they used
+ * 2) they should notify mobx whenever they have _changed_. This way mobx can re-run any functions (derivations) that are using this atom.
+ */
+
+
+var Atom =
+/** @class */
+function () {
+  /**
+   * Create a new atom. For debugging purposes it is recommended to give it a name.
+   * The onBecomeObserved and onBecomeUnobserved callbacks can be used for resource management.
+   */
+  function Atom(name) {
+    if (name === void 0) {
+      name = "Atom@" + getNextId();
+    }
+
+    this.name = name;
+    this.isPendingUnobservation = false; // for effective unobserving. BaseAtom has true, for extra optimization, so its onBecomeUnobserved never gets called, because it's not needed
+
+    this.isBeingObserved = false;
+    this.observers = [];
+    this.observersIndexes = {};
+    this.diffValue = 0;
+    this.lastAccessedBy = 0;
+    this.lowestObserverState = IDerivationState.NOT_TRACKING;
+  }
+
+  Atom.prototype.onBecomeUnobserved = function () {// noop
+  };
+
+  Atom.prototype.onBecomeObserved = function () {
+    /* noop */
+  };
+  /**
+   * Invoke this method to notify mobx that your atom has been used somehow.
+   * Returns true if there is currently a reactive context.
+   */
+
+
+  Atom.prototype.reportObserved = function () {
+    return reportObserved(this);
+  };
+  /**
+   * Invoke this method _after_ this method has changed to signal mobx that all its observers should invalidate.
+   */
+
+
+  Atom.prototype.reportChanged = function () {
+    startBatch();
+    propagateChanged(this);
+    endBatch();
+  };
+
+  Atom.prototype.toString = function () {
+    return this.name;
+  };
+
+  return Atom;
+}();
+
+var isAtom = createInstanceofPredicate("Atom", Atom);
+
+function createAtom(name, onBecomeObservedHandler, onBecomeUnobservedHandler) {
+  if (onBecomeObservedHandler === void 0) {
+    onBecomeObservedHandler = noop;
+  }
+
+  if (onBecomeUnobservedHandler === void 0) {
+    onBecomeUnobservedHandler = noop;
+  }
+
+  var atom = new Atom(name);
+  onBecomeObserved(atom, onBecomeObservedHandler);
+  onBecomeUnobserved(atom, onBecomeUnobservedHandler);
+  return atom;
+}
+
+function identityComparer(a, b) {
+  return a === b;
+}
+
+function structuralComparer(a, b) {
+  return deepEqual(a, b);
+}
+
+function shallowComparer(a, b) {
+  return deepEqual(a, b, 1);
+}
+
+function defaultComparer(a, b) {
+  return areBothNaN(a, b) || identityComparer(a, b);
+}
+
+var comparer = {
+  identity: identityComparer,
+  structural: structuralComparer,
+  default: defaultComparer,
+  shallow: shallowComparer
+};
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+/* global Reflect, Promise */
+
+var _extendStatics = function extendStatics(d, b) {
+  _extendStatics = Object.setPrototypeOf || {
+    __proto__: []
+  } instanceof Array && function (d, b) {
+    d.__proto__ = b;
+  } || function (d, b) {
+    for (var p in b) {
+      if (b.hasOwnProperty(p)) d[p] = b[p];
+    }
+  };
+
+  return _extendStatics(d, b);
+};
+
+function __extends(d, b) {
+  _extendStatics(d, b);
+
+  function __() {
+    this.constructor = d;
+  }
+
+  d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var _assign = function __assign() {
+  _assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return _assign.apply(this, arguments);
+};
+
+function __read(o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+}
+
+function __spread() {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
+}
+
+var enumerableDescriptorCache = {};
+var nonEnumerableDescriptorCache = {};
+
+function createPropertyInitializerDescriptor(prop, enumerable) {
+  var cache = enumerable ? enumerableDescriptorCache : nonEnumerableDescriptorCache;
+  return cache[prop] || (cache[prop] = {
+    configurable: true,
+    enumerable: enumerable,
+    get: function get() {
+      initializeInstance(this);
+      return this[prop];
+    },
+    set: function set(value) {
+      initializeInstance(this);
+      this[prop] = value;
+    }
+  });
+}
+
+function initializeInstance(target) {
+  if (target.__mobxDidRunLazyInitializers === true) return;
+  var decorators = target.__mobxDecorators;
+
+  if (decorators) {
+    addHiddenProp(target, "__mobxDidRunLazyInitializers", true);
+
+    for (var key in decorators) {
+      var d = decorators[key];
+      d.propertyCreator(target, d.prop, d.descriptor, d.decoratorTarget, d.decoratorArguments);
+    }
+  }
+}
+
+function createPropDecorator(propertyInitiallyEnumerable, propertyCreator) {
+  return function decoratorFactory() {
+    var decoratorArguments;
+
+    var decorator = function decorate(target, prop, descriptor, applyImmediately // This is a special parameter to signal the direct application of a decorator, allow extendObservable to skip the entire type decoration part,
+    // as the instance to apply the decorator to equals the target
+    ) {
+      if (applyImmediately === true) {
+        propertyCreator(target, prop, descriptor, target, decoratorArguments);
+        return null;
+      }
+
+      if ( true && !quacksLikeADecorator(arguments)) fail("This function is a decorator, but it wasn't invoked like a decorator");
+
+      if (!Object.prototype.hasOwnProperty.call(target, "__mobxDecorators")) {
+        var inheritedDecorators = target.__mobxDecorators;
+        addHiddenProp(target, "__mobxDecorators", _assign({}, inheritedDecorators));
+      }
+
+      target.__mobxDecorators[prop] = {
+        prop: prop,
+        propertyCreator: propertyCreator,
+        descriptor: descriptor,
+        decoratorTarget: target,
+        decoratorArguments: decoratorArguments
+      };
+      return createPropertyInitializerDescriptor(prop, propertyInitiallyEnumerable);
+    };
+
+    if (quacksLikeADecorator(arguments)) {
+      // @decorator
+      decoratorArguments = EMPTY_ARRAY;
+      return decorator.apply(null, arguments);
+    } else {
+      // @decorator(args)
+      decoratorArguments = Array.prototype.slice.call(arguments);
+      return decorator;
+    }
+  };
+}
+
+function quacksLikeADecorator(args) {
+  return (args.length === 2 || args.length === 3) && typeof args[1] === "string" || args.length === 4 && args[3] === true;
+}
+
+function deepEnhancer(v, _, name) {
+  // it is an observable already, done
+  if (isObservable(v)) return v; // something that can be converted and mutated?
+
+  if (Array.isArray(v)) return observable.array(v, {
+    name: name
+  });
+  if (isPlainObject(v)) return observable.object(v, undefined, {
+    name: name
+  });
+  if (isES6Map(v)) return observable.map(v, {
+    name: name
+  });
+  if (isES6Set(v)) return observable.set(v, {
+    name: name
+  });
+  return v;
+}
+
+function shallowEnhancer(v, _, name) {
+  if (v === undefined || v === null) return v;
+  if (isObservableObject(v) || isObservableArray(v) || isObservableMap(v) || isObservableSet(v)) return v;
+  if (Array.isArray(v)) return observable.array(v, {
+    name: name,
+    deep: false
+  });
+  if (isPlainObject(v)) return observable.object(v, undefined, {
+    name: name,
+    deep: false
+  });
+  if (isES6Map(v)) return observable.map(v, {
+    name: name,
+    deep: false
+  });
+  if (isES6Set(v)) return observable.set(v, {
+    name: name,
+    deep: false
+  });
+  return fail( true && "The shallow modifier / decorator can only used in combination with arrays, objects, maps and sets");
+}
+
+function referenceEnhancer(newValue) {
+  // never turn into an observable
+  return newValue;
+}
+
+function refStructEnhancer(v, oldValue, name) {
+  if ( true && isObservable(v)) throw "observable.struct should not be used with observable values";
+  if (deepEqual(v, oldValue)) return oldValue;
+  return v;
+}
+
+function createDecoratorForEnhancer(enhancer) {
+  invariant(enhancer);
+  var decorator = createPropDecorator(true, function (target, propertyName, descriptor, _decoratorTarget, decoratorArgs) {
+    if (true) {
+      invariant(!descriptor || !descriptor.get, "@observable cannot be used on getter (property \"" + propertyName + "\"), use @computed instead.");
+    }
+
+    var initialValue = descriptor ? descriptor.initializer ? descriptor.initializer.call(target) : descriptor.value : undefined;
+    defineObservableProperty(target, propertyName, initialValue, enhancer);
+  });
+  var res = // Extra process checks, as this happens during module initialization
+  typeof process !== "undefined" && process.env && "development" !== "production" ? function observableDecorator() {
+    // This wrapper function is just to detect illegal decorator invocations, deprecate in a next version
+    // and simply return the created prop decorator
+    if (arguments.length < 2) return fail("Incorrect decorator invocation. @observable decorator doesn't expect any arguments");
+    return decorator.apply(null, arguments);
+  } : decorator;
+  res.enhancer = enhancer;
+  return res;
+} // Predefined bags of create observable options, to avoid allocating temporarily option objects
+// in the majority of cases
+
+
+var defaultCreateObservableOptions = {
+  deep: true,
+  name: undefined,
+  defaultDecorator: undefined
+};
+var shallowCreateObservableOptions = {
+  deep: false,
+  name: undefined,
+  defaultDecorator: undefined
+};
+Object.freeze(defaultCreateObservableOptions);
+Object.freeze(shallowCreateObservableOptions);
+
+function assertValidOption(key) {
+  if (!/^(deep|name|equals|defaultDecorator)$/.test(key)) fail("invalid option for (extend)observable: " + key);
+}
+
+function asCreateObservableOptions(thing) {
+  if (thing === null || thing === undefined) return defaultCreateObservableOptions;
+  if (typeof thing === "string") return {
+    name: thing,
+    deep: true
+  };
+
+  if (true) {
+    if (_typeof(thing) !== "object") return fail("expected options object");
+    Object.keys(thing).forEach(assertValidOption);
+  }
+
+  return thing;
+}
+
+function getEnhancerFromOptions(options) {
+  return options.defaultDecorator ? options.defaultDecorator.enhancer : options.deep === false ? referenceEnhancer : deepEnhancer;
+}
+
+var deepDecorator = createDecoratorForEnhancer(deepEnhancer);
+var shallowDecorator = createDecoratorForEnhancer(shallowEnhancer);
+var refDecorator = createDecoratorForEnhancer(referenceEnhancer);
+var refStructDecorator = createDecoratorForEnhancer(refStructEnhancer);
+/**
+ * Turns an object, array or function into a reactive structure.
+ * @param v the value which should become observable.
+ */
+
+function createObservable(v, arg2, arg3) {
+  // @observable someProp;
+  if (typeof arguments[1] === "string") {
+    return deepDecorator.apply(null, arguments);
+  } // it is an observable already, done
+
+
+  if (isObservable(v)) return v; // something that can be converted and mutated?
+
+  var res = isPlainObject(v) ? observable.object(v, arg2, arg3) : Array.isArray(v) ? observable.array(v, arg2) : isES6Map(v) ? observable.map(v, arg2) : isES6Set(v) ? observable.set(v, arg2) : v; // this value could be converted to a new observable data structure, return it
+
+  if (res !== v) return res; // otherwise, just box it
+
+  fail( true && "The provided value could not be converted into an observable. If you want just create an observable reference to the object use 'observable.box(value)'");
+}
+
+var observableFactories = {
+  box: function box(value, options) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("box");
+    var o = asCreateObservableOptions(options);
+    return new ObservableValue(value, getEnhancerFromOptions(o), o.name, true, o.equals);
+  },
+  shallowBox: function shallowBox(value, name) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("shallowBox");
+    deprecated("observable.shallowBox", "observable.box(value, { deep: false })");
+    return observable.box(value, {
+      name: name,
+      deep: false
+    });
+  },
+  array: function array(initialValues, options) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("array");
+    var o = asCreateObservableOptions(options);
+    return new ObservableArray(initialValues, getEnhancerFromOptions(o), o.name);
+  },
+  shallowArray: function shallowArray(initialValues, name) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("shallowArray");
+    deprecated("observable.shallowArray", "observable.array(values, { deep: false })");
+    return observable.array(initialValues, {
+      name: name,
+      deep: false
+    });
+  },
+  map: function map(initialValues, options) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("map");
+    var o = asCreateObservableOptions(options);
+    return new ObservableMap(initialValues, getEnhancerFromOptions(o), o.name);
+  },
+  shallowMap: function shallowMap(initialValues, name) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("shallowMap");
+    deprecated("observable.shallowMap", "observable.map(values, { deep: false })");
+    return observable.map(initialValues, {
+      name: name,
+      deep: false
+    });
+  },
+  set: function set(initialValues, options) {
+    if (arguments.length > 2) incorrectlyUsedAsDecorator("set");
+    var o = asCreateObservableOptions(options);
+    return new ObservableSet(initialValues, getEnhancerFromOptions(o), o.name);
+  },
+  object: function object(props, decorators, options) {
+    if (typeof arguments[1] === "string") incorrectlyUsedAsDecorator("object");
+    var o = asCreateObservableOptions(options);
+    return extendObservable({}, props, decorators, o);
+  },
+  shallowObject: function shallowObject(props, name) {
+    if (typeof arguments[1] === "string") incorrectlyUsedAsDecorator("shallowObject");
+    deprecated("observable.shallowObject", "observable.object(values, {}, { deep: false })");
+    return observable.object(props, {}, {
+      name: name,
+      deep: false
+    });
+  },
+  ref: refDecorator,
+  shallow: shallowDecorator,
+  deep: deepDecorator,
+  struct: refStructDecorator
+};
+var observable = createObservable; // weird trick to keep our typings nicely with our funcs, and still extend the observable function
+
+Object.keys(observableFactories).forEach(function (name) {
+  return observable[name] = observableFactories[name];
+});
+
+function incorrectlyUsedAsDecorator(methodName) {
+  fail( // process.env.NODE_ENV !== "production" &&
+  "Expected one or two arguments to observable." + methodName + ". Did you accidentally try to use observable." + methodName + " as decorator?");
+}
+
+var computedDecorator = createPropDecorator(false, function (instance, propertyName, descriptor, decoratorTarget, decoratorArgs) {
+  if (true) {
+    invariant(descriptor && descriptor.get, "Trying to declare a computed value for unspecified getter '" + propertyName + "'");
+  }
+
+  var get = descriptor.get,
+      set = descriptor.set; // initialValue is the descriptor for get / set props
+  // Optimization: faster on decorator target or instance? Assuming target
+  // Optimization: find out if declaring on instance isn't just faster. (also makes the property descriptor simpler). But, more memory usage..
+  // Forcing instance now, fixes hot reloadig issues on React Native:
+
+  var options = decoratorArgs[0] || {};
+  defineComputedProperty(instance, propertyName, _assign({
+    get: get,
+    set: set
+  }, options));
+});
+var computedStructDecorator = computedDecorator({
+  equals: comparer.structural
+});
+/**
+ * Decorator for class properties: @computed get value() { return expr; }.
+ * For legacy purposes also invokable as ES5 observable created: `computed(() => expr)`;
+ */
+
+var computed = function computed(arg1, arg2, arg3) {
+  if (typeof arg2 === "string") {
+    // @computed
+    return computedDecorator.apply(null, arguments);
+  }
+
+  if (arg1 !== null && _typeof(arg1) === "object" && arguments.length === 1) {
+    // @computed({ options })
+    return computedDecorator.apply(null, arguments);
+  } // computed(expr, options?)
+
+
+  if (true) {
+    invariant(typeof arg1 === "function", "First argument to `computed` should be an expression.");
+    invariant(arguments.length < 3, "Computed takes one or two arguments if used as function");
+  }
+
+  var opts = _typeof(arg2) === "object" ? arg2 : {};
+  opts.get = arg1;
+  opts.set = typeof arg2 === "function" ? arg2 : opts.set;
+  opts.name = opts.name || arg1.name || "";
+  /* for generated name */
+
+  return new ComputedValue(opts);
+};
+
+computed.struct = computedStructDecorator;
+var IDerivationState;
+
+(function (IDerivationState) {
+  // before being run or (outside batch and not being observed)
+  // at this point derivation is not holding any data about dependency tree
+  IDerivationState[IDerivationState["NOT_TRACKING"] = -1] = "NOT_TRACKING"; // no shallow dependency changed since last computation
+  // won't recalculate derivation
+  // this is what makes mobx fast
+
+  IDerivationState[IDerivationState["UP_TO_DATE"] = 0] = "UP_TO_DATE"; // some deep dependency changed, but don't know if shallow dependency changed
+  // will require to check first if UP_TO_DATE or POSSIBLY_STALE
+  // currently only ComputedValue will propagate POSSIBLY_STALE
+  //
+  // having this state is second big optimization:
+  // don't have to recompute on every dependency change, but only when it's needed
+
+  IDerivationState[IDerivationState["POSSIBLY_STALE"] = 1] = "POSSIBLY_STALE"; // A shallow dependency has changed since last computation and the derivation
+  // will need to recompute when it's needed next.
+
+  IDerivationState[IDerivationState["STALE"] = 2] = "STALE";
+})(IDerivationState || (IDerivationState = {}));
+
+var TraceMode;
+
+(function (TraceMode) {
+  TraceMode[TraceMode["NONE"] = 0] = "NONE";
+  TraceMode[TraceMode["LOG"] = 1] = "LOG";
+  TraceMode[TraceMode["BREAK"] = 2] = "BREAK";
+})(TraceMode || (TraceMode = {}));
+
+var CaughtException =
+/** @class */
+function () {
+  function CaughtException(cause) {
+    this.cause = cause; // Empty
+  }
+
+  return CaughtException;
+}();
+
+function isCaughtException(e) {
+  return e instanceof CaughtException;
+}
+/**
+ * Finds out whether any dependency of the derivation has actually changed.
+ * If dependenciesState is 1 then it will recalculate dependencies,
+ * if any dependency changed it will propagate it by changing dependenciesState to 2.
+ *
+ * By iterating over the dependencies in the same order that they were reported and
+ * stopping on the first change, all the recalculations are only called for ComputedValues
+ * that will be tracked by derivation. That is because we assume that if the first x
+ * dependencies of the derivation doesn't change then the derivation should run the same way
+ * up until accessing x-th dependency.
+ */
+
+
+function shouldCompute(derivation) {
+  switch (derivation.dependenciesState) {
+    case IDerivationState.UP_TO_DATE:
+      return false;
+
+    case IDerivationState.NOT_TRACKING:
+    case IDerivationState.STALE:
+      return true;
+
+    case IDerivationState.POSSIBLY_STALE:
+      {
+        // state propagation can occur outside of action/reactive context #2195
+        var prevAllowStateReads = allowStateReadsStart(true);
+        var prevUntracked = untrackedStart(); // no need for those computeds to be reported, they will be picked up in trackDerivedFunction.
+
+        var obs = derivation.observing,
+            l = obs.length;
+
+        for (var i = 0; i < l; i++) {
+          var obj = obs[i];
+
+          if (isComputedValue(obj)) {
+            if (globalState.disableErrorBoundaries) {
+              obj.get();
+            } else {
+              try {
+                obj.get();
+              } catch (e) {
+                // we are not interested in the value *or* exception at this moment, but if there is one, notify all
+                untrackedEnd(prevUntracked);
+                allowStateReadsEnd(prevAllowStateReads);
+                return true;
+              }
+            } // if ComputedValue `obj` actually changed it will be computed and propagated to its observers.
+            // and `derivation` is an observer of `obj`
+            // invariantShouldCompute(derivation)
+
+
+            if (derivation.dependenciesState === IDerivationState.STALE) {
+              untrackedEnd(prevUntracked);
+              allowStateReadsEnd(prevAllowStateReads);
+              return true;
+            }
+          }
+        }
+
+        changeDependenciesStateTo0(derivation);
+        untrackedEnd(prevUntracked);
+        allowStateReadsEnd(prevAllowStateReads);
+        return false;
+      }
+  }
+} // function invariantShouldCompute(derivation: IDerivation) {
+//     const newDepState = (derivation as any).dependenciesState
+//     if (
+//         process.env.NODE_ENV === "production" &&
+//         (newDepState === IDerivationState.POSSIBLY_STALE ||
+//             newDepState === IDerivationState.NOT_TRACKING)
+//     )
+//         fail("Illegal dependency state")
+// }
+
+
+function isComputingDerivation() {
+  return globalState.trackingDerivation !== null; // filter out actions inside computations
+}
+
+function checkIfStateModificationsAreAllowed(atom) {
+  var hasObservers = atom.observers.length > 0; // Should never be possible to change an observed observable from inside computed, see #798
+
+  if (globalState.computationDepth > 0 && hasObservers) fail( true && "Computed values are not allowed to cause side effects by changing observables that are already being observed. Tried to modify: " + atom.name); // Should not be possible to change observed state outside strict mode, except during initialization, see #563
+
+  if (!globalState.allowStateChanges && (hasObservers || globalState.enforceActions === "strict")) fail( true && (globalState.enforceActions ? "Since strict-mode is enabled, changing observed observable values outside actions is not allowed. Please wrap the code in an `action` if this change is intended. Tried to modify: " : "Side effects like changing state are not allowed at this point. Are you trying to modify state from, for example, the render function of a React component? Tried to modify: ") + atom.name);
+}
+
+function checkIfStateReadsAreAllowed(observable) {
+  if ( true && !globalState.allowStateReads && globalState.observableRequiresReaction) {
+    console.warn("[mobx] Observable " + observable.name + " being read outside a reactive context");
+  }
+}
+/**
+ * Executes the provided function `f` and tracks which observables are being accessed.
+ * The tracking information is stored on the `derivation` object and the derivation is registered
+ * as observer of any of the accessed observables.
+ */
+
+
+function trackDerivedFunction(derivation, f, context) {
+  var prevAllowStateReads = allowStateReadsStart(true); // pre allocate array allocation + room for variation in deps
+  // array will be trimmed by bindDependencies
+
+  changeDependenciesStateTo0(derivation);
+  derivation.newObserving = new Array(derivation.observing.length + 100);
+  derivation.unboundDepsCount = 0;
+  derivation.runId = ++globalState.runId;
+  var prevTracking = globalState.trackingDerivation;
+  globalState.trackingDerivation = derivation;
+  var result;
+
+  if (globalState.disableErrorBoundaries === true) {
+    result = f.call(context);
+  } else {
+    try {
+      result = f.call(context);
+    } catch (e) {
+      result = new CaughtException(e);
+    }
+  }
+
+  globalState.trackingDerivation = prevTracking;
+  bindDependencies(derivation);
+
+  if (derivation.observing.length === 0) {
+    warnAboutDerivationWithoutDependencies(derivation);
+  }
+
+  allowStateReadsEnd(prevAllowStateReads);
+  return result;
+}
+
+function warnAboutDerivationWithoutDependencies(derivation) {
+  if (false) {}
+
+  if (globalState.reactionRequiresObservable || derivation.requiresObservable) {
+    console.warn("[mobx] Derivation " + derivation.name + " is created/updated without reading any observable value");
+  }
+}
+/**
+ * diffs newObserving with observing.
+ * update observing to be newObserving with unique observables
+ * notify observers that become observed/unobserved
+ */
+
+
+function bindDependencies(derivation) {
+  // invariant(derivation.dependenciesState !== IDerivationState.NOT_TRACKING, "INTERNAL ERROR bindDependencies expects derivation.dependenciesState !== -1");
+  var prevObserving = derivation.observing;
+  var observing = derivation.observing = derivation.newObserving;
+  var lowestNewObservingDerivationState = IDerivationState.UP_TO_DATE; // Go through all new observables and check diffValue: (this list can contain duplicates):
+  //   0: first occurrence, change to 1 and keep it
+  //   1: extra occurrence, drop it
+
+  var i0 = 0,
+      l = derivation.unboundDepsCount;
+
+  for (var i = 0; i < l; i++) {
+    var dep = observing[i];
+
+    if (dep.diffValue === 0) {
+      dep.diffValue = 1;
+      if (i0 !== i) observing[i0] = dep;
+      i0++;
+    } // Upcast is 'safe' here, because if dep is IObservable, `dependenciesState` will be undefined,
+    // not hitting the condition
+
+
+    if (dep.dependenciesState > lowestNewObservingDerivationState) {
+      lowestNewObservingDerivationState = dep.dependenciesState;
+    }
+  }
+
+  observing.length = i0;
+  derivation.newObserving = null; // newObserving shouldn't be needed outside tracking (statement moved down to work around FF bug, see #614)
+  // Go through all old observables and check diffValue: (it is unique after last bindDependencies)
+  //   0: it's not in new observables, unobserve it
+  //   1: it keeps being observed, don't want to notify it. change to 0
+
+  l = prevObserving.length;
+
+  while (l--) {
+    var dep = prevObserving[l];
+
+    if (dep.diffValue === 0) {
+      removeObserver(dep, derivation);
+    }
+
+    dep.diffValue = 0;
+  } // Go through all new observables and check diffValue: (now it should be unique)
+  //   0: it was set to 0 in last loop. don't need to do anything.
+  //   1: it wasn't observed, let's observe it. set back to 0
+
+
+  while (i0--) {
+    var dep = observing[i0];
+
+    if (dep.diffValue === 1) {
+      dep.diffValue = 0;
+      addObserver(dep, derivation);
+    }
+  } // Some new observed derivations may become stale during this derivation computation
+  // so they have had no chance to propagate staleness (#916)
+
+
+  if (lowestNewObservingDerivationState !== IDerivationState.UP_TO_DATE) {
+    derivation.dependenciesState = lowestNewObservingDerivationState;
+    derivation.onBecomeStale();
+  }
+}
+
+function clearObserving(derivation) {
+  // invariant(globalState.inBatch > 0, "INTERNAL ERROR clearObserving should be called only inside batch");
+  var obs = derivation.observing;
+  derivation.observing = [];
+  var i = obs.length;
+
+  while (i--) {
+    removeObserver(obs[i], derivation);
+  }
+
+  derivation.dependenciesState = IDerivationState.NOT_TRACKING;
+}
+
+function untracked(action) {
+  var prev = untrackedStart();
+  var res = action();
+  untrackedEnd(prev);
+  return res;
+}
+
+function untrackedStart() {
+  var prev = globalState.trackingDerivation;
+  globalState.trackingDerivation = null;
+  return prev;
+}
+
+function untrackedEnd(prev) {
+  globalState.trackingDerivation = prev;
+}
+
+function allowStateReadsStart(allowStateReads) {
+  var prev = globalState.allowStateReads;
+  globalState.allowStateReads = allowStateReads;
+  return prev;
+}
+
+function allowStateReadsEnd(prev) {
+  globalState.allowStateReads = prev;
+}
+/**
+ * needed to keep `lowestObserverState` correct. when changing from (2 or 1) to 0
+ *
+ */
+
+
+function changeDependenciesStateTo0(derivation) {
+  if (derivation.dependenciesState === IDerivationState.UP_TO_DATE) return;
+  derivation.dependenciesState = IDerivationState.UP_TO_DATE;
+  var obs = derivation.observing;
+  var i = obs.length;
+
+  while (i--) {
+    obs[i].lowestObserverState = IDerivationState.UP_TO_DATE;
+  }
+} // we don't use globalState for these in order to avoid possible issues with multiple
+// mobx versions
+
+
+var currentActionId = 0;
+var nextActionId = 1;
+var functionNameDescriptor = Object.getOwnPropertyDescriptor(function () {}, "name");
+var isFunctionNameConfigurable = functionNameDescriptor && functionNameDescriptor.configurable;
+
+function createAction(actionName, fn) {
+  if (true) {
+    invariant(typeof fn === "function", "`action` can only be invoked on functions");
+    if (typeof actionName !== "string" || !actionName) fail("actions should have valid names, got: '" + actionName + "'");
+  }
+
+  var res = function res() {
+    return executeAction(actionName, fn, this, arguments);
+  };
+
+  if (true) {
+    if (isFunctionNameConfigurable) {
+      Object.defineProperty(res, "name", {
+        value: actionName
+      });
+    }
+  }
+
+  res.isMobxAction = true;
+  return res;
+}
+
+function executeAction(actionName, fn, scope, args) {
+  var runInfo = _startAction(actionName, scope, args);
+
+  try {
+    return fn.apply(scope, args);
+  } catch (err) {
+    runInfo.error = err;
+    throw err;
+  } finally {
+    _endAction(runInfo);
+  }
+}
+
+function _startAction(actionName, scope, args) {
+  var notifySpy = isSpyEnabled() && !!actionName;
+  var startTime = 0;
+
+  if (notifySpy) {
+    startTime = Date.now();
+    var l = args && args.length || 0;
+    var flattendArgs = new Array(l);
+    if (l > 0) for (var i = 0; i < l; i++) {
+      flattendArgs[i] = args[i];
+    }
+    spyReportStart({
+      type: "action",
+      name: actionName,
+      object: scope,
+      arguments: flattendArgs
+    });
+  }
+
+  var prevDerivation = untrackedStart();
+  startBatch();
+  var prevAllowStateChanges = allowStateChangesStart(true);
+  var prevAllowStateReads = allowStateReadsStart(true);
+  var runInfo = {
+    prevDerivation: prevDerivation,
+    prevAllowStateChanges: prevAllowStateChanges,
+    prevAllowStateReads: prevAllowStateReads,
+    notifySpy: notifySpy,
+    startTime: startTime,
+    actionId: nextActionId++,
+    parentActionId: currentActionId
+  };
+  currentActionId = runInfo.actionId;
+  return runInfo;
+}
+
+function _endAction(runInfo) {
+  if (currentActionId !== runInfo.actionId) {
+    fail("invalid action stack. did you forget to finish an action?");
+  }
+
+  currentActionId = runInfo.parentActionId;
+
+  if (runInfo.error !== undefined) {
+    globalState.suppressReactionErrors = true;
+  }
+
+  allowStateChangesEnd(runInfo.prevAllowStateChanges);
+  allowStateReadsEnd(runInfo.prevAllowStateReads);
+  endBatch();
+  untrackedEnd(runInfo.prevDerivation);
+
+  if (runInfo.notifySpy) {
+    spyReportEnd({
+      time: Date.now() - runInfo.startTime
+    });
+  }
+
+  globalState.suppressReactionErrors = false;
+}
+
+function allowStateChanges(allowStateChanges, func) {
+  var prev = allowStateChangesStart(allowStateChanges);
+  var res;
+
+  try {
+    res = func();
+  } finally {
+    allowStateChangesEnd(prev);
+  }
+
+  return res;
+}
+
+function allowStateChangesStart(allowStateChanges) {
+  var prev = globalState.allowStateChanges;
+  globalState.allowStateChanges = allowStateChanges;
+  return prev;
+}
+
+function allowStateChangesEnd(prev) {
+  globalState.allowStateChanges = prev;
+}
+
+function allowStateChangesInsideComputed(func) {
+  var prev = globalState.computationDepth;
+  globalState.computationDepth = 0;
+  var res;
+
+  try {
+    res = func();
+  } finally {
+    globalState.computationDepth = prev;
+  }
+
+  return res;
+}
+
+var ObservableValue =
+/** @class */
+function (_super) {
+  __extends(ObservableValue, _super);
+
+  function ObservableValue(value, enhancer, name, notifySpy, equals) {
+    if (name === void 0) {
+      name = "ObservableValue@" + getNextId();
+    }
+
+    if (notifySpy === void 0) {
+      notifySpy = true;
+    }
+
+    if (equals === void 0) {
+      equals = comparer.default;
+    }
+
+    var _this = _super.call(this, name) || this;
+
+    _this.enhancer = enhancer;
+    _this.name = name;
+    _this.equals = equals;
+    _this.hasUnreportedChange = false;
+    _this.value = enhancer(value, undefined, name);
+
+    if (notifySpy && isSpyEnabled()) {
+      // only notify spy if this is a stand-alone observable
+      spyReport({
+        type: "create",
+        name: _this.name,
+        newValue: "" + _this.value
+      });
+    }
+
+    return _this;
+  }
+
+  ObservableValue.prototype.dehanceValue = function (value) {
+    if (this.dehancer !== undefined) return this.dehancer(value);
+    return value;
+  };
+
+  ObservableValue.prototype.set = function (newValue) {
+    var oldValue = this.value;
+    newValue = this.prepareNewValue(newValue);
+
+    if (newValue !== globalState.UNCHANGED) {
+      var notifySpy = isSpyEnabled();
+
+      if (notifySpy) {
+        spyReportStart({
+          type: "update",
+          name: this.name,
+          newValue: newValue,
+          oldValue: oldValue
+        });
+      }
+
+      this.setNewValue(newValue);
+      if (notifySpy) spyReportEnd();
+    }
+  };
+
+  ObservableValue.prototype.prepareNewValue = function (newValue) {
+    checkIfStateModificationsAreAllowed(this);
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        object: this,
+        type: "update",
+        newValue: newValue
+      });
+      if (!change) return globalState.UNCHANGED;
+      newValue = change.newValue;
+    } // apply modifier
+
+
+    newValue = this.enhancer(newValue, this.value, this.name);
+    return this.equals(this.value, newValue) ? globalState.UNCHANGED : newValue;
+  };
+
+  ObservableValue.prototype.setNewValue = function (newValue) {
+    var oldValue = this.value;
+    this.value = newValue;
+    this.reportChanged();
+
+    if (hasListeners(this)) {
+      notifyListeners(this, {
+        type: "update",
+        object: this,
+        newValue: newValue,
+        oldValue: oldValue
+      });
+    }
+  };
+
+  ObservableValue.prototype.get = function () {
+    this.reportObserved();
+    return this.dehanceValue(this.value);
+  };
+
+  ObservableValue.prototype.intercept = function (handler) {
+    return registerInterceptor(this, handler);
+  };
+
+  ObservableValue.prototype.observe = function (listener, fireImmediately) {
+    if (fireImmediately) listener({
+      object: this,
+      type: "update",
+      newValue: this.value,
+      oldValue: undefined
+    });
+    return registerListener(this, listener);
+  };
+
+  ObservableValue.prototype.toJSON = function () {
+    return this.get();
+  };
+
+  ObservableValue.prototype.toString = function () {
+    return this.name + "[" + this.value + "]";
+  };
+
+  ObservableValue.prototype.valueOf = function () {
+    return toPrimitive(this.get());
+  };
+
+  return ObservableValue;
+}(Atom);
+
+ObservableValue.prototype[primitiveSymbol()] = ObservableValue.prototype.valueOf;
+var isObservableValue = createInstanceofPredicate("ObservableValue", ObservableValue);
+/**
+ * A node in the state dependency root that observes other nodes, and can be observed itself.
+ *
+ * ComputedValue will remember the result of the computation for the duration of the batch, or
+ * while being observed.
+ *
+ * During this time it will recompute only when one of its direct dependencies changed,
+ * but only when it is being accessed with `ComputedValue.get()`.
+ *
+ * Implementation description:
+ * 1. First time it's being accessed it will compute and remember result
+ *    give back remembered result until 2. happens
+ * 2. First time any deep dependency change, propagate POSSIBLY_STALE to all observers, wait for 3.
+ * 3. When it's being accessed, recompute if any shallow dependency changed.
+ *    if result changed: propagate STALE to all observers, that were POSSIBLY_STALE from the last step.
+ *    go to step 2. either way
+ *
+ * If at any point it's outside batch and it isn't observed: reset everything and go to 1.
+ */
+
+var ComputedValue =
+/** @class */
+function () {
+  /**
+   * Create a new computed value based on a function expression.
+   *
+   * The `name` property is for debug purposes only.
+   *
+   * The `equals` property specifies the comparer function to use to determine if a newly produced
+   * value differs from the previous value. Two comparers are provided in the library; `defaultComparer`
+   * compares based on identity comparison (===), and `structualComparer` deeply compares the structure.
+   * Structural comparison can be convenient if you always produce a new aggregated object and
+   * don't want to notify observers if it is structurally the same.
+   * This is useful for working with vectors, mouse coordinates etc.
+   */
+  function ComputedValue(options) {
+    this.dependenciesState = IDerivationState.NOT_TRACKING;
+    this.observing = []; // nodes we are looking at. Our value depends on these nodes
+
+    this.newObserving = null; // during tracking it's an array with new observed observers
+
+    this.isBeingObserved = false;
+    this.isPendingUnobservation = false;
+    this.observers = [];
+    this.observersIndexes = {};
+    this.diffValue = 0;
+    this.runId = 0;
+    this.lastAccessedBy = 0;
+    this.lowestObserverState = IDerivationState.UP_TO_DATE;
+    this.unboundDepsCount = 0;
+    this.__mapid = "#" + getNextId();
+    this.value = new CaughtException(null);
+    this.isComputing = false; // to check for cycles
+
+    this.isRunningSetter = false;
+    this.isTracing = TraceMode.NONE;
+    invariant(options.get, "missing option for computed: get");
+    this.derivation = options.get;
+    this.name = options.name || "ComputedValue@" + getNextId();
+    if (options.set) this.setter = createAction(this.name + "-setter", options.set);
+    this.equals = options.equals || (options.compareStructural || options.struct ? comparer.structural : comparer.default);
+    this.scope = options.context;
+    this.requiresReaction = !!options.requiresReaction;
+    this.keepAlive = !!options.keepAlive;
+  }
+
+  ComputedValue.prototype.onBecomeStale = function () {
+    propagateMaybeChanged(this);
+  };
+
+  ComputedValue.prototype.onBecomeUnobserved = function () {};
+
+  ComputedValue.prototype.onBecomeObserved = function () {};
+  /**
+   * Returns the current value of this computed value.
+   * Will evaluate its computation first if needed.
+   */
+
+
+  ComputedValue.prototype.get = function () {
+    if (this.isComputing) fail("Cycle detected in computation " + this.name + ": " + this.derivation);
+
+    if (globalState.inBatch === 0 && this.observers.length === 0 && !this.keepAlive) {
+      if (shouldCompute(this)) {
+        this.warnAboutUntrackedRead();
+        startBatch(); // See perf test 'computed memoization'
+
+        this.value = this.computeValue(false);
+        endBatch();
+      }
+    } else {
+      reportObserved(this);
+      if (shouldCompute(this)) if (this.trackAndCompute()) propagateChangeConfirmed(this);
+    }
+
+    var result = this.value;
+    if (isCaughtException(result)) throw result.cause;
+    return result;
+  };
+
+  ComputedValue.prototype.peek = function () {
+    var res = this.computeValue(false);
+    if (isCaughtException(res)) throw res.cause;
+    return res;
+  };
+
+  ComputedValue.prototype.set = function (value) {
+    if (this.setter) {
+      invariant(!this.isRunningSetter, "The setter of computed value '" + this.name + "' is trying to update itself. Did you intend to update an _observable_ value, instead of the computed property?");
+      this.isRunningSetter = true;
+
+      try {
+        this.setter.call(this.scope, value);
+      } finally {
+        this.isRunningSetter = false;
+      }
+    } else invariant(false,  true && "[ComputedValue '" + this.name + "'] It is not possible to assign a new value to a computed value.");
+  };
+
+  ComputedValue.prototype.trackAndCompute = function () {
+    if (isSpyEnabled()) {
+      spyReport({
+        object: this.scope,
+        type: "compute",
+        name: this.name
+      });
+    }
+
+    var oldValue = this.value;
+    var wasSuspended =
+    /* see #1208 */
+    this.dependenciesState === IDerivationState.NOT_TRACKING;
+    var newValue = this.computeValue(true);
+    var changed = wasSuspended || isCaughtException(oldValue) || isCaughtException(newValue) || !this.equals(oldValue, newValue);
+
+    if (changed) {
+      this.value = newValue;
+    }
+
+    return changed;
+  };
+
+  ComputedValue.prototype.computeValue = function (track) {
+    this.isComputing = true;
+    globalState.computationDepth++;
+    var res;
+
+    if (track) {
+      res = trackDerivedFunction(this, this.derivation, this.scope);
+    } else {
+      if (globalState.disableErrorBoundaries === true) {
+        res = this.derivation.call(this.scope);
+      } else {
+        try {
+          res = this.derivation.call(this.scope);
+        } catch (e) {
+          res = new CaughtException(e);
+        }
+      }
+    }
+
+    globalState.computationDepth--;
+    this.isComputing = false;
+    return res;
+  };
+
+  ComputedValue.prototype.suspend = function () {
+    if (!this.keepAlive) {
+      clearObserving(this);
+      this.value = undefined; // don't hold on to computed value!
+    }
+  };
+
+  ComputedValue.prototype.observe = function (listener, fireImmediately) {
+    var _this = this;
+
+    var firstTime = true;
+    var prevValue = undefined;
+    return autorun(function () {
+      var newValue = _this.get();
+
+      if (!firstTime || fireImmediately) {
+        var prevU = untrackedStart();
+        listener({
+          type: "update",
+          object: _this,
+          newValue: newValue,
+          oldValue: prevValue
+        });
+        untrackedEnd(prevU);
+      }
+
+      firstTime = false;
+      prevValue = newValue;
+    });
+  };
+
+  ComputedValue.prototype.warnAboutUntrackedRead = function () {
+    if (false) {}
+
+    if (this.requiresReaction === true) {
+      fail("[mobx] Computed value " + this.name + " is read outside a reactive context");
+    }
+
+    if (this.isTracing !== TraceMode.NONE) {
+      console.log("[mobx.trace] '" + this.name + "' is being read outside a reactive context. Doing a full recompute");
+    }
+
+    if (globalState.computedRequiresReaction) {
+      console.warn("[mobx] Computed value " + this.name + " is being read outside a reactive context. Doing a full recompute");
+    }
+  };
+
+  ComputedValue.prototype.toJSON = function () {
+    return this.get();
+  };
+
+  ComputedValue.prototype.toString = function () {
+    return this.name + "[" + this.derivation.toString() + "]";
+  };
+
+  ComputedValue.prototype.valueOf = function () {
+    return toPrimitive(this.get());
+  };
+
+  return ComputedValue;
+}();
+
+ComputedValue.prototype[primitiveSymbol()] = ComputedValue.prototype.valueOf;
+var isComputedValue = createInstanceofPredicate("ComputedValue", ComputedValue);
+/**
+ * These values will persist if global state is reset
+ */
+
+var persistentKeys = ["mobxGuid", "spyListeners", "enforceActions", "computedRequiresReaction", "reactionRequiresObservable", "observableRequiresReaction", "allowStateReads", "disableErrorBoundaries", "runId", "UNCHANGED"];
+
+var MobXGlobals =
+/** @class */
+function () {
+  function MobXGlobals() {
+    /**
+     * MobXGlobals version.
+     * MobX compatiblity with other versions loaded in memory as long as this version matches.
+     * It indicates that the global state still stores similar information
+     *
+     * N.B: this version is unrelated to the package version of MobX, and is only the version of the
+     * internal state storage of MobX, and can be the same across many different package versions
+     */
+    this.version = 5;
+    /**
+     * globally unique token to signal unchanged
+     */
+
+    this.UNCHANGED = {};
+    /**
+     * Currently running derivation
+     */
+
+    this.trackingDerivation = null;
+    /**
+     * Are we running a computation currently? (not a reaction)
+     */
+
+    this.computationDepth = 0;
+    /**
+     * Each time a derivation is tracked, it is assigned a unique run-id
+     */
+
+    this.runId = 0;
+    /**
+     * 'guid' for general purpose. Will be persisted amongst resets.
+     */
+
+    this.mobxGuid = 0;
+    /**
+     * Are we in a batch block? (and how many of them)
+     */
+
+    this.inBatch = 0;
+    /**
+     * Observables that don't have observers anymore, and are about to be
+     * suspended, unless somebody else accesses it in the same batch
+     *
+     * @type {IObservable[]}
+     */
+
+    this.pendingUnobservations = [];
+    /**
+     * List of scheduled, not yet executed, reactions.
+     */
+
+    this.pendingReactions = [];
+    /**
+     * Are we currently processing reactions?
+     */
+
+    this.isRunningReactions = false;
+    /**
+     * Is it allowed to change observables at this point?
+     * In general, MobX doesn't allow that when running computations and React.render.
+     * To ensure that those functions stay pure.
+     */
+
+    this.allowStateChanges = true;
+    /**
+     * Is it allowed to read observables at this point?
+     * Used to hold the state needed for `observableRequiresReaction`
+     */
+
+    this.allowStateReads = true;
+    /**
+     * If strict mode is enabled, state changes are by default not allowed
+     */
+
+    this.enforceActions = false;
+    /**
+     * Spy callbacks
+     */
+
+    this.spyListeners = [];
+    /**
+     * Globally attached error handlers that react specifically to errors in reactions
+     */
+
+    this.globalReactionErrorHandlers = [];
+    /**
+     * Warn if computed values are accessed outside a reactive context
+     */
+
+    this.computedRequiresReaction = false;
+    /**
+     * (Experimental)
+     * Warn if you try to create to derivation / reactive context without accessing any observable.
+     */
+
+    this.reactionRequiresObservable = false;
+    /**
+     * (Experimental)
+     * Warn if observables are accessed outside a reactive context
+     */
+
+    this.observableRequiresReaction = false;
+    /**
+     * Allows overwriting of computed properties, useful in tests but not prod as it can cause
+     * memory leaks. See https://github.com/mobxjs/mobx/issues/1867
+     */
+
+    this.computedConfigurable = false;
+    /*
+     * Don't catch and rethrow exceptions. This is useful for inspecting the state of
+     * the stack when an exception occurs while debugging.
+     */
+
+    this.disableErrorBoundaries = false;
+    /*
+     * If true, we are already handling an exception in an action. Any errors in reactions should be supressed, as
+     * they are not the cause, see: https://github.com/mobxjs/mobx/issues/1836
+     */
+
+    this.suppressReactionErrors = false;
+  }
+
+  return MobXGlobals;
+}();
+
+var canMergeGlobalState = true;
+var isolateCalled = false;
+
+var globalState = function () {
+  var global = getGlobal();
+  if (global.__mobxInstanceCount > 0 && !global.__mobxGlobals) canMergeGlobalState = false;
+  if (global.__mobxGlobals && global.__mobxGlobals.version !== new MobXGlobals().version) canMergeGlobalState = false;
+
+  if (!canMergeGlobalState) {
+    setTimeout(function () {
+      if (!isolateCalled) {
+        fail("There are multiple, different versions of MobX active. Make sure MobX is loaded only once or use `configure({ isolateGlobalState: true })`");
+      }
+    }, 1);
+    return new MobXGlobals();
+  } else if (global.__mobxGlobals) {
+    global.__mobxInstanceCount += 1;
+    if (!global.__mobxGlobals.UNCHANGED) global.__mobxGlobals.UNCHANGED = {}; // make merge backward compatible
+
+    return global.__mobxGlobals;
+  } else {
+    global.__mobxInstanceCount = 1;
+    return global.__mobxGlobals = new MobXGlobals();
+  }
+}();
+
+function isolateGlobalState() {
+  if (globalState.pendingReactions.length || globalState.inBatch || globalState.isRunningReactions) fail("isolateGlobalState should be called before MobX is running any reactions");
+  isolateCalled = true;
+
+  if (canMergeGlobalState) {
+    if (--getGlobal().__mobxInstanceCount === 0) getGlobal().__mobxGlobals = undefined;
+    globalState = new MobXGlobals();
+  }
+}
+
+function getGlobalState() {
+  return globalState;
+}
+/**
+ * For testing purposes only; this will break the internal state of existing observables,
+ * but can be used to get back at a stable state after throwing errors
+ */
+
+
+function resetGlobalState() {
+  var defaultGlobals = new MobXGlobals();
+
+  for (var key in defaultGlobals) {
+    if (persistentKeys.indexOf(key) === -1) globalState[key] = defaultGlobals[key];
+  }
+
+  globalState.allowStateChanges = !globalState.enforceActions;
+}
+
+function hasObservers(observable) {
+  return observable.observers && observable.observers.length > 0;
+}
+
+function getObservers(observable) {
+  return observable.observers;
+} // function invariantObservers(observable: IObservable) {
+//     const list = observable.observers
+//     const map = observable.observersIndexes
+//     const l = list.length
+//     for (let i = 0; i < l; i++) {
+//         const id = list[i].__mapid
+//         if (i) {
+//             invariant(map[id] === i, "INTERNAL ERROR maps derivation.__mapid to index in list") // for performance
+//         } else {
+//             invariant(!(id in map), "INTERNAL ERROR observer on index 0 shouldn't be held in map.") // for performance
+//         }
+//     }
+//     invariant(
+//         list.length === 0 || Object.keys(map).length === list.length - 1,
+//         "INTERNAL ERROR there is no junk in map"
+//     )
+// }
+
+
+function addObserver(observable, node) {
+  // invariant(node.dependenciesState !== -1, "INTERNAL ERROR, can add only dependenciesState !== -1");
+  // invariant(observable._observers.indexOf(node) === -1, "INTERNAL ERROR add already added node");
+  // invariantObservers(observable);
+  var l = observable.observers.length;
+
+  if (l) {
+    // because object assignment is relatively expensive, let's not store data about index 0.
+    observable.observersIndexes[node.__mapid] = l;
+  }
+
+  observable.observers[l] = node;
+  if (observable.lowestObserverState > node.dependenciesState) observable.lowestObserverState = node.dependenciesState; // invariantObservers(observable);
+  // invariant(observable._observers.indexOf(node) !== -1, "INTERNAL ERROR didn't add node");
+}
+
+function removeObserver(observable, node) {
+  // invariant(globalState.inBatch > 0, "INTERNAL ERROR, remove should be called only inside batch");
+  // invariant(observable._observers.indexOf(node) !== -1, "INTERNAL ERROR remove already removed node");
+  // invariantObservers(observable);
+  if (observable.observers.length === 1) {
+    // deleting last observer
+    observable.observers.length = 0;
+    queueForUnobservation(observable);
+  } else {
+    // deleting from _observersIndexes is straight forward, to delete from _observers, let's swap `node` with last element
+    var list = observable.observers;
+    var map = observable.observersIndexes;
+    var filler = list.pop(); // get last element, which should fill the place of `node`, so the array doesn't have holes
+
+    if (filler !== node) {
+      // otherwise node was the last element, which already got removed from array
+      var index = map[node.__mapid] || 0; // getting index of `node`. this is the only place we actually use map.
+
+      if (index) {
+        // map store all indexes but 0, see comment in `addObserver`
+        map[filler.__mapid] = index;
+      } else {
+        delete map[filler.__mapid];
+      }
+
+      list[index] = filler;
+    }
+
+    delete map[node.__mapid];
+  } // invariantObservers(observable);
+  // invariant(observable._observers.indexOf(node) === -1, "INTERNAL ERROR remove already removed node2");
+
+}
+
+function queueForUnobservation(observable) {
+  if (observable.isPendingUnobservation === false) {
+    // invariant(observable._observers.length === 0, "INTERNAL ERROR, should only queue for unobservation unobserved observables");
+    observable.isPendingUnobservation = true;
+    globalState.pendingUnobservations.push(observable);
+  }
+}
+/**
+ * Batch starts a transaction, at least for purposes of memoizing ComputedValues when nothing else does.
+ * During a batch `onBecomeUnobserved` will be called at most once per observable.
+ * Avoids unnecessary recalculations.
+ */
+
+
+function startBatch() {
+  globalState.inBatch++;
+}
+
+function endBatch() {
+  if (--globalState.inBatch === 0) {
+    runReactions(); // the batch is actually about to finish, all unobserving should happen here.
+
+    var list = globalState.pendingUnobservations;
+
+    for (var i = 0; i < list.length; i++) {
+      var observable = list[i];
+      observable.isPendingUnobservation = false;
+
+      if (observable.observers.length === 0) {
+        if (observable.isBeingObserved) {
+          // if this observable had reactive observers, trigger the hooks
+          observable.isBeingObserved = false;
+          observable.onBecomeUnobserved();
+        }
+
+        if (observable instanceof ComputedValue) {
+          // computed values are automatically teared down when the last observer leaves
+          // this process happens recursively, this computed might be the last observable of another, etc..
+          observable.suspend();
+        }
+      }
+    }
+
+    globalState.pendingUnobservations = [];
+  }
+}
+
+function reportObserved(observable) {
+  checkIfStateReadsAreAllowed(observable);
+  var derivation = globalState.trackingDerivation;
+
+  if (derivation !== null) {
+    /**
+     * Simple optimization, give each derivation run an unique id (runId)
+     * Check if last time this observable was accessed the same runId is used
+     * if this is the case, the relation is already known
+     */
+    if (derivation.runId !== observable.lastAccessedBy) {
+      observable.lastAccessedBy = derivation.runId;
+      derivation.newObserving[derivation.unboundDepsCount++] = observable;
+
+      if (!observable.isBeingObserved) {
+        observable.isBeingObserved = true;
+        observable.onBecomeObserved();
+      }
+    }
+
+    return true;
+  } else if (observable.observers.length === 0 && globalState.inBatch > 0) {
+    queueForUnobservation(observable);
+  }
+
+  return false;
+} // function invariantLOS(observable: IObservable, msg: string) {
+//     // it's expensive so better not run it in produciton. but temporarily helpful for testing
+//     const min = getObservers(observable).reduce((a, b) => Math.min(a, b.dependenciesState), 2)
+//     if (min >= observable.lowestObserverState) return // <- the only assumption about `lowestObserverState`
+//     throw new Error(
+//         "lowestObserverState is wrong for " +
+//             msg +
+//             " because " +
+//             min +
+//             " < " +
+//             observable.lowestObserverState
+//     )
+// }
+
+/**
+ * NOTE: current propagation mechanism will in case of self reruning autoruns behave unexpectedly
+ * It will propagate changes to observers from previous run
+ * It's hard or maybe impossible (with reasonable perf) to get it right with current approach
+ * Hopefully self reruning autoruns aren't a feature people should depend on
+ * Also most basic use cases should be ok
+ */
+// Called by Atom when its value changes
+
+
+function propagateChanged(observable) {
+  // invariantLOS(observable, "changed start");
+  if (observable.lowestObserverState === IDerivationState.STALE) return;
+  observable.lowestObserverState = IDerivationState.STALE;
+  var observers = observable.observers;
+  var i = observers.length;
+
+  while (i--) {
+    var d = observers[i];
+
+    if (d.dependenciesState === IDerivationState.UP_TO_DATE) {
+      if (d.isTracing !== TraceMode.NONE) {
+        logTraceInfo(d, observable);
+      }
+
+      d.onBecomeStale();
+    }
+
+    d.dependenciesState = IDerivationState.STALE;
+  } // invariantLOS(observable, "changed end");
+
+} // Called by ComputedValue when it recalculate and its value changed
+
+
+function propagateChangeConfirmed(observable) {
+  // invariantLOS(observable, "confirmed start");
+  if (observable.lowestObserverState === IDerivationState.STALE) return;
+  observable.lowestObserverState = IDerivationState.STALE;
+  var observers = observable.observers;
+  var i = observers.length;
+
+  while (i--) {
+    var d = observers[i];
+    if (d.dependenciesState === IDerivationState.POSSIBLY_STALE) d.dependenciesState = IDerivationState.STALE;else if (d.dependenciesState === IDerivationState.UP_TO_DATE // this happens during computing of `d`, just keep lowestObserverState up to date.
+    ) observable.lowestObserverState = IDerivationState.UP_TO_DATE;
+  } // invariantLOS(observable, "confirmed end");
+
+} // Used by computed when its dependency changed, but we don't wan't to immediately recompute.
+
+
+function propagateMaybeChanged(observable) {
+  // invariantLOS(observable, "maybe start");
+  if (observable.lowestObserverState !== IDerivationState.UP_TO_DATE) return;
+  observable.lowestObserverState = IDerivationState.POSSIBLY_STALE;
+  var observers = observable.observers;
+  var i = observers.length;
+
+  while (i--) {
+    var d = observers[i];
+
+    if (d.dependenciesState === IDerivationState.UP_TO_DATE) {
+      d.dependenciesState = IDerivationState.POSSIBLY_STALE;
+
+      if (d.isTracing !== TraceMode.NONE) {
+        logTraceInfo(d, observable);
+      }
+
+      d.onBecomeStale();
+    }
+  } // invariantLOS(observable, "maybe end");
+
+}
+
+function logTraceInfo(derivation, observable) {
+  console.log("[mobx.trace] '" + derivation.name + "' is invalidated due to a change in: '" + observable.name + "'");
+
+  if (derivation.isTracing === TraceMode.BREAK) {
+    var lines = [];
+    printDepTree(getDependencyTree(derivation), lines, 1); // prettier-ignore
+
+    new Function("debugger;\n/*\nTracing '" + derivation.name + "'\n\nYou are entering this break point because derivation '" + derivation.name + "' is being traced and '" + observable.name + "' is now forcing it to update.\nJust follow the stacktrace you should now see in the devtools to see precisely what piece of your code is causing this update\nThe stackframe you are looking for is at least ~6-8 stack-frames up.\n\n" + (derivation instanceof ComputedValue ? derivation.derivation.toString().replace(/[*]\//g, "/") : "") + "\n\nThe dependencies for this derivation are:\n\n" + lines.join("\n") + "\n*/\n    ")();
+  }
+}
+
+function printDepTree(tree, lines, depth) {
+  if (lines.length >= 1000) {
+    lines.push("(and many more)");
+    return;
+  }
+
+  lines.push("" + new Array(depth).join("\t") + tree.name); // MWE: not the fastest, but the easiest way :)
+
+  if (tree.dependencies) tree.dependencies.forEach(function (child) {
+    return printDepTree(child, lines, depth + 1);
+  });
+}
+
+var Reaction =
+/** @class */
+function () {
+  function Reaction(name, onInvalidate, errorHandler, requiresObservable) {
+    if (name === void 0) {
+      name = "Reaction@" + getNextId();
+    }
+
+    if (requiresObservable === void 0) {
+      requiresObservable = false;
+    }
+
+    this.name = name;
+    this.onInvalidate = onInvalidate;
+    this.errorHandler = errorHandler;
+    this.requiresObservable = requiresObservable;
+    this.observing = []; // nodes we are looking at. Our value depends on these nodes
+
+    this.newObserving = [];
+    this.dependenciesState = IDerivationState.NOT_TRACKING;
+    this.diffValue = 0;
+    this.runId = 0;
+    this.unboundDepsCount = 0;
+    this.__mapid = "#" + getNextId();
+    this.isDisposed = false;
+    this._isScheduled = false;
+    this._isTrackPending = false;
+    this._isRunning = false;
+    this.isTracing = TraceMode.NONE;
+  }
+
+  Reaction.prototype.onBecomeStale = function () {
+    this.schedule();
+  };
+
+  Reaction.prototype.schedule = function () {
+    if (!this._isScheduled) {
+      this._isScheduled = true;
+      globalState.pendingReactions.push(this);
+      runReactions();
+    }
+  };
+
+  Reaction.prototype.isScheduled = function () {
+    return this._isScheduled;
+  };
+  /**
+   * internal, use schedule() if you intend to kick off a reaction
+   */
+
+
+  Reaction.prototype.runReaction = function () {
+    if (!this.isDisposed) {
+      startBatch();
+      this._isScheduled = false;
+
+      if (shouldCompute(this)) {
+        this._isTrackPending = true;
+
+        try {
+          this.onInvalidate();
+
+          if (this._isTrackPending && isSpyEnabled()) {
+            // onInvalidate didn't trigger track right away..
+            spyReport({
+              name: this.name,
+              type: "scheduled-reaction"
+            });
+          }
+        } catch (e) {
+          this.reportExceptionInDerivation(e);
+        }
+      }
+
+      endBatch();
+    }
+  };
+
+  Reaction.prototype.track = function (fn) {
+    startBatch();
+    var notify = isSpyEnabled();
+    var startTime;
+
+    if (notify) {
+      startTime = Date.now();
+      spyReportStart({
+        name: this.name,
+        type: "reaction"
+      });
+    }
+
+    this._isRunning = true;
+    var result = trackDerivedFunction(this, fn, undefined);
+    this._isRunning = false;
+    this._isTrackPending = false;
+
+    if (this.isDisposed) {
+      // disposed during last run. Clean up everything that was bound after the dispose call.
+      clearObserving(this);
+    }
+
+    if (isCaughtException(result)) this.reportExceptionInDerivation(result.cause);
+
+    if (notify) {
+      spyReportEnd({
+        time: Date.now() - startTime
+      });
+    }
+
+    endBatch();
+  };
+
+  Reaction.prototype.reportExceptionInDerivation = function (error) {
+    var _this = this;
+
+    if (this.errorHandler) {
+      this.errorHandler(error, this);
+      return;
+    }
+
+    if (globalState.disableErrorBoundaries) throw error;
+    var message = "[mobx] Encountered an uncaught exception that was thrown by a reaction or observer component, in: '" + this + "'";
+
+    if (globalState.suppressReactionErrors) {
+      console.warn("[mobx] (error in reaction '" + this.name + "' suppressed, fix error of causing action below)"); // prettier-ignore
+    } else {
+      console.error(message, error);
+      /** If debugging brought you here, please, read the above message :-). Tnx! */
+    }
+
+    if (isSpyEnabled()) {
+      spyReport({
+        type: "error",
+        name: this.name,
+        message: message,
+        error: "" + error
+      });
+    }
+
+    globalState.globalReactionErrorHandlers.forEach(function (f) {
+      return f(error, _this);
+    });
+  };
+
+  Reaction.prototype.dispose = function () {
+    if (!this.isDisposed) {
+      this.isDisposed = true;
+
+      if (!this._isRunning) {
+        // if disposed while running, clean up later. Maybe not optimal, but rare case
+        startBatch();
+        clearObserving(this);
+        endBatch();
+      }
+    }
+  };
+
+  Reaction.prototype.getDisposer = function () {
+    var r = this.dispose.bind(this);
+    r.$mobx = this;
+    return r;
+  };
+
+  Reaction.prototype.toString = function () {
+    return "Reaction[" + this.name + "]";
+  };
+
+  Reaction.prototype.trace = function (enterBreakPoint) {
+    if (enterBreakPoint === void 0) {
+      enterBreakPoint = false;
+    }
+
+    trace(this, enterBreakPoint);
+  };
+
+  return Reaction;
+}();
+
+function onReactionError(handler) {
+  globalState.globalReactionErrorHandlers.push(handler);
+  return function () {
+    var idx = globalState.globalReactionErrorHandlers.indexOf(handler);
+    if (idx >= 0) globalState.globalReactionErrorHandlers.splice(idx, 1);
+  };
+}
+/**
+ * Magic number alert!
+ * Defines within how many times a reaction is allowed to re-trigger itself
+ * until it is assumed that this is gonna be a never ending loop...
+ */
+
+
+var MAX_REACTION_ITERATIONS = 100;
+
+var reactionScheduler = function reactionScheduler(f) {
+  return f();
+};
+
+function runReactions() {
+  // Trampolining, if runReactions are already running, new reactions will be picked up
+  if (globalState.inBatch > 0 || globalState.isRunningReactions) return;
+  reactionScheduler(runReactionsHelper);
+}
+
+function runReactionsHelper() {
+  globalState.isRunningReactions = true;
+  var allReactions = globalState.pendingReactions;
+  var iterations = 0; // While running reactions, new reactions might be triggered.
+  // Hence we work with two variables and check whether
+  // we converge to no remaining reactions after a while.
+
+  while (allReactions.length > 0) {
+    if (++iterations === MAX_REACTION_ITERATIONS) {
+      console.error("Reaction doesn't converge to a stable state after " + MAX_REACTION_ITERATIONS + " iterations." + (" Probably there is a cycle in the reactive function: " + allReactions[0]));
+      allReactions.splice(0); // clear reactions
+    }
+
+    var remainingReactions = allReactions.splice(0);
+
+    for (var i = 0, l = remainingReactions.length; i < l; i++) {
+      remainingReactions[i].runReaction();
+    }
+  }
+
+  globalState.isRunningReactions = false;
+}
+
+var isReaction = createInstanceofPredicate("Reaction", Reaction);
+
+function setReactionScheduler(fn) {
+  var baseScheduler = reactionScheduler;
+
+  reactionScheduler = function reactionScheduler(f) {
+    return fn(function () {
+      return baseScheduler(f);
+    });
+  };
+}
+
+function isSpyEnabled() {
+  return !!globalState.spyListeners.length;
+}
+
+function spyReport(event) {
+  if (!globalState.spyListeners.length) return;
+  var listeners = globalState.spyListeners;
+
+  for (var i = 0, l = listeners.length; i < l; i++) {
+    listeners[i](event);
+  }
+}
+
+function spyReportStart(event) {
+  var change = _assign(_assign({}, event), {
+    spyReportStart: true
+  });
+
+  spyReport(change);
+}
+
+var END_EVENT = {
+  spyReportEnd: true
+};
+
+function spyReportEnd(change) {
+  if (change) spyReport(_assign(_assign({}, change), {
+    spyReportEnd: true
+  }));else spyReport(END_EVENT);
+}
+
+function spy(listener) {
+  globalState.spyListeners.push(listener);
+  return once(function () {
+    globalState.spyListeners = globalState.spyListeners.filter(function (l) {
+      return l !== listener;
+    });
+  });
+}
+
+function dontReassignFields() {
+  fail( true && "@action fields are not reassignable");
+}
+
+function namedActionDecorator(name) {
+  return function (target, prop, descriptor) {
+    if (descriptor) {
+      if ( true && descriptor.get !== undefined) {
+        return fail("@action cannot be used with getters");
+      } // babel / typescript
+      // @action method() { }
+
+
+      if (descriptor.value) {
+        // typescript
+        return {
+          value: createAction(name, descriptor.value),
+          enumerable: false,
+          configurable: true,
+          writable: true // for typescript, this must be writable, otherwise it cannot inherit :/ (see inheritable actions test)
+
+        };
+      } // babel only: @action method = () => {}
+
+
+      var initializer_1 = descriptor.initializer;
+      return {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        initializer: function initializer() {
+          // N.B: we can't immediately invoke initializer; this would be wrong
+          return createAction(name, initializer_1.call(this));
+        }
+      };
+    } // bound instance methods
+
+
+    return actionFieldDecorator(name).apply(this, arguments);
+  };
+}
+
+function actionFieldDecorator(name) {
+  // Simple property that writes on first invocation to the current instance
+  return function (target, prop, descriptor) {
+    Object.defineProperty(target, prop, {
+      configurable: true,
+      enumerable: false,
+      get: function get() {
+        return undefined;
+      },
+      set: function set(value) {
+        addHiddenProp(this, prop, action(name, value));
+      }
+    });
+  };
+}
+
+function boundActionDecorator(target, propertyName, descriptor, applyToInstance) {
+  if (applyToInstance === true) {
+    defineBoundAction(target, propertyName, descriptor.value);
+    return null;
+  }
+
+  if (descriptor) {
+    // if (descriptor.value)
+    // Typescript / Babel: @action.bound method() { }
+    // also: babel @action.bound method = () => {}
+    return {
+      configurable: true,
+      enumerable: false,
+      get: function get() {
+        defineBoundAction(this, propertyName, descriptor.value || descriptor.initializer.call(this));
+        return this[propertyName];
+      },
+      set: dontReassignFields
+    };
+  } // field decorator Typescript @action.bound method = () => {}
+
+
+  return {
+    enumerable: false,
+    configurable: true,
+    set: function set(v) {
+      defineBoundAction(this, propertyName, v);
+    },
+    get: function get() {
+      return undefined;
+    }
+  };
+}
+
+var action = function action(arg1, arg2, arg3, arg4) {
+  // action(fn() {})
+  if (arguments.length === 1 && typeof arg1 === "function") return createAction(arg1.name || "<unnamed action>", arg1); // action("name", fn() {})
+
+  if (arguments.length === 2 && typeof arg2 === "function") return createAction(arg1, arg2); // @action("name") fn() {}
+
+  if (arguments.length === 1 && typeof arg1 === "string") return namedActionDecorator(arg1); // @action fn() {}
+
+  if (arg4 === true) {
+    // apply to instance immediately
+    arg1[arg2] = createAction(arg1.name || arg2, arg3.value);
+  } else {
+    return namedActionDecorator(arg2).apply(null, arguments);
+  }
+};
+
+action.bound = boundActionDecorator;
+
+function runInAction(arg1, arg2) {
+  // TODO: deprecate?
+  var actionName = typeof arg1 === "string" ? arg1 : arg1.name || "<unnamed action>";
+  var fn = typeof arg1 === "function" ? arg1 : arg2;
+
+  if (true) {
+    invariant(typeof fn === "function" && fn.length === 0, "`runInAction` expects a function without arguments");
+    if (typeof actionName !== "string" || !actionName) fail("actions should have valid names, got: '" + actionName + "'");
+  }
+
+  return executeAction(actionName, fn, this, undefined);
+}
+
+function isAction(thing) {
+  return typeof thing === "function" && thing.isMobxAction === true;
+}
+
+function defineBoundAction(target, propertyName, fn) {
+  addHiddenProp(target, propertyName, createAction(propertyName, fn.bind(target)));
+}
+/**
+ * Creates a named reactive view and keeps it alive, so that the view is always
+ * updated if one of the dependencies changes, even when the view is not further used by something else.
+ * @param view The reactive view
+ * @returns disposer function, which can be used to stop the view from being updated in the future.
+ */
+
+
+function autorun(view, opts) {
+  if (opts === void 0) {
+    opts = EMPTY_OBJECT;
+  }
+
+  if (true) {
+    invariant(typeof view === "function", "Autorun expects a function as first argument");
+    invariant(isAction(view) === false, "Autorun does not accept actions since actions are untrackable");
+  }
+
+  var name = opts && opts.name || view.name || "Autorun@" + getNextId();
+  var runSync = !opts.scheduler && !opts.delay;
+  var reaction;
+
+  if (runSync) {
+    // normal autorun
+    reaction = new Reaction(name, function () {
+      this.track(reactionRunner);
+    }, opts.onError, opts.requiresObservable);
+  } else {
+    var scheduler_1 = createSchedulerFromOptions(opts); // debounced autorun
+
+    var isScheduled_1 = false;
+    reaction = new Reaction(name, function () {
+      if (!isScheduled_1) {
+        isScheduled_1 = true;
+        scheduler_1(function () {
+          isScheduled_1 = false;
+          if (!reaction.isDisposed) reaction.track(reactionRunner);
+        });
+      }
+    }, opts.onError, opts.requiresObservable);
+  }
+
+  function reactionRunner() {
+    view(reaction);
+  }
+
+  reaction.schedule();
+  return reaction.getDisposer();
+}
+
+var run = function run(f) {
+  return f();
+};
+
+function createSchedulerFromOptions(opts) {
+  return opts.scheduler ? opts.scheduler : opts.delay ? function (f) {
+    return setTimeout(f, opts.delay);
+  } : run;
+}
+
+function reaction(expression, effect, opts) {
+  if (opts === void 0) {
+    opts = EMPTY_OBJECT;
+  }
+
+  if (typeof opts === "boolean") {
+    opts = {
+      fireImmediately: opts
+    };
+    deprecated("Using fireImmediately as argument is deprecated. Use '{ fireImmediately: true }' instead");
+  }
+
+  if (true) {
+    invariant(typeof expression === "function", "First argument to reaction should be a function");
+    invariant(_typeof(opts) === "object", "Third argument of reactions should be an object");
+  }
+
+  var name = opts.name || "Reaction@" + getNextId();
+  var effectAction = action(name, opts.onError ? wrapErrorHandler(opts.onError, effect) : effect);
+  var runSync = !opts.scheduler && !opts.delay;
+  var scheduler = createSchedulerFromOptions(opts);
+  var firstTime = true;
+  var isScheduled = false;
+  var value;
+  var equals = opts.compareStructural ? comparer.structural : opts.equals || comparer.default;
+  var r = new Reaction(name, function () {
+    if (firstTime || runSync) {
+      reactionRunner();
+    } else if (!isScheduled) {
+      isScheduled = true;
+      scheduler(reactionRunner);
+    }
+  }, opts.onError, opts.requiresObservable);
+
+  function reactionRunner() {
+    isScheduled = false; // Q: move into reaction runner?
+
+    if (r.isDisposed) return;
+    var changed = false;
+    r.track(function () {
+      var nextValue = expression(r);
+      changed = firstTime || !equals(value, nextValue);
+      value = nextValue;
+    });
+    if (firstTime && opts.fireImmediately) effectAction(value, r);
+    if (!firstTime && changed === true) effectAction(value, r);
+    if (firstTime) firstTime = false;
+  }
+
+  r.schedule();
+  return r.getDisposer();
+}
+
+function wrapErrorHandler(errorHandler, baseFn) {
+  return function () {
+    try {
+      return baseFn.apply(this, arguments);
+    } catch (e) {
+      errorHandler.call(this, e);
+    }
+  };
+}
+
+function onBecomeObserved(thing, arg2, arg3) {
+  return interceptHook("onBecomeObserved", thing, arg2, arg3);
+}
+
+function onBecomeUnobserved(thing, arg2, arg3) {
+  return interceptHook("onBecomeUnobserved", thing, arg2, arg3);
+}
+
+function interceptHook(hook, thing, arg2, arg3) {
+  var atom = typeof arg3 === "function" ? getAtom(thing, arg2) : getAtom(thing);
+  var cb = typeof arg3 === "function" ? arg3 : arg2;
+  var orig = atom[hook];
+  if (typeof orig !== "function") return fail( true && "Not an atom that can be (un)observed");
+
+  atom[hook] = function () {
+    orig.call(this);
+    cb.call(this);
+  };
+
+  return function () {
+    atom[hook] = orig;
+  };
+}
+
+function configure(options) {
+  var enforceActions = options.enforceActions,
+      computedRequiresReaction = options.computedRequiresReaction,
+      computedConfigurable = options.computedConfigurable,
+      disableErrorBoundaries = options.disableErrorBoundaries,
+      arrayBuffer = options.arrayBuffer,
+      reactionScheduler = options.reactionScheduler,
+      reactionRequiresObservable = options.reactionRequiresObservable,
+      observableRequiresReaction = options.observableRequiresReaction;
+
+  if (options.isolateGlobalState === true) {
+    isolateGlobalState();
+  }
+
+  if (enforceActions !== undefined) {
+    if (typeof enforceActions === "boolean" || enforceActions === "strict") deprecated("Deprecated value for 'enforceActions', use 'false' => '\"never\"', 'true' => '\"observed\"', '\"strict\"' => \"'always'\" instead");
+    var ea = void 0;
+
+    switch (enforceActions) {
+      case true:
+      case "observed":
+        ea = true;
+        break;
+
+      case false:
+      case "never":
+        ea = false;
+        break;
+
+      case "strict":
+      case "always":
+        ea = "strict";
+        break;
+
+      default:
+        fail("Invalid value for 'enforceActions': '" + enforceActions + "', expected 'never', 'always' or 'observed'");
+    }
+
+    globalState.enforceActions = ea;
+    globalState.allowStateChanges = ea === true || ea === "strict" ? false : true;
+  }
+
+  if (computedRequiresReaction !== undefined) {
+    globalState.computedRequiresReaction = !!computedRequiresReaction;
+  }
+
+  if (reactionRequiresObservable !== undefined) {
+    globalState.reactionRequiresObservable = !!reactionRequiresObservable;
+  }
+
+  if (observableRequiresReaction !== undefined) {
+    globalState.observableRequiresReaction = !!observableRequiresReaction;
+    globalState.allowStateReads = !globalState.observableRequiresReaction;
+  }
+
+  if (computedConfigurable !== undefined) {
+    globalState.computedConfigurable = !!computedConfigurable;
+  }
+
+  if (disableErrorBoundaries !== undefined) {
+    if (disableErrorBoundaries === true) console.warn("WARNING: Debug feature only. MobX will NOT recover from errors if this is on.");
+    globalState.disableErrorBoundaries = !!disableErrorBoundaries;
+  }
+
+  if (typeof arrayBuffer === "number") {
+    reserveArrayBuffer(arrayBuffer);
+  }
+
+  if (reactionScheduler) {
+    setReactionScheduler(reactionScheduler);
+  }
+}
+
+function decorate(thing, decorators) {
+  if ( true && !isPlainObject(decorators)) fail("Decorators should be a key value map");
+  var target = typeof thing === "function" ? thing.prototype : thing;
+
+  var _loop_1 = function _loop_1(prop) {
+    var propertyDecorators = decorators[prop];
+
+    if (!Array.isArray(propertyDecorators)) {
+      propertyDecorators = [propertyDecorators];
+    } // prettier-ignore
+
+
+    if ( true && !propertyDecorators.every(function (decorator) {
+      return typeof decorator === "function";
+    })) fail("Decorate: expected a decorator function or array of decorator functions for '" + prop + "'");
+    var descriptor = Object.getOwnPropertyDescriptor(target, prop);
+    var newDescriptor = propertyDecorators.reduce(function (accDescriptor, decorator) {
+      return decorator(target, prop, accDescriptor);
+    }, descriptor);
+    if (newDescriptor) Object.defineProperty(target, prop, newDescriptor);
+  };
+
+  for (var prop in decorators) {
+    _loop_1(prop);
+  }
+
+  return thing;
+}
+
+function extendShallowObservable(target, properties, decorators) {
+  deprecated("'extendShallowObservable' is deprecated, use 'extendObservable(target, props, { deep: false })' instead");
+  return extendObservable(target, properties, decorators, shallowCreateObservableOptions);
+}
+
+function extendObservable(target, properties, decorators, options) {
+  if (true) {
+    invariant(arguments.length >= 2 && arguments.length <= 4, "'extendObservable' expected 2-4 arguments");
+    invariant(_typeof(target) === "object", "'extendObservable' expects an object as first argument");
+    invariant(!isObservableMap(target), "'extendObservable' should not be used on maps, use map.merge instead");
+    invariant(!isObservable(properties), "Extending an object with another observable (object) is not supported. Please construct an explicit propertymap, using `toJS` if need. See issue #540");
+    if (decorators) for (var key in decorators) {
+      if (!(key in properties)) fail("Trying to declare a decorator for unspecified property '" + key + "'");
+    }
+  }
+
+  options = asCreateObservableOptions(options);
+  var defaultDecorator = options.defaultDecorator || (options.deep === false ? refDecorator : deepDecorator);
+  initializeInstance(target);
+  asObservableObject(target, options.name, defaultDecorator.enhancer); // make sure object is observable, even without initial props
+
+  startBatch();
+
+  try {
+    var keys = Object.getOwnPropertyNames(properties);
+
+    for (var i = 0, l = keys.length; i < l; i++) {
+      var key = keys[i];
+      var descriptor = Object.getOwnPropertyDescriptor(properties, key);
+
+      if (true) {
+        if (isComputed(descriptor.value)) fail("Passing a 'computed' as initial property value is no longer supported by extendObservable. Use a getter or decorator instead");
+      }
+
+      var decorator = decorators && key in decorators ? decorators[key] : descriptor.get ? computedDecorator : defaultDecorator;
+      if ( true && typeof decorator !== "function") return fail("Not a valid decorator for '" + key + "', got: " + decorator);
+      var resultDescriptor = decorator(target, key, descriptor, true);
+      if (resultDescriptor // otherwise, assume already applied, due to `applyToInstance`
+      ) Object.defineProperty(target, key, resultDescriptor);
+    }
+  } finally {
+    endBatch();
+  }
+
+  return target;
+}
+
+function getDependencyTree(thing, property) {
+  return nodeToDependencyTree(getAtom(thing, property));
+}
+
+function nodeToDependencyTree(node) {
+  var result = {
+    name: node.name
+  };
+  if (node.observing && node.observing.length > 0) result.dependencies = unique(node.observing).map(nodeToDependencyTree);
+  return result;
+}
+
+function getObserverTree(thing, property) {
+  return nodeToObserverTree(getAtom(thing, property));
+}
+
+function nodeToObserverTree(node) {
+  var result = {
+    name: node.name
+  };
+  if (hasObservers(node)) result.observers = getObservers(node).map(nodeToObserverTree);
+  return result;
+}
+
+var generatorId = 0;
+
+function FlowCancellationError() {
+  this.message = "FLOW_CANCELLED";
+}
+
+FlowCancellationError.prototype = Object.create(Error.prototype);
+
+function isFlowCancellationError(error) {
+  return error instanceof FlowCancellationError;
+}
+
+function flow(generator) {
+  if (arguments.length !== 1) fail( true && "Flow expects one 1 argument and cannot be used as decorator");
+  var name = generator.name || "<unnamed flow>"; // Implementation based on https://github.com/tj/co/blob/master/index.js
+
+  return function () {
+    var ctx = this;
+    var args = arguments;
+    var runId = ++generatorId;
+    var gen = action(name + " - runid: " + runId + " - init", generator).apply(ctx, args);
+    var rejector;
+    var pendingPromise = undefined;
+    var res = new Promise(function (resolve, reject) {
+      var stepId = 0;
+      rejector = reject;
+
+      function onFulfilled(res) {
+        pendingPromise = undefined;
+        var ret;
+
+        try {
+          ret = action(name + " - runid: " + runId + " - yield " + stepId++, gen.next).call(gen, res);
+        } catch (e) {
+          return reject(e);
+        }
+
+        next(ret);
+      }
+
+      function onRejected(err) {
+        pendingPromise = undefined;
+        var ret;
+
+        try {
+          ret = action(name + " - runid: " + runId + " - yield " + stepId++, gen.throw).call(gen, err);
+        } catch (e) {
+          return reject(e);
+        }
+
+        next(ret);
+      }
+
+      function next(ret) {
+        if (ret && typeof ret.then === "function") {
+          // an async iterator
+          ret.then(next, reject);
+          return;
+        }
+
+        if (ret.done) return resolve(ret.value);
+        pendingPromise = Promise.resolve(ret.value);
+        return pendingPromise.then(onFulfilled, onRejected);
+      }
+
+      onFulfilled(undefined); // kick off the process
+    });
+    res.cancel = action(name + " - runid: " + runId + " - cancel", function () {
+      try {
+        if (pendingPromise) cancelPromise(pendingPromise); // Finally block can return (or yield) stuff..
+
+        var res_1 = gen.return(undefined); // eat anything that promise would do, it's cancelled!
+
+        var yieldedPromise = Promise.resolve(res_1.value);
+        yieldedPromise.then(noop, noop);
+        cancelPromise(yieldedPromise); // maybe it can be cancelled :)
+        // reject our original promise
+
+        rejector(new FlowCancellationError());
+      } catch (e) {
+        rejector(e); // there could be a throwing finally block
+      }
+    });
+    return res;
+  };
+}
+
+function cancelPromise(promise) {
+  if (typeof promise.cancel === "function") promise.cancel();
+}
+
+function interceptReads(thing, propOrHandler, handler) {
+  var target;
+
+  if (isObservableMap(thing) || isObservableArray(thing) || isObservableValue(thing)) {
+    target = getAdministration(thing);
+  } else if (isObservableObject(thing)) {
+    if (typeof propOrHandler !== "string") return fail( true && "InterceptReads can only be used with a specific property, not with an object in general");
+    target = getAdministration(thing, propOrHandler);
+  } else {
+    return fail( true && "Expected observable map, object or array as first array");
+  }
+
+  if (target.dehancer !== undefined) return fail( true && "An intercept reader was already established");
+  target.dehancer = typeof propOrHandler === "function" ? propOrHandler : handler;
+  return function () {
+    target.dehancer = undefined;
+  };
+}
+
+function intercept(thing, propOrHandler, handler) {
+  if (typeof handler === "function") return interceptProperty(thing, propOrHandler, handler);else return interceptInterceptable(thing, propOrHandler);
+}
+
+function interceptInterceptable(thing, handler) {
+  return getAdministration(thing).intercept(handler);
+}
+
+function interceptProperty(thing, property, handler) {
+  return getAdministration(thing, property).intercept(handler);
+}
+
+function _isComputed(value, property) {
+  if (value === null || value === undefined) return false;
+
+  if (property !== undefined) {
+    if (isObservableObject(value) === false) return false;
+    if (!value.$mobx.values[property]) return false;
+    var atom = getAtom(value, property);
+    return isComputedValue(atom);
+  }
+
+  return isComputedValue(value);
+}
+
+function isComputed(value) {
+  if (arguments.length > 1) return fail( true && "isComputed expects only 1 argument. Use isObservableProp to inspect the observability of a property");
+  return _isComputed(value);
+}
+
+function isComputedProp(value, propName) {
+  if (typeof propName !== "string") return fail( true && "isComputed expected a property name as second argument");
+  return _isComputed(value, propName);
+}
+
+function _isObservable(value, property) {
+  if (value === null || value === undefined) return false;
+
+  if (property !== undefined) {
+    if ( true && (isObservableMap(value) || isObservableArray(value))) return fail("isObservable(object, propertyName) is not supported for arrays and maps. Use map.has or array.length instead.");
+
+    if (isObservableObject(value)) {
+      var o = value.$mobx;
+      return o.values && !!o.values[property];
+    }
+
+    return false;
+  } // For first check, see #701
+
+
+  return isObservableObject(value) || !!value.$mobx || isAtom(value) || isReaction(value) || isComputedValue(value);
+}
+
+function isObservable(value) {
+  if (arguments.length !== 1) fail( true && "isObservable expects only 1 argument. Use isObservableProp to inspect the observability of a property");
+  return _isObservable(value);
+}
+
+function isObservableProp(value, propName) {
+  if (typeof propName !== "string") return fail( true && "expected a property name as second argument");
+  return _isObservable(value, propName);
+}
+
+function keys(obj) {
+  if (isObservableObject(obj)) {
+    return obj.$mobx.getKeys();
+  }
+
+  if (isObservableMap(obj)) {
+    return iteratorToArray(obj.keys());
+  }
+
+  if (isObservableSet(obj)) {
+    return iteratorToArray(obj.keys());
+  }
+
+  if (isObservableArray(obj)) {
+    return obj.map(function (_, index) {
+      return index;
+    });
+  }
+
+  return fail( true && "'keys()' can only be used on observable objects, arrays, sets and maps");
+}
+
+function values(obj) {
+  if (isObservableObject(obj)) {
+    return keys(obj).map(function (key) {
+      return obj[key];
+    });
+  }
+
+  if (isObservableMap(obj)) {
+    return keys(obj).map(function (key) {
+      return obj.get(key);
+    });
+  }
+
+  if (isObservableSet(obj)) {
+    return iteratorToArray(obj.values());
+  }
+
+  if (isObservableArray(obj)) {
+    return obj.slice();
+  }
+
+  return fail( true && "'values()' can only be used on observable objects, arrays, sets and maps");
+}
+
+function entries(obj) {
+  if (isObservableObject(obj)) {
+    return keys(obj).map(function (key) {
+      return [key, obj[key]];
+    });
+  }
+
+  if (isObservableMap(obj)) {
+    return keys(obj).map(function (key) {
+      return [key, obj.get(key)];
+    });
+  }
+
+  if (isObservableSet(obj)) {
+    return iteratorToArray(obj.entries());
+  }
+
+  if (isObservableArray(obj)) {
+    return obj.map(function (key, index) {
+      return [index, key];
+    });
+  }
+
+  return fail( true && "'entries()' can only be used on observable objects, arrays and maps");
+}
+
+function set(obj, key, value) {
+  if (arguments.length === 2 && !isObservableSet(obj)) {
+    startBatch();
+    var values_1 = key;
+
+    try {
+      for (var key_1 in values_1) {
+        set(obj, key_1, values_1[key_1]);
+      }
+    } finally {
+      endBatch();
+    }
+
+    return;
+  }
+
+  if (isObservableObject(obj)) {
+    var adm = obj.$mobx;
+    var existingObservable = adm.values[key];
+
+    if (existingObservable) {
+      adm.write(obj, key, value);
+    } else {
+      defineObservableProperty(obj, key, value, adm.defaultEnhancer);
+    }
+  } else if (isObservableMap(obj)) {
+    obj.set(key, value);
+  } else if (isObservableSet(obj)) {
+    obj.add(key);
+  } else if (isObservableArray(obj)) {
+    if (typeof key !== "number") key = parseInt(key, 10);
+    invariant(key >= 0, "Not a valid index: '" + key + "'");
+    startBatch();
+    if (key >= obj.length) obj.length = key + 1;
+    obj[key] = value;
+    endBatch();
+  } else {
+    return fail( true && "'set()' can only be used on observable objects, arrays and maps");
+  }
+}
+
+function remove(obj, key) {
+  if (isObservableObject(obj)) {
+    obj.$mobx.remove(key);
+  } else if (isObservableMap(obj)) {
+    obj.delete(key);
+  } else if (isObservableSet(obj)) {
+    obj.delete(key);
+  } else if (isObservableArray(obj)) {
+    if (typeof key !== "number") key = parseInt(key, 10);
+    invariant(key >= 0, "Not a valid index: '" + key + "'");
+    obj.splice(key, 1);
+  } else {
+    return fail( true && "'remove()' can only be used on observable objects, arrays and maps");
+  }
+}
+
+function has(obj, key) {
+  if (isObservableObject(obj)) {
+    // return keys(obj).indexOf(key) >= 0
+    var adm = getAdministration(obj);
+    adm.getKeys(); // make sure we get notified of key changes, but for performance, use the values map to look up existence
+
+    return !!adm.values[key];
+  } else if (isObservableMap(obj)) {
+    return obj.has(key);
+  } else if (isObservableSet(obj)) {
+    return obj.has(key);
+  } else if (isObservableArray(obj)) {
+    return key >= 0 && key < obj.length;
+  } else {
+    return fail( true && "'has()' can only be used on observable objects, arrays and maps");
+  }
+}
+
+function get(obj, key) {
+  if (!has(obj, key)) return undefined;
+
+  if (isObservableObject(obj)) {
+    return obj[key];
+  } else if (isObservableMap(obj)) {
+    return obj.get(key);
+  } else if (isObservableArray(obj)) {
+    return obj[key];
+  } else {
+    return fail( true && "'get()' can only be used on observable objects, arrays and maps");
+  }
+}
+
+function observe(thing, propOrCb, cbOrFire, fireImmediately) {
+  if (typeof cbOrFire === "function") return observeObservableProperty(thing, propOrCb, cbOrFire, fireImmediately);else return observeObservable(thing, propOrCb, cbOrFire);
+}
+
+function observeObservable(thing, listener, fireImmediately) {
+  return getAdministration(thing).observe(listener, fireImmediately);
+}
+
+function observeObservableProperty(thing, property, listener, fireImmediately) {
+  return getAdministration(thing, property).observe(listener, fireImmediately);
+}
+
+var defaultOptions = {
+  detectCycles: true,
+  exportMapsAsObjects: true,
+  recurseEverything: false
+};
+
+function cache(map, key, value, options) {
+  if (options.detectCycles) map.set(key, value);
+  return value;
+}
+
+function toJSHelper(source, options, __alreadySeen) {
+  if (!options.recurseEverything && !isObservable(source)) return source;
+  if (_typeof(source) !== "object") return source; // Directly return null if source is null
+
+  if (source === null) return null; // Directly return the Date object itself if contained in the observable
+
+  if (source instanceof Date) return source;
+  if (isObservableValue(source)) return toJSHelper(source.get(), options, __alreadySeen); // make sure we track the keys of the object
+
+  if (isObservable(source)) keys(source);
+  var detectCycles = options.detectCycles === true;
+
+  if (detectCycles && source !== null && __alreadySeen.has(source)) {
+    return __alreadySeen.get(source);
+  }
+
+  if (isObservableArray(source) || Array.isArray(source)) {
+    var res_1 = cache(__alreadySeen, source, [], options);
+    var toAdd = source.map(function (value) {
+      return toJSHelper(value, options, __alreadySeen);
+    });
+    res_1.length = toAdd.length;
+
+    for (var i = 0, l = toAdd.length; i < l; i++) {
+      res_1[i] = toAdd[i];
+    }
+
+    return res_1;
+  }
+
+  if (isObservableSet(source) || Object.getPrototypeOf(source) === Set.prototype) {
+    if (options.exportMapsAsObjects === false) {
+      var res_2 = cache(__alreadySeen, source, new Set(), options);
+      source.forEach(function (value) {
+        res_2.add(toJSHelper(value, options, __alreadySeen));
+      });
+      return res_2;
+    } else {
+      var res_3 = cache(__alreadySeen, source, [], options);
+      source.forEach(function (value) {
+        res_3.push(toJSHelper(value, options, __alreadySeen));
+      });
+      return res_3;
+    }
+  }
+
+  if (isObservableMap(source) || Object.getPrototypeOf(source) === Map.prototype) {
+    if (options.exportMapsAsObjects === false) {
+      var res_4 = cache(__alreadySeen, source, new Map(), options);
+      source.forEach(function (value, key) {
+        res_4.set(key, toJSHelper(value, options, __alreadySeen));
+      });
+      return res_4;
+    } else {
+      var res_5 = cache(__alreadySeen, source, {}, options);
+      source.forEach(function (value, key) {
+        res_5[key] = toJSHelper(value, options, __alreadySeen);
+      });
+      return res_5;
+    }
+  } // Fallback to the situation that source is an ObservableObject or a plain object
+
+
+  var res = cache(__alreadySeen, source, {}, options);
+
+  for (var key in source) {
+    res[key] = toJSHelper(source[key], options, __alreadySeen);
+  }
+
+  return res;
+}
+
+function toJS(source, options) {
+  // backward compatibility
+  if (typeof options === "boolean") options = {
+    detectCycles: options
+  };
+  if (!options) options = defaultOptions;
+  options.detectCycles = options.detectCycles === undefined ? options.recurseEverything === true : options.detectCycles === true;
+
+  var __alreadySeen;
+
+  if (options.detectCycles) __alreadySeen = new Map();
+  return toJSHelper(source, options, __alreadySeen);
+}
+
+function trace() {
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  var enterBreakPoint = false;
+  if (typeof args[args.length - 1] === "boolean") enterBreakPoint = args.pop();
+  var derivation = getAtomFromArgs(args);
+
+  if (!derivation) {
+    return fail( true && "'trace(break?)' can only be used inside a tracked computed value or a Reaction. Consider passing in the computed value or reaction explicitly");
+  }
+
+  if (derivation.isTracing === TraceMode.NONE) {
+    console.log("[mobx.trace] '" + derivation.name + "' tracing enabled");
+  }
+
+  derivation.isTracing = enterBreakPoint ? TraceMode.BREAK : TraceMode.LOG;
+}
+
+function getAtomFromArgs(args) {
+  switch (args.length) {
+    case 0:
+      return globalState.trackingDerivation;
+
+    case 1:
+      return getAtom(args[0]);
+
+    case 2:
+      return getAtom(args[0], args[1]);
+  }
+}
+/**
+ * During a transaction no views are updated until the end of the transaction.
+ * The transaction will be run synchronously nonetheless.
+ *
+ * @param action a function that updates some reactive state
+ * @returns any value that was returned by the 'action' parameter.
+ */
+
+
+function transaction(action, thisArg) {
+  if (thisArg === void 0) {
+    thisArg = undefined;
+  }
+
+  startBatch();
+
+  try {
+    return action.apply(thisArg);
+  } finally {
+    endBatch();
+  }
+}
+
+function when(predicate, arg1, arg2) {
+  if (arguments.length === 1 || arg1 && _typeof(arg1) === "object") return whenPromise(predicate, arg1);
+  return _when(predicate, arg1, arg2 || {});
+}
+
+function _when(predicate, effect, opts) {
+  var timeoutHandle;
+
+  if (typeof opts.timeout === "number") {
+    timeoutHandle = setTimeout(function () {
+      if (!disposer.$mobx.isDisposed) {
+        disposer();
+        var error = new Error("WHEN_TIMEOUT");
+        if (opts.onError) opts.onError(error);else throw error;
+      }
+    }, opts.timeout);
+  }
+
+  opts.name = opts.name || "When@" + getNextId();
+  var effectAction = createAction(opts.name + "-effect", effect);
+  var disposer = autorun(function (r) {
+    if (predicate()) {
+      r.dispose();
+      if (timeoutHandle) clearTimeout(timeoutHandle);
+      effectAction();
+    }
+  }, opts);
+  return disposer;
+}
+
+function whenPromise(predicate, opts) {
+  if ( true && opts && opts.onError) return fail("the options 'onError' and 'promise' cannot be combined");
+  var cancel;
+  var res = new Promise(function (resolve, reject) {
+    var disposer = _when(predicate, resolve, _assign(_assign({}, opts), {
+      onError: reject
+    }));
+
+    cancel = function cancel() {
+      disposer();
+      reject("WHEN_CANCELLED");
+    };
+  });
+  res.cancel = cancel;
+  return res;
+}
+
+function hasInterceptors(interceptable) {
+  return interceptable.interceptors !== undefined && interceptable.interceptors.length > 0;
+}
+
+function registerInterceptor(interceptable, handler) {
+  var interceptors = interceptable.interceptors || (interceptable.interceptors = []);
+  interceptors.push(handler);
+  return once(function () {
+    var idx = interceptors.indexOf(handler);
+    if (idx !== -1) interceptors.splice(idx, 1);
+  });
+}
+
+function interceptChange(interceptable, change) {
+  var prevU = untrackedStart();
+
+  try {
+    var interceptors = interceptable.interceptors;
+    if (interceptors) for (var i = 0, l = interceptors.length; i < l; i++) {
+      change = interceptors[i](change);
+      invariant(!change || change.type, "Intercept handlers should return nothing or a change object");
+      if (!change) break;
+    }
+    return change;
+  } finally {
+    untrackedEnd(prevU);
+  }
+}
+
+function hasListeners(listenable) {
+  return listenable.changeListeners !== undefined && listenable.changeListeners.length > 0;
+}
+
+function registerListener(listenable, handler) {
+  var listeners = listenable.changeListeners || (listenable.changeListeners = []);
+  listeners.push(handler);
+  return once(function () {
+    var idx = listeners.indexOf(handler);
+    if (idx !== -1) listeners.splice(idx, 1);
+  });
+}
+
+function notifyListeners(listenable, change) {
+  var prevU = untrackedStart();
+  var listeners = listenable.changeListeners;
+  if (!listeners) return;
+  listeners = listeners.slice();
+
+  for (var i = 0, l = listeners.length; i < l; i++) {
+    listeners[i](change);
+  }
+
+  untrackedEnd(prevU);
+}
+
+var MAX_SPLICE_SIZE = 10000; // See e.g. https://github.com/mobxjs/mobx/issues/859
+// Detects bug in safari 9.1.1 (or iOS 9 safari mobile). See #364
+
+var safariPrototypeSetterInheritanceBug = function () {
+  var v = false;
+  var p = {};
+  Object.defineProperty(p, "0", {
+    set: function set() {
+      v = true;
+    }
+  });
+  Object.create(p)["0"] = 1;
+  return v === false;
+}();
+/**
+ * This array buffer contains two lists of properties, so that all arrays
+ * can recycle their property definitions, which significantly improves performance of creating
+ * properties on the fly.
+ */
+
+
+var OBSERVABLE_ARRAY_BUFFER_SIZE = 0; // Typescript workaround to make sure ObservableArray extends Array
+
+var StubArray =
+/** @class */
+function () {
+  function StubArray() {}
+
+  return StubArray;
+}();
+
+function inherit(ctor, proto) {
+  if (typeof Object["setPrototypeOf"] !== "undefined") {
+    Object["setPrototypeOf"](ctor.prototype, proto);
+  } else if (typeof ctor.prototype.__proto__ !== "undefined") {
+    ctor.prototype.__proto__ = proto;
+  } else {
+    ctor["prototype"] = proto;
+  }
+}
+
+inherit(StubArray, Array.prototype); // Weex freeze Array.prototype
+// Make them writeable and configurable in prototype chain
+// https://github.com/alibaba/weex/pull/1529
+
+if (Object.isFrozen(Array)) {
+  ["constructor", "push", "shift", "concat", "pop", "unshift", "replace", "find", "findIndex", "splice", "reverse", "sort"].forEach(function (key) {
+    Object.defineProperty(StubArray.prototype, key, {
+      configurable: true,
+      writable: true,
+      value: Array.prototype[key]
+    });
+  });
+}
+
+var ObservableArrayAdministration =
+/** @class */
+function () {
+  function ObservableArrayAdministration(name, enhancer, array, owned) {
+    this.array = array;
+    this.owned = owned;
+    this.values = [];
+    this.lastKnownLength = 0;
+    this.atom = new Atom(name || "ObservableArray@" + getNextId());
+
+    this.enhancer = function (newV, oldV) {
+      return enhancer(newV, oldV, name + "[..]");
+    };
+  }
+
+  ObservableArrayAdministration.prototype.dehanceValue = function (value) {
+    if (this.dehancer !== undefined) return this.dehancer(value);
+    return value;
+  };
+
+  ObservableArrayAdministration.prototype.dehanceValues = function (values) {
+    if (this.dehancer !== undefined && values.length > 0) return values.map(this.dehancer);
+    return values;
+  };
+
+  ObservableArrayAdministration.prototype.intercept = function (handler) {
+    return registerInterceptor(this, handler);
+  };
+
+  ObservableArrayAdministration.prototype.observe = function (listener, fireImmediately) {
+    if (fireImmediately === void 0) {
+      fireImmediately = false;
+    }
+
+    if (fireImmediately) {
+      listener({
+        object: this.array,
+        type: "splice",
+        index: 0,
+        added: this.values.slice(),
+        addedCount: this.values.length,
+        removed: [],
+        removedCount: 0
+      });
+    }
+
+    return registerListener(this, listener);
+  };
+
+  ObservableArrayAdministration.prototype.getArrayLength = function () {
+    this.atom.reportObserved();
+    return this.values.length;
+  };
+
+  ObservableArrayAdministration.prototype.setArrayLength = function (newLength) {
+    if (typeof newLength !== "number" || newLength < 0) throw new Error("[mobx.array] Out of range: " + newLength);
+    var currentLength = this.values.length;
+    if (newLength === currentLength) return;else if (newLength > currentLength) {
+      var newItems = new Array(newLength - currentLength);
+
+      for (var i = 0; i < newLength - currentLength; i++) {
+        newItems[i] = undefined;
+      } // No Array.fill everywhere...
+
+
+      this.spliceWithArray(currentLength, 0, newItems);
+    } else this.spliceWithArray(newLength, currentLength - newLength);
+  }; // adds / removes the necessary numeric properties to this object
+
+
+  ObservableArrayAdministration.prototype.updateArrayLength = function (oldLength, delta) {
+    if (oldLength !== this.lastKnownLength) throw new Error("[mobx] Modification exception: the internal structure of an observable array was changed. Did you use peek() to change it?");
+    this.lastKnownLength += delta;
+    if (delta > 0 && oldLength + delta + 1 > OBSERVABLE_ARRAY_BUFFER_SIZE) reserveArrayBuffer(oldLength + delta + 1);
+  };
+
+  ObservableArrayAdministration.prototype.spliceWithArray = function (index, deleteCount, newItems) {
+    var _this = this;
+
+    checkIfStateModificationsAreAllowed(this.atom);
+    var length = this.values.length;
+    if (index === undefined) index = 0;else if (index > length) index = length;else if (index < 0) index = Math.max(0, length + index);
+    if (arguments.length === 1) deleteCount = length - index;else if (deleteCount === undefined || deleteCount === null) deleteCount = 0;else deleteCount = Math.max(0, Math.min(deleteCount, length - index));
+    if (newItems === undefined) newItems = EMPTY_ARRAY;
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        object: this.array,
+        type: "splice",
+        index: index,
+        removedCount: deleteCount,
+        added: newItems
+      });
+      if (!change) return EMPTY_ARRAY;
+      deleteCount = change.removedCount;
+      newItems = change.added;
+    }
+
+    newItems = newItems.length === 0 ? newItems : newItems.map(function (v) {
+      return _this.enhancer(v, undefined);
+    });
+    var lengthDelta = newItems.length - deleteCount;
+    this.updateArrayLength(length, lengthDelta); // create or remove new entries
+
+    var res = this.spliceItemsIntoValues(index, deleteCount, newItems);
+    if (deleteCount !== 0 || newItems.length !== 0) this.notifyArraySplice(index, newItems, res);
+    return this.dehanceValues(res);
+  };
+
+  ObservableArrayAdministration.prototype.spliceItemsIntoValues = function (index, deleteCount, newItems) {
+    var _a;
+
+    if (newItems.length < MAX_SPLICE_SIZE) {
+      return (_a = this.values).splice.apply(_a, __spread([index, deleteCount], newItems));
+    } else {
+      var res = this.values.slice(index, index + deleteCount);
+      this.values = this.values.slice(0, index).concat(newItems, this.values.slice(index + deleteCount));
+      return res;
+    }
+  };
+
+  ObservableArrayAdministration.prototype.notifyArrayChildUpdate = function (index, newValue, oldValue) {
+    var notifySpy = !this.owned && isSpyEnabled();
+    var notify = hasListeners(this);
+    var change = notify || notifySpy ? {
+      object: this.array,
+      type: "update",
+      index: index,
+      newValue: newValue,
+      oldValue: oldValue
+    } : null;
+    if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+      name: this.atom.name
+    }));
+    this.atom.reportChanged();
+    if (notify) notifyListeners(this, change);
+    if (notifySpy) spyReportEnd();
+  };
+
+  ObservableArrayAdministration.prototype.notifyArraySplice = function (index, added, removed) {
+    var notifySpy = !this.owned && isSpyEnabled();
+    var notify = hasListeners(this);
+    var change = notify || notifySpy ? {
+      object: this.array,
+      type: "splice",
+      index: index,
+      removed: removed,
+      added: added,
+      removedCount: removed.length,
+      addedCount: added.length
+    } : null;
+    if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+      name: this.atom.name
+    }));
+    this.atom.reportChanged(); // conform: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/observe
+
+    if (notify) notifyListeners(this, change);
+    if (notifySpy) spyReportEnd();
+  };
+
+  return ObservableArrayAdministration;
+}();
+
+var ObservableArray =
+/** @class */
+function (_super) {
+  __extends(ObservableArray, _super);
+
+  function ObservableArray(initialValues, enhancer, name, owned) {
+    if (name === void 0) {
+      name = "ObservableArray@" + getNextId();
+    }
+
+    if (owned === void 0) {
+      owned = false;
+    }
+
+    var _this = _super.call(this) || this;
+
+    var adm = new ObservableArrayAdministration(name, enhancer, _this, owned);
+    addHiddenFinalProp(_this, "$mobx", adm);
+
+    if (initialValues && initialValues.length) {
+      var prev = allowStateChangesStart(true);
+
+      _this.spliceWithArray(0, 0, initialValues);
+
+      allowStateChangesEnd(prev);
+    }
+
+    if (safariPrototypeSetterInheritanceBug) {
+      // Seems that Safari won't use numeric prototype setter untill any * numeric property is
+      // defined on the instance. After that it works fine, even if this property is deleted.
+      Object.defineProperty(adm.array, "0", ENTRY_0);
+    }
+
+    return _this;
+  }
+
+  ObservableArray.prototype.intercept = function (handler) {
+    return this.$mobx.intercept(handler);
+  };
+
+  ObservableArray.prototype.observe = function (listener, fireImmediately) {
+    if (fireImmediately === void 0) {
+      fireImmediately = false;
+    }
+
+    return this.$mobx.observe(listener, fireImmediately);
+  };
+
+  ObservableArray.prototype.clear = function () {
+    return this.splice(0);
+  };
+
+  ObservableArray.prototype.concat = function () {
+    var arrays = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      arrays[_i] = arguments[_i];
+    }
+
+    this.$mobx.atom.reportObserved();
+    return Array.prototype.concat.apply(this.peek(), arrays.map(function (a) {
+      return isObservableArray(a) ? a.peek() : a;
+    }));
+  };
+
+  ObservableArray.prototype.replace = function (newItems) {
+    return this.$mobx.spliceWithArray(0, this.$mobx.values.length, newItems);
+  };
+  /**
+   * Converts this array back to a (shallow) javascript structure.
+   * For a deep clone use mobx.toJS
+   */
+
+
+  ObservableArray.prototype.toJS = function () {
+    return this.slice();
+  };
+
+  ObservableArray.prototype.toJSON = function () {
+    // Used by JSON.stringify
+    return this.toJS();
+  };
+
+  ObservableArray.prototype.peek = function () {
+    this.$mobx.atom.reportObserved();
+    return this.$mobx.dehanceValues(this.$mobx.values);
+  }; // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+
+
+  ObservableArray.prototype.find = function (predicate, thisArg, fromIndex) {
+    if (fromIndex === void 0) {
+      fromIndex = 0;
+    }
+
+    if (arguments.length === 3) deprecated("The array.find fromIndex argument to find will not be supported anymore in the next major");
+    var idx = this.findIndex.apply(this, arguments);
+    return idx === -1 ? undefined : this.get(idx);
+  }; // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+
+
+  ObservableArray.prototype.findIndex = function (predicate, thisArg, fromIndex) {
+    if (fromIndex === void 0) {
+      fromIndex = 0;
+    }
+
+    if (arguments.length === 3) deprecated("The array.findIndex fromIndex argument to find will not be supported anymore in the next major");
+    var items = this.peek(),
+        l = items.length;
+
+    for (var i = fromIndex; i < l; i++) {
+      if (predicate.call(thisArg, items[i], i, this)) return i;
+    }
+
+    return -1;
+  };
+  /*
+   * functions that do alter the internal structure of the array, (based on lib.es6.d.ts)
+   * since these functions alter the inner structure of the array, the have side effects.
+   * Because the have side effects, they should not be used in computed function,
+   * and for that reason the do not call dependencyState.notifyObserved
+   */
+
+
+  ObservableArray.prototype.splice = function (index, deleteCount) {
+    var newItems = [];
+
+    for (var _i = 2; _i < arguments.length; _i++) {
+      newItems[_i - 2] = arguments[_i];
+    }
+
+    switch (arguments.length) {
+      case 0:
+        return [];
+
+      case 1:
+        return this.$mobx.spliceWithArray(index);
+
+      case 2:
+        return this.$mobx.spliceWithArray(index, deleteCount);
+    }
+
+    return this.$mobx.spliceWithArray(index, deleteCount, newItems);
+  };
+
+  ObservableArray.prototype.spliceWithArray = function (index, deleteCount, newItems) {
+    return this.$mobx.spliceWithArray(index, deleteCount, newItems);
+  };
+
+  ObservableArray.prototype.push = function () {
+    var items = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      items[_i] = arguments[_i];
+    }
+
+    var adm = this.$mobx;
+    adm.spliceWithArray(adm.values.length, 0, items);
+    return adm.values.length;
+  };
+
+  ObservableArray.prototype.pop = function () {
+    return this.splice(Math.max(this.$mobx.values.length - 1, 0), 1)[0];
+  };
+
+  ObservableArray.prototype.shift = function () {
+    return this.splice(0, 1)[0];
+  };
+
+  ObservableArray.prototype.unshift = function () {
+    var items = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      items[_i] = arguments[_i];
+    }
+
+    var adm = this.$mobx;
+    adm.spliceWithArray(0, 0, items);
+    return adm.values.length;
+  };
+
+  ObservableArray.prototype.reverse = function () {
+    // reverse by default mutates in place before returning the result
+    // which makes it both a 'derivation' and a 'mutation'.
+    // so we deviate from the default and just make it an dervitation
+    var clone = this.slice();
+    return clone.reverse.apply(clone, arguments);
+  };
+
+  ObservableArray.prototype.sort = function (compareFn) {
+    // sort by default mutates in place before returning the result
+    // which goes against all good practices. Let's not change the array in place!
+    var clone = this.slice();
+    return clone.sort.apply(clone, arguments);
+  };
+
+  ObservableArray.prototype.remove = function (value) {
+    var idx = this.$mobx.dehanceValues(this.$mobx.values).indexOf(value);
+
+    if (idx > -1) {
+      this.splice(idx, 1);
+      return true;
+    }
+
+    return false;
+  };
+
+  ObservableArray.prototype.move = function (fromIndex, toIndex) {
+    deprecated("observableArray.move is deprecated, use .slice() & .replace() instead");
+
+    function checkIndex(index) {
+      if (index < 0) {
+        throw new Error("[mobx.array] Index out of bounds: " + index + " is negative");
+      }
+
+      var length = this.$mobx.values.length;
+
+      if (index >= length) {
+        throw new Error("[mobx.array] Index out of bounds: " + index + " is not smaller than " + length);
+      }
+    }
+
+    checkIndex.call(this, fromIndex);
+    checkIndex.call(this, toIndex);
+
+    if (fromIndex === toIndex) {
+      return;
+    }
+
+    var oldItems = this.$mobx.values;
+    var newItems;
+
+    if (fromIndex < toIndex) {
+      newItems = __spread(oldItems.slice(0, fromIndex), oldItems.slice(fromIndex + 1, toIndex + 1), [oldItems[fromIndex]], oldItems.slice(toIndex + 1));
+    } else {
+      // toIndex < fromIndex
+      newItems = __spread(oldItems.slice(0, toIndex), [oldItems[fromIndex]], oldItems.slice(toIndex, fromIndex), oldItems.slice(fromIndex + 1));
+    }
+
+    this.replace(newItems);
+  }; // See #734, in case property accessors are unreliable...
+
+
+  ObservableArray.prototype.get = function (index) {
+    var impl = this.$mobx;
+
+    if (impl) {
+      if (index < impl.values.length) {
+        impl.atom.reportObserved();
+        return impl.dehanceValue(impl.values[index]);
+      }
+
+      console.warn("[mobx.array] Attempt to read an array index (" + index + ") that is out of bounds (" + impl.values.length + "). Please check length first. Out of bound indices will not be tracked by MobX");
+    }
+
+    return undefined;
+  }; // See #734, in case property accessors are unreliable...
+
+
+  ObservableArray.prototype.set = function (index, newValue) {
+    var adm = this.$mobx;
+    var values = adm.values;
+
+    if (index < values.length) {
+      // update at index in range
+      checkIfStateModificationsAreAllowed(adm.atom);
+      var oldValue = values[index];
+
+      if (hasInterceptors(adm)) {
+        var change = interceptChange(adm, {
+          type: "update",
+          object: this,
+          index: index,
+          newValue: newValue
+        });
+        if (!change) return;
+        newValue = change.newValue;
+      }
+
+      newValue = adm.enhancer(newValue, oldValue);
+      var changed = newValue !== oldValue;
+
+      if (changed) {
+        values[index] = newValue;
+        adm.notifyArrayChildUpdate(index, newValue, oldValue);
+      }
+    } else if (index === values.length) {
+      // add a new item
+      adm.spliceWithArray(index, 0, [newValue]);
+    } else {
+      // out of bounds
+      throw new Error("[mobx.array] Index out of bounds, " + index + " is larger than " + values.length);
+    }
+  };
+
+  return ObservableArray;
+}(StubArray);
+
+declareIterator(ObservableArray.prototype, function () {
+  this.$mobx.atom.reportObserved();
+  var self = this;
+  var nextIndex = 0;
+  return makeIterable({
+    next: function next() {
+      return nextIndex < self.length ? {
+        value: self[nextIndex++],
+        done: false
+      } : {
+        done: true,
+        value: undefined
+      };
+    }
+  });
+});
+Object.defineProperty(ObservableArray.prototype, "length", {
+  enumerable: false,
+  configurable: true,
+  get: function get() {
+    return this.$mobx.getArrayLength();
+  },
+  set: function set(newLength) {
+    this.$mobx.setArrayLength(newLength);
+  }
+});
+addHiddenProp(ObservableArray.prototype, toStringTagSymbol(), "Array");
+["indexOf", "join", "lastIndexOf", "slice", "toString", "toLocaleString"].forEach(function (funcName) {
+  var baseFunc = Array.prototype[funcName];
+  invariant(typeof baseFunc === "function", "Base function not defined on Array prototype: '" + funcName + "'");
+  addHiddenProp(ObservableArray.prototype, funcName, function () {
+    return baseFunc.apply(this.peek(), arguments);
+  });
+});
+["every", "filter", //"find", // implemented individually (IE support)
+//"findIndex", // implemented individually (IE support)
+//"flatMap", // not supported
+"forEach", "map", "some"].forEach(function (funcName) {
+  var baseFunc = Array.prototype[funcName];
+  invariant(typeof baseFunc === "function", "Base function not defined on Array prototype: '" + funcName + "'");
+  addHiddenProp(ObservableArray.prototype, funcName, function (callback, thisArg) {
+    var _this = this;
+
+    var adm = this.$mobx;
+    adm.atom.reportObserved();
+    var dehancedValues = adm.dehanceValues(adm.values);
+    return dehancedValues[funcName](function (element, index) {
+      return callback.call(thisArg, element, index, _this);
+    }, thisArg);
+  });
+});
+["reduce", "reduceRight"].forEach(function (funcName) {
+  addHiddenProp(ObservableArray.prototype, funcName, function () {
+    var _this = this;
+
+    var adm = this.$mobx;
+    adm.atom.reportObserved(); // #2432 - reduce behavior depends on arguments.length
+
+    var callback = arguments[0];
+
+    arguments[0] = function (accumulator, currentValue, index) {
+      currentValue = adm.dehanceValue(currentValue);
+      return callback(accumulator, currentValue, index, _this);
+    };
+
+    return adm.values[funcName].apply(adm.values, arguments);
+  });
+});
+/**
+ * We don't want those to show up in `for (const key in ar)` ...
+ */
+
+makeNonEnumerable(ObservableArray.prototype, ["constructor", "intercept", "observe", "clear", "concat", "get", "replace", "toJS", "toJSON", "peek", "find", "findIndex", "splice", "spliceWithArray", "push", "pop", "set", "shift", "unshift", "reverse", "sort", "remove", "move", "toString", "toLocaleString"]); // See #364
+
+var ENTRY_0 = createArrayEntryDescriptor(0);
+
+function createArrayEntryDescriptor(index) {
+  return {
+    enumerable: false,
+    configurable: false,
+    get: function get() {
+      return this.get(index);
+    },
+    set: function set(value) {
+      this.set(index, value);
+    }
+  };
+}
+
+function createArrayBufferItem(index) {
+  Object.defineProperty(ObservableArray.prototype, "" + index, createArrayEntryDescriptor(index));
+}
+
+function reserveArrayBuffer(max) {
+  for (var index = OBSERVABLE_ARRAY_BUFFER_SIZE; index < max; index++) {
+    createArrayBufferItem(index);
+  }
+
+  OBSERVABLE_ARRAY_BUFFER_SIZE = max;
+}
+
+reserveArrayBuffer(1000);
+var isObservableArrayAdministration = createInstanceofPredicate("ObservableArrayAdministration", ObservableArrayAdministration);
+
+function isObservableArray(thing) {
+  return isObject(thing) && isObservableArrayAdministration(thing.$mobx);
+}
+
+var ObservableMapMarker = {};
+
+var ObservableMap =
+/** @class */
+function () {
+  function ObservableMap(initialData, enhancer, name) {
+    if (enhancer === void 0) {
+      enhancer = deepEnhancer;
+    }
+
+    if (name === void 0) {
+      name = "ObservableMap@" + getNextId();
+    }
+
+    this.enhancer = enhancer;
+    this.name = name;
+    this.$mobx = ObservableMapMarker;
+    this._keysAtom = createAtom(this.name + ".keys()");
+
+    if (typeof Map !== "function") {
+      throw new Error("mobx.map requires Map polyfill for the current browser. Check babel-polyfill or core-js/es6/map.js");
+    }
+
+    this._data = new Map();
+    this._hasMap = new Map();
+    this.merge(initialData);
+  }
+
+  ObservableMap.prototype._has = function (key) {
+    return this._data.has(key);
+  };
+
+  ObservableMap.prototype.has = function (key) {
+    var _this = this;
+
+    if (!globalState.trackingDerivation) return this._has(key);
+
+    var entry = this._hasMap.get(key);
+
+    if (!entry) {
+      // todo: replace with atom (breaking change)
+      var newEntry = entry = new ObservableValue(this._has(key), referenceEnhancer, this.name + "." + stringifyKey(key) + "?", false);
+
+      this._hasMap.set(key, newEntry);
+
+      onBecomeUnobserved(newEntry, function () {
+        return _this._hasMap.delete(key);
+      });
+    }
+
+    return entry.get();
+  };
+
+  ObservableMap.prototype.set = function (key, value) {
+    var hasKey = this._has(key);
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        type: hasKey ? "update" : "add",
+        object: this,
+        newValue: value,
+        name: key
+      });
+      if (!change) return this;
+      value = change.newValue;
+    }
+
+    if (hasKey) {
+      this._updateValue(key, value);
+    } else {
+      this._addValue(key, value);
+    }
+
+    return this;
+  };
+
+  ObservableMap.prototype.delete = function (key) {
+    var _this = this;
+
+    checkIfStateModificationsAreAllowed(this._keysAtom);
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        type: "delete",
+        object: this,
+        name: key
+      });
+      if (!change) return false;
+    }
+
+    if (this._has(key)) {
+      var notifySpy = isSpyEnabled();
+      var notify = hasListeners(this);
+      var change = notify || notifySpy ? {
+        type: "delete",
+        object: this,
+        oldValue: this._data.get(key).value,
+        name: key
+      } : null;
+      if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+        name: this.name,
+        key: key
+      }));
+      transaction(function () {
+        _this._keysAtom.reportChanged();
+
+        _this._updateHasMapEntry(key, false);
+
+        var observable = _this._data.get(key);
+
+        observable.setNewValue(undefined);
+
+        _this._data.delete(key);
+      });
+      if (notify) notifyListeners(this, change);
+      if (notifySpy) spyReportEnd();
+      return true;
+    }
+
+    return false;
+  };
+
+  ObservableMap.prototype._updateHasMapEntry = function (key, value) {
+    var entry = this._hasMap.get(key);
+
+    if (entry) {
+      entry.setNewValue(value);
+    }
+  };
+
+  ObservableMap.prototype._updateValue = function (key, newValue) {
+    var observable = this._data.get(key);
+
+    newValue = observable.prepareNewValue(newValue);
+
+    if (newValue !== globalState.UNCHANGED) {
+      var notifySpy = isSpyEnabled();
+      var notify = hasListeners(this);
+      var change = notify || notifySpy ? {
+        type: "update",
+        object: this,
+        oldValue: observable.value,
+        name: key,
+        newValue: newValue
+      } : null;
+      if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+        name: this.name,
+        key: key
+      }));
+      observable.setNewValue(newValue);
+      if (notify) notifyListeners(this, change);
+      if (notifySpy) spyReportEnd();
+    }
+  };
+
+  ObservableMap.prototype._addValue = function (key, newValue) {
+    var _this = this;
+
+    checkIfStateModificationsAreAllowed(this._keysAtom);
+    transaction(function () {
+      var observable = new ObservableValue(newValue, _this.enhancer, _this.name + "." + stringifyKey(key), false);
+
+      _this._data.set(key, observable);
+
+      newValue = observable.value; // value might have been changed
+
+      _this._updateHasMapEntry(key, true);
+
+      _this._keysAtom.reportChanged();
+    });
+    var notifySpy = isSpyEnabled();
+    var notify = hasListeners(this);
+    var change = notify || notifySpy ? {
+      type: "add",
+      object: this,
+      name: key,
+      newValue: newValue
+    } : null;
+    if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+      name: this.name,
+      key: key
+    }));
+    if (notify) notifyListeners(this, change);
+    if (notifySpy) spyReportEnd();
+  };
+
+  ObservableMap.prototype.get = function (key) {
+    if (this.has(key)) return this.dehanceValue(this._data.get(key).get());
+    return this.dehanceValue(undefined);
+  };
+
+  ObservableMap.prototype.dehanceValue = function (value) {
+    if (this.dehancer !== undefined) {
+      return this.dehancer(value);
+    }
+
+    return value;
+  };
+
+  ObservableMap.prototype.keys = function () {
+    this._keysAtom.reportObserved();
+
+    return this._data.keys();
+  };
+
+  ObservableMap.prototype.values = function () {
+    var self = this;
+    var keys = this.keys();
+    return makeIterable({
+      next: function next() {
+        var _a = keys.next(),
+            done = _a.done,
+            value = _a.value;
+
+        return {
+          done: done,
+          value: done ? undefined : self.get(value)
+        };
+      }
+    });
+  };
+
+  ObservableMap.prototype.entries = function () {
+    var self = this;
+    var keys = this.keys();
+    return makeIterable({
+      next: function next() {
+        var _a = keys.next(),
+            done = _a.done,
+            value = _a.value;
+
+        return {
+          done: done,
+          value: done ? undefined : [value, self.get(value)]
+        };
+      }
+    });
+  };
+
+  ObservableMap.prototype.forEach = function (callback, thisArg) {
+    var _this = this;
+
+    this._keysAtom.reportObserved();
+
+    this._data.forEach(function (_, key) {
+      return callback.call(thisArg, _this.get(key), key, _this);
+    });
+  };
+  /** Merge another object into this object, returns this. */
+
+
+  ObservableMap.prototype.merge = function (other) {
+    var _this = this;
+
+    if (isObservableMap(other)) {
+      other = other.toJS();
+    }
+
+    transaction(function () {
+      var prev = allowStateChangesStart(true);
+
+      try {
+        if (isPlainObject(other)) Object.keys(other).forEach(function (key) {
+          return _this.set(key, other[key]);
+        });else if (Array.isArray(other)) other.forEach(function (_a) {
+          var _b = __read(_a, 2),
+              key = _b[0],
+              value = _b[1];
+
+          return _this.set(key, value);
+        });else if (isES6Map(other)) {
+          if (other.constructor !== Map) fail("Cannot initialize from classes that inherit from Map: " + other.constructor.name); // prettier-ignore
+          else other.forEach(function (value, key) {
+              return _this.set(key, value);
+            });
+        } else if (other !== null && other !== undefined) fail("Cannot initialize map from " + other);
+      } finally {
+        allowStateChangesEnd(prev);
+      }
+    });
+    return this;
+  };
+
+  ObservableMap.prototype.clear = function () {
+    var _this = this;
+
+    transaction(function () {
+      untracked(function () {
+        // Note we are concurrently reading/deleting the same keys
+        // forEach handles this properly
+        _this._data.forEach(function (_, key) {
+          return _this.delete(key);
+        });
+      });
+    });
+  };
+
+  ObservableMap.prototype.replace = function (values) {
+    var _this = this; // Implementation requirements:
+    // - respect ordering of replacement map
+    // - allow interceptors to run and potentially prevent individual operations
+    // - don't recreate observables that already exist in original map (so we don't destroy existing subscriptions)
+    // - don't _keysAtom.reportChanged if the keys of resulting map are indentical (order matters!)
+    // - note that result map may differ from replacement map due to the interceptors
+
+
+    transaction(function () {
+      // Convert to map so we can do quick key lookups
+      var replacementMap = convertToMap(values);
+      var orderedData = new Map(); // Used for optimization
+
+      var keysReportChangedCalled = false; // Delete keys that don't exist in replacement map
+      // if the key deletion is prevented by interceptor
+      // add entry at the beginning of the result map
+
+      forOf(_this._data.keys(), function (key) {
+        // Concurrently iterating/deleting keys
+        // iterator should handle this correctly
+        if (!replacementMap.has(key)) {
+          var deleted = _this.delete(key); // Was the key removed?
+
+
+          if (deleted) {
+            // _keysAtom.reportChanged() was already called
+            keysReportChangedCalled = true;
+          } else {
+            // Delete prevented by interceptor
+            var value = _this._data.get(key);
+
+            orderedData.set(key, value);
+          }
+        }
+      }); // Merge entries
+
+      forOf(replacementMap.entries(), function (_a) {
+        var _b = __read(_a, 2),
+            key = _b[0],
+            value = _b[1]; // We will want to know whether a new key is added
+
+
+        var keyExisted = _this._data.has(key); // Add or update value
+
+
+        _this.set(key, value); // The addition could have been prevent by interceptor
+
+
+        if (_this._data.has(key)) {
+          // The update could have been prevented by interceptor
+          // and also we want to preserve existing values
+          // so use value from _data map (instead of replacement map)
+          var value_1 = _this._data.get(key);
+
+          orderedData.set(key, value_1); // Was a new key added?
+
+          if (!keyExisted) {
+            // _keysAtom.reportChanged() was already called
+            keysReportChangedCalled = true;
+          }
+        }
+      }); // Check for possible key order change
+
+      if (!keysReportChangedCalled) {
+        if (_this._data.size !== orderedData.size) {
+          // If size differs, keys are definitely modified
+          _this._keysAtom.reportChanged();
+        } else {
+          var iter1 = _this._data.keys();
+
+          var iter2 = orderedData.keys();
+          var next1 = iter1.next();
+          var next2 = iter2.next();
+
+          while (!next1.done) {
+            if (next1.value !== next2.value) {
+              _this._keysAtom.reportChanged();
+
+              break;
+            }
+
+            next1 = iter1.next();
+            next2 = iter2.next();
+          }
+        }
+      } // Use correctly ordered map
+
+
+      _this._data = orderedData;
+    });
+    return this;
+  };
+
+  Object.defineProperty(ObservableMap.prototype, "size", {
+    get: function get() {
+      this._keysAtom.reportObserved();
+
+      return this._data.size;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  /**
+   * Returns a plain object that represents this map.
+   * Note that all the keys being stringified.
+   * If there are duplicating keys after converting them to strings, behaviour is undetermined.
+   */
+
+  ObservableMap.prototype.toPOJO = function () {
+    var _this = this;
+
+    var res = {};
+    this.forEach(function (_, key) {
+      return res[_typeof(key) === "symbol" ? key : stringifyKey(key)] = _this.get(key);
+    });
+    return res;
+  };
+  /**
+   * Returns a shallow non observable object clone of this map.
+   * Note that the values migth still be observable. For a deep clone use mobx.toJS.
+   */
+
+
+  ObservableMap.prototype.toJS = function () {
+    return new Map(this);
+  };
+
+  ObservableMap.prototype.toJSON = function () {
+    // Used by JSON.stringify
+    return this.toPOJO();
+  };
+
+  ObservableMap.prototype.toString = function () {
+    var _this = this;
+
+    return this.name + "[{ " + iteratorToArray(this.keys()).map(function (key) {
+      return stringifyKey(key) + ": " + ("" + _this.get(key));
+    }).join(", ") + " }]";
+  };
+  /**
+   * Observes this object. Triggers for the events 'add', 'update' and 'delete'.
+   * See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/observe
+   * for callback details
+   */
+
+
+  ObservableMap.prototype.observe = function (listener, fireImmediately) {
+     true && invariant(fireImmediately !== true, "`observe` doesn't support fireImmediately=true in combination with maps.");
+    return registerListener(this, listener);
+  };
+
+  ObservableMap.prototype.intercept = function (handler) {
+    return registerInterceptor(this, handler);
+  };
+
+  return ObservableMap;
+}();
+
+function stringifyKey(key) {
+  if (key && key.toString) return key.toString();else return new String(key).toString();
+}
+
+declareIterator(ObservableMap.prototype, function () {
+  return this.entries();
+});
+addHiddenFinalProp(ObservableMap.prototype, toStringTagSymbol(), "Map");
+/* 'var' fixes small-build issue */
+
+var isObservableMap = createInstanceofPredicate("ObservableMap", ObservableMap);
+var ObservableSetMarker = {};
+
+var ObservableSet =
+/** @class */
+function () {
+  function ObservableSet(initialData, enhancer, name) {
+    if (enhancer === void 0) {
+      enhancer = deepEnhancer;
+    }
+
+    if (name === void 0) {
+      name = "ObservableSet@" + getNextId();
+    }
+
+    this.name = name;
+    this.$mobx = ObservableSetMarker;
+    this._data = new Set();
+    this._atom = createAtom(this.name);
+
+    if (typeof Set !== "function") {
+      throw new Error("mobx.set requires Set polyfill for the current browser. Check babel-polyfill or core-js/es6/set.js");
+    }
+
+    this.enhancer = function (newV, oldV) {
+      return enhancer(newV, oldV, name);
+    };
+
+    if (initialData) {
+      this.replace(initialData);
+    }
+  }
+
+  ObservableSet.prototype.dehanceValue = function (value) {
+    if (this.dehancer !== undefined) {
+      return this.dehancer(value);
+    }
+
+    return value;
+  };
+
+  ObservableSet.prototype.clear = function () {
+    var _this = this;
+
+    transaction(function () {
+      untracked(function () {
+        _this._data.forEach(function (value) {
+          _this.delete(value);
+        });
+      });
+    });
+  };
+
+  ObservableSet.prototype.forEach = function (callbackFn, thisArg) {
+    var _this = this;
+
+    this._atom.reportObserved();
+
+    this._data.forEach(function (value) {
+      callbackFn.call(thisArg, value, value, _this);
+    });
+  };
+
+  Object.defineProperty(ObservableSet.prototype, "size", {
+    get: function get() {
+      this._atom.reportObserved();
+
+      return this._data.size;
+    },
+    enumerable: true,
+    configurable: true
+  });
+
+  ObservableSet.prototype.add = function (value) {
+    var _this = this;
+
+    checkIfStateModificationsAreAllowed(this._atom);
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        type: "add",
+        object: this,
+        newValue: value
+      });
+      if (!change) return this; // TODO: ideally, value = change.value would be done here, so that values can be
+      // changed by interceptor. Same applies for other Set and Map api's.
+    }
+
+    if (!this.has(value)) {
+      transaction(function () {
+        _this._data.add(_this.enhancer(value, undefined));
+
+        _this._atom.reportChanged();
+      });
+      var notifySpy = isSpyEnabled();
+      var notify = hasListeners(this);
+      var change = notify || notifySpy ? {
+        type: "add",
+        object: this,
+        newValue: value
+      } : null;
+      if (notifySpy && "development" !== "production") spyReportStart(change);
+      if (notify) notifyListeners(this, change);
+      if (notifySpy && "development" !== "production") spyReportEnd();
+    }
+
+    return this;
+  };
+
+  ObservableSet.prototype.delete = function (value) {
+    var _this = this;
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        type: "delete",
+        object: this,
+        oldValue: value
+      });
+      if (!change) return false;
+    }
+
+    if (this.has(value)) {
+      var notifySpy = isSpyEnabled();
+      var notify = hasListeners(this);
+      var change = notify || notifySpy ? {
+        type: "delete",
+        object: this,
+        oldValue: value
+      } : null;
+      if (notifySpy && "development" !== "production") spyReportStart(_assign(_assign({}, change), {
+        name: this.name
+      }));
+      transaction(function () {
+        _this._atom.reportChanged();
+
+        _this._data.delete(value);
+      });
+      if (notify) notifyListeners(this, change);
+      if (notifySpy && "development" !== "production") spyReportEnd();
+      return true;
+    }
+
+    return false;
+  };
+
+  ObservableSet.prototype.has = function (value) {
+    this._atom.reportObserved();
+
+    return this._data.has(this.dehanceValue(value));
+  };
+
+  ObservableSet.prototype.entries = function () {
+    var nextIndex = 0;
+    var keys = iteratorToArray(this.keys());
+    var values = iteratorToArray(this.values());
+    return makeIterable({
+      next: function next() {
+        var index = nextIndex;
+        nextIndex += 1;
+        return index < values.length ? {
+          value: [keys[index], values[index]],
+          done: false
+        } : {
+          done: true
+        };
+      }
+    });
+  };
+
+  ObservableSet.prototype.keys = function () {
+    return this.values();
+  };
+
+  ObservableSet.prototype.values = function () {
+    this._atom.reportObserved();
+
+    var self = this;
+    var nextIndex = 0;
+    var observableValues;
+
+    if (this._data.values !== undefined) {
+      observableValues = iteratorToArray(this._data.values());
+    } else {
+      // There is no values function in IE11
+      observableValues = [];
+
+      this._data.forEach(function (e) {
+        return observableValues.push(e);
+      });
+    }
+
+    return makeIterable({
+      next: function next() {
+        return nextIndex < observableValues.length ? {
+          value: self.dehanceValue(observableValues[nextIndex++]),
+          done: false
+        } : {
+          done: true
+        };
+      }
+    });
+  };
+
+  ObservableSet.prototype.replace = function (other) {
+    var _this = this;
+
+    if (isObservableSet(other)) {
+      other = other.toJS();
+    }
+
+    transaction(function () {
+      var prev = allowStateChangesStart(true);
+
+      try {
+        if (Array.isArray(other)) {
+          _this.clear();
+
+          other.forEach(function (value) {
+            return _this.add(value);
+          });
+        } else if (isES6Set(other)) {
+          _this.clear();
+
+          other.forEach(function (value) {
+            return _this.add(value);
+          });
+        } else if (other !== null && other !== undefined) {
+          fail("Cannot initialize set from " + other);
+        }
+      } finally {
+        allowStateChangesEnd(prev);
+      }
+    });
+    return this;
+  };
+
+  ObservableSet.prototype.observe = function (listener, fireImmediately) {
+    // TODO 'fireImmediately' can be true?
+     true && invariant(fireImmediately !== true, "`observe` doesn't support fireImmediately=true in combination with sets.");
+    return registerListener(this, listener);
+  };
+
+  ObservableSet.prototype.intercept = function (handler) {
+    return registerInterceptor(this, handler);
+  };
+
+  ObservableSet.prototype.toJS = function () {
+    return new Set(this);
+  };
+
+  ObservableSet.prototype.toString = function () {
+    return this.name + "[ " + iteratorToArray(this.keys()).join(", ") + " ]";
+  };
+
+  return ObservableSet;
+}();
+
+declareIterator(ObservableSet.prototype, function () {
+  return this.values();
+});
+addHiddenFinalProp(ObservableSet.prototype, toStringTagSymbol(), "Set");
+var isObservableSet = createInstanceofPredicate("ObservableSet", ObservableSet);
+
+var ObservableObjectAdministration =
+/** @class */
+function () {
+  function ObservableObjectAdministration(target, name, defaultEnhancer) {
+    this.target = target;
+    this.name = name;
+    this.defaultEnhancer = defaultEnhancer;
+    this.values = {};
+  }
+
+  ObservableObjectAdministration.prototype.read = function (owner, key) {
+    if (false) {}
+
+    return this.values[key].get();
+  };
+
+  ObservableObjectAdministration.prototype.write = function (owner, key, newValue) {
+    var instance = this.target;
+
+    if (false) {}
+
+    var observable = this.values[key];
+
+    if (observable instanceof ComputedValue) {
+      observable.set(newValue);
+      return;
+    } // intercept
+
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        type: "update",
+        object: instance,
+        name: key,
+        newValue: newValue
+      });
+      if (!change) return;
+      newValue = change.newValue;
+    }
+
+    newValue = observable.prepareNewValue(newValue); // notify spy & observers
+
+    if (newValue !== globalState.UNCHANGED) {
+      var notify = hasListeners(this);
+      var notifySpy = isSpyEnabled();
+      var change = notify || notifySpy ? {
+        type: "update",
+        object: instance,
+        oldValue: observable.value,
+        name: key,
+        newValue: newValue
+      } : null;
+      if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+        name: this.name,
+        key: key
+      }));
+      observable.setNewValue(newValue);
+      if (notify) notifyListeners(this, change);
+      if (notifySpy) spyReportEnd();
+    }
+  };
+
+  ObservableObjectAdministration.prototype.remove = function (key) {
+    if (!this.values[key]) return;
+    var target = this.target;
+
+    if (hasInterceptors(this)) {
+      var change = interceptChange(this, {
+        object: target,
+        name: key,
+        type: "remove"
+      });
+      if (!change) return;
+    }
+
+    try {
+      startBatch();
+      var notify = hasListeners(this);
+      var notifySpy = isSpyEnabled();
+      var oldValue = this.values[key].get();
+      if (this.keys) this.keys.remove(key);
+      delete this.values[key];
+      delete this.target[key];
+      var change = notify || notifySpy ? {
+        type: "remove",
+        object: target,
+        oldValue: oldValue,
+        name: key
+      } : null;
+      if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+        name: this.name,
+        key: key
+      }));
+      if (notify) notifyListeners(this, change);
+      if (notifySpy) spyReportEnd();
+    } finally {
+      endBatch();
+    }
+  };
+
+  ObservableObjectAdministration.prototype.illegalAccess = function (owner, propName) {
+    /**
+     * This happens if a property is accessed through the prototype chain, but the property was
+     * declared directly as own property on the prototype.
+     *
+     * E.g.:
+     * class A {
+     * }
+     * extendObservable(A.prototype, { x: 1 })
+     *
+     * classB extens A {
+     * }
+     * console.log(new B().x)
+     *
+     * It is unclear whether the property should be considered 'static' or inherited.
+     * Either use `console.log(A.x)`
+     * or: decorate(A, { x: observable })
+     *
+     * When using decorate, the property will always be redeclared as own property on the actual instance
+     */
+    console.warn("Property '" + propName + "' of '" + owner + "' was accessed through the prototype chain. Use 'decorate' instead to declare the prop or access it statically through it's owner");
+  };
+  /**
+   * Observes this object. Triggers for the events 'add', 'update' and 'delete'.
+   * See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/observe
+   * for callback details
+   */
+
+
+  ObservableObjectAdministration.prototype.observe = function (callback, fireImmediately) {
+     true && invariant(fireImmediately !== true, "`observe` doesn't support the fire immediately property for observable objects.");
+    return registerListener(this, callback);
+  };
+
+  ObservableObjectAdministration.prototype.intercept = function (handler) {
+    return registerInterceptor(this, handler);
+  };
+
+  ObservableObjectAdministration.prototype.getKeys = function () {
+    var _this = this;
+
+    if (this.keys === undefined) {
+      this.keys = new ObservableArray(Object.keys(this.values).filter(function (key) {
+        return _this.values[key] instanceof ObservableValue;
+      }), referenceEnhancer, "keys(" + this.name + ")", true);
+    }
+
+    return this.keys.slice();
+  };
+
+  return ObservableObjectAdministration;
+}();
+
+function asObservableObject(target, name, defaultEnhancer) {
+  if (name === void 0) {
+    name = "";
+  }
+
+  if (defaultEnhancer === void 0) {
+    defaultEnhancer = deepEnhancer;
+  }
+
+  var adm = target.$mobx;
+  if (adm) return adm;
+   true && invariant(Object.isExtensible(target), "Cannot make the designated object observable; it is not extensible");
+  if (!isPlainObject(target)) name = (target.constructor.name || "ObservableObject") + "@" + getNextId();
+  if (!name) name = "ObservableObject@" + getNextId();
+  adm = new ObservableObjectAdministration(target, name, defaultEnhancer);
+  addHiddenFinalProp(target, "$mobx", adm);
+  return adm;
+}
+
+function defineObservableProperty(target, propName, newValue, enhancer) {
+  var adm = asObservableObject(target);
+  assertPropertyConfigurable(target, propName);
+
+  if (hasInterceptors(adm)) {
+    var change = interceptChange(adm, {
+      object: target,
+      name: propName,
+      type: "add",
+      newValue: newValue
+    });
+    if (!change) return;
+    newValue = change.newValue;
+  }
+
+  var observable = adm.values[propName] = new ObservableValue(newValue, enhancer, adm.name + "." + propName, false);
+  newValue = observable.value; // observableValue might have changed it
+
+  Object.defineProperty(target, propName, generateObservablePropConfig(propName));
+  if (adm.keys) adm.keys.push(propName);
+  notifyPropertyAddition(adm, target, propName, newValue);
+}
+
+function defineComputedProperty(target, // which objects holds the observable and provides `this` context?
+propName, options) {
+  var adm = asObservableObject(target);
+  options.name = adm.name + "." + propName;
+  options.context = target;
+  adm.values[propName] = new ComputedValue(options);
+  Object.defineProperty(target, propName, generateComputedPropConfig(propName));
+}
+
+var observablePropertyConfigs = Object.create(null);
+var computedPropertyConfigs = Object.create(null);
+
+function generateObservablePropConfig(propName) {
+  return observablePropertyConfigs[propName] || (observablePropertyConfigs[propName] = {
+    configurable: true,
+    enumerable: true,
+    get: function get() {
+      return this.$mobx.read(this, propName);
+    },
+    set: function set(v) {
+      this.$mobx.write(this, propName, v);
+    }
+  });
+}
+
+function getAdministrationForComputedPropOwner(owner) {
+  var adm = owner.$mobx;
+
+  if (!adm) {
+    // because computed props are declared on proty,
+    // the current instance might not have been initialized yet
+    initializeInstance(owner);
+    return owner.$mobx;
+  }
+
+  return adm;
+}
+
+function generateComputedPropConfig(propName) {
+  return computedPropertyConfigs[propName] || (computedPropertyConfigs[propName] = {
+    configurable: globalState.computedConfigurable,
+    enumerable: false,
+    get: function get() {
+      return getAdministrationForComputedPropOwner(this).read(this, propName);
+    },
+    set: function set(v) {
+      getAdministrationForComputedPropOwner(this).write(this, propName, v);
+    }
+  });
+}
+
+function notifyPropertyAddition(adm, object, key, newValue) {
+  var notify = hasListeners(adm);
+  var notifySpy = isSpyEnabled();
+  var change = notify || notifySpy ? {
+    type: "add",
+    object: object,
+    name: key,
+    newValue: newValue
+  } : null;
+  if (notifySpy) spyReportStart(_assign(_assign({}, change), {
+    name: adm.name,
+    key: key
+  }));
+  if (notify) notifyListeners(adm, change);
+  if (notifySpy) spyReportEnd();
+}
+
+var isObservableObjectAdministration = createInstanceofPredicate("ObservableObjectAdministration", ObservableObjectAdministration);
+
+function isObservableObject(thing) {
+  if (isObject(thing)) {
+    // Initializers run lazily when transpiling to babel, so make sure they are run...
+    initializeInstance(thing);
+    return isObservableObjectAdministration(thing.$mobx);
+  }
+
+  return false;
+}
+
+function getAtom(thing, property) {
+  if (_typeof(thing) === "object" && thing !== null) {
+    if (isObservableArray(thing)) {
+      if (property !== undefined) fail( true && "It is not possible to get index atoms from arrays");
+      return thing.$mobx.atom;
+    }
+
+    if (isObservableSet(thing)) {
+      return thing.$mobx;
+    }
+
+    if (isObservableMap(thing)) {
+      var anyThing = thing;
+      if (property === undefined) return anyThing._keysAtom;
+
+      var observable = anyThing._data.get(property) || anyThing._hasMap.get(property);
+
+      if (!observable) fail( true && "the entry '" + property + "' does not exist in the observable map '" + getDebugName(thing) + "'");
+      return observable;
+    } // Initializers run lazily when transpiling to babel, so make sure they are run...
+
+
+    initializeInstance(thing);
+    if (property && !thing.$mobx) thing[property]; // See #1072
+
+    if (isObservableObject(thing)) {
+      if (!property) return fail( true && "please specify a property");
+      var observable = thing.$mobx.values[property];
+      if (!observable) fail( true && "no observable property '" + property + "' found on the observable object '" + getDebugName(thing) + "'");
+      return observable;
+    }
+
+    if (isAtom(thing) || isComputedValue(thing) || isReaction(thing)) {
+      return thing;
+    }
+  } else if (typeof thing === "function") {
+    if (isReaction(thing.$mobx)) {
+      // disposer function
+      return thing.$mobx;
+    }
+  }
+
+  return fail( true && "Cannot obtain atom from " + thing);
+}
+
+function getAdministration(thing, property) {
+  if (!thing) fail("Expecting some object");
+  if (property !== undefined) return getAdministration(getAtom(thing, property));
+  if (isAtom(thing) || isComputedValue(thing) || isReaction(thing)) return thing;
+  if (isObservableMap(thing) || isObservableSet(thing)) return thing; // Initializers run lazily when transpiling to babel, so make sure they are run...
+
+  initializeInstance(thing);
+  if (thing.$mobx) return thing.$mobx;
+  fail( true && "Cannot obtain administration from " + thing);
+}
+
+function getDebugName(thing, property) {
+  var named;
+  if (property !== undefined) named = getAtom(thing, property);else if (isObservableObject(thing) || isObservableMap(thing) || isObservableSet(thing)) named = getAdministration(thing);else named = getAtom(thing); // valid for arrays as well
+
+  return named.name;
+}
+
+var toString = Object.prototype.toString;
+
+function deepEqual(a, b, depth) {
+  if (depth === void 0) {
+    depth = -1;
+  }
+
+  return eq(a, b, depth);
+} // Copied from https://github.com/jashkenas/underscore/blob/5c237a7c682fb68fd5378203f0bf22dce1624854/underscore.js#L1186-L1289
+// Internal recursive comparison function for `isEqual`.
+
+
+function eq(a, b, depth, aStack, bStack) {
+  // Identical objects are equal. `0 === -0`, but they aren't identical.
+  // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
+  if (a === b) return a !== 0 || 1 / a === 1 / b; // `null` or `undefined` only equal to itself (strict comparison).
+
+  if (a == null || b == null) return false; // `NaN`s are equivalent, but non-reflexive.
+
+  if (a !== a) return b !== b; // Exhaust primitive checks
+
+  var type = _typeof(a);
+
+  if (type !== "function" && type !== "object" && _typeof(b) != "object") return false; // Unwrap any wrapped objects.
+
+  a = unwrap(a);
+  b = unwrap(b); // Compare `[[Class]]` names.
+
+  var className = toString.call(a);
+  if (className !== toString.call(b)) return false;
+
+  switch (className) {
+    // Strings, numbers, regular expressions, dates, and booleans are compared by value.
+    case "[object RegExp]": // RegExps are coerced to strings for comparison (Note: '' + /a/i === '/a/i')
+
+    case "[object String]":
+      // Primitives and their corresponding object wrappers are equivalent; thus, `"5"` is
+      // equivalent to `new String("5")`.
+      return "" + a === "" + b;
+
+    case "[object Number]":
+      // `NaN`s are equivalent, but non-reflexive.
+      // Object(NaN) is equivalent to NaN.
+      if (+a !== +a) return +b !== +b; // An `egal` comparison is performed for other numeric values.
+
+      return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+
+    case "[object Date]":
+    case "[object Boolean]":
+      // Coerce dates and booleans to numeric primitive values. Dates are compared by their
+      // millisecond representations. Note that invalid dates with millisecond representations
+      // of `NaN` are not equivalent.
+      return +a === +b;
+
+    case "[object Symbol]":
+      return (// eslint-disable-next-line
+        typeof Symbol !== "undefined" && Symbol.valueOf.call(a) === Symbol.valueOf.call(b)
+      );
+  }
+
+  var areArrays = className === "[object Array]";
+
+  if (!areArrays) {
+    if (_typeof(a) != "object" || _typeof(b) != "object") return false; // Objects with different constructors are not equivalent, but `Object`s or `Array`s
+    // from different frames are.
+
+    var aCtor = a.constructor,
+        bCtor = b.constructor;
+
+    if (aCtor !== bCtor && !(typeof aCtor === "function" && aCtor instanceof aCtor && typeof bCtor === "function" && bCtor instanceof bCtor) && "constructor" in a && "constructor" in b) {
+      return false;
+    }
+  }
+
+  if (depth === 0) {
+    return false;
+  } else if (depth < 0) {
+    depth = -1;
+  } // Assume equality for cyclic structures. The algorithm for detecting cyclic
+  // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
+  // Initializing stack of traversed objects.
+  // It's done here since we only need them for objects and arrays comparison.
+
+
+  aStack = aStack || [];
+  bStack = bStack || [];
+  var length = aStack.length;
+
+  while (length--) {
+    // Linear search. Performance is inversely proportional to the number of
+    // unique nested structures.
+    if (aStack[length] === a) return bStack[length] === b;
+  } // Add the first object to the stack of traversed objects.
+
+
+  aStack.push(a);
+  bStack.push(b); // Recursively compare objects and arrays.
+
+  if (areArrays) {
+    // Compare array lengths to determine if a deep comparison is necessary.
+    length = a.length;
+    if (length !== b.length) return false; // Deep compare the contents, ignoring non-numeric properties.
+
+    while (length--) {
+      if (!eq(a[length], b[length], depth - 1, aStack, bStack)) return false;
+    }
+  } else {
+    // Deep compare objects.
+    var keys = Object.keys(a);
+    var key = void 0;
+    length = keys.length; // Ensure that both objects contain the same number of properties before comparing deep equality.
+
+    if (Object.keys(b).length !== length) return false;
+
+    while (length--) {
+      // Deep compare each member
+      key = keys[length];
+      if (!(has$1(b, key) && eq(a[key], b[key], depth - 1, aStack, bStack))) return false;
+    }
+  } // Remove the first object from the stack of traversed objects.
+
+
+  aStack.pop();
+  bStack.pop();
+  return true;
+}
+
+function unwrap(a) {
+  if (isObservableArray(a)) return a.peek();
+  if (isES6Map(a) || isObservableMap(a)) return iteratorToArray(a.entries());
+  if (isES6Set(a) || isObservableSet(a)) return iteratorToArray(a.entries());
+  return a;
+}
+
+function has$1(a, key) {
+  return Object.prototype.hasOwnProperty.call(a, key);
+}
+/**
+ * (c) Michel Weststrate 2015 - 2019
+ * MIT Licensed
+ *
+ * Welcome to the mobx sources! To get an global overview of how MobX internally works,
+ * this is a good place to start:
+ * https://medium.com/@mweststrate/becoming-fully-reactive-an-in-depth-explanation-of-mobservable-55995262a254#.xvbh6qd74
+ *
+ * Source folders:
+ * ===============
+ *
+ * - api/     Most of the public static methods exposed by the module can be found here.
+ * - core/    Implementation of the MobX algorithm; atoms, derivations, reactions, dependency trees, optimizations. Cool stuff can be found here.
+ * - types/   All the magic that is need to have observable objects, arrays and values is in this folder. Including the modifiers like `asFlat`.
+ * - utils/   Utility stuff.
+ *
+ */
+
+
+try {
+  // define process.env if needed
+  // if this is not a production build in the first place
+  // (in which case the expression below would be substituted with 'production')
+  // tslint:disable-next-line
+  "development";
+} catch (e) {
+  var g = getGlobal();
+  if (typeof process === "undefined") g.process = {};
+  g.process.env = {};
+}
+
+(function () {
+  function testCodeMinification() {}
+
+  if (testCodeMinification.name !== "testCodeMinification" && "development" !== "production" && typeof process !== 'undefined' && process.env.IGNORE_MOBX_MINIFY_WARNING !== "true") {
+    // trick so it doesn't get replaced
+    var varName = ["process", "env", "NODE_ENV"].join(".");
+    console.warn("[mobx] you are running a minified build, but '" + varName + "' was not set to 'production' in your bundler. This results in an unnecessarily large and slow bundle");
+  }
+})(); // forward compatibility with mobx, so that packages can easily support mobx 4 & 5
+
+
+var $mobx = "$mobx";
+
+if ((typeof __MOBX_DEVTOOLS_GLOBAL_HOOK__ === "undefined" ? "undefined" : _typeof(__MOBX_DEVTOOLS_GLOBAL_HOOK__)) === "object") {
+  // See: https://github.com/andykog/mobx-devtools/
+  __MOBX_DEVTOOLS_GLOBAL_HOOK__.injectMobx({
+    spy: spy,
+    extras: {
+      getDebugName: getDebugName
+    },
+    $mobx: $mobx
+  });
+} // TODO: remove in some future build
+
+
+if ( true && typeof module.exports !== "undefined") {
+  var warnedAboutDefaultExport_1 = false;
+  Object.defineProperty(module.exports, "default", {
+    enumerable: false,
+    get: function get() {
+      if (!warnedAboutDefaultExport_1) {
+        warnedAboutDefaultExport_1 = true;
+        console.warn("The MobX package does not have a default export. Use 'import { thing } from \"mobx\"' (recommended) or 'import * as mobx from \"mobx\"' instead.\"");
+      }
+
+      return undefined;
+    }
+  });
+  ["extras", "Atom", "BaseAtom", "asFlat", "asMap", "asReference", "asStructure", "autorunAsync", "createTranformer", "expr", "isModifierDescriptor", "isStrictModeEnabled", "map", "useStrict", "whyRun"].forEach(function (prop) {
+    Object.defineProperty(module.exports, prop, {
+      enumerable: false,
+      get: function get() {
+        fail("'" + prop + "' is no longer part of the public MobX api. Please consult the changelog to find out where this functionality went");
+      },
+      set: function set() {}
+    });
+  });
+}
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../infect-frontend/node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../infect-frontend/node_modules/process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../../../infect-frontend/node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/ms/index.js":
+/*!**************************************************!*\
+  !*** ../frontend-logic/node_modules/ms/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/**
+ * Helpers.
+ */
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var w = d * 7;
+var y = d * 365.25;
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function (val, options) {
+  options = options || {};
+
+  var type = _typeof(val);
+
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isFinite(val)) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+
+  throw new Error('val is not a non-empty string or a valid number. val=' + JSON.stringify(val));
+};
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+
+function parse(str) {
+  str = String(str);
+
+  if (str.length > 100) {
+    return;
+  }
+
+  var match = /^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(str);
+
+  if (!match) {
+    return;
+  }
+
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+
+    case 'weeks':
+    case 'week':
+    case 'w':
+      return n * w;
+
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+
+    default:
+      return undefined;
+  }
+}
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+
+function fmtShort(ms) {
+  var msAbs = Math.abs(ms);
+
+  if (msAbs >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+
+  if (msAbs >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+
+  if (msAbs >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+
+  if (msAbs >= s) {
+    return Math.round(ms / s) + 's';
+  }
+
+  return ms + 'ms';
+}
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+
+function fmtLong(ms) {
+  var msAbs = Math.abs(ms);
+
+  if (msAbs >= d) {
+    return plural(ms, msAbs, d, 'day');
+  }
+
+  if (msAbs >= h) {
+    return plural(ms, msAbs, h, 'hour');
+  }
+
+  if (msAbs >= m) {
+    return plural(ms, msAbs, m, 'minute');
+  }
+
+  if (msAbs >= s) {
+    return plural(ms, msAbs, s, 'second');
+  }
+
+  return ms + ' ms';
+}
+/**
+ * Pluralization helper.
+ */
+
+
+function plural(ms, msAbs, n, name) {
+  var isPlural = msAbs >= n * 1.5;
+  return Math.round(ms / n) + ' ' + name + (isPlural ? 's' : '');
+}
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-is/implementation.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/node_modules/object-is/implementation.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var numberIsNaN = function numberIsNaN(value) {
+  return value !== value;
+};
+
+module.exports = function is(a, b) {
+  if (a === 0 && b === 0) {
+    return 1 / a === 1 / b;
+  }
+
+  if (a === b) {
+    return true;
+  }
+
+  if (numberIsNaN(a) && numberIsNaN(b)) {
+    return true;
+  }
+
+  return false;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-is/index.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/node_modules/object-is/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var define = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js");
+
+var callBind = __webpack_require__(/*! call-bind */ "../frontend-logic/node_modules/call-bind/index.js");
+
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/object-is/implementation.js");
+
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "../frontend-logic/node_modules/object-is/polyfill.js");
+
+var shim = __webpack_require__(/*! ./shim */ "../frontend-logic/node_modules/object-is/shim.js");
+
+var polyfill = callBind(getPolyfill(), Object);
+define(polyfill, {
+  getPolyfill: getPolyfill,
+  implementation: implementation,
+  shim: shim
+});
+module.exports = polyfill;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-is/polyfill.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/node_modules/object-is/polyfill.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/object-is/implementation.js");
+
+module.exports = function getPolyfill() {
+  return typeof Object.is === 'function' ? Object.is : implementation;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-is/shim.js":
+/*!********************************************************!*\
+  !*** ../frontend-logic/node_modules/object-is/shim.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "../frontend-logic/node_modules/object-is/polyfill.js");
+
+var define = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js");
+
+module.exports = function shimObjectIs() {
+  var polyfill = getPolyfill();
+  define(Object, {
+    is: polyfill
+  }, {
+    is: function testObjectIs() {
+      return Object.is !== polyfill;
+    }
+  });
+  return polyfill;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-keys/implementation.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/node_modules/object-keys/implementation.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var keysShim;
+
+if (!Object.keys) {
+  // modified from https://github.com/es-shims/es5-shim
+  var has = Object.prototype.hasOwnProperty;
+  var toStr = Object.prototype.toString;
+
+  var isArgs = __webpack_require__(/*! ./isArguments */ "../frontend-logic/node_modules/object-keys/isArguments.js"); // eslint-disable-line global-require
+
+
+  var isEnumerable = Object.prototype.propertyIsEnumerable;
+  var hasDontEnumBug = !isEnumerable.call({
+    toString: null
+  }, 'toString');
+  var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
+  var dontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'];
+
+  var equalsConstructorPrototype = function equalsConstructorPrototype(o) {
+    var ctor = o.constructor;
+    return ctor && ctor.prototype === o;
+  };
+
+  var excludedKeys = {
+    $applicationCache: true,
+    $console: true,
+    $external: true,
+    $frame: true,
+    $frameElement: true,
+    $frames: true,
+    $innerHeight: true,
+    $innerWidth: true,
+    $onmozfullscreenchange: true,
+    $onmozfullscreenerror: true,
+    $outerHeight: true,
+    $outerWidth: true,
+    $pageXOffset: true,
+    $pageYOffset: true,
+    $parent: true,
+    $scrollLeft: true,
+    $scrollTop: true,
+    $scrollX: true,
+    $scrollY: true,
+    $self: true,
+    $webkitIndexedDB: true,
+    $webkitStorageInfo: true,
+    $window: true
+  };
+
+  var hasAutomationEqualityBug = function () {
+    /* global window */
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    for (var k in window) {
+      try {
+        if (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && _typeof(window[k]) === 'object') {
+          try {
+            equalsConstructorPrototype(window[k]);
+          } catch (e) {
+            return true;
+          }
+        }
+      } catch (e) {
+        return true;
+      }
+    }
+
+    return false;
+  }();
+
+  var equalsConstructorPrototypeIfNotBuggy = function equalsConstructorPrototypeIfNotBuggy(o) {
+    /* global window */
+    if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
+      return equalsConstructorPrototype(o);
+    }
+
+    try {
+      return equalsConstructorPrototype(o);
+    } catch (e) {
+      return false;
+    }
+  };
+
+  keysShim = function keys(object) {
+    var isObject = object !== null && _typeof(object) === 'object';
+    var isFunction = toStr.call(object) === '[object Function]';
+    var isArguments = isArgs(object);
+    var isString = isObject && toStr.call(object) === '[object String]';
+    var theKeys = [];
+
+    if (!isObject && !isFunction && !isArguments) {
+      throw new TypeError('Object.keys called on a non-object');
+    }
+
+    var skipProto = hasProtoEnumBug && isFunction;
+
+    if (isString && object.length > 0 && !has.call(object, 0)) {
+      for (var i = 0; i < object.length; ++i) {
+        theKeys.push(String(i));
+      }
+    }
+
+    if (isArguments && object.length > 0) {
+      for (var j = 0; j < object.length; ++j) {
+        theKeys.push(String(j));
+      }
+    } else {
+      for (var name in object) {
+        if (!(skipProto && name === 'prototype') && has.call(object, name)) {
+          theKeys.push(String(name));
+        }
+      }
+    }
+
+    if (hasDontEnumBug) {
+      var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
+
+      for (var k = 0; k < dontEnums.length; ++k) {
+        if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
+          theKeys.push(dontEnums[k]);
+        }
+      }
+    }
+
+    return theKeys;
+  };
+}
+
+module.exports = keysShim;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-keys/index.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/node_modules/object-keys/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var slice = Array.prototype.slice;
+
+var isArgs = __webpack_require__(/*! ./isArguments */ "../frontend-logic/node_modules/object-keys/isArguments.js");
+
+var origKeys = Object.keys;
+var keysShim = origKeys ? function keys(o) {
+  return origKeys(o);
+} : __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/object-keys/implementation.js");
+var originalKeys = Object.keys;
+
+keysShim.shim = function shimObjectKeys() {
+  if (Object.keys) {
+    var keysWorksWithArguments = function () {
+      // Safari 5.0 bug
+      var args = Object.keys(arguments);
+      return args && args.length === arguments.length;
+    }(1, 2);
+
+    if (!keysWorksWithArguments) {
+      Object.keys = function keys(object) {
+        // eslint-disable-line func-name-matching
+        if (isArgs(object)) {
+          return originalKeys(slice.call(object));
+        }
+
+        return originalKeys(object);
+      };
+    }
+  } else {
+    Object.keys = keysShim;
+  }
+
+  return Object.keys || keysShim;
+};
+
+module.exports = keysShim;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/object-keys/isArguments.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/node_modules/object-keys/isArguments.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var toStr = Object.prototype.toString;
+
+module.exports = function isArguments(value) {
+  var str = toStr.call(value);
+  var isArgs = str === '[object Arguments]';
+
+  if (!isArgs) {
+    isArgs = str !== '[object Array]' && value !== null && _typeof(value) === 'object' && typeof value.length === 'number' && value.length >= 0 && toStr.call(value.callee) === '[object Function]';
+  }
+
+  return isArgs;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/implementation.js":
+/*!*******************************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/implementation.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $Object = Object;
+var $TypeError = TypeError;
+
+module.exports = function flags() {
+  if (this != null && this !== $Object(this)) {
+    throw new $TypeError('RegExp.prototype.flags getter called on non-object');
+  }
+
+  var result = '';
+
+  if (this.global) {
+    result += 'g';
+  }
+
+  if (this.ignoreCase) {
+    result += 'i';
+  }
+
+  if (this.multiline) {
+    result += 'm';
+  }
+
+  if (this.dotAll) {
+    result += 's';
+  }
+
+  if (this.unicode) {
+    result += 'u';
+  }
+
+  if (this.sticky) {
+    result += 'y';
+  }
+
+  return result;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/index.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var define = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js");
+
+var callBind = __webpack_require__(/*! call-bind */ "../frontend-logic/node_modules/call-bind/index.js");
+
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/regexp.prototype.flags/implementation.js");
+
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js");
+
+var shim = __webpack_require__(/*! ./shim */ "../frontend-logic/node_modules/regexp.prototype.flags/shim.js");
+
+var flagsBound = callBind(implementation);
+define(flagsBound, {
+  getPolyfill: getPolyfill,
+  implementation: implementation,
+  shim: shim
+});
+module.exports = flagsBound;
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var implementation = __webpack_require__(/*! ./implementation */ "../frontend-logic/node_modules/regexp.prototype.flags/implementation.js");
+
+var supportsDescriptors = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js").supportsDescriptors;
+
+var $gOPD = Object.getOwnPropertyDescriptor;
+var $TypeError = TypeError;
+
+module.exports = function getPolyfill() {
+  if (!supportsDescriptors) {
+    throw new $TypeError('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
+  }
+
+  if (/a/mig.flags === 'gim') {
+    var descriptor = $gOPD(RegExp.prototype, 'flags');
+
+    if (descriptor && typeof descriptor.get === 'function' && typeof /a/.dotAll === 'boolean') {
+      return descriptor.get;
+    }
+  }
+
+  return implementation;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/regexp.prototype.flags/shim.js":
+/*!*********************************************************************!*\
+  !*** ../frontend-logic/node_modules/regexp.prototype.flags/shim.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var supportsDescriptors = __webpack_require__(/*! define-properties */ "../frontend-logic/node_modules/define-properties/index.js").supportsDescriptors;
+
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "../frontend-logic/node_modules/regexp.prototype.flags/polyfill.js");
+
+var gOPD = Object.getOwnPropertyDescriptor;
+var defineProperty = Object.defineProperty;
+var TypeErr = TypeError;
+var getProto = Object.getPrototypeOf;
+var regex = /a/;
+
+module.exports = function shimFlags() {
+  if (!supportsDescriptors || !getProto) {
+    throw new TypeErr('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
+  }
+
+  var polyfill = getPolyfill();
+  var proto = getProto(regex);
+  var descriptor = gOPD(proto, 'flags');
+
+  if (!descriptor || descriptor.get !== polyfill) {
+    defineProperty(proto, 'flags', {
+      configurable: true,
+      enumerable: false,
+      get: polyfill
+    });
+  }
+
+  return polyfill;
+};
+
+/***/ }),
+
+/***/ "../frontend-logic/node_modules/tinycolor2/tinycolor.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/node_modules/tinycolor2/tinycolor.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+// TinyColor v1.4.2
+// https://github.com/bgrins/TinyColor
+// Brian Grinstead, MIT License
+(function (Math) {
+  var trimLeft = /^\s+/,
+      trimRight = /\s+$/,
+      tinyCounter = 0,
+      mathRound = Math.round,
+      mathMin = Math.min,
+      mathMax = Math.max,
+      mathRandom = Math.random;
+
+  function tinycolor(color, opts) {
+    color = color ? color : '';
+    opts = opts || {}; // If input is already a tinycolor, return itself
+
+    if (color instanceof tinycolor) {
+      return color;
+    } // If we are called as a function, call using new instead
+
+
+    if (!(this instanceof tinycolor)) {
+      return new tinycolor(color, opts);
+    }
+
+    var rgb = inputToRGB(color);
+    this._originalInput = color, this._r = rgb.r, this._g = rgb.g, this._b = rgb.b, this._a = rgb.a, this._roundA = mathRound(100 * this._a) / 100, this._format = opts.format || rgb.format;
+    this._gradientType = opts.gradientType; // Don't let the range of [0,255] come back in [0,1].
+    // Potentially lose a little bit of precision here, but will fix issues where
+    // .5 gets interpreted as half of the total, instead of half of 1
+    // If it was supposed to be 128, this was already taken care of by `inputToRgb`
+
+    if (this._r < 1) {
+      this._r = mathRound(this._r);
+    }
+
+    if (this._g < 1) {
+      this._g = mathRound(this._g);
+    }
+
+    if (this._b < 1) {
+      this._b = mathRound(this._b);
+    }
+
+    this._ok = rgb.ok;
+    this._tc_id = tinyCounter++;
+  }
+
+  tinycolor.prototype = {
+    isDark: function isDark() {
+      return this.getBrightness() < 128;
+    },
+    isLight: function isLight() {
+      return !this.isDark();
+    },
+    isValid: function isValid() {
+      return this._ok;
+    },
+    getOriginalInput: function getOriginalInput() {
+      return this._originalInput;
+    },
+    getFormat: function getFormat() {
+      return this._format;
+    },
+    getAlpha: function getAlpha() {
+      return this._a;
+    },
+    getBrightness: function getBrightness() {
+      //http://www.w3.org/TR/AERT#color-contrast
+      var rgb = this.toRgb();
+      return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+    },
+    getLuminance: function getLuminance() {
+      //http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+      var rgb = this.toRgb();
+      var RsRGB, GsRGB, BsRGB, R, G, B;
+      RsRGB = rgb.r / 255;
+      GsRGB = rgb.g / 255;
+      BsRGB = rgb.b / 255;
+
+      if (RsRGB <= 0.03928) {
+        R = RsRGB / 12.92;
+      } else {
+        R = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+      }
+
+      if (GsRGB <= 0.03928) {
+        G = GsRGB / 12.92;
+      } else {
+        G = Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+      }
+
+      if (BsRGB <= 0.03928) {
+        B = BsRGB / 12.92;
+      } else {
+        B = Math.pow((BsRGB + 0.055) / 1.055, 2.4);
+      }
+
+      return 0.2126 * R + 0.7152 * G + 0.0722 * B;
+    },
+    setAlpha: function setAlpha(value) {
+      this._a = boundAlpha(value);
+      this._roundA = mathRound(100 * this._a) / 100;
+      return this;
+    },
+    toHsv: function toHsv() {
+      var hsv = rgbToHsv(this._r, this._g, this._b);
+      return {
+        h: hsv.h * 360,
+        s: hsv.s,
+        v: hsv.v,
+        a: this._a
+      };
+    },
+    toHsvString: function toHsvString() {
+      var hsv = rgbToHsv(this._r, this._g, this._b);
+      var h = mathRound(hsv.h * 360),
+          s = mathRound(hsv.s * 100),
+          v = mathRound(hsv.v * 100);
+      return this._a == 1 ? "hsv(" + h + ", " + s + "%, " + v + "%)" : "hsva(" + h + ", " + s + "%, " + v + "%, " + this._roundA + ")";
+    },
+    toHsl: function toHsl() {
+      var hsl = rgbToHsl(this._r, this._g, this._b);
+      return {
+        h: hsl.h * 360,
+        s: hsl.s,
+        l: hsl.l,
+        a: this._a
+      };
+    },
+    toHslString: function toHslString() {
+      var hsl = rgbToHsl(this._r, this._g, this._b);
+      var h = mathRound(hsl.h * 360),
+          s = mathRound(hsl.s * 100),
+          l = mathRound(hsl.l * 100);
+      return this._a == 1 ? "hsl(" + h + ", " + s + "%, " + l + "%)" : "hsla(" + h + ", " + s + "%, " + l + "%, " + this._roundA + ")";
+    },
+    toHex: function toHex(allow3Char) {
+      return rgbToHex(this._r, this._g, this._b, allow3Char);
+    },
+    toHexString: function toHexString(allow3Char) {
+      return '#' + this.toHex(allow3Char);
+    },
+    toHex8: function toHex8(allow4Char) {
+      return rgbaToHex(this._r, this._g, this._b, this._a, allow4Char);
+    },
+    toHex8String: function toHex8String(allow4Char) {
+      return '#' + this.toHex8(allow4Char);
+    },
+    toRgb: function toRgb() {
+      return {
+        r: mathRound(this._r),
+        g: mathRound(this._g),
+        b: mathRound(this._b),
+        a: this._a
+      };
+    },
+    toRgbString: function toRgbString() {
+      return this._a == 1 ? "rgb(" + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ")" : "rgba(" + mathRound(this._r) + ", " + mathRound(this._g) + ", " + mathRound(this._b) + ", " + this._roundA + ")";
+    },
+    toPercentageRgb: function toPercentageRgb() {
+      return {
+        r: mathRound(bound01(this._r, 255) * 100) + "%",
+        g: mathRound(bound01(this._g, 255) * 100) + "%",
+        b: mathRound(bound01(this._b, 255) * 100) + "%",
+        a: this._a
+      };
+    },
+    toPercentageRgbString: function toPercentageRgbString() {
+      return this._a == 1 ? "rgb(" + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%)" : "rgba(" + mathRound(bound01(this._r, 255) * 100) + "%, " + mathRound(bound01(this._g, 255) * 100) + "%, " + mathRound(bound01(this._b, 255) * 100) + "%, " + this._roundA + ")";
+    },
+    toName: function toName() {
+      if (this._a === 0) {
+        return "transparent";
+      }
+
+      if (this._a < 1) {
+        return false;
+      }
+
+      return hexNames[rgbToHex(this._r, this._g, this._b, true)] || false;
+    },
+    toFilter: function toFilter(secondColor) {
+      var hex8String = '#' + rgbaToArgbHex(this._r, this._g, this._b, this._a);
+      var secondHex8String = hex8String;
+      var gradientType = this._gradientType ? "GradientType = 1, " : "";
+
+      if (secondColor) {
+        var s = tinycolor(secondColor);
+        secondHex8String = '#' + rgbaToArgbHex(s._r, s._g, s._b, s._a);
+      }
+
+      return "progid:DXImageTransform.Microsoft.gradient(" + gradientType + "startColorstr=" + hex8String + ",endColorstr=" + secondHex8String + ")";
+    },
+    toString: function toString(format) {
+      var formatSet = !!format;
+      format = format || this._format;
+      var formattedString = false;
+      var hasAlpha = this._a < 1 && this._a >= 0;
+      var needsAlphaFormat = !formatSet && hasAlpha && (format === "hex" || format === "hex6" || format === "hex3" || format === "hex4" || format === "hex8" || format === "name");
+
+      if (needsAlphaFormat) {
+        // Special case for "transparent", all other non-alpha formats
+        // will return rgba when there is transparency.
+        if (format === "name" && this._a === 0) {
+          return this.toName();
+        }
+
+        return this.toRgbString();
+      }
+
+      if (format === "rgb") {
+        formattedString = this.toRgbString();
+      }
+
+      if (format === "prgb") {
+        formattedString = this.toPercentageRgbString();
+      }
+
+      if (format === "hex" || format === "hex6") {
+        formattedString = this.toHexString();
+      }
+
+      if (format === "hex3") {
+        formattedString = this.toHexString(true);
+      }
+
+      if (format === "hex4") {
+        formattedString = this.toHex8String(true);
+      }
+
+      if (format === "hex8") {
+        formattedString = this.toHex8String();
+      }
+
+      if (format === "name") {
+        formattedString = this.toName();
+      }
+
+      if (format === "hsl") {
+        formattedString = this.toHslString();
+      }
+
+      if (format === "hsv") {
+        formattedString = this.toHsvString();
+      }
+
+      return formattedString || this.toHexString();
+    },
+    clone: function clone() {
+      return tinycolor(this.toString());
+    },
+    _applyModification: function _applyModification(fn, args) {
+      var color = fn.apply(null, [this].concat([].slice.call(args)));
+      this._r = color._r;
+      this._g = color._g;
+      this._b = color._b;
+      this.setAlpha(color._a);
+      return this;
+    },
+    lighten: function lighten() {
+      return this._applyModification(_lighten, arguments);
+    },
+    brighten: function brighten() {
+      return this._applyModification(_brighten, arguments);
+    },
+    darken: function darken() {
+      return this._applyModification(_darken, arguments);
+    },
+    desaturate: function desaturate() {
+      return this._applyModification(_desaturate, arguments);
+    },
+    saturate: function saturate() {
+      return this._applyModification(_saturate, arguments);
+    },
+    greyscale: function greyscale() {
+      return this._applyModification(_greyscale, arguments);
+    },
+    spin: function spin() {
+      return this._applyModification(_spin, arguments);
+    },
+    _applyCombination: function _applyCombination(fn, args) {
+      return fn.apply(null, [this].concat([].slice.call(args)));
+    },
+    analogous: function analogous() {
+      return this._applyCombination(_analogous, arguments);
+    },
+    complement: function complement() {
+      return this._applyCombination(_complement, arguments);
+    },
+    monochromatic: function monochromatic() {
+      return this._applyCombination(_monochromatic, arguments);
+    },
+    splitcomplement: function splitcomplement() {
+      return this._applyCombination(_splitcomplement, arguments);
+    },
+    triad: function triad() {
+      return this._applyCombination(_triad, arguments);
+    },
+    tetrad: function tetrad() {
+      return this._applyCombination(_tetrad, arguments);
+    }
+  }; // If input is an object, force 1 into "1.0" to handle ratios properly
+  // String input requires "1.0" as input, so 1 will be treated as 1
+
+  tinycolor.fromRatio = function (color, opts) {
+    if (_typeof(color) == "object") {
+      var newColor = {};
+
+      for (var i in color) {
+        if (color.hasOwnProperty(i)) {
+          if (i === "a") {
+            newColor[i] = color[i];
+          } else {
+            newColor[i] = convertToPercentage(color[i]);
+          }
+        }
+      }
+
+      color = newColor;
+    }
+
+    return tinycolor(color, opts);
+  }; // Given a string or object, convert that input to RGB
+  // Possible string inputs:
+  //
+  //     "red"
+  //     "#f00" or "f00"
+  //     "#ff0000" or "ff0000"
+  //     "#ff000000" or "ff000000"
+  //     "rgb 255 0 0" or "rgb (255, 0, 0)"
+  //     "rgb 1.0 0 0" or "rgb (1, 0, 0)"
+  //     "rgba (255, 0, 0, 1)" or "rgba 255, 0, 0, 1"
+  //     "rgba (1.0, 0, 0, 1)" or "rgba 1.0, 0, 0, 1"
+  //     "hsl(0, 100%, 50%)" or "hsl 0 100% 50%"
+  //     "hsla(0, 100%, 50%, 1)" or "hsla 0 100% 50%, 1"
+  //     "hsv(0, 100%, 100%)" or "hsv 0 100% 100%"
+  //
+
+
+  function inputToRGB(color) {
+    var rgb = {
+      r: 0,
+      g: 0,
+      b: 0
+    };
+    var a = 1;
+    var s = null;
+    var v = null;
+    var l = null;
+    var ok = false;
+    var format = false;
+
+    if (typeof color == "string") {
+      color = stringInputToObject(color);
+    }
+
+    if (_typeof(color) == "object") {
+      if (isValidCSSUnit(color.r) && isValidCSSUnit(color.g) && isValidCSSUnit(color.b)) {
+        rgb = rgbToRgb(color.r, color.g, color.b);
+        ok = true;
+        format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
+      } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
+        s = convertToPercentage(color.s);
+        v = convertToPercentage(color.v);
+        rgb = hsvToRgb(color.h, s, v);
+        ok = true;
+        format = "hsv";
+      } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
+        s = convertToPercentage(color.s);
+        l = convertToPercentage(color.l);
+        rgb = hslToRgb(color.h, s, l);
+        ok = true;
+        format = "hsl";
+      }
+
+      if (color.hasOwnProperty("a")) {
+        a = color.a;
+      }
+    }
+
+    a = boundAlpha(a);
+    return {
+      ok: ok,
+      format: color.format || format,
+      r: mathMin(255, mathMax(rgb.r, 0)),
+      g: mathMin(255, mathMax(rgb.g, 0)),
+      b: mathMin(255, mathMax(rgb.b, 0)),
+      a: a
+    };
+  } // Conversion Functions
+  // --------------------
+  // `rgbToHsl`, `rgbToHsv`, `hslToRgb`, `hsvToRgb` modified from:
+  // <http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript>
+  // `rgbToRgb`
+  // Handle bounds / percentage checking to conform to CSS color spec
+  // <http://www.w3.org/TR/css3-color/>
+  // *Assumes:* r, g, b in [0, 255] or [0, 1]
+  // *Returns:* { r, g, b } in [0, 255]
+
+
+  function rgbToRgb(r, g, b) {
+    return {
+      r: bound01(r, 255) * 255,
+      g: bound01(g, 255) * 255,
+      b: bound01(b, 255) * 255
+    };
+  } // `rgbToHsl`
+  // Converts an RGB color value to HSL.
+  // *Assumes:* r, g, and b are contained in [0, 255] or [0, 1]
+  // *Returns:* { h, s, l } in [0,1]
+
+
+  function rgbToHsl(r, g, b) {
+    r = bound01(r, 255);
+    g = bound01(g, 255);
+    b = bound01(b, 255);
+    var max = mathMax(r, g, b),
+        min = mathMin(r, g, b);
+    var h,
+        s,
+        l = (max + min) / 2;
+
+    if (max == min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+
+        case g:
+          h = (b - r) / d + 2;
+          break;
+
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+
+      h /= 6;
+    }
+
+    return {
+      h: h,
+      s: s,
+      l: l
+    };
+  } // `hslToRgb`
+  // Converts an HSL color value to RGB.
+  // *Assumes:* h is contained in [0, 1] or [0, 360] and s and l are contained [0, 1] or [0, 100]
+  // *Returns:* { r, g, b } in the set [0, 255]
+
+
+  function hslToRgb(h, s, l) {
+    var r, g, b;
+    h = bound01(h, 360);
+    s = bound01(s, 100);
+    l = bound01(l, 100);
+
+    function hue2rgb(p, q, t) {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    }
+
+    if (s === 0) {
+      r = g = b = l; // achromatic
+    } else {
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1 / 3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return {
+      r: r * 255,
+      g: g * 255,
+      b: b * 255
+    };
+  } // `rgbToHsv`
+  // Converts an RGB color value to HSV
+  // *Assumes:* r, g, and b are contained in the set [0, 255] or [0, 1]
+  // *Returns:* { h, s, v } in [0,1]
+
+
+  function rgbToHsv(r, g, b) {
+    r = bound01(r, 255);
+    g = bound01(g, 255);
+    b = bound01(b, 255);
+    var max = mathMax(r, g, b),
+        min = mathMin(r, g, b);
+    var h,
+        s,
+        v = max;
+    var d = max - min;
+    s = max === 0 ? 0 : d / max;
+
+    if (max == min) {
+      h = 0; // achromatic
+    } else {
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+
+        case g:
+          h = (b - r) / d + 2;
+          break;
+
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+
+      h /= 6;
+    }
+
+    return {
+      h: h,
+      s: s,
+      v: v
+    };
+  } // `hsvToRgb`
+  // Converts an HSV color value to RGB.
+  // *Assumes:* h is contained in [0, 1] or [0, 360] and s and v are contained in [0, 1] or [0, 100]
+  // *Returns:* { r, g, b } in the set [0, 255]
+
+
+  function hsvToRgb(h, s, v) {
+    h = bound01(h, 360) * 6;
+    s = bound01(s, 100);
+    v = bound01(v, 100);
+    var i = Math.floor(h),
+        f = h - i,
+        p = v * (1 - s),
+        q = v * (1 - f * s),
+        t = v * (1 - (1 - f) * s),
+        mod = i % 6,
+        r = [v, q, p, p, t, v][mod],
+        g = [t, v, v, q, p, p][mod],
+        b = [p, p, t, v, v, q][mod];
+    return {
+      r: r * 255,
+      g: g * 255,
+      b: b * 255
+    };
+  } // `rgbToHex`
+  // Converts an RGB color to hex
+  // Assumes r, g, and b are contained in the set [0, 255]
+  // Returns a 3 or 6 character hex
+
+
+  function rgbToHex(r, g, b, allow3Char) {
+    var hex = [pad2(mathRound(r).toString(16)), pad2(mathRound(g).toString(16)), pad2(mathRound(b).toString(16))]; // Return a 3 character hex if possible
+
+    if (allow3Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1)) {
+      return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0);
+    }
+
+    return hex.join("");
+  } // `rgbaToHex`
+  // Converts an RGBA color plus alpha transparency to hex
+  // Assumes r, g, b are contained in the set [0, 255] and
+  // a in [0, 1]. Returns a 4 or 8 character rgba hex
+
+
+  function rgbaToHex(r, g, b, a, allow4Char) {
+    var hex = [pad2(mathRound(r).toString(16)), pad2(mathRound(g).toString(16)), pad2(mathRound(b).toString(16)), pad2(convertDecimalToHex(a))]; // Return a 4 character hex if possible
+
+    if (allow4Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1) && hex[3].charAt(0) == hex[3].charAt(1)) {
+      return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
+    }
+
+    return hex.join("");
+  } // `rgbaToArgbHex`
+  // Converts an RGBA color to an ARGB Hex8 string
+  // Rarely used, but required for "toFilter()"
+
+
+  function rgbaToArgbHex(r, g, b, a) {
+    var hex = [pad2(convertDecimalToHex(a)), pad2(mathRound(r).toString(16)), pad2(mathRound(g).toString(16)), pad2(mathRound(b).toString(16))];
+    return hex.join("");
+  } // `equals`
+  // Can be called with any tinycolor input
+
+
+  tinycolor.equals = function (color1, color2) {
+    if (!color1 || !color2) {
+      return false;
+    }
+
+    return tinycolor(color1).toRgbString() == tinycolor(color2).toRgbString();
+  };
+
+  tinycolor.random = function () {
+    return tinycolor.fromRatio({
+      r: mathRandom(),
+      g: mathRandom(),
+      b: mathRandom()
+    });
+  }; // Modification Functions
+  // ----------------------
+  // Thanks to less.js for some of the basics here
+  // <https://github.com/cloudhead/less.js/blob/master/lib/less/functions.js>
+
+
+  function _desaturate(color, amount) {
+    amount = amount === 0 ? 0 : amount || 10;
+    var hsl = tinycolor(color).toHsl();
+    hsl.s -= amount / 100;
+    hsl.s = clamp01(hsl.s);
+    return tinycolor(hsl);
+  }
+
+  function _saturate(color, amount) {
+    amount = amount === 0 ? 0 : amount || 10;
+    var hsl = tinycolor(color).toHsl();
+    hsl.s += amount / 100;
+    hsl.s = clamp01(hsl.s);
+    return tinycolor(hsl);
+  }
+
+  function _greyscale(color) {
+    return tinycolor(color).desaturate(100);
+  }
+
+  function _lighten(color, amount) {
+    amount = amount === 0 ? 0 : amount || 10;
+    var hsl = tinycolor(color).toHsl();
+    hsl.l += amount / 100;
+    hsl.l = clamp01(hsl.l);
+    return tinycolor(hsl);
+  }
+
+  function _brighten(color, amount) {
+    amount = amount === 0 ? 0 : amount || 10;
+    var rgb = tinycolor(color).toRgb();
+    rgb.r = mathMax(0, mathMin(255, rgb.r - mathRound(255 * -(amount / 100))));
+    rgb.g = mathMax(0, mathMin(255, rgb.g - mathRound(255 * -(amount / 100))));
+    rgb.b = mathMax(0, mathMin(255, rgb.b - mathRound(255 * -(amount / 100))));
+    return tinycolor(rgb);
+  }
+
+  function _darken(color, amount) {
+    amount = amount === 0 ? 0 : amount || 10;
+    var hsl = tinycolor(color).toHsl();
+    hsl.l -= amount / 100;
+    hsl.l = clamp01(hsl.l);
+    return tinycolor(hsl);
+  } // Spin takes a positive or negative amount within [-360, 360] indicating the change of hue.
+  // Values outside of this range will be wrapped into this range.
+
+
+  function _spin(color, amount) {
+    var hsl = tinycolor(color).toHsl();
+    var hue = (hsl.h + amount) % 360;
+    hsl.h = hue < 0 ? 360 + hue : hue;
+    return tinycolor(hsl);
+  } // Combination Functions
+  // ---------------------
+  // Thanks to jQuery xColor for some of the ideas behind these
+  // <https://github.com/infusion/jQuery-xcolor/blob/master/jquery.xcolor.js>
+
+
+  function _complement(color) {
+    var hsl = tinycolor(color).toHsl();
+    hsl.h = (hsl.h + 180) % 360;
+    return tinycolor(hsl);
+  }
+
+  function _triad(color) {
+    var hsl = tinycolor(color).toHsl();
+    var h = hsl.h;
+    return [tinycolor(color), tinycolor({
+      h: (h + 120) % 360,
+      s: hsl.s,
+      l: hsl.l
+    }), tinycolor({
+      h: (h + 240) % 360,
+      s: hsl.s,
+      l: hsl.l
+    })];
+  }
+
+  function _tetrad(color) {
+    var hsl = tinycolor(color).toHsl();
+    var h = hsl.h;
+    return [tinycolor(color), tinycolor({
+      h: (h + 90) % 360,
+      s: hsl.s,
+      l: hsl.l
+    }), tinycolor({
+      h: (h + 180) % 360,
+      s: hsl.s,
+      l: hsl.l
+    }), tinycolor({
+      h: (h + 270) % 360,
+      s: hsl.s,
+      l: hsl.l
+    })];
+  }
+
+  function _splitcomplement(color) {
+    var hsl = tinycolor(color).toHsl();
+    var h = hsl.h;
+    return [tinycolor(color), tinycolor({
+      h: (h + 72) % 360,
+      s: hsl.s,
+      l: hsl.l
+    }), tinycolor({
+      h: (h + 216) % 360,
+      s: hsl.s,
+      l: hsl.l
+    })];
+  }
+
+  function _analogous(color, results, slices) {
+    results = results || 6;
+    slices = slices || 30;
+    var hsl = tinycolor(color).toHsl();
+    var part = 360 / slices;
+    var ret = [tinycolor(color)];
+
+    for (hsl.h = (hsl.h - (part * results >> 1) + 720) % 360; --results;) {
+      hsl.h = (hsl.h + part) % 360;
+      ret.push(tinycolor(hsl));
+    }
+
+    return ret;
+  }
+
+  function _monochromatic(color, results) {
+    results = results || 6;
+    var hsv = tinycolor(color).toHsv();
+    var h = hsv.h,
+        s = hsv.s,
+        v = hsv.v;
+    var ret = [];
+    var modification = 1 / results;
+
+    while (results--) {
+      ret.push(tinycolor({
+        h: h,
+        s: s,
+        v: v
+      }));
+      v = (v + modification) % 1;
+    }
+
+    return ret;
+  } // Utility Functions
+  // ---------------------
+
+
+  tinycolor.mix = function (color1, color2, amount) {
+    amount = amount === 0 ? 0 : amount || 50;
+    var rgb1 = tinycolor(color1).toRgb();
+    var rgb2 = tinycolor(color2).toRgb();
+    var p = amount / 100;
+    var rgba = {
+      r: (rgb2.r - rgb1.r) * p + rgb1.r,
+      g: (rgb2.g - rgb1.g) * p + rgb1.g,
+      b: (rgb2.b - rgb1.b) * p + rgb1.b,
+      a: (rgb2.a - rgb1.a) * p + rgb1.a
+    };
+    return tinycolor(rgba);
+  }; // Readability Functions
+  // ---------------------
+  // <http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef (WCAG Version 2)
+  // `contrast`
+  // Analyze the 2 colors and returns the color contrast defined by (WCAG Version 2)
+
+
+  tinycolor.readability = function (color1, color2) {
+    var c1 = tinycolor(color1);
+    var c2 = tinycolor(color2);
+    return (Math.max(c1.getLuminance(), c2.getLuminance()) + 0.05) / (Math.min(c1.getLuminance(), c2.getLuminance()) + 0.05);
+  }; // `isReadable`
+  // Ensure that foreground and background color combinations meet WCAG2 guidelines.
+  // The third argument is an optional Object.
+  //      the 'level' property states 'AA' or 'AAA' - if missing or invalid, it defaults to 'AA';
+  //      the 'size' property states 'large' or 'small' - if missing or invalid, it defaults to 'small'.
+  // If the entire object is absent, isReadable defaults to {level:"AA",size:"small"}.
+  // *Example*
+  //    tinycolor.isReadable("#000", "#111") => false
+  //    tinycolor.isReadable("#000", "#111",{level:"AA",size:"large"}) => false
+
+
+  tinycolor.isReadable = function (color1, color2, wcag2) {
+    var readability = tinycolor.readability(color1, color2);
+    var wcag2Parms, out;
+    out = false;
+    wcag2Parms = validateWCAG2Parms(wcag2);
+
+    switch (wcag2Parms.level + wcag2Parms.size) {
+      case "AAsmall":
+      case "AAAlarge":
+        out = readability >= 4.5;
+        break;
+
+      case "AAlarge":
+        out = readability >= 3;
+        break;
+
+      case "AAAsmall":
+        out = readability >= 7;
+        break;
+    }
+
+    return out;
+  }; // `mostReadable`
+  // Given a base color and a list of possible foreground or background
+  // colors for that base, returns the most readable color.
+  // Optionally returns Black or White if the most readable color is unreadable.
+  // *Example*
+  //    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:false}).toHexString(); // "#112255"
+  //    tinycolor.mostReadable(tinycolor.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:true}).toHexString();  // "#ffffff"
+  //    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"large"}).toHexString(); // "#faf3f3"
+  //    tinycolor.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(); // "#ffffff"
+
+
+  tinycolor.mostReadable = function (baseColor, colorList, args) {
+    var bestColor = null;
+    var bestScore = 0;
+    var readability;
+    var includeFallbackColors, level, size;
+    args = args || {};
+    includeFallbackColors = args.includeFallbackColors;
+    level = args.level;
+    size = args.size;
+
+    for (var i = 0; i < colorList.length; i++) {
+      readability = tinycolor.readability(baseColor, colorList[i]);
+
+      if (readability > bestScore) {
+        bestScore = readability;
+        bestColor = tinycolor(colorList[i]);
+      }
+    }
+
+    if (tinycolor.isReadable(baseColor, bestColor, {
+      "level": level,
+      "size": size
+    }) || !includeFallbackColors) {
+      return bestColor;
+    } else {
+      args.includeFallbackColors = false;
+      return tinycolor.mostReadable(baseColor, ["#fff", "#000"], args);
+    }
+  }; // Big List of Colors
+  // ------------------
+  // <http://www.w3.org/TR/css3-color/#svg-color>
+
+
+  var names = tinycolor.names = {
+    aliceblue: "f0f8ff",
+    antiquewhite: "faebd7",
+    aqua: "0ff",
+    aquamarine: "7fffd4",
+    azure: "f0ffff",
+    beige: "f5f5dc",
+    bisque: "ffe4c4",
+    black: "000",
+    blanchedalmond: "ffebcd",
+    blue: "00f",
+    blueviolet: "8a2be2",
+    brown: "a52a2a",
+    burlywood: "deb887",
+    burntsienna: "ea7e5d",
+    cadetblue: "5f9ea0",
+    chartreuse: "7fff00",
+    chocolate: "d2691e",
+    coral: "ff7f50",
+    cornflowerblue: "6495ed",
+    cornsilk: "fff8dc",
+    crimson: "dc143c",
+    cyan: "0ff",
+    darkblue: "00008b",
+    darkcyan: "008b8b",
+    darkgoldenrod: "b8860b",
+    darkgray: "a9a9a9",
+    darkgreen: "006400",
+    darkgrey: "a9a9a9",
+    darkkhaki: "bdb76b",
+    darkmagenta: "8b008b",
+    darkolivegreen: "556b2f",
+    darkorange: "ff8c00",
+    darkorchid: "9932cc",
+    darkred: "8b0000",
+    darksalmon: "e9967a",
+    darkseagreen: "8fbc8f",
+    darkslateblue: "483d8b",
+    darkslategray: "2f4f4f",
+    darkslategrey: "2f4f4f",
+    darkturquoise: "00ced1",
+    darkviolet: "9400d3",
+    deeppink: "ff1493",
+    deepskyblue: "00bfff",
+    dimgray: "696969",
+    dimgrey: "696969",
+    dodgerblue: "1e90ff",
+    firebrick: "b22222",
+    floralwhite: "fffaf0",
+    forestgreen: "228b22",
+    fuchsia: "f0f",
+    gainsboro: "dcdcdc",
+    ghostwhite: "f8f8ff",
+    gold: "ffd700",
+    goldenrod: "daa520",
+    gray: "808080",
+    green: "008000",
+    greenyellow: "adff2f",
+    grey: "808080",
+    honeydew: "f0fff0",
+    hotpink: "ff69b4",
+    indianred: "cd5c5c",
+    indigo: "4b0082",
+    ivory: "fffff0",
+    khaki: "f0e68c",
+    lavender: "e6e6fa",
+    lavenderblush: "fff0f5",
+    lawngreen: "7cfc00",
+    lemonchiffon: "fffacd",
+    lightblue: "add8e6",
+    lightcoral: "f08080",
+    lightcyan: "e0ffff",
+    lightgoldenrodyellow: "fafad2",
+    lightgray: "d3d3d3",
+    lightgreen: "90ee90",
+    lightgrey: "d3d3d3",
+    lightpink: "ffb6c1",
+    lightsalmon: "ffa07a",
+    lightseagreen: "20b2aa",
+    lightskyblue: "87cefa",
+    lightslategray: "789",
+    lightslategrey: "789",
+    lightsteelblue: "b0c4de",
+    lightyellow: "ffffe0",
+    lime: "0f0",
+    limegreen: "32cd32",
+    linen: "faf0e6",
+    magenta: "f0f",
+    maroon: "800000",
+    mediumaquamarine: "66cdaa",
+    mediumblue: "0000cd",
+    mediumorchid: "ba55d3",
+    mediumpurple: "9370db",
+    mediumseagreen: "3cb371",
+    mediumslateblue: "7b68ee",
+    mediumspringgreen: "00fa9a",
+    mediumturquoise: "48d1cc",
+    mediumvioletred: "c71585",
+    midnightblue: "191970",
+    mintcream: "f5fffa",
+    mistyrose: "ffe4e1",
+    moccasin: "ffe4b5",
+    navajowhite: "ffdead",
+    navy: "000080",
+    oldlace: "fdf5e6",
+    olive: "808000",
+    olivedrab: "6b8e23",
+    orange: "ffa500",
+    orangered: "ff4500",
+    orchid: "da70d6",
+    palegoldenrod: "eee8aa",
+    palegreen: "98fb98",
+    paleturquoise: "afeeee",
+    palevioletred: "db7093",
+    papayawhip: "ffefd5",
+    peachpuff: "ffdab9",
+    peru: "cd853f",
+    pink: "ffc0cb",
+    plum: "dda0dd",
+    powderblue: "b0e0e6",
+    purple: "800080",
+    rebeccapurple: "663399",
+    red: "f00",
+    rosybrown: "bc8f8f",
+    royalblue: "4169e1",
+    saddlebrown: "8b4513",
+    salmon: "fa8072",
+    sandybrown: "f4a460",
+    seagreen: "2e8b57",
+    seashell: "fff5ee",
+    sienna: "a0522d",
+    silver: "c0c0c0",
+    skyblue: "87ceeb",
+    slateblue: "6a5acd",
+    slategray: "708090",
+    slategrey: "708090",
+    snow: "fffafa",
+    springgreen: "00ff7f",
+    steelblue: "4682b4",
+    tan: "d2b48c",
+    teal: "008080",
+    thistle: "d8bfd8",
+    tomato: "ff6347",
+    turquoise: "40e0d0",
+    violet: "ee82ee",
+    wheat: "f5deb3",
+    white: "fff",
+    whitesmoke: "f5f5f5",
+    yellow: "ff0",
+    yellowgreen: "9acd32"
+  }; // Make it easy to access colors via `hexNames[hex]`
+
+  var hexNames = tinycolor.hexNames = flip(names); // Utilities
+  // ---------
+  // `{ 'name1': 'val1' }` becomes `{ 'val1': 'name1' }`
+
+  function flip(o) {
+    var flipped = {};
+
+    for (var i in o) {
+      if (o.hasOwnProperty(i)) {
+        flipped[o[i]] = i;
+      }
+    }
+
+    return flipped;
+  } // Return a valid alpha value [0,1] with all invalid values being set to 1
+
+
+  function boundAlpha(a) {
+    a = parseFloat(a);
+
+    if (isNaN(a) || a < 0 || a > 1) {
+      a = 1;
+    }
+
+    return a;
+  } // Take input from [0, n] and return it as [0, 1]
+
+
+  function bound01(n, max) {
+    if (isOnePointZero(n)) {
+      n = "100%";
+    }
+
+    var processPercent = isPercentage(n);
+    n = mathMin(max, mathMax(0, parseFloat(n))); // Automatically convert percentage into number
+
+    if (processPercent) {
+      n = parseInt(n * max, 10) / 100;
+    } // Handle floating point rounding errors
+
+
+    if (Math.abs(n - max) < 0.000001) {
+      return 1;
+    } // Convert into [0, 1] range if it isn't already
+
+
+    return n % max / parseFloat(max);
+  } // Force a number between 0 and 1
+
+
+  function clamp01(val) {
+    return mathMin(1, mathMax(0, val));
+  } // Parse a base-16 hex value into a base-10 integer
+
+
+  function parseIntFromHex(val) {
+    return parseInt(val, 16);
+  } // Need to handle 1.0 as 100%, since once it is a number, there is no difference between it and 1
+  // <http://stackoverflow.com/questions/7422072/javascript-how-to-detect-number-as-a-decimal-including-1-0>
+
+
+  function isOnePointZero(n) {
+    return typeof n == "string" && n.indexOf('.') != -1 && parseFloat(n) === 1;
+  } // Check to see if string passed in is a percentage
+
+
+  function isPercentage(n) {
+    return typeof n === "string" && n.indexOf('%') != -1;
+  } // Force a hex value to have 2 characters
+
+
+  function pad2(c) {
+    return c.length == 1 ? '0' + c : '' + c;
+  } // Replace a decimal with it's percentage value
+
+
+  function convertToPercentage(n) {
+    if (n <= 1) {
+      n = n * 100 + "%";
+    }
+
+    return n;
+  } // Converts a decimal to a hex value
+
+
+  function convertDecimalToHex(d) {
+    return Math.round(parseFloat(d) * 255).toString(16);
+  } // Converts a hex value to a decimal
+
+
+  function convertHexToDecimal(h) {
+    return parseIntFromHex(h) / 255;
+  }
+
+  var matchers = function () {
+    // <http://www.w3.org/TR/css3-values/#integers>
+    var CSS_INTEGER = "[-\\+]?\\d+%?"; // <http://www.w3.org/TR/css3-values/#number-value>
+
+    var CSS_NUMBER = "[-\\+]?\\d*\\.\\d+%?"; // Allow positive/negative integer/number.  Don't capture the either/or, just the entire outcome.
+
+    var CSS_UNIT = "(?:" + CSS_NUMBER + ")|(?:" + CSS_INTEGER + ")"; // Actual matching.
+    // Parentheses and commas are optional, but not required.
+    // Whitespace can take the place of commas or opening paren
+
+    var PERMISSIVE_MATCH3 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
+    var PERMISSIVE_MATCH4 = "[\\s|\\(]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")[,|\\s]+(" + CSS_UNIT + ")\\s*\\)?";
+    return {
+      CSS_UNIT: new RegExp(CSS_UNIT),
+      rgb: new RegExp("rgb" + PERMISSIVE_MATCH3),
+      rgba: new RegExp("rgba" + PERMISSIVE_MATCH4),
+      hsl: new RegExp("hsl" + PERMISSIVE_MATCH3),
+      hsla: new RegExp("hsla" + PERMISSIVE_MATCH4),
+      hsv: new RegExp("hsv" + PERMISSIVE_MATCH3),
+      hsva: new RegExp("hsva" + PERMISSIVE_MATCH4),
+      hex3: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
+      hex6: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,
+      hex4: /^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,
+      hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/
+    };
+  }(); // `isValidCSSUnit`
+  // Take in a single string / number and check to see if it looks like a CSS unit
+  // (see `matchers` above for definition).
+
+
+  function isValidCSSUnit(color) {
+    return !!matchers.CSS_UNIT.exec(color);
+  } // `stringInputToObject`
+  // Permissive string parsing.  Take in a number of formats, and output an object
+  // based on detected format.  Returns `{ r, g, b }` or `{ h, s, l }` or `{ h, s, v}`
+
+
+  function stringInputToObject(color) {
+    color = color.replace(trimLeft, '').replace(trimRight, '').toLowerCase();
+    var named = false;
+
+    if (names[color]) {
+      color = names[color];
+      named = true;
+    } else if (color == 'transparent') {
+      return {
+        r: 0,
+        g: 0,
+        b: 0,
+        a: 0,
+        format: "name"
+      };
+    } // Try to match string input using regular expressions.
+    // Keep most of the number bounding out of this function - don't worry about [0,1] or [0,100] or [0,360]
+    // Just return an object and let the conversion functions handle that.
+    // This way the result will be the same whether the tinycolor is initialized with string or object.
+
+
+    var match;
+
+    if (match = matchers.rgb.exec(color)) {
+      return {
+        r: match[1],
+        g: match[2],
+        b: match[3]
+      };
+    }
+
+    if (match = matchers.rgba.exec(color)) {
+      return {
+        r: match[1],
+        g: match[2],
+        b: match[3],
+        a: match[4]
+      };
+    }
+
+    if (match = matchers.hsl.exec(color)) {
+      return {
+        h: match[1],
+        s: match[2],
+        l: match[3]
+      };
+    }
+
+    if (match = matchers.hsla.exec(color)) {
+      return {
+        h: match[1],
+        s: match[2],
+        l: match[3],
+        a: match[4]
+      };
+    }
+
+    if (match = matchers.hsv.exec(color)) {
+      return {
+        h: match[1],
+        s: match[2],
+        v: match[3]
+      };
+    }
+
+    if (match = matchers.hsva.exec(color)) {
+      return {
+        h: match[1],
+        s: match[2],
+        v: match[3],
+        a: match[4]
+      };
+    }
+
+    if (match = matchers.hex8.exec(color)) {
+      return {
+        r: parseIntFromHex(match[1]),
+        g: parseIntFromHex(match[2]),
+        b: parseIntFromHex(match[3]),
+        a: convertHexToDecimal(match[4]),
+        format: named ? "name" : "hex8"
+      };
+    }
+
+    if (match = matchers.hex6.exec(color)) {
+      return {
+        r: parseIntFromHex(match[1]),
+        g: parseIntFromHex(match[2]),
+        b: parseIntFromHex(match[3]),
+        format: named ? "name" : "hex"
+      };
+    }
+
+    if (match = matchers.hex4.exec(color)) {
+      return {
+        r: parseIntFromHex(match[1] + '' + match[1]),
+        g: parseIntFromHex(match[2] + '' + match[2]),
+        b: parseIntFromHex(match[3] + '' + match[3]),
+        a: convertHexToDecimal(match[4] + '' + match[4]),
+        format: named ? "name" : "hex8"
+      };
+    }
+
+    if (match = matchers.hex3.exec(color)) {
+      return {
+        r: parseIntFromHex(match[1] + '' + match[1]),
+        g: parseIntFromHex(match[2] + '' + match[2]),
+        b: parseIntFromHex(match[3] + '' + match[3]),
+        format: named ? "name" : "hex"
+      };
+    }
+
+    return false;
+  }
+
+  function validateWCAG2Parms(parms) {
+    // return valid WCAG2 parms for isReadable.
+    // If input parms are invalid, return {"level":"AA", "size":"small"}
+    var level, size;
+    parms = parms || {
+      "level": "AA",
+      "size": "small"
+    };
+    level = (parms.level || "AA").toUpperCase();
+    size = (parms.size || "small").toLowerCase();
+
+    if (level !== "AA" && level !== "AAA") {
+      level = "AA";
+    }
+
+    if (size !== "small" && size !== "large") {
+      size = "small";
+    }
+
+    return {
+      "level": level,
+      "size": size
+    };
+  } // Node: Export function
+
+
+  if ( true && module.exports) {
+    module.exports = tinycolor;
+  } // AMD/requirejs: Define the module
+  else if (true) {
+      !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+        return tinycolor;
+      }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } // Browser: Expose to window
+    else {}
+})(Math);
+
+/***/ }),
+
+/***/ "../frontend-logic/src/helpers/BaseStore.js":
+/*!**************************************************!*\
+  !*** ../frontend-logic/src/helpers/BaseStore.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BaseStore; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storeStatus.js */ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _storeStatus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -214,18 +9893,18 @@ var BaseStore = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/Store.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/Store.js ***!
-  \******************************************************************/
+/***/ "../frontend-logic/src/helpers/Store.js":
+/*!**********************************************!*\
+  !*** ../frontend-logic/src/helpers/Store.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Store; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseStore.js */ "./node_modules/@infect/frontend-logic/src/helpers/BaseStore.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BaseStore.js */ "../frontend-logic/src/helpers/BaseStore.js");
 var _class, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -399,10 +10078,10 @@ var Store = (_class = (_temp = /*#__PURE__*/function (_BaseStore) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/api.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/api.js ***!
-  \****************************************************************/
+/***/ "../frontend-logic/src/helpers/api.js":
+/*!********************************************!*\
+  !*** ../frontend-logic/src/helpers/api.js ***!
+  \********************************************/
 /*! exports provided: fetchApi */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -415,7 +10094,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // https://babeljs.io/docs/usage/polyfill/
 // Tests throw ReferenceError: regeneratorRuntime is not defined if we don't include the polyfill
-//import 'babel-polyfill';
+// import 'babel-polyfill';
 
 /**
 * Wrapper for fetch API requests.
@@ -457,7 +10136,7 @@ function _fetchApi() {
 
           case 7:
             responseText = _context.sent;
-            err = new Error("fetchApi: API returned invalid HTTP status ".concat(response.status, ",\n            content is ").concat(responseText, "."));
+            err = new Error("fetchApi: Calling ".concat(url, " returned invalid HTTP status ").concat(response.status, ",\n            content is ").concat(responseText, "."));
             err.name = 'HTTPStatusError';
             throw err;
 
@@ -486,10 +10165,10 @@ function _fetchApi() {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/convertNestedSetToTree.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/convertNestedSetToTree.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/helpers/convertNestedSetToTree.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/helpers/convertNestedSetToTree.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -549,10 +10228,10 @@ function convertNestedSetToTree(set) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/getArrayDiff.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/getArrayDiff.js ***!
-  \*************************************************************************/
+/***/ "../frontend-logic/src/helpers/getArrayDiff.js":
+/*!*****************************************************!*\
+  !*** ../frontend-logic/src/helpers/getArrayDiff.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -582,10 +10261,10 @@ function getArrayDiff(array1, array2) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/getRelativeValue.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/getRelativeValue.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/src/helpers/getRelativeValue.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/src/helpers/getRelativeValue.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -615,21 +10294,21 @@ function getRelativeValue(value, min, max) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js ***!
-  \****************************************************************************/
+/***/ "../frontend-logic/src/helpers/standardFetcher.js":
+/*!********************************************************!*\
+  !*** ../frontend-logic/src/helpers/standardFetcher.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StandardFetcher; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api.js */ "./node_modules/@infect/frontend-logic/src/helpers/api.js");
-/* harmony import */ var _storeStatus_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storeStatus.js */ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api.js */ "../frontend-logic/src/helpers/api.js");
+/* harmony import */ var _storeStatus_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -868,10 +10547,10 @@ var StandardFetcher = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js ***!
-  \************************************************************************/
+/***/ "../frontend-logic/src/helpers/storeStatus.js":
+/*!****************************************************!*\
+  !*** ../frontend-logic/src/helpers/storeStatus.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -886,49 +10565,49 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/infectApp.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/infectApp.js ***!
-  \**************************************************************/
+/***/ "../frontend-logic/src/infectApp.js":
+/*!******************************************!*\
+  !*** ../frontend-logic/src/infectApp.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InfectApp; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/storeStatus.js */ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js");
-/* harmony import */ var _models_antibiotics_antibioticsStore_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/antibiotics/antibioticsStore.js */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticsStore.js");
-/* harmony import */ var _models_antibiotics_antibioticsFetcher_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/antibiotics/antibioticsFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticsFetcher.js");
-/* harmony import */ var _models_antibiotics_substanceClassesStore_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesStore.js */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassesStore.js");
-/* harmony import */ var _models_antibiotics_substanceClassesFetcher_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassesFetcher.js");
-/* harmony import */ var _models_bacteria_bacteriaStore_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./models/bacteria/bacteriaStore.js */ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriaStore.js");
-/* harmony import */ var _models_bacteria_bacteriaFetcher_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/bacteria/bacteriaFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriaFetcher.js");
-/* harmony import */ var _models_resistances_resistancesStore_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/resistances/resistancesStore.js */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistancesStore.js");
-/* harmony import */ var _models_resistances_resistancesFetcher_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./models/resistances/resistancesFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistancesFetcher.js");
-/* harmony import */ var _models_matrix_matrixView_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./models/matrix/matrixView.js */ "./node_modules/@infect/frontend-logic/src/models/matrix/matrixView.js");
-/* harmony import */ var _models_drawer_DrawerViewModel_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./models/drawer/DrawerViewModel.js */ "./node_modules/@infect/frontend-logic/src/models/drawer/DrawerViewModel.js");
-/* harmony import */ var _models_filters_getFilterConfig_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./models/filters/getFilterConfig.js */ "./node_modules/@infect/frontend-logic/src/models/filters/getFilterConfig.js");
-/* harmony import */ var _models_propertyMap_propertyMap_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./models/propertyMap/propertyMap.js */ "./node_modules/@infect/frontend-logic/src/models/propertyMap/propertyMap.js");
-/* harmony import */ var _models_filters_offsetFilters_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./models/filters/offsetFilters.js */ "./node_modules/@infect/frontend-logic/src/models/filters/offsetFilters.js");
-/* harmony import */ var _models_filters_selectedFilters_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./models/filters/selectedFilters.js */ "./node_modules/@infect/frontend-logic/src/models/filters/selectedFilters.js");
-/* harmony import */ var _models_filters_mostUsedFilters_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./models/filters/mostUsedFilters.js */ "./node_modules/@infect/frontend-logic/src/models/filters/mostUsedFilters.js");
-/* harmony import */ var _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./models/populationFilter/PopulationFilterUpdater.js */ "./node_modules/@infect/frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js");
-/* harmony import */ var _models_populationFilter_setupAgeGroups_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./models/populationFilter/setupAgeGroups.js */ "./node_modules/@infect/frontend-logic/src/models/populationFilter/setupAgeGroups.js");
-/* harmony import */ var _models_populationFilter_setupPopulationFilters_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./models/populationFilter/setupPopulationFilters.js */ "./node_modules/@infect/frontend-logic/src/models/populationFilter/setupPopulationFilters.js");
-/* harmony import */ var _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./models/notifications/NotificationCenter.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/NotificationCenter.js");
-/* harmony import */ var _models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "./node_modules/@infect/frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js");
-/* harmony import */ var _models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/setupGuidelines.js");
-/* harmony import */ var _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/GuidelineStore.js");
-/* harmony import */ var _models_rdaCounter_RDACounterStore_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterStore.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/RDACounterStore.js");
-/* harmony import */ var _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/RDACounterFetcher.js");
-/* harmony import */ var _models_tenantConfig_TenantConfigFetcher_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js");
-/* harmony import */ var _models_tenantConfig_TenantConfigStore_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigStore.js */ "./node_modules/@infect/frontend-logic/src/models/tenantConfig/TenantConfigStore.js");
-/* harmony import */ var _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./models/notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
-/* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "./node_modules/@infect/frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var _models_antibiotics_antibioticsStore_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/antibiotics/antibioticsStore.js */ "../frontend-logic/src/models/antibiotics/antibioticsStore.js");
+/* harmony import */ var _models_antibiotics_antibioticsFetcher_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/antibiotics/antibioticsFetcher.js */ "../frontend-logic/src/models/antibiotics/antibioticsFetcher.js");
+/* harmony import */ var _models_antibiotics_substanceClassesStore_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesStore.js */ "../frontend-logic/src/models/antibiotics/substanceClassesStore.js");
+/* harmony import */ var _models_antibiotics_substanceClassesFetcher_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/antibiotics/substanceClassesFetcher.js */ "../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js");
+/* harmony import */ var _models_bacteria_bacteriaStore_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./models/bacteria/bacteriaStore.js */ "../frontend-logic/src/models/bacteria/bacteriaStore.js");
+/* harmony import */ var _models_bacteria_bacteriaFetcher_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/bacteria/bacteriaFetcher.js */ "../frontend-logic/src/models/bacteria/bacteriaFetcher.js");
+/* harmony import */ var _models_resistances_resistancesStore_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/resistances/resistancesStore.js */ "../frontend-logic/src/models/resistances/resistancesStore.js");
+/* harmony import */ var _models_resistances_resistancesFetcher_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./models/resistances/resistancesFetcher.js */ "../frontend-logic/src/models/resistances/resistancesFetcher.js");
+/* harmony import */ var _models_matrix_matrixView_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./models/matrix/matrixView.js */ "../frontend-logic/src/models/matrix/matrixView.js");
+/* harmony import */ var _models_drawer_DrawerViewModel_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./models/drawer/DrawerViewModel.js */ "../frontend-logic/src/models/drawer/DrawerViewModel.js");
+/* harmony import */ var _models_filters_getFilterConfig_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./models/filters/getFilterConfig.js */ "../frontend-logic/src/models/filters/getFilterConfig.js");
+/* harmony import */ var _models_propertyMap_propertyMap_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./models/propertyMap/propertyMap.js */ "../frontend-logic/src/models/propertyMap/propertyMap.js");
+/* harmony import */ var _models_filters_offsetFilters_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./models/filters/offsetFilters.js */ "../frontend-logic/src/models/filters/offsetFilters.js");
+/* harmony import */ var _models_filters_selectedFilters_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./models/filters/selectedFilters.js */ "../frontend-logic/src/models/filters/selectedFilters.js");
+/* harmony import */ var _models_filters_mostUsedFilters_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./models/filters/mostUsedFilters.js */ "../frontend-logic/src/models/filters/mostUsedFilters.js");
+/* harmony import */ var _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./models/populationFilter/PopulationFilterUpdater.js */ "../frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js");
+/* harmony import */ var _models_populationFilter_setupAgeGroups_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./models/populationFilter/setupAgeGroups.js */ "../frontend-logic/src/models/populationFilter/setupAgeGroups.js");
+/* harmony import */ var _models_populationFilter_setupPopulationFilters_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./models/populationFilter/setupPopulationFilters.js */ "../frontend-logic/src/models/populationFilter/setupPopulationFilters.js");
+/* harmony import */ var _models_notifications_NotificationCenter_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./models/notifications/NotificationCenter.js */ "../frontend-logic/src/models/notifications/NotificationCenter.js");
+/* harmony import */ var _models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./models/drawer/updateDrawerFromGuidelines.js */ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js");
+/* harmony import */ var _models_guidelines_setupGuidelines_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./models/guidelines/setupGuidelines.js */ "../frontend-logic/src/models/guidelines/setupGuidelines.js");
+/* harmony import */ var _models_guidelines_GuidelineStore_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./models/guidelines/GuidelineStore.js */ "../frontend-logic/src/models/guidelines/GuidelineStore.js");
+/* harmony import */ var _models_rdaCounter_RDACounterStore_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterStore.js */ "../frontend-logic/src/models/rdaCounter/RDACounterStore.js");
+/* harmony import */ var _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./models/rdaCounter/RDACounterFetcher.js */ "../frontend-logic/src/models/rdaCounter/RDACounterFetcher.js");
+/* harmony import */ var _models_tenantConfig_TenantConfigFetcher_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigFetcher.js */ "../frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js");
+/* harmony import */ var _models_tenantConfig_TenantConfigStore_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./models/tenantConfig/TenantConfigStore.js */ "../frontend-logic/src/models/tenantConfig/TenantConfigStore.js");
+/* harmony import */ var _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./models/notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -988,10 +10667,12 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
 
   /**
   * @param {object} config
-  * @param {function} config.getURL           Function that takes two arguments (scope and
-  *                                           endpoint) and returns corresponding URL
-  * @param {boolean} config.showPreviewData   If true, preview data will be used (instead of the
-  *                                           regular current dataset)
+  * @param {function} config.getURL            Function that takes two arguments (scope and
+  *                                            endpoint) and returns corresponding URL
+  * @param {boolean} config.previewGuidelines  If true, preview data will be used for guidelines
+  * @param {string[]} config.dataVersionStatusIdentifiers       Array with all identifiers that
+  *                                            should be loaded from RDA, e.g.
+  *                                            ['preview', 'active'].
   */
   function InfectApp(config) {
     _classCallCheck(this, InfectApp);
@@ -1099,7 +10780,7 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
         dependentStores: [this.antibiotics, this.bacteria],
         handleError: this.notificationCenter.handle.bind(this.notificationCenter)
       });
-      var updater = new _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__["default"](resistanceFetcher, this.selectedFilters, this.ageGroupStore, this.notificationCenter.handle.bind(this.notificationCenter), this._config.showPreviewData);
+      var updater = new _models_populationFilter_PopulationFilterUpdater_js__WEBPACK_IMPORTED_MODULE_18__["default"](resistanceFetcher, this.selectedFilters, this.ageGroupStore, this.notificationCenter.handle.bind(this.notificationCenter), this._config.dataVersionStatusIdentifiers);
       updater.setup(); // Pass filterHeaders as we might filter even before the user interacted with the user
       // interface (e.g. for preview data)
 
@@ -1126,7 +10807,8 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
       var rdaCounterFetcher = new _models_rdaCounter_RDACounterFetcher_js__WEBPACK_IMPORTED_MODULE_26__["default"]({
         url: this._config.getURL('rda', 'counter'),
         store: this.rdaCounterStore,
-        handleError: this.notificationCenter.handle.bind(this.notificationCenter)
+        handleError: this.notificationCenter.handle.bind(this.notificationCenter),
+        dataVersionStatusIdentifiers: this._config.dataVersionStatusIdentifiers
       });
       var rdaCounterFetcherPromise = rdaCounterFetcher.getData();
       log('Fetchers setup done.');
@@ -1135,7 +10817,22 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
   }, {
     key: "_setupOffsetFilters",
     value: function _setupOffsetFilters() {
-      this.offsetFilters.setFilter('sampleSize', 'min', 20);
+      var _this3 = this;
+
+      // Default offset filters to 20 (infect by anresis)
+      this.offsetFilters.setFilter('sampleSize', 'min', 20); // Update sample size offset filter from tenantConfig when it is set
+
+      Object(mobx__WEBPACK_IMPORTED_MODULE_0__["reaction"])(function () {
+        var frontendConfig = _this3.tenantConfig.getConfig('frontend');
+
+        if (frontendConfig && frontendConfig.userInterface && typeof frontendConfig.userInterface.sampleCountDefaultValue === 'number') {
+          return frontendConfig.userInterface.sampleCountDefaultValue;
+        }
+
+        return undefined;
+      }, function (sampleCountDefaultValue) {
+        _this3.offsetFilters.setFilter('sampleSize', 'min', sampleCountDefaultValue);
+      });
       this.offsetFilters.setFilter('susceptibility', 'min', 0);
     }
     /**
@@ -1146,11 +10843,11 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
   }, {
     key: "_setupFilterValues",
     value: function _setupFilterValues() {
-      var _this3 = this;
+      var _this4 = this;
 
       var filterConfig = Object(_models_filters_getFilterConfig_js__WEBPACK_IMPORTED_MODULE_13__["default"])();
       filterConfig.forEach(function (config) {
-        _this3.filterValues.addConfiguration(config.entityType, config.config);
+        _this4.filterValues.addConfiguration(config.entityType, config.config);
 
         log('FilterConfig %o set for %s', config.config, config.entityType);
       });
@@ -1169,10 +10866,10 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
         // Only add entities to filterValues when **all** entity types are ready to prevent
         // unndecessary re-renderings when filterValues change.
         Object(mobx__WEBPACK_IMPORTED_MODULE_0__["when"])(function () {
-          return _this3[entityConfig.plural].status.identifier === _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_2__["default"].ready;
+          return _this4[entityConfig.plural].status.identifier === _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_2__["default"].ready;
         }, function () {
           entitiesReady += 1;
-          if (entitiesReady === entities.length) _this3._addAllEntitiesToFilters(entities);
+          if (entitiesReady === entities.length) _this4._addAllEntitiesToFilters(entities);
           log('%d of %d entities ready.', entitiesReady, entities.length);
         });
       });
@@ -1186,17 +10883,17 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
   }, {
     key: "_addAllEntitiesToFilters",
     value: function _addAllEntitiesToFilters(entityConfigs) {
-      var _this4 = this;
+      var _this5 = this;
 
       var counter = 0;
       Object(mobx__WEBPACK_IMPORTED_MODULE_0__["transaction"])(function () {
         entityConfigs.forEach(function (entityConfig) {
-          _this4[entityConfig.plural].getAsArray().forEach(function (item) {
+          _this5[entityConfig.plural].getAsArray().forEach(function (item) {
             // Don't add substanceClasses that are not linked to antibiotics
             if (entityConfig.singular === 'substanceClass' && !item.used) return;
             counter += 1;
 
-            _this4.filterValues.addEntity(entityConfig.singular, item);
+            _this5.filterValues.addEntity(entityConfig.singular, item);
           });
         });
       });
@@ -1220,17 +10917,17 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibiotic.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/antibiotic.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibiotic.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibiotic.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Antibiotic; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1291,17 +10988,17 @@ var Antibiotic = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticMatrixView.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticMatrixView.js ***!
-  \********************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibioticMatrixView.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "./node_modules/@infect/frontend-logic/src/models/filters/doFiltersMatch.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../frontend-logic/src/models/filters/doFiltersMatch.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1357,22 +11054,22 @@ var AntibioticMatrixView = (_class = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticsFetcher.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticsFetcher.js ***!
-  \******************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibioticsFetcher.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibioticsFetcher.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AntibioticsFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _antibiotic_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./antibiotic.js */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibiotic.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
-/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _antibiotic_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./antibiotic.js */ "../frontend-logic/src/models/antibiotics/antibiotic.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -1543,17 +11240,17 @@ var AntibioticsFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticsStore.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticsStore.js ***!
-  \****************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/antibioticsStore.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/antibioticsStore.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AnitibioticsStore; });
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1592,17 +11289,17 @@ var AnitibioticsStore = /*#__PURE__*/function (_Store) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClass.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClass.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClass.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClass.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 var _class, _descriptor, _temp;
 
@@ -1713,19 +11410,19 @@ var SubstanceClass = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassMatrixView.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassMatrixView.js ***!
-  \************************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClassMatrixView.js":
+/*!****************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClassMatrixView.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "./node_modules/tinycolor2/tinycolor.js");
+/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "../frontend-logic/node_modules/tinycolor2/tinycolor.js");
 /* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tinycolor2__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "./node_modules/@infect/frontend-logic/src/models/filters/doFiltersMatch.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../frontend-logic/src/models/filters/doFiltersMatch.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1781,20 +11478,20 @@ var SubstanceClassMatrixView = (_class = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassesFetcher.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassesFetcher.js ***!
-  \***********************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js":
+/*!***************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClassesFetcher.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubstanceClassesFetcher; });
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _substanceClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./substanceClass */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClass.js");
-/* harmony import */ var _helpers_convertNestedSetToTree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/convertNestedSetToTree */ "./node_modules/@infect/frontend-logic/src/helpers/convertNestedSetToTree.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _substanceClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./substanceClass */ "../frontend-logic/src/models/antibiotics/substanceClass.js");
+/* harmony import */ var _helpers_convertNestedSetToTree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/convertNestedSetToTree */ "../frontend-logic/src/helpers/convertNestedSetToTree.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -1887,17 +11584,17 @@ var SubstanceClassesFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassesStore.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassesStore.js ***!
-  \*********************************************************************************************/
+/***/ "../frontend-logic/src/models/antibiotics/substanceClassesStore.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/src/models/antibiotics/substanceClassesStore.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubstanceClassesStore; });
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1936,21 +11633,21 @@ var SubstanceClassesStore = /*#__PURE__*/function (_Store) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriaFetcher.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriaFetcher.js ***!
-  \************************************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacteriaFetcher.js":
+/*!****************************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacteriaFetcher.js ***!
+  \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriaFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _bacterium__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bacterium */ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacterium.js");
-/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
+/* harmony import */ var _helpers_standardFetcher__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _bacterium__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bacterium */ "../frontend-logic/src/models/bacteria/bacterium.js");
+/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -2050,17 +11747,17 @@ var BacteriaFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriaStore.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriaStore.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacteriaStore.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacteriaStore.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriaStore; });
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2099,16 +11796,16 @@ var BacteriaStore = /*#__PURE__*/function (_Store) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacterium.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/bacteria/bacterium.js ***!
-  \******************************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacterium.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacterium.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class, _descriptor, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -2161,18 +11858,18 @@ function Bacterium(id, name) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriumMatrixView.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriumMatrixView.js ***!
-  \****************************************************************************************/
+/***/ "../frontend-logic/src/models/bacteria/bacteriumMatrixView.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/bacteria/bacteriumMatrixView.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BacteriumMatrixView; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "./node_modules/@infect/frontend-logic/src/models/filters/doFiltersMatch.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_doFiltersMatch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../filters/doFiltersMatch */ "../frontend-logic/src/models/filters/doFiltersMatch.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2233,20 +11930,21 @@ var BacteriumMatrixView = (_class = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/drawer/DrawerViewModel.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/drawer/DrawerViewModel.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/drawer/DrawerViewModel.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/drawer/DrawerViewModel.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DrawerViewModel; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _guidelines_Guideline_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guidelines/Guideline.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/Guideline.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _guidelines_Guideline_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guidelines/Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js");
+/* harmony import */ var _resistances_resistance_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../resistances/resistance.js */ "../frontend-logic/src/models/resistances/resistance.js");
 var _class, _descriptor, _descriptor2, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -2264,6 +11962,7 @@ function _initializerWarningHelper(descriptor, context) { throw new Error('Decor
 
 
 
+
 var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:DrawerViewModel');
 /**
  * Represents the drawer view (right on web, overlay on mobile). Can either be visible or not
@@ -2276,7 +11975,7 @@ var DrawerViewModel = (_class = (_temp = /*#__PURE__*/function () {
 
     _initializerDefineProperty(this, "isOpen", _descriptor, this);
 
-    this.validContentTypes = new Map([[_guidelines_Guideline_js__WEBPACK_IMPORTED_MODULE_2__["default"], 'guideline']]);
+    this.validContentTypes = new Map([[_guidelines_Guideline_js__WEBPACK_IMPORTED_MODULE_2__["default"], 'guideline'], [_resistances_resistance_js__WEBPACK_IMPORTED_MODULE_3__["default"], 'resistance']]);
 
     _initializerDefineProperty(this, "content", _descriptor2, this);
   }
@@ -2303,7 +12002,8 @@ var DrawerViewModel = (_class = (_temp = /*#__PURE__*/function () {
     }
     /**
      * Set content to be displayed in Drawer
-     * @param {Guideline} content   Content to display in drawer; must be a Guideline (for now).
+     * @param {Guideline} content   Content to display in drawer; must be a Guideline or a
+     * Resistance (for now). Set to undefined to clear content and close drawer.
      */
 
   }, {
@@ -2354,18 +12054,18 @@ var DrawerViewModel = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js ***!
-  \*********************************************************************************************/
+/***/ "../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/src/models/drawer/updateDrawerFromGuidelines.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return updateDrawerFromGuidelines; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 
 
@@ -2398,17 +12098,17 @@ function updateDrawerFromGuidelines(guidelineStore, drawer, errorHandler) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/filters/doFiltersMatch.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/filters/doFiltersMatch.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/filters/doFiltersMatch.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/doFiltersMatch.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return doFiltersMatch; });
-/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! deep-equal */ "./node_modules/deep-equal/index.js");
+/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! deep-equal */ "../frontend-logic/node_modules/deep-equal/index.js");
 /* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(deep_equal__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -2453,10 +12153,10 @@ function matches(target, filter) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js ***!
-  \*******************************************************************************/
+/***/ "../frontend-logic/src/models/filters/filterTypes.js":
+/*!***********************************************************!*\
+  !*** ../frontend-logic/src/models/filters/filterTypes.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2477,10 +12177,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/filters/getFilterConfig.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/filters/getFilterConfig.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/models/filters/getFilterConfig.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/getFilterConfig.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2627,17 +12327,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/filters/mostUsedFilters.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/filters/mostUsedFilters.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/models/filters/mostUsedFilters.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/mostUsedFilters.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MostUsedFilters; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _dec, _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -2717,17 +12417,17 @@ var MostUsedFilters = (_dec = mobx__WEBPACK_IMPORTED_MODULE_0__["observable"].sh
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/filters/offsetFilters.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/filters/offsetFilters.js ***!
-  \*********************************************************************************/
+/***/ "../frontend-logic/src/models/filters/offsetFilters.js":
+/*!*************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/offsetFilters.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OffsetFilters; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2791,20 +12491,20 @@ var OffsetFilters = (_class = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/filters/selectedFilters.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/filters/selectedFilters.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/models/filters/selectedFilters.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/filters/selectedFilters.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SelectedFilters; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! deep-equal */ "./node_modules/deep-equal/index.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! deep-equal */ "../frontend-logic/node_modules/deep-equal/index.js");
 /* harmony import */ var deep_equal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(deep_equal__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
 var _dec, _class, _descriptor, _descriptor2, _temp;
 
@@ -2955,20 +12655,20 @@ var SelectedFilters = (_dec = mobx__WEBPACK_IMPORTED_MODULE_0__["observable"].sh
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js":
-/*!*************************************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js ***!
-  \*************************************************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js":
+/*!*****************************************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js ***!
+  \*****************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuidelineSelectedFiltersBridge; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "../frontend-logic/src/models/filters/filterTypes.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3087,10 +12787,10 @@ var GuidelineSelectedFiltersBridge = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/Diagnosis.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/Diagnosis.js ***!
-  \********************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/Diagnosis.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/Diagnosis.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3224,10 +12924,10 @@ var Diagnosis = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisClass.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisClass.js ***!
-  \*************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisClass.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisClass.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3266,18 +12966,18 @@ function DiagnosisClass(id) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js ***!
-  \********************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DiagnosisClassFetcher; });
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _DiagnosisClass_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosisClass.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisClass.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _DiagnosisClass_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DiagnosisClass.js */ "../frontend-logic/src/models/guidelines/DiagnosisClass.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3332,21 +13032,21 @@ var DiagnosisClassFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisFetcher.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisFetcher.js ***!
-  \***************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/DiagnosisFetcher.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/DiagnosisFetcher.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DiagnosisFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _Diagnosis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Diagnosis.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/Diagnosis.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _Diagnosis_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Diagnosis.js */ "../frontend-logic/src/models/guidelines/Diagnosis.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -3509,18 +13209,18 @@ var DiagnosisFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/Guideline.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/Guideline.js ***!
-  \********************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/Guideline.js":
+/*!************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/Guideline.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Guideline; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 var _class, _descriptor, _temp;
 
@@ -3622,18 +13322,18 @@ var Guideline = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/GuidelineFetcher.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/GuidelineFetcher.js ***!
-  \***************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/GuidelineFetcher.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuidelineFetcher; });
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _Guideline_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Guideline.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/Guideline.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _Guideline_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Guideline.js */ "../frontend-logic/src/models/guidelines/Guideline.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -3717,21 +13417,21 @@ var GuidelineFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/GuidelineStore.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/GuidelineStore.js ***!
-  \*************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/GuidelineStore.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/GuidelineStore.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GuidelineStore; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
-/* harmony import */ var _searchDiagnoses_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./searchDiagnoses.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/searchDiagnoses.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _searchDiagnoses_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./searchDiagnoses.js */ "../frontend-logic/src/models/guidelines/searchDiagnoses.js");
 var _class, _descriptor, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -3860,10 +13560,10 @@ var GuidelineStore = (_class = (_temp = /*#__PURE__*/function (_Store) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/Therapy.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/Therapy.js ***!
-  \******************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/Therapy.js":
+/*!**********************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/Therapy.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3962,21 +13662,21 @@ var Therapy = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/TherapyFetcher.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/TherapyFetcher.js ***!
-  \*************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/TherapyFetcher.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/TherapyFetcher.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TherapyFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _Therapy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Therapy.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/Therapy.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _Therapy_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Therapy.js */ "../frontend-logic/src/models/guidelines/Therapy.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -4099,10 +13799,10 @@ var TherapyFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/createDiagnosesSearchData.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/createDiagnosesSearchData.js ***!
-  \************************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/createDiagnosesSearchData.js":
+/*!****************************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/createDiagnosesSearchData.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4157,19 +13857,19 @@ function createDiagnosesSearchData(guidelines) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/searchDiagnoses.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/searchDiagnoses.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/searchDiagnoses.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/searchDiagnoses.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return searchDiagnoses; });
-/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
+/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! fuse.js */ "../frontend-logic/node_modules/fuse.js/dist/fuse.js");
 /* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(fuse_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _createDiagnosesSearchData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createDiagnosesSearchData.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/createDiagnosesSearchData.js");
+/* harmony import */ var _createDiagnosesSearchData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createDiagnosesSearchData.js */ "../frontend-logic/src/models/guidelines/createDiagnosesSearchData.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -4215,22 +13915,22 @@ function searchDiagnoses(guidelines, searchTerm) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/guidelines/setupGuidelines.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/guidelines/setupGuidelines.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/guidelines/setupGuidelines.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/guidelines/setupGuidelines.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return setupGuidelines; });
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _GuidelineFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GuidelineFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/GuidelineFetcher.js");
-/* harmony import */ var _DiagnosisFetcher_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DiagnosisFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisFetcher.js");
-/* harmony import */ var _TherapyFetcher_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TherapyFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/TherapyFetcher.js");
-/* harmony import */ var _DiagnosisClassFetcher_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DiagnosisClassFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _GuidelineFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GuidelineFetcher.js */ "../frontend-logic/src/models/guidelines/GuidelineFetcher.js");
+/* harmony import */ var _DiagnosisFetcher_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DiagnosisFetcher.js */ "../frontend-logic/src/models/guidelines/DiagnosisFetcher.js");
+/* harmony import */ var _TherapyFetcher_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TherapyFetcher.js */ "../frontend-logic/src/models/guidelines/TherapyFetcher.js");
+/* harmony import */ var _DiagnosisClassFetcher_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DiagnosisClassFetcher.js */ "../frontend-logic/src/models/guidelines/DiagnosisClassFetcher.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -4349,18 +14049,18 @@ function _setupGuidelines() {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/matrix/calculateXPositions.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/matrix/calculateXPositions.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/matrix/calculateXPositions.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/matrix/calculateXPositions.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return calculateXPositions; });
-/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "./node_modules/@infect/frontend-logic/src/helpers/getArrayDiff.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "../frontend-logic/src/helpers/getArrayDiff.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 
 
@@ -4450,27 +14150,27 @@ function calculateXPositions(sortedAntibiotics, diameter, space) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/matrix/matrixView.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/matrix/matrixView.js ***!
-  \*****************************************************************************/
+/***/ "../frontend-logic/src/models/matrix/matrixView.js":
+/*!*********************************************************!*\
+  !*** ../frontend-logic/src/models/matrix/matrixView.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _calculateXPositions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculateXPositions */ "./node_modules/@infect/frontend-logic/src/models/matrix/calculateXPositions.js");
-/* harmony import */ var _sortAntibiotics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sortAntibiotics */ "./node_modules/@infect/frontend-logic/src/models/matrix/sortAntibiotics.js");
-/* harmony import */ var _antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../antibiotics/antibioticMatrixView */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
-/* harmony import */ var _resistances_resistanceMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../resistances/resistanceMatrixView */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceMatrixView.js");
-/* harmony import */ var _antibiotics_substanceClassMatrixView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../antibiotics/substanceClassMatrixView */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClassMatrixView.js");
-/* harmony import */ var _antibiotics_substanceClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../antibiotics/substanceClass */ "./node_modules/@infect/frontend-logic/src/models/antibiotics/substanceClass.js");
-/* harmony import */ var _bacteria_bacteriumMatrixView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../bacteria/bacteriumMatrixView */ "./node_modules/@infect/frontend-logic/src/models/bacteria/bacteriumMatrixView.js");
-/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "./node_modules/@infect/frontend-logic/src/helpers/getArrayDiff.js");
-/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../helpers/storeStatus.js */ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _calculateXPositions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculateXPositions */ "../frontend-logic/src/models/matrix/calculateXPositions.js");
+/* harmony import */ var _sortAntibiotics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sortAntibiotics */ "../frontend-logic/src/models/matrix/sortAntibiotics.js");
+/* harmony import */ var _antibiotics_antibioticMatrixView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../antibiotics/antibioticMatrixView */ "../frontend-logic/src/models/antibiotics/antibioticMatrixView.js");
+/* harmony import */ var _resistances_resistanceMatrixView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../resistances/resistanceMatrixView */ "../frontend-logic/src/models/resistances/resistanceMatrixView.js");
+/* harmony import */ var _antibiotics_substanceClassMatrixView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../antibiotics/substanceClassMatrixView */ "../frontend-logic/src/models/antibiotics/substanceClassMatrixView.js");
+/* harmony import */ var _antibiotics_substanceClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../antibiotics/substanceClass */ "../frontend-logic/src/models/antibiotics/substanceClass.js");
+/* harmony import */ var _bacteria_bacteriumMatrixView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../bacteria/bacteriumMatrixView */ "../frontend-logic/src/models/bacteria/bacteriumMatrixView.js");
+/* harmony import */ var _helpers_getArrayDiff__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../helpers/getArrayDiff */ "../frontend-logic/src/helpers/getArrayDiff.js");
+/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../helpers/storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
 var _dec, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -5088,10 +14788,10 @@ var MatrixView = (_dec = mobx__WEBPACK_IMPORTED_MODULE_1__["observable"].shallow
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/matrix/sortAntibiotics.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/matrix/sortAntibiotics.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/matrix/sortAntibiotics.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/matrix/sortAntibiotics.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5151,17 +14851,17 @@ function sortAntibiotics(antibiotics) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/notifications/Notification.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/notifications/Notification.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/Notification.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/Notification.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Notification; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -5208,22 +14908,22 @@ function Notification(notification) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/notifications/NotificationCenter.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/notifications/NotificationCenter.js ***!
-  \********************************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/NotificationCenter.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/NotificationCenter.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NotificationCenter; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wrapNotification_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wrapNotification.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/wrapNotification.js");
-/* harmony import */ var _Notification_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Notification.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/Notification.js");
-/* harmony import */ var _notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _wrapNotification_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./wrapNotification.js */ "../frontend-logic/src/models/notifications/wrapNotification.js");
+/* harmony import */ var _Notification_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Notification.js */ "../frontend-logic/src/models/notifications/Notification.js");
+/* harmony import */ var _notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -5293,10 +14993,10 @@ var NotificationCenter = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js ***!
-  \****************************************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js":
+/*!********************************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/notificationSeverityLevels.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5310,16 +15010,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/notifications/wrapNotification.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/notifications/wrapNotification.js ***!
-  \******************************************************************************************/
+/***/ "../frontend-logic/src/models/notifications/wrapNotification.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/notifications/wrapNotification.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 
 /**
  * Validates the notification provided and brings it into a format that errorHandler can handle.
@@ -5366,20 +15066,20 @@ var wrapNotification = function wrapNotification(notification) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/populationFilter/PopulationFilterFetcher.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/populationFilter/PopulationFilterFetcher.js ***!
-  \****************************************************************************************************/
+/***/ "../frontend-logic/src/models/populationFilter/PopulationFilterFetcher.js":
+/*!********************************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/PopulationFilterFetcher.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PopulationFilterFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -5482,20 +15182,20 @@ var PopulationFilterFetcher = /*#__PURE__*/function (_StandardFetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js ***!
-  \****************************************************************************************************/
+/***/ "../frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js":
+/*!********************************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/PopulationFilterUpdater.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PopulationFilterUpdater; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes */ "./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 var _class, _temp;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -5532,9 +15232,11 @@ var PopulationFilterUpdater = (_class = (_temp = /*#__PURE__*/function () {
    * @param {PropertyMap} selectedFilters
    * @param {Store} ageGroupStore
    * @param {function} handleError
-   * @param {boolean} showPreviewData     If true, use preview data (instead of regular data set)
+   * @param {string[]} dataVersionStatusIdentifiers    Array with all identifiers that
+  *                                                    should be loaded from RDA, e.g.
+  *                                                    ['preview', 'active'].
    */
-  function PopulationFilterUpdater(resistancesFetcher, selectedFilters, ageGroupStore, handleError, showPreviewData) {
+  function PopulationFilterUpdater(resistancesFetcher, selectedFilters, ageGroupStore, handleError, dataVersionStatusIdentifiers) {
     _classCallCheck(this, PopulationFilterUpdater);
 
     this.previousFilters = '';
@@ -5542,7 +15244,7 @@ var PopulationFilterUpdater = (_class = (_temp = /*#__PURE__*/function () {
     this.selectedFilters = selectedFilters;
     this.ageGroupStore = ageGroupStore;
     this.handleError = handleError;
-    this.showPreviewData = showPreviewData;
+    this.dataVersionStatusIdentifiers = dataVersionStatusIdentifiers;
   }
   /**
    * Main function that starts watching for changes in selectedFilters and updates data
@@ -5619,10 +15321,13 @@ var PopulationFilterUpdater = (_class = (_temp = /*#__PURE__*/function () {
     get: function get() {
       var region = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].region);
       var patientSetting = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].hospitalStatus);
-      var animal = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].animal);
-      var preview = this.showPreviewData ? {
-        dataVersionStatusIdentifier: ['preview', 'active']
-      } : {};
+      var animal = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].animal); // If dataVersionStatusIdentifiers is set, pass the values to the endpoint
+
+      var dataVersionConfig = {};
+
+      if (this.dataVersionStatusIdentifiers && this.dataVersionStatusIdentifiers.length) {
+        dataVersionConfig.dataVersionStatusIdentifier = this.dataVersionStatusIdentifiers;
+      }
 
       var filters = _objectSpread({
         regionIds: region.map(function (filter) {
@@ -5635,7 +15340,7 @@ var PopulationFilterUpdater = (_class = (_temp = /*#__PURE__*/function () {
           return filter.value;
         }),
         ageGroupIntervals: []
-      }, preview); // Add daysFrom/daysTo for ageGroups, if user filtered by ageGroups
+      }, dataVersionConfig); // Add daysFrom/daysTo for ageGroups, if user filtered by ageGroups
 
 
       var ageGroupFilter = this.selectedFilters.getFiltersByType(_filters_filterTypes__WEBPACK_IMPORTED_MODULE_2__["default"].ageGroup);
@@ -5671,19 +15376,19 @@ var PopulationFilterUpdater = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/populationFilter/setupAgeGroups.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/populationFilter/setupAgeGroups.js ***!
-  \*******************************************************************************************/
+/***/ "../frontend-logic/src/models/populationFilter/setupAgeGroups.js":
+/*!***********************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/setupAgeGroups.js ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/storeStatus.js */ "./node_modules/@infect/frontend-logic/src/helpers/storeStatus.js");
-/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_storeStatus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/storeStatus.js */ "../frontend-logic/src/helpers/storeStatus.js");
+/* harmony import */ var _filters_filterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../filters/filterTypes.js */ "../frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5744,19 +15449,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/populationFilter/setupPopulationFilters.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/populationFilter/setupPopulationFilters.js ***!
-  \***************************************************************************************************/
+/***/ "../frontend-logic/src/models/populationFilter/setupPopulationFilters.js":
+/*!*******************************************************************************!*\
+  !*** ../frontend-logic/src/models/populationFilter/setupPopulationFilters.js ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PopulationFilterFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PopulationFilterFetcher.js */ "./node_modules/@infect/frontend-logic/src/models/populationFilter/PopulationFilterFetcher.js");
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
-/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
-/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filters/filterTypes */ "./node_modules/@infect/frontend-logic/src/models/filters/filterTypes.js");
+/* harmony import */ var _PopulationFilterFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PopulationFilterFetcher.js */ "../frontend-logic/src/models/populationFilter/PopulationFilterFetcher.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _rdaCounter_rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rdaCounter/rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
+/* harmony import */ var _filters_filterTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../filters/filterTypes */ "../frontend-logic/src/models/filters/filterTypes.js");
 
 
 
@@ -5808,21 +15513,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/propertyMap/propertyMap.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/propertyMap/propertyMap.js ***!
-  \***********************************************************************************/
+/***/ "../frontend-logic/src/models/propertyMap/propertyMap.js":
+/*!***************************************************************!*\
+  !*** ../frontend-logic/src/models/propertyMap/propertyMap.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PropertyMap; });
-/* harmony import */ var _searchableMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./searchableMap */ "./node_modules/@infect/frontend-logic/src/models/propertyMap/searchableMap.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var _searchableMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./searchableMap */ "../frontend-logic/src/models/propertyMap/searchableMap.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! fuse.js */ "./node_modules/fuse.js/dist/fuse.js");
+/* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! fuse.js */ "../frontend-logic/node_modules/fuse.js/dist/fuse.js");
 /* harmony import */ var fuse_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(fuse_js__WEBPACK_IMPORTED_MODULE_3__);
 var _class;
 
@@ -6050,17 +15755,17 @@ var PropertyMap = (_class = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/propertyMap/searchableMap.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/propertyMap/searchableMap.js ***!
-  \*************************************************************************************/
+/***/ "../frontend-logic/src/models/propertyMap/searchableMap.js":
+/*!*****************************************************************!*\
+  !*** ../frontend-logic/src/models/propertyMap/searchableMap.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SearchableMap; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 var _dec, _class, _descriptor, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -6152,21 +15857,21 @@ var SearchableMap = (_dec = mobx__WEBPACK_IMPORTED_MODULE_0__["observable"].shal
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/RDACounterFetcher.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/rdaCounter/RDACounterFetcher.js ***!
-  \****************************************************************************************/
+/***/ "../frontend-logic/src/models/rdaCounter/RDACounterFetcher.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/rdaCounter/RDACounterFetcher.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistancesFetcher; });
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
-/* harmony import */ var _rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./rdaCounterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6180,6 +15885,12 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6221,7 +15932,16 @@ var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
 
     _classCallCheck(this, ResistancesFetcher);
 
-    _this = _super.call(this, options);
+    // Add dataVersionStatusIdentifiers to URL; do it here because we also need to add those
+    // filters to the RDA data call (through PopulationFilterUpdater) where they need to be
+    // added at run time
+    var dataVersionStatusIdentifiers = options.dataVersionStatusIdentifiers;
+    var url = dataVersionStatusIdentifiers && dataVersionStatusIdentifiers.length ? "".concat(options.url, "?filter=").concat(JSON.stringify({
+      dataVersionStatusIdentifier: dataVersionStatusIdentifiers
+    })) : options.url;
+    _this = _super.call(this, _objectSpread(_objectSpread({}, options), {}, {
+      url: url
+    }));
     var handleError = options.handleError;
     _this.handleException = handleError;
     return _this;
@@ -6272,20 +15992,20 @@ var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/RDACounterStore.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/rdaCounter/RDACounterStore.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/rdaCounter/RDACounterStore.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/rdaCounter/RDACounterStore.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RDACounterStore; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/BaseStore.js */ "./node_modules/@infect/frontend-logic/src/helpers/BaseStore.js");
-/* harmony import */ var _rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./rdaCounterTypes.js */ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/BaseStore.js */ "../frontend-logic/src/helpers/BaseStore.js");
+/* harmony import */ var _rdaCounterTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./rdaCounterTypes.js */ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 var _class, _descriptor, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -6396,10 +16116,10 @@ var RDACounterStore = (_class = (_temp = /*#__PURE__*/function (_BaseStore) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/rdaCounter/rdaCounterTypes.js ***!
-  \**************************************************************************************/
+/***/ "../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js":
+/*!******************************************************************!*\
+  !*** ../frontend-logic/src/models/rdaCounter/rdaCounterTypes.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6420,18 +16140,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/resistances/resistance.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/resistances/resistance.js ***!
-  \**********************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistance.js":
+/*!**************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistance.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Resistance; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _resistanceValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resistanceValue */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceValue.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _resistanceValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resistanceValue */ "../frontend-logic/src/models/resistances/resistanceValue.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -6516,22 +16236,22 @@ var Resistance = (_class = (_temp = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceMatrixView.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/resistances/resistanceMatrixView.js ***!
-  \********************************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistanceMatrixView.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistanceMatrixView.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistanceMatrixView; });
-/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "./node_modules/tinycolor2/tinycolor.js");
+/* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tinycolor2 */ "../frontend-logic/node_modules/tinycolor2/tinycolor.js");
 /* harmony import */ var tinycolor2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tinycolor2__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _helpers_getRelativeValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/getRelativeValue */ "./node_modules/@infect/frontend-logic/src/helpers/getRelativeValue.js");
+/* harmony import */ var _helpers_getRelativeValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/getRelativeValue */ "../frontend-logic/src/helpers/getRelativeValue.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6607,11 +16327,12 @@ var ResistanceMatrixView = (_class = /*#__PURE__*/function () {
 
       var lightness = this._getRelativeColorValue(bestValue, 0.4, 0.9);
 
-      return tinycolor2__WEBPACK_IMPORTED_MODULE_0___default.a.fromRatio({
+      var backgroundColor = tinycolor2__WEBPACK_IMPORTED_MODULE_0___default.a.fromRatio({
         h: hue,
         s: saturation,
         l: lightness
       });
+      return backgroundColor;
     }
   }, {
     key: "fontColor",
@@ -6646,49 +16367,52 @@ var ResistanceMatrixView = (_class = /*#__PURE__*/function () {
   }]);
 
   return ResistanceMatrixView;
-}(), (_applyDecoratedDescriptor(_class.prototype, "visible", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "visible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mostPreciseValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "mostPreciseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "radius", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "radius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "backgroundColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "backgroundColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "xPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "yPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "matchesOffsets", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "matchesOffsets"), _class.prototype)), _class);
+}(), (_applyDecoratedDescriptor(_class.prototype, "visible", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "visible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mostPreciseValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "mostPreciseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "radius", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "radius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "backgroundColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "backgroundColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "fontColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "fontColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "xPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "yPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "matchesOffsets", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "matchesOffsets"), _class.prototype)), _class);
 
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceTypes.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/resistances/resistanceTypes.js ***!
-  \***************************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistanceTypes.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistanceTypes.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // Higher precision means better data.
-/* harmony default export */ __webpack_exports__["default"] = ({
-  default: {
-    identifier: 'defaultResistance',
-    precision: 1
+/* harmony default export */ __webpack_exports__["default"] = (Object.freeze({
+  // Quantitative data for disc diffusion
+  discDiffusion: {
+    identifier: 'discDiffusion',
+    precision: 4
   },
-  class: {
-    identifier: 'classResistance',
+  // Quantitative data based on MIC (micro dilution)
+  mic: {
+    identifier: 'mic',
     precision: 5
   },
-  import: {
-    identifier: 'importResistance',
+  // Qualitative data (breakpoints are known, data is interpreted based on them)
+  qualitative: {
+    identifier: 'qualitative',
     precision: 10
   }
-});
+}));
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceValue.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/resistances/resistanceValue.js ***!
-  \***************************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistanceValue.js":
+/*!*******************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistanceValue.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _default; });
-/* harmony import */ var _resistanceTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resistanceTypes */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistanceTypes.js");
+/* harmony import */ var _resistanceTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6708,7 +16432,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _default =
 /**
 * @param {String} type				See resistanceTypes
-* @param {Number} value				Value between 0 and 1
+* @param {Number} value				Value between 0 and 1
 * @param {Int} sampleSize			Sample Size
 * @param {Array} confidenceInterval	95% confidence interval, if available: [lower, upper]
 */
@@ -6716,9 +16440,7 @@ function _default(type, value, sampleSize, confidenceInterval) {
   _classCallCheck(this, _default);
 
   if (!_resistanceTypes__WEBPACK_IMPORTED_MODULE_0__["default"][type]) throw new Error("ResistanceValue: Type ".concat(type, " not known, use one of ").concat(Object.keys(_resistanceTypes__WEBPACK_IMPORTED_MODULE_0__["default"]).join(', '), "."));
-  if (isNaN(parseFloat(value))) throw new Error("ResistanceValue: Value passed is not a number.");
-  value = parseFloat(value);
-  if (value < 0 || value > 1) throw new Error("ResistanceValue: Value must be between 0 and 1, is ".concat(value, "."));
+  if (value !== undefined && typeof value !== 'number') throw new Error("ResistanceValue: value must either be undefined if it's unknown at the current time or a number; is ".concat(value, " instead."));
   if (sampleSize % 1 !== 0) throw new Error("ResistanceValue: Sample size must be an integer"); // Validate confidence interval
 
   if (confidenceInterval) {
@@ -6756,22 +16478,21 @@ function _default(type, value, sampleSize, confidenceInterval) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/resistances/resistancesFetcher.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/resistances/resistancesFetcher.js ***!
-  \******************************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistancesFetcher.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistancesFetcher.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistancesFetcher; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _resistance_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./resistance.js */ "./node_modules/@infect/frontend-logic/src/models/resistances/resistance.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _resistance_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resistance.js */ "../frontend-logic/src/models/resistances/resistance.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6818,8 +16539,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
-var log = debug__WEBPACK_IMPORTED_MODULE_1___default()('infect:ResistancesFetcher');
+var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:ResistancesFetcher');
 
 var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
   _inherits(ResistancesFetcher, _Fetcher);
@@ -6926,6 +16646,9 @@ var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
                 return this.getData();
 
               case 4:
+                log('Data for filters gotten');
+
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -6957,97 +16680,170 @@ var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
         return;
       }
 
-      this.store.clear();
+      this.store.clear(); // TODO VET 2020: Remove the block
+      // Just adds some test data to see if things might work. ONLY use for frontend testing,
+      // not for unit/integration tests!
+
       var bacteria = Array.from(this.stores.bacteria.get().values());
-      var antibiotics = Array.from(this.stores.antibiotics.get().values()); // Values missing: There's nothing we could add
+      var antibiotics = Array.from(this.stores.antibiotics.get().values());
+      var micData = {
+        compoundSubstanceId: antibiotics.find(function (item) {
+          return item.name === 'Penicillin G';
+        }).id,
+        microorganismId: bacteria.find(function (item) {
+          return item.name === 'Achromobacter spp.';
+        }).id,
+        resistanceMICCount: 4321
+      };
+      data.values.push(micData);
+      var discDiffusionData = {
+        compoundSubstanceId: antibiotics.find(function (item) {
+          return item.name === 'Penicillin V';
+        }).id,
+        microorganismId: bacteria.find(function (item) {
+          return item.name === 'Achromobacter spp.';
+        }).id,
+        resistanceDiscDiffusionCount: 1234
+      };
+      data.values.push(discDiffusionData); // END TODO
+      // Values missing: There's nothing we could add
 
       if (!data.values || !data.values.length) {
         log('Values missing for %o', data);
         return;
-      }
+      } // TODO: REMOVE for VET 2020
+      // FUCKING HELL: We have to rewrite modelCount to resistanceQualitativeCount
+
+
+      data.values.forEach(function (value) {
+        if (value.modelCount) {
+          value.resistanceQualitativeCount = value.modelCount;
+          delete value.modelCount;
+        }
+      }); // END TODO
 
       var counter = 0;
-      data.values.forEach(function (resistance) {
-        var bacterium = bacteria.find(function (item) {
-          return item.id === resistance.microorganismId;
-        });
-        var antibiotic = antibiotics.find(function (item) {
-          return item.id === resistance.compoundSubstanceId;
-        }); // Missing bacterium or antibiotic is not crucial; display error but continue
+      data.values.forEach(function (resistanceData) {
+        counter++;
 
-        if (!antibiotic) {
-          _this2.handleError({
-            severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"].warning,
-            message: "ResistancesFetcher: Antibiotic with ID ".concat(resistance.compoundSubstanceId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed.")
-          });
-
-          console.error('Antibiotic for resistance %o missing; antibiotics are %o', resistance, antibiotics);
-          return;
-        }
-
-        if (!bacterium) {
-          _this2.handleError({
-            severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"].warning,
-            message: "ResistancesFetcher: Bacterium with ID ".concat(resistance.microorganismId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed.")
-          });
-
-          console.error('Bacterium for resistance %o missing; bacteria are %o', resistance, bacteria);
-          return;
-        }
-
-        var resistanceValues = [{
-          type: 'import',
-          value: resistance.resistantPercent / 100,
-          sampleSize: resistance.modelCount || 0,
-          confidenceInterval: [resistance.confidenceInterval.lowerBound / 100, resistance.confidenceInterval.upperBound / 100]
-        }]; // Creating a Resistance may fail if e.g. values are not valid; make sure we handle
-        // errors gracefully but ignore the current resistance.
-
-        var resistanceObject;
-
-        try {
-          resistanceObject = new _resistance_js__WEBPACK_IMPORTED_MODULE_3__["default"](resistanceValues, antibiotic, bacterium);
-        } catch (err) {
-          _this2.handleError({
-            severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_4__["default"].warning,
-            message: "Resistance for ".concat(antibiotic.name, " and ").concat(bacterium.name, " cannot be displayed: ").concat(err.message, ".")
-          });
-
-          return;
-        } // Duplicate resistance
+        var resistance = _this2.createResistance(resistanceData); // If handler fails, do not add failed data to store
 
 
-        if (_this2.store.hasWithId(resistanceObject)) {
-          console.warn("ResistanceFetcher: Resistance ".concat(JSON.stringify(resistance), " is a duplicate; an entry for the same bacterium and antibiotic does exist."));
-          return;
-        }
+        if (!resistance) return;
 
-        _this2.store.add(resistanceObject);
-
-        counter += 1;
+        _this2.store.add(resistance);
       });
       log("Added ".concat(counter, " resistances."));
+    }
+    /**
+     * Handles a qualitative resistance (with a percent based susceptibility that was calculated
+     * based on breakpoints. Quantitiative resistances do not have known breakpoints.
+     * @param {object} resistance       Resistance from server
+     */
+
+  }, {
+    key: "createResistance",
+    value: function createResistance(resistance) {
+      var bacteria = Array.from(this.stores.bacteria.get().values());
+      var antibiotics = Array.from(this.stores.antibiotics.get().values());
+      var bacterium = bacteria.find(function (item) {
+        return item.id === resistance.microorganismId;
+      });
+      var antibiotic = antibiotics.find(function (item) {
+        return item.id === resistance.compoundSubstanceId;
+      }); // Missing bacterium or antibiotic is not crucial; display error but continue
+
+      if (!antibiotic) {
+        this.handleError({
+          severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
+          message: "ResistancesFetcher: Antibiotic with ID ".concat(resistance.compoundSubstanceId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed.")
+        });
+        console.error('Antibiotic for resistance %o missing; antibiotics are %o', resistance, antibiotics);
+        return;
+      }
+
+      if (!bacterium) {
+        this.handleError({
+          severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
+          message: "ResistancesFetcher: Bacterium with ID ".concat(resistance.microorganismId, " missing, resistance ").concat(JSON.stringify(resistance), " cannot be displayed.")
+        });
+        console.error('Bacterium for resistance %o missing; bacteria are %o', resistance, bacteria);
+        return;
+      }
+
+      var resistanceValues = this.createResistanceValues(resistance); // Creating a Resistance may fail if e.g. values are not valid; make sure we handle
+      // errors gracefully but ignore the current resistance.
+
+      var resistanceObject;
+
+      try {
+        resistanceObject = new _resistance_js__WEBPACK_IMPORTED_MODULE_2__["default"](resistanceValues, antibiotic, bacterium);
+      } catch (err) {
+        this.handleError({
+          severity: _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
+          message: "Resistance for ".concat(antibiotic.name, " and ").concat(bacterium.name, " cannot be displayed: ").concat(err.message, ".")
+        });
+        return;
+      } // Duplicate resistance
+
+
+      if (this.store.hasWithId(resistanceObject)) {
+        console.warn("ResistanceFetcher: Resistance ".concat(JSON.stringify(resistance), " is a duplicate; an entry for the same bacterium and antibiotic does exist."));
+        return;
+      }
+
+      return resistanceObject;
+    }
+  }, {
+    key: "createResistanceValues",
+    value: function createResistanceValues(resistanceData) {
+      var values = [];
+
+      if (resistanceData.resistanceQualitativeCount) {
+        values.push({
+          type: 'qualitative',
+          value: resistanceData.resistantPercent / 100,
+          sampleSize: resistanceData.resistanceQualitativeCount,
+          confidenceInterval: [resistanceData.confidenceInterval.lowerBound / 100, resistanceData.confidenceInterval.upperBound / 100]
+        });
+      }
+
+      if (resistanceData.resistanceMICCount) {
+        values.push({
+          type: 'mic',
+          sampleSize: resistanceData.resistanceMICCount
+        });
+      }
+
+      if (resistanceData.resistanceDiscDiffusionCount) {
+        values.push({
+          type: 'discDiffusion',
+          sampleSize: resistanceData.resistanceDiscDiffusionCount
+        });
+      }
+
+      return values;
     }
   }]);
 
   return ResistancesFetcher;
-}(_helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
+}(_helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/resistances/resistancesStore.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/resistances/resistancesStore.js ***!
-  \****************************************************************************************/
+/***/ "../frontend-logic/src/models/resistances/resistancesStore.js":
+/*!********************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/resistancesStore.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ResistancesStore; });
-/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "./node_modules/@infect/frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7086,18 +16882,18 @@ var ResistancesStore = /*#__PURE__*/function (_Store) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js ***!
-  \********************************************************************************************/
+/***/ "../frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js":
+/*!************************************************************************!*\
+  !*** ../frontend-logic/src/models/tenantConfig/TenantConfigFetcher.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TenantConfigFetcher; });
-/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "./node_modules/@infect/frontend-logic/src/helpers/standardFetcher.js");
-/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "./node_modules/@infect/frontend-logic/src/models/notifications/notificationSeverityLevels.js");
+/* harmony import */ var _helpers_standardFetcher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/standardFetcher.js */ "../frontend-logic/src/helpers/standardFetcher.js");
+/* harmony import */ var _notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7161,18 +16957,18 @@ var TenantConfigFetcher = /*#__PURE__*/function (_StandardFetcher) {
 
 /***/ }),
 
-/***/ "./node_modules/@infect/frontend-logic/src/models/tenantConfig/TenantConfigStore.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@infect/frontend-logic/src/models/tenantConfig/TenantConfigStore.js ***!
-  \******************************************************************************************/
+/***/ "../frontend-logic/src/models/tenantConfig/TenantConfigStore.js":
+/*!**********************************************************************!*\
+  !*** ../frontend-logic/src/models/tenantConfig/TenantConfigStore.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TenantConfigStore; });
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/BaseStore.js */ "./node_modules/@infect/frontend-logic/src/helpers/BaseStore.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_BaseStore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/BaseStore.js */ "../frontend-logic/src/helpers/BaseStore.js");
 var _class, _descriptor, _descriptor2, _temp;
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
@@ -26147,1028 +35943,6 @@ module.exports = setup;
 
 /***/ }),
 
-/***/ "./node_modules/deep-equal/index.js":
-/*!******************************************!*\
-  !*** ./node_modules/deep-equal/index.js ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var objectKeys = __webpack_require__(/*! object-keys */ "./node_modules/object-keys/index.js");
-
-var isArguments = __webpack_require__(/*! is-arguments */ "./node_modules/is-arguments/index.js");
-
-var is = __webpack_require__(/*! object-is */ "./node_modules/object-is/index.js");
-
-var isRegex = __webpack_require__(/*! is-regex */ "./node_modules/is-regex/index.js");
-
-var flags = __webpack_require__(/*! regexp.prototype.flags */ "./node_modules/regexp.prototype.flags/index.js");
-
-var isDate = __webpack_require__(/*! is-date-object */ "./node_modules/is-date-object/index.js");
-
-var getTime = Date.prototype.getTime;
-
-function deepEqual(actual, expected, options) {
-  var opts = options || {}; // 7.1. All identical values are equivalent, as determined by ===.
-
-  if (opts.strict ? is(actual, expected) : actual === expected) {
-    return true;
-  } // 7.3. Other pairs that do not both pass typeof value == 'object', equivalence is determined by ==.
-
-
-  if (!actual || !expected || _typeof(actual) !== 'object' && _typeof(expected) !== 'object') {
-    return opts.strict ? is(actual, expected) : actual == expected;
-  }
-  /*
-   * 7.4. For all other Object pairs, including Array objects, equivalence is
-   * determined by having the same number of owned properties (as verified
-   * with Object.prototype.hasOwnProperty.call), the same set of keys
-   * (although not necessarily the same order), equivalent values for every
-   * corresponding key, and an identical 'prototype' property. Note: this
-   * accounts for both named and indexed properties on Arrays.
-   */
-  // eslint-disable-next-line no-use-before-define
-
-
-  return objEquiv(actual, expected, opts);
-}
-
-function isUndefinedOrNull(value) {
-  return value === null || value === undefined;
-}
-
-function isBuffer(x) {
-  if (!x || _typeof(x) !== 'object' || typeof x.length !== 'number') {
-    return false;
-  }
-
-  if (typeof x.copy !== 'function' || typeof x.slice !== 'function') {
-    return false;
-  }
-
-  if (x.length > 0 && typeof x[0] !== 'number') {
-    return false;
-  }
-
-  return true;
-}
-
-function objEquiv(a, b, opts) {
-  /* eslint max-statements: [2, 50] */
-  var i, key;
-
-  if (_typeof(a) !== _typeof(b)) {
-    return false;
-  }
-
-  if (isUndefinedOrNull(a) || isUndefinedOrNull(b)) {
-    return false;
-  } // an identical 'prototype' property.
-
-
-  if (a.prototype !== b.prototype) {
-    return false;
-  }
-
-  if (isArguments(a) !== isArguments(b)) {
-    return false;
-  }
-
-  var aIsRegex = isRegex(a);
-  var bIsRegex = isRegex(b);
-
-  if (aIsRegex !== bIsRegex) {
-    return false;
-  }
-
-  if (aIsRegex || bIsRegex) {
-    return a.source === b.source && flags(a) === flags(b);
-  }
-
-  if (isDate(a) && isDate(b)) {
-    return getTime.call(a) === getTime.call(b);
-  }
-
-  var aIsBuffer = isBuffer(a);
-  var bIsBuffer = isBuffer(b);
-
-  if (aIsBuffer !== bIsBuffer) {
-    return false;
-  }
-
-  if (aIsBuffer || bIsBuffer) {
-    // && would work too, because both are true or both false here
-    if (a.length !== b.length) {
-      return false;
-    }
-
-    for (i = 0; i < a.length; i++) {
-      if (a[i] !== b[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  if (_typeof(a) !== _typeof(b)) {
-    return false;
-  }
-
-  try {
-    var ka = objectKeys(a);
-    var kb = objectKeys(b);
-  } catch (e) {
-    // happens when one is a string literal and the other isn't
-    return false;
-  } // having the same number of owned properties (keys incorporates hasOwnProperty)
-
-
-  if (ka.length !== kb.length) {
-    return false;
-  } // the same set of keys (although not necessarily the same order),
-
-
-  ka.sort();
-  kb.sort(); // ~~~cheap key test
-
-  for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] != kb[i]) {
-      return false;
-    }
-  } // equivalent values for every corresponding key, and ~~~possibly expensive deep test
-
-
-  for (i = ka.length - 1; i >= 0; i--) {
-    key = ka[i];
-
-    if (!deepEqual(a[key], b[key], opts)) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-module.exports = deepEqual;
-
-/***/ }),
-
-/***/ "./node_modules/define-properties/index.js":
-/*!*************************************************!*\
-  !*** ./node_modules/define-properties/index.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var keys = __webpack_require__(/*! object-keys */ "./node_modules/object-keys/index.js");
-
-var hasSymbols = typeof Symbol === 'function' && _typeof(Symbol('foo')) === 'symbol';
-var toStr = Object.prototype.toString;
-var concat = Array.prototype.concat;
-var origDefineProperty = Object.defineProperty;
-
-var isFunction = function isFunction(fn) {
-  return typeof fn === 'function' && toStr.call(fn) === '[object Function]';
-};
-
-var arePropertyDescriptorsSupported = function arePropertyDescriptorsSupported() {
-  var obj = {};
-
-  try {
-    origDefineProperty(obj, 'x', {
-      enumerable: false,
-      value: obj
-    }); // eslint-disable-next-line no-unused-vars, no-restricted-syntax
-
-    for (var _ in obj) {
-      // jscs:ignore disallowUnusedVariables
-      return false;
-    }
-
-    return obj.x === obj;
-  } catch (e) {
-    /* this is IE 8. */
-    return false;
-  }
-};
-
-var supportsDescriptors = origDefineProperty && arePropertyDescriptorsSupported();
-
-var defineProperty = function defineProperty(object, name, value, predicate) {
-  if (name in object && (!isFunction(predicate) || !predicate())) {
-    return;
-  }
-
-  if (supportsDescriptors) {
-    origDefineProperty(object, name, {
-      configurable: true,
-      enumerable: false,
-      value: value,
-      writable: true
-    });
-  } else {
-    object[name] = value;
-  }
-};
-
-var defineProperties = function defineProperties(object, map) {
-  var predicates = arguments.length > 2 ? arguments[2] : {};
-  var props = keys(map);
-
-  if (hasSymbols) {
-    props = concat.call(props, Object.getOwnPropertySymbols(map));
-  }
-
-  for (var i = 0; i < props.length; i += 1) {
-    defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
-  }
-};
-
-defineProperties.supportsDescriptors = !!supportsDescriptors;
-module.exports = defineProperties;
-
-/***/ }),
-
-/***/ "./node_modules/function-bind/implementation.js":
-/*!******************************************************!*\
-  !*** ./node_modules/function-bind/implementation.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/* eslint no-invalid-this: 1 */
-
-var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
-var slice = Array.prototype.slice;
-var toStr = Object.prototype.toString;
-var funcType = '[object Function]';
-
-module.exports = function bind(that) {
-  var target = this;
-
-  if (typeof target !== 'function' || toStr.call(target) !== funcType) {
-    throw new TypeError(ERROR_MESSAGE + target);
-  }
-
-  var args = slice.call(arguments, 1);
-  var bound;
-
-  var binder = function binder() {
-    if (this instanceof bound) {
-      var result = target.apply(this, args.concat(slice.call(arguments)));
-
-      if (Object(result) === result) {
-        return result;
-      }
-
-      return this;
-    } else {
-      return target.apply(that, args.concat(slice.call(arguments)));
-    }
-  };
-
-  var boundLength = Math.max(0, target.length - args.length);
-  var boundArgs = [];
-
-  for (var i = 0; i < boundLength; i++) {
-    boundArgs.push('$' + i);
-  }
-
-  bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
-
-  if (target.prototype) {
-    var Empty = function Empty() {};
-
-    Empty.prototype = target.prototype;
-    bound.prototype = new Empty();
-    Empty.prototype = null;
-  }
-
-  return bound;
-};
-
-/***/ }),
-
-/***/ "./node_modules/function-bind/index.js":
-/*!*********************************************!*\
-  !*** ./node_modules/function-bind/index.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/function-bind/implementation.js");
-
-module.exports = Function.prototype.bind || implementation;
-
-/***/ }),
-
-/***/ "./node_modules/fuse.js/dist/fuse.js":
-/*!*******************************************!*\
-  !*** ./node_modules/fuse.js/dist/fuse.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/*!
- * Fuse.js v3.6.1 - Lightweight fuzzy-search (http://fusejs.io)
- * 
- * Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
- * All Rights Reserved. Apache Software License 2.0
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- */
-!function (e, t) {
-  "object" == ( false ? undefined : _typeof(exports)) && "object" == ( false ? undefined : _typeof(module)) ? module.exports = t() :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
-}(this, function () {
-  return function (e) {
-    var t = {};
-
-    function r(n) {
-      if (t[n]) return t[n].exports;
-      var o = t[n] = {
-        i: n,
-        l: !1,
-        exports: {}
-      };
-      return e[n].call(o.exports, o, o.exports, r), o.l = !0, o.exports;
-    }
-
-    return r.m = e, r.c = t, r.d = function (e, t, n) {
-      r.o(e, t) || Object.defineProperty(e, t, {
-        enumerable: !0,
-        get: n
-      });
-    }, r.r = function (e) {
-      "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-        value: "Module"
-      }), Object.defineProperty(e, "__esModule", {
-        value: !0
-      });
-    }, r.t = function (e, t) {
-      if (1 & t && (e = r(e)), 8 & t) return e;
-      if (4 & t && "object" == _typeof(e) && e && e.__esModule) return e;
-      var n = Object.create(null);
-      if (r.r(n), Object.defineProperty(n, "default", {
-        enumerable: !0,
-        value: e
-      }), 2 & t && "string" != typeof e) for (var o in e) {
-        r.d(n, o, function (t) {
-          return e[t];
-        }.bind(null, o));
-      }
-      return n;
-    }, r.n = function (e) {
-      var t = e && e.__esModule ? function () {
-        return e.default;
-      } : function () {
-        return e;
-      };
-      return r.d(t, "a", t), t;
-    }, r.o = function (e, t) {
-      return Object.prototype.hasOwnProperty.call(e, t);
-    }, r.p = "", r(r.s = 0);
-  }([function (e, t, r) {
-    function n(e) {
-      return (n = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (e) {
-        return _typeof(e);
-      } : function (e) {
-        return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : _typeof(e);
-      })(e);
-    }
-
-    function o(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];
-        n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }
-
-    var i = r(1),
-        a = r(7),
-        s = a.get,
-        c = (a.deepValue, a.isArray),
-        h = function () {
-      function e(t, r) {
-        var n = r.location,
-            o = void 0 === n ? 0 : n,
-            i = r.distance,
-            a = void 0 === i ? 100 : i,
-            c = r.threshold,
-            h = void 0 === c ? .6 : c,
-            l = r.maxPatternLength,
-            u = void 0 === l ? 32 : l,
-            f = r.caseSensitive,
-            v = void 0 !== f && f,
-            p = r.tokenSeparator,
-            d = void 0 === p ? / +/g : p,
-            g = r.findAllMatches,
-            y = void 0 !== g && g,
-            m = r.minMatchCharLength,
-            k = void 0 === m ? 1 : m,
-            b = r.id,
-            S = void 0 === b ? null : b,
-            x = r.keys,
-            M = void 0 === x ? [] : x,
-            _ = r.shouldSort,
-            w = void 0 === _ || _,
-            L = r.getFn,
-            A = void 0 === L ? s : L,
-            O = r.sortFn,
-            C = void 0 === O ? function (e, t) {
-          return e.score - t.score;
-        } : O,
-            j = r.tokenize,
-            P = void 0 !== j && j,
-            I = r.matchAllTokens,
-            F = void 0 !== I && I,
-            T = r.includeMatches,
-            N = void 0 !== T && T,
-            z = r.includeScore,
-            E = void 0 !== z && z,
-            W = r.verbose,
-            K = void 0 !== W && W;
-        !function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, e), this.options = {
-          location: o,
-          distance: a,
-          threshold: h,
-          maxPatternLength: u,
-          isCaseSensitive: v,
-          tokenSeparator: d,
-          findAllMatches: y,
-          minMatchCharLength: k,
-          id: S,
-          keys: M,
-          includeMatches: N,
-          includeScore: E,
-          shouldSort: w,
-          getFn: A,
-          sortFn: C,
-          verbose: K,
-          tokenize: P,
-          matchAllTokens: F
-        }, this.setCollection(t), this._processKeys(M);
-      }
-
-      var t, r, a;
-      return t = e, (r = [{
-        key: "setCollection",
-        value: function value(e) {
-          return this.list = e, e;
-        }
-      }, {
-        key: "_processKeys",
-        value: function value(e) {
-          if (this._keyWeights = {}, this._keyNames = [], e.length && "string" == typeof e[0]) for (var t = 0, r = e.length; t < r; t += 1) {
-            var n = e[t];
-            this._keyWeights[n] = 1, this._keyNames.push(n);
-          } else {
-            for (var o = null, i = null, a = 0, s = 0, c = e.length; s < c; s += 1) {
-              var h = e[s];
-              if (!h.hasOwnProperty("name")) throw new Error('Missing "name" property in key object');
-              var l = h.name;
-              if (this._keyNames.push(l), !h.hasOwnProperty("weight")) throw new Error('Missing "weight" property in key object');
-              var u = h.weight;
-              if (u < 0 || u > 1) throw new Error('"weight" property in key must bein the range of [0, 1)');
-              i = null == i ? u : Math.max(i, u), o = null == o ? u : Math.min(o, u), this._keyWeights[l] = u, a += u;
-            }
-
-            if (a > 1) throw new Error("Total of weights cannot exceed 1");
-          }
-        }
-      }, {
-        key: "search",
-        value: function value(e) {
-          var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {
-            limit: !1
-          };
-
-          this._log('---------\nSearch pattern: "'.concat(e, '"'));
-
-          var r = this._prepareSearchers(e),
-              n = r.tokenSearchers,
-              o = r.fullSearcher,
-              i = this._search(n, o);
-
-          return this._computeScore(i), this.options.shouldSort && this._sort(i), t.limit && "number" == typeof t.limit && (i = i.slice(0, t.limit)), this._format(i);
-        }
-      }, {
-        key: "_prepareSearchers",
-        value: function value() {
-          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "",
-              t = [];
-          if (this.options.tokenize) for (var r = e.split(this.options.tokenSeparator), n = 0, o = r.length; n < o; n += 1) {
-            t.push(new i(r[n], this.options));
-          }
-          return {
-            tokenSearchers: t,
-            fullSearcher: new i(e, this.options)
-          };
-        }
-      }, {
-        key: "_search",
-        value: function value() {
-          var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
-              t = arguments.length > 1 ? arguments[1] : void 0,
-              r = this.list,
-              n = {},
-              o = [];
-
-          if ("string" == typeof r[0]) {
-            for (var i = 0, a = r.length; i < a; i += 1) {
-              this._analyze({
-                key: "",
-                value: r[i],
-                record: i,
-                index: i
-              }, {
-                resultMap: n,
-                results: o,
-                tokenSearchers: e,
-                fullSearcher: t
-              });
-            }
-
-            return o;
-          }
-
-          for (var s = 0, c = r.length; s < c; s += 1) {
-            for (var h = r[s], l = 0, u = this._keyNames.length; l < u; l += 1) {
-              var f = this._keyNames[l];
-
-              this._analyze({
-                key: f,
-                value: this.options.getFn(h, f),
-                record: h,
-                index: s
-              }, {
-                resultMap: n,
-                results: o,
-                tokenSearchers: e,
-                fullSearcher: t
-              });
-            }
-          }
-
-          return o;
-        }
-      }, {
-        key: "_analyze",
-        value: function value(e, t) {
-          var r = this,
-              n = e.key,
-              o = e.arrayIndex,
-              i = void 0 === o ? -1 : o,
-              a = e.value,
-              s = e.record,
-              h = e.index,
-              l = t.tokenSearchers,
-              u = void 0 === l ? [] : l,
-              f = t.fullSearcher,
-              v = t.resultMap,
-              p = void 0 === v ? {} : v,
-              d = t.results,
-              g = void 0 === d ? [] : d;
-          !function e(t, o, i, a) {
-            if (null != o) if ("string" == typeof o) {
-              var s = !1,
-                  h = -1,
-                  l = 0;
-
-              r._log("\nKey: ".concat("" === n ? "--" : n));
-
-              var v = f.search(o);
-
-              if (r._log('Full text: "'.concat(o, '", score: ').concat(v.score)), r.options.tokenize) {
-                for (var d = o.split(r.options.tokenSeparator), y = d.length, m = [], k = 0, b = u.length; k < b; k += 1) {
-                  var S = u[k];
-
-                  r._log('\nPattern: "'.concat(S.pattern, '"'));
-
-                  for (var x = !1, M = 0; M < y; M += 1) {
-                    var _ = d[M],
-                        w = S.search(_),
-                        L = {};
-                    w.isMatch ? (L[_] = w.score, s = !0, x = !0, m.push(w.score)) : (L[_] = 1, r.options.matchAllTokens || m.push(1)), r._log('Token: "'.concat(_, '", score: ').concat(L[_]));
-                  }
-
-                  x && (l += 1);
-                }
-
-                h = m[0];
-
-                for (var A = m.length, O = 1; O < A; O += 1) {
-                  h += m[O];
-                }
-
-                h /= A, r._log("Token score average:", h);
-              }
-
-              var C = v.score;
-              h > -1 && (C = (C + h) / 2), r._log("Score average:", C);
-              var j = !r.options.tokenize || !r.options.matchAllTokens || l >= u.length;
-
-              if (r._log("\nCheck Matches: ".concat(j)), (s || v.isMatch) && j) {
-                var P = {
-                  key: n,
-                  arrayIndex: t,
-                  value: o,
-                  score: C
-                };
-                r.options.includeMatches && (P.matchedIndices = v.matchedIndices);
-                var I = p[a];
-                I ? I.output.push(P) : (p[a] = {
-                  item: i,
-                  output: [P]
-                }, g.push(p[a]));
-              }
-            } else if (c(o)) for (var F = 0, T = o.length; F < T; F += 1) {
-              e(F, o[F], i, a);
-            }
-          }(i, a, s, h);
-        }
-      }, {
-        key: "_computeScore",
-        value: function value(e) {
-          this._log("\n\nComputing score:\n");
-
-          for (var t = this._keyWeights, r = !!Object.keys(t).length, n = 0, o = e.length; n < o; n += 1) {
-            for (var i = e[n], a = i.output, s = a.length, c = 1, h = 0; h < s; h += 1) {
-              var l = a[h],
-                  u = l.key,
-                  f = r ? t[u] : 1,
-                  v = 0 === l.score && t && t[u] > 0 ? Number.EPSILON : l.score;
-              c *= Math.pow(v, f);
-            }
-
-            i.score = c, this._log(i);
-          }
-        }
-      }, {
-        key: "_sort",
-        value: function value(e) {
-          this._log("\n\nSorting...."), e.sort(this.options.sortFn);
-        }
-      }, {
-        key: "_format",
-        value: function value(e) {
-          var t = [];
-
-          if (this.options.verbose) {
-            var r = [];
-            this._log("\n\nOutput:\n\n", JSON.stringify(e, function (e, t) {
-              if ("object" === n(t) && null !== t) {
-                if (-1 !== r.indexOf(t)) return;
-                r.push(t);
-              }
-
-              return t;
-            }, 2)), r = null;
-          }
-
-          var o = [];
-          this.options.includeMatches && o.push(function (e, t) {
-            var r = e.output;
-            t.matches = [];
-
-            for (var n = 0, o = r.length; n < o; n += 1) {
-              var i = r[n];
-
-              if (0 !== i.matchedIndices.length) {
-                var a = {
-                  indices: i.matchedIndices,
-                  value: i.value
-                };
-                i.key && (a.key = i.key), i.hasOwnProperty("arrayIndex") && i.arrayIndex > -1 && (a.arrayIndex = i.arrayIndex), t.matches.push(a);
-              }
-            }
-          }), this.options.includeScore && o.push(function (e, t) {
-            t.score = e.score;
-          });
-
-          for (var i = 0, a = e.length; i < a; i += 1) {
-            var s = e[i];
-
-            if (this.options.id && (s.item = this.options.getFn(s.item, this.options.id)[0]), o.length) {
-              for (var c = {
-                item: s.item
-              }, h = 0, l = o.length; h < l; h += 1) {
-                o[h](s, c);
-              }
-
-              t.push(c);
-            } else t.push(s.item);
-          }
-
-          return t;
-        }
-      }, {
-        key: "_log",
-        value: function value() {
-          var e;
-          this.options.verbose && (e = console).log.apply(e, arguments);
-        }
-      }]) && o(t.prototype, r), a && o(t, a), e;
-    }();
-
-    e.exports = h;
-  }, function (e, t, r) {
-    function n(e, t) {
-      for (var r = 0; r < t.length; r++) {
-        var n = t[r];
-        n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
-      }
-    }
-
-    var o = r(2),
-        i = r(3),
-        a = r(6),
-        s = function () {
-      function e(t, r) {
-        var n = r.location,
-            o = void 0 === n ? 0 : n,
-            i = r.distance,
-            s = void 0 === i ? 100 : i,
-            c = r.threshold,
-            h = void 0 === c ? .6 : c,
-            l = r.maxPatternLength,
-            u = void 0 === l ? 32 : l,
-            f = r.isCaseSensitive,
-            v = void 0 !== f && f,
-            p = r.tokenSeparator,
-            d = void 0 === p ? / +/g : p,
-            g = r.findAllMatches,
-            y = void 0 !== g && g,
-            m = r.minMatchCharLength,
-            k = void 0 === m ? 1 : m,
-            b = r.includeMatches,
-            S = void 0 !== b && b;
-        !function (e, t) {
-          if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-        }(this, e), this.options = {
-          location: o,
-          distance: s,
-          threshold: h,
-          maxPatternLength: u,
-          isCaseSensitive: v,
-          tokenSeparator: d,
-          findAllMatches: y,
-          includeMatches: S,
-          minMatchCharLength: k
-        }, this.pattern = v ? t : t.toLowerCase(), this.pattern.length <= u && (this.patternAlphabet = a(this.pattern));
-      }
-
-      var t, r, s;
-      return t = e, (r = [{
-        key: "search",
-        value: function value(e) {
-          var t = this.options,
-              r = t.isCaseSensitive,
-              n = t.includeMatches;
-
-          if (r || (e = e.toLowerCase()), this.pattern === e) {
-            var a = {
-              isMatch: !0,
-              score: 0
-            };
-            return n && (a.matchedIndices = [[0, e.length - 1]]), a;
-          }
-
-          var s = this.options,
-              c = s.maxPatternLength,
-              h = s.tokenSeparator;
-          if (this.pattern.length > c) return o(e, this.pattern, h);
-          var l = this.options,
-              u = l.location,
-              f = l.distance,
-              v = l.threshold,
-              p = l.findAllMatches,
-              d = l.minMatchCharLength;
-          return i(e, this.pattern, this.patternAlphabet, {
-            location: u,
-            distance: f,
-            threshold: v,
-            findAllMatches: p,
-            minMatchCharLength: d,
-            includeMatches: n
-          });
-        }
-      }]) && n(t.prototype, r), s && n(t, s), e;
-    }();
-
-    e.exports = s;
-  }, function (e, t) {
-    var r = /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g;
-
-    e.exports = function (e, t) {
-      var n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : / +/g,
-          o = new RegExp(t.replace(r, "\\$&").replace(n, "|")),
-          i = e.match(o),
-          a = !!i,
-          s = [];
-      if (a) for (var c = 0, h = i.length; c < h; c += 1) {
-        var l = i[c];
-        s.push([e.indexOf(l), l.length - 1]);
-      }
-      return {
-        score: a ? .5 : 1,
-        isMatch: a,
-        matchedIndices: s
-      };
-    };
-  }, function (e, t, r) {
-    var n = r(4),
-        o = r(5);
-
-    e.exports = function (e, t, r, i) {
-      for (var a = i.location, s = void 0 === a ? 0 : a, c = i.distance, h = void 0 === c ? 100 : c, l = i.threshold, u = void 0 === l ? .6 : l, f = i.findAllMatches, v = void 0 !== f && f, p = i.minMatchCharLength, d = void 0 === p ? 1 : p, g = i.includeMatches, y = void 0 !== g && g, m = s, k = e.length, b = u, S = e.indexOf(t, m), x = t.length, M = [], _ = 0; _ < k; _ += 1) {
-        M[_] = 0;
-      }
-
-      if (-1 !== S) {
-        var w = n(t, {
-          errors: 0,
-          currentLocation: S,
-          expectedLocation: m,
-          distance: h
-        });
-
-        if (b = Math.min(w, b), -1 !== (S = e.lastIndexOf(t, m + x))) {
-          var L = n(t, {
-            errors: 0,
-            currentLocation: S,
-            expectedLocation: m,
-            distance: h
-          });
-          b = Math.min(L, b);
-        }
-      }
-
-      S = -1;
-
-      for (var A = [], O = 1, C = x + k, j = 1 << (x <= 31 ? x - 1 : 30), P = 0; P < x; P += 1) {
-        for (var I = 0, F = C; I < F;) {
-          n(t, {
-            errors: P,
-            currentLocation: m + F,
-            expectedLocation: m,
-            distance: h
-          }) <= b ? I = F : C = F, F = Math.floor((C - I) / 2 + I);
-        }
-
-        C = F;
-        var T = Math.max(1, m - F + 1),
-            N = v ? k : Math.min(m + F, k) + x,
-            z = Array(N + 2);
-        z[N + 1] = (1 << P) - 1;
-
-        for (var E = N; E >= T; E -= 1) {
-          var W = E - 1,
-              K = r[e.charAt(W)];
-
-          if (K && (M[W] = 1), z[E] = (z[E + 1] << 1 | 1) & K, 0 !== P && (z[E] |= (A[E + 1] | A[E]) << 1 | 1 | A[E + 1]), z[E] & j && (O = n(t, {
-            errors: P,
-            currentLocation: W,
-            expectedLocation: m,
-            distance: h
-          })) <= b) {
-            if (b = O, (S = W) <= m) break;
-            T = Math.max(1, 2 * m - S);
-          }
-        }
-
-        if (n(t, {
-          errors: P + 1,
-          currentLocation: m,
-          expectedLocation: m,
-          distance: h
-        }) > b) break;
-        A = z;
-      }
-
-      var $ = {
-        isMatch: S >= 0,
-        score: 0 === O ? .001 : O
-      };
-      return y && ($.matchedIndices = o(M, d)), $;
-    };
-  }, function (e, t) {
-    e.exports = function (e, t) {
-      var r = t.errors,
-          n = void 0 === r ? 0 : r,
-          o = t.currentLocation,
-          i = void 0 === o ? 0 : o,
-          a = t.expectedLocation,
-          s = void 0 === a ? 0 : a,
-          c = t.distance,
-          h = void 0 === c ? 100 : c,
-          l = n / e.length,
-          u = Math.abs(s - i);
-      return h ? l + u / h : u ? 1 : l;
-    };
-  }, function (e, t) {
-    e.exports = function () {
-      for (var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [], t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 1, r = [], n = -1, o = -1, i = 0, a = e.length; i < a; i += 1) {
-        var s = e[i];
-        s && -1 === n ? n = i : s || -1 === n || ((o = i - 1) - n + 1 >= t && r.push([n, o]), n = -1);
-      }
-
-      return e[i - 1] && i - n >= t && r.push([n, i - 1]), r;
-    };
-  }, function (e, t) {
-    e.exports = function (e) {
-      for (var t = {}, r = e.length, n = 0; n < r; n += 1) {
-        t[e.charAt(n)] = 0;
-      }
-
-      for (var o = 0; o < r; o += 1) {
-        t[e.charAt(o)] |= 1 << r - o - 1;
-      }
-
-      return t;
-    };
-  }, function (e, t) {
-    var r = function r(e) {
-      return Array.isArray ? Array.isArray(e) : "[object Array]" === Object.prototype.toString.call(e);
-    },
-        n = function n(e) {
-      return null == e ? "" : function (e) {
-        if ("string" == typeof e) return e;
-        var t = e + "";
-        return "0" == t && 1 / e == -1 / 0 ? "-0" : t;
-      }(e);
-    },
-        o = function o(e) {
-      return "string" == typeof e;
-    },
-        i = function i(e) {
-      return "number" == typeof e;
-    };
-
-    e.exports = {
-      get: function get(e, t) {
-        var a = [];
-        return function e(t, s) {
-          if (s) {
-            var c = s.indexOf("."),
-                h = s,
-                l = null;
-            -1 !== c && (h = s.slice(0, c), l = s.slice(c + 1));
-            var u = t[h];
-            if (null != u) if (l || !o(u) && !i(u)) {
-              if (r(u)) for (var f = 0, v = u.length; f < v; f += 1) {
-                e(u[f], l);
-              } else l && e(u, l);
-            } else a.push(n(u));
-          } else a.push(t);
-        }(e, t), a;
-      },
-      isArray: r,
-      isString: o,
-      isNum: i,
-      toString: n
-    };
-  }]);
-});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
-
-/***/ }),
-
-/***/ "./node_modules/has/src/index.js":
-/*!***************************************!*\
-  !*** ./node_modules/has/src/index.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
-
-module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
-
-/***/ }),
-
 /***/ "./node_modules/intro.js/intro.js":
 /*!****************************************!*\
   !*** ./node_modules/intro.js/intro.js ***!
@@ -29801,139 +38575,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   };
   return introJs;
 });
-
-/***/ }),
-
-/***/ "./node_modules/is-arguments/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/is-arguments/index.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var hasToStringTag = typeof Symbol === 'function' && _typeof(Symbol.toStringTag) === 'symbol';
-var toStr = Object.prototype.toString;
-
-var isStandardArguments = function isArguments(value) {
-  if (hasToStringTag && value && _typeof(value) === 'object' && Symbol.toStringTag in value) {
-    return false;
-  }
-
-  return toStr.call(value) === '[object Arguments]';
-};
-
-var isLegacyArguments = function isArguments(value) {
-  if (isStandardArguments(value)) {
-    return true;
-  }
-
-  return value !== null && _typeof(value) === 'object' && typeof value.length === 'number' && value.length >= 0 && toStr.call(value) !== '[object Array]' && toStr.call(value.callee) === '[object Function]';
-};
-
-var supportsStandardArguments = function () {
-  return isStandardArguments(arguments);
-}();
-
-isStandardArguments.isLegacyArguments = isLegacyArguments; // for tests
-
-module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArguments;
-
-/***/ }),
-
-/***/ "./node_modules/is-date-object/index.js":
-/*!**********************************************!*\
-  !*** ./node_modules/is-date-object/index.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var getDay = Date.prototype.getDay;
-
-var tryDateObject = function tryDateObject(value) {
-  try {
-    getDay.call(value);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
-
-var toStr = Object.prototype.toString;
-var dateClass = '[object Date]';
-var hasToStringTag = typeof Symbol === 'function' && _typeof(Symbol.toStringTag) === 'symbol';
-
-module.exports = function isDateObject(value) {
-  if (_typeof(value) !== 'object' || value === null) {
-    return false;
-  }
-
-  return hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;
-};
-
-/***/ }),
-
-/***/ "./node_modules/is-regex/index.js":
-/*!****************************************!*\
-  !*** ./node_modules/is-regex/index.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var has = __webpack_require__(/*! has */ "./node_modules/has/src/index.js");
-
-var regexExec = RegExp.prototype.exec;
-var gOPD = Object.getOwnPropertyDescriptor;
-
-var tryRegexExecCall = function tryRegexExec(value) {
-  try {
-    var lastIndex = value.lastIndex;
-    value.lastIndex = 0;
-    regexExec.call(value);
-    return true;
-  } catch (e) {
-    return false;
-  } finally {
-    value.lastIndex = lastIndex;
-  }
-};
-
-var toStr = Object.prototype.toString;
-var regexClass = '[object RegExp]';
-var hasToStringTag = typeof Symbol === 'function' && _typeof(Symbol.toStringTag) === 'symbol';
-
-module.exports = function isRegex(value) {
-  if (!value || _typeof(value) !== 'object') {
-    return false;
-  }
-
-  if (!hasToStringTag) {
-    return toStr.call(value) === regexClass;
-  }
-
-  var descriptor = gOPD(value, 'lastIndex');
-  var hasLastIndexDataProperty = descriptor && has(descriptor, 'value');
-
-  if (!hasLastIndexDataProperty) {
-    return false;
-  }
-
-  return tryRegexExecCall(value);
-};
 
 /***/ }),
 
@@ -42307,729 +50948,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
-/***/ "./node_modules/object-is/implementation.js":
-/*!**************************************************!*\
-  !*** ./node_modules/object-is/implementation.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var numberIsNaN = function numberIsNaN(value) {
-  return value !== value;
-};
-
-module.exports = function is(a, b) {
-  if (a === 0 && b === 0) {
-    return 1 / a === 1 / b;
-  }
-
-  if (a === b) {
-    return true;
-  }
-
-  if (numberIsNaN(a) && numberIsNaN(b)) {
-    return true;
-  }
-
-  return false;
-};
-
-/***/ }),
-
-/***/ "./node_modules/object-is/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/object-is/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var define = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js");
-
-var callBind = __webpack_require__(/*! es-abstract/helpers/callBind */ "./node_modules/object-is/node_modules/es-abstract/helpers/callBind.js");
-
-var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/object-is/implementation.js");
-
-var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/object-is/polyfill.js");
-
-var shim = __webpack_require__(/*! ./shim */ "./node_modules/object-is/shim.js");
-
-var polyfill = callBind(getPolyfill(), Object);
-define(polyfill, {
-  getPolyfill: getPolyfill,
-  implementation: implementation,
-  shim: shim
-});
-module.exports = polyfill;
-
-/***/ }),
-
-/***/ "./node_modules/object-is/node_modules/es-abstract/GetIntrinsic.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/object-is/node_modules/es-abstract/GetIntrinsic.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/* globals
-	Atomics,
-	SharedArrayBuffer,
-*/
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var undefined;
-var $TypeError = TypeError;
-var $gOPD = Object.getOwnPropertyDescriptor;
-
-if ($gOPD) {
-  try {
-    $gOPD({}, '');
-  } catch (e) {
-    $gOPD = null; // this is IE 8, which has a broken gOPD
-  }
-}
-
-var throwTypeError = function throwTypeError() {
-  throw new $TypeError();
-};
-
-var ThrowTypeError = $gOPD ? function () {
-  try {
-    // eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
-    arguments.callee; // IE 8 does not throw here
-
-    return throwTypeError;
-  } catch (calleeThrows) {
-    try {
-      // IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
-      return $gOPD(arguments, 'callee').get;
-    } catch (gOPDthrows) {
-      return throwTypeError;
-    }
-  }
-}() : throwTypeError;
-
-var hasSymbols = __webpack_require__(/*! has-symbols */ "./node_modules/object-is/node_modules/has-symbols/index.js")();
-
-var getProto = Object.getPrototypeOf || function (x) {
-  return x.__proto__;
-}; // eslint-disable-line no-proto
-
-
-var generator; // = function * () {};
-
-var generatorFunction = generator ? getProto(generator) : undefined;
-var asyncFn; // async function() {};
-
-var asyncFunction = asyncFn ? asyncFn.constructor : undefined;
-var asyncGen; // async function * () {};
-
-var asyncGenFunction = asyncGen ? getProto(asyncGen) : undefined;
-var asyncGenIterator = asyncGen ? asyncGen() : undefined;
-var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
-var INTRINSICS = {
-  '%Array%': Array,
-  '%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
-  '%ArrayBufferPrototype%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer.prototype,
-  '%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
-  '%ArrayPrototype%': Array.prototype,
-  '%ArrayProto_entries%': Array.prototype.entries,
-  '%ArrayProto_forEach%': Array.prototype.forEach,
-  '%ArrayProto_keys%': Array.prototype.keys,
-  '%ArrayProto_values%': Array.prototype.values,
-  '%AsyncFromSyncIteratorPrototype%': undefined,
-  '%AsyncFunction%': asyncFunction,
-  '%AsyncFunctionPrototype%': asyncFunction ? asyncFunction.prototype : undefined,
-  '%AsyncGenerator%': asyncGen ? getProto(asyncGenIterator) : undefined,
-  '%AsyncGeneratorFunction%': asyncGenFunction,
-  '%AsyncGeneratorPrototype%': asyncGenFunction ? asyncGenFunction.prototype : undefined,
-  '%AsyncIteratorPrototype%': asyncGenIterator && hasSymbols && Symbol.asyncIterator ? asyncGenIterator[Symbol.asyncIterator]() : undefined,
-  '%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
-  '%Boolean%': Boolean,
-  '%BooleanPrototype%': Boolean.prototype,
-  '%DataView%': typeof DataView === 'undefined' ? undefined : DataView,
-  '%DataViewPrototype%': typeof DataView === 'undefined' ? undefined : DataView.prototype,
-  '%Date%': Date,
-  '%DatePrototype%': Date.prototype,
-  '%decodeURI%': decodeURI,
-  '%decodeURIComponent%': decodeURIComponent,
-  '%encodeURI%': encodeURI,
-  '%encodeURIComponent%': encodeURIComponent,
-  '%Error%': Error,
-  '%ErrorPrototype%': Error.prototype,
-  '%eval%': eval,
-  // eslint-disable-line no-eval
-  '%EvalError%': EvalError,
-  '%EvalErrorPrototype%': EvalError.prototype,
-  '%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
-  '%Float32ArrayPrototype%': typeof Float32Array === 'undefined' ? undefined : Float32Array.prototype,
-  '%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
-  '%Float64ArrayPrototype%': typeof Float64Array === 'undefined' ? undefined : Float64Array.prototype,
-  '%Function%': Function,
-  '%FunctionPrototype%': Function.prototype,
-  '%Generator%': generator ? getProto(generator()) : undefined,
-  '%GeneratorFunction%': generatorFunction,
-  '%GeneratorPrototype%': generatorFunction ? generatorFunction.prototype : undefined,
-  '%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
-  '%Int8ArrayPrototype%': typeof Int8Array === 'undefined' ? undefined : Int8Array.prototype,
-  '%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
-  '%Int16ArrayPrototype%': typeof Int16Array === 'undefined' ? undefined : Int8Array.prototype,
-  '%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
-  '%Int32ArrayPrototype%': typeof Int32Array === 'undefined' ? undefined : Int32Array.prototype,
-  '%isFinite%': isFinite,
-  '%isNaN%': isNaN,
-  '%IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,
-  '%JSON%': (typeof JSON === "undefined" ? "undefined" : _typeof(JSON)) === 'object' ? JSON : undefined,
-  '%JSONParse%': (typeof JSON === "undefined" ? "undefined" : _typeof(JSON)) === 'object' ? JSON.parse : undefined,
-  '%Map%': typeof Map === 'undefined' ? undefined : Map,
-  '%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),
-  '%MapPrototype%': typeof Map === 'undefined' ? undefined : Map.prototype,
-  '%Math%': Math,
-  '%Number%': Number,
-  '%NumberPrototype%': Number.prototype,
-  '%Object%': Object,
-  '%ObjectPrototype%': Object.prototype,
-  '%ObjProto_toString%': Object.prototype.toString,
-  '%ObjProto_valueOf%': Object.prototype.valueOf,
-  '%parseFloat%': parseFloat,
-  '%parseInt%': parseInt,
-  '%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
-  '%PromisePrototype%': typeof Promise === 'undefined' ? undefined : Promise.prototype,
-  '%PromiseProto_then%': typeof Promise === 'undefined' ? undefined : Promise.prototype.then,
-  '%Promise_all%': typeof Promise === 'undefined' ? undefined : Promise.all,
-  '%Promise_reject%': typeof Promise === 'undefined' ? undefined : Promise.reject,
-  '%Promise_resolve%': typeof Promise === 'undefined' ? undefined : Promise.resolve,
-  '%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
-  '%RangeError%': RangeError,
-  '%RangeErrorPrototype%': RangeError.prototype,
-  '%ReferenceError%': ReferenceError,
-  '%ReferenceErrorPrototype%': ReferenceError.prototype,
-  '%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
-  '%RegExp%': RegExp,
-  '%RegExpPrototype%': RegExp.prototype,
-  '%Set%': typeof Set === 'undefined' ? undefined : Set,
-  '%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),
-  '%SetPrototype%': typeof Set === 'undefined' ? undefined : Set.prototype,
-  '%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
-  '%SharedArrayBufferPrototype%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer.prototype,
-  '%String%': String,
-  '%StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,
-  '%StringPrototype%': String.prototype,
-  '%Symbol%': hasSymbols ? Symbol : undefined,
-  '%SymbolPrototype%': hasSymbols ? Symbol.prototype : undefined,
-  '%SyntaxError%': SyntaxError,
-  '%SyntaxErrorPrototype%': SyntaxError.prototype,
-  '%ThrowTypeError%': ThrowTypeError,
-  '%TypedArray%': TypedArray,
-  '%TypedArrayPrototype%': TypedArray ? TypedArray.prototype : undefined,
-  '%TypeError%': $TypeError,
-  '%TypeErrorPrototype%': $TypeError.prototype,
-  '%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
-  '%Uint8ArrayPrototype%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array.prototype,
-  '%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
-  '%Uint8ClampedArrayPrototype%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray.prototype,
-  '%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
-  '%Uint16ArrayPrototype%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array.prototype,
-  '%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
-  '%Uint32ArrayPrototype%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array.prototype,
-  '%URIError%': URIError,
-  '%URIErrorPrototype%': URIError.prototype,
-  '%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
-  '%WeakMapPrototype%': typeof WeakMap === 'undefined' ? undefined : WeakMap.prototype,
-  '%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet,
-  '%WeakSetPrototype%': typeof WeakSet === 'undefined' ? undefined : WeakSet.prototype
-};
-
-var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
-
-var $replace = bind.call(Function.call, String.prototype.replace);
-/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
-
-var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-var reEscapeChar = /\\(\\)?/g;
-/** Used to match backslashes in property paths. */
-
-var stringToPath = function stringToPath(string) {
-  var result = [];
-  $replace(string, rePropName, function (match, number, quote, subString) {
-    result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;
-  });
-  return result;
-};
-/* end adaptation */
-
-
-var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
-  if (!(name in INTRINSICS)) {
-    throw new SyntaxError('intrinsic ' + name + ' does not exist!');
-  } // istanbul ignore if // hopefully this is impossible to test :-)
-
-
-  if (typeof INTRINSICS[name] === 'undefined' && !allowMissing) {
-    throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
-  }
-
-  return INTRINSICS[name];
-};
-
-module.exports = function GetIntrinsic(name, allowMissing) {
-  if (typeof name !== 'string' || name.length === 0) {
-    throw new TypeError('intrinsic name must be a non-empty string');
-  }
-
-  if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
-    throw new TypeError('"allowMissing" argument must be a boolean');
-  }
-
-  var parts = stringToPath(name);
-  var value = getBaseIntrinsic('%' + (parts.length > 0 ? parts[0] : '') + '%', allowMissing);
-
-  for (var i = 1; i < parts.length; i += 1) {
-    if (value != null) {
-      if ($gOPD && i + 1 >= parts.length) {
-        var desc = $gOPD(value, parts[i]);
-
-        if (!allowMissing && !(parts[i] in value)) {
-          throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
-        }
-
-        value = desc ? desc.get || desc.value : value[parts[i]];
-      } else {
-        value = value[parts[i]];
-      }
-    }
-  }
-
-  return value;
-};
-
-/***/ }),
-
-/***/ "./node_modules/object-is/node_modules/es-abstract/helpers/callBind.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/object-is/node_modules/es-abstract/helpers/callBind.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
-
-var GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic */ "./node_modules/object-is/node_modules/es-abstract/GetIntrinsic.js");
-
-var $apply = GetIntrinsic('%Function.prototype.apply%');
-var $call = GetIntrinsic('%Function.prototype.call%');
-var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
-
-module.exports = function callBind() {
-  return $reflectApply(bind, $call, arguments);
-};
-
-module.exports.apply = function applyBind() {
-  return $reflectApply(bind, $apply, arguments);
-};
-
-/***/ }),
-
-/***/ "./node_modules/object-is/node_modules/has-symbols/index.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/object-is/node_modules/has-symbols/index.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var origSymbol = global.Symbol;
-
-var hasSymbolSham = __webpack_require__(/*! ./shams */ "./node_modules/object-is/node_modules/has-symbols/shams.js");
-
-module.exports = function hasNativeSymbols() {
-  if (typeof origSymbol !== 'function') {
-    return false;
-  }
-
-  if (typeof Symbol !== 'function') {
-    return false;
-  }
-
-  if (_typeof(origSymbol('foo')) !== 'symbol') {
-    return false;
-  }
-
-  if (_typeof(Symbol('bar')) !== 'symbol') {
-    return false;
-  }
-
-  return hasSymbolSham();
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/object-is/node_modules/has-symbols/shams.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/object-is/node_modules/has-symbols/shams.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/* eslint complexity: [2, 18], max-statements: [2, 33] */
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-module.exports = function hasSymbols() {
-  if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') {
-    return false;
-  }
-
-  if (_typeof(Symbol.iterator) === 'symbol') {
-    return true;
-  }
-
-  var obj = {};
-  var sym = Symbol('test');
-  var symObj = Object(sym);
-
-  if (typeof sym === 'string') {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(sym) !== '[object Symbol]') {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(symObj) !== '[object Symbol]') {
-    return false;
-  } // temp disabled per https://github.com/ljharb/object.assign/issues/17
-  // if (sym instanceof Symbol) { return false; }
-  // temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
-  // if (!(symObj instanceof Symbol)) { return false; }
-  // if (typeof Symbol.prototype.toString !== 'function') { return false; }
-  // if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
-
-
-  var symVal = 42;
-  obj[sym] = symVal;
-
-  for (sym in obj) {
-    return false;
-  } // eslint-disable-line no-restricted-syntax
-
-
-  if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) {
-    return false;
-  }
-
-  if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) {
-    return false;
-  }
-
-  var syms = Object.getOwnPropertySymbols(obj);
-
-  if (syms.length !== 1 || syms[0] !== sym) {
-    return false;
-  }
-
-  if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) {
-    return false;
-  }
-
-  if (typeof Object.getOwnPropertyDescriptor === 'function') {
-    var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
-
-    if (descriptor.value !== symVal || descriptor.enumerable !== true) {
-      return false;
-    }
-  }
-
-  return true;
-};
-
-/***/ }),
-
-/***/ "./node_modules/object-is/polyfill.js":
-/*!********************************************!*\
-  !*** ./node_modules/object-is/polyfill.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/object-is/implementation.js");
-
-module.exports = function getPolyfill() {
-  return typeof Object.is === 'function' ? Object.is : implementation;
-};
-
-/***/ }),
-
-/***/ "./node_modules/object-is/shim.js":
-/*!****************************************!*\
-  !*** ./node_modules/object-is/shim.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/object-is/polyfill.js");
-
-var define = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js");
-
-module.exports = function shimObjectIs() {
-  var polyfill = getPolyfill();
-  define(Object, {
-    is: polyfill
-  }, {
-    is: function testObjectIs() {
-      return Object.is !== polyfill;
-    }
-  });
-  return polyfill;
-};
-
-/***/ }),
-
-/***/ "./node_modules/object-keys/implementation.js":
-/*!****************************************************!*\
-  !*** ./node_modules/object-keys/implementation.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var keysShim;
-
-if (!Object.keys) {
-  // modified from https://github.com/es-shims/es5-shim
-  var has = Object.prototype.hasOwnProperty;
-  var toStr = Object.prototype.toString;
-
-  var isArgs = __webpack_require__(/*! ./isArguments */ "./node_modules/object-keys/isArguments.js"); // eslint-disable-line global-require
-
-
-  var isEnumerable = Object.prototype.propertyIsEnumerable;
-  var hasDontEnumBug = !isEnumerable.call({
-    toString: null
-  }, 'toString');
-  var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
-  var dontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'];
-
-  var equalsConstructorPrototype = function equalsConstructorPrototype(o) {
-    var ctor = o.constructor;
-    return ctor && ctor.prototype === o;
-  };
-
-  var excludedKeys = {
-    $applicationCache: true,
-    $console: true,
-    $external: true,
-    $frame: true,
-    $frameElement: true,
-    $frames: true,
-    $innerHeight: true,
-    $innerWidth: true,
-    $onmozfullscreenchange: true,
-    $onmozfullscreenerror: true,
-    $outerHeight: true,
-    $outerWidth: true,
-    $pageXOffset: true,
-    $pageYOffset: true,
-    $parent: true,
-    $scrollLeft: true,
-    $scrollTop: true,
-    $scrollX: true,
-    $scrollY: true,
-    $self: true,
-    $webkitIndexedDB: true,
-    $webkitStorageInfo: true,
-    $window: true
-  };
-
-  var hasAutomationEqualityBug = function () {
-    /* global window */
-    if (typeof window === 'undefined') {
-      return false;
-    }
-
-    for (var k in window) {
-      try {
-        if (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && _typeof(window[k]) === 'object') {
-          try {
-            equalsConstructorPrototype(window[k]);
-          } catch (e) {
-            return true;
-          }
-        }
-      } catch (e) {
-        return true;
-      }
-    }
-
-    return false;
-  }();
-
-  var equalsConstructorPrototypeIfNotBuggy = function equalsConstructorPrototypeIfNotBuggy(o) {
-    /* global window */
-    if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
-      return equalsConstructorPrototype(o);
-    }
-
-    try {
-      return equalsConstructorPrototype(o);
-    } catch (e) {
-      return false;
-    }
-  };
-
-  keysShim = function keys(object) {
-    var isObject = object !== null && _typeof(object) === 'object';
-    var isFunction = toStr.call(object) === '[object Function]';
-    var isArguments = isArgs(object);
-    var isString = isObject && toStr.call(object) === '[object String]';
-    var theKeys = [];
-
-    if (!isObject && !isFunction && !isArguments) {
-      throw new TypeError('Object.keys called on a non-object');
-    }
-
-    var skipProto = hasProtoEnumBug && isFunction;
-
-    if (isString && object.length > 0 && !has.call(object, 0)) {
-      for (var i = 0; i < object.length; ++i) {
-        theKeys.push(String(i));
-      }
-    }
-
-    if (isArguments && object.length > 0) {
-      for (var j = 0; j < object.length; ++j) {
-        theKeys.push(String(j));
-      }
-    } else {
-      for (var name in object) {
-        if (!(skipProto && name === 'prototype') && has.call(object, name)) {
-          theKeys.push(String(name));
-        }
-      }
-    }
-
-    if (hasDontEnumBug) {
-      var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
-
-      for (var k = 0; k < dontEnums.length; ++k) {
-        if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
-          theKeys.push(dontEnums[k]);
-        }
-      }
-    }
-
-    return theKeys;
-  };
-}
-
-module.exports = keysShim;
-
-/***/ }),
-
-/***/ "./node_modules/object-keys/index.js":
-/*!*******************************************!*\
-  !*** ./node_modules/object-keys/index.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var slice = Array.prototype.slice;
-
-var isArgs = __webpack_require__(/*! ./isArguments */ "./node_modules/object-keys/isArguments.js");
-
-var origKeys = Object.keys;
-var keysShim = origKeys ? function keys(o) {
-  return origKeys(o);
-} : __webpack_require__(/*! ./implementation */ "./node_modules/object-keys/implementation.js");
-var originalKeys = Object.keys;
-
-keysShim.shim = function shimObjectKeys() {
-  if (Object.keys) {
-    var keysWorksWithArguments = function () {
-      // Safari 5.0 bug
-      var args = Object.keys(arguments);
-      return args && args.length === arguments.length;
-    }(1, 2);
-
-    if (!keysWorksWithArguments) {
-      Object.keys = function keys(object) {
-        // eslint-disable-line func-name-matching
-        if (isArgs(object)) {
-          return originalKeys(slice.call(object));
-        }
-
-        return originalKeys(object);
-      };
-    }
-  } else {
-    Object.keys = keysShim;
-  }
-
-  return Object.keys || keysShim;
-};
-
-module.exports = keysShim;
-
-/***/ }),
-
-/***/ "./node_modules/object-keys/isArguments.js":
-/*!*************************************************!*\
-  !*** ./node_modules/object-keys/isArguments.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var toStr = Object.prototype.toString;
-
-module.exports = function isArguments(value) {
-  var str = toStr.call(value);
-  var isArgs = str === '[object Arguments]';
-
-  if (!isArgs) {
-    isArgs = str !== '[object Array]' && value !== null && _typeof(value) === 'object' && typeof value.length === 'number' && value.length >= 0 && toStr.call(value.callee) === '[object Function]';
-  }
-
-  return isArgs;
-};
-
-/***/ }),
-
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -50206,556 +58124,6 @@ try {
 
 /***/ }),
 
-/***/ "./node_modules/regexp.prototype.flags/implementation.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/implementation.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $Object = Object;
-var $TypeError = TypeError;
-
-module.exports = function flags() {
-  if (this != null && this !== $Object(this)) {
-    throw new $TypeError('RegExp.prototype.flags getter called on non-object');
-  }
-
-  var result = '';
-
-  if (this.global) {
-    result += 'g';
-  }
-
-  if (this.ignoreCase) {
-    result += 'i';
-  }
-
-  if (this.multiline) {
-    result += 'm';
-  }
-
-  if (this.dotAll) {
-    result += 's';
-  }
-
-  if (this.unicode) {
-    result += 'u';
-  }
-
-  if (this.sticky) {
-    result += 'y';
-  }
-
-  return result;
-};
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/index.js":
-/*!******************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/index.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var define = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js");
-
-var callBind = __webpack_require__(/*! es-abstract/helpers/callBind */ "./node_modules/regexp.prototype.flags/node_modules/es-abstract/helpers/callBind.js");
-
-var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/regexp.prototype.flags/implementation.js");
-
-var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/regexp.prototype.flags/polyfill.js");
-
-var shim = __webpack_require__(/*! ./shim */ "./node_modules/regexp.prototype.flags/shim.js");
-
-var flagsBound = callBind(implementation);
-define(flagsBound, {
-  getPolyfill: getPolyfill,
-  implementation: implementation,
-  shim: shim
-});
-module.exports = flagsBound;
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/node_modules/es-abstract/GetIntrinsic.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/node_modules/es-abstract/GetIntrinsic.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/* globals
-	Atomics,
-	SharedArrayBuffer,
-*/
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var undefined;
-var $TypeError = TypeError;
-var $gOPD = Object.getOwnPropertyDescriptor;
-
-if ($gOPD) {
-  try {
-    $gOPD({}, '');
-  } catch (e) {
-    $gOPD = null; // this is IE 8, which has a broken gOPD
-  }
-}
-
-var throwTypeError = function throwTypeError() {
-  throw new $TypeError();
-};
-
-var ThrowTypeError = $gOPD ? function () {
-  try {
-    // eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
-    arguments.callee; // IE 8 does not throw here
-
-    return throwTypeError;
-  } catch (calleeThrows) {
-    try {
-      // IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
-      return $gOPD(arguments, 'callee').get;
-    } catch (gOPDthrows) {
-      return throwTypeError;
-    }
-  }
-}() : throwTypeError;
-
-var hasSymbols = __webpack_require__(/*! has-symbols */ "./node_modules/regexp.prototype.flags/node_modules/has-symbols/index.js")();
-
-var getProto = Object.getPrototypeOf || function (x) {
-  return x.__proto__;
-}; // eslint-disable-line no-proto
-
-
-var generator; // = function * () {};
-
-var generatorFunction = generator ? getProto(generator) : undefined;
-var asyncFn; // async function() {};
-
-var asyncFunction = asyncFn ? asyncFn.constructor : undefined;
-var asyncGen; // async function * () {};
-
-var asyncGenFunction = asyncGen ? getProto(asyncGen) : undefined;
-var asyncGenIterator = asyncGen ? asyncGen() : undefined;
-var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
-var INTRINSICS = {
-  '%Array%': Array,
-  '%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
-  '%ArrayBufferPrototype%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer.prototype,
-  '%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
-  '%ArrayPrototype%': Array.prototype,
-  '%ArrayProto_entries%': Array.prototype.entries,
-  '%ArrayProto_forEach%': Array.prototype.forEach,
-  '%ArrayProto_keys%': Array.prototype.keys,
-  '%ArrayProto_values%': Array.prototype.values,
-  '%AsyncFromSyncIteratorPrototype%': undefined,
-  '%AsyncFunction%': asyncFunction,
-  '%AsyncFunctionPrototype%': asyncFunction ? asyncFunction.prototype : undefined,
-  '%AsyncGenerator%': asyncGen ? getProto(asyncGenIterator) : undefined,
-  '%AsyncGeneratorFunction%': asyncGenFunction,
-  '%AsyncGeneratorPrototype%': asyncGenFunction ? asyncGenFunction.prototype : undefined,
-  '%AsyncIteratorPrototype%': asyncGenIterator && hasSymbols && Symbol.asyncIterator ? asyncGenIterator[Symbol.asyncIterator]() : undefined,
-  '%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
-  '%Boolean%': Boolean,
-  '%BooleanPrototype%': Boolean.prototype,
-  '%DataView%': typeof DataView === 'undefined' ? undefined : DataView,
-  '%DataViewPrototype%': typeof DataView === 'undefined' ? undefined : DataView.prototype,
-  '%Date%': Date,
-  '%DatePrototype%': Date.prototype,
-  '%decodeURI%': decodeURI,
-  '%decodeURIComponent%': decodeURIComponent,
-  '%encodeURI%': encodeURI,
-  '%encodeURIComponent%': encodeURIComponent,
-  '%Error%': Error,
-  '%ErrorPrototype%': Error.prototype,
-  '%eval%': eval,
-  // eslint-disable-line no-eval
-  '%EvalError%': EvalError,
-  '%EvalErrorPrototype%': EvalError.prototype,
-  '%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
-  '%Float32ArrayPrototype%': typeof Float32Array === 'undefined' ? undefined : Float32Array.prototype,
-  '%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
-  '%Float64ArrayPrototype%': typeof Float64Array === 'undefined' ? undefined : Float64Array.prototype,
-  '%Function%': Function,
-  '%FunctionPrototype%': Function.prototype,
-  '%Generator%': generator ? getProto(generator()) : undefined,
-  '%GeneratorFunction%': generatorFunction,
-  '%GeneratorPrototype%': generatorFunction ? generatorFunction.prototype : undefined,
-  '%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
-  '%Int8ArrayPrototype%': typeof Int8Array === 'undefined' ? undefined : Int8Array.prototype,
-  '%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
-  '%Int16ArrayPrototype%': typeof Int16Array === 'undefined' ? undefined : Int8Array.prototype,
-  '%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
-  '%Int32ArrayPrototype%': typeof Int32Array === 'undefined' ? undefined : Int32Array.prototype,
-  '%isFinite%': isFinite,
-  '%isNaN%': isNaN,
-  '%IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,
-  '%JSON%': (typeof JSON === "undefined" ? "undefined" : _typeof(JSON)) === 'object' ? JSON : undefined,
-  '%JSONParse%': (typeof JSON === "undefined" ? "undefined" : _typeof(JSON)) === 'object' ? JSON.parse : undefined,
-  '%Map%': typeof Map === 'undefined' ? undefined : Map,
-  '%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),
-  '%MapPrototype%': typeof Map === 'undefined' ? undefined : Map.prototype,
-  '%Math%': Math,
-  '%Number%': Number,
-  '%NumberPrototype%': Number.prototype,
-  '%Object%': Object,
-  '%ObjectPrototype%': Object.prototype,
-  '%ObjProto_toString%': Object.prototype.toString,
-  '%ObjProto_valueOf%': Object.prototype.valueOf,
-  '%parseFloat%': parseFloat,
-  '%parseInt%': parseInt,
-  '%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
-  '%PromisePrototype%': typeof Promise === 'undefined' ? undefined : Promise.prototype,
-  '%PromiseProto_then%': typeof Promise === 'undefined' ? undefined : Promise.prototype.then,
-  '%Promise_all%': typeof Promise === 'undefined' ? undefined : Promise.all,
-  '%Promise_reject%': typeof Promise === 'undefined' ? undefined : Promise.reject,
-  '%Promise_resolve%': typeof Promise === 'undefined' ? undefined : Promise.resolve,
-  '%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
-  '%RangeError%': RangeError,
-  '%RangeErrorPrototype%': RangeError.prototype,
-  '%ReferenceError%': ReferenceError,
-  '%ReferenceErrorPrototype%': ReferenceError.prototype,
-  '%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
-  '%RegExp%': RegExp,
-  '%RegExpPrototype%': RegExp.prototype,
-  '%Set%': typeof Set === 'undefined' ? undefined : Set,
-  '%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),
-  '%SetPrototype%': typeof Set === 'undefined' ? undefined : Set.prototype,
-  '%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
-  '%SharedArrayBufferPrototype%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer.prototype,
-  '%String%': String,
-  '%StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,
-  '%StringPrototype%': String.prototype,
-  '%Symbol%': hasSymbols ? Symbol : undefined,
-  '%SymbolPrototype%': hasSymbols ? Symbol.prototype : undefined,
-  '%SyntaxError%': SyntaxError,
-  '%SyntaxErrorPrototype%': SyntaxError.prototype,
-  '%ThrowTypeError%': ThrowTypeError,
-  '%TypedArray%': TypedArray,
-  '%TypedArrayPrototype%': TypedArray ? TypedArray.prototype : undefined,
-  '%TypeError%': $TypeError,
-  '%TypeErrorPrototype%': $TypeError.prototype,
-  '%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
-  '%Uint8ArrayPrototype%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array.prototype,
-  '%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
-  '%Uint8ClampedArrayPrototype%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray.prototype,
-  '%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
-  '%Uint16ArrayPrototype%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array.prototype,
-  '%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
-  '%Uint32ArrayPrototype%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array.prototype,
-  '%URIError%': URIError,
-  '%URIErrorPrototype%': URIError.prototype,
-  '%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
-  '%WeakMapPrototype%': typeof WeakMap === 'undefined' ? undefined : WeakMap.prototype,
-  '%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet,
-  '%WeakSetPrototype%': typeof WeakSet === 'undefined' ? undefined : WeakSet.prototype
-};
-
-var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
-
-var $replace = bind.call(Function.call, String.prototype.replace);
-/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
-
-var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-var reEscapeChar = /\\(\\)?/g;
-/** Used to match backslashes in property paths. */
-
-var stringToPath = function stringToPath(string) {
-  var result = [];
-  $replace(string, rePropName, function (match, number, quote, subString) {
-    result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;
-  });
-  return result;
-};
-/* end adaptation */
-
-
-var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
-  if (!(name in INTRINSICS)) {
-    throw new SyntaxError('intrinsic ' + name + ' does not exist!');
-  } // istanbul ignore if // hopefully this is impossible to test :-)
-
-
-  if (typeof INTRINSICS[name] === 'undefined' && !allowMissing) {
-    throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
-  }
-
-  return INTRINSICS[name];
-};
-
-module.exports = function GetIntrinsic(name, allowMissing) {
-  if (typeof name !== 'string' || name.length === 0) {
-    throw new TypeError('intrinsic name must be a non-empty string');
-  }
-
-  if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
-    throw new TypeError('"allowMissing" argument must be a boolean');
-  }
-
-  var parts = stringToPath(name);
-  var value = getBaseIntrinsic('%' + (parts.length > 0 ? parts[0] : '') + '%', allowMissing);
-
-  for (var i = 1; i < parts.length; i += 1) {
-    if (value != null) {
-      if ($gOPD && i + 1 >= parts.length) {
-        var desc = $gOPD(value, parts[i]);
-
-        if (!allowMissing && !(parts[i] in value)) {
-          throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
-        }
-
-        value = desc ? desc.get || desc.value : value[parts[i]];
-      } else {
-        value = value[parts[i]];
-      }
-    }
-  }
-
-  return value;
-};
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/node_modules/es-abstract/helpers/callBind.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/node_modules/es-abstract/helpers/callBind.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
-
-var GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic */ "./node_modules/regexp.prototype.flags/node_modules/es-abstract/GetIntrinsic.js");
-
-var $apply = GetIntrinsic('%Function.prototype.apply%');
-var $call = GetIntrinsic('%Function.prototype.call%');
-var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
-
-module.exports = function callBind() {
-  return $reflectApply(bind, $call, arguments);
-};
-
-module.exports.apply = function applyBind() {
-  return $reflectApply(bind, $apply, arguments);
-};
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/node_modules/has-symbols/index.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/node_modules/has-symbols/index.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var origSymbol = global.Symbol;
-
-var hasSymbolSham = __webpack_require__(/*! ./shams */ "./node_modules/regexp.prototype.flags/node_modules/has-symbols/shams.js");
-
-module.exports = function hasNativeSymbols() {
-  if (typeof origSymbol !== 'function') {
-    return false;
-  }
-
-  if (typeof Symbol !== 'function') {
-    return false;
-  }
-
-  if (_typeof(origSymbol('foo')) !== 'symbol') {
-    return false;
-  }
-
-  if (_typeof(Symbol('bar')) !== 'symbol') {
-    return false;
-  }
-
-  return hasSymbolSham();
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/node_modules/has-symbols/shams.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/node_modules/has-symbols/shams.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/* eslint complexity: [2, 18], max-statements: [2, 33] */
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-module.exports = function hasSymbols() {
-  if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') {
-    return false;
-  }
-
-  if (_typeof(Symbol.iterator) === 'symbol') {
-    return true;
-  }
-
-  var obj = {};
-  var sym = Symbol('test');
-  var symObj = Object(sym);
-
-  if (typeof sym === 'string') {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(sym) !== '[object Symbol]') {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(symObj) !== '[object Symbol]') {
-    return false;
-  } // temp disabled per https://github.com/ljharb/object.assign/issues/17
-  // if (sym instanceof Symbol) { return false; }
-  // temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
-  // if (!(symObj instanceof Symbol)) { return false; }
-  // if (typeof Symbol.prototype.toString !== 'function') { return false; }
-  // if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
-
-
-  var symVal = 42;
-  obj[sym] = symVal;
-
-  for (sym in obj) {
-    return false;
-  } // eslint-disable-line no-restricted-syntax
-
-
-  if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) {
-    return false;
-  }
-
-  if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) {
-    return false;
-  }
-
-  var syms = Object.getOwnPropertySymbols(obj);
-
-  if (syms.length !== 1 || syms[0] !== sym) {
-    return false;
-  }
-
-  if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) {
-    return false;
-  }
-
-  if (typeof Object.getOwnPropertyDescriptor === 'function') {
-    var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
-
-    if (descriptor.value !== symVal || descriptor.enumerable !== true) {
-      return false;
-    }
-  }
-
-  return true;
-};
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/polyfill.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/polyfill.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/regexp.prototype.flags/implementation.js");
-
-var supportsDescriptors = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js").supportsDescriptors;
-
-var $gOPD = Object.getOwnPropertyDescriptor;
-var $TypeError = TypeError;
-
-module.exports = function getPolyfill() {
-  if (!supportsDescriptors) {
-    throw new $TypeError('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
-  }
-
-  if (/a/mig.flags === 'gim') {
-    var descriptor = $gOPD(RegExp.prototype, 'flags');
-
-    if (descriptor && typeof descriptor.get === 'function' && typeof /a/.dotAll === 'boolean') {
-      return descriptor.get;
-    }
-  }
-
-  return implementation;
-};
-
-/***/ }),
-
-/***/ "./node_modules/regexp.prototype.flags/shim.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/regexp.prototype.flags/shim.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var supportsDescriptors = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js").supportsDescriptors;
-
-var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/regexp.prototype.flags/polyfill.js");
-
-var gOPD = Object.getOwnPropertyDescriptor;
-var defineProperty = Object.defineProperty;
-var TypeErr = TypeError;
-var getProto = Object.getPrototypeOf;
-var regex = /a/;
-
-module.exports = function shimFlags() {
-  if (!supportsDescriptors || !getProto) {
-    throw new TypeErr('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
-  }
-
-  var polyfill = getPolyfill();
-  var proto = getProto(regex);
-  var descriptor = gOPD(proto, 'flags');
-
-  if (!descriptor || descriptor.get !== polyfill) {
-    defineProperty(proto, 'flags', {
-      configurable: true,
-      enumerable: false,
-      get: polyfill
-    });
-  }
-
-  return polyfill;
-};
-
-/***/ }),
-
 /***/ "./node_modules/scheduler/cjs/scheduler-tracing.development.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
@@ -54458,6 +61826,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
 /* harmony import */ var _DrawerGuidelineContent_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DrawerGuidelineContent.jsx */ "./www/src/js/components/drawer/DrawerGuidelineContent.jsx");
+/* harmony import */ var _DrawerResistanceContent_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DrawerResistanceContent.jsx */ "./www/src/js/components/drawer/DrawerResistanceContent.jsx");
 var _class;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -54481,6 +61850,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -54521,13 +61891,21 @@ var Drawer = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class 
     /**
      * If drawer is empty, add class isEmpty to not show CSS animations. They would not look good
      * with an empty (white) drawer – hide instantly therefore.
+     * Add class depending on content type to adjust styling (e.g. background color of drawer)
      * @return {String}     Class that is added to drawer
      */
 
   }, {
     key: "getContentClass",
     value: function getContentClass() {
-      return !this.props.drawerViewModel || !this.props.drawerViewModel.content ? 'is-empty' : '';
+      var classes = [];
+
+      if (!this.props.drawerViewModel || !this.props.drawerViewModel.content) {
+        classes.push('is-empty');
+      }
+
+      classes.push(this.props.drawerViewModel.contentType);
+      return classes.join(' ');
     }
   }, {
     key: "render",
@@ -54541,6 +61919,9 @@ var Drawer = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class 
         content: this.props.drawerViewModel.content,
         drawerViewModel: this.props.drawerViewModel,
         app: this.props.app
+      }), this.props.drawerViewModel && this.props.drawerViewModel.contentType === 'resistance' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DrawerResistanceContent_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        drawerViewModel: this.props.drawerViewModel,
+        resistance: this.props.drawerViewModel.content
       }));
     }
   }]);
@@ -54785,6 +62166,113 @@ var DrawerGuidelineContent = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["obs
   }]);
 
   return DrawerGuidelineContent;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component)) || _class;
+
+
+
+/***/ }),
+
+/***/ "./www/src/js/components/drawer/DrawerResistanceContent.jsx":
+/*!******************************************************************!*\
+  !*** ./www/src/js/components/drawer/DrawerResistanceContent.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DrawerResistanceContent; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
+/* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+var _class;
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var DrawerResistanceContent = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_class = /*#__PURE__*/function (_React$Component) {
+  _inherits(DrawerResistanceContent, _React$Component);
+
+  var _super = _createSuper(DrawerResistanceContent);
+
+  function DrawerResistanceContent() {
+    var _this;
+
+    _classCallCheck(this, DrawerResistanceContent);
+
+    for (var _len = arguments.length, props = new Array(_len), _key = 0; _key < _len; _key++) {
+      props[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(props));
+    _this.toggleDrawer = _this.toggleDrawer.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(DrawerResistanceContent, [{
+    key: "toggleDrawer",
+    value: function toggleDrawer() {
+      this.props.drawerViewModel.isOpen ? this.props.drawerViewModel.close() : this.props.drawerViewModel.open();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__inner"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__teaser",
+        onClick: this.toggleDrawer
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__teaser-flap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__teaser-subtitle"
+      }, "Susceptibility"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__teaser-title"
+      }, this.props.resistance.bacterium.shortName, " \u2192", ' ', this.props.resistance.antibiotic.name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__fixed"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Susceptibility of ", this.props.resistance.bacterium.shortName, " to", ' ', this.props.resistance.antibiotic.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__scrollable"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__scrollable-inner"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drawer__body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Erkl\xE4rung, wieso welche Daten angezeigt werden (Text f\xFCr alle Empfindlichkeiten gleich; Englisch)."), this.props.resistance.getValuesByPrecision().map(function (value) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "drawer__section",
+          key: value.type
+        }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "MIC"), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "DD"));
+      })))));
+    }
+  }]);
+
+  return DrawerResistanceContent;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component)) || _class;
 
 
@@ -55972,7 +63460,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _offsetFilters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./offsetFilters */ "./www/src/js/components/filterList/offsetFilters.jsx");
@@ -57308,7 +64796,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var _guidedTour_guidedTourButton_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../guidedTour/guidedTourButton.jsx */ "./www/src/js/components/guidedTour/guidedTourButton.jsx");
 /* harmony import */ var _infoOverlayButton_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./infoOverlayButton.jsx */ "./www/src/js/components/infoOverlay/infoOverlayButton.jsx");
 /* harmony import */ var _setupMarked__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./setupMarked */ "./www/src/js/components/infoOverlay/setupMarked.js");
@@ -57904,7 +65392,8 @@ var Matrix = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_matrixResistance_resistance_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
           key: "".concat(resistance.resistance.antibiotic.id, "/").concat(resistance.resistance.bacterium.id),
           matrix: _this3.props.matrix,
-          resistance: resistance
+          resistance: resistance,
+          drawerViewModel: _this3.props.drawerViewModel
         });
       }), this.props.matrix.activeResistance && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_matrixResistance_resistanceDetail_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
         resistance: this.props.matrix.activeResistance,
@@ -58885,7 +66374,7 @@ var BacteriumLabel = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MatrixLoadingOverlay; });
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
@@ -58968,7 +66457,7 @@ var MatrixLoadingOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["obser
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
@@ -59031,6 +66520,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
     };
 
     _this._wasVisible = true;
+    _this._handleClick = _this._handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -59038,6 +66528,11 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
     key: "_getPreviousPosition",
     value: function _getPreviousPosition() {
       return "translate(".concat(this._previousPosition && this._previousPosition.left || 0, ", \n\t\t\t").concat(this._previousPosition && this._previousPosition.top || 0, ")");
+    }
+  }, {
+    key: "_handleClick",
+    value: function _handleClick() {
+      this.props.drawerViewModel.setContent(this.props.resistance.resistance);
     }
   }, {
     key: "render",
@@ -59052,7 +66547,8 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
           "data-antibiotic": this.props.resistance.resistance.antibiotic.name,
           "data-bacterium": this.props.resistance.resistance.bacterium.name,
           onMouseEnter: this._handleMouseEnter,
-          onMouseLeave: this._handleMouseLeave
+          onMouseLeave: this._handleMouseLeave,
+          onClick: this._handleClick
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
           style: {
             opacity: this.opacity
@@ -59067,7 +66563,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
           dominantBaseline: "central",
           className: "resistanceMatrix__resistanceText",
           dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_5__["supportsDominantBaseline"])('-2', '0.35em')
-        }, Math.round((1 - this.value) * 100))))
+        }, this.value !== undefined && Math.round((1 - this.value) * 100))))
       );
     }
   }, {
@@ -59098,13 +66594,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
     key: "value",
     get: function get() {
       var bestValue = this.props.resistance.mostPreciseValue;
-
-      if (bestValue.type.identifier === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__["resistanceTypes"].class.identifier || bestValue.type.identifier === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__["resistanceTypes"].default.identifier) {
-        return bestValue.value < 1 / 3 ? 'L' : bestValue.value < 2 / 3 ? 'I' : 'H';
-      } // If bestValue is 1, return 1, else .xx (without leading 0)
-
-
-      return bestValue.value === 1 ? 1 : (bestValue.value.toFixed(2) + '').substr(1);
+      return bestValue.value;
     }
     /**
     * Returns modifier for visibility class which determines the transitions.
@@ -59238,7 +66728,7 @@ var ResistanceDetail = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"
         className: "resistanceMatrix__resistanceDetailValueText"
       }, Math.round((1 - this.props.resistance.mostPreciseValue.value) * 100), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tspan", {
         className: "resistanceMatrix__resistanceDetailValuePercentSign"
-      }, "%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+      }, "%")), this.props.resistance.mostPreciseValue.confidenceInterval !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
         fill: this.props.resistance.fontColor,
         dominantBaseline: "hanging",
         textAnchor: "middle",
@@ -60176,7 +67666,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var _selectedFiltersForType__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./selectedFiltersForType */ "./www/src/js/components/selectedFilters/selectedFiltersForType.jsx");
 var _class;
 
@@ -60366,7 +67856,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var css_vars_ponyfill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! css-vars-ponyfill */ "./node_modules/css-vars-ponyfill/dist/css-vars-ponyfill.esm.js");
 var _class;
 
@@ -60704,7 +68194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @infect/frontend-logic */ "./node_modules/@infect/frontend-logic/index.js");
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -60810,7 +68300,8 @@ function renderReact() {
     matrix: app.views.matrix,
     filters: app.filterValues,
     selectedFilters: app.selectedFilters,
-    guidelines: app.guidelines
+    guidelines: app.guidelines,
+    drawerViewModel: app.views.drawer
   }), document.querySelector('Matrix'));
   react_dom__WEBPACK_IMPORTED_MODULE_6___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_components_matrix_matrixHeader_jsx__WEBPACK_IMPORTED_MODULE_9__["default"], {
     matrix: app.views.matrix,
@@ -61044,7 +68535,7 @@ var GuidedTour = (_class = (_temp = /*#__PURE__*/function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/andi/Joinbox/Projects/infect-frontend/www/src/js/main.js */"./www/src/js/main.js");
+module.exports = __webpack_require__(/*! /Users/fs/Sites/infect/infect-frontend/www/src/js/main.js */"./www/src/js/main.js");
 
 
 /***/ })

@@ -15,6 +15,7 @@ class Resistance extends React.Component {
 		super();
 		// On init, resistances are always visible
 		this._wasVisible = true;
+		this._handleClick = this._handleClick.bind(this);
 	}
 
 	_getPreviousPosition() {
@@ -45,12 +46,7 @@ class Resistance extends React.Component {
 	*/
 	@computed get value() {
 		const bestValue = this.props.resistance.mostPreciseValue;
-		if (bestValue.type.identifier === resistanceTypes.class.identifier || 
-			bestValue.type.identifier === resistanceTypes.default.identifier) {
-			return bestValue.value < 1/3 ? 'L' : (bestValue.value < 2/3 ? 'I' : 'H');
-		}
-		// If bestValue is 1, return 1, else .xx (without leading 0)
-		return bestValue.value === 1 ? 1 : (bestValue.value.toFixed(2) + '').substr(1);
+		return bestValue.value;
 	}
 
 
@@ -84,6 +80,10 @@ class Resistance extends React.Component {
 		this.props.matrix.setActiveResistance(undefined);
 	}
 
+	_handleClick() {
+		this.props.drawerViewModel.setContent(this.props.resistance.resistance);
+	}
+
 	render() {
 		return(
 			// Radius: sample size
@@ -92,7 +92,10 @@ class Resistance extends React.Component {
 				className={ 'resistanceMatrix__resistance js-resistance ' + this.classModifier }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
-				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }>
+				onMouseEnter={ this._handleMouseEnter}
+				onMouseLeave={this._handleMouseLeave }
+				onClick={this._handleClick}
+			>
 				{ /* use <g> for content to give it an opacity depending on smapleSize. We cannot set
 				     opacity on parent g as this would overwrite the filters (opacity 0 if not visible) */ }
 				<g style={ { opacity: this.opacity } }>
@@ -105,7 +108,7 @@ class Resistance extends React.Component {
 					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
 						dominantBaseline="central" className="resistanceMatrix__resistanceText"
 						dy={ supportsDominantBaseline('-2', '0.35em') }>
-						{ Math.round((1 - this.value) * 100) }
+						{ this.value !== undefined && Math.round((1 - this.value) * 100) }
 					</text>
 				</g>
 			</g>
