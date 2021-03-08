@@ -106,6 +106,7 @@ matrixheader {
 
     &__header {
         position: fixed;
+        z-index: 90;
     }
 
     &__bacteriumLabelText {
