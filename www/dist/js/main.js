@@ -10608,6 +10608,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_notifications_notificationSeverityLevels_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./models/notifications/notificationSeverityLevels.js */ "../frontend-logic/src/models/notifications/notificationSeverityLevels.js");
 /* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
 /* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
+/* harmony import */ var _models_resistances_getQuantitativeDataForActiveResistance__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./models/resistances/getQuantitativeDataForActiveResistance */ "../frontend-logic/src/models/resistances/getQuantitativeDataForActiveResistance.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -10625,6 +10626,7 @@ function _initializerWarningHelper(descriptor, context) { throw new Error('Decor
 /**
 * The main application that sets everything up and brings it together
 */
+
 
 
 
@@ -10705,6 +10707,7 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
     this.views.matrix.setOffsetFilters(this.offsetFilters);
     this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
     Object(_models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_22__["default"])(this.guidelines, this.views.drawer, this.notificationCenter);
+    Object(_models_resistances_getQuantitativeDataForActiveResistance__WEBPACK_IMPORTED_MODULE_32__["default"])(this.views.matrix);
   }
   /**
    * Use separate init method as it uses async functions; we shall not use those in a
@@ -14474,8 +14477,27 @@ var MatrixView = (_dec = mobx__WEBPACK_IMPORTED_MODULE_1__["observable"].shallow
   }, {
     key: "setActiveResistance",
     value: function setActiveResistance(resistance) {
-      this.activeResistance = resistance;
-    }
+      this.activeResistance = resistance; // Debounce fetch of MIC data (quantitative resistance) for a few ms to not fetch too much
+      // data when the user moves the cursor ofer the matrix.
+      // this._debounceMIC();
+    } // _debounceMIC() {
+    //     // Clear existing timeout whenever current resistance is blurred (another resistance is
+    //     // selected or cursor leaves current resistance)
+    //     if (this.activeTimeout) clearTimeout(this.activeTimeout);
+    //     // 50ms would be too short – requests data almost instantly.
+    //     if (
+    //         !this.activeResistance ||
+    //         !this.activeResistance.resistance ||
+    //         !this.activeResistance.resistance.needsMICData
+    //     ) return;
+    //     this.activeTimeout = setTimeout(this._fetchMIC.bind(this), 200);
+    // }
+    // async _fetchMIC() {
+    //     const { resistance } = this.activeResistance;
+    //     const mic90 = await fetchMICData(resistance);
+    //     resistance.values.find(value => value.type === resistanceTypes.mic).setMICData(mic90);
+    // }
+
     /**
     * Sets dimensions of the SVG whenever it is changed.
     * @param {BoundingClientRects} boundingBox
@@ -16140,6 +16162,215 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "../frontend-logic/src/models/resistances/fetchQuantitativeData.js":
+/*!*************************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/fetchQuantitativeData.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/api.js */ "../frontend-logic/src/helpers/api.js");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:fetchMICData');
+/**
+ * Fetches MIC data from server (MIC data is not returned by RDA on initial load due to the heavy
+ * computational its calculation causes)
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/(function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resistance) {
+    var data;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            /* const options = {
+                cache: 'no-store',
+                // Requests at Insel (Edge) are rejected with status 407. This might help:
+                credentials: 'include',
+            };
+            log('Options are %o', options);
+             const result = await fetchApi(url, options);
+            log('Got back data %o', result);
+             // Invalid HTTP Status
+            if (result.status !== 200) {
+                throw new Error(`StandardFetcher: Status ${result.status} is invalid.`);
+            } */
+            data = {
+              "percentile": 90,
+              "percentileValue": 45.6,
+              "slots": {
+                "rangeMin": 0,
+                "rangeMax": 53.9,
+                "slotSize": 2.156,
+                "slotCount": 25,
+                "slots": [{
+                  "fromValue": 0,
+                  "toValue": 2.156,
+                  "sampleCount": 0
+                }, {
+                  "fromValue": 2.156,
+                  "toValue": 4.312,
+                  "sampleCount": 0
+                }, {
+                  "fromValue": 4.312,
+                  "toValue": 6.468,
+                  "sampleCount": 0
+                }]
+              }
+            };
+            console.log('got data', data);
+            _context.next = 4;
+            return new Promise(function (resolve) {
+              return setTimeout(resolve, 1500);
+            });
+
+          case 4:
+            return _context.abrupt("return", data);
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+})());
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/resistances/getQuantitativeData.js":
+/*!***********************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/getQuantitativeData.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resistanceTypes.js */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
+/* harmony import */ var _fetchQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fetchQuantitativeData.js */ "../frontend-logic/src/models/resistances/fetchQuantitativeData.js");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+/**
+ * Fetches MIC or discDiffusion data for a given resistance (for all values) if it's not already set
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/(function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resistance) {
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            resistance.values.forEach( /*#__PURE__*/function () {
+              var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resistanceValue) {
+                var isQuantitative, hasData, data;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        isQuantitative = [_resistanceTypes_js__WEBPACK_IMPORTED_MODULE_0__["default"].mic, _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_0__["default"].discDiffusion].includes(resistanceValue.type);
+                        hasData = Object.keys(resistanceValue.quantitativeData).length > 0;
+
+                        if (!(!isQuantitative || hasData)) {
+                          _context.next = 4;
+                          break;
+                        }
+
+                        return _context.abrupt("return");
+
+                      case 4:
+                        _context.next = 6;
+                        return Object(_fetchQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__["default"])(resistance, resistanceValue);
+
+                      case 6:
+                        data = _context.sent;
+                        resistanceValue.setQuantitativeData(data);
+
+                      case 8:
+                      case "end":
+                        return _context.stop();
+                    }
+                  }
+                }, _callee);
+              }));
+
+              return function (_x2) {
+                return _ref2.apply(this, arguments);
+              };
+            }());
+
+          case 1:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+})());
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/resistances/getQuantitativeDataForActiveResistance.js":
+/*!******************************************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/getQuantitativeDataForActiveResistance.js ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _getQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getQuantitativeData.js */ "../frontend-logic/src/models/resistances/getQuantitativeData.js");
+
+
+var timeout;
+
+var debounce = function debounce(callback) {
+  if (timeout) clearTimeout(timeout); // 50ms would be too short – requests data almost instantly.
+
+  setTimeout(callback, 200);
+};
+/**
+ * Gets quantitative data for active resistance after a short debounce; watches
+ * matrixView.activeResistance and initializes fetch.
+ */
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (matrixView) {
+  Object(mobx__WEBPACK_IMPORTED_MODULE_0__["autorun"])(function () {
+    var activeResistance = matrixView.activeResistance;
+    if (!activeResistance) return;
+    if (!activeResistance.resistance) return;
+    debounce(function () {
+      return Object(_getQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__["default"])(activeResistance.resistance);
+    });
+  });
+});
+
+/***/ }),
+
 /***/ "../frontend-logic/src/models/resistances/resistance.js":
 /*!**************************************************************!*\
   !*** ../frontend-logic/src/models/resistances/resistance.js ***!
@@ -16152,6 +16383,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Resistance; });
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
 /* harmony import */ var _resistanceValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resistanceValue */ "../frontend-logic/src/models/resistances/resistanceValue.js");
+/* harmony import */ var _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resistanceTypes.js */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -16165,6 +16397,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
+
 
 
 
@@ -16208,7 +16441,7 @@ var Resistance = (_class = (_temp = /*#__PURE__*/function () {
   _createClass(Resistance, [{
     key: "addResistanceValue",
     value: function addResistanceValue(resistanceValue) {
-      this.values.push(new _resistanceValue__WEBPACK_IMPORTED_MODULE_1__["default"](resistanceValue.type, resistanceValue.value, resistanceValue.sampleSize, resistanceValue.confidenceInterval));
+      this.values.push(new _resistanceValue__WEBPACK_IMPORTED_MODULE_1__["default"](resistanceValue.type, resistanceValue.value, resistanceValue.sampleSize, resistanceValue.confidenceInterval, resistanceValue.data));
     }
     /**
     * Returns all resistance values, sorted by precision (see resistanceTypes)
@@ -16221,6 +16454,19 @@ var Resistance = (_class = (_temp = /*#__PURE__*/function () {
         return a.type.precision > b.type.precision ? -1 : 1;
       });
     }
+    /**
+     * Returns true if there is MIC data for the current resistance and it has not yet been fetched.
+     * @returns {boolean}
+    */
+    // @computed get needsFurtherData() {
+    //     const micWithoutData = this.values
+    //         .filter(({ type }) => (
+    //             [resistanceTypes.mic, resistanceTypes.discDiffusion].includes(type)
+    //         ))
+    //         .filter(({ slots }) => !slots);
+    //     return !!micWithoutData.length;
+    // }
+
   }]);
 
   return Resistance;
@@ -16252,6 +16498,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "../frontend-logic/node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _helpers_getRelativeValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/getRelativeValue */ "../frontend-logic/src/helpers/getRelativeValue.js");
+/* harmony import */ var _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./resistanceTypes.js */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
 var _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16261,6 +16508,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
 
 
 
@@ -16316,16 +16564,23 @@ var ResistanceMatrixView = (_class = /*#__PURE__*/function () {
   }, {
     key: "backgroundColor",
     get: function get() {
-      var bestValue = this.mostPreciseValue.value; // Use log scale (values < 70% don't really matter) – differentiate well between
+      var _this$mostPreciseValu = this.mostPreciseValue,
+          type = _this$mostPreciseValu.type,
+          value = _this$mostPreciseValu.value; // if type is MIC or discDiffusion, use gray background
+
+      if (type === _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].mic || type === _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].discDiffusion) {
+        return tinycolor2__WEBPACK_IMPORTED_MODULE_0___default()('#E1E0D5');
+      } // Use log scale (values < 70% don't really matter) – differentiate well between
       // 70 and 100
       // Use number between 1 and 9 for log – returns number between 0 and 1
 
-      var logValue = Math.log10(bestValue * 9 + 1);
+
+      var logValue = Math.log10(value * 9 + 1);
       var hue = this._getRelativeColorValue(1 - logValue, 9, 98) / 360;
 
-      var saturation = this._getRelativeColorValue(1 - bestValue, 0.3, 1);
+      var saturation = this._getRelativeColorValue(1 - value, 0.3, 1);
 
-      var lightness = this._getRelativeColorValue(bestValue, 0.4, 0.9);
+      var lightness = this._getRelativeColorValue(value, 0.4, 0.9);
 
       var backgroundColor = tinycolor2__WEBPACK_IMPORTED_MODULE_0___default.a.fromRatio({
         h: hue,
@@ -16362,12 +16617,33 @@ var ResistanceMatrixView = (_class = /*#__PURE__*/function () {
       var offsets = this._matrixView.getOffsetFilters().filters;
 
       var resistance = this.mostPreciseValue;
-      return resistance.sampleSize >= offsets.get('sampleSize').min && resistance.value <= 1 - offsets.get('susceptibility').min;
+      var matchesSize = resistance.sampleSize >= offsets.get('sampleSize').min;
+      var matchesValue = resistance.value <= 1 - offsets.get('susceptibility').min;
+      var isInterpreted = this.mostPreciseValue.type === _resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].qualitative; // DD and Mic do not contain value at the beginning (before hovering them); also, we
+      // can not use traidtional susceptibility offsets. They only need to match the sampleSize
+      // offset.
+
+      if (isInterpreted) return matchesSize && matchesValue;else return matchesSize;
+    }
+  }, {
+    key: "displayValue",
+    get: function get() {
+      // Return percent susceptible for qualitative data
+      var values = new Map([[_resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].qualitative, function (_ref) {
+        var value = _ref.value;
+        return Math.round((1 - value) * 100);
+      }], [_resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].mic, function (resistanceValue) {
+        return resistanceValue.quantitativeData.percentileValue !== undefined ? resistanceValue.quantitativeData.percentileValue : 'MIC';
+      }], [_resistanceTypes_js__WEBPACK_IMPORTED_MODULE_4__["default"].discDiffusion, function () {
+        return 'DD';
+      }]]);
+      var mostPrecise = this.mostPreciseValue;
+      return values.get(mostPrecise.type)(mostPrecise);
     }
   }]);
 
   return ResistanceMatrixView;
-}(), (_applyDecoratedDescriptor(_class.prototype, "visible", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "visible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mostPreciseValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "mostPreciseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "radius", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "radius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "backgroundColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "backgroundColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "fontColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "fontColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "xPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "yPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "matchesOffsets", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "matchesOffsets"), _class.prototype)), _class);
+}(), (_applyDecoratedDescriptor(_class.prototype, "visible", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "visible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "mostPreciseValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "mostPreciseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "radius", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "radius"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "backgroundColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "backgroundColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "fontColor", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "fontColor"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "xPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "xPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "yPosition", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "yPosition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "matchesOffsets", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "matchesOffsets"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "displayValue", [mobx__WEBPACK_IMPORTED_MODULE_1__["computed"]], Object.getOwnPropertyDescriptor(_class.prototype, "displayValue"), _class.prototype)), _class);
 
 
 /***/ }),
@@ -16411,8 +16687,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _default; });
-/* harmony import */ var _resistanceTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _class; });
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _resistanceTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resistanceTypes */ "../frontend-logic/src/models/resistances/resistanceTypes.js");
+var _class2, _descriptor, _temp;
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -16425,54 +16704,116 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
 
-var _default =
-/**
-* @param {String} type				See resistanceTypes
-* @param {Number} value				Value between 0 and 1
-* @param {Int} sampleSize			Sample Size
-* @param {Array} confidenceInterval	95% confidence interval, if available: [lower, upper]
-*/
-function _default(type, value, sampleSize, confidenceInterval) {
-  _classCallCheck(this, _default);
-
-  if (!_resistanceTypes__WEBPACK_IMPORTED_MODULE_0__["default"][type]) throw new Error("ResistanceValue: Type ".concat(type, " not known, use one of ").concat(Object.keys(_resistanceTypes__WEBPACK_IMPORTED_MODULE_0__["default"]).join(', '), "."));
-  if (value !== undefined && typeof value !== 'number') throw new Error("ResistanceValue: value must either be undefined if it's unknown at the current time or a number; is ".concat(value, " instead."));
-  if (sampleSize % 1 !== 0) throw new Error("ResistanceValue: Sample size must be an integer"); // Validate confidence interval
-
-  if (confidenceInterval) {
-    if (!Array.isArray(confidenceInterval)) throw new Error("ResistanceValue: Confidence interval must be an array.");
-    if (confidenceInterval.length !== 2) throw new Error("ResistanceValue: Confidence interval must contain two items");
-
-    var _confidenceInterval = _slicedToArray(confidenceInterval, 2),
-        lower = _confidenceInterval[0],
-        upper = _confidenceInterval[1];
-
-    if (Number(lower) !== lower || Number(upper) !== upper) {
-      throw new Error("ResistanceValue: Confidence interval bounds must be numbers, are ".concat(lower, ", ").concat(upper, "."));
-    }
-
-    if (lower > 1 || lower < 0 || upper > 1 || upper < 0 || lower > upper) {
-      throw new Error("ResistanceValue: Confidence interval numbers must be between 0 and 1, lower bound must be smaller than upper bound.");
-    }
-
-    if (lower > value || upper < value) {
-      throw new Error("ResistanceValue: Confidence interval must embrace the resistance value; resistance is ".concat(value, ", lower confidence interval is ").concat(lower, " upper is ").concat(upper, "."));
-    }
-  } // Set properties
 
 
-  this.type = _resistanceTypes__WEBPACK_IMPORTED_MODULE_0__["default"][type];
-  this.value = value;
-  this.sampleSize = sampleSize;
+var _class = (_class2 = (_temp = /*#__PURE__*/function () {
+  /**
+  * @param {String} type				See resistanceTypes
+  * @param {Number} value				Value between 0 and 1
+  * @param {Int} sampleSize			Sample Size
+  * @param {Array} confidenceInterval	95% confidence interval, if available: [lower, upper]
+  * @param {Object} data				Any additional data whose properties will be attached to
+  *									ResistanceValue
+  */
+  function _class2(type, value, sampleSize, confidenceInterval, data) {
+    _classCallCheck(this, _class2);
 
-  if (confidenceInterval) {
-    this.confidenceInterval = confidenceInterval;
+    _initializerDefineProperty(this, "quantitativeData", _descriptor, this);
+
+    if (!_resistanceTypes__WEBPACK_IMPORTED_MODULE_1__["default"][type]) throw new Error("ResistanceValue: Type ".concat(type, " not known, use one of ").concat(Object.keys(_resistanceTypes__WEBPACK_IMPORTED_MODULE_1__["default"]).join(', '), "."));
+    if (value !== undefined && typeof value !== 'number') throw new Error("ResistanceValue: value must either be undefined if it's unknown at the current time or a number; is ".concat(value, " instead."));
+    if (sampleSize % 1 !== 0) throw new Error("ResistanceValue: Sample size must be an integer");
+
+    if (data && (_typeof(data) !== 'object' || data === null)) {
+      throw new Error("ResistanceValue: If data is passed, it must be an object; you passed ".concat(JSON.stringify(data), " instead."));
+    } // Validate confidence interval
+
+
+    if (confidenceInterval) {
+      if (!Array.isArray(confidenceInterval)) throw new Error("ResistanceValue: Confidence interval must be an array.");
+      if (confidenceInterval.length !== 2) throw new Error("ResistanceValue: Confidence interval must contain two items");
+
+      var _confidenceInterval = _slicedToArray(confidenceInterval, 2),
+          lower = _confidenceInterval[0],
+          upper = _confidenceInterval[1];
+
+      if (Number(lower) !== lower || Number(upper) !== upper) {
+        throw new Error("ResistanceValue: Confidence interval bounds must be numbers, are ".concat(lower, ", ").concat(upper, "."));
+      }
+
+      if (lower > 1 || lower < 0 || upper > 1 || upper < 0 || lower > upper) {
+        throw new Error("ResistanceValue: Confidence interval numbers must be between 0 and 1, lower bound must be smaller than upper bound.");
+      }
+
+      if (lower > value || upper < value) {
+        throw new Error("ResistanceValue: Confidence interval must embrace the resistance value; resistance is ".concat(value, ", lower confidence interval is ").concat(lower, " upper is ").concat(upper, "."));
+      }
+    } // Set properties
+
+
+    this.type = _resistanceTypes__WEBPACK_IMPORTED_MODULE_1__["default"][type];
+    this.value = value;
+    this.sampleSize = sampleSize;
+
+    if (confidenceInterval) {
+      this.confidenceInterval = confidenceInterval;
+    } // Clone properties
+
+
+    Object.assign(this, data);
   }
-};
+  /**
+   * Adds quantititative data (MIC/discDiffusion) after resistance value was initialized
+   */
+
+
+  _createClass(_class2, [{
+    key: "setQuantitativeData",
+    value: function setQuantitativeData(data) {
+      // Do a simple validation to get the most obvious errors; server should be trustworthy
+      // with its data structure
+      if (!data || data.percentile !== 90 || typeof data.percentileValue !== 'number') {
+        throw new Error("Resistance: Quantitative data does not fulfill the expected base format, is ".concat(JSON.stringify(data)));
+      }
+
+      if (!data.slots || typeof data.slots.rangeMin !== 'number' || typeof data.slots.rangeMax !== 'number' || typeof data.slots.slotSize !== 'number' || !Array.isArray(data.slots.slots)) {
+        throw new Error("Resistance: Quantitative data does not fulfill the expected slot format, is ".concat(JSON.stringify(data.slots)));
+      }
+
+      if (!data.slots.slots.every(function (item) {
+        return typeof item.fromValue === 'number' && typeof item.toValue === 'number' && typeof item.sampleCount === 'number';
+      })) {
+        throw new Error("Resistance: Quantitative slot entries do not fulfill the expected format, are ".concat(JSON.stringify(data.slots.slots)));
+      }
+
+      this.quantitativeData = data;
+    }
+  }]);
+
+  return _class2;
+}(), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "quantitativeData", [mobx__WEBPACK_IMPORTED_MODULE_0__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return {};
+  }
+}), _applyDecoratedDescriptor(_class2.prototype, "setQuantitativeData", [mobx__WEBPACK_IMPORTED_MODULE_0__["action"]], Object.getOwnPropertyDescriptor(_class2.prototype, "setQuantitativeData"), _class2.prototype)), _class2);
 
 
 
@@ -16804,7 +17145,12 @@ var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
           type: 'qualitative',
           value: resistanceData.resistantPercent / 100,
           sampleSize: resistanceData.resistanceQualitativeCount,
-          confidenceInterval: [resistanceData.confidenceInterval.lowerBound / 100, resistanceData.confidenceInterval.upperBound / 100]
+          confidenceInterval: [resistanceData.confidenceInterval.lowerBound / 100, resistanceData.confidenceInterval.upperBound / 100],
+          data: {
+            resistant: resistanceData.resistant,
+            susceptible: resistanceData.susceptible,
+            intermediate: resistanceData.intermediate
+          }
         });
       }
 
@@ -62267,7 +62613,7 @@ var DrawerResistanceContent = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["ob
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "drawer__section",
           key: value.type
-        }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "MIC"), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "DD"));
+        }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Susceptible"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.value) * 100), "%", ' ', value.susceptible !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "(N=", value.susceptible, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "95% Confidence Interval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.confidenceInterval[0]) * 100), "\u2013", Math.round((1 - value.confidenceInterval[1]) * 100), "%")), value.intermediate !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Proportion Intermediate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.intermediate / value.sampleSize * 100), "%", ' ', "(N=", value.intermediate, ")")), value.resistant !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Proportion Resistant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.resistant / value.sampleSize * 100), "%", ' ', "(N=", value.resistant, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.sampleSize))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Microdilution)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Microdilution")), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "MIC", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.quantitativeData.percentileValue, " mg/l")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Disc Diffusion)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Disc Diffusion")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize))));
       })))));
     }
   }]);
@@ -66543,7 +66889,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
         // Color: Resistance (for given population filters)
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
           transform: this.transformation,
-          className: 'resistanceMatrix__resistance js-resistance ' + this.classModifier,
+          className: "resistanceMatrix__resistance js-resistance ".concat(this.classModifier, " ").concat(this.resistaceTypeClass),
           "data-antibiotic": this.props.resistance.resistance.antibiotic.name,
           "data-bacterium": this.props.resistance.resistance.bacterium.name,
           onMouseEnter: this._handleMouseEnter,
@@ -66563,7 +66909,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
           dominantBaseline: "central",
           className: "resistanceMatrix__resistanceText",
           dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_5__["supportsDominantBaseline"])('-2', '0.35em')
-        }, this.value !== undefined && Math.round((1 - this.value) * 100))))
+        }, this.props.resistance.displayValue)))
       );
     }
   }, {
@@ -66584,17 +66930,6 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
       log('Resistance %o is placed at %d/%d', this, left, top); // IE11 does not know style: transform – use the transform attribute
 
       return "translate(".concat(left, ", ").concat(top, ")");
-    }
-    /**
-    * Return value that will be displayed in the resistance's circle. 
-    * If import precision is given, use number, else use H/L/I.
-    */
-
-  }, {
-    key: "value",
-    get: function get() {
-      var bestValue = this.props.resistance.mostPreciseValue;
-      return bestValue.value;
     }
     /**
     * Returns modifier for visibility class which determines the transitions.
@@ -66624,7 +66959,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
   }]);
 
   return Resistance;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), _temp), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "value", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "value"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "classModifier", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "classModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "opacity", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "opacity"), _class2.prototype)), _class2)) || _class;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), _temp), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "classModifier", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "classModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "opacity", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "opacity"), _class2.prototype)), _class2)) || _class;
 
 /* harmony default export */ __webpack_exports__["default"] = (Resistance);
 
@@ -66726,7 +67061,7 @@ var ResistanceDetail = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"
         dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_3__["supportsDominantBaseline"])('-0.4em', '-0.4em'),
         dx: "2",
         className: "resistanceMatrix__resistanceDetailValueText"
-      }, Math.round((1 - this.props.resistance.mostPreciseValue.value) * 100), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tspan", {
+      }, this.props.resistance.displayValue, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tspan", {
         className: "resistanceMatrix__resistanceDetailValuePercentSign"
       }, "%")), this.props.resistance.mostPreciseValue.confidenceInterval !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
         fill: this.props.resistance.fontColor,

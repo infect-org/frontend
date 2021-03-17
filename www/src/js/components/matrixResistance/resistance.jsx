@@ -41,16 +41,6 @@ class Resistance extends React.Component {
 
 
 	/**
-	* Return value that will be displayed in the resistance's circle. 
-	* If import precision is given, use number, else use H/L/I.
-	*/
-	@computed get value() {
-		const bestValue = this.props.resistance.mostPreciseValue;
-		return bestValue.value;
-	}
-
-
-	/**
 	* Returns modifier for visibility class which determines the transitions.
 	*/
 	@computed get classModifier() {
@@ -89,7 +79,7 @@ class Resistance extends React.Component {
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
 			<g transform={ this.transformation } 
-				className={ 'resistanceMatrix__resistance js-resistance ' + this.classModifier }
+				className={ `resistanceMatrix__resistance js-resistance ${this.classModifier} ${this.resistaceTypeClass}` }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
 				onMouseEnter={ this._handleMouseEnter}
@@ -100,15 +90,18 @@ class Resistance extends React.Component {
 				     opacity on parent g as this would overwrite the filters (opacity 0 if not visible) */ }
 				<g style={ { opacity: this.opacity } }>
 					{/* circle: center is at 0/0, therefore move by radius/radius */}
-					<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } 
-						className="resistanceMatrix__resistanceCircle">
+					<circle
+						r={ this.props.resistance.radius }
+						fill={ this.props.resistance.backgroundColor } 
+						className="resistanceMatrix__resistanceCircle"
+					>
 					</circle>
 					{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
 					{ /* Don't display number if N < 20 */ }
 					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
 						dominantBaseline="central" className="resistanceMatrix__resistanceText"
 						dy={ supportsDominantBaseline('-2', '0.35em') }>
-						{ this.value !== undefined && Math.round((1 - this.value) * 100) }
+						{this.props.resistance.displayValue}
 					</text>
 				</g>
 			</g>
