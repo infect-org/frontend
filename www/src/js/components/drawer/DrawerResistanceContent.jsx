@@ -2,6 +2,7 @@ import React from 'react';
 import marked from 'marked';
 import { resistanceTypes } from '@infect/frontend-logic';
 import { observer } from 'mobx-react';
+import Histogram from './Histogram.jsx';
 
 export default @observer class DrawerResistanceContent extends React.Component {
 
@@ -45,7 +46,7 @@ export default @observer class DrawerResistanceContent extends React.Component {
                             <p>Erklärung, wieso welche Daten angezeigt werden (Text für alle Empfindlichkeiten gleich; Englisch).</p>
 
                             {this.props.resistance.getValuesByPrecision().map(value => (
-                                <div className="drawer__section" key={value.type}>
+                                <div className="drawer__section" key={value.type.identifier}>
                                     {value.type === resistanceTypes.qualitative &&
                                         <>
                                             <h2>Qualitative Data</h2>
@@ -61,8 +62,8 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                             <p>
                                                 <span>95% Confidence Interval</span>
                                                 <span>
-                                                    {Math.round((1 - value.confidenceInterval[0]) * 100)}–
-                                                    {Math.round((1 - value.confidenceInterval[1]) * 100)}%
+                                                    {Math.round((1 - value.confidenceInterval[1]) * 100)}–
+                                                    {Math.round((1 - value.confidenceInterval[0]) * 100)}%
                                                 </span>
                                             </p>
                                             {value.intermediate !== undefined &&
@@ -109,6 +110,16 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                                 <span>Number of Isolates (N)</span>
                                                 <span>N={value.sampleSize}</span>
                                             </p>
+                                            {value.quantitativeData.percentileValue === undefined &&
+                                                <p>⌛</p>
+                                            }
+                                            {value.quantitativeData.percentileValue !== undefined &&
+                                                <Histogram
+                                                    data={value.quantitativeData.slots.slots}
+                                                    xAxisLabel="MIC (mg/l)"
+                                                    mic90={value.quantitativeData.percentileValue}
+                                                />
+                                            }
                                         </>
                                     }
                                     {value.type === resistanceTypes.discDiffusion &&
@@ -122,6 +133,16 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                                 <span>Number of Isolates (N)</span>
                                                 <span>N={value.sampleSize}</span>
                                             </p>
+                                            {value.quantitativeData.percentileValue === undefined &&
+                                                <p>⌛</p>
+                                            }
+                                            {value.quantitativeData.percentileValue !== undefined &&
+                                                <Histogram
+                                                    data={value.quantitativeData.slots.slots}
+                                                    xAxisLabel="DD (mm)"
+                                                    scale="log"
+                                                />
+                                            }
                                         </>
                                     }
                                 </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { resistanceTypes } from '@infect/frontend-logic';
 import debug from 'debug';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
@@ -71,7 +70,12 @@ class Resistance extends React.Component {
 	}
 
 	_handleClick() {
-		this.props.drawerViewModel.setContent(this.props.resistance.resistance);
+		const drawer = this.props.drawerViewModel;
+		const sameValue = drawer.content === this.props.resistance.resistance;
+		const { isOpen } = drawer;
+		if (sameValue && isOpen) return drawer.close();
+		if (sameValue && !isOpen) return drawer.open();
+		else drawer.setContent(this.props.resistance.resistance)
 	}
 
 	render() {

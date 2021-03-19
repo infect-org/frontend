@@ -2092,6 +2092,57 @@ matrixheader {
   text-decoration: none;
 }
 
+.histogram {
+  position: relative;
+  padding: 0 10%;
+  width: 100;
+  padding-bottom: 100%;
+}
+
+.histogram__chart {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  height: 90%;
+  width: 90%;
+}
+
+.histogram__axis {
+  stroke: black;
+}
+
+.histogram__axisTick {
+  stroke: black;
+}
+
+.histogram__bar {
+  fill: #e1e0d5;
+  stroke: #1c1c1c;
+}
+
+.histogram__axisLabel {
+  font-size: 14px;
+}
+
+.histogram__axisLegend {
+  font-size: 14px;
+}
+
+.histogram__axisLegend-y {
+  transform: rotate(270deg);
+  transform-origin: top left;
+}
+
+.histogram__mic90Line {
+  stroke: #aaa897;
+  width: 3px;
+}
+
+.histogram__mic90Text {
+  fill: black;
+  font-size: 14px;
+}
+
 infooverlaybutton {
   display: block;
 }

@@ -10609,6 +10609,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_guidelineSelectedFiltersBridge_GuidelineSelectedFiltersBridge_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js */ "../frontend-logic/src/models/guidelineSelectedFiltersBridge/GuidelineSelectedFiltersBridge.js");
 /* harmony import */ var _helpers_Store_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./helpers/Store.js */ "../frontend-logic/src/helpers/Store.js");
 /* harmony import */ var _models_resistances_getQuantitativeDataForActiveResistance__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./models/resistances/getQuantitativeDataForActiveResistance */ "../frontend-logic/src/models/resistances/getQuantitativeDataForActiveResistance.js");
+/* harmony import */ var _models_resistances_getQuantitativeDataForDrawer_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./models/resistances/getQuantitativeDataForDrawer.js */ "../frontend-logic/src/models/resistances/getQuantitativeDataForDrawer.js");
 var _class, _descriptor, _temp;
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -10626,6 +10627,7 @@ function _initializerWarningHelper(descriptor, context) { throw new Error('Decor
 /**
 * The main application that sets everything up and brings it together
 */
+
 
 
 
@@ -10708,6 +10710,7 @@ var InfectApp = (_class = (_temp = /*#__PURE__*/function () {
     this.views.matrix.setupDataWatchers(this.antibiotics, this.bacteria, this.resistances);
     Object(_models_drawer_updateDrawerFromGuidelines_js__WEBPACK_IMPORTED_MODULE_22__["default"])(this.guidelines, this.views.drawer, this.notificationCenter);
     Object(_models_resistances_getQuantitativeDataForActiveResistance__WEBPACK_IMPORTED_MODULE_32__["default"])(this.views.matrix);
+    Object(_models_resistances_getQuantitativeDataForDrawer_js__WEBPACK_IMPORTED_MODULE_33__["default"])(this.views.drawer);
   }
   /**
    * Use separate init method as it uses async functions; we shall not use those in a
@@ -14477,27 +14480,8 @@ var MatrixView = (_dec = mobx__WEBPACK_IMPORTED_MODULE_1__["observable"].shallow
   }, {
     key: "setActiveResistance",
     value: function setActiveResistance(resistance) {
-      this.activeResistance = resistance; // Debounce fetch of MIC data (quantitative resistance) for a few ms to not fetch too much
-      // data when the user moves the cursor ofer the matrix.
-      // this._debounceMIC();
-    } // _debounceMIC() {
-    //     // Clear existing timeout whenever current resistance is blurred (another resistance is
-    //     // selected or cursor leaves current resistance)
-    //     if (this.activeTimeout) clearTimeout(this.activeTimeout);
-    //     // 50ms would be too short – requests data almost instantly.
-    //     if (
-    //         !this.activeResistance ||
-    //         !this.activeResistance.resistance ||
-    //         !this.activeResistance.resistance.needsMICData
-    //     ) return;
-    //     this.activeTimeout = setTimeout(this._fetchMIC.bind(this), 200);
-    // }
-    // async _fetchMIC() {
-    //     const { resistance } = this.activeResistance;
-    //     const mic90 = await fetchMICData(resistance);
-    //     resistance.values.find(value => value.type === resistanceTypes.mic).setMICData(mic90);
-    // }
-
+      this.activeResistance = resistance;
+    }
     /**
     * Sets dimensions of the SVG whenever it is changed.
     * @param {BoundingClientRects} boundingBox
@@ -16184,11 +16168,12 @@ var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:fetchMICData');
 /**
  * Fetches MIC data from server (MIC data is not returned by RDA on initial load due to the heavy
  * computational its calculation causes)
+ * TODO: Implement when API is ready
  */
 
 /* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/(function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resistance) {
-    var data;
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resistance, resistanceValue) {
+    var micData, ddData;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -16205,9 +16190,9 @@ var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:fetchMICData');
             if (result.status !== 200) {
                 throw new Error(`StandardFetcher: Status ${result.status} is invalid.`);
             } */
-            data = {
+            micData = {
               "percentile": 90,
-              "percentileValue": 45.6,
+              "percentileValue": 6.12,
               "slots": {
                 "rangeMin": 0,
                 "rangeMax": 53.9,
@@ -16216,26 +16201,49 @@ var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:fetchMICData');
                 "slots": [{
                   "fromValue": 0,
                   "toValue": 2.156,
-                  "sampleCount": 0
+                  "sampleCount": Math.floor(Math.random() * 500)
                 }, {
                   "fromValue": 2.156,
                   "toValue": 4.312,
-                  "sampleCount": 0
+                  "sampleCount": Math.floor(Math.random() * 500)
                 }, {
                   "fromValue": 4.312,
                   "toValue": 6.468,
-                  "sampleCount": 0
+                  "sampleCount": Math.floor(Math.random() * 500)
                 }]
               }
             };
-            console.log('got data', data);
+            ddData = {
+              "percentile": 90,
+              "percentileValue": 45.6,
+              "slots": {
+                "rangeMin": 0,
+                "rangeMax": 1000,
+                "slotSize": 2.156,
+                "slotCount": 25,
+                "slots": [{
+                  "fromValue": 1,
+                  "toValue": 2,
+                  "sampleCount": Math.floor(Math.random() * 500)
+                }, {
+                  "fromValue": 2,
+                  "toValue": 4,
+                  "sampleCount": Math.floor(Math.random() * 500)
+                }, {
+                  "fromValue": 4,
+                  "toValue": 8,
+                  "sampleCount": Math.floor(Math.random() * 500)
+                }]
+              }
+            }; // console.log('got data', data);
+
             _context.next = 4;
             return new Promise(function (resolve) {
-              return setTimeout(resolve, 1500);
+              return setTimeout(resolve, 100);
             });
 
           case 4:
-            return _context.abrupt("return", data);
+            return _context.abrupt("return", resistanceValue.type.identifier === 'mic' ? micData : ddData);
 
           case 5:
           case "end":
@@ -16245,7 +16253,7 @@ var log = debug__WEBPACK_IMPORTED_MODULE_0___default()('infect:fetchMICData');
     }, _callee);
   }));
 
-  return function (_x) {
+  return function (_x, _x2) {
     return _ref.apply(this, arguments);
   };
 })());
@@ -16271,15 +16279,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /**
  * Fetches MIC or discDiffusion data for a given resistance (for all values) if it's not already set
+ * @param {Resistance}
+ * @param {boolean} onlyUseMostPrecise      True if only the most precise resistance value should
+ *                                          be fetched; needed for activeResistance in a matrix
+ *                                          (that is displayed on hover)
  */
 
 /* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/(function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resistance) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resistance, onlyUseMostPrecise) {
+    var values;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            resistance.values.forEach( /*#__PURE__*/function () {
+            values = onlyUseMostPrecise ? resistance.getValuesByPrecision.slice(0, 1) : resistance.values;
+            values.forEach( /*#__PURE__*/function () {
               var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resistanceValue) {
                 var isQuantitative, hasData, data;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -16312,12 +16326,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }, _callee);
               }));
 
-              return function (_x2) {
+              return function (_x3) {
                 return _ref2.apply(this, arguments);
               };
             }());
 
-          case 1:
+          case 2:
           case "end":
             return _context2.stop();
         }
@@ -16325,7 +16339,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }, _callee2);
   }));
 
-  return function (_x) {
+  return function (_x, _x2) {
     return _ref.apply(this, arguments);
   };
 })());
@@ -16366,6 +16380,33 @@ var debounce = function debounce(callback) {
     debounce(function () {
       return Object(_getQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__["default"])(activeResistance.resistance);
     });
+  });
+});
+
+/***/ }),
+
+/***/ "../frontend-logic/src/models/resistances/getQuantitativeDataForDrawer.js":
+/*!********************************************************************************!*\
+  !*** ../frontend-logic/src/models/resistances/getQuantitativeDataForDrawer.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobx */ "../frontend-logic/node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _getQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getQuantitativeData.js */ "../frontend-logic/src/models/resistances/getQuantitativeData.js");
+
+
+/**
+ * Fetches qualitative data as soon as a resistance is being displayed in the drawer.
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (function (drawerViewModel) {
+  Object(mobx__WEBPACK_IMPORTED_MODULE_0__["autorun"])(function () {
+    if (drawerViewModel.contentType !== 'resistance') return;
+    var content = drawerViewModel.content;
+    Object(_getQuantitativeData_js__WEBPACK_IMPORTED_MODULE_1__["default"])(content);
   });
 });
 
@@ -16454,19 +16495,6 @@ var Resistance = (_class = (_temp = /*#__PURE__*/function () {
         return a.type.precision > b.type.precision ? -1 : 1;
       });
     }
-    /**
-     * Returns true if there is MIC data for the current resistance and it has not yet been fetched.
-     * @returns {boolean}
-    */
-    // @computed get needsFurtherData() {
-    //     const micWithoutData = this.values
-    //         .filter(({ type }) => (
-    //             [resistanceTypes.mic, resistanceTypes.discDiffusion].includes(type)
-    //         ))
-    //         .filter(({ slots }) => !slots);
-    //     return !!micWithoutData.length;
-    // }
-
   }]);
 
   return Resistance;
@@ -17046,7 +17074,12 @@ var ResistancesFetcher = /*#__PURE__*/function (_Fetcher) {
         }).id,
         resistanceDiscDiffusionCount: 1234
       };
-      data.values.push(discDiffusionData); // END TODO
+      data.values.push(discDiffusionData);
+      var first = data.values.find(function (item) {
+        return item.compoundSubstanceId === 1 && item.microorganismId === 1;
+      });
+      first.resistanceDiscDiffusionCount = 231;
+      first.resistanceMICCount = 2131; // END TODO
       // Values missing: There's nothing we could add
 
       if (!data.values || !data.values.length) {
@@ -62534,6 +62567,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var _Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Histogram.jsx */ "./www/src/js/components/drawer/Histogram.jsx");
 var _class;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -62557,6 +62591,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -62612,14 +62647,267 @@ var DrawerResistanceContent = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["ob
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Erkl\xE4rung, wieso welche Daten angezeigt werden (Text f\xFCr alle Empfindlichkeiten gleich; Englisch)."), this.props.resistance.getValuesByPrecision().map(function (value) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "drawer__section",
-          key: value.type
-        }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Susceptible"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.value) * 100), "%", ' ', value.susceptible !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "(N=", value.susceptible, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "95% Confidence Interval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.confidenceInterval[0]) * 100), "\u2013", Math.round((1 - value.confidenceInterval[1]) * 100), "%")), value.intermediate !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Proportion Intermediate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.intermediate / value.sampleSize * 100), "%", ' ', "(N=", value.intermediate, ")")), value.resistant !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Proportion Resistant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.resistant / value.sampleSize * 100), "%", ' ', "(N=", value.resistant, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.sampleSize))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Microdilution)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Microdilution")), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "MIC", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.quantitativeData.percentileValue, " mg/l")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Disc Diffusion)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Disc Diffusion")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize))));
+          key: value.type.identifier
+        }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Susceptible"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.value) * 100), "%", ' ', value.susceptible !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "(N=", value.susceptible, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "95% Confidence Interval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.confidenceInterval[1]) * 100), "\u2013", Math.round((1 - value.confidenceInterval[0]) * 100), "%")), value.intermediate !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Proportion Intermediate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.intermediate / value.sampleSize * 100), "%", ' ', "(N=", value.intermediate, ")")), value.resistant !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Proportion Resistant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.resistant / value.sampleSize * 100), "%", ' ', "(N=", value.resistant, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.sampleSize))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Microdilution)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Microdilution")), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "MIC", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.quantitativeData.percentileValue, " mg/l")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize)), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          data: value.quantitativeData.slots.slots,
+          xAxisLabel: "MIC (mg/l)",
+          mic90: value.quantitativeData.percentileValue
+        })), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Disc Diffusion)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Disc Diffusion")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize)), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          data: value.quantitativeData.slots.slots,
+          xAxisLabel: "DD (mm)",
+          scale: "log"
+        })));
       })))));
     }
   }]);
 
   return DrawerResistanceContent;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component)) || _class;
+
+
+
+/***/ }),
+
+/***/ "./www/src/js/components/drawer/Histogram.jsx":
+/*!****************************************************!*\
+  !*** ./www/src/js/components/drawer/Histogram.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Histogram; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+var _class, _class2, _temp;
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+
+
+
+
+var Histogram = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class = (_class2 = (_temp = /*#__PURE__*/function (_React$Component) {
+  _inherits(Histogram, _React$Component);
+
+  var _super = _createSuper(Histogram);
+
+  function Histogram() {
+    var _this;
+
+    _classCallCheck(this, Histogram);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.height = 400;
+    _this.width = 400;
+    _this.yAxisLabelsWidth = 70;
+    _this.xAxisLabelsHeight = 50;
+    _this.gapBetweenBars = 10;
+    _this.fontSize = 14;
+    _this.tickWidth = 6;
+    return _this;
+  }
+
+  _createClass(Histogram, [{
+    key: "getTicks",
+    value: function getTicks(maxValue, logScale) {
+      if (logScale) {
+        var maxLogValue = Math.ceil(Math.log2(this.xAxisMax));
+        return Array.from({
+          length: 6
+        }).map(function (item, index, array) {
+          return Math.pow(2, maxLogValue - array.length + index + 1);
+        });
+      } // Division factor: By what do we have to divide value in order to get a one-digit number
+      // (between 1 and 10)?
+
+
+      var divisionFactor = Math.pow(10, Math.floor(Math.log10(maxValue)));
+      var oneDigit = maxValue / divisionFactor; // Define tick size for the number between 0 and 10, then multiply back to orignal again
+
+      var tickSizes = [0.1, 0.2, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1];
+      var normalizedTickSize = tickSizes[Math.floor(oneDigit)];
+      var tickSize = normalizedTickSize * divisionFactor; // + 1: To add 0 tick
+
+      var amountOfTicks = Math.floor(maxValue / tickSize) + 1;
+      return Array.from({
+        length: amountOfTicks
+      }).map(function (item, index) {
+        return index * tickSize;
+      });
+    }
+  }, {
+    key: "getXPosition",
+    value: function getXPosition(value) {
+      if (this.props.scale === 'log') {
+        var maxLogValue = Math.ceil(Math.log2(this.xAxisMax));
+        var xScale = this.xAxisWidth / maxLogValue;
+        return this.yAxisLabelsWidth + Math.log2(value) * xScale;
+      }
+
+      return this.yAxisLabelsWidth + value * (this.xAxisWidth / this.xAxisMax);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "histogram"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        className: "histogram__chart",
+        viewBox: "0 0 ".concat(this.width, " ").concat(this.height)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: this.yAxisLabelsWidth,
+        y1: 0,
+        x2: this.yAxisLabelsWidth,
+        y2: this.height - this.xAxisLabelsHeight,
+        className: "histogram__axis"
+      }), this.getYAxisLabels.map(function (label, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+          key: label
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+          x: _this2.yAxisLabelsWidth - 10,
+          y: _this2.height - _this2.xAxisLabelsHeight - label * _this2.yScaleFactor + _this2.fontSize / 2,
+          className: "histogram__axisLabel",
+          textAnchor: "end"
+        }, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+          x1: _this2.yAxisLabelsWidth - _this2.tickWidth,
+          y1: _this2.height - _this2.xAxisLabelsHeight - label * _this2.yScaleFactor,
+          x2: _this2.yAxisLabelsWidth,
+          y2: _this2.height - _this2.xAxisLabelsHeight - label * _this2.yScaleFactor,
+          className: "histogram__axisTick"
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+        transform: "translate(".concat(this.fontSize, ", ").concat((this.height - this.xAxisLabelsHeight) / 2, ")")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+        className: "histogram__axisLegend histogram__axisLegend-y",
+        textAnchor: "middle"
+      }, "Number of Isolates (N)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: this.yAxisLabelsWidth,
+        y1: this.height - this.xAxisLabelsHeight,
+        x2: this.width,
+        y2: this.height - this.xAxisLabelsHeight,
+        className: "histogram__axis"
+      }), this.getXAxisLabels.map(function (label, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+          key: label
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+          x: _this2.getXPosition(label),
+          y: _this2.height - _this2.xAxisLabelsHeight + _this2.fontSize + _this2.tickWidth,
+          className: "histogram__axisLabel",
+          textAnchor: "middle"
+        }, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+          className: "histogram__axisTick",
+          x1: _this2.getXPosition(label),
+          y1: _this2.height - _this2.xAxisLabelsHeight,
+          x2: _this2.getXPosition(label),
+          y2: _this2.height - _this2.xAxisLabelsHeight + _this2.tickWidth
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+        className: "histogram__axisLegend",
+        textAnchor: "middle",
+        y: this.height - this.fontSize / 2,
+        x: this.yAxisLabelsWidth + (this.width - this.yAxisLabelsWidth) / 2 + 8
+      }, this.props.xAxisLabel)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, this.sortedSlots.map(function (slot, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+          key: slot.fromValue,
+          x: _this2.getXPosition(slot.fromValue),
+          width: _this2.getXPosition(slot.toValue) - _this2.getXPosition(slot.fromValue),
+          y: _this2.height - _this2.xAxisLabelsHeight - slot.sampleCount * _this2.yScaleFactor,
+          height: slot.sampleCount * _this2.yScaleFactor,
+          className: "histogram__bar"
+        });
+      }), this.props.mic90 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        className: "histogram__mic90Line",
+        x1: this.getXPosition(this.props.mic90),
+        y1: 0,
+        x2: this.getXPosition(this.props.mic90),
+        y2: this.height - this.xAxisLabelsHeight,
+        strokeDasharray: "4"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+        className: "histogram__mic90Text",
+        x: this.getXPosition(this.props.mic90),
+        y: this.fontSize,
+        textAnchor: "middle"
+      }, "MIC90")))));
+    }
+  }, {
+    key: "yAxisMax",
+    get: function get() {
+      return this.props.data.reduce(function (prev, item) {
+        return Math.max(prev, item.sampleCount);
+      }, 0);
+    }
+  }, {
+    key: "yScaleFactor",
+    get: function get() {
+      // 0.95: Don't touch the sky
+      var availableHeight = this.height * 0.95 - this.xAxisLabelsHeight;
+      return availableHeight / this.yAxisMax;
+    }
+  }, {
+    key: "xAxisMax",
+    get: function get() {
+      return this.sortedSlots.slice().pop().toValue;
+    }
+  }, {
+    key: "xAxisWidth",
+    get: function get() {
+      // 0.95: Make sure we don't touch the right end; especially with axis labels that are
+      // centered
+      return this.width * 0.95 - this.yAxisLabelsWidth;
+    }
+  }, {
+    key: "sortedSlots",
+    get: function get() {
+      return this.props.data.slice().sort(function (a, b) {
+        return a.fromValue - b.fromValue;
+      });
+    }
+  }, {
+    key: "getXAxisLabels",
+    get: function get() {
+      return this.getTicks(this.xAxisMax, this.props.scale === 'log');
+    }
+  }, {
+    key: "getYAxisLabels",
+    get: function get() {
+      return this.getTicks(this.yAxisMax, false);
+    }
+  }]);
+
+  return Histogram;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), _temp), (_applyDecoratedDescriptor(_class2.prototype, "yAxisMax", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "yAxisMax"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "yScaleFactor", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "yScaleFactor"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "xAxisMax", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "xAxisMax"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "xAxisWidth", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "xAxisWidth"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "sortedSlots", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "sortedSlots"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "getXAxisLabels", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "getXAxisLabels"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "getYAxisLabels", [mobx__WEBPACK_IMPORTED_MODULE_2__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "getYAxisLabels"), _class2.prototype)), _class2)) || _class;
 
 
 
@@ -66803,13 +67091,12 @@ var MatrixLoadingOverlay = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["obser
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../helpers/svgPolyfill */ "./www/src/js/helpers/svgPolyfill.js");
-/* harmony import */ var _helpers_getVisibilityClassModifier__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../helpers/getVisibilityClassModifier */ "./www/src/js/helpers/getVisibilityClassModifier.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
+/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/svgPolyfill */ "./www/src/js/helpers/svgPolyfill.js");
+/* harmony import */ var _helpers_getVisibilityClassModifier__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../helpers/getVisibilityClassModifier */ "./www/src/js/helpers/getVisibilityClassModifier.js");
 var _class, _class2, _temp;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66842,10 +67129,9 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 
 
+var log = debug__WEBPACK_IMPORTED_MODULE_1___default()('infect:ResistanceComponent');
 
-var log = debug__WEBPACK_IMPORTED_MODULE_2___default()('infect:ResistanceComponent');
-
-var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_class = (_class2 = (_temp = /*#__PURE__*/function (_React$Component) {
+var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = (_class2 = (_temp = /*#__PURE__*/function (_React$Component) {
   _inherits(Resistance, _React$Component);
 
   var _super = _createSuper(Resistance);
@@ -66878,7 +67164,11 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
   }, {
     key: "_handleClick",
     value: function _handleClick() {
-      this.props.drawerViewModel.setContent(this.props.resistance.resistance);
+      var drawer = this.props.drawerViewModel;
+      var sameValue = drawer.content === this.props.resistance.resistance;
+      var isOpen = drawer.isOpen;
+      if (sameValue && isOpen) return drawer.close();
+      if (sameValue && !isOpen) return drawer.open();else drawer.setContent(this.props.resistance.resistance);
     }
   }, {
     key: "render",
@@ -66908,7 +67198,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
           fill: this.props.resistance.fontColor,
           dominantBaseline: "central",
           className: "resistanceMatrix__resistanceText",
-          dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_5__["supportsDominantBaseline"])('-2', '0.35em')
+          dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_4__["supportsDominantBaseline"])('-2', '0.35em')
         }, this.props.resistance.displayValue)))
       );
     }
@@ -66943,7 +67233,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
       // and therefore won't call an update.
 
       this.transformation;
-      var modifier = Object(_helpers_getVisibilityClassModifier__WEBPACK_IMPORTED_MODULE_6__["default"])(visible, this._wasVisible);
+      var modifier = Object(_helpers_getVisibilityClassModifier__WEBPACK_IMPORTED_MODULE_5__["default"])(visible, this._wasVisible);
       this._wasVisible = visible;
       return modifier;
     }
@@ -66959,7 +67249,7 @@ var Resistance = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["observer"])(_cl
   }]);
 
   return Resistance;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), _temp), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "classModifier", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "classModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "opacity", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "opacity"), _class2.prototype)), _class2)) || _class;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), _temp), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [mobx__WEBPACK_IMPORTED_MODULE_3__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "classModifier", [mobx__WEBPACK_IMPORTED_MODULE_3__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "classModifier"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "opacity", [mobx__WEBPACK_IMPORTED_MODULE_3__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "opacity"), _class2.prototype)), _class2)) || _class;
 
 /* harmony default export */ __webpack_exports__["default"] = (Resistance);
 
@@ -66982,6 +67272,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js");
 /* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @infect/frontend-logic */ "../frontend-logic/index.js");
 var _class, _class2;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -67007,6 +67298,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
 
 
 
@@ -67061,15 +67353,15 @@ var ResistanceDetail = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"
         dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_3__["supportsDominantBaseline"])('-0.4em', '-0.4em'),
         dx: "2",
         className: "resistanceMatrix__resistanceDetailValueText"
-      }, this.props.resistance.displayValue, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tspan", {
+      }, this.props.resistance.displayValue, this.mostPreciseResistanceType === 'qualitative' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tspan", {
         className: "resistanceMatrix__resistanceDetailValuePercentSign"
-      }, "%")), this.props.resistance.mostPreciseValue.confidenceInterval !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+      }, "%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
         fill: this.props.resistance.fontColor,
         dominantBaseline: "hanging",
         textAnchor: "middle",
         dy: Object(_helpers_svgPolyfill__WEBPACK_IMPORTED_MODULE_3__["supportsDominantBaseline"])('-0.4em', '0.5em'),
         className: "resistanceMatrix__resistanceDetailSampleSizeText"
-      }, "CI ", Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[1]) * 100), "\u2013", Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[0]) * 100), "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
+      }, this.mostPreciseResistanceType === 'qualitative' && this.props.resistance.mostPreciseValue.confidenceInterval !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "CI ", Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[1]) * 100), "\u2013", Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[0]) * 100), "%"), this.mostPreciseResistanceType === 'mic' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "MIC90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("text", {
         fill: this.props.resistance.fontColor,
         dominantBaseline: "hanging",
         textAnchor: "middle",
@@ -67087,10 +67379,26 @@ var ResistanceDetail = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"
       var top = Math.max(correctTop, this._radius);
       return "translate(".concat(this.props.resistance.xPosition.left + this.props.defaultRadius, ", \n\t\t\t").concat(top, ")");
     }
+    /**
+     * Returns the key of the most precise resistance type, as defined in resistanceTypes
+     * @returns {string}
+     */
+
+  }, {
+    key: "mostPreciseResistanceType",
+    get: function get() {
+      var type = this.props.resistance.mostPreciseValue.type;
+      var types = Object.keys(_infect_frontend_logic__WEBPACK_IMPORTED_MODULE_6__["resistanceTypes"]);
+
+      for (var _i = 0, _types = types; _i < _types.length; _i++) {
+        var resistanceType = _types[_i];
+        if (type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_6__["resistanceTypes"][resistanceType]) return resistanceType;
+      }
+    }
   }]);
 
   return ResistanceDetail;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype)), _class2)) || _class;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component), (_applyDecoratedDescriptor(_class2.prototype, "transformation", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "transformation"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "mostPreciseResistanceType", [mobx__WEBPACK_IMPORTED_MODULE_4__["computed"]], Object.getOwnPropertyDescriptor(_class2.prototype, "mostPreciseResistanceType"), _class2.prototype)), _class2)) || _class;
 
 /* harmony default export */ __webpack_exports__["default"] = (ResistanceDetail);
 
