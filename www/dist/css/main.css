@@ -1932,15 +1932,31 @@ matrixheader {
   padding: 22px 30px;
 }
 
+.drawer.resistance .drawer__section--mic, .drawer.resistance .drawer__section--discDiffusion {
+  padding-bottom: 0;
+}
+
 .drawer.resistance .drawer__section h2 {
   font-size: 17px;
   line-height: 1.1;
-  margin: 0 0 18px 0;
+  margin: 0 0 13px 0;
 }
 
 .drawer.resistance .drawer__header {
   padding: 56px 30px 22px;
   background-color: #fcfcf7;
+}
+
+.drawer.resistance .drawer__values {
+  font-size: 14px;
+}
+
+.drawer.resistance .drawer__value--bold {
+  font-weight: bold;
+}
+
+.drawer.resistance .drawer__value-value {
+  padding-left: 24px;
 }
 
 .diagnosis-text {

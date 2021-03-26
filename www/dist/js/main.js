@@ -60720,36 +60720,91 @@ let DrawerResistanceContent = Object(mobx_react__WEBPACK_IMPORTED_MODULE_3__["ob
       className: "drawer__scrollable-inner"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "drawer__header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Erkl\xE4rung, wieso welche Daten angezeigt werden (Text f\xFCr alle Empfindlichkeiten gleich; Englisch).")), this.props.resistance.getValuesByPrecision().map(value => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "drawer__section",
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Erkl\xE4rung, wieso welche Daten angezeigt werden (Text f\xFCr alle Empfindlichkeiten gleich; Englisch).")), this.props.resistance.getValuesByPrecision().map(value =>
+    /*#__PURE__*/
+    // <div className="drawer__section" key={value.type.identifier}>
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: `drawer__section drawer__section--${value.type.identifier}`,
       key: value.type.identifier
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "drawer__section-inner"
-    }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].qualitative && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Qualitative Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "drawer__values"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value drawer__value--bold"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Susceptible"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.value) * 100), "%", ' ', value.susceptible !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "(N=", value.susceptible, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Susceptible"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, Math.round((1 - value.value) * 100), "%", ' ', value.susceptible !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "(N=", value.susceptible, ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "95% Confidence Interval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round((1 - value.confidenceInterval[1]) * 100), "\u2013", Math.round((1 - value.confidenceInterval[0]) * 100), "%")), value.intermediate !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "95% Confidence Interval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, Math.round((1 - value.confidenceInterval[1]) * 100), "\u2013", Math.round((1 - value.confidenceInterval[0]) * 100), "%")), value.intermediate !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Proportion Intermediate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.intermediate / value.sampleSize * 100), "%", ' ', "(N=", value.intermediate, ")")), value.resistant !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Proportion Intermediate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, Math.round(value.intermediate / value.sampleSize * 100), "%", ' ', "(N=", value.intermediate, ")")), value.resistant !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Proportion Resistant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Math.round(value.resistant / value.sampleSize * 100), "%", ' ', "(N=", value.resistant, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Proportion Resistant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, Math.round(value.resistant / value.sampleSize * 100), "%", ' ', "(N=", value.resistant, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value drawer__value--bold"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.sampleSize))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Microdilution)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, value.sampleSize)))), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].mic && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Microdilution)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "drawer__values"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value drawer__value--bold"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Microdilution")), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, "Microdilution")), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "MIC", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, value.quantitativeData.percentileValue, " mg/l")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "MIC", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, "\u231B")), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize)), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, "MIC", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, "90")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, value.quantitativeData.percentileValue, " mg/l")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-label"
+    }, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, "N=", value.sampleSize))), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
       data: value.quantitativeData.slots.slots,
       xAxisLabel: "MIC (mg/l)",
       mic90: value.quantitativeData.percentileValue
-    })), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Disc Diffusion)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    })), value.type === _infect_frontend_logic__WEBPACK_IMPORTED_MODULE_2__["resistanceTypes"].discDiffusion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Quantitative Data (Disc Diffusion)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "drawer__values"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value drawer__value--bold"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Disc Diffusion")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "Testing Method"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, "Disc Diffusion")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "drawer__value"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       className: "drawer__value-label"
-    }, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "N=", value.sampleSize)), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, "Number of Isolates (N)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "drawer__value-value"
+    }, "N=", value.sampleSize))), value.quantitativeData.percentileValue === undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u231B"), value.quantitativeData.percentileValue !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Histogram_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
       data: value.quantitativeData.slots.slots,
       xAxisLabel: "DD (mm)",
       scale: "log"
