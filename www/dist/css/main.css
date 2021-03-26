@@ -1372,8 +1372,9 @@ address {
   top: 1rem;
   width: 2rem;
   height: 2rem;
+  padding-bottom: 4px;
   border-radius: 100%;
-  line-height: 1;
+  line-height: 10px;
   transition: background-color 100ms linear;
   -webkit-transition: background-color 100ms linear;
   -moz-transition: background-color 100ms linear;
@@ -1479,7 +1480,6 @@ address {
   position: relative;
   width: 170px;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   background-color: transparent;
   background-image: linear-gradient(45deg, transparent 50%, #FFFFFF 50%), linear-gradient(135deg, #FFFFFF 50%, transparent 50%);
@@ -1621,11 +1621,13 @@ matrixheader {
 
 .resistanceMatrix__body {
   position: relative;
+  z-index: 50;
   transition: height 0.3s ease-in-out 0.2s;
 }
 
 .resistanceMatrix__header {
   position: fixed;
+  z-index: 70;
 }
 
 .resistanceMatrix__bacteriumLabelText {
@@ -1820,8 +1822,7 @@ matrixheader {
 .drawer__teaser-subtitle {
   font-size: 15px;
   line-height: 1.2;
-  -ms-writing-mode: tb-rl;
-      writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
   -webkit-text-orientation: mixed;
           text-orientation: mixed;
   transform: rotate(180deg);
@@ -1832,8 +1833,7 @@ matrixheader {
   font-size: 18px;
   font-weight: bold;
   line-height: 1.2;
-  -ms-writing-mode: tb-rl;
-      writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
   -webkit-text-orientation: mixed;
           text-orientation: mixed;
   transform: rotate(180deg);
@@ -1898,6 +1898,68 @@ matrixheader {
 
 .drawer__therapies-inner {
   margin-left: 2rem;
+}
+
+.drawer.resistance .button--close-drawer {
+  color: #000000;
+}
+
+.drawer.resistance .button--close-drawer:hover {
+  background-color: #f5f5ef;
+}
+
+.drawer.resistance .drawer__teaser::after {
+  background-color: #e1e0d5;
+}
+
+.drawer.resistance .drawer__teaser-flap {
+  color: #000000;
+  background-color: #e1e0d5;
+}
+
+.drawer.resistance .drawer__scrollable {
+  background-color: #fcfcf7;
+}
+
+.drawer.resistance .drawer__fixed {
+  background-color: #e1e0d5;
+}
+
+.drawer.resistance .drawer__fixed h1 {
+  margin: 0 1rem 0 0;
+  max-width: 90%;
+  color: #000000;
+}
+
+.drawer.resistance .drawer__section {
+  padding: 22px 30px;
+}
+
+.drawer.resistance .drawer__section--mic, .drawer.resistance .drawer__section--discDiffusion {
+  padding-bottom: 0;
+}
+
+.drawer.resistance .drawer__section h2 {
+  font-size: 17px;
+  line-height: 1.1;
+  margin: 0 0 13px 0;
+}
+
+.drawer.resistance .drawer__header {
+  padding: 56px 30px 22px;
+  background-color: #fcfcf7;
+}
+
+.drawer.resistance .drawer__values {
+  font-size: 14px;
+}
+
+.drawer.resistance .drawer__value--bold {
+  font-weight: bold;
+}
+
+.drawer.resistance .drawer__value-value {
+  padding-left: 24px;
 }
 
 .diagnosis-text {
@@ -2158,7 +2220,6 @@ infooverlaybutton {
   overflow: auto;
   -webkit-hyphens: auto;
   -khtml-hyphens: auto;
-  -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
   background-color: #616161;
@@ -2471,7 +2532,6 @@ infooverlaybutton {
   font-size: 11pt;
   -webkit-appearance: none;
   -khtml-appearance: none;
-  -moz-appearance: none;
   -o-appearance: none;
   appearance: none;
   border: 0;
@@ -2669,7 +2729,6 @@ disclaimer {
 .introjs-tooltip__layout--row > p {
   -webkit-hyphens: auto;
   -khtml-hyphens: auto;
-  -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
 }
@@ -2698,7 +2757,6 @@ disclaimer {
 .introjs-tooltip__layout--column > p {
   -webkit-hyphens: auto;
   -khtml-hyphens: auto;
-  -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
 }

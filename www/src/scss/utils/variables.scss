@@ -34,6 +34,9 @@ $color--black:              #000000;
 $color--ash:                #c5c3b2;
 $color--moon-mist:          #d7d5c4;
 $color--quill-gray:         #d3d2cd;
+$color--satin-linen:        #e1e0d5;
+$color--cararra:            #f5f5ef;
+$color--ecru-white:         #fcfcf7;
 
 // (Yellowish) greens == accent colors – use neutral (tenant-independant) tones to check if
 // everything is overwritten by tenant colors.
@@ -51,6 +54,9 @@ $color--jelly-bean:         #2b78b3;
 
 // Reds (for errors)
 $color--guardsman-red:      #d60000;
+
+// Derived colors
+$color--text:  $color--black;
 
 
 // Buttons
