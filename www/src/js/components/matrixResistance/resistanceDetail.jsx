@@ -25,18 +25,6 @@ class ResistanceDetail extends React.Component {
 			${ top })`;
 	}
 
-	/**
-	 * Returns the key of the most precise resistance type, as defined in resistanceTypes
-	 * @returns {string}
-	 */
-	@computed get mostPreciseResistanceType() {
-		const type = this.props.resistance.mostPreciseValue.type;
-		const types = Object.keys(resistanceTypes);
-		for (const resistanceType of types) {
-			if (type === resistanceTypes[resistanceType]) return resistanceType;
-		}
-	}
-
 	render() {
 		return(
 			<g transform={ this.transformation } className="resistanceMatrix__resistanceDetail">
@@ -65,7 +53,7 @@ class ResistanceDetail extends React.Component {
 					dy={ supportsDominantBaseline('-0.4em', '-0.4em')} dx="2"
 					className="resistanceMatrix__resistanceDetailValueText">
 					{this.props.resistance.displayValue}
-					{this.mostPreciseResistanceType === 'qualitative' &&
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'qualitative' &&
 						<tspan className="resistanceMatrix__resistanceDetailValuePercentSign">%</tspan>
 					}
 				</text>
@@ -75,17 +63,18 @@ class ResistanceDetail extends React.Component {
 					dy={ supportsDominantBaseline('-0.4em', '0.5em')}
 					className="resistanceMatrix__resistanceDetailSampleSizeText"
 				>
-					{this.mostPreciseResistanceType === 'qualitative' &&
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'qualitative' &&
 						this.props.resistance.mostPreciseValue.confidenceInterval !== undefined &&
 						<>
 							CI { Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[1]) * 100) }–
 							{ Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[0]) * 100) }%
 						</>
 					}
-					{this.mostPreciseResistanceType === 'mic' &&
-						<>
-							MIC90
-						</>
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'mic' &&
+						'MIC90'
+					}
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'discDiffusion' &&
+						'Disc Diff.'
 					}
 				</text>
 
