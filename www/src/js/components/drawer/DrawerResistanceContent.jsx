@@ -41,113 +41,114 @@ export default @observer class DrawerResistanceContent extends React.Component {
                 <div className="drawer__scrollable">
                     <div className="drawer__scrollable-inner">
 
-                        <div className="drawer__body">
-
-                            <p>Erklärung, wieso welche Daten angezeigt werden (Text für alle Empfindlichkeiten gleich; Englisch).</p>
+                            <div className="drawer__header">
+                                <p>Erklärung, wieso welche Daten angezeigt werden (Text für alle Empfindlichkeiten gleich; Englisch).</p>
+                            </div>
 
                             {this.props.resistance.getValuesByPrecision().map(value => (
                                 <div className="drawer__section" key={value.type.identifier}>
-                                    {value.type === resistanceTypes.qualitative &&
-                                        <>
-                                            <h2>Qualitative Data</h2>
-                                            <p>
-                                                <span>Susceptible</span>
-                                                <span>
-                                                    {Math.round((1 - value.value) * 100)}%{' '}
-                                                    {value.susceptible !== undefined &&
-                                                        <>(N={value.susceptible})</>
-                                                    }
-                                                </span>
-                                            </p>
-                                            <p>
-                                                <span>95% Confidence Interval</span>
-                                                <span>
-                                                    {Math.round((1 - value.confidenceInterval[1]) * 100)}–
-                                                    {Math.round((1 - value.confidenceInterval[0]) * 100)}%
-                                                </span>
-                                            </p>
-                                            {value.intermediate !== undefined &&
+                                    <div className="drawer__section-inner">
+                                        {value.type === resistanceTypes.qualitative &&
+                                            <>
+                                                <h2>Qualitative Data</h2>
                                                 <p>
-                                                    <span>Proportion Intermediate</span>
+                                                    <span className="drawer__value-label">Susceptible</span>
                                                     <span>
-                                                        {Math.round(value.intermediate / value.sampleSize * 100)}%{' '}
-                                                        (N={value.intermediate})
+                                                        {Math.round((1 - value.value) * 100)}%{' '}
+                                                        {value.susceptible !== undefined &&
+                                                            <>(N={value.susceptible})</>
+                                                        }
                                                     </span>
                                                 </p>
-                                            }
-                                            {value.resistant !== undefined &&
                                                 <p>
-                                                    <span>Proportion Resistant</span>
+                                                    <span className="drawer__value-label">95% Confidence Interval</span>
                                                     <span>
-                                                        {Math.round(value.resistant / value.sampleSize * 100)}%{' '}
-                                                        (N={value.resistant})
+                                                        {Math.round((1 - value.confidenceInterval[1]) * 100)}–
+                                                        {Math.round((1 - value.confidenceInterval[0]) * 100)}%
                                                     </span>
                                                 </p>
-                                            }
-                                            <p>
-                                                <span>Number of Isolates (N)</span>
-                                                <span>{value.sampleSize}</span>
-                                            </p>
-                                        </>
-                                    }
-                                    {value.type === resistanceTypes.mic &&
-                                        <>
-                                            <h2>Quantitative Data (Microdilution)</h2>
-                                            <p>
-                                                <span>Testing Method</span>
-                                                <span>Microdilution</span>
-                                            </p>
-                                            {value.quantitativeData.percentileValue === undefined &&
-                                                <p>⌛</p>
-                                            }
-                                            {value.quantitativeData.percentileValue !== undefined &&
+                                                {value.intermediate !== undefined &&
+                                                    <p>
+                                                        <span className="drawer__value-label">Proportion Intermediate</span>
+                                                        <span>
+                                                            {Math.round(value.intermediate / value.sampleSize * 100)}%{' '}
+                                                            (N={value.intermediate})
+                                                        </span>
+                                                    </p>
+                                                }
+                                                {value.resistant !== undefined &&
+                                                    <p>
+                                                        <span className="drawer__value-label">Proportion Resistant</span>
+                                                        <span>
+                                                            {Math.round(value.resistant / value.sampleSize * 100)}%{' '}
+                                                            (N={value.resistant})
+                                                        </span>
+                                                    </p>
+                                                }
                                                 <p>
-                                                    <span>MIC<sub>90</sub></span>
-                                                    <span>{value.quantitativeData.percentileValue} mg/l</span>
+                                                    <span className="drawer__value-label">Number of Isolates (N)</span>
+                                                    <span>{value.sampleSize}</span>
                                                 </p>
-                                            }
-                                            <p>
-                                                <span>Number of Isolates (N)</span>
-                                                <span>N={value.sampleSize}</span>
-                                            </p>
-                                            {value.quantitativeData.percentileValue === undefined &&
-                                                <p>⌛</p>
-                                            }
-                                            {value.quantitativeData.percentileValue !== undefined &&
-                                                <Histogram
-                                                    data={value.quantitativeData.slots.slots}
-                                                    xAxisLabel="MIC (mg/l)"
-                                                    mic90={value.quantitativeData.percentileValue}
-                                                />
-                                            }
-                                        </>
-                                    }
-                                    {value.type === resistanceTypes.discDiffusion &&
-                                        <>
-                                            <h2>Quantitative Data (Disc Diffusion)</h2>
-                                            <p>
-                                                <span>Testing Method</span>
-                                                <span>Disc Diffusion</span>
-                                            </p>
-                                            <p>
-                                                <span>Number of Isolates (N)</span>
-                                                <span>N={value.sampleSize}</span>
-                                            </p>
-                                            {value.quantitativeData.percentileValue === undefined &&
-                                                <p>⌛</p>
-                                            }
-                                            {value.quantitativeData.percentileValue !== undefined &&
-                                                <Histogram
-                                                    data={value.quantitativeData.slots.slots}
-                                                    xAxisLabel="DD (mm)"
-                                                    scale="log"
-                                                />
-                                            }
-                                        </>
-                                    }
+                                            </>
+                                        }
+                                        {value.type === resistanceTypes.mic &&
+                                            <>
+                                                <h2>Quantitative Data (Microdilution)</h2>
+                                                <p>
+                                                    <span className="drawer__value-label">Testing Method</span>
+                                                    <span>Microdilution</span>
+                                                </p>
+                                                {value.quantitativeData.percentileValue === undefined &&
+                                                    <p>⌛</p>
+                                                }
+                                                {value.quantitativeData.percentileValue !== undefined &&
+                                                    <p>
+                                                        <span className="drawer__value-label">MIC<sub>90</sub></span>
+                                                        <span>{value.quantitativeData.percentileValue} mg/l</span>
+                                                    </p>
+                                                }
+                                                <p>
+                                                    <span className="drawer__value-label">Number of Isolates (N)</span>
+                                                    <span>N={value.sampleSize}</span>
+                                                </p>
+                                                {value.quantitativeData.percentileValue === undefined &&
+                                                    <p>⌛</p>
+                                                }
+                                                {value.quantitativeData.percentileValue !== undefined &&
+                                                    <Histogram
+                                                        data={value.quantitativeData.slots.slots}
+                                                        xAxisLabel="MIC (mg/l)"
+                                                        mic90={value.quantitativeData.percentileValue}
+                                                    />
+                                                }
+                                            </>
+                                        }
+                                        {value.type === resistanceTypes.discDiffusion &&
+                                            <>
+                                                <h2>Quantitative Data (Disc Diffusion)</h2>
+                                                <p>
+                                                    <span className="drawer__value-label">Testing Method</span>
+                                                    <span>Disc Diffusion</span>
+                                                </p>
+                                                <p>
+                                                    <span className="drawer__value-label">Number of Isolates (N)</span>
+                                                    <span>N={value.sampleSize}</span>
+                                                </p>
+                                                {value.quantitativeData.percentileValue === undefined &&
+                                                    <p>⌛</p>
+                                                }
+                                                {value.quantitativeData.percentileValue !== undefined &&
+                                                    <Histogram
+                                                        data={value.quantitativeData.slots.slots}
+                                                        xAxisLabel="DD (mm)"
+                                                        scale="log"
+                                                    />
+                                                }
+                                            </>
+                                        }
+                                    </div>
                                 </div>
                             ))}
-                        </div>
 
                     </div>
 

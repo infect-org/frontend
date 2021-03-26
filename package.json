@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/infect-org/issues/issues"
   },
-  "dependencies": {},
   "devDependencies": {
     "@infect/frontend-logic": "^5.0.1",
     "@joinbox/build-task": "^0.5.1",

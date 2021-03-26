@@ -213,6 +213,59 @@
     }
   }
 
+  &.resistance {
+
+    .button--close-drawer {
+      color: $color--text;
+
+      &:hover {
+        background-color: $color--cararra;
+      }
+    }
+
+    .drawer {
+      &__teaser {
+        &::after {
+          background-color: $color--satin-linen;
+        }
+
+        &-flap {
+          color: $color--text;
+          background-color: $color--satin-linen;
+        }
+      }
+
+      &__scrollable {
+        background-color: $color--ecru-white;
+      }
+
+      &__fixed {
+        background-color: $color--satin-linen;
+
+        h1 {
+          margin: 0 1rem 0 0;
+          max-width: 90%;
+          color: $color--text;
+        }
+      }
+
+      &__section {
+        padding: 22px 30px;
+
+        h2 {
+          font-size: 17px;
+          line-height: 1.1;
+          margin: 0 0 18px 0;
+        }
+      }
+
+      &__header {
+        padding: 56px 30px 22px;
+        background-color: $color--ecru-white;
+      }
+    }
+  }
+
 }
 
 
