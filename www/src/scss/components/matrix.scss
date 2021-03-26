@@ -101,11 +101,13 @@ matrixheader {
 
     &__body {
         position: relative;
+        z-index: 50;
         transition: height calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
     }
 
     &__header {
         position: fixed;
+        z-index: 70;
     }
 
     &__bacteriumLabelText {

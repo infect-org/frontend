@@ -1620,11 +1620,13 @@ matrixheader {
 
 .resistanceMatrix__body {
   position: relative;
+  z-index: 50;
   transition: height 0.3s ease-in-out 0.2s;
 }
 
 .resistanceMatrix__header {
   position: fixed;
+  z-index: 70;
 }
 
 .resistanceMatrix__bacteriumLabelText {
