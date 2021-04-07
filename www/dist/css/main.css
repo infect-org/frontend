@@ -1767,7 +1767,7 @@ matrixheader {
 .drawer__inner p {
   margin: 0 0 8px 0;
   font-size: 14px;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 .drawer.hidden .drawer__teaser {
@@ -1922,7 +1922,13 @@ matrixheader {
 }
 
 .drawer.resistance .drawer__scrollable {
+  background: linear-gradient(#fcfcf7 30%, rgba(252, 252, 247, 0)), linear-gradient(rgba(252, 252, 247, 0), #fcfcf7 70%) 0 100%, radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+  background: linear-gradient(#fcfcf7 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), #fcfcf7 70%) 0 100%, radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
   background-color: #fcfcf7;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
 }
 
 .drawer.resistance .drawer__fixed {
@@ -1951,7 +1957,7 @@ matrixheader {
 
 .drawer.resistance .drawer__header {
   padding: 56px 30px 22px;
-  background-color: #fcfcf7;
+  background-color: transparent;
 }
 
 .drawer.resistance .drawer__values {

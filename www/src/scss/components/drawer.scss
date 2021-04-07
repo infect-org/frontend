@@ -55,7 +55,7 @@
     p {
       margin: 0 0 8px 0;
       font-size: 14px;
-      line-height: 1.35;
+      line-height: 1.45;
     }
 
   }
@@ -144,31 +144,7 @@
   &__scrollable {
     @include flex(1 1 auto);
     overflow: auto;
-
-    background:
-            /* Shadow covers */
-            linear-gradient($color--link-water 30%, rgba($color--link-water,0)),
-            linear-gradient(rgba($color--link-water,0), $color--link-water 70%) 0 100%,
-
-              /* Shadows */
-            radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
-            radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-    background:
-            /* Shadow covers */
-            linear-gradient($color--link-water 30%, rgba(255,255,255,0)),
-            linear-gradient(rgba(255,255,255,0), $color--link-water 70%) 0 100%,
-
-              /* Shadows */
-            radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
-            radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-    background-repeat: no-repeat;
-    background-color: $color--link-water;
-    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-
-    /* Opera doesn't support this in the shorthand */
-    background-attachment: local, local, scroll, scroll;
-
-
+    @include scroll-indicator($color--link-water);
   }
   &__scrollable-inner {
     padding-bottom: 60px;
@@ -236,7 +212,7 @@
       }
 
       &__scrollable {
-        background-color: $color--ecru-white;
+        @include scroll-indicator($color--ecru-white);
       }
 
       &__fixed {
@@ -266,7 +242,7 @@
 
       &__header {
         padding: 56px 30px 22px;
-        background-color: $color--ecru-white;
+        background-color: transparent;
       }
 
       &__values {
