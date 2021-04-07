@@ -1,6 +1,6 @@
 import React from 'react';
-import marked from 'marked';
-import { resistanceTypes } from '@infect/frontend-logic';
+import { computed } from 'mobx';
+import { resistanceTypes, filterTypes } from '@infect/frontend-logic';
 import { observer } from 'mobx-react';
 import Histogram from './Histogram.jsx';
 
@@ -15,6 +15,15 @@ export default @observer class DrawerResistanceContent extends React.Component {
         this.props.drawerViewModel.isOpen ?
             this.props.drawerViewModel.close() :
             this.props.drawerViewModel.open();
+    }
+
+    @computed get selectedPopulationFilters() {
+        return [
+            ...this.props.selectedFilters.getFiltersByType(filterTypes.hospitalStatus),
+            ...this.props.selectedFilters.getFiltersByType(filterTypes.animal),
+            ...this.props.selectedFilters.getFiltersByType(filterTypes.ageGroup),
+            ...this.props.selectedFilters.getFiltersByType(filterTypes.region),
+        ];
     }
 
     render() {
@@ -44,6 +53,19 @@ export default @observer class DrawerResistanceContent extends React.Component {
                             <div className="drawer__header">
                                 <p>Erklärung, wieso welche Daten angezeigt werden (Text für alle Empfindlichkeiten gleich; Englisch).</p>
                             </div>
+
+                            {this.selectedPopulationFilters.length > 0 &&
+                                <div className="drawer__section drawer__section--selectedFilters">
+                                    <h2>Data Filtered by</h2>
+                                    <ul>
+                                        {this.selectedPopulationFilters.map(filter => (
+                                            <li key={`${filter.property.niceValue}-${filter.niceValue}`}>
+                                                <span>{filter.niceValue}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
 
                             {this.props.resistance.getValuesByPrecision().map(value => (
                                 // <div className="drawer__section" key={value.type.identifier}>

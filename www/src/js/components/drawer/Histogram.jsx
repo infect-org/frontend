@@ -66,17 +66,23 @@ export default @observer class Histogram extends React.Component {
             .map((item, index) => index * tickSize)
             // JS fucks up numbers as usual; make them readable
             .map((item) => {
-                const numbersAfterPoint = item === 0 ? 0 : Math.max(0, Math.log10(item) * -1) + 1;
+                const numbersAfterPoint = item === 0 ? 0 : Math.max(0, Math.log10(item) * -1) + 2;
                 return parseFloat(item.toFixed(numbersAfterPoint));
             });
     }
 
     getXPosition(value) {
         if (this.props.scale === 'log') {
-            const maxLogValue = Math.ceil(Math.log2(this.xAxisMax));
+            const min = 0.001;
+            // 0 is not a good value, as log2(0) is Infinity; fake it.
+            if (value === 0) value = min;
+            // Make sure xAxisMax and xAxisMin are not 0; log2 of 0 is Infinity (therefore we use
+            // || 1 and || -1)
+            const maxLogValue = Math.ceil(Math.log2(this.xAxisMax || min));
             // If scale is log, values might be below 0 (Math.log2(0.5)) is e.g. -1
             // If xAxisMin > 1, use 0 to not start xAxis above 0
-            const minLogValue = Math.min(0, Math.floor(Math.log2(this.xAxisMin)));
+            const minLogValue = Math.min(0, Math.floor(Math.log2(this.xAxisMin || min)));
+            // If minLogValue === maxLogValue, we'll divide by 0
             const xScale = this.xAxisWidth / (maxLogValue - minLogValue);
             const result = this.yAxisLabelsWidth + (Math.log2(value) * xScale) - (minLogValue * xScale);
             return result;

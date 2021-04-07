@@ -229,6 +229,7 @@
         padding: 22px 30px;
 
         &--mic,
+        &--selectedFilters,
         &--discDiffusion {
           padding-bottom: 0;
         }
@@ -237,6 +238,21 @@
           font-size: 17px;
           line-height: 1.1;
           margin: 0 0 13px 0;
+        }
+
+        ul {
+          padding-left: 0;
+          list-style-type: '–';
+          list-style-position: inside;
+        }
+
+        li {
+          font-size: 14px;
+          line-height: 1.45;    
+
+          span {
+            padding-left: 8px;
+          }
         }
       }
 

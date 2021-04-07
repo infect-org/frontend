@@ -61,6 +61,7 @@ export default @observer class Drawer extends React.Component {
                     <DrawerResistanceContent
                         drawerViewModel={this.props.drawerViewModel}
                         resistance={this.props.drawerViewModel.content}
+                        selectedFilters={this.props.app.selectedFilters}
                     />
                 }
             </div>
