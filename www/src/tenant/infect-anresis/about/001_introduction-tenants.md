@@ -1,0 +1,1 @@
+INFECT is also available for [veterinary data](https://vet.infect.info).

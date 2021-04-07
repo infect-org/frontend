@@ -8,18 +8,16 @@ import urlConfig from './urlConfig.js';
  */
 export default function getURL(scope, endpoint) {
 
-    let baseURL = window.location.host;
+    let apiURL = `api.${window.location.host}`;
 
     // Let users chose tenant (only on dev environment). To do so, add e.g. ?host=vet.infect.info
     // to the URL
     if (window.location.hostname === 'localhost') {
         const customHost = /(\?|&)host=([^&]*)/.exec(window.location.search)
         if (customHost) {
-            baseURL = customHost[2];
+            apiURL = customHost[2];
         }
     }
-
-    const apiURL = `api.${baseURL}`;
 
     const scopeData = urlConfig.endpoints[scope];
     if (!scopeData) {

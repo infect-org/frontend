@@ -54,44 +54,46 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                             <>
                                                 <h2>Qualitative Data</h2>
                                                 <table className="drawer__values">
-                                                    <tr className="drawer__value drawer__value--bold">
-                                                        <td className="drawer__value-label">Susceptible</td>
-                                                        <td className="drawer__value-value">
-                                                            {Math.round((1 - value.value) * 100)}%{' '}
-                                                            {value.susceptible !== undefined &&
-                                                            <>(N={value.susceptible})</>
-                                                            }
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="drawer__value">
-                                                        <td className="drawer__value-label">95% Confidence Interval</td>
-                                                        <td className="drawer__value-value">
-                                                            {Math.round((1 - value.confidenceInterval[1]) * 100)}–
-                                                            {Math.round((1 - value.confidenceInterval[0]) * 100)}%
-                                                        </td>
-                                                    </tr>
-                                                    {value.intermediate !== undefined &&
-                                                        <tr className="drawer__value">
-                                                            <td className="drawer__value-label">Proportion Intermediate</td>
+                                                    <tbody>
+                                                        <tr className="drawer__value drawer__value--bold">
+                                                            <td className="drawer__value-label">Susceptible</td>
                                                             <td className="drawer__value-value">
-                                                                {Math.round(value.intermediate / value.sampleSize * 100)}%{' '}
-                                                                (N={value.intermediate})
+                                                                {Math.round((1 - value.value) * 100)}%{' '}
+                                                                {value.susceptible !== undefined &&
+                                                                <>(N={value.susceptible})</>
+                                                                }
                                                             </td>
                                                         </tr>
-                                                    }
-                                                    {value.resistant !== undefined &&
                                                         <tr className="drawer__value">
-                                                            <td className="drawer__value-label">Proportion Resistant</td>
+                                                            <td className="drawer__value-label">95% Confidence Interval</td>
                                                             <td className="drawer__value-value">
-                                                                {Math.round(value.resistant / value.sampleSize * 100)}%{' '}
-                                                                (N={value.resistant})
+                                                                {Math.round((1 - value.confidenceInterval[1]) * 100)}–
+                                                                {Math.round((1 - value.confidenceInterval[0]) * 100)}%
                                                             </td>
                                                         </tr>
-                                                    }
-                                                    <tr className="drawer__value drawer__value--bold">
-                                                        <td className="drawer__value-label">Number of Isolates (N)</td>
-                                                        <td className="drawer__value-value">{value.sampleSize}</td>
-                                                    </tr>
+                                                        {value.intermediate !== undefined &&
+                                                            <tr className="drawer__value">
+                                                                <td className="drawer__value-label">Proportion Intermediate</td>
+                                                                <td className="drawer__value-value">
+                                                                    {Math.round(value.intermediate / value.sampleSize * 100)}%{' '}
+                                                                    (N={value.intermediate})
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        {value.resistant !== undefined &&
+                                                            <tr className="drawer__value">
+                                                                <td className="drawer__value-label">Proportion Resistant</td>
+                                                                <td className="drawer__value-value">
+                                                                    {Math.round(value.resistant / value.sampleSize * 100)}%{' '}
+                                                                    (N={value.resistant})
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        <tr className="drawer__value drawer__value--bold">
+                                                            <td className="drawer__value-label">Number of Isolates (N)</td>
+                                                            <td className="drawer__value-value">{value.sampleSize}</td>
+                                                        </tr>
+                                                    </tbody>
                                                 </table>
                                             </>
                                         }
@@ -100,33 +102,35 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                             <>
                                                 <h2>Quantitative Data (Microdilution)</h2>
                                                 <table className="drawer__values">
-                                                    <tr className="drawer__value drawer__value--bold">
-                                                        <td className="drawer__value-label">Testing Method</td>
-                                                        <td className="drawer__value-value">Microdilution</td>
-                                                    </tr>
-                                                    {value.quantitativeData.percentileValue === undefined &&
-                                                        <tr className="drawer__value">
-                                                            <td className="drawer__value-label">MIC<sub>90</sub></td>
-                                                            <td className="drawer__value-value">⌛</td>
+                                                    <tbody>
+                                                        <tr className="drawer__value drawer__value--bold">
+                                                            <td className="drawer__value-label">Testing Method</td>
+                                                            <td className="drawer__value-value">Microdilution</td>
                                                         </tr>
-                                                    }
-                                                    {value.quantitativeData.percentileValue !== undefined &&
+                                                        {value.quantitativeData.percentileValue === undefined &&
+                                                            <tr className="drawer__value">
+                                                                <td className="drawer__value-label">MIC<sub>90</sub></td>
+                                                                <td className="drawer__value-value">⌛</td>
+                                                            </tr>
+                                                        }
+                                                        {value.quantitativeData.percentileValue !== undefined &&
+                                                            <tr className="drawer__value">
+                                                                <td className="drawer__value-label">MIC<sub>90</sub></td>
+                                                                <td className="drawer__value-value">{value.quantitativeData.percentileValue} mg/l</td>
+                                                            </tr>
+                                                        }
                                                         <tr className="drawer__value">
-                                                            <td className="drawer__value-label">MIC<sub>90</sub></td>
-                                                            <td className="drawer__value-value">{value.quantitativeData.percentileValue} mg/l</td>
+                                                            <td className="drawer__value-label">Number of Isolates (N)</td>
+                                                            <td className="drawer__value-value">{value.sampleSize}</td>
                                                         </tr>
-                                                    }
-                                                    <tr className="drawer__value">
-                                                        <td className="drawer__value-label">Number of Isolates (N)</td>
-                                                        <td className="drawer__value-value">N={value.sampleSize}</td>
-                                                    </tr>
+                                                    </tbody>
                                                 </table>
                                                 {value.quantitativeData.percentileValue === undefined &&
                                                     <p>⌛</p>
                                                 }
                                                 {value.quantitativeData.percentileValue !== undefined &&
                                                     <Histogram
-                                                        data={value.quantitativeData.slots.slots}
+                                                        data={value.quantitativeData.slots}
                                                         xAxisLabel="MIC (mg/l)"
                                                         mic90={value.quantitativeData.percentileValue}
                                                     />
@@ -139,21 +143,23 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                                 <h2>Quantitative Data (Disc Diffusion)</h2>
 
                                                 <table className="drawer__values">
-                                                    <tr className="drawer__value drawer__value--bold">
-                                                        <td className="drawer__value-label">Testing Method</td>
-                                                        <td className="drawer__value-value">Disc Diffusion</td>
-                                                    </tr>
-                                                    <tr className="drawer__value">
-                                                        <td className="drawer__value-label">Number of Isolates (N)</td>
-                                                        <td className="drawer__value-value">N={value.sampleSize}</td>
-                                                    </tr>
+                                                    <tbody>
+                                                        <tr className="drawer__value drawer__value--bold">
+                                                            <td className="drawer__value-label">Testing Method</td>
+                                                            <td className="drawer__value-value">Disc Diffusion</td>
+                                                        </tr>
+                                                        <tr className="drawer__value">
+                                                            <td className="drawer__value-label">Number of Isolates (N)</td>
+                                                            <td className="drawer__value-value">{value.sampleSize}</td>
+                                                        </tr>
+                                                    </tbody>
                                                 </table>
                                                 {value.quantitativeData.percentileValue === undefined &&
                                                     <p>⌛</p>
                                                 }
                                                 {value.quantitativeData.percentileValue !== undefined &&
                                                     <Histogram
-                                                        data={value.quantitativeData.slots.slots}
+                                                        data={value.quantitativeData.slots}
                                                         xAxisLabel="DD (mm)"
                                                         scale="log"
                                                     />
