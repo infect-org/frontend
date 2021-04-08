@@ -42,7 +42,7 @@ export default @observer class DrawerResistanceContent extends React.Component {
 
                 <div className="drawer__fixed">
                     <h1>
-                        Susceptibility of {this.props.resistance.bacterium.shortName} to{' '}
+                        Susceptibility of {this.props.resistance.bacterium.name} to{' '}
                         {this.props.resistance.antibiotic.name}
                     </h1>
                 </div>
