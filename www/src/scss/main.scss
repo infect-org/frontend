@@ -5,6 +5,7 @@
 @import "utils/mixins";
 @import "utils/inputrange";
 @import "utils/introjs";
+@import "utils/scroll-indicator-mixin";
 @import "../../src/bower_components/sass-flex-mixin/flex";
 @import "../../src/bower_components/sass-mediaqueries/media-queries";
 //@import "../../../node_modules/intro.js/introjs.css";
@@ -27,6 +28,7 @@
 @import "components/select";
 @import "components/matrix";
 @import "components/drawer";
+@import "components/histogram";
 @import "components/overlay";
 @import "components/search";
 @import "components/disclaimer";

@@ -82,6 +82,7 @@ function renderReact() {
             filters={app.filterValues}
             selectedFilters={app.selectedFilters}
             guidelines={app.guidelines}
+            drawerViewModel={app.views.drawer}
         />,
         document.querySelector('Matrix'),
     );

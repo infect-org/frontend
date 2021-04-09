@@ -1,0 +1,1 @@
+INFECT is also available for [human data](https://infect.info).

@@ -163,8 +163,9 @@
     top: 1rem;
     width: 2rem;
     height: 2rem;
+    padding-bottom: 4px;
     border-radius: 100%;
-    line-height: 1;
+    line-height: 10px;
     @include transition(background-color, $transition-duration);
     //background-color: darken($guidelines-color, 5%);
     background-color: $color--white;

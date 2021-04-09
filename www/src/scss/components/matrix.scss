@@ -101,6 +101,7 @@ matrixheader {
 
     &__body {
         position: relative;
+        z-index: 50;
         transition: height calc(#{$slowdown-factor} * 0.3s) ease-in-out 0.2s;
     }
 
@@ -124,7 +125,7 @@ matrixheader {
     }
 
     &__resistance {
-        cursor: none;
+        cursor: pointer;
         // Use visiblity: hidden to hide resistances (for speed reasons)
         // and ignore pointer-events on them
         //pointer-events: visible;
@@ -188,6 +189,7 @@ matrixheader {
 
     &__resistanceDetailValueText {
         font-size: 18pt;
+        text-decoration: underline;
     }
 
     &__resistanceDetailValuePercentSign {

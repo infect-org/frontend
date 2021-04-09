@@ -55,7 +55,7 @@
     p {
       margin: 0 0 8px 0;
       font-size: 14px;
-      line-height: 1.35;
+      line-height: 1.45;
     }
 
   }
@@ -144,31 +144,7 @@
   &__scrollable {
     @include flex(1 1 auto);
     overflow: auto;
-
-    background:
-            /* Shadow covers */
-            linear-gradient($color--link-water 30%, rgba($color--link-water,0)),
-            linear-gradient(rgba($color--link-water,0), $color--link-water 70%) 0 100%,
-
-              /* Shadows */
-            radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
-            radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-    background:
-            /* Shadow covers */
-            linear-gradient($color--link-water 30%, rgba(255,255,255,0)),
-            linear-gradient(rgba(255,255,255,0), $color--link-water 70%) 0 100%,
-
-              /* Shadows */
-            radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
-            radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-    background-repeat: no-repeat;
-    background-color: $color--link-water;
-    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-
-    /* Opera doesn't support this in the shorthand */
-    background-attachment: local, local, scroll, scroll;
-
-
+    @include scroll-indicator($color--link-water);
   }
   &__scrollable-inner {
     padding-bottom: 60px;
@@ -210,6 +186,94 @@
 
     &-inner {
       margin-left: 2rem;
+    }
+  }
+
+  &.resistance {
+
+    .button--close-drawer {
+      color: $color--text;
+
+      &:hover {
+        background-color: $color--cararra;
+      }
+    }
+
+    .drawer {
+      &__teaser {
+        &::after {
+          background-color: $color--satin-linen;
+        }
+
+        &-flap {
+          color: $color--text;
+          background-color: $color--satin-linen;
+        }
+      }
+
+      &__scrollable {
+        @include scroll-indicator($color--ecru-white);
+      }
+
+      &__fixed {
+        background-color: $color--satin-linen;
+
+        h1 {
+          margin: 0 1rem 0 0;
+          max-width: 90%;
+          color: $color--text;
+        }
+      }
+
+      &__section {
+        padding: 22px 30px;
+
+        &--mic,
+        &--selectedFilters,
+        &--discDiffusion {
+          padding-bottom: 0;
+        }
+
+        h2 {
+          font-size: 17px;
+          line-height: 1.1;
+          margin: 0 0 13px 0;
+        }
+
+        ul {
+          padding-left: 0;
+          list-style-type: '–';
+          list-style-position: inside;
+        }
+
+        li {
+          font-size: 14px;
+          line-height: 1.45;    
+
+          span {
+            padding-left: 8px;
+          }
+        }
+      }
+
+      &__header {
+        padding: 56px 30px 22px;
+        background-color: transparent;
+      }
+
+      &__values {
+        font-size: 14px;
+      }
+
+      &__value {
+        &--bold {
+          font-weight: bold;
+        }
+
+        &-value {
+          padding-left: 24px;
+        }
+      }
     }
   }
 

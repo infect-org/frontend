@@ -1,5 +1,4 @@
 import React from 'react';
-import { resistanceTypes } from '@infect/frontend-logic';
 import debug from 'debug';
 import { observer } from 'mobx-react';
 import { computed } from 'mobx';
@@ -15,6 +14,7 @@ class Resistance extends React.Component {
 		super();
 		// On init, resistances are always visible
 		this._wasVisible = true;
+		this._handleClick = this._handleClick.bind(this);
 	}
 
 	_getPreviousPosition() {
@@ -37,21 +37,6 @@ class Resistance extends React.Component {
 		return `translate(${ left }, ${ top })`;
 	}
 
-
-
-	/**
-	* Return value that will be displayed in the resistance's circle. 
-	* If import precision is given, use number, else use H/L/I.
-	*/
-	@computed get value() {
-		const bestValue = this.props.resistance.mostPreciseValue;
-		if (bestValue.type.identifier === resistanceTypes.class.identifier || 
-			bestValue.type.identifier === resistanceTypes.default.identifier) {
-			return bestValue.value < 1/3 ? 'L' : (bestValue.value < 2/3 ? 'I' : 'H');
-		}
-		// If bestValue is 1, return 1, else .xx (without leading 0)
-		return bestValue.value === 1 ? 1 : (bestValue.value.toFixed(2) + '').substr(1);
-	}
 
 
 	/**
@@ -84,28 +69,43 @@ class Resistance extends React.Component {
 		this.props.matrix.setActiveResistance(undefined);
 	}
 
+	_handleClick() {
+		const drawer = this.props.drawerViewModel;
+		const sameValue = drawer.content === this.props.resistance.resistance;
+		const { isOpen } = drawer;
+		if (sameValue && isOpen) return drawer.close();
+		if (sameValue && !isOpen) return drawer.open();
+		else drawer.setContent(this.props.resistance.resistance)
+	}
+
 	render() {
 		return(
 			// Radius: sample size
 			// Color: Resistance (for given population filters)
 			<g transform={ this.transformation } 
-				className={ 'resistanceMatrix__resistance js-resistance ' + this.classModifier }
+				className={ `resistanceMatrix__resistance js-resistance ${this.classModifier} ${this.resistaceTypeClass}` }
 				data-antibiotic={ this.props.resistance.resistance.antibiotic.name }
 				data-bacterium={ this.props.resistance.resistance.bacterium.name }
-				onMouseEnter={ this._handleMouseEnter} onMouseLeave={this._handleMouseLeave }>
+				onMouseEnter={ this._handleMouseEnter}
+				onMouseLeave={this._handleMouseLeave }
+				onClick={this._handleClick}
+			>
 				{ /* use <g> for content to give it an opacity depending on smapleSize. We cannot set
 				     opacity on parent g as this would overwrite the filters (opacity 0 if not visible) */ }
 				<g style={ { opacity: this.opacity } }>
 					{/* circle: center is at 0/0, therefore move by radius/radius */}
-					<circle r={ this.props.resistance.radius } fill={ this.props.resistance.backgroundColor } 
-						className="resistanceMatrix__resistanceCircle">
+					<circle
+						r={ this.props.resistance.radius }
+						fill={ this.props.resistance.backgroundColor } 
+						className="resistanceMatrix__resistanceCircle"
+					>
 					</circle>
 					{ /* dy -2: Adobe's font is not correctly middled, adjust by 2 px */ }
 					{ /* Don't display number if N < 20 */ }
 					<text textAnchor="middle" fill={ this.props.resistance.fontColor }
 						dominantBaseline="central" className="resistanceMatrix__resistanceText"
 						dy={ supportsDominantBaseline('-2', '0.35em') }>
-						{ Math.round((1 - this.value) * 100) }
+						{this.props.resistance.displayValue}
 					</text>
 				</g>
 			</g>
