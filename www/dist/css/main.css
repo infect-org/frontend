@@ -1531,7 +1531,6 @@ matrixheader {
 
 .resistanceMatrix {
   position: relative;
-  z-index: 100;
   /** @type {Number} Slow down all animations (for debugging purposes) */
   /*
     * Only display transitions and custom visibility style when and after the first
@@ -1625,8 +1624,8 @@ matrixheader {
 }
 
 .resistanceMatrix__header {
+  z-index: 100;
   position: fixed;
-  z-index: 90;
 }
 
 .resistanceMatrix__bacteriumLabelText {

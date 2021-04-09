@@ -64,6 +64,10 @@ class PopulationFilterList extends React.Component {
         return this.props.filterValues.getValuesForProperty(filterTypes.animal, 'id');
     }
 
+    @computed get sampleSourceFilters() {
+        return this.props.filterValues.getValuesForProperty(filterTypes.sampleSource, 'id');
+    }
+
     @computed get ageGroupFilters() {
         const ageGroups = this.props.ageGroupStore.getAsArray();
         const values = this.props.filterValues.getValuesForProperty(filterTypes.ageGroup, 'id');
@@ -133,6 +137,19 @@ class PopulationFilterList extends React.Component {
                             { this.hospitalStatusFilters.map(item => (
                                 <FilterListCheckbox key={ item.value }
                                     name={ item.niceValue } inputName="hospitalStatus-name"
+                                    value={ item.niceValue } checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.sampleSourceFilters.length > 1 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Sample Source</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.sampleSourceFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="sampleSource-name"
                                     value={ item.niceValue } checked={ this.isSelected(item) }
                                     onChangeHandler={ () => this._handleFilterChange(item) } />
                             ))}
