@@ -31,14 +31,10 @@ export default @observer class Histogram extends React.Component {
         return this.sortedSlots.slice().pop().toValue;
     }
 
-    @computed get minSlot() {
-        return this.sortedSlots.slice().shift();
-    }
-
     @computed get xAxisMin() {
         // Using 0 will cause issues (log2(0) is -Infinity). Therefore use toValue which is not 0
         // and divide it by 2
-        return this.minSlot.toValue / 2;
+        return this.sortedSlots.slice().shift().toValue / 2;
     }
 
     @computed get xAxisWidth() {
@@ -173,7 +169,7 @@ export default @observer class Histogram extends React.Component {
                                     <text
                                         className="histogram__axisLabel"
                                         textAnchor="end"
-                                        transform={`rotate(-45 0 -10)`}
+                                        transform="rotate(-45 0 -10)"
                                     >
                                         {label}
                                     </text>
