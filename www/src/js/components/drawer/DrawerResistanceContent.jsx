@@ -122,6 +122,34 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                             </>
                                         }
 
+                                        {value.type === resistanceTypes.discDiffusion &&
+                                            <>
+                                                <h2>Quantitative Data (Disc Diffusion)</h2>
+
+                                                <table className="drawer__values">
+                                                    <tbody>
+                                                        <tr className="drawer__value drawer__value--bold">
+                                                            <td className="drawer__value-label">Testing Method</td>
+                                                            <td className="drawer__value-value">Disc Diffusion</td>
+                                                        </tr>
+                                                        <tr className="drawer__value">
+                                                            <td className="drawer__value-label">Number of Isolates (N)</td>
+                                                            <td className="drawer__value-value">{value.sampleSize}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                {value.quantitativeData.percentileValue === undefined &&
+                                                    <p>⌛</p>
+                                                }
+                                                {value.quantitativeData.percentileValue !== undefined &&
+                                                    <Histogram
+                                                        data={value.quantitativeData.slots}
+                                                        xAxisLabel="DD (mm)"
+                                                    />
+                                                }
+                                            </>
+                                        }
+
                                         {value.type === resistanceTypes.mic &&
                                             <>
                                                 <h2>Quantitative Data (Microdilution)</h2>
@@ -157,39 +185,12 @@ export default @observer class DrawerResistanceContent extends React.Component {
                                                         data={value.quantitativeData.slots}
                                                         xAxisLabel="MIC (mg/l)"
                                                         mic90={value.quantitativeData.percentileValue}
-                                                    />
-                                                }
-                                            </>
-                                        }
-
-                                        {value.type === resistanceTypes.discDiffusion &&
-                                            <>
-                                                <h2>Quantitative Data (Disc Diffusion)</h2>
-
-                                                <table className="drawer__values">
-                                                    <tbody>
-                                                        <tr className="drawer__value drawer__value--bold">
-                                                            <td className="drawer__value-label">Testing Method</td>
-                                                            <td className="drawer__value-value">Disc Diffusion</td>
-                                                        </tr>
-                                                        <tr className="drawer__value">
-                                                            <td className="drawer__value-label">Number of Isolates (N)</td>
-                                                            <td className="drawer__value-value">{value.sampleSize}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                {value.quantitativeData.percentileValue === undefined &&
-                                                    <p>⌛</p>
-                                                }
-                                                {value.quantitativeData.percentileValue !== undefined &&
-                                                    <Histogram
-                                                        data={value.quantitativeData.slots}
-                                                        xAxisLabel="DD (mm)"
                                                         scale="log"
                                                     />
                                                 }
                                             </>
                                         }
+
                                     </div>
                                 </div>
                             ))}
