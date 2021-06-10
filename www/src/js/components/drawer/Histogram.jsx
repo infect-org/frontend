@@ -28,13 +28,12 @@ export default @observer class Histogram extends React.Component {
     }
 
     @computed get xAxisMax() {
-        return this.sortedSlots.slice().pop().toValue;
+        return this.sortedSlots.slice().pop().value;
     }
 
     @computed get xAxisMin() {
-        // Using 0 will cause issues (log2(0) is -Infinity). Therefore use toValue which is not 0
-        // and divide it by 2
-        return this.sortedSlots.slice().shift().toValue / 2;
+        // Using 0 will cause issues (log2(0) is -Infinity.
+        return this.sortedSlots.slice().shift().value;
     }
 
     @computed get xAxisWidth() {
@@ -43,42 +42,14 @@ export default @observer class Histogram extends React.Component {
         return (this.width * 0.95) - this.yAxisLabelsWidth;
     }
 
-    @computed get sortedSlots() {
-        return this.props.data.slice().sort((a, b) => (a.fromValue - b.fromValue));
+    @computed get barWidth() {
+        // Add 1 to data.length to make sure there's enough space to the right
+        const width = Math.floor(this.xAxisWidth / (this.props.data.length + 1));
+        return width;
     }
 
-    getTicks(maxValue, logScale) {
-        if (logScale) {
-            const maxLogValue = Math.ceil(Math.log2(this.xAxisMax));
-            // Math.log2(0) will be Infinity; use toValue so that we don't get 0 as minimum
-            // value
-            const minLogValue = Math.min(0, Math.floor(Math.log2(this.xAxisMin)));
-            // Use 10 ticks; less is not precise enough and there is not place for more
-            const ticks = maxLogValue - minLogValue + 1;
-            return Array.from({ length: ticks }).map((item, index) => {
-                const number = 2 ** (minLogValue + index);
-                // Dont let numbers be too precise (they'd take up too much space)
-                const rounded = parseFloat(number.toFixed(3));
-                return rounded;
-            });
-        }
-        // Division factor: By what do we have to divide value in order to get a one-digit number
-        // (between 1 and 10)?
-        const divisionFactor = 10 ** Math.floor(Math.log10(maxValue));
-        const oneDigit = maxValue / divisionFactor;
-        // Define tick size for the number between 0 and 10, then multiply back to orignal again
-        const tickSizes = [0.1, 0.2, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1];
-        const normalizedTickSize = tickSizes[Math.floor(oneDigit)];
-        const tickSize = normalizedTickSize * divisionFactor;
-        // + 1: To add 0 tick
-        const amountOfTicks = Math.floor(maxValue / tickSize) + 1;
-        return Array.from({ length: amountOfTicks })
-            .map((item, index) => index * tickSize)
-            // JS fucks up numbers as usual; make them readable
-            .map((item) => {
-                const numbersAfterPoint = item === 0 ? 0 : Math.max(0, Math.log10(item) * -1) + 2;
-                return parseFloat(item.toFixed(numbersAfterPoint));
-            });
+    @computed get sortedSlots() {
+        return this.props.data.slice().sort((a, b) => (a.value - b.value));
     }
 
     getXPosition(value) {
@@ -99,12 +70,45 @@ export default @observer class Histogram extends React.Component {
         return this.yAxisLabelsWidth + (value * (this.xAxisWidth / this.xAxisMax));
     }
 
+    /**
+     * On the x axis, basically add one tick per bar; as there's not enough space for that, reduce
+     * them depending on the amount of bars.
+     */
     @computed get getXAxisLabels() {
-        return this.getTicks(this.xAxisMax, this.props.scale === 'log');
+        // A label on every bar if we have <= 10 bars; on every second if we have <= 20 bars etc.
+        const reducer = Math.max(1, Math.floor(this.props.data.length / 10) - 1);
+        const labels = this.props.data
+            .filter((value, index) => index % reducer === 0)
+            .map(item => item.value);
+        return labels;
+    }
+
+    /**
+     * y axis still needs linear ticks distributed over the whole axis (and not a tick per bar)
+     */
+    getLinearTicks(maxValue) {
+        // Division factor: By what do we have to divide value in order to get a one-digit number
+        // (between 1 and 10)?
+        const divisionFactor = 10 ** Math.floor(Math.log10(maxValue));
+        const oneDigit = maxValue / divisionFactor;
+        // Define tick size for the number between 0 and 10, then multiply back to orignal again
+        const tickSizes = [0.1, 0.2, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1];
+        const normalizedTickSize = tickSizes[Math.floor(oneDigit)];
+        const tickSize = normalizedTickSize * divisionFactor;
+        // + 1: To add 0 tick
+        const amountOfTicks = Math.floor(maxValue / tickSize) + 1;
+        return Array.from({ length: amountOfTicks })
+            .map((item, index) => index * tickSize)
+            // JS fucks up numbers as usual; make them readable
+            .map((item) => {
+                const numbersAfterPoint = item === 0 ? 0 : Math.max(0, Math.log10(item) * -1) + 2;
+                return parseFloat(item.toFixed(numbersAfterPoint));
+            });
     }
 
     @computed get getYAxisLabels() {
-        return this.getTicks(this.yAxisMax, false);
+        const ticks = this.getLinearTicks(this.yAxisMax);
+        return ticks;
     }
 
     render() {
@@ -164,23 +168,16 @@ export default @observer class Histogram extends React.Component {
                         {this.getXAxisLabels.map((label, index) => (
                             <g key={label}>
                                 <g
-                                    transform={`translate(${this.getXPosition(label)} ${this.height - this.xAxisLabelsHeight + this.fontSize + this.tickWidth})`}
+                                    transform={`translate(${this.getXPosition(label) + 4} ${this.height - this.xAxisLabelsHeight + this.fontSize + this.tickWidth})`}
                                 >
                                     <text
                                         className="histogram__axisLabel"
                                         textAnchor="end"
-                                        transform="rotate(-45 0 -10)"
+                                        transform="rotate(-60 0 -10)"
                                     >
                                         {label}
                                     </text>
                                 </g>
-                                <line
-                                    className="histogram__axisTick"
-                                    x1={this.getXPosition(label)}
-                                    y1={this.height - this.xAxisLabelsHeight}
-                                    x2={this.getXPosition(label)}
-                                    y2={this.height - this.xAxisLabelsHeight + this.tickWidth}
-                                />
                             </g>
                         ))}
                         <text
@@ -197,9 +194,9 @@ export default @observer class Histogram extends React.Component {
                     <g>
                         {this.sortedSlots.map((slot, index) => (
                             <rect
-                                key={slot.fromValue}
-                                x={this.getXPosition(slot.fromValue)}
-                                width={this.getXPosition(slot.toValue) - this.getXPosition(slot.fromValue)}
+                                key={slot.value}
+                                x={this.getXPosition(slot.value)}
+                                width={this.barWidth}
                                 y={this.height - this.xAxisLabelsHeight - slot.sampleCount * this.yScaleFactor}
                                 height={slot.sampleCount * this.yScaleFactor}
                                 className="histogram__bar"
