@@ -205,14 +205,6 @@ export default @observer class Histogram extends React.Component {
                         { /* Mic90 */ }
                         {this.props.mic90 &&
                             <g>
-                                <line
-                                    className="histogram__mic90Line"
-                                    x1={this.getXPosition(this.props.mic90)}
-                                    y1={0}
-                                    x2={this.getXPosition(this.props.mic90)}
-                                    y2={this.height - this.xAxisLabelsHeight}
-                                    strokeDasharray="4"
-                                />
                                 <text
                                     className="histogram__mic90Text"
                                     x={this.getXPosition(this.props.mic90)}
