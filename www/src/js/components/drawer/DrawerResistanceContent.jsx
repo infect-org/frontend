@@ -49,12 +49,10 @@ export default @observer class DrawerResistanceContent extends React.Component {
 
                 <div className="drawer__scrollable">
                     <div className="drawer__scrollable-inner">
-
+                            { /*
                             <div className="drawer__header">
-                                { /*
                                 <p>Erklärung, wieso welche Daten angezeigt werden (Text für alle Empfindlichkeiten gleich; Englisch).</p>
-                                */ }
-                            </div>
+                            </div> */ }
 
                             {this.selectedPopulationFilters.length > 0 &&
                                 <div className="drawer__section drawer__section--selectedFilters">

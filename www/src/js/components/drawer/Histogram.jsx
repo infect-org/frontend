@@ -219,7 +219,7 @@ export default @observer class Histogram extends React.Component {
 
                 </svg>
             </div>
-        )
+        );
     }
 
 }
