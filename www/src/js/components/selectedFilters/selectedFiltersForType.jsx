@@ -31,6 +31,12 @@ export default class SelectedFiltersList extends React.Component {
                 return plural ? 'Age Groups' : 'Age Group';
             case 'diagnoses':
                 return plural ? 'Diagnoses' : 'Diagnosis';
+            case 'animals':
+                return plural ? 'Animals' : 'Animal';
+            case 'hospitalStatus':
+                return plural ? 'Patient Setting' :  'Patient Settings';
+            case 'sampleSource':
+                return plural ? 'Sample Sources' : 'Sample Source';
         }
     }
 

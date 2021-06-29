@@ -3,22 +3,7 @@
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108372802-1"></script>
-        <script>
-            if (!(
-                window.location.hostname === 'localhost' ||
-                window.location.hostname === 'beta.infect.info'
-            )) {
-                // Only load analytics if we're on a live environment
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){window.dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'UA-108372802-1');
-            }
-            else {
-                console.log('Index: Dev or staging environment');
-            }
-        </script>
-
+ 
         <meta charset="utf-8" />
         <title>INFECT – INterface For Empirical antimicrobial ChemoTherapy</title>
         <meta name="description" content="INFECT provides a fast and intuitive access to the latest antimicrobial resistance data. Thereby it assists health professionals with empirical treatment choices tailored to the resistance epidemiology in the patients' geographical region." />
@@ -46,6 +31,16 @@
         <script>/* global Typekit */ try{Typekit.load();}catch(e){}</script>
 
         <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
         <script async src="js/main.js"></script>
 
     </head>
@@ -108,8 +103,10 @@
         <div class="container">
             <div class="container__side-navigation side-navigation js-side-navigation">
                 <div class="side-navigation__header header">
-                    <div class="header__logo logo">
-                        <a href="/"><img src="img/logo.svg" alt="Infect" /></a>
+                    <div class="header__logo c-logo">
+                        <a href="/" class="c-logo__link">
+                            <TenantLogo />
+                        </a>
                     </div>
                     <div class="header__search js-filter-search-container">
                         <div class="filters__search">
@@ -152,6 +149,7 @@
         <Drawer></Drawer>
         <InfoOverlay></InfoOverlay>
         <Disclaimer></Disclaimer>
+        <TenantRunner></TenantRunner>
 
     </body>
 </html>

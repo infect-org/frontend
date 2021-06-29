@@ -65,6 +65,10 @@ export default @observer class BacteriumLabel extends React.Component {
         window.addEventListener('resize', () => this._setWidth());
     }
 
+    /**
+     * Underline bacterium when a resistance that relates to the bacterium has been hovered
+     * @return {string}         HTML class name to add
+     */
     @computed get highlightClass() {
         const { activeResistance } = this.props.matrix;
         if (!activeResistance) return '';
@@ -82,6 +86,14 @@ export default @observer class BacteriumLabel extends React.Component {
         return diagnosis && diagnosis.inducingBacteria.includes(this.props.bacterium.bacterium);
     }
 
+    /**
+     * When there is no resistance data for the current bacterium, grey it out.
+     * @return {string}         HTML class name to add
+     */
+    @computed get deactivatedClass() {
+        return this.props.bacterium.hasResistanceData ? '' : '-deactivated';
+    }
+
     render() {
         return (
             <g
@@ -93,7 +105,7 @@ export default @observer class BacteriumLabel extends React.Component {
                 <text
                     ref={element => this._setTextElement(element)}
                     x={this.props.matrix.bacteriumLabelColumnWidth}
-                    className={`resistanceMatrix__bacteriumLabelText ${this.highlightClass} ${this.causesSelectedDiagnosis && '-causes-diagnosis'}`}
+                    className={`resistanceMatrix__bacteriumLabelText ${this.highlightClass} ${this.deactivatedClass} ${this.causesSelectedDiagnosis && '-causes-diagnosis'}`}
                     dominantBaseline="middle"
                     y={this.props.matrix.defaultRadius}
                 >

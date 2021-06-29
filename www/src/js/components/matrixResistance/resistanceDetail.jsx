@@ -4,6 +4,7 @@ import { numberWithThousandsSeparators } from '../../helpers/formatters';
 import { supportsDominantBaseline } from '../../helpers/svgPolyfill';
 import { computed } from 'mobx';
 import debug from 'debug';
+import { resistanceTypes } from '@infect/frontend-logic';
 const log = debug('infect:ResistanceDetailComponent');
 
 @observer
@@ -51,16 +52,30 @@ class ResistanceDetail extends React.Component {
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="alphabetical"  textAnchor="middle"
 					dy={ supportsDominantBaseline('-0.4em', '-0.4em')} dx="2"
 					className="resistanceMatrix__resistanceDetailValueText">
-					{Math.round((1 - this.props.resistance.mostPreciseValue.value) * 100)}
-					<tspan className="resistanceMatrix__resistanceDetailValuePercentSign">%</tspan>
+					{this.props.resistance.displayValue}
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'qualitative' &&
+						<tspan className="resistanceMatrix__resistanceDetailValuePercentSign">%</tspan>
+					}
 				</text>
 
 				{ /* Confidence Interval */ }
 				<text fill={ this.props.resistance.fontColor } dominantBaseline="hanging"  textAnchor="middle" 
 					dy={ supportsDominantBaseline('-0.4em', '0.5em')}
-					className="resistanceMatrix__resistanceDetailSampleSizeText">
-					CI { Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[1]) * 100) }–
-					{ Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[0]) * 100) }%
+					className="resistanceMatrix__resistanceDetailSampleSizeText"
+				>
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'qualitative' &&
+						this.props.resistance.mostPreciseValue.confidenceInterval !== undefined &&
+						<>
+							CI { Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[1]) * 100) }–
+							{ Math.round((1 - this.props.resistance.mostPreciseValue.confidenceInterval[0]) * 100) }%
+						</>
+					}
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'mic' &&
+						'MIC90'
+					}
+					{this.props.resistance.mostPreciseResistanceTypeIdentifier === 'discDiffusion' &&
+						'Disc Diff.'
+					}
 				</text>
 
 				{ /* Sample Size */ }

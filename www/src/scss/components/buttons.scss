@@ -1,10 +1,6 @@
-$button-height: 38px;
-$button-bg-color: #c5c3b2;
-$button-bg-color--hover: #d7d5c4;
-
 .button {
   border: none;
-  color: #000;
+  color: $color--black;
   font-weight: 600;
 
   //used to center x
@@ -23,7 +19,7 @@ $button-bg-color--hover: #d7d5c4;
       padding: 0 8px;
     }
 
-    background-color: #c5c3b2;
+    background-color: $color--ash;
     font-weight: bold;
     @include border-radius-edges(0, 5px, 5px, 0);
 
@@ -32,14 +28,14 @@ $button-bg-color--hover: #d7d5c4;
     @at-root {
       .list-item--guidelines {
         .button--label {
-          background-color: #B9D5ED;
+          background-color: $color--spindle;
         }
       }
     }
 
 
     &:hover {
-      background-color: #d60000;
+      background-color: $color--guardsman-red;
       color: #fff;
     }
 
@@ -51,21 +47,21 @@ $button-bg-color--hover: #d7d5c4;
 
   &--clearall {
     height: $button-height;
-    background-color: $button-bg-color;
+    background-color: $color--ash;
     @include border-radius(5px);
     width: $button-height;
     font-weight: bold;
 
     &:hover {
-      background-color: #d60000;
-      color: #fff;
+      background-color: $color--guardsman-red;
+      color: $color--white;
     }
   }
 
   &--info {
     position: relative;
     //@include transition(background-color color, $transition-duration);
-    color: #000;
+    color: $color--black;
     padding: 0;
     margin: 0;
     //width: 36px;
@@ -74,14 +70,14 @@ $button-bg-color--hover: #d7d5c4;
 
     > div {
       position: relative;
-      background-color: #eee;
+      background-color: $color--gallery;
       @include border-radius-edges(5px, 5px, 5px, 5px);
       @include flexbox();
       @include flex-wrap(nowrap);
       @include transition(background-color, $transition-duration);
 
       &:hover {
-        background-color: darken(#eee, 5%);
+        background-color: darken($color--gallery, 5%);
       }
 
       span {
@@ -127,8 +123,8 @@ $button-bg-color--hover: #d7d5c4;
         width: 30px;
         height: 30px;
         line-height: 30px;
-        background-color: #fff;
-        color: #000;
+        background-color: $color--white;
+        color: $color--black;
         @include transition(background-color, $transition-duration);
 
         &:hover {
@@ -142,7 +138,7 @@ $button-bg-color--hover: #d7d5c4;
   &--show-guideline {
     position: relative;
     @include transition(background-color, $transition-duration);
-    background-color: $guidelines-color;
+    background-color: $color--link-water;
     @include border-radius-edges(5px, 5px, 5px, 5px);
     padding: 0 1rem 0 0.25rem;
     white-space: nowrap;
@@ -151,7 +147,7 @@ $button-bg-color--hover: #d7d5c4;
     line-height: 34px;
 
     &:hover {
-      background-color: darken($guidelines-color, 5%);
+      background-color: darken($color--link-water, 5%);
     }
 
     svg {
@@ -167,28 +163,34 @@ $button-bg-color--hover: #d7d5c4;
     top: 1rem;
     width: 2rem;
     height: 2rem;
+    padding-bottom: 4px;
     border-radius: 100%;
-    line-height: 1;
+    line-height: 10px;
     @include transition(background-color, $transition-duration);
     //background-color: darken($guidelines-color, 5%);
-    background-color: #fff;
-    color: $guidelines-color--dark;
+    background-color: $color--white;
+    color: $color--jelly-bean;
 
     &:hover {
-      background-color: $guidelines-color;
+      background-color: $color--link-water;
     }
   }
 
-  &--guide {
+  &--guide,
+  &--show-relevant-guideline-information {
     @include border-radius(5px);
     padding: 5px 15px;
 
     color: #fff;
-    background-color: $guide-button-color--base;
+    background-color: $color--jelly-bean;
     @include transition(background-color, $transition-duration);
 
     &:hover {
-      background-color: $guide-button-color--hover;
+      background-color: $color--indigo;
     }
+  }
+
+  &--show-relevant-guideline-information {
+    margin-bottom: 1.25rem;
   }
 }

@@ -6,17 +6,17 @@
 		z-index: 250;
 
 		&-dot {
-			border-color: $tooltip-hint-color;
+			border-color: $color--cornflower-blue;
 		}
 		&-pulse {
-			background-color: $tooltip-hint-color;
+			background-color: $color--cornflower-blue;
 		}
 
 	}
 
 	&-tooltip {
 
-		background-color: $tooltip--bg-color;
+		background-color: $color--white;
 
 		@include max-screen($breakpoint-md) {
 			position: fixed;
@@ -146,7 +146,7 @@
 					left: 0;
 					top: 0;
 					width: 21px;
-					fill: $color--light-green;
+					fill: var(--color--accent-1, $color--dusty-gray);
 
 					&-mostUsed {
 						height: 20px;
@@ -175,8 +175,8 @@
 		position: fixed;
 		bottom: 0;
 		width: calc(100% - 50px); // 50px = padding left and right
-		background-color: #fff;
-		border-top: 1px solid #ccc;
+		background-color: $color--white;
+		border-top: 1px solid $color--silver;
 		padding: 10px 25px;
 
 		@include flexbox();
@@ -210,11 +210,11 @@
 		right: 25px;*/
 		font-size: $font-size--small;
 		font-weight: 600;
-		color: #fff;
+		color: $color--white;
 		text-shadow: none;
 
 		//background-color: #c5c3b2;
-		background-color: $guide-button-color--base;
+		background-color: $color--cornflower-blue;
 		background-image: none;
 		padding: 5px 15px;
 
@@ -234,14 +234,14 @@
 		}
 
 		&:hover {
-			background-color: $guide-button-color--hover;
+			background-color: $color--indigo;
 			background-image: none !important;
-			color: #fff;
+			color: $color--white;
 		}
 
 		&:active,
 		&:focus {
-			color: #fff;
+			color: $color--white;
 		}
 
 		&.introjs-disabled {
@@ -258,10 +258,10 @@
 		background-color: transparent;
 		font-weight: normal;
 		margin-right: 0;
-		color: #000;
+		color: $color--black;
 
 		&:hover {
-			color: #000;
+			color: $color--black;
 			background: none;
 			text-decoration: underline;
 		}
@@ -287,21 +287,21 @@
 
 	// done button (has skip-button class)
 	&-donebutton {
-		background-color: $guide-button-color--base;
+		background-color: $color--cornflower-blue;
 		background-image: none;
 		padding: 5px 15px;
 		order: 3;
 		font-weight: bold;
 
 		&:hover {
-			background-color: $guide-button-color--hover;
+			background-color: $color--indigo;
 			background-image: none !important;
-			color: #fff;
+			color: $color--white;
 			text-decoration: none;
 		}
 		&:active,
 		&:focus {
-			color: #fff;
+			color: $color--white;
 		}
 	}
 
@@ -321,7 +321,7 @@
 				top: -10px;
 				border-top-color: transparent;
 				border-right-color: transparent;
-				border-bottom-color: $tooltip--bg-color;
+				border-bottom-color: $color--white;
 				border-left-color: transparent;
 			}
 
@@ -333,7 +333,7 @@
 				left: -10px;
 				top: 10px;
 				border-top-color: transparent;
-				border-right-color: $tooltip--bg-color;
+				border-right-color: $color--white;
 				border-bottom-color: transparent;
 				border-left-color: transparent;
 			}

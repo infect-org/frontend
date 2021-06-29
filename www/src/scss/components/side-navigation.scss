@@ -4,10 +4,10 @@
 
 	@include flexbox();
 	@include flex-direction(column);
-	background-color: $sidenavigation-background;
+	background-color: $color--mine-shaft;
 
 	&__header {
-		background-color: $sidenavigation-background;
+		background-color: $color--mine-shaft;
 	}
 
 	&__filters {
@@ -33,26 +33,10 @@
 }
 
 
-.logo {
-	@include flexbox();
-	@include justify-content(left);
-	padding-left: 20px;
-	align-items: center;
-	background-color: $navigation-background--lighter;
-
-	a {
-		z-index: 5;
-		height: $navigation-height - 20px;
-		img {
-			height: 100%;
-		}
-	}
-}
-
 .divider {
 	height: 1px;
 	border: 0;
-	border-top: 1px solid #575757;
+	border-top: 1px solid $color--scorpion;
 	margin: 0;
 
 	/*&--lead {

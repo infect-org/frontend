@@ -12,24 +12,25 @@ import InfectApp from '@infect/frontend-logic';
 import ReactDOM from 'react-dom';
 import React from 'react'; // Not needed here, but error is thrown if we don't import it
 
-import Matrix from './components/matrix/matrix';
-import MatrixHeader from './components/matrix/matrixHeader';
-import FilterList from './components/filterList/filterList';
-import SelectedFiltersList from './components/selectedFilters/selectedFiltersList';
-import FilterListMenu from './components/filterListMenu/filterListMenu';
-import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadingOverlay';
-import FilterSearch from './components/filterSearch/filterSearch';
-import Disclaimer from './components/disclaimer/disclaimer';
-import Notifications from './components/notifications/notifications';
-import GuidedTour from './components/guidedTour/guidedTour';
-import AppBanner from './components/appBanner/appBanner';
-import InfoOverlay from './components/infoOverlay/infoOverlay';
-import InfoOverlayButton from './components/infoOverlay/infoOverlayButton';
+import Matrix from './components/matrix/matrix.jsx';
+import MatrixHeader from './components/matrix/matrixHeader.jsx';
+import FilterList from './components/filterList/filterList.jsx';
+import SelectedFiltersList from './components/selectedFilters/selectedFiltersList.jsx';
+import FilterListMenu from './components/filterListMenu/filterListMenu.jsx';
+import MatrixLoadingOverlay from './components/matrixLoadingOverlay/matrixLoadingOverlay.jsx';
+import FilterSearch from './components/filterSearch/filterSearch.jsx';
+import Disclaimer from './components/disclaimer/disclaimer.jsx';
+import Notifications from './components/notifications/notifications.jsx';
+import GuidedTour from './components/guidedTour/guidedTour.jsx';
+import AppBanner from './components/appBanner/appBanner.jsx';
+import InfoOverlay from './components/infoOverlay/infoOverlay.jsx';
+import InfoOverlayButton from './components/infoOverlay/infoOverlayButton.jsx';
 import Drawer from './components/drawer/Drawer.jsx';
-import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter';
+import SelectedDiagnosisFilter from './components/selectedFilters/SelectedDiagnosisFilter.jsx';
+import TenantLogo from './components/tenantLogo/TenantLogo.jsx';
+import TenantRunner from './components/tenantRunner/TenantRunner.jsx';
 
-import betaConfig from '../config/config.beta.js';
-import liveConfig from '../config/config.live.js';
+import getURL from '../config/getURL.js';
 
 // Models limited to web app
 import GuidedTourModel from './models/guidedTour/guidedTour';
@@ -39,37 +40,28 @@ const log = debug('infect:Main');
 configure({ enforceActions: 'always' });
 
 
-// Get config based on environment
-/* global window */
-const isBeta = window.location.hostname.includes('beta.') ||
-    window.location.hostname === 'localhost';
-const config = isBeta ? betaConfig : liveConfig;
-log('Is beta? %o. config is %o', isBeta, config);
 
-// If URL's query params include ?preview or &preview, also load guideline data that has not yet
-// ben published. See https://github.com/infect-org/issues/issues/47.
-// TODO: Solve nicely when new API endpoints are ready (GPC)
-if (/(\?|&)preview/.test(window.location.search)) {
-    const concernedEndpoints = [
-        'diagnoses',
-        'guidelines',
-        'therapies',
-        'therapyPriorities',
-        'diagnosisClass',
-        'therapyCompounds',
-        'diagnosisBacteria',
-    ];
-    concernedEndpoints.forEach((endpoint) => { config.endpoints[endpoint] += '?showAllData=true'; });
+const previews = {};
+// Use ?previewGuideline to preview guidelines
+if (/(\?|&)previewGuidelines/.test(window.location.search)) {
+    previews.previewGuidelines = true;
+}
+// Use ?dataVersionStatusIdentifiers=active,preview to view corresponding data versions of RDA
+const dataVersionsParam = /(\?|&)dataVersionStatusIdentifiers=([^\&]*)/
+    .exec(window.location.search);
+if (dataVersionsParam && dataVersionsParam.length > 2 && dataVersionsParam[2].length) {
+    const dataVersions = dataVersionsParam[2].split(',');
+    previews.dataVersionStatusIdentifiers = dataVersions;
 }
 
 
 // Setup models that are shared between mobile and web app
-const app = new InfectApp(config);
+const app = new InfectApp({ getURL, ...previews });
 try {
     app.initialize();
     log('App initialized, is %o', app);
 } catch (err) {
-    app.errorHandler.handle(err);
+    app.notificationCenter.handle(err);
 }
 
 
@@ -90,6 +82,7 @@ function renderReact() {
             filters={app.filterValues}
             selectedFilters={app.selectedFilters}
             guidelines={app.guidelines}
+            drawerViewModel={app.views.drawer}
         />,
         document.querySelector('Matrix'),
     );
@@ -111,6 +104,8 @@ function renderReact() {
             selectedFilters={app.selectedFilters}
             offsetFilters={app.offsetFilters}
             guidelines={app.guidelines}
+            tenantConfig={app.tenantConfig}
+            ageGroupStore={app.ageGroupStore}
         />,
         document.querySelector('FilterList'),
     );
@@ -141,7 +136,12 @@ function renderReact() {
 
     ReactDOM.render(
         <MatrixLoadingOverlay
-            stores={[app.bacteria, app.antibiotics, app.resistances, app.substanceClasses]}
+            stores={[
+                app.bacteria,
+                app.antibiotics,
+                app.resistances,
+                app.substanceClasses,
+            ]}
         />,
         document.querySelector('MatrixLoadingOverlay'),
     );
@@ -157,13 +157,26 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <AppBanner appBanner={app.appBanner} />,
+        <AppBanner appBanner={app.appBanner} tenantConfig={app.tenantConfig} />,
         document.querySelector('AppBanner'),
     );
 
     ReactDOM.render(
-        <InfoOverlay guidedTour={guidedTourModel} infoOverlay={infoOverlayModel} />,
+        <InfoOverlay
+            guidedTour={guidedTourModel}
+            infoOverlay={infoOverlayModel}
+            tenantConfig={app.tenantConfig}
+            notifications={app.notificationCenter}
+        />,
         document.querySelector('InfoOverlay'),
+    );
+
+    ReactDOM.render(
+        <TenantRunner
+            tenantConfig={app.tenantConfig}
+            notifications={app.notificationCenter}
+        />,
+        document.querySelector('TenantRunner'),
     );
 
     ReactDOM.render(
@@ -172,18 +185,23 @@ function renderReact() {
     );
 
     ReactDOM.render(
-        <Notifications errors={app.errorHandler.errors} />,
+        <Notifications errors={app.notificationCenter.notifications} />,
         document.querySelector('Notifications'),
     );
 
     ReactDOM.render(
-        <Drawer drawerViewModel={app.views.drawer} />,
+        <Drawer drawerViewModel={app.views.drawer} app={app} />,
         document.querySelector('Drawer'),
     );
 
     ReactDOM.render(
         <SelectedDiagnosisFilter guidelines={app.guidelines} />,
         document.querySelector('SelectedDiagnosisFilter'),
+    );
+
+    ReactDOM.render(
+        <TenantLogo tenantConfig={app.tenantConfig} />,
+        document.querySelector('TenantLogo'),
     );
 
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { computed } from 'mobx';
+import { computed, action } from 'mobx';
 import { filterTypes } from '@infect/frontend-logic';
 import debug from 'debug';
 import OffsetFilters from './offsetFilters';
@@ -9,26 +9,39 @@ import generateFilterList from './generateFilterList';
 
 const log = debug('infect:PopulationFilterList');
 
-
-/**
- * Returns first number in age group identifier ("<15", "15-45", "">=65" etc.); needed to sort
- * age groups.
- */
-function getFirstNumber(ageGroupIdentifier) {
-    const match = ageGroupIdentifier.match(/\d+/);
-    let value = match ? parseInt(match[0], 10) : undefined;
-    // <15 comes before 15-35; first numbers are equal (15), therefore count '<15' down.
-    if (ageGroupIdentifier[0] === '<') value -= 1;
-    return value;
-}
-
-
 @observer
 class PopulationFilterList extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     _handleFilterChange(item) {
         log('Handle filter change for population filter %o', item);
         this.props.selectedFilters.toggleFilter(item);
+    }
+
+    /**
+     * Animal name filter is a radio button; we therefore have to uncheck all other animal name
+     * filters before a new one is being set
+     * *Must* be wrappend in an @action which executs the whole thing in a transaction
+     * (https://mobx.js.org/refguide/action.html); if it is not transactionized, 2 XHRs will fire
+     * (one without any filters, one with the new filters) and data displayed in matrix won't
+     * update at all.
+     */
+    @action handleAnimalFilterChange(item) {
+        log('Handle filter change for population filter %o', item);
+        const selectedAnimals = this.props.selectedFilters.getFiltersByType(filterTypes.animal);
+        const filtersToRemove = selectedAnimals.filter(filter => filter !== item);
+        filtersToRemove.forEach(filter => this.props.selectedFilters.removeFilter(filter));
+        // Toggle filter (also allow users to de-select a filter by clicking a selected radio
+        // button)
+        this.props.selectedFilters.toggleFilter(item);            
+    }
+
+    @computed get offsetMinimumValue() {
+        const rdaConfig = this.props.tenantConfig.getConfig('rda');
+        if (rdaConfig) return rdaConfig.sampleCountFilterLowerThreshold || 0;
     }
 
     /**
@@ -47,9 +60,20 @@ class PopulationFilterList extends React.Component {
         return this.props.filterValues.getValuesForProperty(filterTypes.region, 'id');
     }
 
+    @computed get animalFilters() {
+        return this.props.filterValues.getValuesForProperty(filterTypes.animal, 'id');
+    }
+
+    @computed get sampleSourceFilters() {
+        return this.props.filterValues.getValuesForProperty(filterTypes.sampleSource, 'id');
+    }
+
     @computed get ageGroupFilters() {
+        const ageGroups = this.props.ageGroupStore.getAsArray();
         const values = this.props.filterValues.getValuesForProperty(filterTypes.ageGroup, 'id');
-        return values.sort((a, b) => getFirstNumber(a.niceValue) - getFirstNumber(b.niceValue));
+        // Take sort order from tenantConfig which was stored in ageGroupStore
+        return values.sort((a, b) => ageGroups.find(({ id }) => id === a.value).order -
+            ageGroups.find(({ id }) => id === b.value).order);
     }
 
     @computed get hospitalStatusFilters() {
@@ -63,34 +87,80 @@ class PopulationFilterList extends React.Component {
     render() {
         return (
             <div id="population-filters">
-                <h3 className="gray margin-top">Region</h3>
-                <ul className="group__list group__list--vertical">
-                    { this.regionFilters.map(item => (
-                        <FilterListCheckbox key={ item.value }
-                            name={ item.niceValue } inputName="region-name" value={ item.niceValue }
-                            checked={ this.isSelected(item) }
-                            onChangeHandler={ () => this._handleFilterChange(item) } />
-                    ))}
-                </ul>
-                <h3 className="gray margin-top">Age Group</h3>
-                <ul className="group__list group__list--vertical">
-                    { this.ageGroupFilters.map(item => (
-                        <FilterListCheckbox key={ item.value }
-                            name={ item.niceValue } inputName="ageGroup-name"
-                            value={ item.niceValue } checked={ this.isSelected(item) }
-                            onChangeHandler={ () => this._handleFilterChange(item) } />
-                    ))}
-                </ul>
-                <h3 className="gray margin-top">Hospital status</h3>
-                <ul className="group__list group__list--vertical">
-                    { this.hospitalStatusFilters.map(item => (
-                        <FilterListCheckbox key={ item.value }
-                            name={ item.niceValue } inputName="hospitalStatus-name"
-                            value={ item.niceValue } checked={ this.isSelected(item) }
-                            onChangeHandler={ () => this._handleFilterChange(item) } />
-                    ))}
-                </ul>
-                <OffsetFilters identifier="data" offsetFilters={ this.props.offsetFilters } />
+                {this.animalFilters.length > 1 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Animal</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.animalFilters.map(item => (
+                                <FilterListCheckbox key={item.value}
+                                    name={item.niceValue}
+                                    inputName="animal-name"
+                                    shade="bright"
+                                    value={item.niceValue}
+                                    checked={this.isSelected(item)}
+                                    inputType="radio"
+                                    onChangeHandler={() => this.handleAnimalFilterChange(item) }/>
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.regionFilters.length > 1 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Region</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.regionFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="region-name" value={ item.niceValue }
+                                    checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.ageGroupFilters.length > 1 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Age Group</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.ageGroupFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="ageGroup-name"
+                                    value={ item.niceValue } checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.hospitalStatusFilters.length > 1 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Patient Setting</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.hospitalStatusFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="hospitalStatus-name"
+                                    value={ item.niceValue } checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                {this.sampleSourceFilters.length > 1 &&
+                    <React.Fragment>
+                        <h3 className="gray margin-top">Sample Source</h3>
+                        <ul className="group__list group__list--vertical">
+                            { this.sampleSourceFilters.map(item => (
+                                <FilterListCheckbox key={ item.value }
+                                    name={ item.niceValue } inputName="sampleSource-name"
+                                    value={ item.niceValue } checked={ this.isSelected(item) }
+                                    onChangeHandler={ () => this._handleFilterChange(item) } />
+                            ))}
+                        </ul>
+                    </React.Fragment>
+                }
+                <OffsetFilters
+                    identifier="data"
+                    offsetFilters={this.props.offsetFilters}
+                    offsetMinimumValue={this.offsetMinimumValue}
+                />
             </div>
         );
     }

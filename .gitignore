@@ -1,3 +1,4 @@
+.DS_Store
 *.seed
 *.log
 *.csv
@@ -5,6 +6,8 @@
 *.out
 *.pid
 *.gz
+
+.DS_Store
 
 pids
 logs

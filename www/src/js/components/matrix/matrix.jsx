@@ -141,7 +141,9 @@ export default @observer class Matrix extends React.Component {
                                 <Resistance
                                     key={`${resistance.resistance.antibiotic.id}/${resistance.resistance.bacterium.id}`}
                                     matrix={this.props.matrix}
-                                    resistance={resistance}/>
+                                    resistance={resistance}
+                                    drawerViewModel={this.props.drawerViewModel}
+                                />
                             ))}
                             {/* Resistance detail (hover) */}
                             {this.props.matrix.activeResistance &&

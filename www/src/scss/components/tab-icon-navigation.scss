@@ -6,7 +6,7 @@
 	bottom: -10px;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-bottom: 6px solid $color--light-green;
+	border-bottom: 6px solid var(--color--accent-1, $color--dusty-gray);
 }
 
 .button--icon {
@@ -19,17 +19,17 @@
 	padding: 0;
 
 	svg {
-		fill: white;
+		fill: $color--white;
 		height: inherit;
 		width: inherit;
 		@include transition(fill, $transition-duration);
 
 		&:hover {
-			fill: $color--light-green;
+			fill: var(--color--accent-1, $color--dusty-gray);
 
 			@at-root {
 				.button--icon.button--icon--guidelines svg:hover {
-					fill: $guidelines-color;
+					fill: $color--link-water;
 				}
 			}
 		}
@@ -37,11 +37,11 @@
 
 	&--active {
 		svg {
-			fill: $color--light-green;
+			fill: var(--color--accent-1, $color--dusty-gray);
 
 			@at-root {
 				.button--icon--active.button--icon--guidelines svg {
-					fill: $guidelines-color;
+					fill: $color--link-water;
 				}
 			}
 		}
@@ -51,7 +51,7 @@
 
 			@at-root {
 				.button--icon--active.button--icon--guidelines:after {
-					border-bottom-color: $guidelines-color;
+					border-bottom-color: $color--link-water;
 				}
 			}
 		}

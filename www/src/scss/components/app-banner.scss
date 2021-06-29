@@ -8,8 +8,8 @@ appbanner {
 	box-sizing: border-box;
 	padding: 8px 16px;
 
-	background-color: $app-banner-bg;
-	color: #000;
+	background-color: $color--gallery;
+	color: $color--black;
 	font-size: $font-size--small;
 
 	&__paragraph {
